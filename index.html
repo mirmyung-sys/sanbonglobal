@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>산본 더 글로벌 어학원 | SANBON THE GLOBAL</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Pacifico&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#1D2D4F; --red-dk:#14213d; --gold:#C6A15B; --gold-dk:#a8843f; --ink:#1b1b1b; --gray:#f4f4f6; --gray2:#e9eaee;
+  --muted:#8a8f99; --line:#e5e6ea; --dark:#1c1f26;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:#fff}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ===== Utility top bar ===== */
+.util{border-bottom:1px solid var(--line);font-size:12.5px;color:#6b7078}
+.util .wrap{display:flex;justify-content:flex-end;align-items:center;height:38px;gap:14px}
+.util a:hover{color:var(--red)}
+.util .sep{color:#d5d7dd}
+
+/* ===== Header ===== */
+header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:50}
+header .wrap{display:flex;align-items:center;height:82px;gap:38px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo img{width:44px;height:44px;object-fit:contain}
+.logo b{font-family:'Montserrat';font-weight:900;font-size:26px;color:var(--red);letter-spacing:.02em;line-height:1}
+.logo small{display:block;font-size:10px;color:#9aa0aa;font-weight:700;letter-spacing:.16em;font-family:'Noto Sans KR'}
+nav{display:flex;gap:15px;align-items:center;flex:1;justify-content:center;flex-wrap:wrap}
+nav a{font-size:15px;font-weight:600;color:#2b2e35;padding:6px 0;position:relative;white-space:nowrap}
+nav a.hot{color:var(--red);font-weight:700}
+nav a:hover{color:var(--red)}
+nav a .car{font-size:11px;color:#b6bac2}
+.hicons{display:flex;gap:22px}
+.hicons a{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:11px;color:#5b6069}
+.hicons .gi{font-size:20px;line-height:1}
+.hicons a:hover{color:var(--red)}
+
+/* ===== Hero ===== */
+.hero{background:var(--red);position:relative;overflow:hidden}
+.hero-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:430px;display:flex;align-items:center;position:relative}
+.promo{color:#fff;z-index:2;flex:1}
+.promo .date{font-size:16px;font-weight:700;opacity:.95;margin-bottom:14px}
+.promo h1{font-size:52px;font-weight:900;line-height:1.15;letter-spacing:-.01em}
+.promo .sub{margin-top:22px;font-size:16px;opacity:.92}
+.hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#000}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(29,45,79,.86),rgba(29,45,79,.5) 52%,rgba(29,45,79,.18));z-index:1}
+.script{position:absolute;right:40px;top:50%;transform:translateY(-52%);text-align:center;z-index:1}
+.script .p1{font-family:'Pacifico',cursive;font-size:76px;color:#fff;line-height:.9;text-shadow:0 6px 20px rgba(0,0,0,.15)}
+.script .p2{font-family:'Montserrat';font-weight:900;font-size:118px;color:#fff;line-height:.82;-webkit-text-stroke:3px #fff;color:transparent;letter-spacing:-.02em}
+.slider-ctl{position:absolute;left:24px;bottom:24px;display:flex;align-items:center;gap:14px;color:#fff;font-size:14px;font-weight:700;z-index:3}
+.slider-ctl button{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;opacity:.9}
+.slider-ctl button:hover{opacity:1}
+.side-rail{position:absolute;left:0;top:0;bottom:0;width:calc((100vw - 1200px)/2 + 120px);z-index:0}
+
+/* ===== STAR section (overlapping card) ===== */
+.star-sec{background:#F5ECD8;padding-bottom:80px}
+.star-card{background:#fff;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,.10);margin-top:34px;position:relative;z-index:5;padding:46px 44px 44px}
+.star-card h2{font-size:30px;font-weight:800;margin-bottom:30px}
+.star-card h2 .r{color:var(--gold)}
+.cards{display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px}
+.c{border-radius:10px;background:#fff;border:1px solid #ece4d2;padding:26px 26px;min-height:150px;position:relative;overflow:hidden;transition:.2s;cursor:pointer}
+.c:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.12)}
+.c .kick{font-size:14px;font-weight:700;color:var(--gold-dk);margin-bottom:8px}
+.c h3{font-size:24px;font-weight:800;margin-bottom:12px}
+.c p{font-size:14px;color:#5b6069;line-height:1.55}
+.c.big{grid-row:span 1;color:#fff;background:#23262e;min-height:210px;display:flex;flex-direction:column;justify-content:flex-end}
+.c.big.t{background:linear-gradient(90deg,#1c1f26 0%,#2b2f3a 55%,#3a3f4c 100%)}
+.c.big.e{background:linear-gradient(90deg,#F5ECD8 0%,#EFE3C7 100%);color:var(--ink)}
+.c.big h3{font-size:28px}
+.c.big .kick{color:var(--red)}
+.c.big.t h3,.c.big.t .kick{color:#fff}
+.c.big .imgtag{position:absolute;right:18px;top:16px;font-size:12px;color:rgba(255,255,255,.5);border:1px dashed rgba(255,255,255,.4);padding:4px 10px;border-radius:20px}
+.c.big.e .imgtag{color:#a9adc7;border-color:#c3c7e0}
+.btnrow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.bbtn{height:62px;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:18px;font-weight:700;color:#fff;transition:.2s}
+.bbtn.k{background:#1c1f26}.bbtn.k:hover{background:#000}
+.bbtn.r{background:var(--gold);color:#1D2D4F}.bbtn.r:hover{background:var(--gold-dk);color:#fff}
+
+/* ===== Right floating quick panel ===== */
+.quick{position:fixed;right:16px;top:96px;width:132px;z-index:60}
+.qch{background:#ffe600;border-radius:8px 8px 0 0;display:flex;align-items:center;gap:6px;padding:8px 10px;font-size:12px;font-weight:700}
+.qch .ch{background:#3a1d1d;color:#ffe600;font-weight:900;border-radius:6px;padding:2px 5px;font-size:11px}
+.qbtns{background:#1c1f26;padding:8px;display:flex;flex-direction:column;gap:8px;border-radius:0 0 8px 8px}
+.qbtns a{background:#2a2e37;color:#fff;border-radius:6px;padding:12px 8px;font-size:12px;line-height:1.35;display:flex;align-items:center;gap:8px;transition:.2s}
+.qbtns a:hover{background:var(--red)}
+.qbtns a .qi{font-size:16px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:8px;margin-top:10px;padding:8px}
+.qcard .qt{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:700;margin-bottom:6px}
+.qcard .qt .nav{color:#c2c6cf}
+.qcard .thumb{background:var(--gray);border-radius:6px;height:96px;display:flex;align-items:center;justify-content:center;color:#a7acb6;font-size:12px;text-align:center;padding:6px}
+.qtop{margin-top:10px;text-align:center;background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 0;font-size:12px;font-weight:700;color:#5b6069;cursor:pointer}
+.qtop:hover{color:var(--red);border-color:var(--red)}
+
+@media(max-width:1240px){.quick{display:none}.side-rail{display:none}}
+@media(max-width:860px){
+  nav,.hicons{display:none}
+  .promo h1{font-size:34px}.script .p2{font-size:70px}.script .p1{font-size:46px}
+  .hero-vid{height:200px;right:14px;max-width:130px}
+  .hero-inner{height:300px}
+  .progcards,.samples{grid-template-columns:1fr 1fr}.rvcard{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  .btnrow{grid-template-columns:1fr}
+  .logo b{font-size:20px}
+}
+/* ===== 프로그램 ===== */
+.prog{padding:70px 0 60px}
+.secttl{font-size:28px;font-weight:900;display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.secttl b{color:var(--red)}
+.secttl .line{flex:1;height:2px;background:#222}
+.secttl .stag{font-size:15px;font-weight:500;color:#8a8f99}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:34px}
+.tabs button{background:none;border:none;padding:12px 20px;font-size:16px;font-weight:700;color:#8a8f99;cursor:pointer;border-radius:8px 8px 0 0}
+.tabs button.on{background:var(--red);color:#fff}
+.progcards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.pc .ico{font-size:42px;margin-bottom:12px}
+.pc h4{font-size:19px;font-weight:800;margin-bottom:10px}
+.pc p{font-size:13.5px;color:#6b7078;line-height:1.6}
+.morebtn{text-align:right;margin-top:26px}
+.morebtn a{font-size:14px;font-weight:700;color:#5b6069;border:1px solid var(--line);border-radius:6px;padding:8px 14px}
+/* ===== 수강후기 ===== */
+.review{background:#eef1f5;padding:64px 0}
+.tabs2{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:22px}
+.tabs2 button{background:none;border:none;font-size:16px;font-weight:700;color:#8a8f99;cursor:pointer;padding-bottom:6px}
+.tabs2 button.on{color:var(--red);border-bottom:2px solid var(--red)}
+.rvtop{text-align:right;color:#5b6069;font-weight:600;margin-bottom:14px}
+.rvcard{display:grid;grid-template-columns:360px 1fr;gap:30px}
+.rvimg{position:relative;background:linear-gradient(160deg,#2b3550,#1D2D4F);border-radius:8px;min-height:220px;color:#fff;font-size:24px;font-weight:800;padding:34px;display:flex;flex-direction:column;justify-content:center;line-height:1.35}
+.rvimg .who{position:absolute;left:34px;bottom:20px;font-size:13px;font-weight:600;color:var(--gold)}
+.rvbody{padding-top:6px}
+.rvbody .stars{color:var(--gold);font-weight:800;margin-bottom:10px}
+.rvbody .stars b{color:var(--red);margin-left:8px}
+.rvbody h3{font-size:22px;font-weight:800;margin-bottom:12px}
+.rvbody p{font-size:15px;color:#4b5058;line-height:1.7}
+.rvdate{margin-top:14px;color:#9aa0aa;font-size:13px;text-align:right}
+/* ===== 샘플강의 ===== */
+.sample{padding:64px 0 80px}
+.samples{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.sv{border-radius:8px;overflow:hidden;cursor:pointer;transition:.2s;display:block;color:inherit}
+.sv:hover{transform:translateY(-4px)}
+.sv .th{position:relative;height:150px;background:#1D2D4F;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;overflow:hidden}
+.sv .th video{width:100%;height:100%;object-fit:cover}
+.sv .th .pl{position:absolute;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.9);color:var(--red);display:flex;align-items:center;justify-content:center;font-size:15px}
+.sv .th2{background:linear-gradient(160deg,#c0392b,#7b241c)}.sv .th3{background:linear-gradient(160deg,#2e86c1,#1a5276)}.sv .th4{background:linear-gradient(160deg,#c6a15b,#8a6d2f)}
+.sv .sm{padding:12px 4px}
+.sv .cat{font-size:12px;font-weight:800;color:var(--red);margin-bottom:4px}
+.sv .st{font-size:16px;font-weight:800}
+.sv .sn{font-size:13px;color:#8a8f99;margin-top:4px}
+/* ===== Footer ===== */
+.ft{background:#1c1f26;color:#a7abb4;font-size:13px;padding:28px 0;margin-top:10px}
+.ftnav a{margin-right:18px;color:#dfe1e6;font-weight:600}
+.ftinfo{margin-top:12px;line-height:1.7;color:#8a8f99}
+/* ===== 대형 드롭다운 메뉴 ===== */
+header{position:sticky;top:0;z-index:100}
+nav a{transition:color .15s}
+nav a:hover{color:var(--red)}
+.megamenu{position:absolute;left:0;right:0;top:100%;width:100%;background:#fff;border-top:1px solid var(--line);box-shadow:0 22px 34px rgba(0,0,0,.10);z-index:1000;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s ease,transform .2s ease,visibility .2s}
+header:hover .megamenu{opacity:1;visibility:visible;transform:translateY(0)}
+.megainner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:0 20px;padding:28px 24px 34px}
+.mcol h5{font-size:15px;font-weight:800;color:var(--red);border-bottom:1px solid #eee;padding-bottom:9px;margin-bottom:8px}
+.mcol a{display:block;font-size:14px;color:#5b6069;padding:7px 0;font-weight:600;transition:.12s}
+.mcol a:hover{color:var(--red);font-weight:800;padding-left:4px}
+@media(max-width:860px){.megamenu{display:none!important}}
+/* ===== 강사소개 ===== */
+.teachers{padding:66px 0}
+.tgroup{font-size:20px;font-weight:800;color:var(--red);margin:28px 0 16px;padding-left:11px;border-left:4px solid var(--red)}
+.tgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.tc{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;transition:.2s}
+.tc:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(0,0,0,.1)}
+.tp{height:186px;background:#eef1f5;overflow:hidden}
+.tp img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.ti{padding:11px 12px 14px}
+.ti .tr{font-size:12px;font-weight:700;color:var(--gold-dk)}
+.ti .tn{font-size:17px;font-weight:800;margin-top:3px}
+/* ===== 전체시간표 ===== */
+.timetable{background:#f7f8fa;padding:64px 0}
+.ttbl{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;font-size:14.5px}
+.ttbl th{background:var(--red);color:#fff;padding:13px;font-weight:700}
+.ttbl td{border:1px solid #e7e9ee;padding:12px 14px;text-align:center;color:#4b5058}
+.ttbl tr:nth-child(even) td{background:#fafbfc}
+.ttbl td.cat{background:#eef1f7;font-weight:800;color:var(--red)}
+.ttnote{margin-top:14px;color:#8a8f99;font-size:13px}
+/* ===== 수강후기 3카드 ===== */
+.rv3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:24px}
+.rc .stars{color:var(--gold);font-weight:800;font-size:15px}
+.rc h4{font-size:17px;font-weight:800;margin:10px 0 8px}
+.rc p{font-size:14px;color:#5b6069;line-height:1.65}
+.rc .w{margin-top:14px;font-size:13px;color:#9aa0aa;font-weight:600}
+@media(max-width:860px){.tgrid{grid-template-columns:1fr 1fr 1fr}.rv3{grid-template-columns:1fr}}
+/* ===== 히어로 클릭 박스 6개 ===== */
+.herocards{position:relative;z-index:2;margin-left:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px;width:380px}
+.hcard{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);border-radius:12px;padding:16px 14px;color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(3px);transition:.18s}
+.hcard:hover{background:#fff;color:var(--red);transform:translateY(-2px)}
+.hcard .hi{font-size:20px}
+/* ===== 인터랙티브 강의관 ===== */
+.cguide{color:#8a8f99;font-size:15px;margin:-16px 0 22px}
+.ctabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.ctabs button{background:#f2f0e8;border:1px solid #e6ddc9;color:#5b6069;font-size:16px;font-weight:800;padding:12px 24px;border-radius:30px;cursor:pointer;transition:.15s}
+.ctabs button.on{background:var(--red);color:#fff;border-color:var(--red);box-shadow:0 8px 18px rgba(29,45,79,.25)}
+.ctabs button:hover{border-color:var(--red);color:var(--red)}
+.ctabs button.on:hover{color:#fff}
+.cpanel{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;min-height:120px}
+.icard{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;transition:.2s;animation:fadeUp .3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.icard:hover{box-shadow:0 12px 28px rgba(0,0,0,.1)}
+.icard .iph{height:238px;background:#eef1f5;overflow:hidden}
+.icard .iph img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.icard .ibd{padding:16px 18px 18px}
+.icard .inm{font-size:19px;font-weight:900;color:var(--red)}
+.ischd{width:100%;border-collapse:collapse;margin-top:12px;font-size:13.5px}
+.ischd td{border:1px solid #eee;padding:8px;text-align:center;color:#4b5058}
+.ischd td.b{background:#f7f5ee;font-weight:800;color:#3a3f4c;white-space:nowrap}
+@media(max-width:860px){.cpanel{grid-template-columns:1fr}.herocards{display:none}}
+/* ===== 히어로 슬라이드(투명 클릭창) ===== */
+.promoslide{display:block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.42);border-radius:16px;padding:30px 38px;color:#fff;z-index:2;position:relative;backdrop-filter:blur(2px);transition:.2s;max-width:560px;min-width:400px}
+.promoslide:hover{background:rgba(255,255,255,.22);transform:translateY(-2px)}
+.promoslide .date{font-size:15px;font-weight:700;opacity:.95;margin-bottom:12px}
+.promoslide h1{font-size:46px;font-weight:900;line-height:1.14}
+.promoslide .sub{margin-top:14px;font-size:15px;opacity:.92}
+.slcue{margin-top:18px;font-size:14px;font-weight:800;color:#fff;opacity:.92}
+/* 강의관 결제 버튼 */
+.ipay{display:block;text-align:center;margin-top:12px;background:var(--red);color:#fff;font-weight:800;font-size:14px;padding:11px;border-radius:8px}
+.ipay:hover{background:#14213d}
+/* 전체강의 모달 */
+.amodal{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1200;display:none;align-items:center;justify-content:center;padding:24px}
+.amodal.open{display:flex}
+.abox{background:#fff;border-radius:14px;max-width:920px;width:100%;max-height:86vh;overflow-y:auto;padding:34px}
+.abox h3{font-size:24px;font-weight:900;color:var(--red)}
+.abox .asub{color:#8a8f99;margin:6px 0 20px}
+.abox .aclose{float:right;font-size:26px;color:#999;cursor:pointer;line-height:1}
+.ag{border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:14px}
+.ag h4{font-size:18px;font-weight:800;color:var(--red);margin-bottom:10px}
+.ag .ai{font-size:14px;color:#4b5058;padding:6px 0;border-bottom:1px dashed #eee}
+.ag .ai:last-child{border-bottom:none}
+.ag .ai b{color:#1c1f26}
+/* ===== 배치 재조정 (요청 반영) ===== */
+.tp img,.icard .iph img{object-position:center 22% !important}
+.hero-inner{gap:22px}
+.promoslide{flex:1;min-width:0;max-width:none;background:linear-gradient(120deg,rgba(198,161,91,.36),rgba(20,33,61,.46)) !important;border:1px solid rgba(255,255,255,.55) !important}
+.promoslide h1{font-size:44px}
+.hcard.hcgold{background:var(--gold);color:#1D2D4F;border-color:var(--gold)}
+.hcard.hcgold:hover{background:#d9b978;color:#1D2D4F}
+.hcard.hcwhite{background:#fff;color:var(--red);border-color:#fff}
+.hcard.hcwhite:hover{background:#eef0f4}
+.ipay{background:linear-gradient(90deg,#ff9d00,#ff6a00);color:#241000;font-weight:900;font-size:15px;letter-spacing:.5px;border:2px solid #e07b00;text-shadow:0 1px 0 rgba(255,255,255,.25)}
+.ipay:hover{background:linear-gradient(90deg,#ffb02e,#ff8324)}
+header .wrap{gap:22px}
+nav{gap:12px;justify-content:flex-start;flex-wrap:nowrap}
+nav a{font-size:14px}
+.hicons{gap:16px}
+.snsbar{background:#fff;border-bottom:1px solid var(--line)}
+.snsbar .wrap{display:flex;gap:14px;justify-content:center;padding:18px 24px;flex-wrap:wrap}
+.snsbtn{display:flex;align-items:center;gap:9px;font-weight:800;font-size:15px;color:#fff;padding:12px 22px;border-radius:30px;transition:.18s}
+.snsbtn:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.16)}
+.sns-ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
+.sns-yt{background:#ff0000}
+.sns-kk{background:#ffe600;color:#3a1d1d}
+.sns-bl{background:#03c75a}
+.sns-rv{background:var(--red)}
+.snsbtn .si{font-size:18px}
+.scard{display:flex;gap:26px;align-items:center;background:linear-gradient(120deg,#f7f5ee,#eef1f7);border:1px solid var(--line);border-radius:14px;padding:34px 36px;animation:fadeUp .3s ease}
+.scard .sic{font-size:64px}
+.scard .sinfo h3{font-size:24px;font-weight:900;color:var(--red);margin-bottom:8px}
+.scard .sinfo p{color:#5b6069;font-size:15px;line-height:1.6;margin-bottom:16px}
+</style>
+</head>
+<body>
+
+<!-- Utility bar -->
+<div class="util"><div class="wrap">
+  <a href="#">HOME</a><span class="sep">|</span>
+  <a href="#">회원가입</a><span class="sep">|</span>
+  <a href="#">로그인</a><span class="sep">|</span>
+  <a href="#">사이트맵</a>
+</div></div>
+
+<!-- Header -->
+<header><div class="wrap">
+  <a class="logo" href="#">
+    <img src="img/sga_logo.png" alt="산본글로벌어학원 SANBON GLOBAL ACADEMY" style="height:54px;width:auto;max-width:none">
+  </a>
+  <nav>
+    <a href="#">학원소개</a>
+    <a href="#">공지사항</a>
+    <a href="#">영어</a>
+    <a href="#">일본어</a>
+    <a href="#">중국어</a>
+    <a href="#">유학상담</a>
+    <a href="#">외고</a>
+    <a href="#">과외</a>
+    <a href="#">1:1 전문</a>
+    <a href="#">기업출강</a>
+    <a href="#">임원강의</a>
+  </nav>
+  <div class="hicons">
+    <a href="#"><span class="gi">📊</span>레벨테스트</a>
+    <a href="#"><span class="gi">🗓️</span>강의시간표</a>
+  </div>
+</div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <video class="hero-vid" autoplay muted loop playsinline poster=""><source src="media/promo.mp4" type="video/mp4"></video>
+  <div class="hero-ov"></div>
+  <div class="hero-inner">
+    <a class="promoslide" id="promoSlide" href="#">
+      <div class="date" id="slDate"></div>
+      <h1 id="slTitle"></h1>
+      <div class="sub" id="slSub"></div>
+      <div class="slcue">▸ 자세히 보기</div>
+    </a>
+    <div class="herocards">
+      <a href="#" class="hcard hcgold"><span class="hi">📝</span>수강신청</a>
+      <a href="#" class="hcard hcwhite"><span class="hi">📊</span>무료 레벨테스트</a>
+      <a href="#" class="hcard"><span class="hi">🎁</span>이벤트·혜택</a>
+      <a href="#timetable" class="hcard"><span class="hi">🗓️</span>전체 시간표</a>
+      <a href="#teachers" class="hcard"><span class="hi">👩‍🏫</span>강사 소개</a>
+      <a href="#" class="hcard"><span class="hi">📍</span>오시는 길</a>
+    </div>
+    <div class="slider-ctl"><button id="slPrev">‹</button><span id="slNum">1 / 6</span><button id="slNext">›</button></div>
+  </div>
+</section>
+
+<!-- SNS 링크 바 -->
+<div class="snsbar"><div class="wrap">
+  <a class="snsbtn sns-ig" href="#" target="_blank"><span class="si">📷</span> 인스타그램</a>
+  <a class="snsbtn sns-yt" href="#" target="_blank"><span class="si">▶</span> 유튜브</a>
+  <a class="snsbtn sns-kk" href="http://pf.kakao.com/_FxfgQT" target="_blank"><span class="si">💬</span> 카카오톡 채널</a>
+  <a class="snsbtn sns-bl" href="#" target="_blank"><span class="si">🅑</span> 블로그</a>
+  <a class="snsbtn sns-rv" href="#review"><span class="si">⭐</span> 수강후기</a>
+</div></div>
+
+<!-- STAR section -->
+<section class="star-sec"><div class="wrap">
+  <div class="star-card">
+    <h2><span class="r">산본글로벌</span> 강의관</h2>
+    <p class="cguide">과목을 누르면 담당 강사와 요일·시간표가 펼쳐집니다.</p>
+    <div class="ctabs" id="ctabs"></div>
+    <div class="cpanel" id="cpanel"></div>
+    <div class="btnrow">
+      <a class="bbtn k" href="#" onclick="openAll();return false;">전체 강의 보기 ›</a>
+      <a class="bbtn r" href="#" onclick="alert('곧 업데이트 됩니다.');return false;">글로벌 강의 보기 (업데이트 예정) ›</a>
+    </div>
+  </div>
+</div></section>
+
+<!-- 산본글로벌 프로그램 -->
+<section class="prog"><div class="wrap">
+  <h2 class="secttl">산본글로벌 <b>프로그램</b><span class="line"></span></h2>
+  <div class="tabs">
+    <button class="on">점수보장반</button><button>딜리버리 LIVE</button><button>인강</button><button>영어회화</button><button>중국어</button><button>일본어</button><button>제2외국어</button>
+  </div>
+  <div class="progcards">
+    <div class="pc"><div class="ico">🎯</div><h4>점수보장반</h4><p>"점수 치트키"로 원하는<br>목표 점수 달성! 미달 시 응시료 환급</p></div>
+    <div class="pc"><div class="ico">🧑‍🏫</div><h4>점수보장반 관리형</h4><p>교재 무료 제공·장학금<br>내 실력 맞춤 "집중 케어"까지</p></div>
+    <div class="pc"><div class="ico">📡</div><h4>온라인 LIVE</h4><p>어디서든 실시간으로 생생하게<br>수업이 찾아갑니다</p></div>
+    <div class="pc"><div class="ico">🖥️</div><h4>온라인 VOD</h4><p>바쁜 나를 위한 맞춤 학습!<br>최신 녹화영상으로 생동감 UP</p></div>
+  </div>
+  <div class="morebtn"><a href="#">프로그램 자세히 보기 ＋</a></div>
+</div></section>
+
+<!-- 강사소개 -->
+<section class="teachers" id="teachers"><div class="wrap">
+  <h2 class="secttl">강사 <b>소개</b><span class="line"></span></h2>
+  <div class="tgroup">영어</div>
+  <div class="tgrid">
+    <div class="tc"><div class="tp"><img src="img/teachers/eng_13.png" alt="송윤정 강사"></div><div class="ti"><div class="tr">토익 전문</div><div class="tn">송윤정</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/eng_14.png" alt="유미용 강사"></div><div class="ti"><div class="tr">토익·토스·오픽</div><div class="tn">유미용</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/eng_15.png" alt="김현정 강사"></div><div class="ti"><div class="tr">토플·토익·오픽</div><div class="tn">김현정</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/eng_12.png" alt="황보준 강사"></div><div class="ti"><div class="tr">토익·영어회화</div><div class="tn">황보준</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/eng_7.png" alt="구지영 강사"></div><div class="ti"><div class="tr">유학파 회화</div><div class="tn">구지영</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/eng_3.png" alt="김지현 강사"></div><div class="ti"><div class="tr">영어</div><div class="tn">김지현</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/eng_4.png" alt="박호임 강사"></div><div class="ti"><div class="tr">영어</div><div class="tn">박호임</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/eng_2.png" alt="공미영 Olive 강사"></div><div class="ti"><div class="tr">영어회화</div><div class="tn">공미영 (Olive)</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/eng_10.png" alt="권미화 May 강사"></div><div class="ti"><div class="tr">영어회화</div><div class="tn">권미화 (May)</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/eng_9.png" alt="케이티 강사"></div><div class="ti"><div class="tr">영어회화</div><div class="tn">케이티</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/eng_1.png" alt="Amy 강사"></div><div class="ti"><div class="tr">영어회화</div><div class="tn">Amy</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/eng_5.png" alt="애플 원어민 강사"></div><div class="ti"><div class="tr">원어민 회화</div><div class="tn">애플 (원어민)</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/eng_6.png" alt="최자운 원어민 강사"></div><div class="ti"><div class="tr">원어민 회화</div><div class="tn">최자운 (원어민)</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/eng_11.png" alt="제롤린 원어민 강사"></div><div class="ti"><div class="tr">원어민 회화</div><div class="tn">제롤린 (원어민)</div></div></div>
+  </div>
+  <div class="tgroup">일본어</div>
+  <div class="tgrid">
+    <div class="tc"><div class="tp"><img src="img/teachers/jpn_2.png" alt="김민정 강사"></div><div class="ti"><div class="tr">JLPT·회화</div><div class="tn">김민정</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/jpn_1.png" alt="권은정 강사"></div><div class="ti"><div class="tr">JLPT·회화</div><div class="tn">권은정</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/jpn_4.png" alt="김연주 강사"></div><div class="ti"><div class="tr">기초·회화</div><div class="tn">김연주</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/jpn_5.png" alt="김은영 강사"></div><div class="ti"><div class="tr">기초·회화</div><div class="tn">김은영</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/jpn_7.png" alt="서정아 강사"></div><div class="ti"><div class="tr">기초·회화</div><div class="tn">서정아</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/jpn_11.png" alt="이형림 강사"></div><div class="ti"><div class="tr">기초·회화</div><div class="tn">이형림</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/jpn_6.png" alt="마무로 히토시 원어민"></div><div class="ti"><div class="tr">원어민 회화</div><div class="tn">마무로 히토시</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/jpn_8.png" alt="나카무라 모모코 원어민"></div><div class="ti"><div class="tr">원어민 회화</div><div class="tn">나카무라 모모코</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/jpn_9.png" alt="아야코 원어민"></div><div class="ti"><div class="tr">원어민 회화</div><div class="tn">아야코</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/jpn_10.png" alt="조미히로 원어민"></div><div class="ti"><div class="tr">원어민 회화</div><div class="tn">조미히로</div></div></div>
+  </div>
+  <div class="tgroup">중국어</div>
+  <div class="tgrid">
+    <div class="tc"><div class="tp"><img src="img/teachers/chn_1.png" alt="노정아 강사"></div><div class="ti"><div class="tr">기초·회화·HSK</div><div class="tn">노정아</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/chn_3.png" alt="오금한 강사"></div><div class="ti"><div class="tr">기초·회화·HSK</div><div class="tn">오금한</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/chn_5.png" alt="하홍금 원어민 강사"></div><div class="ti"><div class="tr">원어민 회화</div><div class="tn">하홍금 (원어민)</div></div></div>
+    <div class="tc"><div class="tp"><img src="img/teachers/chn_7.png" alt="원어민 강사"></div><div class="ti"><div class="tr">원어민 회화</div><div class="tn">현지인 강사</div></div></div>
+  </div>
+</div></section>
+
+<!-- 수강후기 -->
+<section class="review"><div class="wrap">
+  <div class="tabs2"><button class="on">토익</button><button>토스/오픽</button><button>토플/지텔프</button><button>일본어</button><button>중국어</button></div>
+  <div class="rvtop">산본글로벌 실제 수강생들의 생생 후기</div>
+  <div class="rv3">
+    <div class="rc"><div class="stars">★★★★★</div><h4>토익 800+ 1개월 완성</h4><p>소수정예 집중반으로 4주 만에 목표 달성! 송윤정 강사님 피드백이 빨라서 실전 감각이 확 올라왔어요. 인원이 적어 집중도가 달랐습니다.</p><div class="w">토익 수강생 · 김○○</div></div>
+    <div class="rc"><div class="stars">★★★★★</div><h4>오픽 IH 취득 성공</h4><p>발화형 수업이라 실제로 말이 늘어요. 유미용 강사님 템플릿이 실전에서 그대로 통했습니다. 두 달 만에 IH 달성!</p><div class="w">오픽 수강생 · 이○○</div></div>
+    <div class="rc"><div class="stars">★★★★★</div><h4>원어민 회화 왕초보 탈출</h4><p>정말 기초부터 시작했는데 원어민 선생님이 편하게 이끌어주셔서 이제 여행 회화는 자신 있어요. 수업 분위기가 따뜻합니다.</p><div class="w">영어회화 수강생 · 박○○</div></div>
+  </div>
+</div></section>
+
+<!-- 전체시간표 -->
+<section class="timetable" id="timetable"><div class="wrap">
+  <h2 class="secttl">전체 <b>시간표</b><span class="stag">과목·레벨별 개강반 안내</span><span class="line"></span></h2>
+  <table class="ttbl">
+    <tr><th>과목</th><th>분반</th><th>요일</th><th>시간</th><th>강사</th></tr>
+    <tr><td class="cat" rowspan="3">토익</td><td>실전 900+</td><td>월·수·금</td><td>19:00 ~ 21:00</td><td>송윤정</td></tr>
+    <tr><td>기초 정규</td><td>화·목</td><td>10:30 ~ 12:30</td><td>김현정</td></tr>
+    <tr><td>점수보장반</td><td>월·수</td><td>20:00 ~ 22:00</td><td>송윤정</td></tr>
+    <tr><td class="cat" rowspan="2">토스·오픽</td><td>오픽 IM~AL</td><td>화·목</td><td>19:00 ~ 20:30</td><td>유미용</td></tr>
+    <tr><td>토스 집중</td><td>월·수</td><td>18:40 ~ 20:10</td><td>김현정</td></tr>
+    <tr><td class="cat">영어회화</td><td>레벨별 원어민</td><td>월~금</td><td>협의 (오전·저녁)</td><td>애플·제롤린 외</td></tr>
+    <tr><td class="cat" rowspan="2">일본어</td><td>기초·회화</td><td>화·목</td><td>19:00 ~ 20:30</td><td>김민정</td></tr>
+    <tr><td>JLPT N3~N1</td><td>월·수</td><td>20:00 ~ 21:30</td><td>권은정</td></tr>
+    <tr><td class="cat" rowspan="2">중국어</td><td>기초·회화</td><td>화·목</td><td>19:00 ~ 20:30</td><td>노정아</td></tr>
+    <tr><td>HSK</td><td>월·수</td><td>20:00 ~ 21:30</td><td>오금한</td></tr>
+  </table>
+  <p class="ttnote">※ 시간표는 학원 사정에 따라 변동될 수 있습니다. 방학 특강·개인레슨 등 자세한 시간표와 상담은 <b>031-466-6969</b> 또는 카카오톡 채널로 문의해 주세요.</p>
+</div></section>
+
+<!-- Footer -->
+<footer class="ft"><div class="wrap">
+  <div class="ftnav"><a href="#">개인정보처리방침</a><a href="#">이용약관</a><a href="#">학원안내·찾아오시는길</a><a href="#">제휴문의</a><a href="#">고객센터</a></div>
+  <div class="ftinfo">산본글로벌어학원 · SANBON GLOBAL ACADEMY / 경기 군포시 산본동 1135-1 롯데프라자 7층 (산본역 3번출구 도보 1분) / 대표 명충건<br>전화 031-466-6969 · 카카오톡 채널 pf.kakao.com/_FxfgQT · 평일 10:00~22:00 / 토 10:00~16:00 · 일·공휴일 휴무<br>COPYRIGHT(C) SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.</div>
+</div></footer>
+
+<!-- 전체강의 보기 모달 -->
+<div class="amodal" id="allModal">
+  <div class="abox">
+    <span class="aclose" onclick="closeAll()">×</span>
+    <h3>산본글로벌 전체 강의 안내</h3>
+    <div class="asub">과목별 담당 강사와 개강 시간표를 한눈에 확인하세요. (일부 시간표는 준비중입니다)</div>
+    <div class="abody"></div>
+  </div>
+</div>
+
+<script>
+const COURSES={
+ '토익':[
+  {n:'송윤정 (스파르타반)',img:'eng_13',rows:[['초급','월·화·수·목·금','10:00~12:00'],['중급','월·화·수·목·금','12:10~14:10'],['고급반','토요일','10:00~13:00']]},
+  {n:'엘리 킴',img:'elly',rows:[['초급반','월·수','19:30~21:30'],['중급반','화·목','19:30~21:30']]},
+  {n:'최자운 (데보라)',img:'eng_6',rows:[['실전반','토요일','10:00~13:00']]}
+ ],
+ '토스·오픽':[
+  {n:'유미용',img:'eng_14',rows:[['—','—','시간표 준비중']]},
+  {n:'김현정',img:'eng_15',rows:[['—','—','시간표 준비중']]}
+ ],
+ '토플·지텔프':[
+  {n:'김현정',img:'eng_15',rows:[['—','—','시간표 준비중']]}
+ ],
+ '영어회화':[
+  {n:'애플 (원어민)',img:'eng_5',rows:[['—','—','시간표 준비중']]},
+  {n:'제롤린 (원어민)',img:'eng_11',rows:[['—','—','시간표 준비중']]},
+  {n:'케이티',img:'eng_9',rows:[['—','—','시간표 준비중']]}
+ ],
+ '일본어':[
+  {n:'김민정',img:'jpn_2',rows:[['—','—','시간표 준비중']]},
+  {n:'권은정',img:'jpn_1',rows:[['—','—','시간표 준비중']]}
+ ],
+ '중국어':[
+  {n:'오금한',img:'chn_3',rows:[['—','—','시간표 준비중']]},
+  {n:'하홍금 (원어민)',img:'chn_5',rows:[['—','—','시간표 준비중']]}
+ ]
+};
+const SPECIAL={
+ '1:1 개인PT':{icon:'🎯',t:'1:1 개인 PT 클래스',d:'나만을 위한 완전 맞춤 수업. 목표·레벨·시간을 개인 맞춤으로 편성합니다.',cta:'1:1 상담 신청'},
+ '유학·외고 대비':{icon:'🎓',t:'유학·외고 시험대비반',d:'유학 준비부터 외고 입시까지, 목표 시험에 맞춘 집중 대비 커리큘럼.',cta:'대비반 상담'},
+ '무료상담 예약관':{icon:'🗓️',t:'무료 상담 일정 예약관',d:'전화·카톡·방문 상담 모두 무료! 원하는 일정을 예약하고 맞춤 컨설팅을 받으세요.',cta:'무료 상담 예약하기'}
+};
+function renderCourse(c){
+  document.querySelectorAll('#ctabs button').forEach(b=>b.classList.toggle('on', b.dataset.c===c));
+  if(SPECIAL[c]){const s=SPECIAL[c];document.getElementById('cpanel').innerHTML=`<div class="scard"><div class="sic">${s.icon}</div><div class="sinfo"><h3>${s.t}</h3><p>${s.d}</p><a class="ipay" style="max-width:300px" href="#" onclick="alert('상담·예약 페이지로 연결됩니다.');return false;">${s.cta}</a></div></div>`;return;}
+  const list=COURSES[c]||[];
+  document.getElementById('cpanel').innerHTML=list.map(t=>`
+    <div class="icard">
+      <div class="iph"><img src="img/teachers/${t.img}.png" alt="${t.n}"></div>
+      <div class="ibd"><div class="inm">${t.n}</div>
+        <table class="ischd">${t.rows.map(r=>`<tr><td class="b">${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}</table>
+        <a class="ipay" href="#" onclick="alert('수강신청·결제 페이지로 연결됩니다.\\n(토스페이먼츠 결제링크 연결 예정)');return false;">수강신청·결제</a>
+      </div>
+    </div>`).join('');
+  document.querySelectorAll('#ctabs button').forEach(b=>b.classList.toggle('on', b.dataset.c===c));
+}
+const TABS=[...Object.keys(COURSES),...Object.keys(SPECIAL)];
+document.getElementById('ctabs').innerHTML=TABS.map((c,i)=>`<button data-c="${c}" class="${i===0?'on':''}">${c}</button>`).join('');
+document.querySelectorAll('#ctabs button').forEach(b=>b.addEventListener('click',()=>renderCourse(b.dataset.c)));
+renderCourse('토익');
+
+/* ===== 히어로 슬라이더 (6칸) ===== */
+const SLIDES=[
+ {d:'10월 개강 안내',t:'10월 개강일정',s:'과목별 개강일을 확인하고 미리 신청하세요'},
+ {d:'8월 특별 이벤트',t:'10월 이벤트',s:'가을학기 특별 혜택 · 최대 25% 할인'},
+ {d:'환승 프로모션',t:'환승 이벤트',s:'타학원에서 옮겨오시면 추가 혜택을 드려요'},
+ {d:'NEW',t:'구독 서비스',s:'매달 편하게, 구독형 수강 서비스 오픈'},
+ {d:'',t:'준비중',s:'곧 새로운 소식으로 찾아옵니다'},
+ {d:'',t:'준비중',s:'곧 새로운 소식으로 찾아옵니다'}
+];
+let si=0;
+function showSlide(){const s=SLIDES[si];slDate.textContent=s.d;slTitle.textContent=s.t;slSub.textContent=s.s;slNum.textContent=(si+1)+' / 6';}
+slPrev.onclick=e=>{e.preventDefault();si=(si+5)%6;showSlide();};
+slNext.onclick=e=>{e.preventDefault();si=(si+1)%6;showSlide();};
+showSlide();
+setInterval(()=>{si=(si+1)%6;showSlide();},6000);
+
+/* ===== 전체강의 보기 모달 ===== */
+function openAll(){
+  const m=document.getElementById('allModal');
+  m.querySelector('.abody').innerHTML=Object.keys(COURSES).map(c=>`
+    <div class="ag"><h4>${c}</h4>
+      ${COURSES[c].map(t=>`<div class="ai"><b>${t.n}</b> — ${t.rows.map(r=>r[0]+' '+r[1]+' '+r[2]).join(' · ')}</div>`).join('')}
+    </div>`).join('');
+  m.classList.add('open');
+}
+function closeAll(){document.getElementById('allModal').classList.remove('open');}
+</script>
+
+</body>
+</html>
