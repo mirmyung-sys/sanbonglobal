@@ -381,6 +381,34 @@ header nav a:hover::after{transform:scaleX(1)}
 /* 표 라운드 */
 .ctable{border-radius:12px;overflow:hidden;box-shadow:0 4px 14px rgba(20,33,61,.06)}
 section{scroll-margin-top:130px}
+/* ===== 풀와이드 히어로 배너 슬라이더 (파고다 벤치마킹·원본 디자인) ===== */
+.hero{position:relative;overflow:hidden;height:460px;background:var(--red)}
+.hero-vid,.hero-ov{display:none!important}
+.heroslides{position:absolute;inset:0}
+.hslide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .8s ease;display:flex;align-items:center}
+.hslide.on{opacity:1;visibility:visible}
+.hslide .hs-wrap{max-width:1200px;margin:0 auto;padding:0 40px;width:100%;position:relative;z-index:2}
+.hs-eyebrow{color:rgba(255,255,255,.92);font-weight:800;font-size:16px;letter-spacing:.4px;margin-bottom:16px}
+.hs-eyebrow b{color:var(--gold)}
+.hs-title{color:#fff;font-size:56px;font-weight:900;line-height:1.14;letter-spacing:-.035em;text-shadow:0 2px 30px rgba(0,0,0,.28)}
+.hs-sub{color:rgba(255,255,255,.9);font-size:17px;margin-top:18px;line-height:1.6}
+.hs-btn{display:inline-flex;align-items:center;gap:8px;margin-top:28px;background:#fff;color:var(--red);font-weight:800;padding:14px 28px;border-radius:999px;font-size:15px;box-shadow:0 12px 34px rgba(0,0,0,.24);transition:transform .2s,box-shadow .2s;cursor:pointer;border:none;font-family:inherit}
+.hs-btn:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(0,0,0,.32)}
+.hs-deco{position:absolute;right:28px;top:50%;transform:translateY(-50%);font-family:'Montserrat',sans-serif;font-weight:900;font-size:168px;line-height:1;color:rgba(255,255,255,.13);letter-spacing:-.04em;z-index:1;pointer-events:none;white-space:nowrap}
+.hero .slider-ctl{position:absolute;left:50%;transform:translateX(-50%);bottom:20px;z-index:6;display:flex;align-items:center;gap:14px}
+.hero .slider-ctl button{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;line-height:1;transition:.15s}
+.hero .slider-ctl button:hover{background:#fff;color:var(--red)}
+.hero .slider-ctl #slNum{color:#fff;font-weight:800;font-size:15px;letter-spacing:1px}
+.hdots{position:absolute;right:40px;bottom:26px;z-index:6;display:flex;gap:8px}
+.hdots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.42);cursor:pointer;transition:.2s}
+.hdots i.on{background:#fff;width:24px;border-radius:6px}
+/* 퀵 링크 바 */
+.quickbar{background:#fff;border-bottom:1px solid var(--line)}
+.quickbar .wrap{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;padding:20px 24px}
+.qcard{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 8px;border:1px solid var(--line);border-radius:14px;font-weight:800;font-size:14px;color:var(--red);transition:.2s;cursor:pointer;background:#fff}
+.qcard:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(20,33,61,.1);border-color:var(--gold)}
+.qcard .qi{font-size:26px}
+@media(max-width:860px){.hero{height:380px}.hs-title{font-size:31px}.hs-sub{font-size:14px}.hs-deco{font-size:92px;right:-6px;opacity:.7}.hs-wrap{padding:0 22px}.quickbar .wrap{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
@@ -419,27 +447,19 @@ section{scroll-margin-top:130px}
 </header>
 
 <!-- Hero -->
-<section class="hero">
-  <video class="hero-vid" autoplay muted loop playsinline poster=""><source src="media/promo.mp4" type="video/mp4"></video>
-  <div class="hero-ov"></div>
-  <div class="hero-inner">
-    <a class="promoslide" id="promoSlide" href="#">
-      <div class="date" id="slDate"></div>
-      <h1 id="slTitle"></h1>
-      <div class="sub" id="slSub"></div>
-      <div class="slcue">▸ 자세히 보기</div>
-    </a>
-    <div class="herocards">
-      <a href="#" class="hcard hcgold"><span class="hi">📝</span>수강신청</a>
-      <a href="#" class="hcard hcwhite" onclick="openLv();return false;"><span class="hi">📊</span>무료 레벨테스트</a>
-      <a href="#" class="hcard"><span class="hi">🎁</span>이벤트·혜택</a>
-      <a href="#" class="hcard" onclick="openTT();return false;"><span class="hi">🗓️</span>전체 시간표</a>
-      <a href="#teachers" class="hcard"><span class="hi">👩‍🏫</span>강사 소개</a>
-      <a href="#" class="hcard"><span class="hi">📍</span>오시는 길</a>
-    </div>
-    <div class="slider-ctl"><button id="slPrev">‹</button><span id="slNum">1 / 6</span><button id="slNext">›</button></div>
-  </div>
+<section class="hero" id="hero">
+  <div class="heroslides" id="heroslides"></div>
+  <div class="slider-ctl"><button id="slPrev">‹</button><span id="slNum">1 / 6</span><button id="slNext">›</button></div>
+  <div class="hdots" id="hdots"></div>
 </section>
+<div class="quickbar"><div class="wrap">
+  <a class="qcard" onclick="goCourse('토익');return false;"><span class="qi">📝</span>수강신청</a>
+  <a class="qcard" onclick="openLv();return false;"><span class="qi">📊</span>레벨테스트</a>
+  <a class="qcard" onclick="openPage('공지사항');return false;"><span class="qi">🎁</span>이벤트·혜택</a>
+  <a class="qcard" onclick="openTT();return false;"><span class="qi">🗓️</span>전체 시간표</a>
+  <a class="qcard" href="#teachers"><span class="qi">👩‍🏫</span>강사 소개</a>
+  <a class="qcard" onclick="openPage('학원소개');return false;"><span class="qi">📍</span>오시는 길</a>
+</div></div>
 
 <!-- SNS 링크 바 -->
 <div class="snsbar"><div class="wrap">
@@ -666,19 +686,26 @@ renderCourse('토익');
 
 /* ===== 히어로 슬라이더 (6칸) ===== */
 const SLIDES=[
- {d:'10월 개강 안내',t:'10월 개강일정',s:'과목별 개강일을 확인하고 미리 신청하세요'},
- {d:'8월 특별 이벤트',t:'10월 이벤트',s:'가을학기 특별 혜택 · 최대 25% 할인'},
- {d:'환승 프로모션',t:'환승 이벤트',s:'타학원에서 옮겨오시면 추가 혜택을 드려요'},
- {d:'NEW',t:'구독 서비스',s:'매달 편하게, 구독형 수강 서비스 오픈'},
- {d:'',t:'준비중',s:'곧 새로운 소식으로 찾아옵니다'},
- {d:'',t:'준비중',s:'곧 새로운 소식으로 찾아옵니다'}
+ {e:'2026 · 10월 개강 안내', t:'10월 개강,<br>지금 시작하세요', s:'영어·일본어·중국어 전 과목 10월 개강 일정 안내', bg:'linear-gradient(120deg,#14213d,#274777)', deco:'OPEN', act:"openTT()"},
+ {e:'<b>SANBON GLOBAL WEEK</b>', t:'가을학기 OPEN<br>최대 25% 할인', s:'지금 등록하면 수강료 최대 25% · 신규 등록 혜택', bg:'linear-gradient(120deg,#1D2D4F,#7d5c2c)', deco:'25%', act:"openPage('가을학기 할인')"},
+ {e:'환승 프로모션', t:'타학원에서 환승하면<br>추가 혜택을 드려요', s:'무료 레벨테스트 + 교재·수강료 추가 혜택', bg:'linear-gradient(120deg,#2a2140,#5c3a54)', deco:'SWITCH', act:"openPage('환승 이벤트')"},
+ {e:'무료 진단', t:'내 실력, 무료로<br>정확하게 진단', s:'원어민 회화 레벨테스트 + 온라인 자가진단', bg:'linear-gradient(120deg,#0e2a33,#1e5b66)', deco:'LEVEL', act:"openLv()"},
+ {e:'1:1 PRIVATE', t:'나만을 위한<br>완전 맞춤 수업', s:'1:1 전문·임원 강의·기업 출강까지', bg:'linear-gradient(120deg,#14213d,#3d2f5e)', deco:'1:1', act:"openPage('1:1 전문')"},
+ {e:'유학 · 외고 대비', t:'유학부터 외고까지<br>한 곳에서', s:'일본유학·EJU·외고 내신 대비', bg:'linear-gradient(120deg,#0f2e22,#2f7050)', deco:'GLOBAL', act:"openPage('유학상담')"}
 ];
-let si=0;
-function showSlide(){const s=SLIDES[si];slDate.textContent=s.d;slTitle.textContent=s.t;slSub.textContent=s.s;slNum.textContent=(si+1)+' / 6';}
-slPrev.onclick=e=>{e.preventDefault();si=(si+5)%6;showSlide();};
-slNext.onclick=e=>{e.preventDefault();si=(si+1)%6;showSlide();};
-showSlide();
-setInterval(()=>{si=(si+1)%6;showSlide();},6000);
+(function(){
+ var hs=document.getElementById('heroslides');
+ hs.innerHTML=SLIDES.map(function(s,i){return '<div class="hslide'+(i===0?' on':'')+'" style="background:'+s.bg+'"><div class="hs-deco">'+s.deco+'</div><div class="hs-wrap"><div class="hs-eyebrow">'+s.e+'</div><div class="hs-title">'+s.t+'</div><div class="hs-sub">'+s.s+'</div><button class="hs-btn" onclick="'+s.act+'">자세히 보기 →</button></div></div>';}).join('');
+ document.getElementById('hdots').innerHTML=SLIDES.map(function(s,i){return '<i data-i="'+i+'"'+(i===0?' class="on"':'')+'></i>';}).join('');
+ var si=0, slides=hs.querySelectorAll('.hslide'), dots=document.querySelectorAll('#hdots i'), N=SLIDES.length;
+ function show(){for(var i=0;i<N;i++){slides[i].classList.toggle('on',i===si);dots[i].classList.toggle('on',i===si);}document.getElementById('slNum').textContent=(si+1)+' / '+N;}
+ document.getElementById('slPrev').onclick=function(){si=(si+N-1)%N;show();resetT();};
+ document.getElementById('slNext').onclick=function(){si=(si+1)%N;show();resetT();};
+ for(var d=0;d<dots.length;d++){(function(el){el.onclick=function(){si=+el.getAttribute('data-i');show();resetT();};})(dots[d]);}
+ var timer=setInterval(function(){si=(si+1)%N;show();},6000);
+ function resetT(){clearInterval(timer);timer=setInterval(function(){si=(si+1)%N;show();},6000);}
+ show();
+})();
 
 /* ===== 전체강의 보기 모달 ===== */
 function openAll(){
@@ -768,6 +795,12 @@ const PAGES={
   +SEC('기초·회화','<div class="lead">성조와 병음부터 시작해 일상 회화까지, 원어민 발음으로 정확하게 익힙니다.</div>')
   +SEC('HSK','<div class="lead">급수별 필수 어휘·유형을 집중 학습하고 기출로 마무리해 목표 급수 합격을 돕습니다.</div><div class="chips"><span>HSK 4급</span><span>HSK 5급</span><span>HSK 6급</span></div>')
   +'<div class="pgnote">담당: 오금한·하홍금 외 원어민 강사 · 시간표는 강의관에서 확인</div>'+GO('중국어')+CTA(),
+ '가을학기 할인':H('SANBON GLOBAL WEEK','가을학기 OPEN<br>최대 25% 할인','지금 등록하시면 수강료를 최대 25%까지 할인해 드립니다. 신규 등록·다과목 수강·조기 등록 시 추가 혜택도 함께 드려요.','🎉')
+  +SEC('할인 혜택',CT(['구분','혜택'],[['신규 등록','수강료 최대 25% 할인'],['다과목 수강','추가 할인 + 교재 혜택'],['조기 등록','개강 전 등록 시 우선 배정'],['친구 추천','추천인·등록인 동시 혜택']]))
+  +'<div class="pgnote">※ 할인 폭은 과정·등록 시점에 따라 달라질 수 있어요. 정확한 금액은 상담 시 안내드립니다. · 031-466-6969</div>'+CTA(),
+ '환승 이벤트':H('환승 프로모션','타학원에서 환승하면<br>추가 혜택을 드려요','다른 학원에서 옮겨오시는 분께 무료 레벨테스트와 교재·수강료 추가 혜택을 드립니다. 지금까지의 학습을 이어서 더 빠르게 목표에 도착하세요.','🔁')
+  +SEC('환승 혜택',CT(['혜택','내용'],[['레벨테스트','무료 진단으로 정확한 반 배정'],['교재','환승 시 교재 지원'],['수강료','추가 할인 적용'],['맞춤 상담','이전 학습을 이어가는 커리큘럼 설계']]))
+  +'<div class="pgnote">※ 재학 증빙(수강증 등) 확인 시 혜택이 적용됩니다. 자세한 내용은 상담 시 안내드려요.</div>'+CTA(),
  '외고':H('외고·특목고 대비','외고 내신,<br>전략이 점수를 만듭니다','학교 진도와 시험 범위를 학생별로 분석해, 진단 → 내신 밀착 → 실전 마무리 3단계로 준비합니다. 무작정 많은 양이 아니라 “필요한 것을 정확히”가 산본글로벌의 방식입니다.','🎓')
   +'<div class="steps"><div class="step"><div class="sh">STEP 01 · 진단 &amp; 기초</div><div class="sb"><b>정확한 출발점 찾기</b><p>레벨 진단으로 약점을 먼저 파악하고, 어휘·문법의 빈틈을 메워 내신 학습의 토대를 만듭니다.</p></div></div><div class="step"><div class="sh">STEP 02 · 내신 밀착</div><div class="sb"><b>학교별 맞춤 진도</b><p>재학 중인 학교의 진도·출제 경향에 맞춰 핵심 위주로 집중 학습하고, 부족한 부분을 반복 교정합니다.</p></div></div><div class="step"><div class="sh">STEP 03 · 실전 마무리</div><div class="sb"><b>시험 직전 요점 정리</b><p>시험 범위를 압축 정리하고 실전 문제로 마무리해, 마지막까지 점수를 끌어올립니다.</p></div></div></div>'
   +'<div class="pgnote">외고·특목고 대비반은 소수정예로 운영되며, 학생별 학습 리포트를 제공합니다.</div>'+CTA(),
