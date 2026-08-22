@@ -380,9 +380,6 @@ header nav a:hover::after{transform:scaleX(1)}
 .pghero h2{letter-spacing:-.03em;line-height:1.2}
 /* 표 라운드 */
 .ctable{border-radius:12px;overflow:hidden;box-shadow:0 4px 14px rgba(20,33,61,.06)}
-/* 스크롤 등장 애니메이션 */
-.rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
 section{scroll-margin-top:130px}
 </style>
 </head>
@@ -793,17 +790,6 @@ function openPage(k){var p=PAGES[k];if(!p)return;document.getElementById('pgbody
 function closePage(){document.getElementById('pgModal').classList.remove('open');}
 function goCourse(tab){renderCourse(tab);var el=document.getElementById('ctabs');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
 
-/* ===== 스크롤 등장 애니메이션 (fail-safe) ===== */
-(function(){
-  try{
-    var targets=document.querySelectorAll('main section, body > section, section');
-    if(!('IntersectionObserver' in window)||!targets.length)return;
-    var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -8% 0px'});
-    targets.forEach(function(el){el.classList.add('rv');obs.observe(el);});
-    // 안전장치: 1.5초 뒤 무조건 보이게
-    setTimeout(function(){targets.forEach(function(el){el.classList.add('in');});},1500);
-  }catch(e){}
-})();
 </script>
 
 </body>
