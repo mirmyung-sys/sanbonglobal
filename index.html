@@ -25,7 +25,7 @@ img{display:block;max-width:100%}
 
 /* ===== Header ===== */
 header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:50}
-header .wrap{display:flex;align-items:center;height:120px;gap:28px;flex-wrap:wrap}
+header .wrap{display:flex;align-items:center;height:92px;gap:26px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:10px}
 .logo img{width:44px;height:44px;object-fit:contain}
 .logo b{font-family:'Montserrat';font-weight:900;font-size:26px;color:var(--red);letter-spacing:.02em;line-height:1}
@@ -384,7 +384,15 @@ section{scroll-margin-top:130px}
 /* ===== 풀와이드 히어로 배너 슬라이더 (파고다 벤치마킹·원본 디자인) ===== */
 .hero{position:relative;overflow:hidden;height:460px;background:#0d1426}
 .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#0d1426}
-.hero-ov{display:none}
+.hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(9,14,26,.5),rgba(9,14,26,.22) 60%,rgba(9,14,26,.08))}
+/* 광고 패널(틀) */
+.hs-panel{display:inline-block;max-width:600px;padding:38px 46px;border-radius:22px;box-shadow:0 30px 70px rgba(0,0,0,.34)}
+.hs-panel .hs-eyebrow{text-shadow:none}
+.hs-panel .hs-eyebrow::before{background:currentColor;opacity:.55}
+.hs-panel .hs-title{text-shadow:none;margin-top:2px}
+.hs-panel .hs-sub{text-shadow:none;opacity:.92}
+.hs-panel .hs-btn{box-shadow:0 10px 26px rgba(0,0,0,.18)}
+@media(max-width:640px){.hs-panel{padding:26px 26px;max-width:none}}
 .heroslides{position:absolute;inset:0;z-index:2}
 .hslide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .8s ease;display:flex;align-items:center}
 .hslide.on{opacity:1;visibility:visible}
@@ -409,7 +417,9 @@ section{scroll-margin-top:130px}
 .quickbar .wrap{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;padding:20px 24px}
 .qcard{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 8px;border:1px solid var(--line);border-radius:14px;font-weight:800;font-size:14px;color:var(--red);transition:.2s;cursor:pointer;background:#fff}
 .qcard:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(20,33,61,.1);border-color:var(--gold)}
-.qcard .qi{font-size:26px}
+.qcard .qi{font-size:26px;color:var(--red);display:inline-flex}
+.qcard .qi svg{width:27px;height:27px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;display:block}
+.qcard:hover .qi{color:var(--gold-dk)}
 @media(max-width:860px){.hero{height:380px}.hero-vid{height:100%!important;max-width:none!important;right:0!important;left:0!important}.hs-title{font-size:31px}.hs-sub{font-size:14px}.hs-deco{font-size:92px;right:-6px;opacity:.55}.hs-wrap{padding:0 22px}.quickbar .wrap{grid-template-columns:repeat(3,1fr)}}
 /* ===== 상세는 전체화면 페이지로 ===== */
 .amodal{position:fixed;inset:0;background:#fff;z-index:1200;display:none;overflow-y:auto;padding:0;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
@@ -420,6 +430,7 @@ section{scroll-margin-top:130px}
 .aclose::after{content:'닫기';font-size:14.5px;font-weight:800;letter-spacing:-.02em}
 .aclose:hover{background:#14213d}
 .cempty{padding:52px 20px;text-align:center;color:#8a8f99;font-size:15px;background:#f7f8fa;border-radius:16px;font-weight:600}
+.teachers{display:none!important}
 .fsbar{position:fixed;top:0;left:0;right:0;height:60px;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:4;display:flex;align-items:center;padding:0 24px;font-weight:900;color:var(--red);font-size:17px}
 .fsbar .fsback{cursor:pointer;color:#3a3f4c;font-weight:800;font-size:15px}
 /* ============ 럭셔리 폴리시 v2 (고급 타이포·색감) ============ */
@@ -515,7 +526,7 @@ header nav a{letter-spacing:-.01em}
 <!-- Header -->
 <header><div class="wrap">
   <a class="logo" href="#">
-    <img src="img/sga_logo.png" alt="산본글로벌어학원 SANBON GLOBAL ACADEMY" style="height:112px;width:auto;max-width:none">
+    <img src="img/sga_logo.png" alt="SGA 산본글로벌어학원" style="height:74px;width:auto;max-width:none">
   </a>
   <nav>
     <a href="#" onclick="openPage('학원소개');return false;">학원소개</a>
@@ -546,12 +557,12 @@ header nav a{letter-spacing:-.01em}
   <div class="hdots" id="hdots"></div>
 </section>
 <div class="quickbar"><div class="wrap">
-  <a class="qcard" onclick="goCourse('토익');return false;"><span class="qi">📝</span>수강신청</a>
-  <a class="qcard" onclick="openLv();return false;"><span class="qi">📊</span>레벨테스트</a>
-  <a class="qcard" onclick="openPage('공지사항');return false;"><span class="qi">🎁</span>이벤트·혜택</a>
-  <a class="qcard" onclick="openTT();return false;"><span class="qi">🗓️</span>전체 시간표</a>
-  <a class="qcard" href="#teachers"><span class="qi">👩‍🏫</span>강사 소개</a>
-  <a class="qcard" onclick="openPage('학원소개');return false;"><span class="qi">📍</span>오시는 길</a>
+  <a class="qcard" href="#" onclick="openPage('수강신청');return false;"><span class="qi"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M9 13l2 2 4-4"/></svg></span>수강신청</a>
+  <a class="qcard" href="#" onclick="openLv();return false;"><span class="qi"><svg viewBox="0 0 24 24"><path d="M5 20V12M12 20V5M19 20v-6"/><path d="M4 20h16"/></svg></span>레벨테스트</a>
+  <a class="qcard" href="#" onclick="openPage('공지사항');return false;"><span class="qi"><svg viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M4 13h16M12 9v11"/><path d="M12 9c-2.5-4-6.5-1.5-3.5.5M12 9c2.5-4 6.5-1.5 3.5.5"/></svg></span>이벤트·혜택</a>
+  <a class="qcard" href="#" onclick="openTT();return false;"><span class="qi"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9.5h16M8.5 3v4M15.5 3v4"/></svg></span>전체 시간표</a>
+  <a class="qcard" href="#" onclick="openPage('학원소개');return false;"><span class="qi"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20c0-3.8 3-6 6.5-6s6.5 2.2 6.5 6"/></svg></span>강사 소개</a>
+  <a class="qcard" href="#" onclick="openPage('학원소개');return false;"><span class="qi"><svg viewBox="0 0 24 24"><path d="M12 21s6.5-6 6.5-11A6.5 6.5 0 0 0 5.5 10c0 5 6.5 11 6.5 11z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>오시는 길</a>
 </div></div>
 
 <!-- SNS 링크 바 -->
@@ -586,10 +597,10 @@ header nav a{letter-spacing:-.01em}
     <button class="on">점수보장반</button><button>딜리버리 LIVE</button><button>인강</button><button>영어회화</button><button>중국어</button><button>일본어</button><button>제2외국어</button>
   </div>
   <div class="progcards">
-    <div class="pc"><div class="ico">🎯</div><h4>점수보장반</h4><p>"점수 치트키"로 원하는<br>목표 점수 달성! 미달 시 응시료 환급</p></div>
-    <div class="pc"><div class="ico">🧑‍🏫</div><h4>점수보장반 관리형</h4><p>교재 무료 제공·장학금<br>내 실력 맞춤 "집중 케어"까지</p></div>
-    <div class="pc"><div class="ico">📡</div><h4>온라인 LIVE</h4><p>어디서든 실시간으로 생생하게<br>수업이 찾아갑니다</p></div>
-    <div class="pc"><div class="ico">🖥️</div><h4>온라인 VOD</h4><p>바쁜 나를 위한 맞춤 학습!<br>최신 녹화영상으로 생동감 UP</p></div>
+    <div class="pc"><div class="ico">🎯</div><h4>점수보장반</h4><p>목표 점수 미달 시 응시료 환급<br>결과로 증명하는 책임 수업</p></div>
+    <div class="pc"><div class="ico">🔥</div><h4>스파르타 관리형</h4><p>출결·과제·단어까지 밀착 관리<br>단기간 점수 상승의 정석</p></div>
+    <div class="pc"><div class="ico">🗣️</div><h4>원어민 실전회화</h4><p>레벨별 소수정예 회화반<br>말이 트이는 실전 훈련</p></div>
+    <div class="pc"><div class="ico">👤</div><h4>1:1 첨삭·PT</h4><p>나에게 딱 맞춘 커리큘럼<br>취약점만 집중 보완</p></div>
   </div>
   <div class="morebtn"><a href="#">프로그램 자세히 보기 ＋</a></div>
 </div></section>
@@ -787,41 +798,46 @@ const CHAPTERS=[
  {k:'영어회화',s:'기초부터 원어민까지, 써먹는 회화',e:'SPEAKING'},
  {k:'일본어',s:'일본인이 실제 쓰는 살아있는 일본어',e:'JAPANESE'},
  {k:'중국어',s:'발음부터 HSK까지 탄탄하게',e:'CHINESE'},
- {k:'1:1 전문',s:'나만을 위한 완전 맞춤 수업',e:'1:1'}
+ {k:'1:1 전문',s:'나만을 위한 완전 맞춤 수업',e:'1:1'},
+ {k:'기업출강',s:'회사로 찾아가는 실무 어학 교육',e:'B2B'},
+ {k:'외고/유학/과외',s:'외고·유학·과외 무료 상담',e:'CARE'}
 ];
 function chipHTML(c){return '<div class="chip" data-k="'+c.k+'"><div class="che">'+c.e+'</div><div class="cht">'+c.k+'</div><div class="chs">'+c.s+'</div></div>';}
 function pickCourse(k){
  if(k==='1:1 전문'){openPage('1:1 전문');return;}
+ if(k==='기업출강'){openPage('기업출강');return;}
+ if(k==='외고/유학/과외'){openPage('유학상담');return;}
  renderCourse(k);
  var el=document.getElementById('chapters');if(el)el.querySelectorAll('.chip').forEach(function(ch){ch.classList.toggle('on',ch.getAttribute('data-k')===k);});
  var cp=document.getElementById('cpanel');if(cp)cp.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 (function(){var el=document.getElementById('chapters');if(!el)return;
- el.innerHTML='<div class="chrow">'+CHAPTERS.slice(0,4).map(chipHTML).join('')+'</div><div class="chrow">'+CHAPTERS.slice(4).map(chipHTML).join('')+'</div>';
+ el.innerHTML='<div class="chrow">'+CHAPTERS.slice(0,5).map(chipHTML).join('')+'</div><div class="chrow">'+CHAPTERS.slice(5).map(chipHTML).join('')+'</div>';
  el.querySelectorAll('.chip').forEach(function(ch){ch.onclick=function(){pickCourse(ch.getAttribute('data-k'));};});
  var cp=document.getElementById('cpanel');if(cp)cp.innerHTML='<div class="cempty">👆 과목을 선택하면 담당 강사와 시간표·수강신청이 나타납니다.</div>';
 })();
 
 /* ===== 히어로 슬라이더 (6칸) ===== */
 const SLIDES=[
- {e:'2026 · 10월 개강 안내', t:'10월 개강,<br>지금 시작하세요', s:'영어·일본어·중국어 전 과목 10월 개강 일정 안내', deco:'OPEN', act:"openTT()", bg:'linear-gradient(90deg,rgba(20,33,61,.88),rgba(20,33,61,.5) 52%,rgba(20,33,61,.12))', ac:'#D8B26A', tc:'#ffffff'},
- {e:'<b>SANBON GLOBAL WEEK</b>', t:'가을학기 OPEN<br>최대 25% 할인', s:'지금 등록하면 수강료 최대 25% · 신규 등록 혜택', deco:'25%', act:"openPage('가을학기 할인')", bg:'linear-gradient(90deg,rgba(124,72,18,.9),rgba(124,72,18,.5) 52%,rgba(124,72,18,.12))', ac:'#FFE7AC', tc:'#FFF4DE'},
- {e:'환승 프로모션', t:'타학원에서 환승하면<br>추가 혜택을 드려요', s:'무료 레벨테스트 + 교재·수강료 추가 혜택', deco:'SWITCH', act:"openPage('환승 이벤트')", bg:'linear-gradient(90deg,rgba(102,26,60,.9),rgba(102,26,60,.5) 52%,rgba(102,26,60,.12))', ac:'#FFC2D6', tc:'#FFE7EF'},
- {e:'무료 진단', t:'내 실력, 무료로<br>정확하게 진단', s:'원어민 회화 레벨테스트 + 온라인 자가진단', deco:'LEVEL', act:"openLv()", bg:'linear-gradient(90deg,rgba(9,58,64,.9),rgba(9,58,64,.5) 52%,rgba(9,58,64,.12))', ac:'#8FEDDE', tc:'#E4FBF5'},
- {e:'1:1 PRIVATE', t:'나만을 위한<br>완전 맞춤 수업', s:'1:1 전문·임원 강의·기업 출강까지', deco:'1:1', act:"openPage('1:1 전문')", bg:'linear-gradient(90deg,rgba(48,28,86,.9),rgba(48,28,86,.5) 52%,rgba(48,28,86,.12))', ac:'#D6C2FF', tc:'#EFE7FF'},
- {e:'유학 · 외고 대비', t:'유학부터 외고까지<br>한 곳에서', s:'일본유학·EJU·외고 내신 대비', deco:'GLOBAL', act:"openPage('유학상담')", bg:'linear-gradient(90deg,rgba(12,66,46,.9),rgba(12,66,46,.5) 52%,rgba(12,66,46,.12))', ac:'#BEEFA6', tc:'#E7FBDD'}
+ {e:'2026 · 10월 개강 안내', t:'10월 개강,<br>지금 시작하세요', s:'영어·일본어·중국어 전 과목 개강 일정 안내', act:"openTT()", pbg:'linear-gradient(135deg,#16264a,#294a80)', tc:'#ffffff', ac:'#E7C57C', bbg:'#ffffff', btc:'#16264a'},
+ {e:'SANBON GLOBAL WEEK', t:'가을학기 OPEN<br>최대 25% 할인', s:'지금 등록하면 수강료 최대 25% · 신규 등록 혜택', act:"openPage('가을학기 할인')", pbg:'#EFC04A', tc:'#1a1205', ac:'#8a5a10', bbg:'#16264a', btc:'#ffffff'},
+ {e:'환승 프로모션', t:'타학원에서 환승하면<br>추가 혜택을 드려요', s:'무료 레벨테스트 + 교재·수강료 추가 혜택', act:"openPage('환승 이벤트')", pbg:'linear-gradient(135deg,#d43b4f,#a72439)', tc:'#ffffff', ac:'#ffe1d0', bbg:'#ffffff', btc:'#c2283b'},
+ {e:'무료 진단', t:'내 실력, 무료로<br>정확하게 진단', s:'원어민 회화 레벨테스트 + 온라인 자가진단', act:"openLv()", pbg:'#ffffff', tc:'#16264a', ac:'#0e8f88', bbg:'#16264a', btc:'#ffffff'},
+ {e:'1:1 PRIVATE', t:'나만을 위한<br>완전 맞춤 수업', s:'1:1 전문·임원 강의·기업 출강까지', act:"openPage('1:1 전문')", pbg:'linear-gradient(135deg,#3b2e72,#5c3f92)', tc:'#ffffff', ac:'#d9c6ff', bbg:'#ffffff', btc:'#3b2e72'},
+ {e:'유학 · 외고 대비', t:'유학부터 외고까지<br>한 곳에서', s:'일본유학·EJU·외고 내신 대비', act:"openPage('유학상담')", pbg:'linear-gradient(135deg,#1f8058,#146043)', tc:'#ffffff', ac:'#c9f2b2', bbg:'#ffffff', btc:'#146043'},
+ {e:'산본글로벌 커뮤니티', t:'천원살롱<br>모임 공간 오픈', s:'1시간 1,000원 · 최소 5인 강의실 · 커피·물·사탕 무료', act:"openPage('천원살롱')", pbg:'linear-gradient(135deg,#F7913F,#e96e1c)', tc:'#ffffff', ac:'#fff2e0', bbg:'#ffffff', btc:'#e46a1e'}
 ];
 (function(){
  var hs=document.getElementById('heroslides');
- hs.innerHTML=SLIDES.map(function(s,i){return '<div class="hslide'+(i===0?' on':'')+'" style="background:'+s.bg+'"><div class="hs-wrap"><div class="hs-deco">'+s.deco+'</div><div class="hs-eyebrow" style="color:'+s.ac+'">'+s.e+'</div><div class="hs-title" style="color:'+s.tc+'">'+s.t+'</div><div class="hs-sub">'+s.s+'</div><button class="hs-btn" onclick="'+s.act+'">자세히 보기 →</button></div></div>';}).join('');
+ hs.innerHTML=SLIDES.map(function(s,i){return '<div class="hslide'+(i===0?' on':'')+'"><div class="hs-wrap"><div class="hs-panel" style="background:'+s.pbg+';color:'+s.tc+'"><div class="hs-eyebrow" style="color:'+s.ac+'">'+s.e+'</div><div class="hs-title" style="color:'+s.tc+'">'+s.t+'</div><div class="hs-sub" style="color:'+s.tc+'">'+s.s+'</div><button class="hs-btn" style="background:'+s.bbg+';color:'+s.btc+';border-color:'+s.bbg+'" onclick="'+s.act+'">자세히 보기 →</button></div></div></div>';}).join('');
  document.getElementById('hdots').innerHTML=SLIDES.map(function(s,i){return '<i data-i="'+i+'"'+(i===0?' class="on"':'')+'></i>';}).join('');
  var si=0, slides=hs.querySelectorAll('.hslide'), dots=document.querySelectorAll('#hdots i'), N=SLIDES.length;
  function show(){for(var i=0;i<N;i++){slides[i].classList.toggle('on',i===si);dots[i].classList.toggle('on',i===si);}document.getElementById('slNum').textContent=(si+1)+' / '+N;}
  document.getElementById('slPrev').onclick=function(){si=(si+N-1)%N;show();resetT();};
  document.getElementById('slNext').onclick=function(){si=(si+1)%N;show();resetT();};
  for(var d=0;d<dots.length;d++){(function(el){el.onclick=function(){si=+el.getAttribute('data-i');show();resetT();};})(dots[d]);}
- var timer=setInterval(function(){si=(si+1)%N;show();},6000);
- function resetT(){clearInterval(timer);timer=setInterval(function(){si=(si+1)%N;show();},6000);}
+ var timer=setInterval(function(){si=(si+1)%N;show();},2800);
+ function resetT(){clearInterval(timer);timer=setInterval(function(){si=(si+1)%N;show();},2800);}
  show();
 })();
 
@@ -931,6 +947,10 @@ const PAGES={
  '수강신청':H('FIND YOUR CLASS','내게 맞는 강의를<br>찾아드립니다','과목을 선택하면 담당 강사·시간표와 수강신청으로 바로 연결됩니다. 무엇을 들어야 할지 고민된다면 무료 상담으로 딱 맞는 반을 추천해 드려요.','🎯')
   +'<div class="findgrid">'+CHAPTERS.map(function(c){return '<a class="findcard" href="#" onclick="closePage();setTimeout(function(){pickCourse(\''+c.k+'\');},220);return false;"><div class="fce">'+c.e+'</div><div class="fct">'+c.k+'</div><div class="fcs">'+c.s+'</div></a>';}).join('')+'</div>'
   +'<div class="pgnote">어떤 과정이 맞을지 모르겠다면? 무료 레벨테스트로 정확히 진단해 드려요.</div><a class="pgcta" href="#" onclick="closePage();openLv();return false;">무료 레벨테스트 받기 ›</a>'+CTA(),
+ '천원살롱':H('산본글로벌 커뮤니티','천원살롱,<br>부담 없이 모이는 공간','1시간 단돈 1,000원. 최소 5인이 모이면 강의실을 내어드립니다. 커피·물·사탕은 무료. 스터디·회화 모임·소모임 무엇이든, 우리 동네에서 가장 가벼운 모임 공간이에요.','☕')
+  +SEC('이용 안내',CT(['구분','내용'],[['이용료','1시간 1,000원 (인당)'],['정원','최소 5인부터'],['무료 제공','커피 · 물 · 사탕'],['이용 대상','스터디·영어회화·소모임 누구나'],['예약','카카오톡 채널 또는 전화 예약']]))
+  +SEC('이렇게 쓰세요','<div class="chips"><span>📚 스터디 모임</span><span>🗣️ 영어·회화 모임</span><span>💼 스몰 클래스</span><span>🤝 동네 소모임</span></div><div class="lead">누구나 부담 없이 오가며 모일 수 있게 자리값을 최소화했어요. 편하게 예약하고 이웃과 함께하세요. 오가는 사람이 많을수록 우리 동네가 더 따뜻해집니다.</div>')
+  +'<div class="pgnote">☕ 커피·물·사탕 무료 · 최소 5인 · 1시간 1,000원 · 예약 문의 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>'+CTA(),
  '외고':H('외고·특목고 대비','외고 내신,<br>전략이 점수를 만듭니다','학교 진도와 시험 범위를 학생별로 분석해, 진단 → 내신 밀착 → 실전 마무리 3단계로 준비합니다. 무작정 많은 양이 아니라 “필요한 것을 정확히”가 산본글로벌의 방식입니다.','🎓')
   +'<div class="steps"><div class="step"><div class="sh">STEP 01 · 진단 &amp; 기초</div><div class="sb"><b>정확한 출발점 찾기</b><p>레벨 진단으로 약점을 먼저 파악하고, 어휘·문법의 빈틈을 메워 내신 학습의 토대를 만듭니다.</p></div></div><div class="step"><div class="sh">STEP 02 · 내신 밀착</div><div class="sb"><b>학교별 맞춤 진도</b><p>재학 중인 학교의 진도·출제 경향에 맞춰 핵심 위주로 집중 학습하고, 부족한 부분을 반복 교정합니다.</p></div></div><div class="step"><div class="sh">STEP 03 · 실전 마무리</div><div class="sb"><b>시험 직전 요점 정리</b><p>시험 범위를 압축 정리하고 실전 문제로 마무리해, 마지막까지 점수를 끌어올립니다.</p></div></div></div>'
   +'<div class="pgnote">외고·특목고 대비반은 소수정예로 운영되며, 학생별 학습 리포트를 제공합니다.</div>'+CTA(),
