@@ -395,7 +395,8 @@ section{scroll-margin-top:130px}
 .hs-sub{color:#fff;font-size:17px;margin-top:18px;line-height:1.6;text-shadow:0 1px 10px rgba(0,0,0,.5)}
 .hs-btn{display:inline-flex;align-items:center;gap:8px;margin-top:28px;background:#fff;color:var(--red);font-weight:800;padding:14px 28px;border-radius:999px;font-size:15px;box-shadow:0 12px 34px rgba(0,0,0,.24);transition:transform .2s,box-shadow .2s;cursor:pointer;border:none;font-family:inherit}
 .hs-btn:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(0,0,0,.32)}
-.hs-deco{position:absolute;right:28px;top:50%;transform:translateY(-50%);font-family:'Montserrat',sans-serif;font-weight:900;font-size:168px;line-height:1;color:rgba(255,255,255,.13);letter-spacing:-.04em;z-index:1;pointer-events:none;white-space:nowrap}
+.hs-deco{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-family:'Montserrat',sans-serif;font-weight:900;font-size:150px;line-height:1;color:rgba(255,255,255,.13);letter-spacing:-.04em;z-index:1;pointer-events:none;white-space:nowrap}
+.hs-wrap .hs-eyebrow,.hs-wrap .hs-title,.hs-wrap .hs-sub,.hs-wrap .hs-btn{position:relative;z-index:2}
 .hero .slider-ctl{position:absolute;left:50%;transform:translateX(-50%);bottom:20px;z-index:6;display:flex;align-items:center;gap:14px}
 .hero .slider-ctl button{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;line-height:1;transition:.15s}
 .hero .slider-ctl button:hover{background:#fff;color:var(--red)}
@@ -449,6 +450,26 @@ header nav a{letter-spacing:-.01em}
 /* 전체화면 상세: 상단 여백/타이포 정제 */
 .pghero{background:linear-gradient(120deg,#101a33,#22375f)}
 .pghero .pgeyebrow{color:var(--gold2);letter-spacing:3px}
+/* ===== 강사 카드 아코디언 (호버 확장, 파고다식 인터랙션) ===== */
+.cpanel{display:flex!important;gap:12px;align-items:stretch;min-height:0}
+.icard{position:relative;flex:1 1 0;min-width:0;height:410px;border-radius:16px;overflow:hidden;cursor:pointer;transition:flex-grow .5s cubic-bezier(.2,.7,.2,1),box-shadow .3s;display:block!important;border:1px solid #eef0f3}
+.icard .iph{position:absolute!important;inset:0;height:100%!important;background:#eef1f5}
+.icard .iph img{width:100%;height:100%;object-fit:cover}
+.icard .iname{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:22px 18px;background:linear-gradient(0deg,rgba(9,14,28,.88),rgba(9,14,28,.18) 60%,transparent);color:#fff;transition:opacity .3s}
+.icard .iname b{font-size:19px;font-weight:800;letter-spacing:-.02em;white-space:nowrap}
+.icard .ihover{position:absolute;left:0;right:0;bottom:0;z-index:3;background:#fff;padding:18px;opacity:0;transform:translateY(16px);transition:opacity .35s,transform .35s;pointer-events:none;box-shadow:0 -12px 34px rgba(0,0,0,.14)}
+.icard .ihn{font-size:19px;font-weight:900;color:var(--red);margin-bottom:10px;letter-spacing:-.02em;white-space:nowrap}
+.cpanel .icard:hover{flex-grow:3.2;box-shadow:0 22px 48px rgba(20,33,61,.22)}
+.cpanel .icard:hover .iname{opacity:0}
+.cpanel .icard:hover .ihover{opacity:1;transform:none;pointer-events:auto}
+@media(max-width:860px){
+ .cpanel{flex-direction:column!important}
+ .icard{height:auto}
+ .icard .iph{position:relative!important;height:280px!important}
+ .icard .iname{display:none}
+ .icard .ihover{position:relative;opacity:1;transform:none;pointer-events:auto;box-shadow:none}
+ .cpanel .icard:hover{flex-grow:1}
+}
 </style>
 </head>
 <body>
@@ -714,7 +735,9 @@ function renderCourse(c){
   document.getElementById('cpanel').innerHTML=list.map(t=>`
     <div class="icard">
       <div class="iph"><img src="img/teachers/${t.img}.png" alt="${t.n}"></div>
-      <div class="ibd"><div class="inm">${t.n}</div>
+      <div class="iname"><b>${t.n}</b></div>
+      <div class="ihover">
+        <div class="ihn">${t.n}</div>
         <table class="ischd">${t.rows.map(r=>`<tr><td class="b">${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}</table>
         <a class="ipay" href="#" onclick="alert('수강신청·결제 페이지로 연결됩니다.\\n(토스페이먼츠 결제링크 연결 예정)');return false;">수강신청·결제</a>
       </div>
@@ -737,7 +760,7 @@ const SLIDES=[
 ];
 (function(){
  var hs=document.getElementById('heroslides');
- hs.innerHTML=SLIDES.map(function(s,i){return '<div class="hslide'+(i===0?' on':'')+'" style="background:transparent"><div class="hs-deco">'+s.deco+'</div><div class="hs-wrap"><div class="hs-eyebrow">'+s.e+'</div><div class="hs-title">'+s.t+'</div><div class="hs-sub">'+s.s+'</div><button class="hs-btn" onclick="'+s.act+'">자세히 보기 →</button></div></div>';}).join('');
+ hs.innerHTML=SLIDES.map(function(s,i){return '<div class="hslide'+(i===0?' on':'')+'" style="background:transparent"><div class="hs-wrap"><div class="hs-deco">'+s.deco+'</div><div class="hs-eyebrow">'+s.e+'</div><div class="hs-title">'+s.t+'</div><div class="hs-sub">'+s.s+'</div><button class="hs-btn" onclick="'+s.act+'">자세히 보기 →</button></div></div>';}).join('');
  document.getElementById('hdots').innerHTML=SLIDES.map(function(s,i){return '<i data-i="'+i+'"'+(i===0?' class="on"':'')+'></i>';}).join('');
  var si=0, slides=hs.querySelectorAll('.hslide'), dots=document.querySelectorAll('#hdots i'), N=SLIDES.length;
  function show(){for(var i=0;i<N;i++){slides[i].classList.toggle('on',i===si);dots[i].classList.toggle('on',i===si);}document.getElementById('slNum').textContent=(si+1)+' / '+N;}
