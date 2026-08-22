@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>산본 더 글로벌 어학원 | SANBON THE GLOBAL</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Pacifico&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Pacifico&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 :root{
   --red:#1D2D4F; --red-dk:#14213d; --gold:#C6A15B; --gold-dk:#a8843f; --ink:#1b1b1b; --gray:#f4f4f6; --gray2:#e9eaee;
@@ -341,6 +342,48 @@ nav a{font-size:14px}
 .scard .sic{font-size:64px}
 .scard .sinfo h3{font-size:24px;font-weight:900;color:var(--red);margin-bottom:8px}
 .scard .sinfo p{color:#5b6069;font-size:15px;line-height:1.6;margin-bottom:16px}
+
+/* ============ PREMIUM 리디자인 오버라이드 ============ */
+body{font-family:'Pretendard Variable','Pretendard','Noto Sans KR',sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;letter-spacing:-.01em;color:#191b1f}
+h1,h2,h3,h4{letter-spacing:-.02em}
+html{scroll-behavior:smooth}
+::selection{background:var(--gold);color:#fff}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+/* 헤더: 유리질감 + 은은한 그림자, 골드 언더라인 호버 */
+header{background:rgba(255,255,255,.88);backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);box-shadow:0 1px 0 rgba(0,0,0,.05),0 10px 28px rgba(20,33,61,.06);border-bottom:none}
+header nav a{position:relative;font-weight:700;transition:color .18s}
+header nav a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .22s}
+header nav a:hover{color:var(--red)}
+header nav a:hover::after{transform:scaleX(1)}
+/* 히어로 타이포 */
+.promoslide h1{font-weight:900;letter-spacing:-.03em;text-shadow:0 2px 26px rgba(0,0,0,.38)}
+/* 강사 카드: 깊은 그림자 + 호버 리프트 */
+.icard{border:1px solid #eef0f3;border-radius:16px;box-shadow:0 6px 20px rgba(20,33,61,.06);transition:transform .28s cubic-bezier(.2,.7,.2,1),box-shadow .28s}
+.icard:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(20,33,61,.15)}
+.icard .inm{letter-spacing:-.02em}
+/* 히어로 카드 */
+.hcard{border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.14);transition:transform .2s,box-shadow .2s,background .2s}
+.hcard:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(0,0,0,.22)}
+/* 탭: 프리미엄 필 */
+#ctabs button,.tttabs button{border-radius:999px;font-weight:800;transition:.18s;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+#ctabs button:hover,.tttabs button:hover{background:#e7ebf1}
+#ctabs button.on,.tttabs button.on{box-shadow:0 8px 18px rgba(29,45,79,.3)}
+/* 버튼 광택/호버 */
+.ipay,.pgcta,.bbtn{transition:transform .18s,box-shadow .22s,background .22s}
+.ipay:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(224,123,0,.3)}
+.pgcta{box-shadow:0 8px 20px rgba(198,161,91,.35)}
+.pgcta:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(198,161,91,.48)}
+/* 모달 */
+.abox{border-radius:20px;box-shadow:0 34px 90px rgba(10,16,30,.4)}
+.amodal{backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.pghero{box-shadow:0 22px 54px rgba(20,33,61,.28)}
+.pghero h2{letter-spacing:-.03em;line-height:1.2}
+/* 표 라운드 */
+.ctable{border-radius:12px;overflow:hidden;box-shadow:0 4px 14px rgba(20,33,61,.06)}
+/* 스크롤 등장 애니메이션 */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+section{scroll-margin-top:130px}
 </style>
 </head>
 <body>
@@ -749,6 +792,18 @@ const PAGES={
 function openPage(k){var p=PAGES[k];if(!p)return;document.getElementById('pgbody').innerHTML=p;document.getElementById('pgModal').classList.add('open');window.scrollTo(0,0);}
 function closePage(){document.getElementById('pgModal').classList.remove('open');}
 function goCourse(tab){renderCourse(tab);var el=document.getElementById('ctabs');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+
+/* ===== 스크롤 등장 애니메이션 (fail-safe) ===== */
+(function(){
+  try{
+    var targets=document.querySelectorAll('main section, body > section, section');
+    if(!('IntersectionObserver' in window)||!targets.length)return;
+    var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -8% 0px'});
+    targets.forEach(function(el){el.classList.add('rv');obs.observe(el);});
+    // 안전장치: 1.5초 뒤 무조건 보이게
+    setTimeout(function(){targets.forEach(function(el){el.classList.add('in');});},1500);
+  }catch(e){}
+})();
 </script>
 
 </body>
