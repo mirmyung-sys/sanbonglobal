@@ -431,6 +431,50 @@ section{scroll-margin-top:130px}
 .aclose:hover{background:#14213d}
 .cempty{padding:52px 20px;text-align:center;color:#8a8f99;font-size:15px;background:#f7f8fa;border-radius:16px;font-weight:600}
 .teachers{display:none!important}
+/* 히어로 크게 + 패널 정제 */
+.hero{height:620px}
+.hs-panel{max-width:648px;padding:46px 54px;border-radius:24px;border:1px solid rgba(255,255,255,.14)}
+.hs-panel .hs-eyebrow{font-size:14px;letter-spacing:3px}
+.hs-panel .hs-title{font-size:62px;line-height:1.08}
+.hs-panel .hs-sub{font-size:18px;margin-top:16px}
+.hs-panel .hs-btn{padding:16px 36px;font-size:16px;border-radius:999px}
+@media(max-width:860px){.hero{height:500px}.hs-panel{padding:26px 26px;border-radius:18px}.hs-panel .hs-title{font-size:34px}.hs-panel .hs-sub{font-size:14px}}
+/* 이벤트 페이지 (원본) */
+.evcoupon{display:flex;border-radius:16px;overflow:hidden;margin:6px 0 10px;box-shadow:0 14px 34px rgba(20,33,61,.14)}
+.evcoupon .evc-l{flex:1;background:linear-gradient(135deg,#1D2D4F,#33507f);color:#fff;padding:26px 30px}
+.evcoupon .evc-l span{font-size:14px;opacity:.85}
+.evcoupon .evc-l b{display:block;font-size:46px;font-weight:900;color:var(--gold2);letter-spacing:-.03em;margin:4px 0}
+.evcoupon .evc-l em{font-style:normal;font-size:15px;opacity:.92}
+.evcoupon .evc-r{width:120px;background:#EFC04A;color:#1a1205;font-weight:900;font-size:26px;letter-spacing:1px;display:flex;align-items:center;justify-content:center;border-left:3px dashed rgba(255,255,255,.7)}
+.evsteps{margin:20px 0 6px}
+.evstep{display:flex;gap:16px;padding:16px 0;border-bottom:1px dashed #e6e8ec}
+.evstep:last-child{border-bottom:none}
+.evstep .evn{flex:0 0 82px;height:30px;background:#1D2D4F;color:#fff;font-weight:800;font-size:13px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.evstep .evb b{color:var(--red);font-size:16.5px;font-weight:900}
+.evstep .evb p{color:#4b5058;font-size:14px;line-height:1.7;margin-top:5px}
+.evnotice{list-style:none;padding:0;margin:2px 0}
+.evnotice li{position:relative;padding:8px 0 8px 16px;color:#6b7078;font-size:13.5px;line-height:1.7;border-bottom:1px solid #f2f3f5}
+.evnotice li::before{content:'–';position:absolute;left:0;color:#c0c4cc}
+.evtimeline{margin:8px 0 4px;border-left:3px solid #eceff3;padding-left:10px}
+.evt{display:flex;gap:14px;align-items:flex-start;padding:14px 0 14px 10px;position:relative}
+.evt::before{content:'';position:absolute;left:-16px;top:20px;width:12px;height:12px;border-radius:50%;background:#cfd5de}
+.evt.on::before{background:var(--gold2);box-shadow:0 0 0 4px rgba(216,178,106,.25)}
+.evt .evt-d{flex:0 0 58px;font-weight:900;color:#8a8f99;font-size:14px}
+.evt.on .evt-d{color:var(--red)}
+.evt .evt-b b{color:#1c1f26;font-size:17px;font-weight:900}
+.evt.on .evt-b b{color:var(--red)}
+.evt .evt-b p{color:#6b7078;font-size:13.5px;margin-top:4px}
+/* 프로그램 탭 */
+#progtabs{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 22px}
+#progtabs button{background:#f2f0e8;border:1px solid #e6ddc9;color:#5b6069;font-size:15px;font-weight:800;padding:11px 22px;border-radius:30px;cursor:pointer;transition:.15s}
+#progtabs button:hover{border-color:var(--red);color:var(--red)}
+#progtabs button.on{background:var(--red);color:#fff;border-color:var(--red);box-shadow:0 8px 18px rgba(29,45,79,.25)}
+.progcards .pc{display:block;text-decoration:none;border:1px solid var(--line);border-radius:16px;padding:26px 22px 22px;background:#fff;transition:.22s;cursor:pointer;text-align:left}
+.progcards .pc:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(20,33,61,.14);border-color:var(--gold2)}
+.progcards .pc .pnum{font-family:'Montserrat',sans-serif;font-weight:900;font-size:26px;color:var(--gold2);letter-spacing:1px}
+.progcards .pc h4{color:var(--red);font-size:19px;font-weight:900;margin:8px 0 8px}
+.progcards .pc p{color:#6b7078;font-size:13.5px;line-height:1.6}
+.progcards .pc .pmore{display:inline-block;margin-top:14px;color:var(--red);font-weight:800;font-size:13px}
 .fsbar{position:fixed;top:0;left:0;right:0;height:60px;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:4;display:flex;align-items:center;padding:0 24px;font-weight:900;color:var(--red);font-size:17px}
 .fsbar .fsback{cursor:pointer;color:#3a3f4c;font-weight:800;font-size:15px}
 /* ============ 럭셔리 폴리시 v2 (고급 타이포·색감) ============ */
@@ -593,16 +637,9 @@ header nav a{letter-spacing:-.01em}
 <!-- 산본글로벌 프로그램 -->
 <section class="prog"><div class="wrap">
   <h2 class="secttl">산본글로벌 <b>프로그램</b><span class="line"></span></h2>
-  <div class="tabs">
-    <button class="on">점수보장반</button><button>딜리버리 LIVE</button><button>인강</button><button>영어회화</button><button>중국어</button><button>일본어</button><button>제2외국어</button>
-  </div>
-  <div class="progcards">
-    <div class="pc"><div class="ico">🎯</div><h4>점수보장반</h4><p>목표 점수 미달 시 응시료 환급<br>결과로 증명하는 책임 수업</p></div>
-    <div class="pc"><div class="ico">🔥</div><h4>스파르타 관리형</h4><p>출결·과제·단어까지 밀착 관리<br>단기간 점수 상승의 정석</p></div>
-    <div class="pc"><div class="ico">🗣️</div><h4>원어민 실전회화</h4><p>레벨별 소수정예 회화반<br>말이 트이는 실전 훈련</p></div>
-    <div class="pc"><div class="ico">👤</div><h4>1:1 첨삭·PT</h4><p>나에게 딱 맞춘 커리큘럼<br>취약점만 집중 보완</p></div>
-  </div>
-  <div class="morebtn"><a href="#">프로그램 자세히 보기 ＋</a></div>
+  <div class="tabs" id="progtabs"></div>
+  <div class="progcards" id="progcards"></div>
+  <div class="morebtn"><a href="#" onclick="openPage('수강신청');return false;">전체 강의·프로그램 보기 ＋</a></div>
 </div></section>
 
 <!-- 강사소개 -->
@@ -818,10 +855,26 @@ function pickCourse(k){
 })();
 
 /* ===== 히어로 슬라이더 (6칸) ===== */
+const PROGRAMS={
+ '점수보장반':[{n:'01',t:'토익 점수보장반',d:'목표 점수 미달 시 응시료 환급',go:'영어'},{n:'02',t:'스파르타 관리형',d:'출결·과제·단어까지 밀착 관리',go:'영어'},{n:'03',t:'JLPT 합격반',d:'기출로 증명된 합격 루트',go:'일본어'},{n:'04',t:'HSK 집중반',d:'급수별 필수 유형 완전 정복',go:'중국어'}],
+ '영어':[{n:'01',t:'왕기초 문법',d:'문장이 만들어지는 원리부터',go:'영어'},{n:'02',t:'토익 650+',d:'파트별 전략 + 관리형 학습',go:'영어'},{n:'03',t:'오픽·토스',d:'실전 스피킹 단기 완성',go:'영어'},{n:'04',t:'원어민 회화',d:'레벨별 소수정예 실전 회화',go:'영어'}],
+ '중국어':[{n:'01',t:'기초 중국어',d:'발음·성조부터 탄탄하게',go:'중국어'},{n:'02',t:'중국어 회화',d:'수준별 맞춤 소수정예',go:'중국어'},{n:'03',t:'HSK',d:'급수별 합격 커리큘럼',go:'중국어'},{n:'04',t:'비즈니스 중국어',d:'실무·취업 중국어',go:'중국어'}],
+ '일본어':[{n:'01',t:'기초 일본어',d:'히라가나부터 회화까지',go:'일본어'},{n:'02',t:'JLPT',d:'N5~N1 합격 대비',go:'일본어'},{n:'03',t:'원어민 회화·면접',d:'유학·취업 면접까지',go:'일본어'},{n:'04',t:'워홀·유학반',d:'일본 체류 준비 종합',go:'유학상담'}],
+ '1:1·유학':[{n:'01',t:'1:1 전문 PT',d:'완전 맞춤 커리큘럼',go:'1:1 전문'},{n:'02',t:'임원 프라이빗',d:'시간·장소·주제 맞춤',go:'임원강의'},{n:'03',t:'기업 출강',d:'회사로 찾아가는 실무 어학',go:'기업출강'},{n:'04',t:'일본유학·EJU',d:'상담부터 준비까지',go:'유학상담'}]
+};
+function renderProg(k){
+ var tb=document.getElementById('progtabs');if(tb)tb.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-k')===k);});
+ var pc=document.getElementById('progcards');if(pc)pc.innerHTML=(PROGRAMS[k]||[]).map(function(p){return '<a class="pc" href="#" onclick="openPage(\''+p.go+'\');return false;"><div class="pnum">'+p.n+'</div><h4>'+p.t+'</h4><p>'+p.d+'</p><span class="pmore">자세히 보기 →</span></a>';}).join('');
+}
+(function(){var tb=document.getElementById('progtabs');if(!tb)return;
+ tb.innerHTML=Object.keys(PROGRAMS).map(function(k,i){return '<button data-k="'+k+'" class="'+(i===0?'on':'')+'">'+k+'</button>';}).join('');
+ tb.querySelectorAll('button').forEach(function(b){b.onclick=function(){renderProg(b.getAttribute('data-k'));};});
+ renderProg('점수보장반');
+})();
 const SLIDES=[
  {e:'2026 · 10월 개강 안내', t:'10월 개강,<br>지금 시작하세요', s:'영어·일본어·중국어 전 과목 개강 일정 안내', act:"openTT()", pbg:'linear-gradient(135deg,#16264a,#294a80)', tc:'#ffffff', ac:'#E7C57C', bbg:'#ffffff', btc:'#16264a'},
  {e:'SANBON GLOBAL WEEK', t:'가을학기 OPEN<br>최대 25% 할인', s:'지금 등록하면 수강료 최대 25% · 신규 등록 혜택', act:"openPage('가을학기 할인')", pbg:'#EFC04A', tc:'#1a1205', ac:'#8a5a10', bbg:'#16264a', btc:'#ffffff'},
- {e:'환승 프로모션', t:'타학원에서 환승하면<br>추가 혜택을 드려요', s:'무료 레벨테스트 + 교재·수강료 추가 혜택', act:"openPage('환승 이벤트')", pbg:'linear-gradient(135deg,#d43b4f,#a72439)', tc:'#ffffff', ac:'#ffe1d0', bbg:'#ffffff', btc:'#c2283b'},
+ {e:'환승 이벤트', t:'다른 어학에서 갈아타면<br>최대 25% 할인', s:'타 어학 수강 인증하면 환승 할인 · 무료 레벨테스트', act:"openPage('환승 이벤트')", pbg:'linear-gradient(135deg,#d43b4f,#a72439)', tc:'#ffffff', ac:'#ffe1d0', bbg:'#ffffff', btc:'#c2283b'},
  {e:'무료 진단', t:'내 실력, 무료로<br>정확하게 진단', s:'원어민 회화 레벨테스트 + 온라인 자가진단', act:"openLv()", pbg:'#ffffff', tc:'#16264a', ac:'#0e8f88', bbg:'#16264a', btc:'#ffffff'},
  {e:'1:1 PRIVATE', t:'나만을 위한<br>완전 맞춤 수업', s:'1:1 전문·임원 강의·기업 출강까지', act:"openPage('1:1 전문')", pbg:'linear-gradient(135deg,#3b2e72,#5c3f92)', tc:'#ffffff', ac:'#d9c6ff', bbg:'#ffffff', btc:'#3b2e72'},
  {e:'유학 · 외고 대비', t:'유학부터 외고까지<br>한 곳에서', s:'일본유학·EJU·외고 내신 대비', act:"openPage('유학상담')", pbg:'linear-gradient(135deg,#1f8058,#146043)', tc:'#ffffff', ac:'#c9f2b2', bbg:'#ffffff', btc:'#146043'},
@@ -938,12 +991,16 @@ const PAGES={
   +SEC('기초·회화','<div class="lead">성조와 병음부터 시작해 일상 회화까지, 원어민 발음으로 정확하게 익힙니다.</div>')
   +SEC('HSK','<div class="lead">급수별 필수 어휘·유형을 집중 학습하고 기출로 마무리해 목표 급수 합격을 돕습니다.</div><div class="chips"><span>HSK 4급</span><span>HSK 5급</span><span>HSK 6급</span></div>')
   +'<div class="pgnote">담당: 오금한·하홍금 외 원어민 강사 · 시간표는 강의관에서 확인</div>'+GO('중국어')+CTA(),
- '가을학기 할인':H('SANBON GLOBAL WEEK','가을학기 OPEN<br>최대 25% 할인','지금 등록하시면 수강료를 최대 25%까지 할인해 드립니다. 신규 등록·다과목 수강·조기 등록 시 추가 혜택도 함께 드려요.','🎉')
-  +SEC('할인 혜택',CT(['구분','혜택'],[['신규 등록','수강료 최대 25% 할인'],['다과목 수강','추가 할인 + 교재 혜택'],['조기 등록','개강 전 등록 시 우선 배정'],['친구 추천','추천인·등록인 동시 혜택']]))
-  +'<div class="pgnote">※ 할인 폭은 과정·등록 시점에 따라 달라질 수 있어요. 정확한 금액은 상담 시 안내드립니다. · 031-466-6969</div>'+CTA(),
- '환승 이벤트':H('환승 프로모션','타학원에서 환승하면<br>추가 혜택을 드려요','다른 학원에서 옮겨오시는 분께 무료 레벨테스트와 교재·수강료 추가 혜택을 드립니다. 지금까지의 학습을 이어서 더 빠르게 목표에 도착하세요.','🔁')
-  +SEC('환승 혜택',CT(['혜택','내용'],[['레벨테스트','무료 진단으로 정확한 반 배정'],['교재','환승 시 교재 지원'],['수강료','추가 할인 적용'],['맞춤 상담','이전 학습을 이어가는 커리큘럼 설계']]))
-  +'<div class="pgnote">※ 재학 증빙(수강증 등) 확인 시 혜택이 적용됩니다. 자세한 내용은 상담 시 안내드려요.</div>'+CTA(),
+ '가을학기 할인':H('SANBON GLOBAL WEEK','이달의 혜택 &<br>가을학기 이벤트','지금 등록할수록 더 큰 혜택! 가을학기 특별 할인과 다양한 이벤트를 한눈에 확인하세요.','🎁')
+  +'<div class="evtimeline"><div class="evt on"><div class="evt-d">NOW</div><div class="evt-b"><b>가을학기 최대 25% 할인</b><p>지금 등록이 가장 큰 혜택 · 토익 25% / 그 외 20%</p></div></div><div class="evt"><div class="evt-d">D+7</div><div class="evt-b"><b>최대 20% 할인</b><p>남은 기간 중 최저가로 등록</p></div></div><div class="evt"><div class="evt-d">개강후</div><div class="evt-b"><b>최대 10% 할인</b><p>개강 후 등록도 혜택 유지</p></div></div></div>'
+  +SEC('이런 혜택도 있어요',CT(['이벤트','내용'],[['신규 등록','수강료 최대 25% 할인'],['다과목 수강','추가 할인 + 교재 지원'],['친구 추천','추천인·등록인 동시 혜택'],['환승 할인','타 어학 인증 시 최대 25% (환승 이벤트)'],['국비지원','내일배움카드 과정 별도 안내']]))
+  +'<div class="pgnote">※ 할인 폭·대상은 등록 시점·과정에 따라 달라질 수 있어요. 정확한 금액은 상담 시 안내드립니다. · 031-466-6969</div><a class="pgcta" href="#" onclick="closePage();openTT();return false;">개강 일정 보기 ›</a>'+CTA(),
+ '환승 이벤트':H('SWITCH &amp; SAVE · 환승 이벤트','다른 어학에서 갈아타면<br>최대 25% 할인','어학원·인강·전화영어·학습지 등 다른 어학 서비스를 이용했다면, 산본글로벌로 갈아타고 할인 혜택을 받으세요. 지금까지의 학습을 이어 더 좋은 수업으로 환승!','🔁')
+  +'<div class="evcoupon"><div class="evc-l"><span>다른 어학 수강을 인증하면</span><b>최대 25%</b><em>수강료 할인 혜택</em></div><div class="evc-r">SGA</div></div>'
+  +SEC('이벤트 대상 · 혜택',CT(['구분','내용'],[['대상','최근 12개월 이내 타 어학 수강 이력이 있는 분<br>(어학원·인강·전화/화상·학습지 등)'],['혜택','환승 등록 시 수강료 할인 · 토익 25% / 그 외 과목 20%'],['추가','무료 레벨테스트 + 교재 지원']]))
+  +'<div class="evsteps"><div class="evstep"><div class="evn">STEP 1</div><div class="evb"><b>수강 이력 인증</b><p>수강이력·수강증·결제내역 중 하나를 카카오톡 채널 또는 방문으로 제출하세요. (어학원·인강·전화/화상·학습지 등)</p></div></div><div class="evstep"><div class="evn">STEP 2</div><div class="evb"><b>할인 혜택 안내</b><p>인증이 확인되면 환승 할인 혜택을 안내해 드려요. (토익 25% / 그 외 20%)</p></div></div><div class="evstep"><div class="evn">STEP 3</div><div class="evb"><b>갈아타서 수강 시작</b><p>할인 혜택을 받고 산본글로벌에서 새롭게 시작하세요.</p></div></div></div>'
+  +SEC('이벤트 유의사항','<ul class="evnotice"><li>신청일 기준 최근 12개월 이내 타 어학 수강 이력 인증자에게 제공되는 혜택입니다.</li><li>환승 혜택은 다른 할인·쿠폰과 중복 적용되지 않습니다.</li><li>증빙(수강증·결제내역 등) 확인 후 혜택이 적용됩니다.</li><li>최근 1개월 이내 산본글로벌 수강 이력이 있는 경우 참여가 제한될 수 있습니다.</li><li>허위 또는 잘못된 정보 확인 시 혜택 적용이 불가할 수 있습니다.</li><li>할인 폭·대상 과목은 시점에 따라 달라질 수 있으며, 자세한 내용은 상담 시 안내드립니다.</li></ul>')
+  +'<div class="pgnote">문의·예약 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>'+CTA(),
  '수강신청':H('FIND YOUR CLASS','내게 맞는 강의를<br>찾아드립니다','과목을 선택하면 담당 강사·시간표와 수강신청으로 바로 연결됩니다. 무엇을 들어야 할지 고민된다면 무료 상담으로 딱 맞는 반을 추천해 드려요.','🎯')
   +'<div class="findgrid">'+CHAPTERS.map(function(c){return '<a class="findcard" href="#" onclick="closePage();setTimeout(function(){pickCourse(\''+c.k+'\');},220);return false;"><div class="fce">'+c.e+'</div><div class="fct">'+c.k+'</div><div class="fcs">'+c.s+'</div></a>';}).join('')+'</div>'
   +'<div class="pgnote">어떤 과정이 맞을지 모르겠다면? 무료 레벨테스트로 정확히 진단해 드려요.</div><a class="pgcta" href="#" onclick="closePage();openLv();return false;">무료 레벨테스트 받기 ›</a>'+CTA(),
