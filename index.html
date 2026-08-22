@@ -384,7 +384,7 @@ section{scroll-margin-top:130px}
 /* ===== 풀와이드 히어로 배너 슬라이더 (파고다 벤치마킹·원본 디자인) ===== */
 .hero{position:relative;overflow:hidden;height:460px;background:#0d1426}
 .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#0d1426}
-.hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(20,33,61,.62),rgba(20,33,61,.26) 55%,rgba(20,33,61,.04))}
+.hero-ov{display:none}
 .heroslides{position:absolute;inset:0;z-index:2}
 .hslide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .8s ease;display:flex;align-items:center}
 .hslide.on{opacity:1;visibility:visible}
@@ -416,8 +416,10 @@ section{scroll-margin-top:130px}
 .amodal.open{display:block}
 .abox{max-width:1040px;width:auto;margin:0 auto;padding:76px 26px 80px;background:#fff;border-radius:0;box-shadow:none;max-height:none;overflow:visible;animation:fsIn .35s ease}
 @keyframes fsIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.aclose{position:fixed;top:16px;right:22px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:#f1f3f6;border-radius:50%;font-size:24px;color:#3a3f4c;cursor:pointer;z-index:5;float:none;line-height:1;transition:.15s;box-shadow:0 4px 14px rgba(0,0,0,.08)}
-.aclose:hover{background:var(--red);color:#fff}
+.aclose{position:fixed;top:16px;right:20px;width:auto;height:auto;padding:11px 20px 11px 17px;display:inline-flex;align-items:center;gap:7px;background:var(--red);border-radius:999px;font-size:19px;color:#fff;cursor:pointer;z-index:6;float:none;line-height:1;transition:.15s;box-shadow:0 8px 24px rgba(29,45,79,.3)}
+.aclose::after{content:'닫기';font-size:14.5px;font-weight:800;letter-spacing:-.02em}
+.aclose:hover{background:#14213d}
+.cempty{padding:52px 20px;text-align:center;color:#8a8f99;font-size:15px;background:#f7f8fa;border-radius:16px;font-weight:600}
 .fsbar{position:fixed;top:0;left:0;right:0;height:60px;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:4;display:flex;align-items:center;padding:0 24px;font-weight:900;color:var(--red);font-size:17px}
 .fsbar .fsback{cursor:pointer;color:#3a3f4c;font-weight:800;font-size:15px}
 /* ============ 럭셔리 폴리시 v2 (고급 타이포·색감) ============ */
@@ -797,22 +799,21 @@ function pickCourse(k){
 (function(){var el=document.getElementById('chapters');if(!el)return;
  el.innerHTML='<div class="chrow">'+CHAPTERS.slice(0,4).map(chipHTML).join('')+'</div><div class="chrow">'+CHAPTERS.slice(4).map(chipHTML).join('')+'</div>';
  el.querySelectorAll('.chip').forEach(function(ch){ch.onclick=function(){pickCourse(ch.getAttribute('data-k'));};});
- var f=el.querySelector('.chip[data-k="토익"]');if(f)f.classList.add('on');
+ var cp=document.getElementById('cpanel');if(cp)cp.innerHTML='<div class="cempty">👆 과목을 선택하면 담당 강사와 시간표·수강신청이 나타납니다.</div>';
 })();
-renderCourse('토익');
 
 /* ===== 히어로 슬라이더 (6칸) ===== */
 const SLIDES=[
- {e:'2026 · 10월 개강 안내', t:'10월 개강,<br>지금 시작하세요', s:'영어·일본어·중국어 전 과목 10월 개강 일정 안내', bg:'linear-gradient(120deg,#14213d,#274777)', deco:'OPEN', act:"openTT()"},
- {e:'<b>SANBON GLOBAL WEEK</b>', t:'가을학기 OPEN<br>최대 25% 할인', s:'지금 등록하면 수강료 최대 25% · 신규 등록 혜택', bg:'linear-gradient(120deg,#1D2D4F,#7d5c2c)', deco:'25%', act:"openPage('가을학기 할인')"},
- {e:'환승 프로모션', t:'타학원에서 환승하면<br>추가 혜택을 드려요', s:'무료 레벨테스트 + 교재·수강료 추가 혜택', bg:'linear-gradient(120deg,#2a2140,#5c3a54)', deco:'SWITCH', act:"openPage('환승 이벤트')"},
- {e:'무료 진단', t:'내 실력, 무료로<br>정확하게 진단', s:'원어민 회화 레벨테스트 + 온라인 자가진단', bg:'linear-gradient(120deg,#0e2a33,#1e5b66)', deco:'LEVEL', act:"openLv()"},
- {e:'1:1 PRIVATE', t:'나만을 위한<br>완전 맞춤 수업', s:'1:1 전문·임원 강의·기업 출강까지', bg:'linear-gradient(120deg,#14213d,#3d2f5e)', deco:'1:1', act:"openPage('1:1 전문')"},
- {e:'유학 · 외고 대비', t:'유학부터 외고까지<br>한 곳에서', s:'일본유학·EJU·외고 내신 대비', bg:'linear-gradient(120deg,#0f2e22,#2f7050)', deco:'GLOBAL', act:"openPage('유학상담')"}
+ {e:'2026 · 10월 개강 안내', t:'10월 개강,<br>지금 시작하세요', s:'영어·일본어·중국어 전 과목 10월 개강 일정 안내', deco:'OPEN', act:"openTT()", bg:'linear-gradient(90deg,rgba(20,33,61,.88),rgba(20,33,61,.5) 52%,rgba(20,33,61,.12))', ac:'#D8B26A', tc:'#ffffff'},
+ {e:'<b>SANBON GLOBAL WEEK</b>', t:'가을학기 OPEN<br>최대 25% 할인', s:'지금 등록하면 수강료 최대 25% · 신규 등록 혜택', deco:'25%', act:"openPage('가을학기 할인')", bg:'linear-gradient(90deg,rgba(124,72,18,.9),rgba(124,72,18,.5) 52%,rgba(124,72,18,.12))', ac:'#FFE7AC', tc:'#FFF4DE'},
+ {e:'환승 프로모션', t:'타학원에서 환승하면<br>추가 혜택을 드려요', s:'무료 레벨테스트 + 교재·수강료 추가 혜택', deco:'SWITCH', act:"openPage('환승 이벤트')", bg:'linear-gradient(90deg,rgba(102,26,60,.9),rgba(102,26,60,.5) 52%,rgba(102,26,60,.12))', ac:'#FFC2D6', tc:'#FFE7EF'},
+ {e:'무료 진단', t:'내 실력, 무료로<br>정확하게 진단', s:'원어민 회화 레벨테스트 + 온라인 자가진단', deco:'LEVEL', act:"openLv()", bg:'linear-gradient(90deg,rgba(9,58,64,.9),rgba(9,58,64,.5) 52%,rgba(9,58,64,.12))', ac:'#8FEDDE', tc:'#E4FBF5'},
+ {e:'1:1 PRIVATE', t:'나만을 위한<br>완전 맞춤 수업', s:'1:1 전문·임원 강의·기업 출강까지', deco:'1:1', act:"openPage('1:1 전문')", bg:'linear-gradient(90deg,rgba(48,28,86,.9),rgba(48,28,86,.5) 52%,rgba(48,28,86,.12))', ac:'#D6C2FF', tc:'#EFE7FF'},
+ {e:'유학 · 외고 대비', t:'유학부터 외고까지<br>한 곳에서', s:'일본유학·EJU·외고 내신 대비', deco:'GLOBAL', act:"openPage('유학상담')", bg:'linear-gradient(90deg,rgba(12,66,46,.9),rgba(12,66,46,.5) 52%,rgba(12,66,46,.12))', ac:'#BEEFA6', tc:'#E7FBDD'}
 ];
 (function(){
  var hs=document.getElementById('heroslides');
- hs.innerHTML=SLIDES.map(function(s,i){return '<div class="hslide'+(i===0?' on':'')+'" style="background:transparent"><div class="hs-wrap"><div class="hs-deco">'+s.deco+'</div><div class="hs-eyebrow">'+s.e+'</div><div class="hs-title">'+s.t+'</div><div class="hs-sub">'+s.s+'</div><button class="hs-btn" onclick="'+s.act+'">자세히 보기 →</button></div></div>';}).join('');
+ hs.innerHTML=SLIDES.map(function(s,i){return '<div class="hslide'+(i===0?' on':'')+'" style="background:'+s.bg+'"><div class="hs-wrap"><div class="hs-deco">'+s.deco+'</div><div class="hs-eyebrow" style="color:'+s.ac+'">'+s.e+'</div><div class="hs-title" style="color:'+s.tc+'">'+s.t+'</div><div class="hs-sub">'+s.s+'</div><button class="hs-btn" onclick="'+s.act+'">자세히 보기 →</button></div></div>';}).join('');
  document.getElementById('hdots').innerHTML=SLIDES.map(function(s,i){return '<i data-i="'+i+'"'+(i===0?' class="on"':'')+'></i>';}).join('');
  var si=0, slides=hs.querySelectorAll('.hslide'), dots=document.querySelectorAll('#hdots i'), N=SLIDES.length;
  function show(){for(var i=0;i<N;i++){slides[i].classList.toggle('on',i===si);dots[i].classList.toggle('on',i===si);}document.getElementById('slNum').textContent=(si+1)+' / '+N;}
@@ -876,7 +877,16 @@ function openTT(){buildCal('주5일반');document.querySelectorAll('#tttabs butt
 function closeTT(){document.getElementById('ttModal').classList.remove('open');}
 function openLv(){document.getElementById('lvModal').classList.add('open');}
 function closeLv(){document.getElementById('lvModal').classList.remove('open');}
-document.querySelectorAll('.amodal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');}));
+function _sgOpenAny(){return document.querySelector('.amodal.open');}
+function _sgCloseAll(){document.querySelectorAll('.amodal.open').forEach(function(m){m.classList.remove('open');});}
+function _sgPush(){try{history.pushState({sgm:1},'');}catch(e){}}
+window.addEventListener('popstate',function(){_sgCloseAll();});
+document.querySelectorAll('.amodal').forEach(function(m){m.addEventListener('click',function(e){if(e.target===m)m.classList.remove('open');});});
+var _oP=openPage,_oT=openTT,_oL=openLv,_oA=openAll;
+openPage=function(k){var w=_sgOpenAny();_oP(k);if(!w)_sgPush();};
+openTT=function(){var w=_sgOpenAny();_oT();if(!w)_sgPush();};
+openLv=function(){var w=_sgOpenAny();_oL();if(!w)_sgPush();};
+openAll=function(){var w=_sgOpenAny();_oA();if(!w)_sgPush();};
 
 /* ===== 콘텐츠 페이지 (빈 메뉴 채우기) ===== */
 function H(eyebrow,title,desc,emoji){return '<div class="pghero"><div class="pgeyebrow">'+eyebrow+'</div><h2>'+title+'</h2><p>'+desc+'</p><div class="pgemoji">'+emoji+'</div></div>';}
