@@ -538,6 +538,11 @@ header nav a{letter-spacing:-.01em}
 .chip::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--gold2);transform:scaleX(0);transform-origin:left;transition:.35s}
 .chip.on::after{transform:scaleX(1)}
 .chip.on{box-shadow:0 14px 34px rgba(20,33,61,.34)}
+.chip .chrev{position:absolute;top:0;right:0;bottom:0;display:flex;align-items:flex-end;justify-content:flex-end;opacity:0;transition:opacity .55s ease;z-index:1;pointer-events:none;max-width:74%}
+.chip .chrev img{height:100%;width:auto;object-fit:cover;object-position:center top;display:block}
+.chip .chgrad{position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(8,10,16,.42),rgba(8,10,16,0) 56%);pointer-events:none}
+.chip .chtxt{position:relative;z-index:3;margin-top:auto}
+.chrow .chip:hover .chrev{opacity:1}
 @media(max-width:860px){.chrow{flex-wrap:wrap}.chip{flex:1 1 44%;height:120px}.chrow .chip:hover{flex-grow:0}}
 /* ===== 내게 맞는 강의 CTA ===== */
 .findwrap{display:flex;justify-content:center;padding:30px 24px 12px}
@@ -828,18 +833,18 @@ function renderCourse(c){
   document.querySelectorAll('#ctabs button').forEach(b=>b.classList.toggle('on', b.dataset.c===c));
 }
 const CHAPTERS=[
- {k:'토익',s:'왜 틀리는지 먼저 알아야 점수가 오릅니다',e:'TOEIC'},
- {k:'토스',s:'말하기 유형 완전 분석, 목표 등급까지',e:'TOEIC S'},
- {k:'오픽',s:'실전 발화 훈련으로 IH·AL 달성',e:'OPIc'},
- {k:'JLPT',s:'기출로 증명된 합격 루트',e:'JLPT'},
- {k:'영어회화',s:'기초부터 원어민까지, 써먹는 회화',e:'SPEAKING'},
- {k:'일본어',s:'일본인이 실제 쓰는 살아있는 일본어',e:'JAPANESE'},
- {k:'중국어',s:'발음부터 HSK까지 탄탄하게',e:'CHINESE'},
- {k:'1:1 전문',s:'나만을 위한 완전 맞춤 수업',e:'1:1'},
- {k:'기업출강',s:'회사로 찾아가는 실무 어학 교육',e:'B2B'},
- {k:'외고/유학/과외',s:'외고·유학·과외 무료 상담',e:'CARE'}
+ {k:'토익',s:'왜 틀리는지 먼저 알아야 점수가 오릅니다',e:'TOEIC',bg:'linear-gradient(135deg,#171d2b,#2b3550)',imgs:['eng_13','eng_14','eng_15','eng_6']},
+ {k:'토스',s:'말하기 유형 완전 분석, 목표 등급까지',e:'TOEIC S',bg:'linear-gradient(135deg,#0e3a4d,#1c6070)',imgs:['eng_14','eng_15']},
+ {k:'오픽',s:'실전 발화 훈련으로 IH·AL 달성',e:'OPIc',bg:'linear-gradient(135deg,#382a5e,#5a3f8c)',imgs:['eng_15','eng_14']},
+ {k:'JLPT',s:'기출로 증명된 합격 루트',e:'JLPT',bg:'linear-gradient(135deg,#0f6b52,#149e79)',imgs:['jpn_2','jpn_1','jpn_4','jpn_5']},
+ {k:'영어회화',s:'기초부터 원어민까지, 써먹는 회화',e:'SPEAKING',bg:'linear-gradient(135deg,#8a4b1f,#c9772f)',imgs:['eng_5','eng_11','eng_9']},
+ {k:'일본어',s:'일본인이 실제 쓰는 살아있는 일본어',e:'JAPANESE',bg:'linear-gradient(135deg,#5f97cf,#a9cdeb)',imgs:['jpn_2','jpn_1','jpn_7']},
+ {k:'중국어',s:'발음부터 HSK까지 탄탄하게',e:'CHINESE',bg:'linear-gradient(135deg,#9c1f24,#c8353b)',imgs:['chn_3','chn_5']},
+ {k:'1:1 전문',s:'나만을 위한 완전 맞춤 수업',e:'1:1',bg:'linear-gradient(135deg,#14213d,#33507f)',imgs:['eng_13','eng_6']},
+ {k:'기업출강',s:'회사로 찾아가는 실무 어학 교육',e:'B2B',bg:'linear-gradient(135deg,#293a58,#40587f)',imgs:['eng_12','jpn_2','chn_3']},
+ {k:'외고/유학/과외',s:'외고·유학·과외 무료 상담',e:'CARE',bg:'linear-gradient(135deg,#8a6a1e,#c6a15b)',imgs:['eng_7','eng_3']}
 ];
-function chipHTML(c){return '<div class="chip" data-k="'+c.k+'"><div class="che">'+c.e+'</div><div class="cht">'+c.k+'</div><div class="chs">'+c.s+'</div></div>';}
+function chipHTML(c){var imgs=(c.imgs||[]).map(function(im){return '<img src="img/teachers/'+im+'.png" alt="" loading="lazy">';}).join('');return '<div class="chip" data-k="'+c.k+'" style="background:'+c.bg+'"><div class="chrev">'+imgs+'</div><div class="chgrad"></div><div class="chtxt"><div class="che">'+c.e+'</div><div class="cht">'+c.k+'</div><div class="chs">'+c.s+'</div></div></div>';}
 function pickCourse(k){
  if(k==='1:1 전문'){openPage('1:1 전문');return;}
  if(k==='기업출강'){openPage('기업출강');return;}
