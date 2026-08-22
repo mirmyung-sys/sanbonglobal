@@ -470,6 +470,34 @@ header nav a{letter-spacing:-.01em}
  .icard .ihover{position:relative;opacity:1;transform:none;pointer-events:auto;box-shadow:none}
  .cpanel .icard:hover{flex-grow:1}
 }
+/* ===== 8챕터 그리드 (호버 확장) ===== */
+.chapters{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+.chrow{display:flex;gap:12px}
+.chip{position:relative;flex:1 1 0;min-width:0;height:150px;border-radius:16px;overflow:hidden;cursor:pointer;padding:20px 22px;color:#fff;background:linear-gradient(140deg,#1b2c4e,#31507f);box-shadow:0 8px 22px rgba(20,33,61,.14);transition:flex-grow .45s cubic-bezier(.2,.7,.2,1),box-shadow .3s;display:flex;flex-direction:column;justify-content:flex-end}
+.chip .che{position:absolute;top:16px;right:18px;font-family:'Montserrat',sans-serif;font-weight:900;font-size:14px;letter-spacing:1px;color:rgba(255,255,255,.32)}
+.chip .cht{font-size:22px;font-weight:900;letter-spacing:-.03em;white-space:nowrap}
+.chip .chs{font-size:12.5px;opacity:.86;margin-top:8px;line-height:1.45}
+.chrow .chip:hover{flex-grow:2.4;box-shadow:0 22px 46px rgba(20,33,61,.3)}
+.chip::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--gold2);transform:scaleX(0);transform-origin:left;transition:.35s}
+.chip.on::after{transform:scaleX(1)}
+.chip.on{box-shadow:0 14px 34px rgba(20,33,61,.34)}
+@media(max-width:860px){.chrow{flex-wrap:wrap}.chip{flex:1 1 44%;height:120px}.chrow .chip:hover{flex-grow:0}}
+/* ===== 내게 맞는 강의 CTA ===== */
+.findwrap{display:flex;justify-content:center;padding:30px 24px 12px}
+.findbtn{display:inline-flex;align-items:center;gap:14px;background:linear-gradient(120deg,#1D2D4F,#324a78);color:#fff;padding:18px 38px;border-radius:999px;box-shadow:0 16px 42px rgba(29,45,79,.32);font-size:18px;cursor:pointer;transition:.25s;border:2px solid var(--gold2)}
+.findbtn:hover{transform:translateY(-3px);box-shadow:0 24px 56px rgba(29,45,79,.44)}
+.findbtn .fi{font-size:24px}
+.findbtn b{font-weight:900;letter-spacing:-.02em}
+.findbtn em{font-style:normal;font-size:13.5px;color:var(--gold2);font-weight:700}
+@media(max-width:640px){.findbtn{flex-direction:column;gap:4px;padding:16px 26px;font-size:16px}.findbtn em{font-size:12px}}
+/* ===== 맞춤강의 찾기 그리드(전체화면) ===== */
+.findgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+.findcard{display:block;border:1px solid var(--line);border-radius:14px;padding:22px 18px;background:#fff;cursor:pointer;transition:.2s}
+.findcard:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(20,33,61,.14);border-color:var(--gold2)}
+.findcard .fce{font-family:'Montserrat',sans-serif;font-weight:900;font-size:13px;color:var(--gold-dk);letter-spacing:1px}
+.findcard .fct{font-size:20px;font-weight:900;color:var(--red);margin:6px 0}
+.findcard .fcs{font-size:13px;color:#6b7078;line-height:1.5}
+@media(max-width:860px){.findgrid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -525,7 +553,9 @@ header nav a{letter-spacing:-.01em}
 </div></div>
 
 <!-- SNS 링크 바 -->
-<div class="snsbar"><div class="wrap">
+<div class="snsbar">
+  <div class="findwrap"><a class="findbtn" href="#" onclick="openPage('수강신청');return false;"><span class="fi">🎯</span><b>내게 맞는 강의 수강하기</b><em>나에게 딱 맞는 과목·반을 찾아드려요 →</em></a></div>
+  <div class="wrap">
   <a class="snsbtn sns-ig" href="#" target="_blank"><span class="si">📷</span> 인스타그램</a>
   <a class="snsbtn sns-yt" href="#" target="_blank"><span class="si">▶</span> 유튜브</a>
   <a class="snsbtn sns-kk" href="http://pf.kakao.com/_FxfgQT" target="_blank"><span class="si">💬</span> 카카오톡 채널</a>
@@ -537,8 +567,8 @@ header nav a{letter-spacing:-.01em}
 <section class="star-sec"><div class="wrap">
   <div class="star-card">
     <h2><span class="r">산본글로벌</span> 강의관</h2>
-    <p class="cguide">과목을 누르면 담당 강사와 요일·시간표가 펼쳐집니다.</p>
-    <div class="ctabs" id="ctabs"></div>
+    <p class="cguide">과목에 마우스를 올리면 커지고, 클릭하면 담당 강사와 수강신청이 펼쳐집니다.</p>
+    <div class="chapters" id="chapters"></div>
     <div class="cpanel" id="cpanel"></div>
     <div class="btnrow">
       <a class="bbtn k" href="#" onclick="openAll();return false;">전체 강의 보기 ›</a>
@@ -702,12 +732,15 @@ const COURSES={
   {n:'엘리 킴',img:'elly',rows:[['초급반','월·수','19:30~21:30'],['중급반','화·목','19:30~21:30']]},
   {n:'최자운 (데보라)',img:'eng_6',rows:[['실전반','토요일','10:00~13:00']]}
  ],
- '토스·오픽':[
-  {n:'유미용',img:'eng_14',rows:[['—','—','시간표 준비중']]},
-  {n:'김현정',img:'eng_15',rows:[['—','—','시간표 준비중']]}
+ '토스':[
+  {n:'유미용',img:'eng_14',rows:[['정규반','평일·주말','시간표 준비중']]}
  ],
- '토플·지텔프':[
-  {n:'김현정',img:'eng_15',rows:[['—','—','시간표 준비중']]}
+ '오픽':[
+  {n:'김현정',img:'eng_15',rows:[['정규반','평일·주말','시간표 준비중']]}
+ ],
+ 'JLPT':[
+  {n:'김민정',img:'jpn_2',rows:[['N3~N1','평일반','시간표 준비중']]},
+  {n:'권은정',img:'jpn_1',rows:[['N5~N2','주말반','시간표 준비중']]}
  ],
  '영어회화':[
   {n:'애플 (원어민)',img:'eng_5',rows:[['—','—','시간표 준비중']]},
@@ -744,9 +777,28 @@ function renderCourse(c){
     </div>`).join('');
   document.querySelectorAll('#ctabs button').forEach(b=>b.classList.toggle('on', b.dataset.c===c));
 }
-const TABS=[...Object.keys(COURSES),...Object.keys(SPECIAL)];
-document.getElementById('ctabs').innerHTML=TABS.map((c,i)=>`<button data-c="${c}" class="${i===0?'on':''}">${c}</button>`).join('');
-document.querySelectorAll('#ctabs button').forEach(b=>b.addEventListener('click',()=>renderCourse(b.dataset.c)));
+const CHAPTERS=[
+ {k:'토익',s:'왜 틀리는지 먼저 알아야 점수가 오릅니다',e:'TOEIC'},
+ {k:'토스',s:'말하기 유형 완전 분석, 목표 등급까지',e:'TOEIC S'},
+ {k:'오픽',s:'실전 발화 훈련으로 IH·AL 달성',e:'OPIc'},
+ {k:'JLPT',s:'기출로 증명된 합격 루트',e:'JLPT'},
+ {k:'영어회화',s:'기초부터 원어민까지, 써먹는 회화',e:'SPEAKING'},
+ {k:'일본어',s:'일본인이 실제 쓰는 살아있는 일본어',e:'JAPANESE'},
+ {k:'중국어',s:'발음부터 HSK까지 탄탄하게',e:'CHINESE'},
+ {k:'1:1 전문',s:'나만을 위한 완전 맞춤 수업',e:'1:1'}
+];
+function chipHTML(c){return '<div class="chip" data-k="'+c.k+'"><div class="che">'+c.e+'</div><div class="cht">'+c.k+'</div><div class="chs">'+c.s+'</div></div>';}
+function pickCourse(k){
+ if(k==='1:1 전문'){openPage('1:1 전문');return;}
+ renderCourse(k);
+ var el=document.getElementById('chapters');if(el)el.querySelectorAll('.chip').forEach(function(ch){ch.classList.toggle('on',ch.getAttribute('data-k')===k);});
+ var cp=document.getElementById('cpanel');if(cp)cp.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+(function(){var el=document.getElementById('chapters');if(!el)return;
+ el.innerHTML='<div class="chrow">'+CHAPTERS.slice(0,4).map(chipHTML).join('')+'</div><div class="chrow">'+CHAPTERS.slice(4).map(chipHTML).join('')+'</div>';
+ el.querySelectorAll('.chip').forEach(function(ch){ch.onclick=function(){pickCourse(ch.getAttribute('data-k'));};});
+ var f=el.querySelector('.chip[data-k="토익"]');if(f)f.classList.add('on');
+})();
 renderCourse('토익');
 
 /* ===== 히어로 슬라이더 (6칸) ===== */
@@ -866,6 +918,9 @@ const PAGES={
  '환승 이벤트':H('환승 프로모션','타학원에서 환승하면<br>추가 혜택을 드려요','다른 학원에서 옮겨오시는 분께 무료 레벨테스트와 교재·수강료 추가 혜택을 드립니다. 지금까지의 학습을 이어서 더 빠르게 목표에 도착하세요.','🔁')
   +SEC('환승 혜택',CT(['혜택','내용'],[['레벨테스트','무료 진단으로 정확한 반 배정'],['교재','환승 시 교재 지원'],['수강료','추가 할인 적용'],['맞춤 상담','이전 학습을 이어가는 커리큘럼 설계']]))
   +'<div class="pgnote">※ 재학 증빙(수강증 등) 확인 시 혜택이 적용됩니다. 자세한 내용은 상담 시 안내드려요.</div>'+CTA(),
+ '수강신청':H('FIND YOUR CLASS','내게 맞는 강의를<br>찾아드립니다','과목을 선택하면 담당 강사·시간표와 수강신청으로 바로 연결됩니다. 무엇을 들어야 할지 고민된다면 무료 상담으로 딱 맞는 반을 추천해 드려요.','🎯')
+  +'<div class="findgrid">'+CHAPTERS.map(function(c){return '<a class="findcard" href="#" onclick="closePage();setTimeout(function(){pickCourse(\''+c.k+'\');},220);return false;"><div class="fce">'+c.e+'</div><div class="fct">'+c.k+'</div><div class="fcs">'+c.s+'</div></a>';}).join('')+'</div>'
+  +'<div class="pgnote">어떤 과정이 맞을지 모르겠다면? 무료 레벨테스트로 정확히 진단해 드려요.</div><a class="pgcta" href="#" onclick="closePage();openLv();return false;">무료 레벨테스트 받기 ›</a>'+CTA(),
  '외고':H('외고·특목고 대비','외고 내신,<br>전략이 점수를 만듭니다','학교 진도와 시험 범위를 학생별로 분석해, 진단 → 내신 밀착 → 실전 마무리 3단계로 준비합니다. 무작정 많은 양이 아니라 “필요한 것을 정확히”가 산본글로벌의 방식입니다.','🎓')
   +'<div class="steps"><div class="step"><div class="sh">STEP 01 · 진단 &amp; 기초</div><div class="sb"><b>정확한 출발점 찾기</b><p>레벨 진단으로 약점을 먼저 파악하고, 어휘·문법의 빈틈을 메워 내신 학습의 토대를 만듭니다.</p></div></div><div class="step"><div class="sh">STEP 02 · 내신 밀착</div><div class="sb"><b>학교별 맞춤 진도</b><p>재학 중인 학교의 진도·출제 경향에 맞춰 핵심 위주로 집중 학습하고, 부족한 부분을 반복 교정합니다.</p></div></div><div class="step"><div class="sh">STEP 03 · 실전 마무리</div><div class="sb"><b>시험 직전 요점 정리</b><p>시험 범위를 압축 정리하고 실전 문제로 마무리해, 마지막까지 점수를 끌어올립니다.</p></div></div></div>'
   +'<div class="pgnote">외고·특목고 대비반은 소수정예로 운영되며, 학생별 학습 리포트를 제공합니다.</div>'+CTA(),
