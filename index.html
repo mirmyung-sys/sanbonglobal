@@ -260,6 +260,10 @@ header:hover .megamenu{opacity:1;visibility:visible;transform:translateY(0)}
 .cal td.off{color:#c7ccd3;background:#fafbfc}
 .cal .ev{display:block;width:fit-content;margin-top:6px;font-size:11px;font-weight:800;color:#fff;background:var(--red);border-radius:4px;padding:3px 7px}
 .cal .ev.end{background:#8a8f99}
+.cal td.sun,.cal td.hol{color:#e03131}
+.cal td.sat{color:#1c6fd6}
+.cal td.off{color:#c7ccd3 !important}
+.cal .hname{display:block;font-size:10.5px;font-weight:700;color:#e03131;margin-top:3px;line-height:1.2}
 .ttnote{margin-top:16px;background:#f7f8fa;border-radius:10px;padding:16px 18px;font-size:13.5px;color:#c0392b;line-height:1.9}
 .ttnote span{color:#4b5058;display:block}
 /* ===== 레벨테스트 모달 ===== */
@@ -277,6 +281,30 @@ header:hover .megamenu{opacity:1;visibility:visible;transform:translateY(0)}
 .lvc .lgo{display:block;text-align:center;background:var(--red);color:#fff;font-weight:800;padding:14px;font-size:15px}
 .lvc .lgo:hover{background:#14213d}
 @media(max-width:720px){.lvcards{grid-template-columns:1fr}}
+/* ===== 일반 콘텐츠 페이지 모달 ===== */
+.pghero{border-radius:14px;padding:44px 34px;color:#fff;background:linear-gradient(120deg,var(--red),#2a3d68);position:relative;overflow:hidden;margin-bottom:24px}
+.pghero .pgeyebrow{font-size:14px;letter-spacing:3px;color:var(--gold);font-weight:800}
+.pghero h2{font-size:34px;font-weight:900;margin:8px 0 10px;line-height:1.25}
+.pghero p{opacity:.9;font-size:15px;line-height:1.7;max-width:560px}
+.pghero .pgemoji{position:absolute;right:26px;bottom:14px;font-size:88px;opacity:.9}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:18px 0 8px}
+.step{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.step .sh{background:var(--gold);color:#1c1f26;font-weight:900;font-size:15px;padding:12px 16px}
+.step .sb{padding:16px}
+.step .sb b{display:block;color:var(--red);font-weight:900;margin-bottom:8px;font-size:15px}
+.step .sb p{color:#4b5058;font-size:13.5px;line-height:1.7}
+.pgfeat{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px 0}
+.pgfeat .ft{border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.pgfeat .ft .fi{font-size:26px}
+.pgfeat .ft h4{color:var(--red);font-weight:900;font-size:16px;margin:8px 0 6px}
+.pgfeat .ft p{color:#6b7078;font-size:13.5px;line-height:1.6}
+.pgnote{background:#f7f8fa;border-radius:10px;padding:16px 18px;color:#4b5058;font-size:14px;line-height:1.8;margin-top:8px}
+.notice{width:100%;border-collapse:collapse}
+.notice td{border-bottom:1px solid #eef0f2;padding:14px 6px;font-size:14.5px;color:#3a3f4c}
+.notice td.dt{color:#8a8f99;width:120px;text-align:right;font-size:13px}
+.notice tr:hover td{background:#fafbfc}
+.pgcta{display:inline-block;margin-top:18px;background:var(--gold);color:#1c1f26;font-weight:900;padding:13px 26px;border-radius:8px}
+@media(max-width:720px){.steps{grid-template-columns:1fr}.pgfeat{grid-template-columns:1fr}}
 .ipay{background:linear-gradient(90deg,#ff9d00,#ff6a00);color:#241000;font-weight:900;font-size:15px;letter-spacing:.5px;border:2px solid #e07b00;text-shadow:0 1px 0 rgba(255,255,255,.25)}
 .ipay:hover{background:linear-gradient(90deg,#ffb02e,#ff8324)}
 .cpanel{align-items:stretch}
@@ -319,17 +347,17 @@ nav a{font-size:14px}
     <img src="img/sga_logo.png" alt="산본글로벌어학원 SANBON GLOBAL ACADEMY" style="height:112px;width:auto;max-width:none">
   </a>
   <nav>
-    <a href="#">학원소개</a>
-    <a href="#">공지사항</a>
-    <a href="#">영어</a>
-    <a href="#">일본어</a>
-    <a href="#">중국어</a>
-    <a href="#">유학상담</a>
-    <a href="#">외고</a>
-    <a href="#">과외</a>
-    <a href="#">1:1 전문</a>
-    <a href="#">기업출강</a>
-    <a href="#">임원강의</a>
+    <a href="#" onclick="openPage('학원소개');return false;">학원소개</a>
+    <a href="#" onclick="openPage('공지사항');return false;">공지사항</a>
+    <a href="#" onclick="goCourse('토익');return false;">영어</a>
+    <a href="#" onclick="goCourse('일본어');return false;">일본어</a>
+    <a href="#" onclick="goCourse('중국어');return false;">중국어</a>
+    <a href="#" onclick="openPage('유학상담');return false;">유학상담</a>
+    <a href="#" onclick="openPage('외고');return false;">외고</a>
+    <a href="#" onclick="openPage('과외');return false;">과외</a>
+    <a href="#" onclick="openPage('1:1 전문');return false;">1:1 전문</a>
+    <a href="#" onclick="openPage('기업출강');return false;">기업출강</a>
+    <a href="#" onclick="openPage('임원강의');return false;">임원강의</a>
   </nav>
   <div class="hicons">
     <a href="#" onclick="openLv();return false;"><span class="gi">📊</span>레벨테스트</a>
@@ -524,6 +552,14 @@ nav a{font-size:14px}
   </div>
 </div>
 
+<!-- 콘텐츠 페이지 모달 -->
+<div class="amodal" id="pgModal">
+  <div class="abox">
+    <span class="aclose" onclick="closePage()">×</span>
+    <div id="pgbody"></div>
+  </div>
+</div>
+
 <script>
 const COURSES={
  '토익':[
@@ -613,6 +649,14 @@ const TTEVENTS={
 };
 const TTCLASSES=Object.keys(TTEVENTS);
 function isoOf(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+/* 대한민국 법정공휴일 2026 (대체공휴일 포함) */
+const HOLIDAYS={
+ '2026-01-01':'신정','2026-02-16':'설날연휴','2026-02-17':'설날','2026-02-18':'설날연휴',
+ '2026-03-01':'삼일절','2026-03-02':'대체공휴일','2026-05-05':'어린이날','2026-05-24':'부처님오신날',
+ '2026-05-25':'대체공휴일','2026-06-06':'현충일','2026-08-15':'광복절','2026-08-17':'대체공휴일',
+ '2026-09-24':'추석연휴','2026-09-25':'추석','2026-09-26':'추석연휴',
+ '2026-10-03':'개천절','2026-10-05':'대체공휴일','2026-10-09':'한글날','2026-12-25':'성탄절'
+};
 function buildCal(cls){
  const y=2026,m=9; // 10월(0-index 9)
  const first=new Date(y,m,1);
@@ -620,10 +664,12 @@ function buildCal(cls){
  const ev=TTEVENTS[cls]||{};
  let html='<tr>'+['SUN','MON','TUE','WED','THU','FRI','SAT'].map(x=>`<th>${x}</th>`).join('')+'</tr>';
  for(let w=0;w<6;w++){html+='<tr>';for(let i=0;i<7;i++){
-   const iso=isoOf(d), off=d.getMonth()!==m; let badge='';
+   const iso=isoOf(d), off=d.getMonth()!==m, hol=HOLIDAYS[iso]; let badge='';
    if(iso===ev.s) badge='<span class="ev">개강</span>';
    if(iso===ev.e) badge='<span class="ev end">종강</span>';
-   html+=`<td class="${off?'off':''}">${d.getDate()}${badge}</td>`;
+   if(hol&&!off) badge+=`<span class="hname">${hol}</span>`;
+   let cls2=off?'off':(hol?'hol':(i===0?'sun':(i===6?'sat':'')));
+   html+=`<td class="${cls2}">${d.getDate()}${badge}</td>`;
    d.setDate(d.getDate()+1);
  }html+='</tr>';}
  document.getElementById('cal').innerHTML=html;
@@ -635,6 +681,34 @@ function closeTT(){document.getElementById('ttModal').classList.remove('open');}
 function openLv(){document.getElementById('lvModal').classList.add('open');}
 function closeLv(){document.getElementById('lvModal').classList.remove('open');}
 document.querySelectorAll('.amodal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');}));
+
+/* ===== 콘텐츠 페이지 (빈 메뉴 채우기) ===== */
+function H(eyebrow,title,desc,emoji){return '<div class="pghero"><div class="pgeyebrow">'+eyebrow+'</div><h2>'+title+'</h2><p>'+desc+'</p><div class="pgemoji">'+emoji+'</div></div>';}
+function CTA(){return '<a class="pgcta" href="#" onclick="alert(\'상담 예약\\n전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원\');return false;">무료 상담 예약하기 ›</a>';}
+const PAGES={
+ '학원소개':H('SANBON GLOBAL ACADEMY','영어·일본어·중국어를 한 곳에서,<br>산본글로벌어학원','산본역 1분 거리에서 초급부터 실전까지, 학습자 한 명 한 명의 목표에 맞춘 밀착 교육을 제공합니다. 시험 점수부터 실전 회화, 기업·임원 맞춤 강의까지 폭넓게 운영합니다.','🏫')
+  +'<div class="pgfeat"><div class="ft"><div class="fi">🎯</div><h4>목표별 맞춤 설계</h4><p>토익·토스·오픽·JLPT·HSK 등 시험별, 레벨별 커리큘럼으로 최단 경로를 설계합니다.</p></div><div class="ft"><div class="fi">👩‍🏫</div><h4>검증된 전문 강사진</h4><p>스파르타 관리형부터 원어민 회화까지, 과목별 전문 강사가 책임 지도합니다.</p></div><div class="ft"><div class="fi">🏢</div><h4>성인·기업·임원</h4><p>직장인 실무 어학, 기업 출강, 임원 프라이빗 강의를 별도 운영합니다.</p></div><div class="ft"><div class="fi">📍</div><h4>오시는 길</h4><p>경기 군포시 산본동 1135-1 롯데프라자 7층 (산본역 3번출구 도보 1분)</p></div></div>'
+  +'<div class="pgnote">대표 명충건 · 전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원<br>평일 10:00~22:00 / 토 10:00~16:00 · 일·공휴일 휴무</div>'+CTA(),
+ '공지사항':H('NOTICE','공지사항','개강 일정, 이벤트, 휴무 안내 등 산본글로벌어학원의 새로운 소식을 확인하세요.','📢')
+  +'<table class="notice"><tr><td><b>[개강]</b> 10월 정규반 개강 안내 (주5일·월수·화목·토요반)</td><td class="dt">2026.09.22</td></tr><tr><td><b>[이벤트]</b> 가을학기 오픈 · 신규 등록 최대 25% 할인</td><td class="dt">2026.09.20</td></tr><tr><td><b>[안내]</b> 무료 레벨테스트 상시 접수 (영·일·중)</td><td class="dt">2026.09.15</td></tr><tr><td><b>[휴무]</b> 추석 연휴 휴무 안내 (9/24~9/26)</td><td class="dt">2026.09.10</td></tr></table>'
+  +'<div class="pgnote">자세한 내용은 전화 또는 카카오톡 채널로 문의해 주세요. · 031-466-6969</div>',
+ '외고':H('외고·특목고 대비','외고 내신,<br>전략이 점수를 만듭니다','학교 진도와 시험 범위를 학생별로 분석해, 진단 → 내신 밀착 → 실전 마무리 3단계로 준비합니다. 무작정 많은 양이 아니라 “필요한 것을 정확히”가 산본글로벌의 방식입니다.','🎓')
+  +'<div class="steps"><div class="step"><div class="sh">STEP 01 · 진단 &amp; 기초</div><div class="sb"><b>정확한 출발점 찾기</b><p>레벨 진단으로 약점을 먼저 파악하고, 어휘·문법의 빈틈을 메워 내신 학습의 토대를 만듭니다.</p></div></div><div class="step"><div class="sh">STEP 02 · 내신 밀착</div><div class="sb"><b>학교별 맞춤 진도</b><p>재학 중인 학교의 진도·출제 경향에 맞춰 핵심 위주로 집중 학습하고, 부족한 부분을 반복 교정합니다.</p></div></div><div class="step"><div class="sh">STEP 03 · 실전 마무리</div><div class="sb"><b>시험 직전 요점 정리</b><p>시험 범위를 압축 정리하고 실전 문제로 마무리해, 마지막까지 점수를 끌어올립니다.</p></div></div></div>'
+  +'<div class="pgnote">외고·특목고 대비반은 소수정예로 운영되며, 학생별 학습 리포트를 제공합니다.</div>'+CTA(),
+ '과외':H('1:1 · 소수정예','나만을 위한<br>완전 맞춤 수업','정해진 커리큘럼이 아니라, 나의 레벨·목표·일정에 맞춰 설계하는 프라이빗 수업입니다. 원하는 요일과 시간에, 담당 선생님이 끝까지 관리합니다.','📖')
+  +'<div class="pgfeat"><div class="ft"><div class="fi">🧭</div><h4>레벨 진단 후 설계</h4><p>첫 수업 전 진단으로 정확한 커리큘럼을 만듭니다.</p></div><div class="ft"><div class="fi">🗓️</div><h4>원하는 요일·시간</h4><p>학생 일정에 맞춰 시간표를 자유롭게 구성합니다.</p></div><div class="ft"><div class="fi">🤝</div><h4>담당제 밀착관리</h4><p>한 명의 담당 선생님이 진도·숙제·약점을 책임 관리합니다.</p></div><div class="ft"><div class="fi">📊</div><h4>학습 리포트</h4><p>진도와 성취도를 정리해 학부모님께 공유합니다.</p></div></div>'+CTA(),
+ '유학상담':H('일본유학 · 어학연수','유학, 상담부터<br>준비까지 한 번에','어학원 선정, 서류·비자, 현지 생활 준비까지 단계별로 안내합니다. 일본어 학습과 유학 준비를 한 곳에서 연결해, 준비 기간을 줄이고 실패 확률을 낮춥니다.','✈️')
+  +'<div class="pgfeat"><div class="ft"><div class="fi">🏫</div><h4>어학원·학교 선정</h4><p>목표와 예산에 맞는 현지 기관을 함께 찾습니다.</p></div><div class="ft"><div class="fi">📑</div><h4>서류·비자 준비</h4><p>필요 서류와 비자 절차를 체크리스트로 안내합니다.</p></div><div class="ft"><div class="fi">🗣️</div><h4>사전 일본어</h4><p>출국 전 생활 회화·JLPT를 병행 준비합니다.</p></div><div class="ft"><div class="fi">🧳</div><h4>현지 생활 준비</h4><p>거주·생활 정보까지 실질적인 팁을 제공합니다.</p></div></div>'+CTA(),
+ '1:1 전문':H('1:1 PROFESSIONAL','완전 1:1,<br>목표까지 최단거리','그룹 수업의 속도가 아쉬웠다면, 오직 나에게 맞춘 1:1 전문관을 추천합니다. 시험 단기 완성, 회화 집중, 취약 영역 보강 등 목적별로 최적화합니다.','🎯')
+  +'<div class="pgfeat"><div class="ft"><div class="fi">⚡</div><h4>단기 목표 완성</h4><p>기간과 목표 점수에 맞춰 집중 설계합니다.</p></div><div class="ft"><div class="fi">🔁</div><h4>취약점 집중</h4><p>내가 약한 부분만 골라 반복 교정합니다.</p></div><div class="ft"><div class="fi">💬</div><h4>실전 회화</h4><p>원어민·전문 강사와 실전 대화를 집중 훈련합니다.</p></div><div class="ft"><div class="fi">🕒</div><h4>유연한 스케줄</h4><p>바쁜 직장인·학생 일정에 맞춰 운영합니다.</p></div></div>'+CTA(),
+ '기업출강':H('기업 출강 · B2B','회사로 찾아가는<br>실무 어학 교육','임직원 대상 영어·일본어·중국어 교육을 회사 일정에 맞춰 진행합니다. 업종·직무에 맞춘 실무 커리큘럼과 성과 리포트로, 교육 효과를 눈으로 확인하실 수 있습니다.','🏢')
+  +'<div class="pgfeat"><div class="ft"><div class="fi">🧩</div><h4>직무 맞춤 설계</h4><p>영업·CS·개발 등 직무별 실무 표현 중심으로 구성합니다.</p></div><div class="ft"><div class="fi">📈</div><h4>성과 리포트</h4><p>출석·성취도를 정리해 담당자에게 공유합니다.</p></div><div class="ft"><div class="fi">🕘</div><h4>사내 일정 맞춤</h4><p>업무 시간에 맞춰 방문 또는 화상으로 진행합니다.</p></div><div class="ft"><div class="fi">💳</div><h4>세금계산서 발행</h4><p>법인 결제·증빙을 지원합니다.</p></div></div>'+CTA(),
+ '임원강의':H('EXECUTIVE · PRIVATE','임원을 위한<br>프라이빗 어학','바쁜 임원분들을 위해 시간·장소·주제를 완전 맞춤으로 운영하는 프리미엄 1:1 과정입니다. 미팅·프레젠테이션·의전 등 상황별 실전 표현에 집중합니다.','👔')
+  +'<div class="pgfeat"><div class="ft"><div class="fi">🤵</div><h4>완전 맞춤 1:1</h4><p>주제·수준·일정을 전적으로 맞춰 설계합니다.</p></div><div class="ft"><div class="fi">🗓️</div><h4>시간·장소 자유</h4><p>사무실 방문 또는 화상으로 편하게 진행합니다.</p></div><div class="ft"><div class="fi">🎤</div><h4>상황별 실전</h4><p>미팅·발표·네트워킹 등 실제 상황을 훈련합니다.</p></div><div class="ft"><div class="fi">🔒</div><h4>프라이빗 운영</h4><p>비공개·소수 정예로 편안하게 학습합니다.</p></div></div>'+CTA()
+};
+function openPage(k){var p=PAGES[k];if(!p)return;document.getElementById('pgbody').innerHTML=p;document.getElementById('pgModal').classList.add('open');window.scrollTo(0,0);}
+function closePage(){document.getElementById('pgModal').classList.remove('open');}
+function goCourse(tab){renderCourse(tab);var el=document.getElementById('ctabs');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
 </script>
 
 </body>
