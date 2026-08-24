@@ -568,6 +568,11 @@ header nav a{letter-spacing:-.01em}
 .chip .chgrad{position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(8,10,16,.42),rgba(8,10,16,0) 56%);pointer-events:none}
 .chip .chtxt{position:relative;z-index:3;margin-top:auto}
 .chrow .chip:hover .chrev{opacity:1}
+.chip .chgo{margin-top:10px;align-self:flex-start;background:#e2211c;color:#fff;font-weight:900;font-size:13px;padding:0 0;border-radius:999px;max-height:0;opacity:0;overflow:hidden;transition:max-height .25s,opacity .25s,padding .25s;box-shadow:0 6px 16px rgba(226,33,28,.4)}
+.chrow .chip:hover .chgo{max-height:40px;opacity:1;padding:7px 16px}
+.chrow .chip:hover .cht{font-size:28px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.55)}
+.chrow .chip:hover .chs{color:#ffdf4d;font-weight:800}
+.chrow .chip:hover .che{color:#ff6a6a}
 @media(max-width:860px){.chrow{flex-wrap:wrap}.chip{flex:1 1 44%;height:120px}.chrow .chip:hover{flex-grow:0}}
 /* ===== 내게 맞는 강의 CTA ===== */
 .findwrap{display:flex;justify-content:center;padding:30px 24px 12px}
@@ -622,7 +627,9 @@ header nav a{letter-spacing:-.01em}
 .enr-head{display:flex;align-items:center;gap:10px;padding:15px 20px;background:linear-gradient(90deg,#1D2D4F,#33507f);color:#fff}
 .enr-head h4{font-size:17px;font-weight:900;letter-spacing:-.02em;margin:0}
 .enr-ic{font-size:20px}
-.enr-chips{display:flex;flex-wrap:wrap;gap:9px;padding:18px 20px}
+.enr-ph{display:flex;gap:8px;padding:16px 20px 0;flex-wrap:wrap}
+.enr-ph img{width:66px;height:82px;object-fit:cover;object-position:center top;border-radius:10px;border:1px solid var(--line);background:#eef1f6}
+.enr-chips{display:flex;flex-wrap:wrap;gap:9px;padding:16px 20px}
 .enr-chip{font-size:14px;font-weight:700;color:#2b3550;background:#f3f5f9;border:1px solid #e6e9f0;border-radius:999px;padding:9px 16px;cursor:pointer;transition:.16s;font-family:inherit}
 .enr-chip:hover{background:var(--navy);color:#fff;border-color:var(--navy);transform:translateY(-2px);box-shadow:0 8px 18px rgba(20,33,61,.22)}
 .enr-flow{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:4px 0 16px}
@@ -945,7 +952,7 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
 
 <!-- SNS 링크 바 -->
 <div class="snsbar">
-  <div class="findwrap"><a class="findbtn" href="#" onclick="openPage('수강신청');return false;"><span class="fi">🎯</span><b>내게 맞는 강의 수강하기</b><em>나에게 딱 맞는 과목·반을 찾아드려요 →</em></a></div>
+  <div class="findwrap"><a class="findbtn" href="#" onclick="openPage('수강신청');return false;"><span class="fi">🎯</span><b>내게 맞는 강의 찾은 후 수강신청까지</b><em>과목·반 추천부터 결제까지 한 번에 →</em></a></div>
   <div class="wrap">
   <a class="snsbtn sns-ig" href="#" target="_blank"><span class="si">📷</span> 인스타그램</a>
   <a class="snsbtn sns-yt" href="#" target="_blank"><span class="si">▶</span> 유튜브</a>
@@ -1191,7 +1198,7 @@ const CHAPTERS=[
  {k:'기업출강',pg:'기업출강',s:'회사로 찾아가는 실무 어학 교육',e:'B2B',bg:'linear-gradient(135deg,#293a58,#40587f)',imgs:['eng_12','jpn_2','chn_3']},
  {k:'임원 1:1 출강',pg:'임원강의',s:'임원 맞춤 1:1 프리미엄 출강',e:'EXECUTIVE',bg:'linear-gradient(135deg,#7a5a1a,#c6a15b)',imgs:[]}
 ];
-function chipHTML(c){var imgs=(c.imgs||[]).map(function(im){return '<img src="img/teachers/'+im+'.png" alt="" loading="lazy">';}).join('');return '<div class="chip'+(c.exp?' exp':'')+'" data-k="'+c.k+'" style="background:'+c.bg+'"><div class="chrev">'+imgs+'</div><div class="chgrad"></div><div class="chtxt"><div class="che">'+c.e+'</div><div class="cht">'+c.k+'</div><div class="chs">'+c.s+'</div></div></div>';}
+function chipHTML(c){var imgs=(c.imgs||[]).map(function(im){return '<img src="img/teachers/'+im+'.png" alt="" loading="lazy">';}).join('');return '<div class="chip'+(c.exp?' exp':'')+'" data-k="'+c.k+'" style="background:'+c.bg+'"><div class="chrev">'+imgs+'</div><div class="chgrad"></div><div class="chtxt"><div class="che">'+c.e+'</div><div class="cht">'+c.k+'</div><div class="chs">'+c.s+'</div><div class="chgo">자세히 보기 ›</div></div></div>';}
 function pickCourse(k){
  var c=null;for(var i=0;i<CHAPTERS.length;i++){if(CHAPTERS[i].k===k){c=CHAPTERS[i];break;}}
  if(c&&c.pg){openPage(c.pg);return;}
@@ -1430,7 +1437,7 @@ function joinPage(){return memberTabs()
  +'<div class="jn-note" style="text-align:left;margin-top:14px">· SNS 계정이 없는 경우 각 SNS별 제공사 회원가입이 필요합니다.<br>· SNS로 가입 시 휴대폰/아이핀 인증을 통해 사용자 인증을 하셔야 합니다.</div></div></div>'
  +'<ul class="jn-cautions"><li>입력하신 인증 정보는 본인인증에만 사용되며 이외의 용도로 사용 또는 저장되지 않습니다.</li><li>인증이 정상적으로 작동하지 않으면 브라우저의 팝업 차단 기능을 해제하신 후 이용해 주세요.</li><li>기존 오프라인 수강 등록생은 회원가입 시 학원 방문 혹은 유선으로 수강등록 내역 통합을 요청해 주세요.</li><li>통합이 되지 않을 경우, 사이트 내에서 기존 수강등록 내역 조회가 되지 않습니다.</li><div class="jn-tip">빠른 실명확인을 위한 TIP!</div><li>본인인증이 어려우시면 전화 031-466-6969 또는 카카오톡 채널 @산본글로벌어학원으로 도와드립니다.</li></ul>'+CTA();}
 function loginPage(){return memberTabs()
- +'<div class="pghero big" style="background:linear-gradient(120deg,#12203d,#33507f)"><div class="pgeyebrow">LOGIN</div><h2>통합회원 로그인</h2><p>로그인하시면 산본글로벌 서비스를 이용하실 수 있습니다.</p></div>'
+ +'<div class="pghero big" style="background:linear-gradient(120deg,#0b3d2e,#1e6b4f)"><div class="pgeyebrow">LOGIN</div><h2>통합회원 로그인</h2><p>로그인하시면 산본글로벌 서비스를 이용하실 수 있습니다.</p></div>'
  +'<div class="mb-login"><div class="mb-lc"><h4>MEMBERS LOGIN</h4><div class="mdesc">가입하신 아이디로 로그인합니다.</div>'
  +'<input class="mb-field" type="text" placeholder="아이디" autocomplete="off"><input class="mb-field" type="password" placeholder="비밀번호" autocomplete="off">'
  +'<button class="mb-lbtn" type="button" onclick="alert(\'로그인 기능은 준비 중입니다.\')">로그인</button>'
@@ -1480,7 +1487,7 @@ function reviewExtra(){
 function enrollPick(cat,item){alert('수강신청 · '+cat+'\n선택 과목: '+item+'\n\n담당 상담사가 반 편성·시간표·결제를 도와드립니다.\n전화 031-466-6969 / 카카오톡 채널 @산본글로벌어학원');}
 function enrollPage(){
  var CATS=[
-  {c:'시험영어',ic:'📝',items:['토익','오픽','토익스피킹','토플','G-TELP']},
+  {c:'시험영어',ic:'📝',items:['토익','오픽','토익스피킹','토플','G-TELP'],imgs:['eng_13','eng_14','eng_15','eng_6','elly']},
   {c:'영어회화',ic:'💬',items:['원어민 영어회화 · 기초','원어민 영어회화 · 중급','원어민 영어회화 · 고급']},
   {c:'실용영어',ic:'💼',items:['비즈니스 영어','취업 대비반','독해·영문법','원어민 1:1']},
   {c:'일본어',ic:'🎌',items:['원어민 일본어회화','기초 일본어','중급 일본어','고급 일본어','JLPT']},
@@ -1490,7 +1497,8 @@ function enrollPage(){
  ];
  var cards=CATS.map(function(g){
    var chips=g.items.map(function(it){return '<button class="enr-chip" onclick="enrollPick(\''+g.c+'\',\''+it+'\')">'+it+'</button>';}).join('');
-   return '<div class="enr-card"><div class="enr-head"><span class="enr-ic">'+g.ic+'</span><h4>'+g.c+'</h4></div><div class="enr-chips">'+chips+'</div></div>';
+   var ph=(g.imgs&&g.imgs.length)?'<div class="enr-ph">'+g.imgs.map(function(im){return '<img src="img/teachers/'+im+'.png" alt="" loading="lazy">';}).join('')+'</div>':'';
+   return '<div class="enr-card"><div class="enr-head"><span class="enr-ic">'+g.ic+'</span><h4>'+g.c+'</h4></div>'+ph+'<div class="enr-chips">'+chips+'</div></div>';
  }).join('');
  return '<div class="pghero big enr-hero"><div class="pgeyebrow">SGA ADMISSION · 수강신청</div><h2>원하시는 과목을<br>선택하세요</h2><p>상담부터 결제까지 한 번에 — <b>결제까지 올인원 수강신청</b>. 산본글로벌 전 과정을 한 화면에서 신청하세요.</p></div>'
   +'<div class="enr-grid">'+cards+'</div>'
