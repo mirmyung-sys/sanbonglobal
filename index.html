@@ -850,6 +850,49 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
 .jn-cautions li::before{content:"–";position:absolute;left:0;color:var(--red)}
 .jn-tip{color:var(--red);font-weight:900;margin:14px 0 4px}
 @media(max-width:720px){.jn-grid{grid-template-columns:1fr}}
+/* 이벤트/혜택 허브 */
+.ev-banner{width:100vw;position:relative;left:50%;transform:translateX(-50%);margin-top:-76px;background:var(--red);color:#fff;padding:22px 26px;display:flex;align-items:baseline;gap:14px}
+.ev-banner b{font-size:24px;font-weight:900}.ev-banner span{font-size:14px;opacity:.92}
+.ev-top{display:flex;align-items:center;gap:26px;flex-wrap:wrap;padding:30px 0 10px;border-bottom:2px solid var(--line)}
+.ev-month{width:120px;height:120px;border:3px solid var(--navy);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none}
+.ev-month em{font-style:normal;font-size:13px;color:#8a90a0;font-weight:800}
+.ev-month b{font-size:54px;font-weight:900;color:var(--navy);line-height:1}
+.ev-month span{font-size:14px;color:var(--navy);font-weight:800}
+.ev-tt{flex:1;min-width:260px}
+.ev-open{font-size:14px;color:#8a90a0;font-weight:700;margin-bottom:6px}
+.ev-tt h2{font-size:34px;font-weight:900;color:var(--navy);letter-spacing:-.03em;margin:0 0 14px}
+.ev-tt h2 b{color:var(--red)}
+.evtimeline2{margin:26px 0 30px;position:relative}
+.evtl{display:flex;align-items:center;gap:18px;padding:14px 0;position:relative}
+.evtl-d{width:70px;flex:none;text-align:right;font-weight:900;font-size:18px;color:#c9ccd6}
+.evtl-d span{display:block;font-size:12px;font-weight:700}
+.evtl.on .evtl-d{color:var(--red)}
+.evtl-dot{width:54px;height:54px;border-radius:50%;background:#eef1f6;display:flex;align-items:center;justify-content:center;font-size:22px;flex:none;border:2px solid #e1e4ec}
+.evtl.on .evtl-dot{background:var(--red);border-color:var(--red)}
+.evtl-b b{font-size:20px;font-weight:900;color:#1c2333}
+.evtl.on .evtl-b b{color:var(--red)}
+.evtl-b p{font-size:14px;color:#5b6069;margin:4px 0 0}
+.evbands{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+.evband{border-radius:14px;padding:26px 28px;position:relative}
+.evband-tag{display:inline-block;background:var(--navy);color:#fff;font-size:12px;font-weight:800;padding:5px 12px;border-radius:6px;margin-bottom:12px}
+.evband h4{font-size:22px;font-weight:900;color:#1c2333;margin:0 0 10px}
+.evband-r{list-style:none;margin:0;padding:0}
+.evband-r li{font-size:14px;color:#4a5468;line-height:1.8;padding-left:14px;position:relative}
+.evband-r li::before{content:"–";position:absolute;left:0;color:#98a}
+@media(max-width:720px){.ev-tt h2{font-size:26px}.evtl-b b{font-size:17px}}
+/* 이벤트 상세 이미지 우선(2/3) + 글자 확대 */
+.pgimg{width:100vw;position:relative;left:50%;transform:translateX(-50%);margin-top:-76px;height:66vh;min-height:440px;overflow:hidden;background:#0d1017}
+.pgimg img{width:100%;height:100%;object-fit:cover;display:block}
+#pgbody p{font-size:20px;line-height:1.9}
+#pgbody .lead{font-size:22px;line-height:1.95}
+#pgbody li{font-size:19px;line-height:1.9}
+#pgbody .pgnote{font-size:17px;line-height:1.75}
+#pgbody h3{font-size:30px}
+#pgbody td,#pgbody th{font-size:17px}
+#pgbody .pghero.big p{font-size:21px}
+#pgbody .evb p,#pgbody .evc-l em,#pgbody .evc-l span{font-size:18px}
+#pgbody .evb b,#pgbody .evstep .evn{font-size:20px}
+@media(max-width:720px){.pgimg{height:52vh;min-height:300px}#pgbody p{font-size:17px}#pgbody .lead{font-size:18px}}
 </style>
 </head>
 <body>
@@ -918,9 +961,10 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
     </div>
     <div class="ni"><a href="#" onclick="openPage('수강후기');return false;">수강후기</a></div>
     <div class="ni"><a href="#" onclick="openPage('강사소개');return false;">강사님 소개</a></div>
-    <div class="ni"><a href="#" onclick="openPage('가을학기 할인');return false;">이벤트/혜택<b class="car">▾</b></a>
+    <div class="ni"><a href="#" onclick="openPage('이벤트혜택');return false;">이벤트/혜택<b class="car">▾</b></a>
       <div class="ddown">
-        <a href="#" onclick="openPage('가을학기 할인');return false;">가을학기 할인</a>
+        <a href="#" onclick="openPage('이벤트혜택');return false;">이달의 혜택</a>
+        <a href="#" onclick="openPage('가을학기 할인');return false;">글로벌 위크</a>
         <a href="#" onclick="openPage('환승 이벤트');return false;">환승 이벤트</a>
         <a href="#" onclick="openPage('네이버 리뷰 이벤트');return false;">네이버 리뷰 이벤트</a>
         <a href="#" onclick="openPage('산모살롱');return false;">산모살롱</a>
@@ -1233,7 +1277,7 @@ function renderProg(k){
 })();
 const SLIDES=[
  {e:'2026 · 10월 개강 안내', t:'10월 개강,<br>지금 시작하세요', s:'영어·일본어·중국어 전 과목 개강 일정 안내', act:"openTT()", pbg:'linear-gradient(135deg,#2f6fb0,#5b9bd8)', tc:'#ffffff', ac:'#fff0cf', bbg:'#ffffff', btc:'#1d4e86', bg:'img/gen7.jpg'},
- {e:'SANBON GLOBAL WEEK', t:'가을학기 OPEN<br>최대 25% 할인', s:'지금 등록하면 수강료 최대 25% · 신규 등록 혜택', act:"openPage('가을학기 할인')", pbg:'#EFC04A', tc:'#1a1205', ac:'#8a5a10', bbg:'#16264a', btc:'#ffffff', bg:'img/gen8.jpg'},
+ {e:'GLOBAL WEEK · 얼리버드', t:'글로벌 위크<br>최대 25% 할인', s:'오직 7일간 할인주간! 10.19(월)~10.25(일) · 토익 25% · 그 외 20%', act:"openPage('가을학기 할인')", pbg:'#EFC04A', tc:'#1a1205', ac:'#8a5a10', bbg:'#16264a', btc:'#ffffff', bg:'img/gen8.jpg'},
  {e:'환승 이벤트', t:'다른 어학에서 갈아타면<br>최대 25% 할인', s:'타 어학 수강 인증하면 환승 할인 · 무료 레벨테스트', act:"openPage('환승 이벤트')", pbg:'linear-gradient(135deg,#d43b4f,#a72439)', tc:'#ffffff', ac:'#ffe1d0', bbg:'#ffffff', btc:'#c2283b', bg:'img/gen9.jpg'},
  {e:'무료 진단', t:'내 실력, 무료로<br>정확하게 진단', s:'원어민 회화 레벨테스트 + 온라인 자가진단', act:"openLv()", pbg:'#ffffff', tc:'#16264a', ac:'#0e8f88', bbg:'#16264a', btc:'#ffffff', bg:'img/gen1.jpg'},
  {e:'1:1 PRIVATE', t:'나만을 위한<br>완전 맞춤 수업', s:'1:1 전문·임원 강의·기업 출강까지', act:"openPage('1:1 전문')", pbg:'linear-gradient(135deg,#7658c8,#9a7ee0)', tc:'#ffffff', ac:'#efe6ff', bbg:'#ffffff', btc:'#5a3f92', bg:'img/gen10.jpg'},
@@ -1450,6 +1494,27 @@ function loginPage(){return memberTabs()
  +'<a href="#" onclick="alert(\'준비 중입니다.\');return false;" style="color:#03C75A">NAVER</a>'
  +'<a href="#" onclick="alert(\'준비 중입니다.\');return false;" style="color:#3A1D1D">kakaotalk</a>'
  +'<a href="#" onclick="alert(\'준비 중입니다.\');return false;">Google</a></div></div></div>'+CTA();}
+function bigImg(src){return '<div class="pgimg"><img src="'+src+'" alt="" loading="eager"></div>';}
+function eventHubPage(){
+ var TL=[
+  {d:'10.19',day:'월',on:1,t:'글로벌 위크 · 최대 25% 할인',s:'얼리버드 최저가! 토익 25% · 그 외 과목 20%'},
+  {d:'10.26',day:'월',t:'최대 20% 할인',s:'남은 기간 중 최저가로 등록'},
+  {d:'11.03',day:'월',t:'최대 10% 할인',s:'개강 후 등록도 혜택 유지'},
+  {d:'11.10',day:'월',t:'날짜별 할인',s:'놓친 수업만큼 제외된 금액만 결제 · 전 과목 대상(일부 제외)'}
+ ];
+ var tl=TL.map(function(x){return '<div class="evtl'+(x.on?' on':'')+'"><div class="evtl-d">'+x.d+'<span>('+x.day+')</span></div><div class="evtl-dot">📅</div><div class="evtl-b"><b>'+x.t+'</b><p>'+x.s+'</p></div></div>';}).join('');
+ var BANDS=[
+  {tag:'온/오프라인',c:'#fbe9ee',t:'내일배움카드 최대 25% 할인',r:['기본 20% + 신규 5% 할인','국비지원 과정 별도 안내'],go:''},
+  {tag:'온/오프라인',c:'#e6f7f0',t:'친구추천 이벤트',r:['친구 추천하고 친구도 나도 1만원 할인쿠폰!','타 할인쿠폰과 중복 적용 불가'],go:''},
+  {tag:'온/오프라인',c:'#f6f2df',t:'환승 할인 이벤트 최대 25% 할인',r:['다른 어학 서비스 수강 인증하고 할인 받자!','토익 25% · 그 외 과목 20%'],go:'환승 이벤트'}
+ ];
+ var bands=BANDS.map(function(b){var rs=b.r.map(function(x){return '<li>'+x+'</li>';}).join('');var oc=b.go?' onclick="openPage(\''+b.go+'\')" style="cursor:pointer"':'';return '<div class="evband" style="background:'+b.c+'"'+oc+'><span class="evband-tag">'+b.tag+'</span><h4>'+b.t+'</h4><ul class="evband-r">'+rs+'</ul></div>';}).join('');
+ return '<div class="ev-banner"><b>이벤트 · 혜택</b><span>즐거운 혜택이 여러분을 찾아갑니다.</span></div>'
+  +'<div class="ev-top"><div class="ev-month"><em>2026</em><b>10</b><span>월</span></div><div class="ev-tt"><div class="ev-open">10월 개강 · 수강등록 시작 8.19</div><h2>이달의 <b>할인혜택 &amp; 이벤트</b></h2><a class="pgcta" href="#" onclick="closePage();openPage(\'수강신청\');return false;">마감 주의! 수강신청 바로가기 ›</a></div></div>'
+  +'<div class="evtimeline2">'+tl+'</div>'
+  +'<div class="evbands">'+bands+'</div>'
+  +'<div class="pgnote">※ 할인 혜택은 중복 적용되지 않습니다. 이벤트 기간·내용은 변동될 수 있으니 자세한 사항은 031-466-6969 또는 카카오톡 채널로 문의해 주세요.</div>'+CTA();
+}
 function guidePage(){
  var CATS=[
   {c:'영어회화',cap:'말이 나와야 진짜 영어! 회화에 최적화된 코스',color:'#0e8f6e',items:['기초입문회화','한인회화','원어민회화(SLE)'],img:'img/gen1.jpg',co:'영어회화'},
@@ -1567,11 +1632,11 @@ const PAGES={
   +SEC('기초·회화','<div class="lead">성조와 병음부터 시작해 일상 회화까지, 원어민 발음으로 정확하게 익힙니다.</div>')
   +SEC('HSK','<div class="lead">급수별 필수 어휘·유형을 집중 학습하고 기출로 마무리해 목표 급수 합격을 돕습니다.</div><div class="chips"><span>HSK 4급</span><span>HSK 5급</span><span>HSK 6급</span></div>')
   +'<div class="pgnote">담당: 오금한·하홍금 외 원어민 강사 · 시간표는 강의관에서 확인</div>'+GO('중국어')+CTA(),
- '가을학기 할인':HV('SANBON GLOBAL WEEK','이달의 혜택 &<br>가을학기 이벤트','지금 등록할수록 더 큰 혜택! 가을학기 특별 할인과 다양한 이벤트를 한눈에 확인하세요.','linear-gradient(120deg,#12203d,#caa23a)',ART_GIFT)
+ '가을학기 할인':bigImg('img/gen8.jpg')+HV('GLOBAL WEEK · 얼리버드 할인','글로벌 위크,<br>오직 7일간 할인주간','10.19(월) ~ 10.25(일) 단 7일! 얼리버드 최저가로 등록하세요. 토익 25% · 그 외 과목 20% 할인.','linear-gradient(120deg,#12203d,#caa23a)',ART_GIFT)
   +'<div class="evtimeline"><div class="evt on"><div class="evt-d">NOW</div><div class="evt-b"><b>가을학기 최대 25% 할인</b><p>지금 등록이 가장 큰 혜택 · 토익 25% / 그 외 20%</p></div></div><div class="evt"><div class="evt-d">D+7</div><div class="evt-b"><b>최대 20% 할인</b><p>남은 기간 중 최저가로 등록</p></div></div><div class="evt"><div class="evt-d">개강후</div><div class="evt-b"><b>최대 10% 할인</b><p>개강 후 등록도 혜택 유지</p></div></div></div>'
   +SEC('이런 혜택도 있어요',CT(['이벤트','내용'],[['신규 등록','수강료 최대 25% 할인'],['다과목 수강','추가 할인 + 교재 지원'],['친구 추천','추천인·등록인 동시 혜택'],['환승 할인','타 어학 인증 시 최대 25% (환승 이벤트)'],['국비지원','내일배움카드 과정 별도 안내']]))
   +'<div class="pgnote">※ 할인 폭·대상은 등록 시점·과정에 따라 달라질 수 있어요. 정확한 금액은 상담 시 안내드립니다. · 031-466-6969</div><a class="pgcta" href="#" onclick="closePage();openTT();return false;">개강 일정 보기 ›</a>'+CTA(),
- '환승 이벤트':HV('SWITCH &amp; SAVE · 환승 이벤트','다른 어학에서 갈아타면<br>최대 25% 할인','어학원·인강·전화영어·학습지 등 다른 어학 서비스를 이용했다면, 산본글로벌로 갈아타고 할인 혜택을 받으세요. 지금까지의 학습을 이어 더 좋은 수업으로 환승!','linear-gradient(135deg,#d43b4f,#a72439)',ART_SUBWAY)
+ '환승 이벤트':bigImg('img/gen9.jpg')+HV('SWITCH &amp; SAVE · 환승 이벤트','다른 어학에서 갈아타면<br>최대 25% 할인','어학원·인강·전화영어·학습지 등 다른 어학 서비스를 이용했다면, 산본글로벌로 갈아타고 할인 혜택을 받으세요. 지금까지의 학습을 이어 더 좋은 수업으로 환승!','linear-gradient(135deg,#d43b4f,#a72439)',ART_SUBWAY)
   +'<div class="evcoupon"><div class="evc-l"><span>다른 어학 수강을 인증하면</span><b>최대 25%</b><em>수강료 할인 혜택</em></div><div class="evc-r">SGA</div></div>'
   +SEC('이벤트 대상 · 혜택',CT(['구분','내용'],[['대상','최근 12개월 이내 타 어학 수강 이력이 있는 분<br>(어학원·인강·전화/화상·학습지 등)'],['혜택','환승 등록 시 수강료 할인 · 토익 25% / 그 외 과목 20%'],['추가','무료 레벨테스트 + 교재 지원']]))
   +'<div class="evsteps"><div class="evstep"><div class="evn">STEP 1</div><div class="evb"><b>수강 이력 인증</b><p>수강이력·수강증·결제내역 중 하나를 카카오톡 채널 또는 방문으로 제출하세요. (어학원·인강·전화/화상·학습지 등)</p></div></div><div class="evstep"><div class="evn">STEP 2</div><div class="evb"><b>할인 혜택 안내</b><p>인증이 확인되면 환승 할인 혜택을 안내해 드려요. (토익 25% / 그 외 20%)</p></div></div><div class="evstep"><div class="evn">STEP 3</div><div class="evb"><b>갈아타서 수강 시작</b><p>할인 혜택을 받고 산본글로벌에서 새롭게 시작하세요.</p></div></div></div>'
@@ -1580,6 +1645,7 @@ const PAGES={
  '수강신청':enrollPage(),
  '수강후기':reviewPage(),
  '강의안내':guidePage(),
+ '이벤트혜택':eventHubPage(),
  '강사소개':teacherPage(),
  '회원가입':joinPage(),
  '로그인':loginPage(),
@@ -1591,7 +1657,7 @@ const PAGES={
   +SEC('참여 방법','<div class="evsteps"><div class="evstep"><div class="evn">STEP 1</div><div class="evb"><b>네이버 플레이스 방문</b><p>「산본글로벌어학원」을 네이버 지도/플레이스에서 검색하세요.</p></div></div><div class="evstep"><div class="evn">STEP 2</div><div class="evb"><b>영수증 리뷰 작성</b><p>방문 인증(영수증) 후 솔직한 후기를 남겨주세요.</p></div></div><div class="evstep"><div class="evn">STEP 3</div><div class="evb"><b>혜택 수령</b><p>리뷰 캡처를 카카오톡 채널 또는 방문으로 보여주시면 3,000원 쿠폰 + 립밤을 드려요.</p></div></div></div>')
   +SEC('유의사항','<ul class="evnotice"><li>영수증(방문) 리뷰에 한해 제공되며, 1인 1회 참여 가능합니다.</li><li>쿠폰은 전 과목 수강료에 중복 적용 가능하나, 일부 특가 상품은 제외될 수 있습니다.</li><li>립밤은 재고 소진 시 동등 이상 사은품으로 대체될 수 있습니다.</li><li>부적절·허위 리뷰 확인 시 혜택이 제한될 수 있습니다.</li></ul>')
   +'<div class="pgnote">문의·수령 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>'+CTA(),
- '산모살롱':HV('산모살롱 · 산본에서 언어를 사랑하는 모임','산모살롱,<br>부담 없이 모이는 공간','산본에서 언어를 사랑하는 사람들의 모임. 1시간 단돈 1,000원. 최소 5인이 모이면 강의실을 내어드립니다. 커피·물·사탕은 무료. 스터디·회화 모임·소모임 무엇이든, 우리 동네에서 가장 가벼운 모임 공간이에요.','linear-gradient(135deg,#F7913F,#e96e1c)',ART_COFFEE)
+ '산모살롱':bigImg('img/gen6.jpg')+HV('산모살롱 · 산본에서 언어를 사랑하는 모임','산모살롱,<br>부담 없이 모이는 공간','산본에서 언어를 사랑하는 사람들의 모임. 1시간 단돈 1,000원. 최소 5인이 모이면 강의실을 내어드립니다. 커피·물·사탕은 무료. 스터디·회화 모임·소모임 무엇이든, 우리 동네에서 가장 가벼운 모임 공간이에요.','linear-gradient(135deg,#F7913F,#e96e1c)',ART_COFFEE)
   +SEC('이용 안내',CT(['구분','내용'],[['이용료','1시간 1,000원 (인당)'],['정원','최소 5인부터'],['무료 제공','커피 · 물 · 사탕'],['이용 대상','스터디·영어회화·소모임 누구나'],['예약','카카오톡 채널 또는 전화 예약']]))
   +SEC('이렇게 쓰세요','<div class="chips"><span>📚 스터디 모임</span><span>🗣️ 영어·회화 모임</span><span>💼 스몰 클래스</span><span>🤝 동네 소모임</span></div><div class="lead">누구나 부담 없이 오가며 모일 수 있게 자리값을 최소화했어요. 편하게 예약하고 이웃과 함께하세요. 오가는 사람이 많을수록 우리 동네가 더 따뜻해집니다.</div>')
   +'<div class="pgnote">☕ 커피·물·사탕 무료 · 최소 5인 · 1시간 1,000원 · 예약 문의 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>'+CTA(),
@@ -1600,13 +1666,13 @@ const PAGES={
   +'<div class="pgnote">외고·특목고 대비반은 소수정예로 운영되며, 학생별 학습 리포트를 제공합니다.</div>'+CTA(),
  '과외':H('1:1 · 소수정예','나만을 위한<br>완전 맞춤 수업','정해진 커리큘럼이 아니라, 나의 레벨·목표·일정에 맞춰 설계하는 프라이빗 수업입니다. 원하는 요일과 시간에, 담당 선생님이 끝까지 관리합니다.','📖')
   +'<div class="pgfeat"><div class="ft"><div class="fi">🧭</div><h4>레벨 진단 후 설계</h4><p>첫 수업 전 진단으로 정확한 커리큘럼을 만듭니다.</p></div><div class="ft"><div class="fi">🗓️</div><h4>원하는 요일·시간</h4><p>학생 일정에 맞춰 시간표를 자유롭게 구성합니다.</p></div><div class="ft"><div class="fi">🤝</div><h4>담당제 밀착관리</h4><p>한 명의 담당 선생님이 진도·숙제·약점을 책임 관리합니다.</p></div><div class="ft"><div class="fi">📊</div><h4>학습 리포트</h4><p>진도와 성취도를 정리해 학부모님께 공유합니다.</p></div></div>'+CTA(),
- '유학상담':H('일본유학 · 어학연수','유학, 상담부터<br>준비까지 한 번에','어학원·학교 선정, 서류·비자, 현지 생활 준비까지 단계별로 안내합니다. EJU(일본유학시험)·전문학교 진학·일본 취업까지, 일본어 학습과 유학 준비를 한 곳에서 연결합니다.','✈️')
+ '유학상담':bigImg('img/gen4.jpg')+H('일본유학 · 어학연수','유학, 상담부터<br>준비까지 한 번에','어학원·학교 선정, 서류·비자, 현지 생활 준비까지 단계별로 안내합니다. EJU(일본유학시험)·전문학교 진학·일본 취업까지, 일본어 학습과 유학 준비를 한 곳에서 연결합니다.','✈️')
   +SEC('EJU (일본유학시험)','<div class="lead">일본 대학 진학에 필요한 EJU를 과목별로 대비합니다. 일본어(독해·청해·기술)와 종합과목·수학까지, 목표 대학 기준에 맞춰 준비합니다.</div><div class="chips"><span>일본어</span><span>종합과목</span><span>수학</span><span>대학별 기준 관리</span></div>')
   +SEC('전문학교 진학','<div class="lead">관심 분야(디자인·IT·조리·항공·뷰티 등)에 맞는 전문학교를 함께 찾고, 지원 서류와 면접을 준비합니다.</div>')
   +SEC('일본 취업','<div class="lead">이력서(리레키쇼)·면접 일본어와 비즈니스 매너까지, 현지 취업에 필요한 실전 준비를 지원합니다.</div>')
   +SEC('준비 절차',CT(['단계','내용'],[['1. 상담','목표·예산·일정 진단'],['2. 학교 선정','어학원/전문학교 후보 선정'],['3. 서류·비자','서류 작성·비자 절차'],['4. 사전 일본어','생활 회화·JLPT 병행'],['5. 출국·정착','현지 생활 정보 안내']]))
   +'<div class="pgfeat"><div class="ft"><div class="fi">🏫</div><h4>학교 선정</h4><p>목표·예산에 맞는 기관을 함께 찾습니다.</p></div><div class="ft"><div class="fi">📑</div><h4>서류·비자</h4><p>필요 서류·비자 절차를 체크리스트로 안내합니다.</p></div><div class="ft"><div class="fi">🗣️</div><h4>사전 일본어</h4><p>생활 회화·JLPT를 병행 준비합니다.</p></div><div class="ft"><div class="fi">🧳</div><h4>현지 정착</h4><p>거주·생활 정보까지 실질 팁을 제공합니다.</p></div></div>'+CTA(),
- '1:1 전문':H('1:1 PROFESSIONAL','완전 1:1,<br>목표까지 최단거리','그룹 수업의 속도가 아쉬웠다면, 오직 나에게 맞춘 1:1 전문관을 추천합니다. 시험 단기 완성, 회화 집중, 취약 영역 보강 등 목적별로 최적화합니다.','🎯')
+ '1:1 전문':bigImg('img/gen10.jpg')+H('1:1 PROFESSIONAL','완전 1:1,<br>목표까지 최단거리','그룹 수업의 속도가 아쉬웠다면, 오직 나에게 맞춘 1:1 전문관을 추천합니다. 시험 단기 완성, 회화 집중, 취약 영역 보강 등 목적별로 최적화합니다.','🎯')
   +'<div class="pgfeat"><div class="ft"><div class="fi">⚡</div><h4>단기 목표 완성</h4><p>기간과 목표 점수에 맞춰 집중 설계합니다.</p></div><div class="ft"><div class="fi">🔁</div><h4>취약점 집중</h4><p>내가 약한 부분만 골라 반복 교정합니다.</p></div><div class="ft"><div class="fi">💬</div><h4>실전 회화</h4><p>원어민·전문 강사와 실전 대화를 집중 훈련합니다.</p></div><div class="ft"><div class="fi">🕒</div><h4>유연한 스케줄</h4><p>바쁜 직장인·학생 일정에 맞춰 운영합니다.</p></div></div>'+CTA(),
  '기업출강':H('기업 출강 · B2B','회사로 찾아가는<br>실무 어학 교육','임직원 대상 영어·일본어·중국어 교육을 회사 일정에 맞춰 진행합니다. 업종·직무에 맞춘 실무 커리큘럼과 성과 리포트로, 교육 효과를 눈으로 확인하실 수 있습니다.','🏢')
   +'<div class="pgfeat"><div class="ft"><div class="fi">🧩</div><h4>직무 맞춤 설계</h4><p>영업·CS·개발 등 직무별 실무 표현 중심으로 구성합니다.</p></div><div class="ft"><div class="fi">📈</div><h4>성과 리포트</h4><p>출석·성취도를 정리해 담당자에게 공유합니다.</p></div><div class="ft"><div class="fi">🕘</div><h4>사내 일정 맞춤</h4><p>업무 시간에 맞춰 방문 또는 화상으로 진행합니다.</p></div><div class="ft"><div class="fi">💳</div><h4>세금계산서 발행</h4><p>법인 결제·증빙을 지원합니다.</p></div></div>'+CTA(),
