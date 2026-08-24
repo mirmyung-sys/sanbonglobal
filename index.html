@@ -801,6 +801,45 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
 .mb-lbtn{width:100%;background:var(--red);color:#fff;border:none;border-radius:8px;padding:14px;font-weight:800;font-size:16px;cursor:pointer;font-family:inherit}
 .mb-sns a{display:block;border:1px solid #e2e5ec;border-radius:8px;padding:13px;text-align:center;font-weight:800;margin-bottom:10px;text-decoration:none;color:#2b2e35;background:#fff}
 @media(max-width:720px){.mb-benefits,.mb-login{grid-template-columns:1fr}}
+/* 강사 소개 */
+#pgbody .tc-hero{width:100vw;position:relative;left:50%;transform:translateX(-50%);margin-top:-76px;background:radial-gradient(120% 120% at 70% 0%,#243b6b,#0d1426);padding:90px 0 70px;text-align:center;border-top:5px solid var(--gold)}
+.tc-filterbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 30px rgba(20,33,61,.08);padding:16px 22px;margin:-34px auto 26px;position:relative;z-index:5;max-width:1000px}
+.tc-region b{color:var(--navy);font-size:17px;font-weight:900;border-bottom:3px solid var(--gold)}
+.tc-search{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.tc-sel,.tc-inp{border:none;border-bottom:2px solid #e1e4ec;padding:9px 6px;font-size:15px;font-family:inherit;background:transparent;min-width:150px}
+.tc-sel:focus,.tc-inp:focus{outline:none;border-bottom-color:var(--gold2)}
+.tc-sbtn{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:17px}
+.tc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tc-card{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 8px 22px rgba(20,33,61,.06);transition:transform .18s,box-shadow .2s}
+.tc-card:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(20,33,61,.16)}
+.tc-ph{background:#eef1f6;height:250px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.tc-ph img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.tc-b{padding:16px 18px 18px}
+.tc-tags{font-size:12.5px;color:var(--gold-dk);font-weight:800;letter-spacing:.01em;margin-bottom:6px}
+.tc-b h4{font-size:22px;font-weight:900;color:#1c2333;margin:0 0 6px;letter-spacing:-.02em}
+.tc-sub{font-size:14px;color:#4a5468;font-weight:600}
+.tc-meta{font-size:12.5px;color:#98a;margin-top:10px}
+@media(max-width:900px){.tc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.tc-grid{grid-template-columns:1fr}}
+/* 회원가입 본인인증 */
+.jn-steps{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:18px 0 28px}
+.jn-st{display:flex;flex-direction:column;align-items:center;gap:8px;width:120px;color:#9aa0aa}
+.jn-st .jc{width:78px;height:78px;border-radius:50%;background:#eef1f6;display:flex;align-items:center;justify-content:center;font-size:30px}
+.jn-st.on{color:var(--red)}.jn-st.on .jc{background:var(--red);color:#fff}
+.jn-st b{font-size:15px;font-weight:800}
+.jn-arrow{align-self:center;color:#c9ccd6;font-weight:900;font-size:20px}
+.jn-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:10px 0 20px}
+.jn-c{border:1px solid var(--line);border-radius:14px;padding:26px 22px;background:#fafbfd}
+.jn-c h4{font-size:22px;font-weight:900;text-align:center;color:var(--navy);margin:0 0 6px}
+.jn-c .jd{text-align:center;font-size:13.5px;color:#8a90a0;margin-bottom:16px}
+.jn-btn{width:100%;background:var(--red);color:#fff;border:none;border-radius:8px;padding:14px;font-weight:800;font-size:16px;cursor:pointer;font-family:inherit}
+.jn-note{font-size:12px;color:#98a;margin-top:8px;text-align:center}
+.jn-sns a{display:block;border:1px solid #e2e5ec;border-radius:8px;padding:14px;text-align:center;font-weight:800;margin-bottom:10px;text-decoration:none;color:#2b2e35;background:#fff}
+.jn-cautions{background:#f5f6f9;border-radius:12px;padding:22px 24px;margin-top:8px}
+.jn-cautions li{font-size:14px;color:#556;line-height:1.9;list-style:none;padding-left:16px;position:relative}
+.jn-cautions li::before{content:"–";position:absolute;left:0;color:var(--red)}
+.jn-tip{color:var(--red);font-weight:900;margin:14px 0 4px}
+@media(max-width:720px){.jn-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -868,7 +907,7 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
       </div>
     </div>
     <div class="ni"><a href="#" onclick="openPage('수강후기');return false;">수강후기</a></div>
-    <div class="ni"><a href="#" onclick="openPage('학원소개');return false;">강사님 소개</a></div>
+    <div class="ni"><a href="#" onclick="openPage('강사소개');return false;">강사님 소개</a></div>
     <div class="ni"><a href="#" onclick="openPage('가을학기 할인');return false;">이벤트/혜택<b class="car">▾</b></a>
       <div class="ddown">
         <a href="#" onclick="openPage('가을학기 할인');return false;">가을학기 할인</a>
@@ -1186,14 +1225,14 @@ const SLIDES=[
  {e:'2026 · 10월 개강 안내', t:'10월 개강,<br>지금 시작하세요', s:'영어·일본어·중국어 전 과목 개강 일정 안내', act:"openTT()", pbg:'linear-gradient(135deg,#2f6fb0,#5b9bd8)', tc:'#ffffff', ac:'#fff0cf', bbg:'#ffffff', btc:'#1d4e86'},
  {e:'SANBON GLOBAL WEEK', t:'가을학기 OPEN<br>최대 25% 할인', s:'지금 등록하면 수강료 최대 25% · 신규 등록 혜택', act:"openPage('가을학기 할인')", pbg:'#EFC04A', tc:'#1a1205', ac:'#8a5a10', bbg:'#16264a', btc:'#ffffff'},
  {e:'환승 이벤트', t:'다른 어학에서 갈아타면<br>최대 25% 할인', s:'타 어학 수강 인증하면 환승 할인 · 무료 레벨테스트', act:"openPage('환승 이벤트')", pbg:'linear-gradient(135deg,#d43b4f,#a72439)', tc:'#ffffff', ac:'#ffe1d0', bbg:'#ffffff', btc:'#c2283b'},
- {e:'무료 진단', t:'내 실력, 무료로<br>정확하게 진단', s:'원어민 회화 레벨테스트 + 온라인 자가진단', act:"openLv()", pbg:'#ffffff', tc:'#16264a', ac:'#0e8f88', bbg:'#16264a', btc:'#ffffff'},
+ {e:'무료 진단', t:'내 실력, 무료로<br>정확하게 진단', s:'원어민 회화 레벨테스트 + 온라인 자가진단', act:"openLv()", pbg:'#ffffff', tc:'#16264a', ac:'#0e8f88', bbg:'#16264a', btc:'#ffffff', bg:'img/gen1.jpg'},
  {e:'1:1 PRIVATE', t:'나만을 위한<br>완전 맞춤 수업', s:'1:1 전문·임원 강의·기업 출강까지', act:"openPage('1:1 전문')", pbg:'linear-gradient(135deg,#7658c8,#9a7ee0)', tc:'#ffffff', ac:'#efe6ff', bbg:'#ffffff', btc:'#5a3f92'},
- {e:'유학 · 외고 대비', t:'유학부터 외고까지<br>한 곳에서', s:'일본유학·EJU·외고 내신 대비', act:"openPage('유학상담')", pbg:'linear-gradient(135deg,#2aa06f,#1f8a63)', tc:'#ffffff', ac:'#e2fbd3', bbg:'#ffffff', btc:'#1f7a56'},
- {e:'산본글로벌 커뮤니티', t:'산모살롱<br>모임 공간 오픈', s:'1시간 1,000원 · 최소 5인 강의실 · 커피·물·사탕 무료', act:"openPage('산모살롱')", pbg:'linear-gradient(135deg,#F7913F,#e96e1c)', tc:'#ffffff', ac:'#fff2e0', bbg:'#ffffff', btc:'#e46a1e'}
+ {e:'유학 · 외고 대비', t:'유학부터 외고까지<br>한 곳에서', s:'일본유학·EJU·외고 내신 대비', act:"openPage('유학상담')", pbg:'linear-gradient(135deg,#2aa06f,#1f8a63)', tc:'#ffffff', ac:'#e2fbd3', bbg:'#ffffff', btc:'#1f7a56', bg:'img/gen4.jpg'},
+ {e:'산본글로벌 커뮤니티', t:'산모살롱<br>모임 공간 오픈', s:'1시간 1,000원 · 최소 5인 강의실 · 커피·물·사탕 무료', act:"openPage('산모살롱')", pbg:'linear-gradient(135deg,#F7913F,#e96e1c)', tc:'#ffffff', ac:'#fff2e0', bbg:'#ffffff', btc:'#e46a1e', bg:'img/gen6.jpg'}
 ];
 (function(){
  var hs=document.getElementById('heroslides');
- hs.innerHTML=SLIDES.map(function(s,i){return '<div class="hslide'+(i===0?' on':'')+'"><div class="hs-wrap"><div class="hs-panel" style="background:'+s.pbg+';color:'+s.tc+'"><div class="hs-eyebrow" style="color:'+s.ac+'">'+s.e+'</div><div class="hs-title" style="color:'+s.tc+'">'+s.t+'</div><div class="hs-sub" style="color:'+s.tc+'">'+s.s+'</div><button class="hs-btn" style="background:'+s.bbg+';color:'+s.btc+';border-color:'+s.bbg+'" onclick="'+s.act+'">자세히 보기 →</button></div></div></div>';}).join('');
+ hs.innerHTML=SLIDES.map(function(s,i){return '<div class="hslide'+(i===0?' on':'')+'"'+(s.bg?' style="background-image:linear-gradient(rgba(9,13,26,.35),rgba(9,13,26,.35)),url('+s.bg+');background-size:cover;background-position:center"':'')+'><div class="hs-wrap"><div class="hs-panel" style="background:'+s.pbg+';color:'+s.tc+'"><div class="hs-eyebrow" style="color:'+s.ac+'">'+s.e+'</div><div class="hs-title" style="color:'+s.tc+'">'+s.t+'</div><div class="hs-sub" style="color:'+s.tc+'">'+s.s+'</div><button class="hs-btn" style="background:'+s.bbg+';color:'+s.btc+';border-color:'+s.bbg+'" onclick="'+s.act+'">자세히 보기 →</button></div></div></div>';}).join('');
  document.getElementById('hdots').innerHTML=SLIDES.map(function(s,i){return '<i data-i="'+i+'"'+(i===0?' class="on"':'')+'></i>';}).join('');
  var si=0, slides=hs.querySelectorAll('.hslide'), dots=document.querySelectorAll('#hdots i'), N=SLIDES.length;
  function show(){for(var i=0;i<N;i++){slides[i].classList.toggle('on',i===si);dots[i].classList.toggle('on',i===si);}document.getElementById('slNum').textContent=(si+1)+' / '+N;}
@@ -1339,6 +1378,32 @@ function coursePage(key){
    +'<div class="cpg-note">전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원</div>'+shareMini()+'</div></section>';
 }
 function openCourse(key){var w=_sgOpenAny();document.getElementById('pgbody').innerHTML=coursePage(key);document.getElementById('pgModal').classList.add('open');window.scrollTo(0,0);if(!w){try{history.pushState({sg:1},'');}catch(e){}}}
+var TEACHERS=[
+ {n:'송윤정',img:'eng_13',subj:'토익',cat:'토익·토스·오픽',tags:['#스파르타','#점수보장','#밀착관리'],rev:'93'},
+ {n:'유미용',img:'eng_14',subj:'토익스피킹·오픽',cat:'토익·토스·오픽',tags:['#실전발화','#IH·AL','#피드백'],rev:'49'},
+ {n:'김현정',img:'eng_15',subj:'오픽·토익',cat:'토익·토스·오픽',tags:['#기초부터','#친절한','#꼼꼼'],rev:'8'},
+ {n:'엘리 킴',img:'elly',subj:'원어민 영어회화',cat:'영어회화',tags:['#원어민','#프리토킹','#친근한'],rev:'46'},
+ {n:'최자운 (데보라)',img:'eng_6',subj:'토익',cat:'토익·토스·오픽',tags:['#실전','#문제풀이','#고득점'],rev:'12'},
+ {n:'애플',img:'eng_5',subj:'원어민 영어회화',cat:'영어회화',tags:['#원어민','#생활영어','#재미있는'],rev:'9'},
+ {n:'제롤린',img:'eng_11',subj:'원어민 영어회화',cat:'영어회화',tags:['#원어민','#비즈니스','#또렷한발음'],rev:'27'},
+ {n:'라이언',img:'eng_9',subj:'실용·비즈니스 영어',cat:'영어회화',tags:['#실무영어','#청취','#패턴'],rev:'0'},
+ {n:'김민정',img:'jpn_2',subj:'일본어·회화',cat:'일본어',tags:['#혼모노','#회화중심','#JLPT연계'],rev:'50'},
+ {n:'권은정',img:'jpn_1',subj:'JLPT',cat:'일본어',tags:['#기출분석','#N1~N3','#합격루트'],rev:'18'},
+ {n:'하나',img:'jpn_7',subj:'일본어 회화',cat:'일본어',tags:['#실용적','#기억에잘남는','#친절한설명'],rev:'11'},
+ {n:'노정아',img:'chn_3',subj:'중국어·회화',cat:'중국어',tags:['#발음·성조','#회화','#친절'],rev:'8'},
+ {n:'오금한',img:'chn_5',subj:'HSK',cat:'중국어',tags:['#급수별','#유형공략','#단기완성'],rev:'6'}
+];
+function teacherCard(t){return '<div class="tc-card"><div class="tc-ph"><img src="img/teachers/'+t.img+'.png" alt="'+t.n+'" loading="lazy"></div><div class="tc-b"><div class="tc-tags">'+t.tags.join(' ')+'</div><h4>'+t.n+'</h4><div class="tc-sub">'+t.subj+'</div><div class="tc-meta">📷 후기 '+t.rev+'건</div></div></div>';}
+function teacherPage(){
+ var cards=TEACHERS.map(teacherCard).join('');
+ return '<div class="tc-hero"><div class="cpg-in"><div class="pgeyebrow" style="color:var(--gold2)">TEACHERS · 강사님 소개</div><h2 style="font-size:44px;font-weight:900;margin:8px 0 6px;color:#fff">국가대표급 실력파 강사진</h2><p style="color:#c9ccd6;font-size:17px">검증된 강사진이 결과로 증명합니다. 과목·이름으로 찾아보세요.</p></div></div>'
+  +'<div class="tc-filterbar"><div class="tc-region"><b>산본 본원</b></div><div class="tc-search"><select class="tc-sel" onchange="teacherFilter(this.value)"><option value="전체">전체 과목</option><option>영어회화</option><option value="토익·토스·오픽">토익·토스·오픽</option><option>일본어</option><option>중국어</option></select><input class="tc-inp" type="text" placeholder="선생님 이름으로 검색" oninput="teacherSearch(this.value)"><span class="tc-sbtn">🔍</span></div></div>'
+  +'<div class="tc-grid" id="tcGrid">'+cards+'</div>'
+  +'<div class="pgnote" style="text-align:center">더 많은 강사진과 시간표는 상담으로 안내해 드립니다. · 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>'
+  +'<a class="pgcta" href="#" onclick="closePage();openPage(\'수강신청\');return false;">수강신청 바로가기 ›</a>'+CTA();
+}
+function teacherFilter(cat){var g=document.getElementById('tcGrid');if(!g)return;g.innerHTML=TEACHERS.filter(function(t){return cat==='전체'||t.cat===cat;}).map(teacherCard).join('')||'<div class="pgnote">해당 과목 강사 정보를 준비 중입니다.</div>';}
+function teacherSearch(q){var g=document.getElementById('tcGrid');if(!g)return;q=(q||'').trim();g.innerHTML=TEACHERS.filter(function(t){return !q||t.n.indexOf(q)>=0;}).map(teacherCard).join('')||'<div class="pgnote">검색 결과가 없습니다.</div>';}
 function memberTabs(){return '<div class="mb-tabs">'+
 '<a href="#" onclick="openPage(\'통합회원안내\');return false;">통합회원안내</a>'+
 '<a href="#" onclick="openPage(\'회원가입\');return false;">회원가입</a>'+
@@ -1349,14 +1414,21 @@ function memberTabs(){return '<div class="mb-tabs">'+
 '<a href="#" onclick="openPage(\'개인정보처리방침\');return false;">개인정보처리방침</a></div>';}
 function joinPage(){return memberTabs()
  +'<div class="pghero big" style="background:linear-gradient(120deg,#c22030,#e2211c)"><div class="pgeyebrow">JOIN · 회원가입</div><h2>회원가입</h2><p>산본글로벌 신규 회원을 위한 특별한 혜택! 회원가입 후 지금 바로 받아가세요.</p></div>'
- +'<div class="sec"><h3>산본글로벌에 오신 것을 환영합니다!</h3><div class="lead">하나의 아이디로 산본글로벌의 온라인·모바일 서비스를 이용하실 수 있습니다. 신규 회원을 위한 특별한 혜택을 지금 받아보세요.</div>'
- +'<div class="mb-benefits">'
- +'<div class="mb-bc"><div class="mh">🎓 신규 등록 혜택</div><div class="mb">신규 회원가입 시 <b>최대 25% 할인</b> 제공</div></div>'
- +'<div class="mb-bc"><div class="mh">📞 전화·화상 수업</div><div class="mb">첫 수강 <b>10%</b> 즉시 할인</div></div>'
- +'<div class="mb-bc"><div class="mh">🗣️ 원어민 1:1</div><div class="mb"><b>무료 레벨테스트</b> + 1:1 수업 1회 무료</div></div>'
- +'<div class="mb-bc"><div class="mh">☕ 산모살롱</div><div class="mb">회원이면 커뮤니티 <b>이용료 할인</b></div></div></div>'
- +'<div class="mb-join"><a class="child" href="#" onclick="alert(\'만 14세 미만은 보호자와 함께 가입해 주세요. (준비 중)\');return false;">만 14세 미만<br>어린이 회원가입</a>'
- +'<a class="adult" href="#" onclick="alert(\'회원가입 폼은 준비 중입니다.\\n우선 전화 031-466-6969 또는 카카오톡 채널로 등록 상담해 주세요.\');return false;">만 14세 이상<br>일반 회원가입</a></div></div>'+CTA();}
+ +'<div class="jn-steps">'
+ +'<div class="jn-st on"><div class="jc">🧑‍💻</div><b>본인인증</b></div><div class="jn-arrow">›</div>'
+ +'<div class="jn-st"><div class="jc">✅</div><b>약관동의</b></div><div class="jn-arrow">›</div>'
+ +'<div class="jn-st"><div class="jc">✏️</div><b>정보입력</b></div><div class="jn-arrow">›</div>'
+ +'<div class="jn-st"><div class="jc">🎉</div><b>가입완료</b></div></div>'
+ +'<div class="sec" style="text-align:center"><h3>회원가입을 위해 본인인증을 진행해 주세요.</h3><div class="lead">휴대폰 인증 또는 아이핀(i-PIN) 인증, SNS 회원가입 중 선택하여 본인확인을 진행해 주세요.</div></div>'
+ +'<div class="jn-grid">'
+ +'<div><div class="jn-c"><h4>휴대폰 인증</h4><div class="jd">휴대폰 번호를 통해 신원을 확인합니다.</div><button class="jn-btn" type="button" onclick="alert(\'본인인증 모듈은 준비 중입니다.\\n우선 전화 031-466-6969 또는 카카오톡 채널로 등록 상담해 주세요.\')">휴대폰 인증</button><div class="jn-note">SKT · KT · LGU+ · 알뜰폰 통신사를 통한 신원확인 수단입니다.</div></div>'
+ +'<div class="jn-c" style="margin-top:16px"><h4>아이핀(i-PIN)이란?</h4><div class="jd">주민등록번호를 대신하여 온라인상에서 신원을 확인하는 수단입니다.</div><button class="jn-btn" type="button" onclick="alert(\'아이핀 인증 모듈은 준비 중입니다.\')">아이핀 인증</button><div class="jn-note">아이핀이 없는 경우 발급 기관에서 발급받으셔야 합니다.</div></div></div>'
+ +'<div class="jn-c"><h4>SNS 가입</h4><div class="jd">가지고 계신 SNS 아이디로 산본글로벌 회원으로 가입합니다.</div><div class="jn-sns">'
+ +'<a href="#" onclick="alert(\'준비 중입니다.\');return false;" style="color:#03C75A">NAVER로 회원가입</a>'
+ +'<a href="#" onclick="alert(\'준비 중입니다.\');return false;" style="color:#3A1D1D">kakaotalk으로 회원가입</a>'
+ +'<a href="#" onclick="alert(\'준비 중입니다.\');return false;">Google로 회원가입</a></div>'
+ +'<div class="jn-note" style="text-align:left;margin-top:14px">· SNS 계정이 없는 경우 각 SNS별 제공사 회원가입이 필요합니다.<br>· SNS로 가입 시 휴대폰/아이핀 인증을 통해 사용자 인증을 하셔야 합니다.</div></div></div>'
+ +'<ul class="jn-cautions"><li>입력하신 인증 정보는 본인인증에만 사용되며 이외의 용도로 사용 또는 저장되지 않습니다.</li><li>인증이 정상적으로 작동하지 않으면 브라우저의 팝업 차단 기능을 해제하신 후 이용해 주세요.</li><li>기존 오프라인 수강 등록생은 회원가입 시 학원 방문 혹은 유선으로 수강등록 내역 통합을 요청해 주세요.</li><li>통합이 되지 않을 경우, 사이트 내에서 기존 수강등록 내역 조회가 되지 않습니다.</li><div class="jn-tip">빠른 실명확인을 위한 TIP!</div><li>본인인증이 어려우시면 전화 031-466-6969 또는 카카오톡 채널 @산본글로벌어학원으로 도와드립니다.</li></ul>'+CTA();}
 function loginPage(){return memberTabs()
  +'<div class="pghero big" style="background:linear-gradient(120deg,#12203d,#33507f)"><div class="pgeyebrow">LOGIN</div><h2>통합회원 로그인</h2><p>로그인하시면 산본글로벌 서비스를 이용하실 수 있습니다.</p></div>'
  +'<div class="mb-login"><div class="mb-lc"><h4>MEMBERS LOGIN</h4><div class="mdesc">가입하신 아이디로 로그인합니다.</div>'
@@ -1369,10 +1441,10 @@ function loginPage(){return memberTabs()
  +'<a href="#" onclick="alert(\'준비 중입니다.\');return false;">Google</a></div></div></div>'+CTA();}
 function guidePage(){
  var CATS=[
-  {c:'영어회화',cap:'말이 나와야 진짜 영어! 회화에 최적화된 코스',color:'#0e8f6e',items:['기초입문회화','한인회화','원어민회화(SLE)'],img:'https://d8j0ntlcm91z4.cloudfront.net/user_3GADcyKE4Ow4Cld3tfs2MW9GGPk/hf_20260824_074650_5febf033-b855-4026-8541-88ad2b812fa1.png',co:'영어회화'},
-  {c:'실용영어',cap:'어떤 상황에서도 통하는 실전에 강한 영어 정복 코스',color:'#0e8f6e',items:['영어청취','비즈니스영어','올인원','영작','독해'],img:'https://d8j0ntlcm91z4.cloudfront.net/user_3GADcyKE4Ow4Cld3tfs2MW9GGPk/hf_20260824_074650_438fd312-e559-40e3-88cc-9fe0801fba09.png',co:'영어회화'},
-  {c:'중국어',cap:'가장 배우기 어려운 언어, 가볍게 끝내는 권법',color:'#2f6fb0',items:['기초중국어','중국어회화','HSK','TSC'],img:'https://d8j0ntlcm91z4.cloudfront.net/user_3GADcyKE4Ow4Cld3tfs2MW9GGPk/hf_20260824_074650_f39ee490-3e09-41b9-af90-5b4b19df68dd.png',co:'중국어'},
-  {c:'일본어',cap:'나에게 맞는 커리큘럼, 제대로 꼼꼼하고 체계적으로',color:'#c0397f',items:['기초일본어','일본어회화','JLPT','JPT/SJPT'],img:'https://d8j0ntlcm91z4.cloudfront.net/user_3GADcyKE4Ow4Cld3tfs2MW9GGPk/hf_20260824_074650_5aababd2-58a8-4f47-8821-cc79ba76eada.png',co:'일본어'}
+  {c:'영어회화',cap:'말이 나와야 진짜 영어! 회화에 최적화된 코스',color:'#0e8f6e',items:['기초입문회화','한인회화','원어민회화(SLE)'],img:'img/gen1.jpg',co:'영어회화'},
+  {c:'실용영어',cap:'어떤 상황에서도 통하는 실전에 강한 영어 정복 코스',color:'#0e8f6e',items:['영어청취','비즈니스영어','올인원','영작','독해'],img:'img/gen5.jpg',co:'영어회화'},
+  {c:'중국어',cap:'가장 배우기 어려운 언어, 가볍게 끝내는 권법',color:'#2f6fb0',items:['기초중국어','중국어회화','HSK','TSC'],img:'img/gen2.jpg',co:'중국어'},
+  {c:'일본어',cap:'나에게 맞는 커리큘럼, 제대로 꼼꼼하고 체계적으로',color:'#c0397f',items:['기초일본어','일본어회화','JLPT','JPT/SJPT'],img:'img/gen3.jpg',co:'일본어'}
  ];
  var rows=CATS.map(function(g,i){
    var chips=g.items.map(function(it){return '<a href="#" style="background:'+g.color+'" onclick="openCourse(\''+g.co+'\');return false;">'+it+'</a>';}).join('');
@@ -1384,7 +1456,7 @@ function guidePage(){
 function reviewExtra(){
  var photos=[
   {img:'img/teachers/eng_13.png',ti:'오답 바로잡으니 점수가 확 올랐어요',b:'토익 · 송윤정 선생님',p:'수업 시간에 문제 풀고 바로바로 해설·피드백을 받는 수업은 처음이었는데 정말 좋았어요. 혼자 공부할 때도 숙제 내주신 방법대로 하니 도움이 됐습니다.',m:'김○준 · 2026.08 수강'},
-  {img:'https://d8j0ntlcm91z4.cloudfront.net/user_3GADcyKE4Ow4Cld3tfs2MW9GGPk/hf_20260824_074650_438fd312-e559-40e3-88cc-9fe0801fba09.png',ti:'미드로 배우는 진짜 영어, 습관이 됐어요',b:'영어회화 · 원어민쌤',p:'장기 휴가에 영어 습관을 들이려고 다시 등록했어요. 매 수업이 실전이라 부담 없이 말하게 됩니다.',m:'애○ · 2026.08 수강'},
+  {img:'img/gen5.jpg',ti:'미드로 배우는 진짜 영어, 습관이 됐어요',b:'영어회화 · 원어민쌤',p:'장기 휴가에 영어 습관을 들이려고 다시 등록했어요. 매 수업이 실전이라 부담 없이 말하게 됩니다.',m:'애○ · 2026.08 수강'},
   {img:'img/teachers/jpn_2.png',ti:'어느새 자연스럽게 외워지는 회화수업',b:'일본어 · 김민정 선생님',p:'단어·표현을 쉽게 익히게 알려주셔서 좋아요. 실제 쓰는 표현이라 드라마가 들리기 시작했어요.',m:'*인 · 2026.07 수강'}
  ];
  var generals=[
@@ -1490,6 +1562,7 @@ const PAGES={
  '수강신청':enrollPage(),
  '수강후기':reviewPage(),
  '강의안내':guidePage(),
+ '강사소개':teacherPage(),
  '회원가입':joinPage(),
  '로그인':loginPage(),
  '통합회원안내':memberTabs()+H('MEMBERSHIP · 통합회원','하나의 아이디로<br>모두 이용하세요','산본글로벌 통합회원에 가입하시면 하나의 아이디로 온라인·모바일 서비스를 이용하실 수 있습니다. 자세한 안내는 준비 중이며, 우선 전화·카카오톡으로 등록 상담이 가능합니다.','🪪')+CTA(),
