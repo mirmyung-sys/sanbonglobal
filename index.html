@@ -49,7 +49,9 @@ nav{gap:4px}
 .ni>a .car{font-size:10px;color:#b6bac2;font-weight:900}
 .ni:hover>a{color:var(--red)}
 .ddown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(10px);background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 44px rgba(20,33,61,.18);padding:9px;min-width:174px;opacity:0;visibility:hidden;transition:opacity .18s,transform .18s;z-index:300;display:flex;flex-direction:column;gap:2px}
-.ni:hover .ddown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(5px)}
+.ni:hover .ddown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(4px)}
+.ddown::before{content:"";position:absolute;top:-14px;left:-10px;right:-10px;height:16px}
+.ni>a{padding-bottom:14px;margin-bottom:-6px}
 .ddown a{font-size:14px;font-weight:600;color:#2b2e35;padding:10px 16px;border-radius:9px;white-space:nowrap;text-align:left}
 .ddown a::after{display:none!important}
 .ddown a:hover{background:#f5f2ea;color:var(--red)}
@@ -659,8 +661,8 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
 .htop{display:flex!important;align-items:center;justify-content:space-between;height:80px;flex-wrap:nowrap}
 .logo img{height:52px;width:auto;object-fit:contain}
 .logoko{display:flex;flex-direction:column;justify-content:center;line-height:1.15}
-.logoko b{font-size:19px;font-weight:900;color:var(--navy);letter-spacing:-.02em}
-.logoko em{font-style:normal;font-size:10px;letter-spacing:.1em;color:#9aa0aa;font-weight:700;margin-top:3px}
+.logoko b{font-size:22px;font-weight:900;color:var(--red);letter-spacing:-.03em;font-family:'Malgun Gothic','Noto Sans KR',sans-serif}
+.logoko em{font-style:normal;font-size:11px;letter-spacing:.18em;color:#9aa0aa;font-weight:800;margin-top:3px;font-family:'Montserrat',sans-serif}
 .navbar{border-top:1px solid var(--line);background:#fff}
 .navbar .wrap{display:flex;justify-content:center;padding-top:0;padding-bottom:0}
 .navbar nav{gap:4px;flex-wrap:wrap;justify-content:center;padding:3px 0;flex:none}
@@ -920,6 +922,33 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
 .jf-agree input{margin-top:3px}
 .jf-submit{width:100%;background:#e2211c;color:#fff;border:none;border-radius:12px;padding:17px;font-size:18px;font-weight:900;cursor:pointer;font-family:inherit}
 .jf-submit:hover{background:#c41a16}
+/* 강사카드 그리드(파고다식) */
+#pgbody .tk-hero{width:100vw;position:relative;left:50%;transform:translateX(-50%);margin-top:-76px;padding:64px 0 54px;text-align:center;color:#fff}
+#pgbody .tk-hero h2{font-size:42px;font-weight:900;margin:6px 0 6px;color:#fff;letter-spacing:-.03em}
+#pgbody .tk-hero p{font-size:18px;color:#fff;opacity:.92}
+.tk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line);margin:26px 0 8px}
+.tk{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 24px;display:flex;flex-direction:column;min-height:270px;background:#fff}
+.tk-top{display:flex;gap:14px;justify-content:space-between;align-items:flex-start;flex:1}
+.tk-txt{flex:1;min-width:0}
+.tk-eye{font-size:13.5px;color:#8a90a0;line-height:1.45;margin-bottom:12px;min-height:20px;white-space:pre-line}
+.tk-title{font-size:27px;font-weight:900;color:#1c2333;letter-spacing:-.03em;line-height:1.15}
+.tk-img{width:112px;height:140px;flex:none;border-radius:6px;overflow:hidden;background:#eef1f6;display:flex;align-items:flex-end;justify-content:center}
+.tk-img img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.tk-empty{align-items:center}
+.tk-ph{color:#b6bcc6;font-size:12px;text-align:center;font-weight:700}
+.tk-name{font-size:15px;color:#3a4048;font-weight:700;margin:18px 0 12px}
+.tk-btn{align-self:flex-start;border:1px solid #d6d9e0;background:#fff;color:#3a4048;font-size:13px;font-weight:700;padding:8px 18px;border-radius:4px;cursor:pointer;font-family:inherit}
+.tk-btn:hover{border-color:var(--red);color:var(--red)}
+.tk-sec{margin:8px 0 18px}
+.tk-sectt{font-size:26px;font-weight:900;color:var(--navy);margin:24px 0 4px;padding-bottom:8px;border-bottom:3px solid var(--gold)}
+.ec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:6px 0 20px}
+.ec{position:relative;border-radius:16px;overflow:hidden;min-height:150px;padding:24px;color:#fff;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .18s,box-shadow .2s}
+.ec:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(20,33,61,.2)}
+.ec .ec-e{font-family:'Montserrat',sans-serif;font-weight:900;font-size:13px;opacity:.72;letter-spacing:1px}
+.ec .ec-t{font-size:23px;font-weight:900;letter-spacing:-.03em;margin-top:4px}
+.ec .ec-s{font-size:13px;opacity:.92;margin-top:6px;font-weight:600}
+@media(max-width:820px){.tk-grid{grid-template-columns:repeat(2,1fr)}.ec-grid{grid-template-columns:1fr 1fr}#pgbody .tk-hero h2{font-size:30px}}
+@media(max-width:560px){.tk-grid{grid-template-columns:1fr}.ec-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -975,15 +1004,16 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
         <a href="#" onclick="openPage('수강신청');return false;">취업·유학·외고 컨설팅</a>
       </div>
     </div>
-    <div class="ni"><a href="#" onclick="openPage('강의안내');return false;">글로벌시험강의<b class="car">▾</b></a>
+    <div class="ni"><a href="#" onclick="openPage('강의안내');return false;">글로벌 시험반<b class="car">▾</b></a>
       <div class="ddown">
-        <a href="#" onclick="goCourse('토익');return false;">토익</a>
-        <a href="#" onclick="goCourse('JLPT');return false;">JLPT</a>
-        <a href="#" onclick="goCourse('오픽');return false;">오픽</a>
-        <a href="#" onclick="goCourse('토스');return false;">토스</a>
-        <a href="#" onclick="goCourse('영어회화');return false;">영어회화</a>
-        <a href="#" onclick="goCourse('일본어');return false;">일본어</a>
-        <a href="#" onclick="openPage('영어');return false;">토플</a>
+        <a href="#" onclick="openCourse('토익');return false;">토익</a>
+        <a href="#" onclick="openCourse('토스');return false;">토스</a>
+        <a href="#" onclick="openCourse('오픽');return false;">오픽</a>
+        <a href="#" onclick="openCourse('JLPT');return false;">JLPT</a>
+        <a href="#" onclick="openPage('유학상담');return false;">EJU</a>
+        <a href="#" onclick="openCourse('중국어');return false;">HSK</a>
+        <a href="#" onclick="openCourse('영어회화');return false;">영어회화</a>
+        <a href="#" onclick="openCourse('일본어');return false;">일본어</a>
       </div>
     </div>
     <div class="ni"><a href="#" onclick="openPage('수강후기');return false;">수강후기</a></div>
@@ -1482,10 +1512,10 @@ var TEACHERS=[
 ];
 function teacherCard(t){return '<div class="tc-card"><div class="tc-ph"><img src="img/teachers/'+t.img+'.png" alt="'+t.n+'" loading="lazy"></div><div class="tc-b"><div class="tc-tags">'+t.tags.join(' ')+'</div><h4>'+t.n+'</h4><div class="tc-sub">'+t.subj+'</div><div class="tc-desc">'+(t.desc||'')+'</div><div class="tc-meta">📷 후기 '+t.rev+'건</div></div></div>';}
 function teacherPage(){
- var cards=TEACHERS.map(teacherCard).join('');
- return '<div class="tc-hero"><div class="cpg-in"><div class="pgeyebrow" style="color:var(--gold2)">TEACHERS · 강사님 소개</div><h2 style="font-size:44px;font-weight:900;margin:8px 0 6px;color:#fff">국가대표급 실력파 강사진</h2><p style="color:#c9ccd6;font-size:17px">검증된 강사진이 결과로 증명합니다. 과목·이름으로 찾아보세요.</p></div></div>'
-  +'<div class="tc-filterbar"><div class="tc-region"><b>산본 본원</b></div><div class="tc-search"><span class="tc-sellab">과목 선택</span><select class="tc-sel" onchange="teacherFilter(this.value)"><option value="전체">전체 과목</option><option value="토익·토스·오픽">토익·토스·오픽</option><option>영어회화</option><option>일본어</option><option>중국어</option></select></div></div>'
-  +'<div class="tc-grid" id="tcGrid">'+cards+'</div>'
+ return '<div class="tk-hero" style="background:radial-gradient(120% 120% at 70% 0%,#243b6b,#0d1426)"><div class="cpg-in"><div class="pgeyebrow" style="color:var(--gold2)">TEACHERS · 강사님 소개</div><h2>산본글로벌 강사진</h2><p>검증된 전문·원어민 강사진을 만나보세요.</p></div></div>'
+  +'<div class="tk-sec"><h3 class="tk-sectt">영어회화</h3><div class="tk-grid">'+T_ENG.map(tcard).join('')+'</div></div>'
+  +'<div class="tk-sec"><h3 class="tk-sectt">일본어</h3><div class="tk-grid">'+T_JPN.map(tcard).join('')+'</div></div>'
+  +'<div class="tk-sec"><h3 class="tk-sectt">중국어</h3><div class="tk-grid">'+T_CHN.map(tcard).join('')+'</div></div>'
   +'<div class="pgnote" style="text-align:center">더 많은 강사진과 시간표는 상담으로 안내해 드립니다. · 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>'
   +'<a class="pgcta" href="#" onclick="closePage();openPage(\'수강신청\');return false;">수강신청 바로가기 ›</a>'+CTA();
 }
@@ -1606,25 +1636,86 @@ function reviewExtra(){
   +'<div class="rv-block"><h3 class="rv-bh">일반 수강후기 <span>최신순</span></h3>'+ge+'</div>'
   +'<div class="rv-block"><h3 class="rv-bh">한줄 수강후기 <span>최신순</span></h3>'+ln+'</div>';
 }
+var T_ENG=[
+ {n:'Jerollyn 강사',title:'고급회화',eye:'English Conversation',img:'eng_11'},
+ {n:'Apple 강사',title:'영어회화',eye:'',img:'eng_5'},
+ {n:'kate 강사',title:'초중급회화',eye:'',img:'eng_9'},
+ {n:'권미화(May) 강사',title:'영어회화',eye:'',img:'eng_1'},
+ {n:'공미영(Olive) 강사',title:'기초회화',eye:'왕초보 영어울렁증 극복하자',img:'eng_3'},
+ {n:'김현정(Vivienne Kim) 강사',title:'영어회화',eye:'',img:'eng_15'},
+ {n:'최자운 강사',title:'영어회화',eye:'',img:'eng_6'},
+ {n:'김지현(Leah) 강사 · 일대일',title:'영어회화',eye:'',img:'eng_7'},
+ {n:'박호임(Grace) 강사',title:'기초회화',eye:'웃다가 늘어나는 Speaking을 경험!',img:'eng_2'},
+ {n:'Amy 강사',title:'기초회화',eye:'',img:'eng_4'},
+ {n:'황보준 강사',title:'영어회화',eye:'',img:'eng_12'}
+];
+var T_JPN=[
+ {n:'마무로 히토시 강사',title:'원어민 회화',eye:'입문 ~ 원어민고급회화 / JLPT',img:'jpn_6'},
+ {n:'나카무라 모모코 강사',title:'원어민 회화',eye:'원어민고급회화',img:'jpn_4'},
+ {n:'타나이 치토세 강사',title:'원어민 회화',eye:'원어민 회화',img:''},
+ {n:'조미히로 강사',title:'고급 일본어',eye:'고급 일본어',img:'jpn_5'},
+ {n:'서정아 강사',title:'일본어 회화 / JLPT',eye:'일본어 회화/JLPT',img:'jpn_7'},
+ {n:'김민정 강사',title:'일본어회화',eye:'일본어회화',img:'jpn_2'},
+ {n:'이형림 강사',title:'일본어 회화',eye:'일본어 회화',img:'jpn_11'},
+ {n:'권은정 강사',title:'일본어 중고급회화',eye:'더 이상의 두려움은 No! 쉽고 재밌게 배우는 일본어!',img:'jpn_1'},
+ {n:'김은영 강사',title:'초급회화 · JLPT 전문',eye:'나도 일본어 할수있다! 기초부터 탄탄하게!',img:'jpn_9'},
+ {n:'김연주 강사',title:'일본어 회화',eye:'일본어 회화',img:'jpn_3'}
+];
+var T_CHN=[
+ {n:'하홍금 강사',title:'고급회화',eye:'외국어를 공부하는 최종 목적은 의사소통입니다.',img:'chn_1'},
+ {n:'노정아 강사',title:'중국어 회화',eye:'중국어通 될 수 있습니다!',img:'chn_3'},
+ {n:'현지인 강사',title:'HSK / 중국어 회화',eye:'현쌤과 함께하는 쉽고 빠른 합격의 자신감!',img:'chn_7'},
+ {n:'오금한 강사',title:'입문/초급회화',eye:'중국어 공부 이젠 쉽고 재미있게!!',img:'chn_5'}
+];
+var T_EXAM=[
+ {n:'토익 대비반',title:'TOEIC',eye:'오답 프로파일러 · 점수보장',img:'eng_13',co:'토익'},
+ {n:'토스·오픽 대비반',title:'TOEIC S · OPIc',eye:'실전 발화로 목표 등급',img:'eng_14',co:'토스'},
+ {n:'JLPT 대비반',title:'JLPT',eye:'기출로 증명된 합격 루트',img:'jpn_2',co:'JLPT'},
+ {n:'EJU 대비반',title:'EJU 일본유학시험',eye:'일본 대학 진학 대비',img:'jpn_4',pg:'유학상담'},
+ {n:'HSK 대비반',title:'HSK',eye:'급수별 유형 완전 정복',img:'chn_5',co:'중국어'}
+];
+var T_CATCH=[
+ {n:'제롤린 강사',title:'영어 집중',eye:'',img:'eng_11'},
+ {n:'김현정 강사',title:'영어 집중',eye:'',img:'eng_15'},
+ {n:'최자운 강사',title:'영어 집중',eye:'',img:'eng_6'},
+ {n:'공미영(Olive) 강사',title:'영어 기초 집중',eye:'',img:'eng_3'},
+ {n:'조미히로 강사',title:'일본어 집중',eye:'',img:'jpn_5'},
+ {n:'서정아 강사',title:'일본어·JLPT 집중',eye:'',img:'jpn_7'},
+ {n:'모모코 강사',title:'일본어 집중',eye:'',img:'jpn_4'},
+ {n:'하홍금 강사',title:'중국어 집중',eye:'',img:'chn_1'},
+ {n:'현지인 강사',title:'HSK 집중',eye:'',img:'chn_7'}
+];
+var T_B2B=[
+ {n:'Apple 강사',title:'영어',eye:'',img:'eng_5'},
+ {n:'최자운 강사',title:'영어',eye:'',img:'eng_6'},
+ {n:'모모코 강사',title:'일본어',eye:'',img:'jpn_4'},
+ {n:'타나이 치토세 강사',title:'일본어',eye:'',img:''},
+ {n:'김은영 강사',title:'일본어·JLPT',eye:'',img:'jpn_9'},
+ {n:'하홍금 강사',title:'중국어',eye:'',img:'chn_1'},
+ {n:'현지인 강사',title:'중국어·HSK',eye:'',img:'chn_7'}
+];
+function tcard(t){
+ var img=t.img?'<div class="tk-img"><img src="img/teachers/'+t.img+'.png" alt="'+t.n+'" loading="lazy"></div>':'<div class="tk-img tk-empty"><span class="tk-ph">사진<br>준비중</span></div>';
+ var act=t.co?"openCourse('"+t.co+"')":(t.pg?"openPage('"+t.pg+"')":"alert('"+t.n+"\\n"+t.title+"\\n수강 상담: 031-466-6969 / 카카오톡 채널 @산본글로벌어학원')");
+ return '<div class="tk"><div class="tk-top"><div class="tk-txt"><div class="tk-eye">'+(t.eye||'&nbsp;')+'</div><div class="tk-title">'+t.title+'</div></div>'+img+'</div><div class="tk-name">'+t.n+'</div><button class="tk-btn" onclick="'+act+'">자세히 보기</button></div>';
+}
+function tGrid(bc,title,desc,list){return '<div class="tk-hero" style="background:'+bc+'"><div class="cpg-in"><div class="pgeyebrow" style="color:#fff;opacity:.85">SANBON GLOBAL · 강사진</div><h2>'+title+'</h2><p>'+desc+'</p></div></div><div class="tk-grid">'+list.map(tcard).join('')+'</div>'+CTA();}
 function enrollPick(cat,item){alert('수강신청 · '+cat+'\n선택 과목: '+item+'\n\n담당 상담사가 반 편성·시간표·결제를 도와드립니다.\n전화 031-466-6969 / 카카오톡 채널 @산본글로벌어학원');}
 function enrollPage(){
  var CATS=[
-  {c:'시험영어',ic:'📝',color:'linear-gradient(90deg,#c81f2b,#e2413b)',items:['토익','오픽','토익스피킹','토플','G-TELP'],imgs:['eng_13']},
-  {c:'영어회화',ic:'💬',color:'linear-gradient(90deg,#0e7a54,#1aa06e)',items:['원어민 영어회화 · 기초','원어민 영어회화 · 중급','원어민 영어회화 · 고급'],imgs:['eng_11']},
-  {c:'실용영어',ic:'💼',color:'linear-gradient(90deg,#0e6f8f,#1a97b8)',items:['비즈니스 영어','취업 대비반','독해·영문법','원어민 1:1'],imgs:['eng_6','eng_15']},
-  {c:'일본어',ic:'🎌',color:'linear-gradient(90deg,#b83277,#d64f97)',items:['원어민 일본어회화','기초 일본어','중급 일본어','고급 일본어','JLPT'],imgs:['jpn_4']},
-  {c:'중국어',ic:'🀄',color:'linear-gradient(90deg,#c8353b,#e05a4f)',items:['중국어 원어민회화','기초 중국어','중급 중국어','고급 중국어','HSK'],imgs:['chn_1']},
-  {c:'스피킹 전담',ic:'🗣️',color:'linear-gradient(90deg,#d98016,#efa441)',items:['영어 스피킹','일본어 스피킹','중국어 스피킹'],imgs:['eng_5','eng_9','eng_15','eng_6']},
-  {c:'취업·유학·외고 컨설팅',ic:'🎯',color:'linear-gradient(90deg,#a8801e,#c9a24a)',items:['면접 컨설팅','자기소개서 컨설팅','스피치'],imgs:['eng_9','eng_11','eng_7']}
+  {t:'시험대비반',e:'EXAM PREP',s:'토익·JLPT·EJU·토스·오픽·HSK',c:'linear-gradient(135deg,#c81f2b,#e2413b)',pg:'시험대비반'},
+  {t:'영어',e:'ENGLISH',s:'원어민 영어회화 · 기초~고급',c:'linear-gradient(135deg,#0e7a54,#1aa06e)',pg:'영어수강'},
+  {t:'일본어',e:'JAPANESE',s:'회화·JLPT·원어민',c:'linear-gradient(135deg,#b83277,#d64f97)',pg:'일본어수강'},
+  {t:'중국어',e:'CHINESE',s:'회화·HSK·원어민',c:'linear-gradient(135deg,#c8353b,#e05a4f)',pg:'중국어수강'},
+  {t:'유학 · 외고 · 과외',e:'STUDY & CARE',s:'아이들 걱정마세요, 맡겨만 주세요',c:'linear-gradient(135deg,#1f8058,#146043)',pg:'유학상담'},
+  {t:'일대일 전문',e:'1:1 PRIVATE',s:'나만을 위한 완전 맞춤 수업',c:'linear-gradient(135deg,#7658c8,#9a7ee0)',pg:'1:1 전문'},
+  {t:'빠른추격 전문반',e:'CATCH-UP',s:'아직 늦지 않았습니다',c:'linear-gradient(135deg,#d98016,#efa441)',pg:'빠른추격'},
+  {t:'기업체 출강',e:'B2B',s:'회사로 찾아가는 실무 어학',c:'linear-gradient(135deg,#2b3d2f,#4a7a1e)',pg:'기업출강'},
+  {t:'임원 일대일',e:'EXECUTIVE',s:'어디든 찾아갑니다',c:'linear-gradient(135deg,#7a5a1a,#c6a15b)',pg:'임원강의'}
  ];
- var cards=CATS.map(function(g){
-   var chips=g.items.map(function(it){return '<button class="enr-chip" onclick="enrollPick(\''+g.c+'\',\''+it+'\')">'+it+'</button>';}).join('');
-   var ph=(g.imgs&&g.imgs.length)?'<div class="enr-ph">'+g.imgs.map(function(im){return '<img src="img/teachers/'+im+'.png" alt="" loading="lazy">';}).join('')+'</div>':'';
-   return '<div class="enr-card"><div class="enr-head" style="background:'+(g.color||'linear-gradient(90deg,#1D2D4F,#33507f)')+'"><span class="enr-ic">'+g.ic+'</span><h4>'+g.c+'</h4></div>'+ph+'<div class="enr-chips">'+chips+'</div></div>';
- }).join('');
- return '<div class="pghero big enr-hero"><div class="pgeyebrow">SGA ADMISSION · 수강신청</div><h2>원하시는 과목을<br>선택하세요</h2><p>상담부터 결제까지 한 번에 — <b>결제까지 올인원 수강신청</b>. 산본글로벌 전 과정을 한 화면에서 신청하세요.</p></div>'
-  +'<div class="enr-grid">'+cards+'</div>'
-  +'<div class="enr-flow"><span>01 과목 선택</span><i>›</i><span>02 상담·레벨체크</span><i>›</i><span>03 결제·수강 시작</span></div>'
+ var cards=CATS.map(function(g){return '<div class="ec" style="background:'+g.c+'" onclick="openPage(\''+g.pg+'\')"><div class="ec-e">'+g.e+'</div><div class="ec-t">'+g.t+'</div><div class="ec-s">'+g.s+'</div></div>';}).join('');
+ return '<div class="pghero big enr-hero"><div class="pgeyebrow">SGA ADMISSION · 수강신청</div><h2>어떤 과정을<br>찾으세요?</h2><p>상담부터 결제까지 한 번에 — <b>결제까지 올인원 수강신청</b>. 원하는 분야를 선택하세요.</p></div>'
+  +'<div class="ec-grid">'+cards+'</div>'
   +'<div class="pgnote">선택하시면 담당 상담사가 반 편성·시간표·결제까지 도와드립니다. · 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>'
   +'<a class="pgcta" href="#" onclick="closePage();openLv();return false;">무료 레벨테스트 먼저 받기 ›</a>'+CTA();
 }
@@ -1643,7 +1734,7 @@ function reviewPage(){
    {tag:'',ti:'회사 다니면서도 꾸준히, 임원 1:1',b:'기업·임원 출강',p:'바쁜 일정에 맞춰 회사로 와주시니 꾸준히 이어져요. 실무 이메일·미팅 영어가 눈에 띄게 좋아졌습니다.'}
  ];
  var revs=REV.map(function(r){return '<div class="rv-item">'+(r.tag?'<span class="rv-badge">'+r.tag+'</span>':'')+'<h4>'+r.ti+'</h4><div class="rv-meta">'+r.b+'</div><p>'+r.p+'</p></div>';}).join('');
- return '<div class="pghero big rv-hero"><div class="pgeyebrow">REAL REVIEWS · 수강후기</div><h2>실 수강생이 들려주는<br>생생한 진짜 후기</h2><p>산본글로벌 수강생들이 직접 남긴 후기를 확인하세요. 점수·레벨 향상부터 회화 자신감까지, 결과가 증명합니다.</p></div>'
+ return bigImg('img/gen15.jpg')+'<div class="pghero big rv-hero"><div class="pgeyebrow">REAL REVIEWS · 수강후기</div><h2>실 수강생이 들려주는<br>생생한 진짜 후기</h2><p>산본글로벌 수강생들이 직접 남긴 후기를 확인하세요. 점수·레벨 향상부터 회화 자신감까지, 결과가 증명합니다.</p></div>'
   +'<div class="rv-stats">'+cards+'</div>'
   +'<div class="rv-filter"><span>전체</span><span>토익·토스·오픽</span><span>영어회화</span><span>일본어</span><span>중국어</span><span>기업·임원</span></div>'
   +'<div class="rv-block"><h3 class="rv-bh"><b>BEST</b> 수강 후기</h3><div class="rv-list">'+revs+'</div></div>'
@@ -1694,6 +1785,11 @@ const PAGES={
  '강의안내':guidePage(),
  '이벤트혜택':eventHubPage(),
  '강사소개':teacherPage(),
+ '시험대비반':tGrid('linear-gradient(120deg,#8f1a20,#e2211c)','시험대비반','토익 · JLPT · EJU · 토스 · 오픽 · HSK 한 번에',T_EXAM),
+ '영어수강':tGrid('linear-gradient(120deg,#0e5a3c,#1aa06e)','영어회화','원어민과 함께 기초부터 프리토킹까지',T_ENG),
+ '일본어수강':tGrid('linear-gradient(120deg,#8a2560,#d64f97)','일본어','회화 · JLPT · 원어민, 살아있는 일본어',T_JPN),
+ '중국어수강':tGrid('linear-gradient(120deg,#8f1f24,#e05a4f)','중국어','발음부터 HSK까지 탄탄하게',T_CHN),
+ '빠른추격':bigImg('img/gen18.jpg')+HV('CATCH-UP · 빠른추격 전문반','아직<br>늦지 않았습니다','시험이 코앞이어도 괜찮아요. 약점만 콕 집어 최단기로 따라잡는 밀착 관리형 전문반입니다. 남은 기간에 맞춘 개인별 스퍼트 플랜으로 목표까지 함께 달립니다.','linear-gradient(135deg,#d98016,#efa441)','')+'<div class="tk-sec"><h3 class="tk-sectt">빠른추격 담당 강사진</h3><div class="tk-grid">'+T_CATCH.map(tcard).join('')+'</div></div>'+'<div class="pgnote">지금 바로 시작하세요. 남은 기간·목표를 알려주시면 최단 경로를 설계해 드립니다. · 031-466-6969</div><a class="pgcta" href="#" onclick="closePage();openPage(\'수강신청\');return false;">빠른추격 수강신청 ›</a>'+CTA(),
  '회원가입':joinPage(),
  '회원가입폼':joinFormPage(),
  '로그인':loginPage(),
@@ -1722,9 +1818,11 @@ const PAGES={
   +'<div class="pgfeat"><div class="ft"><div class="fi">🏫</div><h4>학교 선정</h4><p>목표·예산에 맞는 기관을 함께 찾습니다.</p></div><div class="ft"><div class="fi">📑</div><h4>서류·비자</h4><p>필요 서류·비자 절차를 체크리스트로 안내합니다.</p></div><div class="ft"><div class="fi">🗣️</div><h4>사전 일본어</h4><p>생활 회화·JLPT를 병행 준비합니다.</p></div><div class="ft"><div class="fi">🧳</div><h4>현지 정착</h4><p>거주·생활 정보까지 실질 팁을 제공합니다.</p></div></div>'+CTA(),
  '1:1 전문':bigImg('img/gen10.jpg')+H('1:1 PROFESSIONAL','완전 1:1,<br>목표까지 최단거리','그룹 수업의 속도가 아쉬웠다면, 오직 나에게 맞춘 1:1 전문관을 추천합니다. 시험 단기 완성, 회화 집중, 취약 영역 보강 등 목적별로 최적화합니다.','🎯')
   +'<div class="pgfeat"><div class="ft"><div class="fi">⚡</div><h4>단기 목표 완성</h4><p>기간과 목표 점수에 맞춰 집중 설계합니다.</p></div><div class="ft"><div class="fi">🔁</div><h4>취약점 집중</h4><p>내가 약한 부분만 골라 반복 교정합니다.</p></div><div class="ft"><div class="fi">💬</div><h4>실전 회화</h4><p>원어민·전문 강사와 실전 대화를 집중 훈련합니다.</p></div><div class="ft"><div class="fi">🕒</div><h4>유연한 스케줄</h4><p>바쁜 직장인·학생 일정에 맞춰 운영합니다.</p></div></div>'+CTA(),
- '기업출강':H('기업 출강 · B2B','회사로 찾아가는<br>실무 어학 교육','임직원 대상 영어·일본어·중국어 교육을 회사 일정에 맞춰 진행합니다. 업종·직무에 맞춘 실무 커리큘럼과 성과 리포트로, 교육 효과를 눈으로 확인하실 수 있습니다.','🏢')
+ '기업출강':bigImg('img/gen16.jpg')+H('기업 출강 · B2B','회사로 찾아가는<br>실무 어학 교육','임직원 대상 영어·일본어·중국어 교육을 회사 일정에 맞춰 진행합니다. 업종·직무에 맞춘 실무 커리큘럼과 성과 리포트로, 교육 효과를 눈으로 확인하실 수 있습니다.','🏢')
+  +'<div class="tk-sec"><h3 class="tk-sectt">기업 출강 담당 강사진</h3><div class="tk-grid">'+T_B2B.map(tcard).join('')+'</div></div>'
   +'<div class="pgfeat"><div class="ft"><div class="fi">🧩</div><h4>직무 맞춤 설계</h4><p>영업·CS·개발 등 직무별 실무 표현 중심으로 구성합니다.</p></div><div class="ft"><div class="fi">📈</div><h4>성과 리포트</h4><p>출석·성취도를 정리해 담당자에게 공유합니다.</p></div><div class="ft"><div class="fi">🕘</div><h4>사내 일정 맞춤</h4><p>업무 시간에 맞춰 방문 또는 화상으로 진행합니다.</p></div><div class="ft"><div class="fi">💳</div><h4>세금계산서 발행</h4><p>법인 결제·증빙을 지원합니다.</p></div></div>'+CTA(),
- '임원강의':H('EXECUTIVE · PRIVATE','임원을 위한<br>프라이빗 어학','바쁜 임원분들을 위해 시간·장소·주제를 완전 맞춤으로 운영하는 프리미엄 1:1 과정입니다. 미팅·프레젠테이션·의전 등 상황별 실전 표현에 집중합니다.','👔')
+ '임원강의':bigImg('img/gen17.jpg')+H('EXECUTIVE · PRIVATE','임원 1:1,<br>어디든 찾아갑니다','바쁜 임원분들을 위해 시간·장소·주제를 완전 맞춤으로 운영하는 프리미엄 1:1 과정입니다. 사무실·자택 어디든 찾아가, 미팅·프레젠테이션·의전 등 상황별 실전 표현에 집중합니다.','👔')
+  +'<div class="tk-sec"><h3 class="tk-sectt">임원 1:1 담당 강사진</h3><div class="tk-grid">'+[{n:'Apple 강사',title:'임원 영어 1:1',eye:'실전 비즈니스 회화',img:'eng_5'},{n:'제롤린 강사',title:'임원 영어 1:1',eye:'미팅·프레젠테이션 집중',img:'eng_11'}].map(tcard).join('')+'</div></div>'
   +'<div class="pgfeat"><div class="ft"><div class="fi">🤵</div><h4>완전 맞춤 1:1</h4><p>주제·수준·일정을 전적으로 맞춰 설계합니다.</p></div><div class="ft"><div class="fi">🗓️</div><h4>시간·장소 자유</h4><p>사무실 방문 또는 화상으로 편하게 진행합니다.</p></div><div class="ft"><div class="fi">🎤</div><h4>상황별 실전</h4><p>미팅·발표·네트워킹 등 실제 상황을 훈련합니다.</p></div><div class="ft"><div class="fi">🔒</div><h4>프라이빗 운영</h4><p>비공개·소수 정예로 편안하게 학습합니다.</p></div></div>'+CTA()
 };
 function openPage(k){var p=PAGES[k];if(!p)return;document.getElementById('pgbody').innerHTML=p;document.getElementById('pgModal').classList.add('open');window.scrollTo(0,0);}
