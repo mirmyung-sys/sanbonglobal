@@ -609,7 +609,7 @@ header nav a{letter-spacing:-.01em}
 .intro{position:fixed;inset:0;z-index:9999;background:radial-gradient(120% 120% at 50% 30%,#f7f1e6,#ece2d1);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;perspective:1300px;transition:opacity .7s ease,visibility .7s}
 .intro.hide{opacity:0;visibility:hidden}
 .intro-stage{transform-style:preserve-3d;transition:transform .2s ease-out;will-change:transform}
-.intro-logo{max-width:min(88vw,960px);width:100%;height:auto;border-radius:0;filter:drop-shadow(0 22px 40px rgba(150,110,80,.32));animation:introFloat 4.2s ease-in-out infinite}
+.intro-logo{max-width:min(96vw,1360px);width:100%;height:auto;border-radius:0;filter:drop-shadow(0 24px 44px rgba(150,110,80,.32));animation:introFloat 4.2s ease-in-out infinite}
 @keyframes introFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
 .intro-hint{margin-top:26px;font-size:15px;font-weight:800;letter-spacing:.03em;color:#9b7b5e;animation:introPulse 1.8s ease-in-out infinite}
 .intro-hint b{color:#c69b6d;font-weight:900}
@@ -723,6 +723,84 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
 .fsn{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:12px;text-decoration:none}
 .fs-bl{background:#03C75A}.fs-fb{background:#1877F2;font-size:18px}.fs-yt{background:#FF0000;font-size:12px}.fs-ig{background:linear-gradient(45deg,#F58529,#DD2A7B 55%,#8134AF)}.fs-kk{background:#FEE500;color:#3A1D1D}
 @media(max-width:720px){.ftlogo{font-size:20px}.ftbiz{flex-direction:column-reverse}}
+/* 상세페이지 글자 확대 */
+#pgbody p{font-size:17px;line-height:1.85}
+#pgbody .lead{font-size:18px;line-height:1.9}
+#pgbody li{font-size:16px;line-height:1.85}
+#pgbody .pgnote{font-size:15px;line-height:1.7}
+#pgbody h3{font-size:26px}
+#pgbody td,#pgbody th{font-size:15px}
+#pgbody .chips span{font-size:15px}
+#pgbody .pghero.big p{font-size:19px}
+/* 공유바 (친구에게 공유하기) */
+.sharebar2{display:flex;flex-direction:column;align-items:center;gap:16px;margin:38px 0 4px;padding-top:28px;border-top:1px solid var(--line)}
+.sb2-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center}
+.sb2-lab{font-size:19px;font-weight:800;color:#5b6069}
+.sb2-url{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #d9dce3;border-radius:999px;padding:11px 22px;font-size:15px;font-weight:800;color:var(--navy);cursor:pointer;font-family:inherit}
+.sb2-url:hover{border-color:var(--gold2);color:var(--red)}
+.sb2-icons{display:flex;gap:14px}
+.sb2-ic{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:14px;text-decoration:none;box-shadow:0 6px 14px rgba(0,0,0,.14);transition:transform .18s}
+.sb2-ic:hover{transform:translateY(-4px)}
+.sb2-ic.i-fb{font-size:22px}.sb2-ic.i-yt{font-size:13px}
+.i-bl{background:#03C75A}.i-fb{background:#1877F2}.i-yt{background:#FF0000}.i-ig{background:linear-gradient(45deg,#F58529,#DD2A7B 55%,#8134AF)}.i-kk{background:#FEE500;color:#3A1D1D}
+.cpg-end .sharebar2{border-top-color:rgba(255,255,255,.32)}
+.cpg-end .sb2-lab{color:rgba(255,255,255,.9)}
+.cpg-end .sb2-url{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+/* 강의안내 */
+.gd-sec{padding:52px 0;border-bottom:1px solid var(--line)}
+.gd-row{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+.gd-txt{flex:1;min-width:280px}
+.gd-cap{font-size:17px;color:#6b7079;font-weight:700;margin-bottom:6px}
+.gd-h{font-size:44px;font-weight:900;letter-spacing:-.03em;margin:0 0 18px;line-height:1.1}
+.gd-chips{display:flex;flex-wrap:wrap;gap:10px}
+.gd-chips a{font-size:16px;font-weight:800;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;transition:transform .16s}
+.gd-chips a:hover{transform:translateY(-3px)}
+.gd-img{flex:0 0 360px;max-width:46%}
+.gd-img img{width:100%;height:auto;border-radius:18px;display:block;box-shadow:0 16px 40px rgba(20,33,61,.14)}
+@media(max-width:760px){.gd-h{font-size:30px}.gd-img{flex:1 1 100%;max-width:100%}}
+/* 수강후기 확장 */
+.rv-block{margin:34px 0 8px}
+.rv-bh{font-size:24px;font-weight:900;color:var(--navy);margin:0 0 14px;display:flex;align-items:baseline;gap:8px}
+.rv-bh b{color:var(--red)}.rv-bh span{font-size:15px;color:#8a90a0;font-weight:700}
+.rv-photo{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)}
+.rv-photo img{width:150px;height:110px;object-fit:cover;border-radius:10px;flex:none;background:#eef1f6}
+.rv-photo .rp-b h5{font-size:18px;font-weight:800;color:#1c2333;margin:0 0 8px}
+.rv-photo .rp-b p{font-size:15px;color:#556;line-height:1.7;margin:0 0 8px}
+.rv-photo .rp-m{font-size:13px;color:#98a;font-weight:600}
+.rv-line{padding:16px 0;border-bottom:1px solid var(--line)}
+.rv-line h5{font-size:17px;font-weight:700;color:#1c2333;margin:0 0 6px}
+.rv-line .rp-m{font-size:13px;color:#98a}
+.rv-tag{display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:900;padding:2px 8px;border-radius:5px;margin-right:8px;vertical-align:middle}
+.rv-stamp{display:inline-block;border:2px solid var(--red);color:var(--red);font-weight:900;font-size:12px;padding:3px 8px;border-radius:6px;transform:rotate(-6deg);float:right}
+/* 이벤트-네이버리뷰 */
+.nv-coupon{display:flex;gap:16px;flex-wrap:wrap;margin:8px 0 4px}
+.nv-cp{flex:1;min-width:240px;border:2px dashed #03C75A;border-radius:16px;padding:24px;background:#f2fbf5;text-align:center}
+.nv-cp b{display:block;font-size:34px;font-weight:900;color:#03A54A;margin:6px 0}
+.nv-cp span{font-size:14px;color:#4a5468}
+.nv-cp.gift{border-color:var(--gold2);background:#fbf6ea}
+.nv-cp.gift b{color:var(--gold-dk)}
+/* 회원가입/로그인 */
+.mb-tabs{display:flex;flex-wrap:wrap;gap:0;background:var(--red);border-radius:10px;overflow:hidden;margin-bottom:26px}
+.mb-tabs a{flex:1;text-align:center;color:#fff;font-weight:800;font-size:14px;padding:14px 10px;text-decoration:none;white-space:nowrap;border-right:1px solid rgba(255,255,255,.25)}
+.mb-tabs a:last-child{border-right:none}
+.mb-tabs a:hover{background:rgba(0,0,0,.12)}
+.mb-benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:20px 0}
+.mb-bc{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.mb-bc .mh{background:#f5f6f9;padding:14px 18px;font-weight:800;color:var(--navy)}
+.mb-bc .mb{padding:24px 18px;text-align:center}
+.mb-bc .mb b{color:var(--red);font-size:22px}
+.mb-join{display:flex;gap:16px;flex-wrap:wrap;margin-top:22px}
+.mb-join a{flex:1;min-width:220px;text-align:center;padding:22px;border-radius:12px;text-decoration:none;font-weight:900;font-size:17px}
+.mb-join .child{border:1px solid var(--line);color:var(--navy)}
+.mb-join .adult{background:var(--red);color:#fff}
+.mb-login{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin:20px 0}
+.mb-lc{border:1px solid var(--line);border-radius:14px;padding:28px 24px;background:#fafbfd}
+.mb-lc h4{font-size:20px;font-weight:900;text-align:center;color:var(--navy);margin:0 0 8px;font-family:'Montserrat',sans-serif}
+.mb-lc .mdesc{text-align:center;font-size:13px;color:#8a90a0;margin-bottom:18px}
+.mb-field{width:100%;border:1px solid #d9dce3;border-radius:8px;padding:13px 14px;font-size:15px;margin-bottom:10px;background:#fff;font-family:inherit}
+.mb-lbtn{width:100%;background:var(--red);color:#fff;border:none;border-radius:8px;padding:14px;font-weight:800;font-size:16px;cursor:pointer;font-family:inherit}
+.mb-sns a{display:block;border:1px solid #e2e5ec;border-radius:8px;padding:13px;text-align:center;font-weight:800;margin-bottom:10px;text-decoration:none;color:#2b2e35;background:#fff}
+@media(max-width:720px){.mb-benefits,.mb-login{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -747,10 +825,10 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
 
 <!-- Utility bar -->
 <div class="util"><div class="wrap">
-  <a href="#">HOME</a><span class="sep">|</span>
-  <a href="#">회원가입</a><span class="sep">|</span>
-  <a href="#">로그인</a><span class="sep">|</span>
-  <a href="#">사이트맵</a>
+  <a href="#" onclick="closePage();window.scrollTo(0,0);return false;">HOME</a><span class="sep">|</span>
+  <a href="#" onclick="openPage('회원가입');return false;">회원가입</a><span class="sep">|</span>
+  <a href="#" onclick="openPage('로그인');return false;">로그인</a><span class="sep">|</span>
+  <a href="#" onclick="openPage('통합회원안내');return false;">사이트맵</a>
 </div></div>
 
 <!-- Header -->
@@ -778,7 +856,7 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
         <a href="#" onclick="openPage('수강신청');return false;">취업·유학·외고 컨설팅</a>
       </div>
     </div>
-    <div class="ni"><a href="#" onclick="goChapters();return false;">글로벌시험강의<b class="car">▾</b></a>
+    <div class="ni"><a href="#" onclick="openPage('강의안내');return false;">글로벌시험강의<b class="car">▾</b></a>
       <div class="ddown">
         <a href="#" onclick="goCourse('토익');return false;">토익</a>
         <a href="#" onclick="goCourse('JLPT');return false;">JLPT</a>
@@ -795,7 +873,8 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
       <div class="ddown">
         <a href="#" onclick="openPage('가을학기 할인');return false;">가을학기 할인</a>
         <a href="#" onclick="openPage('환승 이벤트');return false;">환승 이벤트</a>
-        <a href="#" onclick="openPage('천원살롱');return false;">천원살롱</a>
+        <a href="#" onclick="openPage('네이버 리뷰 이벤트');return false;">네이버 리뷰 이벤트</a>
+        <a href="#" onclick="openPage('산모살롱');return false;">산모살롱</a>
       </div>
     </div>
     <div class="ni"><a href="#" onclick="openPage('유학상담');return false;">유학상담</a></div>
@@ -1110,7 +1189,7 @@ const SLIDES=[
  {e:'무료 진단', t:'내 실력, 무료로<br>정확하게 진단', s:'원어민 회화 레벨테스트 + 온라인 자가진단', act:"openLv()", pbg:'#ffffff', tc:'#16264a', ac:'#0e8f88', bbg:'#16264a', btc:'#ffffff'},
  {e:'1:1 PRIVATE', t:'나만을 위한<br>완전 맞춤 수업', s:'1:1 전문·임원 강의·기업 출강까지', act:"openPage('1:1 전문')", pbg:'linear-gradient(135deg,#7658c8,#9a7ee0)', tc:'#ffffff', ac:'#efe6ff', bbg:'#ffffff', btc:'#5a3f92'},
  {e:'유학 · 외고 대비', t:'유학부터 외고까지<br>한 곳에서', s:'일본유학·EJU·외고 내신 대비', act:"openPage('유학상담')", pbg:'linear-gradient(135deg,#2aa06f,#1f8a63)', tc:'#ffffff', ac:'#e2fbd3', bbg:'#ffffff', btc:'#1f7a56'},
- {e:'산본글로벌 커뮤니티', t:'천원살롱<br>모임 공간 오픈', s:'1시간 1,000원 · 최소 5인 강의실 · 커피·물·사탕 무료', act:"openPage('천원살롱')", pbg:'linear-gradient(135deg,#F7913F,#e96e1c)', tc:'#ffffff', ac:'#fff2e0', bbg:'#ffffff', btc:'#e46a1e'}
+ {e:'산본글로벌 커뮤니티', t:'산모살롱<br>모임 공간 오픈', s:'1시간 1,000원 · 최소 5인 강의실 · 커피·물·사탕 무료', act:"openPage('산모살롱')", pbg:'linear-gradient(135deg,#F7913F,#e96e1c)', tc:'#ffffff', ac:'#fff2e0', bbg:'#ffffff', btc:'#e46a1e'}
 ];
 (function(){
  var hs=document.getElementById('heroslides');
@@ -1195,13 +1274,15 @@ function HV(eyebrow,title,desc,bg,art){return '<div class="pghero big" style="ba
 var ART_SUBWAY='<svg class="pgart" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke-linecap="round"><line x1="24" y1="70" x2="276" y2="70" stroke="#ffd85a" stroke-width="13"/><line x1="52" y1="152" x2="268" y2="152" stroke="#5ab8ff" stroke-width="13"/><path d="M150 70 C150 116 176 120 176 152" stroke="#ffffff" stroke-width="5" stroke-dasharray="2 9"/></g><circle cx="150" cy="70" r="17" fill="#a72439" stroke="#ffd85a" stroke-width="8"/><circle cx="176" cy="152" r="17" fill="#a72439" stroke="#5ab8ff" stroke-width="8"/><text x="150" y="36" font-size="27" font-weight="900" fill="#ffffff" text-anchor="middle" font-family="sans-serif">환승</text></svg>';
 var ART_COFFEE='<svg class="pgart" viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round"><path d="M66 98 h84 v30 a30 30 0 0 1 -30 30 h-24 a30 30 0 0 1 -30 -30 z"/><path d="M150 106 h14 a16 16 0 0 1 0 30 h-6"/><path d="M88 78 q7 -11 0 -22 M112 78 q7 -11 0 -22 M136 78 q7 -11 0 -22"/></g><circle cx="200" cy="152" r="21" fill="#ffe08a"/><circle cx="216" cy="132" r="15" fill="#ffe08a"/><text x="200" y="159" font-size="18" font-weight="900" fill="#7a4a10" text-anchor="middle" font-family="sans-serif">₩</text></svg>';
 var ART_GIFT='<svg class="pgart" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg"><rect x="74" y="98" width="96" height="70" rx="9" fill="#16264a"/><rect x="66" y="80" width="112" height="26" rx="7" fill="#16264a"/><rect x="114" y="80" width="18" height="88" fill="#ffffff"/><path d="M123 80 C104 56 78 74 123 86 C168 74 142 56 123 80 Z" fill="#16264a"/><g fill="#16264a"><circle cx="40" cy="50" r="6"/><circle cx="206" cy="44" r="6"/><circle cx="214" cy="150" r="6"/><circle cx="34" cy="150" r="6"/></g></svg>';
-function shareMini(){return '<div class="sharemini"><span>공유하기</span>'+
-'<a class="scm ic-bl" href="#" target="_blank" rel="noopener">B</a>'+
-'<a class="scm ic-fb" href="#" target="_blank" rel="noopener">f</a>'+
-'<a class="scm ic-yt" href="#" target="_blank" rel="noopener">▶</a>'+
-'<a class="scm ic-ig" href="#" target="_blank" rel="noopener">◎</a>'+
-'<a class="scm ic-kk" href="http://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener" style="color:#3A1D1D">T</a>'+
-'<button class="scm ic-url" type="button" onclick="copyURL(this);return false;">🔗</button></div>';}
+function shareMini(){return '<div class="sharebar2"><div class="sb2-top"><span class="sb2-lab">친구에게 공유하기</span>'+
+'<button class="sb2-url" type="button" onclick="copyURL(this);return false;">URL 복사 🔗</button></div>'+
+'<div class="sb2-icons">'+
+'<a class="sb2-ic i-bl" href="#" target="_blank" rel="noopener">blog</a>'+
+'<a class="sb2-ic i-fb" href="#" target="_blank" rel="noopener">f</a>'+
+'<a class="sb2-ic i-yt" href="#" target="_blank" rel="noopener">▶</a>'+
+'<a class="sb2-ic i-ig" href="#" target="_blank" rel="noopener">◎</a>'+
+'<a class="sb2-ic i-kk" href="http://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener">T</a>'+
+'</div></div>';}
 function CTA(){return '<a class="pgcta" href="#" onclick="alert(\'상담 예약\\n전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원\');return false;">무료 상담 예약하기 ›</a>'+shareMini();}
 function copyURL(btn){var u=(location.href||'').split('#')[0].split('?')[0];try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(function(){toastCopy();},function(){window.prompt('아래 주소를 복사하세요',u);});}else{window.prompt('아래 주소를 복사하세요',u);}}catch(e){window.prompt('아래 주소를 복사하세요',u);}}
 function toastCopy(){var t=document.createElement('div');t.textContent='링크가 복사되었습니다 ✓';t.style.cssText='position:fixed;left:50%;bottom:42px;transform:translateX(-50%);background:#1D2D4F;color:#fff;padding:12px 24px;border-radius:30px;font-size:14px;font-weight:800;z-index:99999;box-shadow:0 12px 34px rgba(0,0,0,.32)';document.body.appendChild(t);setTimeout(function(){t.style.transition='opacity .4s';t.style.opacity='0';},1400);setTimeout(function(){t.remove();},1900);}
@@ -1258,6 +1339,72 @@ function coursePage(key){
    +'<div class="cpg-note">전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원</div>'+shareMini()+'</div></section>';
 }
 function openCourse(key){var w=_sgOpenAny();document.getElementById('pgbody').innerHTML=coursePage(key);document.getElementById('pgModal').classList.add('open');window.scrollTo(0,0);if(!w){try{history.pushState({sg:1},'');}catch(e){}}}
+function memberTabs(){return '<div class="mb-tabs">'+
+'<a href="#" onclick="openPage(\'통합회원안내\');return false;">통합회원안내</a>'+
+'<a href="#" onclick="openPage(\'회원가입\');return false;">회원가입</a>'+
+'<a href="#" onclick="alert(\'회원정보변경은 로그인 후 이용하실 수 있습니다.\');return false;">회원정보변경</a>'+
+'<a href="#" onclick="alert(\'아이디/비밀번호 찾기는 준비 중입니다.\');return false;">아이디/비밀번호찾기</a>'+
+'<a href="#" onclick="alert(\'회원탈퇴는 로그인 후 이용하실 수 있습니다.\');return false;">회원탈퇴</a>'+
+'<a href="#" onclick="openPage(\'이용약관\');return false;">이용약관</a>'+
+'<a href="#" onclick="openPage(\'개인정보처리방침\');return false;">개인정보처리방침</a></div>';}
+function joinPage(){return memberTabs()
+ +'<div class="pghero big" style="background:linear-gradient(120deg,#c22030,#e2211c)"><div class="pgeyebrow">JOIN · 회원가입</div><h2>회원가입</h2><p>산본글로벌 신규 회원을 위한 특별한 혜택! 회원가입 후 지금 바로 받아가세요.</p></div>'
+ +'<div class="sec"><h3>산본글로벌에 오신 것을 환영합니다!</h3><div class="lead">하나의 아이디로 산본글로벌의 온라인·모바일 서비스를 이용하실 수 있습니다. 신규 회원을 위한 특별한 혜택을 지금 받아보세요.</div>'
+ +'<div class="mb-benefits">'
+ +'<div class="mb-bc"><div class="mh">🎓 신규 등록 혜택</div><div class="mb">신규 회원가입 시 <b>최대 25% 할인</b> 제공</div></div>'
+ +'<div class="mb-bc"><div class="mh">📞 전화·화상 수업</div><div class="mb">첫 수강 <b>10%</b> 즉시 할인</div></div>'
+ +'<div class="mb-bc"><div class="mh">🗣️ 원어민 1:1</div><div class="mb"><b>무료 레벨테스트</b> + 1:1 수업 1회 무료</div></div>'
+ +'<div class="mb-bc"><div class="mh">☕ 산모살롱</div><div class="mb">회원이면 커뮤니티 <b>이용료 할인</b></div></div></div>'
+ +'<div class="mb-join"><a class="child" href="#" onclick="alert(\'만 14세 미만은 보호자와 함께 가입해 주세요. (준비 중)\');return false;">만 14세 미만<br>어린이 회원가입</a>'
+ +'<a class="adult" href="#" onclick="alert(\'회원가입 폼은 준비 중입니다.\\n우선 전화 031-466-6969 또는 카카오톡 채널로 등록 상담해 주세요.\');return false;">만 14세 이상<br>일반 회원가입</a></div></div>'+CTA();}
+function loginPage(){return memberTabs()
+ +'<div class="pghero big" style="background:linear-gradient(120deg,#12203d,#33507f)"><div class="pgeyebrow">LOGIN</div><h2>통합회원 로그인</h2><p>로그인하시면 산본글로벌 서비스를 이용하실 수 있습니다.</p></div>'
+ +'<div class="mb-login"><div class="mb-lc"><h4>MEMBERS LOGIN</h4><div class="mdesc">가입하신 아이디로 로그인합니다.</div>'
+ +'<input class="mb-field" type="text" placeholder="아이디" autocomplete="off"><input class="mb-field" type="password" placeholder="비밀번호" autocomplete="off">'
+ +'<button class="mb-lbtn" type="button" onclick="alert(\'로그인 기능은 준비 중입니다.\')">로그인</button>'
+ +'<div class="pgnote" style="text-align:center;margin-top:12px"><a href="#" onclick="openPage(\'회원가입\');return false;">회원가입</a> · 아이디/비밀번호 찾기</div></div>'
+ +'<div class="mb-lc"><h4>SNS LOGIN</h4><div class="mdesc">보유하신 SNS 아이디로 간편하게 로그인하세요.</div><div class="mb-sns">'
+ +'<a href="#" onclick="alert(\'준비 중입니다.\');return false;" style="color:#03C75A">NAVER</a>'
+ +'<a href="#" onclick="alert(\'준비 중입니다.\');return false;" style="color:#3A1D1D">kakaotalk</a>'
+ +'<a href="#" onclick="alert(\'준비 중입니다.\');return false;">Google</a></div></div></div>'+CTA();}
+function guidePage(){
+ var CATS=[
+  {c:'영어회화',cap:'말이 나와야 진짜 영어! 회화에 최적화된 코스',color:'#0e8f6e',items:['기초입문회화','한인회화','원어민회화(SLE)'],img:'https://d8j0ntlcm91z4.cloudfront.net/user_3GADcyKE4Ow4Cld3tfs2MW9GGPk/hf_20260824_074650_5febf033-b855-4026-8541-88ad2b812fa1.png',co:'영어회화'},
+  {c:'실용영어',cap:'어떤 상황에서도 통하는 실전에 강한 영어 정복 코스',color:'#0e8f6e',items:['영어청취','비즈니스영어','올인원','영작','독해'],img:'https://d8j0ntlcm91z4.cloudfront.net/user_3GADcyKE4Ow4Cld3tfs2MW9GGPk/hf_20260824_074650_438fd312-e559-40e3-88cc-9fe0801fba09.png',co:'영어회화'},
+  {c:'중국어',cap:'가장 배우기 어려운 언어, 가볍게 끝내는 권법',color:'#2f6fb0',items:['기초중국어','중국어회화','HSK','TSC'],img:'https://d8j0ntlcm91z4.cloudfront.net/user_3GADcyKE4Ow4Cld3tfs2MW9GGPk/hf_20260824_074650_f39ee490-3e09-41b9-af90-5b4b19df68dd.png',co:'중국어'},
+  {c:'일본어',cap:'나에게 맞는 커리큘럼, 제대로 꼼꼼하고 체계적으로',color:'#c0397f',items:['기초일본어','일본어회화','JLPT','JPT/SJPT'],img:'https://d8j0ntlcm91z4.cloudfront.net/user_3GADcyKE4Ow4Cld3tfs2MW9GGPk/hf_20260824_074650_5aababd2-58a8-4f47-8821-cc79ba76eada.png',co:'일본어'}
+ ];
+ var rows=CATS.map(function(g,i){
+   var chips=g.items.map(function(it){return '<a href="#" style="background:'+g.color+'" onclick="openCourse(\''+g.co+'\');return false;">'+it+'</a>';}).join('');
+   var txt='<div class="gd-txt"><div class="gd-cap">'+g.cap+'</div><h2 class="gd-h" style="color:'+g.color+'">'+g.c+'</h2><div class="gd-chips">'+chips+'</div></div>';
+   var img='<div class="gd-img"><img src="'+g.img+'" alt="'+g.c+'" loading="lazy"></div>';
+   return '<div class="gd-sec"><div class="gd-row">'+(i%2===0?txt+img:img+txt)+'</div></div>';
+ }).join('');
+ return '<div class="pghero big" style="background:linear-gradient(120deg,#12203d,#26406e)"><div class="pgeyebrow">COURSE GUIDE · 강의안내</div><h2>내게 맞는 커리큘럼,<br>제대로 배우자</h2><p>산본글로벌 전 과목 커리큘럼을 한눈에. 과목을 클릭하면 상세 강의 페이지로 이동합니다.</p></div>'+rows+CTA();}
+function reviewExtra(){
+ var photos=[
+  {img:'img/teachers/eng_13.png',ti:'오답 바로잡으니 점수가 확 올랐어요',b:'토익 · 송윤정 선생님',p:'수업 시간에 문제 풀고 바로바로 해설·피드백을 받는 수업은 처음이었는데 정말 좋았어요. 혼자 공부할 때도 숙제 내주신 방법대로 하니 도움이 됐습니다.',m:'김○준 · 2026.08 수강'},
+  {img:'https://d8j0ntlcm91z4.cloudfront.net/user_3GADcyKE4Ow4Cld3tfs2MW9GGPk/hf_20260824_074650_438fd312-e559-40e3-88cc-9fe0801fba09.png',ti:'미드로 배우는 진짜 영어, 습관이 됐어요',b:'영어회화 · 원어민쌤',p:'장기 휴가에 영어 습관을 들이려고 다시 등록했어요. 매 수업이 실전이라 부담 없이 말하게 됩니다.',m:'애○ · 2026.08 수강'},
+  {img:'img/teachers/jpn_2.png',ti:'어느새 자연스럽게 외워지는 회화수업',b:'일본어 · 김민정 선생님',p:'단어·표현을 쉽게 익히게 알려주셔서 좋아요. 실제 쓰는 표현이라 드라마가 들리기 시작했어요.',m:'*인 · 2026.07 수강'}
+ ];
+ var generals=[
+  {ti:'1년 후 저의 영어를 상상해주시는 원어민쌤!',b:'영어회화 · 원어민쌤',p:'수업 4개월차입니다. 아들 같은 학생들이 많이 들을 것 같아 후기를 남깁니다. 편하게 이끌어주셔서 계속 다니게 돼요.',m:'이○주 · 2026.08 수강'},
+  {ti:'선생님 수업 추천합니다~',b:'일본어 · 중급 테마회화',p:'최근 뉴스 기사 등을 접하고 그 내용을 선생님·수강생들과 자유롭게 이야기할 수 있어 좋아요.',m:'*영 · 2026.08 수강'},
+  {ti:'중국어 연수 가기 전에 큰 도움 받았습니다',b:'중국어 · 기초 단기완성',p:'직장 생활 오래 하다 어학연수 가기 전 강의 듣고 정말 도움 많이 받았습니다.',m:'김○영 · 2026.01 수강'}
+ ];
+ var lines=[
+  {ti:'설명이 귀에 쏙 박혀요. 추천합니다!',b:'실용영어 · 비즈니스 영어'},
+  {ti:'오픽 기초 틀이 잡힌 느낌이에요',b:'오픽 · 2주 완성반'},
+  {ti:'다시 들어도 여전히 열정적이세요',b:'중국어 · HSK'},
+  {ti:'흥미를 가지고 접근하게 돼요',b:'중국어 · 기초 단기완성'}
+ ];
+ var ph=photos.map(function(r){return '<div class="rv-photo"><img src="'+r.img+'" alt="" loading="lazy"><div class="rp-b"><h5>'+r.ti+'</h5><p>'+r.p+'</p><div class="rp-m">'+r.b+' | '+r.m+'</div></div></div>';}).join('');
+ var ge=generals.map(function(r){return '<div class="rv-line"><h5>'+r.ti+'</h5><p style="font-size:14.5px;color:#556;line-height:1.7;margin:6px 0">'+r.p+'</p><div class="rp-m">'+r.b+' | '+r.m+'</div></div>';}).join('');
+ var ln=lines.map(function(r){return '<div class="rv-line"><h5>'+r.ti+'</h5><div class="rp-m">'+r.b+'</div></div>';}).join('');
+ return '<div class="rv-block"><h3 class="rv-bh">포토 후기 <span>수강생 실제 후기</span></h3>'+ph+'</div>'
+  +'<div class="rv-block"><h3 class="rv-bh">일반 수강후기 <span>최신순</span></h3>'+ge+'</div>'
+  +'<div class="rv-block"><h3 class="rv-bh">한줄 수강후기 <span>최신순</span></h3>'+ln+'</div>';
+}
 function enrollPick(cat,item){alert('수강신청 · '+cat+'\n선택 과목: '+item+'\n\n담당 상담사가 반 편성·시간표·결제를 도와드립니다.\n전화 031-466-6969 / 카카오톡 채널 @산본글로벌어학원');}
 function enrollPage(){
  var CATS=[
@@ -1297,7 +1444,8 @@ function reviewPage(){
  return '<div class="pghero big rv-hero"><div class="pgeyebrow">REAL REVIEWS · 수강후기</div><h2>실 수강생이 들려주는<br>생생한 진짜 후기</h2><p>산본글로벌 수강생들이 직접 남긴 후기를 확인하세요. 점수·레벨 향상부터 회화 자신감까지, 결과가 증명합니다.</p></div>'
   +'<div class="rv-stats">'+cards+'</div>'
   +'<div class="rv-filter"><span>전체</span><span>토익·토스·오픽</span><span>영어회화</span><span>일본어</span><span>중국어</span><span>기업·임원</span></div>'
-  +'<div class="rv-list">'+revs+'</div>'
+  +'<div class="rv-block"><h3 class="rv-bh"><b>BEST</b> 수강 후기</h3><div class="rv-list">'+revs+'</div></div>'
+  +reviewExtra()
   +'<div class="pgnote">※ 후기는 실제 수강생 사례를 바탕으로 정리한 예시이며, 개인정보 보호를 위해 이름은 익명 처리했습니다.</div>'
   +'<a class="pgcta" href="#" onclick="closePage();openPage(\'수강신청\');return false;">나도 수강신청하기 ›</a>'+CTA();
 }
@@ -1341,7 +1489,18 @@ const PAGES={
   +'<div class="pgnote">문의·예약 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>'+CTA(),
  '수강신청':enrollPage(),
  '수강후기':reviewPage(),
- '천원살롱':HV('산본글로벌 커뮤니티','천원살롱,<br>부담 없이 모이는 공간','1시간 단돈 1,000원. 최소 5인이 모이면 강의실을 내어드립니다. 커피·물·사탕은 무료. 스터디·회화 모임·소모임 무엇이든, 우리 동네에서 가장 가벼운 모임 공간이에요.','linear-gradient(135deg,#F7913F,#e96e1c)',ART_COFFEE)
+ '강의안내':guidePage(),
+ '회원가입':joinPage(),
+ '로그인':loginPage(),
+ '통합회원안내':memberTabs()+H('MEMBERSHIP · 통합회원','하나의 아이디로<br>모두 이용하세요','산본글로벌 통합회원에 가입하시면 하나의 아이디로 온라인·모바일 서비스를 이용하실 수 있습니다. 자세한 안내는 준비 중이며, 우선 전화·카카오톡으로 등록 상담이 가능합니다.','🪪')+CTA(),
+ '이용약관':H('TERMS · 이용약관','이용약관','이용약관 전문은 준비 중입니다. 관련 문의는 031-466-6969 또는 카카오톡 채널 @산본글로벌어학원으로 부탁드립니다.','📄')+CTA(),
+ '개인정보처리방침':H('PRIVACY · 개인정보처리방침','개인정보처리방침','개인정보처리방침 전문은 준비 중입니다. 수집·이용 항목 및 보관 기간 등 자세한 내용은 확정되는 대로 게시됩니다. 문의 031-466-6969.','🔒')+CTA(),
+ '네이버 리뷰 이벤트':HV('NAVER PLACE · 영수증 리뷰 이벤트','네이버 영수증 리뷰 쓰고<br>혜택 받아가세요','네이버 플레이스에 방문 후기(영수증 리뷰)를 남겨주시면 전 과목 3,000원 중복 할인쿠폰과 립밤을 드립니다.','linear-gradient(135deg,#03C75A,#029a45)','')
+  +'<div class="nv-coupon"><div class="nv-cp"><span>전 과목 사용 가능</span><b>3,000원 쿠폰</b><span>중복 할인쿠폰 (타 할인과 중복 적용)</span></div><div class="nv-cp gift"><span>리뷰 작성자 전원</span><b>립밤 증정 🎁</b><span>방문 시 현장 수령</span></div></div>'
+  +SEC('참여 방법','<div class="evsteps"><div class="evstep"><div class="evn">STEP 1</div><div class="evb"><b>네이버 플레이스 방문</b><p>「산본글로벌어학원」을 네이버 지도/플레이스에서 검색하세요.</p></div></div><div class="evstep"><div class="evn">STEP 2</div><div class="evb"><b>영수증 리뷰 작성</b><p>방문 인증(영수증) 후 솔직한 후기를 남겨주세요.</p></div></div><div class="evstep"><div class="evn">STEP 3</div><div class="evb"><b>혜택 수령</b><p>리뷰 캡처를 카카오톡 채널 또는 방문으로 보여주시면 3,000원 쿠폰 + 립밤을 드려요.</p></div></div></div>')
+  +SEC('유의사항','<ul class="evnotice"><li>영수증(방문) 리뷰에 한해 제공되며, 1인 1회 참여 가능합니다.</li><li>쿠폰은 전 과목 수강료에 중복 적용 가능하나, 일부 특가 상품은 제외될 수 있습니다.</li><li>립밤은 재고 소진 시 동등 이상 사은품으로 대체될 수 있습니다.</li><li>부적절·허위 리뷰 확인 시 혜택이 제한될 수 있습니다.</li></ul>')
+  +'<div class="pgnote">문의·수령 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>'+CTA(),
+ '산모살롱':HV('산모살롱 · 산본에서 언어를 사랑하는 모임','산모살롱,<br>부담 없이 모이는 공간','산본에서 언어를 사랑하는 사람들의 모임. 1시간 단돈 1,000원. 최소 5인이 모이면 강의실을 내어드립니다. 커피·물·사탕은 무료. 스터디·회화 모임·소모임 무엇이든, 우리 동네에서 가장 가벼운 모임 공간이에요.','linear-gradient(135deg,#F7913F,#e96e1c)',ART_COFFEE)
   +SEC('이용 안내',CT(['구분','내용'],[['이용료','1시간 1,000원 (인당)'],['정원','최소 5인부터'],['무료 제공','커피 · 물 · 사탕'],['이용 대상','스터디·영어회화·소모임 누구나'],['예약','카카오톡 채널 또는 전화 예약']]))
   +SEC('이렇게 쓰세요','<div class="chips"><span>📚 스터디 모임</span><span>🗣️ 영어·회화 모임</span><span>💼 스몰 클래스</span><span>🤝 동네 소모임</span></div><div class="lead">누구나 부담 없이 오가며 모일 수 있게 자리값을 최소화했어요. 편하게 예약하고 이웃과 함께하세요. 오가는 사람이 많을수록 우리 동네가 더 따뜻해집니다.</div>')
   +'<div class="pgnote">☕ 커피·물·사탕 무료 · 최소 5인 · 1시간 1,000원 · 예약 문의 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>'+CTA(),
