@@ -685,6 +685,18 @@ header nav a{letter-spacing:-.01em}
 .echip{background:#f2f4f8;border:1px solid #e6e9f0;border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:700;color:#39435a;cursor:pointer;transition:.15s}
 .echip:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
 @media(max-width:820px){.encat-grid{grid-template-columns:1fr}}
+.qform{background:#fff;border:1px solid #e9ecf2;border-radius:16px;padding:22px;box-shadow:0 8px 24px rgba(20,30,50,.06)}
+.qf-lead{font-size:14px;color:#5c6b60;font-weight:600;margin:2px 0 14px}
+.qrow{display:flex;gap:14px;margin-bottom:12px}
+.qform label{flex:1;display:flex;flex-direction:column;font-size:12.5px;font-weight:800;color:#48526a;gap:6px}
+.qform input,.qform select,.qform textarea{border:1.5px solid #e2e7f0;border-radius:10px;padding:11px 12px;font-size:14px;font-family:inherit;font-weight:500}
+.qform .qfull{display:block;margin-bottom:14px}
+.qform textarea{width:100%;min-height:90px;resize:vertical}
+.qsubmit{background:linear-gradient(120deg,#1D2D4F,#324a78);color:#fff;border:0;font-weight:800;font-size:15px;padding:14px;border-radius:12px;width:100%;cursor:pointer}
+.qsubmit:hover{filter:brightness(1.08)}
+.qdone{display:none;margin-top:14px;background:#eef7f0;border:1px solid #cfe9d8;border-radius:12px;padding:14px;font-size:13.5px;color:#1f6b43;font-weight:600;line-height:1.6}
+.qmail{color:#0a6b3d;font-weight:800;text-decoration:underline}
+@media(max-width:640px){.qrow{flex-direction:column;gap:12px}}
 .enr-head h4,.enr-head .enr-ic{position:relative;z-index:1}
 .enr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:6px 0 22px}
 .enr-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 10px 26px rgba(20,33,61,.06)}
@@ -1950,11 +1962,25 @@ const PAGES={
   +'<div class="pgfeat"><div class="ft"><div class="fi">⚡</div><h4>단기 목표 완성</h4><p>기간과 목표 점수에 맞춰 집중 설계합니다.</p></div><div class="ft"><div class="fi">🔁</div><h4>취약점 집중</h4><p>내가 약한 부분만 골라 반복 교정합니다.</p></div><div class="ft"><div class="fi">💬</div><h4>실전 회화</h4><p>원어민·전문 강사와 실전 대화를 집중 훈련합니다.</p></div><div class="ft"><div class="fi">🕒</div><h4>유연한 스케줄</h4><p>바쁜 직장인·학생 일정에 맞춰 운영합니다.</p></div></div>'+CTA(),
  '기업출강':bigImg('img/gen16.jpg')+H('기업 출강 · B2B','회사로 찾아가는<br>실무 어학 교육','임직원 대상 영어·일본어·중국어 교육을 회사 일정에 맞춰 진행합니다. 업종·직무에 맞춘 실무 커리큘럼과 성과 리포트로, 교육 효과를 눈으로 확인하실 수 있습니다.','🏢')
   +'<div class="tk-sec"><h3 class="tk-sectt">기업 출강 담당 강사진</h3><div class="tk-grid">'+T_B2B.map(tcard).join('')+'</div></div>'
-  +'<div class="pgfeat"><div class="ft"><div class="fi">🧩</div><h4>직무 맞춤 설계</h4><p>영업·CS·개발 등 직무별 실무 표현 중심으로 구성합니다.</p></div><div class="ft"><div class="fi">📈</div><h4>성과 리포트</h4><p>출석·성취도를 정리해 담당자에게 공유합니다.</p></div><div class="ft"><div class="fi">🕘</div><h4>사내 일정 맞춤</h4><p>업무 시간에 맞춰 방문 또는 화상으로 진행합니다.</p></div><div class="ft"><div class="fi">💳</div><h4>세금계산서 발행</h4><p>법인 결제·증빙을 지원합니다.</p></div></div>'+CTA(),
+  +'<div class="pgfeat"><div class="ft"><div class="fi">🧩</div><h4>직무 맞춤 설계</h4><p>영업·CS·개발 등 직무별 실무 표현 중심으로 구성합니다.</p></div><div class="ft"><div class="fi">📈</div><h4>성과 리포트</h4><p>출석·성취도를 정리해 담당자에게 공유합니다.</p></div><div class="ft"><div class="fi">🕘</div><h4>사내 일정 맞춤</h4><p>업무 시간에 맞춰 방문 또는 화상으로 진행합니다.</p></div><div class="ft"><div class="fi">💳</div><h4>세금계산서 발행</h4><p>법인 결제·증빙을 지원합니다.</p></div></div>'+b2bQuoteForm()+CTA(),
  '임원강의':bigImg('img/gen17.jpg')+H('EXECUTIVE · PRIVATE','임원 1:1,<br>어디든 찾아갑니다','바쁜 임원분들을 위해 시간·장소·주제를 완전 맞춤으로 운영하는 프리미엄 1:1 과정입니다. 사무실·자택 어디든 찾아가, 미팅·프레젠테이션·의전 등 상황별 실전 표현에 집중합니다.','👔')
   +'<div class="tk-sec"><h3 class="tk-sectt">임원 1:1 담당 강사진</h3><div class="tk-grid">'+[{n:'Apple 강사',title:'임원 영어 1:1',eye:'실전 비즈니스 회화',img:'eng_5'},{n:'제롤린 강사',title:'임원 영어 1:1',eye:'미팅·프레젠테이션 집중',img:'eng_11'}].map(tcard).join('')+'</div></div>'
   +'<div class="pgfeat"><div class="ft"><div class="fi">🤵</div><h4>완전 맞춤 1:1</h4><p>주제·수준·일정을 전적으로 맞춰 설계합니다.</p></div><div class="ft"><div class="fi">🗓️</div><h4>시간·장소 자유</h4><p>사무실 방문 또는 화상으로 편하게 진행합니다.</p></div><div class="ft"><div class="fi">🎤</div><h4>상황별 실전</h4><p>미팅·발표·네트워킹 등 실제 상황을 훈련합니다.</p></div><div class="ft"><div class="fi">🔒</div><h4>프라이빗 운영</h4><p>비공개·소수 정예로 편안하게 학습합니다.</p></div></div>'+CTA()
 };
+function b2bQuoteForm(){return '<div class="tk-sec"><h3 class="tk-sectt">기업 출강 견적 요청</h3><p class="qf-lead">아래 양식을 남겨주시면 담당자가 1영업일 내 맞춤 견적을 보내드립니다.</p>'+
+ '<form class="qform" onsubmit="return submitQuote(this)">'+
+ '<div class="qrow"><label>회사명 *<input name="company" required></label><label>담당자 *<input name="manager" required></label></div>'+
+ '<div class="qrow"><label>연락처 *<input name="phone" required placeholder="010-0000-0000"></label><label>이메일<input name="email" type="email" placeholder="선택"></label></div>'+
+ '<div class="qrow"><label>교육 언어<select name="lang"><option>영어</option><option>일본어</option><option>중국어</option><option>영어+일본어</option><option>복수/기타</option></select></label><label>예상 인원<input name="size" placeholder="예: 8명"></label></div>'+
+ '<div class="qrow"><label>희망 요일·시간<input name="when" placeholder="예: 화·목 오후 6시"></label><label>희망 시작 시기<input name="start" placeholder="예: 11월 초"></label></div>'+
+ '<label class="qfull">문의 내용<textarea name="memo" placeholder="교육 목표, 직무, 현재 수준 등을 적어주세요"></textarea></label>'+
+ '<button type="submit" class="qsubmit">견적 요청 보내기</button>'+
+ '<div class="qdone" id="qdone"></div></form></div>';}
+function submitQuote(f){var c=f.company.value.trim(),m=f.manager.value.trim(),p=f.phone.value.trim();
+ if(!c||!m||!p){alert('회사명·담당자·연락처는 필수입니다.');return false;}
+ var d=document.getElementById('qdone');
+ d.innerHTML='✅ 견적 요청이 접수되었습니다, '+m+'님. 담당자가 1영업일 내 <b>'+p+'</b>로 연락드립니다.<br>급하시면 <a class="qmail" href="tel:0314666969">전화 031-466-6969</a> · 카카오톡 채널 @산본글로벌어학원';
+ d.style.display='block';d.scrollIntoView({block:'center'});f.reset();return false;}
 function openPage(k){var p=PAGES[k];if(!p)return;document.getElementById('pgbody').innerHTML=p;document.getElementById('pgModal').classList.add('open');window.scrollTo(0,0);}
 function closePage(){document.getElementById('pgModal').classList.remove('open');}
 function goCourse(tab){openCourse(tab);}
