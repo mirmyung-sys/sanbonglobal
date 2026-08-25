@@ -2085,7 +2085,7 @@ function stepPage(){
   '<div class="sp-form">'+
    '<label>요일 선택<select id="spDay">'+dayOpts+'</select></label>'+
    '<label>시간 선택<select id="spTime">'+timeOpts+'</select></label>'+
-   '<label>기간 선택<select id="spTerm" onchange="spPrice()"><option value="2">단과 2개월 (무료 없음)</option><option value="3">3개월 등록 (+1개월 무료·총4개월)</option><option value="4">4개월 등록 (+2개월 무료·총6개월)</option><option value="6" selected>6개월 등록 (+4개월 무료·총10개월)</option></select></label>'+
+   '<label>기간 선택<select id="spTerm" onchange="spPrice()"><option value="2">단과 2개월 (무료 없음) — 36만원</option><option value="3">3개월 등록 (+1개월 무료·총4개월) — 54만원</option><option value="4">4개월 등록 (+2개월 무료·총6개월) — 72만원</option><option value="6" selected>6개월 등록 (+4개월 무료·총10개월) — 108만원</option></select></label>'+
   '</div>'+
   '<div class="sp-price"><span>수강료</span><b id="spAmt">1,080,000원</b><em id="spPer">+4개월 무료 · 총 10개월 · 최고혜택</em></div>'+
   '<div class="sp-btns"><button class="sp-cart" onclick="alert(\'장바구니에 담았습니다.\')">🛒 장바구니</button><button class="sp-buy" onclick="spBuy()">수강신청</button></div>'+
@@ -2139,8 +2139,9 @@ var EXAM={
  'JLPT':{eye:'JLPT 대비반 · 프로모션 (모집중)',title:'JLPT 대비반 — 12월(2차) 대비 · 9~11월 3개월 과정',photo:'jpn_7',rows:[
    {n:'JLPT + 회화 동시수강 (JLPT 3개월 + 회화 3개월)',tc:'서정아·히토시',day:'주중+주말',time:'3개월 과정',price:'117만원 → 87만원 (30만원 할인)',pay:'870,000원'},
    {n:'JLPT만 수강 (주중반 3개월 + 주말반 3개월)',tc:'서정아·모모코',day:'주중+주말',time:'3개월 과정',price:'126만원 → 86만원 (40만원 할인)',pay:'860,000원'}]},
- 'HSK':{eye:'HSK · 중국어 시험대비',title:'HSK — 중국어 정규반에서 대비',photo:'chn_1',rows:[
-   {n:'HSK 대비 (정규반 병행)',tc:'하홍금',day:'월·수 / 화·목',time:'저녁반',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'}]},
+ 'HSK':{eye:'HSK · 중국어 시험대비',title:'HSK — 급수별 완전정복',photo:'chn_1',photos:['chn_1','chn_7'],rows:[
+   {n:'HSK 대비',tc:'하홍금',day:'월·수',time:'저녁반',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'},
+   {n:'HSK 대비',tc:'현지인',day:'오전반',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'}]},
  '토플':{eye:'TOEFL · 모집중',title:'토플 — 모집중',photo:'eng_6',rows:[
    {n:'토플',tc:'최자운',day:'월·수',time:'20:00~21:30',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'}]}
 };
