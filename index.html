@@ -1147,16 +1147,16 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
 @media(max-width:560px){.tk-grid{grid-template-columns:1fr}.ec-grid{grid-template-columns:1fr}}
 .lvrun{position:fixed;inset:0;background:rgba(15,20,32,.6);display:none;align-items:center;justify-content:center;z-index:100000;padding:20px}
 .lvrun.on{display:flex}
-.lvrun-box{background:#fff;border-radius:16px;max-width:520px;width:100%;max-height:88vh;overflow:auto;padding:26px;position:relative}
+.lvrun-box{background:#fff;border-radius:16px;max-width:520px;width:100%;max-height:88vh;overflow-y:auto;overflow-x:hidden;padding:26px;position:relative}
 .lvrun-x{position:absolute;top:12px;right:16px;font-size:22px;cursor:pointer;color:#8a93a6}
 .lvr-t{font-size:20px;font-weight:900;color:#1a2130;margin-bottom:8px;text-align:center}
 .lvr-d{font-size:14px;color:#5c6b60;text-align:center;margin-bottom:16px;line-height:1.5}
 .lvr-pick{display:flex;flex-direction:column;gap:10px}
 .lvr-pick button{background:#1D2D4F;color:#fff;border:0;font-weight:800;font-size:15px;padding:14px;border-radius:10px;cursor:pointer}
 .lvr-pick button:hover{background:#e2231a}
-.lvr-mic{font-size:50px;text-align:center;animation:lvpulse 1s infinite}
+.lvr-mic{font-size:50px;text-align:center}
 @keyframes lvpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-.lvr-timer{font-size:44px;font-weight:900;color:#e2231a;text-align:center;margin:8px 0 0}
+.lvr-timer{font-size:44px;font-weight:900;color:#e2231a;text-align:center;margin:8px 0 0;font-variant-numeric:tabular-nums}
 .lvr-timer2{text-align:center;font-size:15px;color:#8a93a6;margin-bottom:14px}
 .lvr-sub{text-align:center;font-size:12px;color:#8a93a6}
 .lvr-res{text-align:center;font-size:18px;color:#1a2130;line-height:1.7;margin:10px 0}
@@ -1714,8 +1714,8 @@ var LVLIMIT={'토익':9,'토플':12,'JLPT':9,'오픽':7,'토스':7};
 var _lvRemain=0;
 function lvFmt(s){var m=Math.floor(s/60),x=s%60;return m+':'+(x<10?'0':'')+x;}
 var _lvT=null,_lvSec=0;
-function lvOpenRun(h){document.getElementById('lvRunBody').innerHTML=h;document.getElementById('lvRun').classList.add('on');}
-function lvCloseRun(){document.getElementById('lvRun').classList.remove('on');if(_lvT){clearInterval(_lvT);_lvT=null;}}
+function lvOpenRun(h){document.getElementById('lvRunBody').innerHTML=h;document.getElementById('lvRun').classList.add('on');document.body.style.overflow='hidden';}
+function lvCloseRun(){document.getElementById('lvRun').classList.remove('on');document.body.style.overflow='';if(_lvT){clearInterval(_lvT);_lvT=null;}}
 function lvPickTalk(){lvOpenRun('<h3 class="lvr-t">원어민 회화 레벨테스트</h3><p class="lvr-d">언어를 선택하세요. AI 원어민과 30초 대화로 레벨을 진단합니다.</p><div class="lvr-pick"><button onclick="lvTalk(\'영어\')">영어회화</button><button onclick="lvTalk(\'일본어\')">일본어회화</button><button onclick="lvTalk(\'중국어\')">중국어회화</button></div>');}
 function lvTalk(lang){lvOpenRun('<h3 class="lvr-t">'+lang+' 회화 진단</h3><div class="lvr-mic">🎙️</div><p class="lvr-d">AI 원어민과 30초 자유 대화로 레벨을 진단합니다.<br>주제: 자기소개 · 취미 · 최근 근황</p><div class="lvr-note">준비되셨나요? 아래 <b>시작</b>을 누르면 30초 타이머가 작동합니다.</div><button class="lvr-go" onclick="lvTalkGo(\''+lang+'\')">Are you ready? 시작하기 ›</button>');}
 function lvTalkGo(lang){lvOpenRun('<h3 class="lvr-t">'+lang+' 회화 진단</h3><div class="lvr-mic">🎙️</div><p class="lvr-d">스타트! 30초간 자유롭게 대화해 보세요.<br>(자기소개 · 취미 · 최근 근황)</p><div class="lvr-timer" id="lvSec">30</div><p class="lvr-sub">남은 시간(초)</p><div class="lvr-note" id="lvRecMsg">🎙️ 녹음 중… 끝나면 내 목소리를 다시 들어볼 수 있어요.</div>');var chunks=[],rec=null;if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){navigator.mediaDevices.getUserMedia({audio:true}).then(function(st){try{rec=new MediaRecorder(st);}catch(e){rec=null;}if(rec){rec.ondataavailable=function(e){if(e.data.size>0)chunks.push(e.data);};rec.onstop=function(){var url=null;try{url=URL.createObjectURL(new Blob(chunks,{type:'audio/webm'}));}catch(e){}st.getTracks().forEach(function(t){t.stop();});lvTalkDone(lang,url);};rec.start();}}).catch(function(){var m=document.getElementById('lvRecMsg');if(m)m.textContent='※ 마이크 권한이 없어 녹음 없이 진단합니다.';});}if(_lvT)clearInterval(_lvT);_lvSec=30;_lvT=setInterval(function(){_lvSec--;var e=document.getElementById('lvSec');if(e)e.textContent=_lvSec;if(_lvSec<=0){clearInterval(_lvT);_lvT=null;if(rec&&rec.state==='recording'){rec.stop();}else{lvTalkDone(lang,null);}}},1000);}
