@@ -2092,33 +2092,38 @@ function openStep(k){var w=_sgOpenAny();document.getElementById('pgbody').innerH
 function spModalHTML(){return '<div class="sp-modal" id="spModal"><div class="sp-sheet"><div class="sp-x" onclick="spClose()">✕</div><div class="sp-mhead">SANBON GLOBAL</div><div id="spLogin"><input placeholder="아이디"><input placeholder="비밀번호" type="password"><button class="sp-login" onclick="spDoLogin()">로그인</button><div class="sp-social">다른 계정으로 로그인 · <b>네이버</b> · <b>카카오</b> · <b>구글</b></div><div class="sp-mfoot"><span onclick="spClose();openPage(\'회원가입\')">회원가입</span><span>아이디/비밀번호 찾기</span></div></div><div id="spCharge" style="display:none"><div class="sp-welcome">✅ 로그인 완료! 결제를 위해 충전해 주세요.</div><div class="sp-camt">결제 예정 <b id="spCamt">-</b></div><button class="sp-charge" onclick="alert(\'토스페이먼츠 결제창으로 연결됩니다.\\n(대표님 결제링크 연결 예정)\')">💳 충전하기 · 토스페이먼츠</button><button class="sp-charge2" onclick="alert(\'무통장 입금 안내\\n농협 301-9944-1055-41 (주)이지교육\\n입금 확인 후 자동 충전됩니다.\')">🏦 무통장 입금 · 농협</button><div class="sp-mfoot"><span onclick="spClose()">닫기</span></div></div></div></div>';}
 function spBuyAmt(a){document.getElementById('spCamt').textContent=a;document.getElementById('spModal').classList.add('on');}
 var EXAM={
- '토익':{eye:'TOEIC · 오답 프로파일러',title:'토익 — 왜 틀리는지부터 잡습니다',photo:'eng_13',rows:[
-   {n:'토익 스파르타(매일반)',tc:'송윤정',day:'월·화·수·목·금',time:'19:30~21:10',price:'1개월 42만→39만 / 2개월 84만→64만',pay:'640,000원'},
-   {n:'토익 정규 초급',tc:'엘리 킴',day:'월·수',time:'19:30~21:30',price:'2개월 42만→39만(3만 할인)',pay:'390,000원'},
-   {n:'토익 정규 중급',tc:'엘리 킴',day:'화·목',time:'19:30~21:30',price:'2개월 42만→39만(3만 할인)',pay:'390,000원'},
-   {n:'토익 왕기초',tc:'최자운',day:'토',time:'10:00~13:00',price:'월 21만',pay:'210,000원'},
-   {n:'토익 실전반',tc:'전임 강사',day:'월·수·금',time:'협의',price:'1개월 26만→23만 / 2개월 52만→42만',pay:'420,000원'}]},
- '토스':{eye:'TOEIC Speaking',title:'토스 — 목표 등급까지',photo:'eng_14',rows:[
-   {n:'토스 주말반',tc:'유미용',day:'토',time:'10:00~13:00',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'토스 저녁반',tc:'최자운',day:'월·수',time:'20:00~21:30',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'}]},
- '오픽':{eye:'OPIc',title:'오픽 — IH·AL 실전 발화',photo:'eng_15',rows:[
-   {n:'오픽 정규',tc:'김현정',day:'화·목',time:'19:00~20:30',price:'월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'}]},
- 'JLPT':{eye:'JLPT · 합격 루트',title:'JLPT — 기출로 증명된 합격 루트',photo:'jpn_7',rows:[
-   {n:'JLPT N3~N1',tc:'서정아',day:'토',time:'10:00~12:30',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'JLPT N5~N2',tc:'김연주',day:'평일반',time:'시간 협의',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'}]},
- 'HSK':{eye:'HSK · 급수별 정복',title:'HSK — 급수별 완전정복',photo:'chn_1',rows:[
-   {n:'HSK 대비',tc:'하홍금',day:'토',time:'13:00~15:00',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'HSK 대비',tc:'현지인',day:'월·수',time:'저녁',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'}]},
- '일본어':{eye:'JAPANESE · 회화 & JLPT',title:'일본어 — 회화부터 JLPT까지',photo:'jpn_6',rows:[
-   {n:'원어민 일본어회화',tc:'마무로 히토시',day:'협의',time:'협의',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'기초·중급 일본어회화',tc:'김민정·이형림',day:'협의',time:'협의',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'중고급 회화 / JLPT',tc:'권은정·서정아',day:'협의',time:'협의',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'}]},
- '중국어':{eye:'CHINESE · 회화 & HSK',title:'중국어 — 회화부터 HSK까지',photo:'chn_1',rows:[
-   {n:'원어민 중국어회화',tc:'하홍금',day:'협의',time:'협의',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'기초·중급 중국어',tc:'노정아·오금한',day:'협의',time:'협의',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'HSK / 중국어회화',tc:'현지인',day:'협의',time:'협의',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'}]},
- '토플':{eye:'TOEFL',title:'토플 — 유학·인증 대비',photo:'eng_14',rows:[
-   {n:'토플 정규',tc:'유미용·최자운',day:'협의',time:'협의',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'}]}
+ '토익':{eye:'TOEIC · 현재 개설반',title:'토익 — 개설 시간표',photo:'eng_13',rows:[
+   {n:'스파르타 중급 (매일반)',tc:'송윤정',day:'월~금',time:'10:00~12:00',price:'2개월 84만→64만 · 18회',pay:'640,000원'},
+   {n:'스파르타 초급 (매일반)',tc:'송윤정',day:'월~금',time:'12:10~14:10',price:'2개월 84만→64만 · 18회',pay:'640,000원'},
+   {n:'정규 초급반 (기출입문)',tc:'엘리 킴',day:'월·수',time:'19:30~21:30',price:'2개월 42만→39만 · 16회',pay:'390,000원'},
+   {n:'정규 중급반 (기출종합)',tc:'엘리 킴',day:'화·목',time:'19:30~21:30',price:'2개월 42만→39만 · 16회',pay:'390,000원'},
+   {n:'실전반 (ETS 1000제)',tc:'송윤정',day:'오전반',time:'10:00~13:00',price:'2개월 52만→42만',pay:'420,000원'}]},
+ '토스':{eye:'TOEIC Speaking · 개설반',title:'토스 — 개설 시간표',photo:'eng_6',rows:[
+   {n:'토스 정규 (기출단기공략)',tc:'최자운',day:'월·수',time:'20:00~21:30',price:'2개월 42만→39만 · 16회',pay:'390,000원'},
+   {n:'토스 오전 실전',tc:'최자운',day:'오전반',time:'10:00~13:00',price:'월 21만 / 2개월 39만',pay:'390,000원'}]},
+ '오픽':{eye:'OPIc · 개설반',title:'오픽 — 개설 시간표',photo:'eng_15',rows:[
+   {n:'오픽 (파고다 오픽의신)',tc:'김현정',day:'오전반',time:'10:00~13:00',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'}]},
+ '일본어':{eye:'JAPANESE · 개설반',title:'일본어 — 개설 시간표',photo:'jpn_6',rows:[
+   {n:'원어민 프리토킹 중고급',tc:'히토시',day:'월·수',time:'18:20~19:50',price:'월 21만 / 2개월 39만',pay:'390,000원'},
+   {n:'원어민 2단계',tc:'히토시',day:'월·수',time:'20:00~21:30',price:'월 21만 / 2개월 39만',pay:'390,000원'},
+   {n:'다이스키3 (초중급)',tc:'서정아',day:'화·목',time:'18:20~19:50',price:'월 21만 / 2개월 39만',pay:'390,000원'},
+   {n:'중급 (다이스키·아리가또B)',tc:'모모코',day:'화·목',time:'20:00~21:30',price:'월 21만 / 2개월 39만',pay:'390,000원'},
+   {n:'초급 (다이스키2)',tc:'서정아',day:'화·목',time:'20:00~21:30',price:'월 21만 / 2개월 39만',pay:'390,000원'},
+   {n:'입문반',tc:'개강예정',day:'문의',time:'문의',price:'월 21만',pay:'상담'}]},
+ '중국어':{eye:'CHINESE · 개설반',title:'중국어 — 개설 시간표',photo:'chn_1',rows:[
+   {n:'스피킹중국어 초급',tc:'하홍금',day:'월·수',time:'18:50~20:20',price:'월 21만 / 2개월 39만',pay:'390,000원'},
+   {n:'스피킹중국어 입문',tc:'하홍금',day:'월·수',time:'20:30~22:00',price:'월 21만 / 2개월 39만',pay:'390,000원'},
+   {n:'신공략 중급',tc:'오금한',day:'월·수',time:'20:00~21:30',price:'월 21만 / 2개월 39만',pay:'390,000원'},
+   {n:'맛있는중국어 중급',tc:'오금한',day:'화·목',time:'20:00~21:30',price:'월 21만 / 2개월 39만',pay:'390,000원'},
+   {n:'신공략6 중고급',tc:'현지인',day:'오전반',time:'10:00~13:00',price:'월 21만 / 2개월 39만',pay:'390,000원'},
+   {n:'스피킹 고급 (上)',tc:'하홍금',day:'오전반',time:'10:00~13:00',price:'월 21만 / 2개월 39만',pay:'390,000원'},
+   {n:'입문반',tc:'모집예정',day:'문의',time:'문의',price:'월 21만',pay:'상담'}]},
+ 'JLPT':{eye:'JLPT · 일본어 시험대비',title:'JLPT — 일본어 정규반에서 대비',photo:'jpn_7',rows:[
+   {n:'JLPT 대비 (정규반 병행)',tc:'서정아·히토시·모모코',day:'월·수 / 화·목',time:'저녁반',price:'월 21만 / 2개월 39만',pay:'390,000원'}]},
+ 'HSK':{eye:'HSK · 중국어 시험대비',title:'HSK — 중국어 정규반에서 대비',photo:'chn_1',rows:[
+   {n:'HSK 대비 (정규반 병행)',tc:'하홍금·오금한·현지인',day:'월·수 / 화·목',time:'저녁반',price:'월 21만 / 2개월 39만',pay:'390,000원'}]},
+ '토플':{eye:'TOEFL',title:'토플 — 상담 후 개설',photo:'eng_6',rows:[
+   {n:'토플 1:1 / 소수정예',tc:'상담 배정',day:'협의',time:'협의',price:'상담 후 결정',pay:'상담'}]}
 };
 function examPage(k){var e=EXAM[k]||EXAM['토익'];
  var rows=e.rows.map(function(r){return '<tr><td class="b">'+r.n+'</td><td>'+r.tc+'</td><td>'+r.day+'</td><td>'+r.time+'</td><td class="pr">'+r.price+'</td><td><button class="ex-buy" onclick="spBuyAmt(\''+r.pay+'\')">수강신청</button></td></tr>';}).join('');
