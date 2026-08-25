@@ -768,7 +768,8 @@ header nav a{letter-spacing:-.01em}
 .encat-ph img:hover{box-shadow:0 0 0 3px rgba(29,45,79,.5);transform:scale(1.06)}
 .cal-d i.cir{cursor:default}
 .sp-disc-note{font-size:12.5px;color:#c81f2b;font-weight:700;margin-top:8px;line-height:1.5}
-.sp-back{background:#eef1f6;border:0;color:#1D2D4F;font-weight:900;font-size:22px;cursor:pointer;padding:13px 24px;border-radius:12px;margin-bottom:16px;display:inline-block}
+.sp-back{background:#e2231a;border:0;color:#fff;font-weight:900;font-size:22px;cursor:pointer;padding:13px 24px;border-radius:12px;margin-bottom:16px;display:inline-block}
+.sp-back:hover{background:#c81f2b}
 .op-price{margin:16px 0 8px;font-size:15px;color:#8a93a6}
 .op-price s{color:#b6bcc9;font-size:18px}
 .op-price b{font-size:30px;color:#c81f2b;font-weight:900;margin-left:8px}
@@ -2047,7 +2048,7 @@ const PAGES={
  '영어수강':tGrid('linear-gradient(120deg,#0e5a3c,#1aa06e)','영어회화','원어민과 함께 기초부터 프리토킹까지',T_ENG),
  '일본어수강':tGrid('linear-gradient(120deg,#8a2560,#d64f97)','일본어','회화 · JLPT · 원어민, 살아있는 일본어',T_JPN),
  '중국어수강':tGrid('linear-gradient(120deg,#8f1f24,#e05a4f)','중국어','발음부터 HSK까지 탄탄하게',T_CHN),
- '빠른추격':bigImg('img/gen18.jpg')+HV('CATCH-UP · 빠른추격 전문반','아직<br>늦지 않았습니다','시험이 코앞이어도 괜찮아요. 약점만 콕 집어 최단기로 따라잡는 밀착 관리형 전문반입니다. 남은 기간에 맞춘 개인별 스퍼트 플랜으로 목표까지 함께 달립니다.','linear-gradient(135deg,#d98016,#efa441)','')+'<div class="tk-sec"><h3 class="tk-sectt">빠른추격 담당 강사진</h3><div class="tk-grid">'+T_CATCH.map(tcard).join('')+'</div></div>'+'<div class="pgnote">지금 바로 시작하세요. 남은 기간·목표를 알려주시면 최단 경로를 설계해 드립니다. · 031-466-6969</div><a class="pgcta" href="#" onclick="closePage();openPage(\'수강신청\');return false;">빠른추격 수강신청 ›</a>'+CTA(),
+ '빠른추격':bigImg('img/gen18.jpg')+HV('CATCH-UP · 빠른추격 전문반','아직<br>늦지 않았습니다','시험이 코앞이어도 괜찮아요. 약점만 콕 집어 최단기로 따라잡는 밀착 관리형 전문반입니다. 남은 기간에 맞춘 개인별 스퍼트 플랜으로 목표까지 함께 달립니다.','linear-gradient(135deg,#d98016,#efa441)','')+'<div class="tk-sec"><h3 class="tk-sectt">빠른추격 담당 강사진</h3><div class="tk-grid">'+T_CATCH.map(tcard).join('')+'</div></div>'+'<div class="pgnote">지금 바로 시작하세요. 남은 기간·목표를 알려주시면 최단 경로를 설계해 드립니다. · 031-466-6969</div><a class="pgcta" href="#" onclick="openPage(\'수강신청\');return false;">빠른추격 수강신청 ›</a>'+CTA(),
  '회원가입':joinPage(),
  '회원가입폼':joinFormPage(),
  '로그인':loginPage(),
@@ -2112,10 +2113,10 @@ var WCONV={
  desc:'발음·성조부터 HSK·TSC까지 레벨별로 탄탄하게. 원어민·전문 강사의 관리형 수업으로 실전 회화 자신감을 키웁니다.'}
 };
 var _spSubj='영어';
-function _wdays(s){var mp={'일':0,'월':1,'화':2,'수':3,'목':4,'금':5,'토':6};var r=[];for(var i=0;i<s.length;i++){var w=mp[s.charAt(i)];if(w!==undefined&&r.indexOf(w)<0)r.push(w);}if(/주말/.test(s))r=[0,6];if(/평일/.test(s))r=[1,2,3,4,5];return r;}
-var _spCalD=new Date();
+function _wdays(s){var mp={'일':0,'월':1,'화':2,'수':3,'목':4,'금':5,'토':6};var r=[];for(var i=0;i<s.length;i++){var w=mp[s.charAt(i)];if(w!==undefined&&r.indexOf(w)<0)r.push(w);}if(/주말/.test(s))r=[0,6];if(/평일/.test(s))r=[1,2,3,4,5];if(/월~금|매일/.test(s))r=[1,2,3,4,5];return r;}
+var _spCalD=new Date();var _calWd=[];
 function calHTML(d,wd){var y=d.getFullYear(),m=d.getMonth();var first=new Date(y,m,1).getDay();var dim=new Date(y,m+1,0).getDate();var names=['일','월','화','수','목','금','토'];var cells='';for(var i=0;i<first;i++)cells+='<span class="cal-d"></span>';for(var day=1;day<=dim;day++){var on=wd.indexOf(new Date(y,m,day).getDay())>=0;cells+='<span class="cal-d"><i class="'+(on?'cir':'')+'">'+day+'</i></span>';}return '<div class="cal"><div class="cal-h"><button type="button" onclick="spCalNav(-1)">‹</button><b>'+y+'년 '+(m+1)+'월</b><button type="button" onclick="spCalNav(1)">›</button></div><div class="cal-w">'+names.map(function(n){return '<span>'+n+'</span>';}).join('')+'</div><div class="cal-g">'+cells+'</div></div>';}
-function spRenderCal(){var el=document.getElementById('spCal');if(!el)return;var dv=document.getElementById('spDay');el.innerHTML=calHTML(_spCalD,_wdays(dv?dv.value:''));}
+function spRenderCal(){var el=document.getElementById('spCal');if(!el)return;var dv=document.getElementById('spDay');el.innerHTML=calHTML(_spCalD,dv?_wdays(dv.value):_calWd);}
 function spCalNav(delta){_spCalD=new Date(_spCalD.getFullYear(),_spCalD.getMonth()+delta,1);spRenderCal();}
 function stepPage(k){
 if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;_spCalD=new Date();var W=WCONV[k]||WCONV['영어'];
@@ -2191,12 +2192,13 @@ var EXAM={
 };
 var TIMG={'송윤정':'eng_13','엘리 킴':'elly','최자운':'eng_6','김현정':'eng_15','유미용':'eng_14','히토시':'jpn_6','서정아':'jpn_7','모모코':'jpn_4','권은정':'jpn_1','김민정':'jpn_2','이형림':'jpn_11','하홍금':'chn_1','오금한':'chn_5','현지인':'chn_7','노정아':'chn_3'};
 function timg(name){var k=(name||'').split(/[\u00b7\/]/)[0].trim();var im=TIMG[k];return im?'<img class="ex-face" src="img/teachers/'+im+'.png" alt="">':'';}
-function examPage(k){var e=EXAM[k]||EXAM['토익'];
+function examPage(k){var e=EXAM[k]||EXAM['토익'];_spCalD=new Date();var _uw=[];e.rows.forEach(function(r){_wdays(r.day).forEach(function(w){if(_uw.indexOf(w)<0)_uw.push(w);});});_calWd=_uw;
  var rows=e.rows.map(function(r){return '<tr><td class="b">'+r.n+'</td><td><span class="ex-tc">'+timg(r.tc)+'<b>'+r.tc+'</b></span></td><td>'+r.day+'</td><td>'+r.time+'</td><td class="pr">'+r.price+'</td><td><button class="ex-buy" onclick="spBuyAmt(\''+r.pay+'\')">수강신청</button></td></tr>';}).join('');
  return '<div class="sp-wrap"><button class="sp-back" onclick="openPage(\'수강신청\')">‹ 수강신청으로</button>'+
   '<div class="ex-head">'+(e.photos?'<div class="ex-photos">'+e.photos.map(function(im){return '<img src="img/teachers/'+im+'.png" alt="">';}).join('')+'</div>':'<div class="ex-photo"><img src="img/teachers/'+e.photo+'.png" alt=""></div>')+'<div><div class="sp-eye">'+e.eye+'</div><h2 class="sp-title" style="margin:6px 0 0">'+e.title+'</h2><div class="ex-badge">시험대비반 · 관리형</div></div></div>'+
   '<table class="ex-tt"><tr><th>과정</th><th>강사</th><th>요일</th><th>시간</th><th>수강료</th><th></th></tr>'+rows+'</table>'+
   '<div class="sp-note">※ 요일·시간·금액은 산본이지어학원 단가 기준 초안이며, 확정가로 조정됩니다. · 상담 031-466-6969</div>'+
+  '<div class="sp-cal-wrap"><div class="sp-cal-label">수업 개설일 (요일 기준)</div><div id="spCal">'+calHTML(new Date(),_calWd)+'</div></div>'+
   spModalHTML()+'</div>';
 }
 function openBuy(k){if(k==='영어회화'){openStep(k);}else{openExam(k);}}
