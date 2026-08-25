@@ -767,6 +767,7 @@ header nav a{letter-spacing:-.01em}
 .encat-ph img{transition:box-shadow .15s,transform .15s}
 .encat-ph img:hover{box-shadow:0 0 0 3px rgba(29,45,79,.5);transform:scale(1.06)}
 .cal-d i.cir{cursor:default}
+.sp-disc-note{font-size:12.5px;color:#c81f2b;font-weight:700;margin-top:8px;line-height:1.5}
 .sp-back{background:none;border:0;color:#6a7488;font-weight:800;font-size:14px;cursor:pointer;padding:0 0 14px}
 .sp-back:hover{color:#e2231a}
 .ex-head{display:flex;gap:22px;align-items:center;border-bottom:1px solid #eef0f4;padding-bottom:20px;margin-bottom:18px}
@@ -1483,7 +1484,7 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
 <!-- 콘텐츠 페이지 모달 -->
 <div class="amodal" id="pgModal">
   <div class="abox">
-    <span class="aclose" onclick="closePage()">×</span>
+    <span class="aclose" onclick="sgCloseOrBack()">×</span>
     <div id="pgbody"></div>
   </div>
 </div>
@@ -2125,18 +2126,19 @@ if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;_spCalD=new Date();var 
   '</div><div class="sp-right">'+
   '<div class="sp-eye">'+W.eye+'</div><h2 class="sp-title">'+W.title+'</h2>'+
   '<div class="sp-steps">'+steps+'</div>'+
-  '<div class="sp-form"><label>레벨·요일 선택<select id="spDay" onchange="spRenderCal()">'+dayOpts+'</select></label><label>시간 선택<select id="spTime">'+timeOpts+'</select></label><label>기간 선택<select id="spTerm" onchange="spPrice()"><option value="2">단과 2개월 (무료 없음) — 36만원</option><option value="3">3개월 등록 (+1개월 무료·총4개월) — 54만원</option><option value="4">4개월 등록 (+2개월 무료·총6개월) — 72만원</option><option value="6" selected>6개월 등록 (+4개월 무료·총10개월) — 108만원</option></select></label><label>이벤트 할인<select id="spDisc" onchange="spPrice()"><option value="0">할인 없음</option><option value="0.2">얼리버드/환승 −20%</option><option value="0.25">얼리버드/환승 −25% (토익)</option></select></label></div>'+
+  '<div class="sp-form"><label>레벨·요일 선택<select id="spDay" onchange="spRenderCal()">'+dayOpts+'</select></label><label>시간 선택<select id="spTime">'+timeOpts+'</select></label><label>기간 선택<select id="spTerm" onchange="spPrice()"><option value="2">단과 2개월 (무료 없음) — 36만원</option><option value="3">3개월 등록 (+1개월 무료·총4개월) — 54만원</option><option value="4">4개월 등록 (+2개월 무료·총6개월) — 72만원</option><option value="6" selected>6개월 등록 (+4개월 무료·총10개월) — 108만원</option></select></label><label>이벤트 할인<select id="spDisc" onchange="spPrice()"><option value="0">할인 없음</option><option value="0.2">글로벌위크 얼리버드 −20%</option><option value="0.25">글로벌위크 얼리버드 −25% (토익)</option><option value="v0.2">환승 이벤트 −20% (영수증 인증)</option><option value="v0.25">환승 −25% 토익 (영수증 인증)</option></select></label></div>'+
   '<div class="sp-cal-wrap"><div class="sp-cal-label">수업일 확인 (선택 요일 기준)</div><div id="spCal">'+calHTML(new Date(),_wdays(idays[0]||''))+'</div></div>'+
   '<div class="sp-price"><span>수강료</span><b id="spAmt">1,080,000원</b><em id="spPer">+4개월 무료 · 총 10개월 · 최고혜택</em></div>'+
   '<div class="sp-btns"><button class="sp-cart" onclick="alert(\'장바구니에 담았습니다.\')">🛒 장바구니</button><button class="sp-buy" onclick="spBuy()">수강신청</button></div>'+
   '<div class="sp-note">6개월 등록 시 +4개월 무료(총 10개월) · 등록 기간이 길수록 무료 개월 ↑</div>'+
+  '<div class="sp-disc-note" id="spDiscNote"></div>'+
   '</div></div>'+
   '<div class="sp-tabs"><span class="on">과목특징</span><span>선생님소개</span><span>수강후기</span><span>강의목록</span></div>'+
   '<div class="sp-desc">'+W.desc+'</div>'+sch+
   spModalHTML()+'</div>';
 }
 function spStep(b,level){var ss=document.querySelectorAll('.sp-step');for(var i=0;i<ss.length;i++)ss[i].classList.remove('on');b.classList.add('on');var W=WCONV[_spSubj]||WCONV['영어'];var list=W.cls[level]||[];var days=[];list.forEach(function(x){if(days.indexOf(x[0])<0)days.push(x[0]);});document.getElementById('spDay').innerHTML=days.map(function(d){return '<option>'+d+' (개강)</option>';}).join('')+'<option>주말반 (추후 모집중)</option>';document.getElementById('spTime').innerHTML=list.map(function(x){return '<option>'+x[1]+' · '+x[2]+' ('+x[0]+')</option>';}).join('')+'<option>오전반 (추후 모집중)</option><option>오후반 (추후 모집중)</option><option>주말반 (추후 모집중)</option>';var info=null;for(var j=0;j<W.levels.length;j++){if(W.levels[j][0]===level){info=W.levels[j];break;}}if(info){var p=document.getElementById('spPhoto');if(p)p.src='img/teachers/'+info[1]+'.png';var t=document.getElementById('spTeacher');if(t)t.textContent=info[2];}spRenderCal();}
-function spPrice(){var t=document.getElementById('spTerm').value;var P={'2':360000,'3':540000,'4':720000,'6':1080000};var per={'2':'2개월 · 무료 없음','3':'+1개월 무료 · 총 4개월','4':'+2개월 무료 · 총 6개월','6':'+4개월 무료 · 총 10개월 · 최고혜택'};var base=P[t];var de=document.getElementById('spDisc');var d=de?parseFloat(de.value):0;var fin=Math.round(base*(1-d)/1000)*1000;var a=document.getElementById('spAmt');if(d>0){a.innerHTML='<s style="color:#b6bcc9;font-size:18px;font-weight:600">'+base.toLocaleString()+'</s> '+fin.toLocaleString()+'원';}else{a.textContent=base.toLocaleString()+'원';}document.getElementById('spPer').textContent=per[t]+(d>0?' · '+Math.round(d*100)+'% 이벤트 할인':'');}
+function spPrice(){var t=document.getElementById('spTerm').value;var P={'2':360000,'3':540000,'4':720000,'6':1080000};var per={'2':'2개월 · 무료 없음','3':'+1개월 무료 · 총 4개월','4':'+2개월 무료 · 총 6개월','6':'+4개월 무료 · 총 10개월 · 최고혜택'};var base=P[t];var de=document.getElementById('spDisc');var raw=de?de.value:'0';var verify=raw.charAt(0)==='v';var d=parseFloat(verify?raw.substr(1):raw)||0;var fin=Math.round(base*(1-d)/1000)*1000;var a=document.getElementById('spAmt');if(d>0){a.innerHTML='<s style="color:#b6bcc9;font-size:18px;font-weight:600">'+base.toLocaleString()+'</s> '+fin.toLocaleString()+'원';}else{a.textContent=base.toLocaleString()+'원';}document.getElementById('spPer').textContent=per[t]+(d>0?' · '+Math.round(d*100)+'% 이벤트 할인':'');var nt=document.getElementById('spDiscNote');if(nt)nt.textContent=verify?'※ 환승 이벤트는 타 어학원 수강 영수증 인증 후 최종 적용됩니다. 결제 시 영수증 사진 첨부 또는 데스크에서 인증해 주세요.':'';}
 function spBuy(){document.getElementById('spCamt').textContent=document.getElementById('spAmt').textContent;document.getElementById('spModal').classList.add('on');}
 function spDoLogin(){document.getElementById('spLogin').style.display='none';document.getElementById('spCharge').style.display='block';}
 function spClose(){var m=document.getElementById('spModal');if(m)m.classList.remove('on');var l=document.getElementById('spLogin'),c=document.getElementById('spCharge');if(l)l.style.display='block';if(c)c.style.display='none';}
@@ -2222,6 +2224,7 @@ function teacherDetail(name){
 }
 function openPage(k){var p=PAGES[k];if(!p)return;document.getElementById('pgbody').innerHTML=p;document.getElementById('pgModal').classList.add('open');window.scrollTo(0,0);}
 function closePage(){document.getElementById('pgModal').classList.remove('open');}
+function sgCloseOrBack(){if(_sgHist.length){var prev=_sgHist.pop();var pb=document.getElementById('pgbody');if(pb)pb.innerHTML=prev;window.scrollTo(0,0);}else{closePage();}}
 function goCourse(tab){openCourse(tab);}
 
 </script>
