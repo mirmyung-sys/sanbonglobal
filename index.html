@@ -2093,23 +2093,24 @@ function spModalHTML(){return '<div class="sp-modal" id="spModal"><div class="sp
 function spBuyAmt(a){document.getElementById('spCamt').textContent=a;document.getElementById('spModal').classList.add('on');}
 var EXAM={
  '토익':{eye:'TOEIC · 오답 프로파일러',title:'토익 — 왜 틀리는지부터 잡습니다',photo:'eng_13',rows:[
-   {n:'토익 스파르타(매일반)',tc:'송윤정',day:'월·화·수·목·금',time:'19:30~21:10',price:'1개월 420,000 / 2개월 640,000(할인)',pay:'640,000원'},
-   {n:'토익 초급 정규',tc:'엘리 킴',day:'월·수',time:'19:30~21:30',price:'2개월 390,000',pay:'390,000원'},
-   {n:'토익 중급',tc:'엘리 킴',day:'화·목',time:'19:30~21:30',price:'2개월 390,000',pay:'390,000원'},
-   {n:'토익 왕기초',tc:'최자운',day:'토',time:'10:00~13:00',price:'월 230,000',pay:'230,000원'}]},
+   {n:'토익 스파르타(매일반)',tc:'송윤정',day:'월·화·수·목·금',time:'19:30~21:10',price:'1개월 42만→39만 / 2개월 84만→64만',pay:'640,000원'},
+   {n:'토익 정규 초급',tc:'엘리 킴',day:'월·수',time:'19:30~21:30',price:'2개월 42만→39만(3만 할인)',pay:'390,000원'},
+   {n:'토익 정규 중급',tc:'엘리 킴',day:'화·목',time:'19:30~21:30',price:'2개월 42만→39만(3만 할인)',pay:'390,000원'},
+   {n:'토익 왕기초',tc:'최자운',day:'토',time:'10:00~13:00',price:'월 21만',pay:'210,000원'},
+   {n:'토익 실전반',tc:'전임 강사',day:'월·수·금',time:'협의',price:'1개월 26만→23만 / 2개월 52만→42만',pay:'420,000원'}]},
  '토스':{eye:'TOEIC Speaking',title:'토스 — 목표 등급까지',photo:'eng_14',rows:[
-   {n:'토스 정규',tc:'유미용',day:'토',time:'10:00~13:00',price:'월 210,000',pay:'210,000원'},
-   {n:'토스 저녁반',tc:'최자운',day:'월·수',time:'20:00~21:30',price:'월 210,000',pay:'210,000원'}]},
+   {n:'토스 주말반',tc:'유미용',day:'토',time:'10:00~13:00',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'},
+   {n:'토스 저녁반',tc:'최자운',day:'월·수',time:'20:00~21:30',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'}]},
  '오픽':{eye:'OPIc',title:'오픽 — IH·AL 실전 발화',photo:'eng_15',rows:[
-   {n:'오픽 정규',tc:'김현정',day:'화·목',time:'19:00~20:30',price:'월 210,000',pay:'210,000원'}]},
+   {n:'오픽 정규',tc:'김현정',day:'화·목',time:'19:00~20:30',price:'월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'}]},
  'JLPT':{eye:'JLPT · 합격 루트',title:'JLPT — 기출로 증명된 합격 루트',photo:'jpn_7',rows:[
-   {n:'JLPT N3~N1',tc:'서정아',day:'토',time:'10:00~12:30',price:'월 210,000',pay:'210,000원'},
-   {n:'JLPT N5~N2',tc:'김연주',day:'평일반',time:'시간 협의',price:'월 210,000',pay:'210,000원'}]},
+   {n:'JLPT N3~N1',tc:'서정아',day:'토',time:'10:00~12:30',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'},
+   {n:'JLPT N5~N2',tc:'김연주',day:'평일반',time:'시간 협의',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'}]},
  'HSK':{eye:'HSK · 급수별 정복',title:'HSK — 급수별 완전정복',photo:'chn_1',rows:[
-   {n:'HSK 대비',tc:'하홍금',day:'토',time:'13:00~15:00',price:'월 210,000',pay:'210,000원'},
-   {n:'HSK 대비',tc:'현지인',day:'월·수',time:'저녁',price:'월 210,000',pay:'210,000원'}]},
+   {n:'HSK 대비',tc:'하홍금',day:'토',time:'13:00~15:00',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'},
+   {n:'HSK 대비',tc:'현지인',day:'월·수',time:'저녁',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'}]},
  '토플':{eye:'TOEFL',title:'토플 — 유학·인증 대비',photo:'eng_14',rows:[
-   {n:'토플 정규',tc:'유미용·최자운',day:'협의',time:'협의',price:'상담 후 결정',pay:'상담'}]}
+   {n:'토플 정규',tc:'유미용·최자운',day:'협의',time:'협의',price:'월 21만 / 2개월 42만→39만',pay:'390,000원'}]}
 };
 function examPage(k){var e=EXAM[k]||EXAM['토익'];
  var rows=e.rows.map(function(r){return '<tr><td class="b">'+r.n+'</td><td>'+r.tc+'</td><td>'+r.day+'</td><td>'+r.time+'</td><td class="pr">'+r.price+'</td><td><button class="ex-buy" onclick="spBuyAmt(\''+r.pay+'\')">수강신청</button></td></tr>';}).join('');
