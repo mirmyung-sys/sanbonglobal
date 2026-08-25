@@ -2222,6 +2222,7 @@ function examPage(k){var e=EXAM[k]||EXAM['토익'];_spCalD=new Date(2026,9,1);_e
   spModalHTML()+'</div>';
 }
 function exSel(i){var ss=document.querySelectorAll('.sp-step');for(var j=0;j<ss.length;j++)ss[j].classList.remove('on');ss[i].classList.add('on');var r=_exRows[i];document.getElementById('exT').textContent=r.tc;document.getElementById('exD').textContent=r.day;document.getElementById('exTm').textContent=r.time;document.getElementById('exP').textContent=r.price;var key=(r.tc||'').split(/[·\/]/)[0].trim();var im=TIMG[key];if(im){var p=document.getElementById('spPhoto');if(p)p.src='img/teachers/'+im+'.png';}var t=document.getElementById('spTeacher');if(t)t.textContent=r.tc;_calWd=_wdays(r.day);_exPay=r.pay;spRenderCal();}
+function openBuy(k){if(k==='영어회화'){openStep(k);}else{openExam(k);}}
 function openExam(k){_sgSub(examPage(k));}
 function onePage(k){
  if(k==='퍼스널'){
