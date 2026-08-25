@@ -746,6 +746,16 @@ header nav a{letter-spacing:-.01em}
 .sp-camt b{font-size:20px;color:#c81f2b;font-weight:900}
 .sp-x{position:absolute;top:12px;right:14px;color:#fff;font-size:20px;cursor:pointer}
 @media(max-width:760px){.sp-top{grid-template-columns:1fr}}
+.sp-cal-wrap{margin-top:14px;border-top:1px solid #eef0f4;padding-top:14px}
+.sp-cal-label{font-size:14px;font-weight:800;color:#48526a;margin-bottom:10px}
+.cal{border:1px solid #e6e9f0;border-radius:12px;overflow:hidden}
+.cal-h{background:#1D2D4F;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;font-weight:800;font-size:15px}
+.cal-h button{background:none;border:0;color:#fff;font-size:20px;cursor:pointer;padding:0 10px;line-height:1}
+.cal-w{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;font-size:12px;font-weight:700;color:#9aa4b6;padding:10px 0 2px}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;padding:0 0 12px}
+.cal-d{padding:5px 0;font-size:13px}
+.cal-d i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;color:#3c4656}
+.cal-d i.cir{background:#dfe7f5;border-radius:50%;color:#1D2D4F;font-weight:800}
 .sp-back{background:none;border:0;color:#6a7488;font-weight:800;font-size:14px;cursor:pointer;padding:0 0 14px}
 .sp-back:hover{color:#e2231a}
 .ex-head{display:flex;gap:22px;align-items:center;border-bottom:1px solid #eef0f4;padding-bottom:20px;margin-bottom:18px}
@@ -2083,7 +2093,13 @@ var WCONV={
  desc:'발음·성조부터 HSK·TSC까지 레벨별로 탄탄하게. 원어민·전문 강사의 관리형 수업으로 실전 회화 자신감을 키웁니다.'}
 };
 var _spSubj='영어';
-function stepPage(k){if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;var W=WCONV[k]||WCONV['영어'];
+function _wdays(s){var mp={'일':0,'월':1,'화':2,'수':3,'목':4,'금':5,'토':6};var r=[];for(var i=0;i<s.length;i++){var w=mp[s.charAt(i)];if(w!==undefined&&r.indexOf(w)<0)r.push(w);}if(/주말/.test(s))r=[0,6];if(/평일/.test(s))r=[1,2,3,4,5];return r;}
+var _spCalD=new Date();
+function calHTML(d,wd){var y=d.getFullYear(),m=d.getMonth();var first=new Date(y,m,1).getDay();var dim=new Date(y,m+1,0).getDate();var names=['일','월','화','수','목','금','토'];var cells='';for(var i=0;i<first;i++)cells+='<span class="cal-d"></span>';for(var day=1;day<=dim;day++){var on=wd.indexOf(new Date(y,m,day).getDay())>=0;cells+='<span class="cal-d"><i class="'+(on?'cir':'')+'">'+day+'</i></span>';}return '<div class="cal"><div class="cal-h"><button type="button" onclick="spCalNav(-1)">‹</button><b>'+y+'년 '+(m+1)+'월</b><button type="button" onclick="spCalNav(1)">›</button></div><div class="cal-w">'+names.map(function(n){return '<span>'+n+'</span>';}).join('')+'</div><div class="cal-g">'+cells+'</div></div>';}
+function spRenderCal(){var el=document.getElementById('spCal');if(!el)return;var dv=document.getElementById('spDay');el.innerHTML=calHTML(_spCalD,_wdays(dv?dv.value:''));}
+function spCalNav(delta){_spCalD=new Date(_spCalD.getFullYear(),_spCalD.getMonth()+delta,1);spRenderCal();}
+function stepPage(k){
+if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;_spCalD=new Date();var W=WCONV[k]||WCONV['영어'];
  var lv0=W.levels[0];var init=W.cls[lv0[0]]||[];
  var idays=[];init.forEach(function(x){if(idays.indexOf(x[0])<0)idays.push(x[0]);});
  var dayOpts=idays.map(function(d){return '<option>'+d+' (개강)</option>';}).join('')+'<option>주말반 (추후 모집중)</option>';
@@ -2098,7 +2114,8 @@ function stepPage(k){if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;va
   '</div><div class="sp-right">'+
   '<div class="sp-eye">'+W.eye+'</div><h2 class="sp-title">'+W.title+'</h2>'+
   '<div class="sp-steps">'+steps+'</div>'+
-  '<div class="sp-form"><label>레벨·요일 선택<select id="spDay">'+dayOpts+'</select></label><label>시간 선택<select id="spTime">'+timeOpts+'</select></label><label>기간 선택<select id="spTerm" onchange="spPrice()"><option value="2">단과 2개월 (무료 없음) — 36만원</option><option value="3">3개월 등록 (+1개월 무료·총4개월) — 54만원</option><option value="4">4개월 등록 (+2개월 무료·총6개월) — 72만원</option><option value="6" selected>6개월 등록 (+4개월 무료·총10개월) — 108만원</option></select></label></div>'+
+  '<div class="sp-form"><label>레벨·요일 선택<select id="spDay" onchange="spRenderCal()">'+dayOpts+'</select></label><label>시간 선택<select id="spTime">'+timeOpts+'</select></label><label>기간 선택<select id="spTerm" onchange="spPrice()"><option value="2">단과 2개월 (무료 없음) — 36만원</option><option value="3">3개월 등록 (+1개월 무료·총4개월) — 54만원</option><option value="4">4개월 등록 (+2개월 무료·총6개월) — 72만원</option><option value="6" selected>6개월 등록 (+4개월 무료·총10개월) — 108만원</option></select></label></div>'+
+  '<div class="sp-cal-wrap"><div class="sp-cal-label">수업일 확인 (선택 요일 기준)</div><div id="spCal">'+calHTML(new Date(),_wdays(idays[0]||''))+'</div></div>'+
   '<div class="sp-price"><span>수강료</span><b id="spAmt">1,080,000원</b><em id="spPer">+4개월 무료 · 총 10개월 · 최고혜택</em></div>'+
   '<div class="sp-btns"><button class="sp-cart" onclick="alert(\'장바구니에 담았습니다.\')">🛒 장바구니</button><button class="sp-buy" onclick="spBuy()">수강신청</button></div>'+
   '<div class="sp-note">6개월 등록 시 +4개월 무료(총 10개월) · 등록 기간이 길수록 무료 개월 ↑</div>'+
@@ -2107,7 +2124,7 @@ function stepPage(k){if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;va
   '<div class="sp-desc">'+W.desc+'</div>'+sch+
   spModalHTML()+'</div>';
 }
-function spStep(b,level){var ss=document.querySelectorAll('.sp-step');for(var i=0;i<ss.length;i++)ss[i].classList.remove('on');b.classList.add('on');var W=WCONV[_spSubj]||WCONV['영어'];var list=W.cls[level]||[];var days=[];list.forEach(function(x){if(days.indexOf(x[0])<0)days.push(x[0]);});document.getElementById('spDay').innerHTML=days.map(function(d){return '<option>'+d+' (개강)</option>';}).join('')+'<option>주말반 (추후 모집중)</option>';document.getElementById('spTime').innerHTML=list.map(function(x){return '<option>'+x[1]+' · '+x[2]+' ('+x[0]+')</option>';}).join('')+'<option>오전반 (추후 모집중)</option><option>오후반 (추후 모집중)</option><option>주말반 (추후 모집중)</option>';var info=null;for(var j=0;j<W.levels.length;j++){if(W.levels[j][0]===level){info=W.levels[j];break;}}if(info){var p=document.getElementById('spPhoto');if(p)p.src='img/teachers/'+info[1]+'.png';var t=document.getElementById('spTeacher');if(t)t.textContent=info[2];}}
+function spStep(b,level){var ss=document.querySelectorAll('.sp-step');for(var i=0;i<ss.length;i++)ss[i].classList.remove('on');b.classList.add('on');var W=WCONV[_spSubj]||WCONV['영어'];var list=W.cls[level]||[];var days=[];list.forEach(function(x){if(days.indexOf(x[0])<0)days.push(x[0]);});document.getElementById('spDay').innerHTML=days.map(function(d){return '<option>'+d+' (개강)</option>';}).join('')+'<option>주말반 (추후 모집중)</option>';document.getElementById('spTime').innerHTML=list.map(function(x){return '<option>'+x[1]+' · '+x[2]+' ('+x[0]+')</option>';}).join('')+'<option>오전반 (추후 모집중)</option><option>오후반 (추후 모집중)</option><option>주말반 (추후 모집중)</option>';var info=null;for(var j=0;j<W.levels.length;j++){if(W.levels[j][0]===level){info=W.levels[j];break;}}if(info){var p=document.getElementById('spPhoto');if(p)p.src='img/teachers/'+info[1]+'.png';var t=document.getElementById('spTeacher');if(t)t.textContent=info[2];}spRenderCal();}
 function spPrice(){var t=document.getElementById('spTerm').value;var P={'2':360000,'3':540000,'4':720000,'6':1080000};var per={'2':'2개월 · 무료 없음','3':'+1개월 무료 · 총 4개월','4':'+2개월 무료 · 총 6개월','6':'+4개월 무료 · 총 10개월 · 최고혜택'};document.getElementById('spAmt').textContent=P[t].toLocaleString()+'원';document.getElementById('spPer').textContent=per[t];}
 function spBuy(){document.getElementById('spCamt').textContent=document.getElementById('spAmt').textContent;document.getElementById('spModal').classList.add('on');}
 function spDoLogin(){document.getElementById('spLogin').style.display='none';document.getElementById('spCharge').style.display='block';}
