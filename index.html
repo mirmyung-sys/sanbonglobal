@@ -1576,7 +1576,7 @@ function chipHTML(c){var imgs=(c.imgs||[]).map(function(im){return '<img src="im
 function pickCourse(k){
  var c=null;for(var i=0;i<CHAPTERS.length;i++){if(CHAPTERS[i].k===k){c=CHAPTERS[i];break;}}
  if(c&&c.pg){openPage(c.pg);return;}
- openCourse((c&&c.co)||k);
+ openBuy((c&&c.co)||k);
 }
 function goChapters(){closePage();var e=document.getElementById('chapters');if(e)e.scrollIntoView({behavior:'smooth',block:'start'});}
 (function(){var el=document.getElementById('chapters');if(!el)return;
@@ -1746,7 +1746,7 @@ function coursePage(key){
    +'<div class="cpg-badge">SANBON GLOBAL WEEK · 최대 25% 할인</div>'
    +'<div class="cpg-eye">'+d.eyebrow+'</div><h1>'+d.hook+'</h1>'
    +(line?'<div class="cpg-line">'+line+'</div>':'')
-   +'<button class="cpg-cta" onclick="closePage();openBuy(\''+key+'\')">'+d.subj+' 수강신청 →</button>'
+   +'<button class="cpg-cta" onclick="openBuy(\''+key+'\')">'+d.subj+' 수강신청 →</button>'
    +'<div class="cpg-scroll">아래로 스크롤 ↓</div></div></section>'
   +'<section class="cpg-prob"><div class="cpg-in"><div class="cpg-kick">혹시 이런 식으로</div><h2>'+d.subj+' 공부하고 있지 않나요?</h2>'
    +'<div class="cpg-lead">유명하다는 강의 다 들어봤는데, 결국 “이것만 외워”, “패턴 익혀”, “많이 풀면 늘어”…<br>오답의 이유를 모른 채 시간만 흘러갑니다.</div>'
@@ -1757,7 +1757,7 @@ function coursePage(key){
   +'<section class="cpg-goal"><div class="cpg-in"><div class="cpg-kick">RESULT</div><h2>'+d.goal+'</h2><p>결과로 증명하는 산본글로벌의 밀착 관리.</p></div></section>'
   +'<section class="cpg-end" style="--ac:'+d.ac+'"><div class="cpg-in"><div class="cpg-badge2">최대 <b>25%</b> 할인 · 지금이 가장 저렴할 때</div>'
    +'<h2>지금 '+d.subj+' 시작하세요</h2>'
-   +'<button class="cpg-cta" onclick="closePage();openBuy(\''+key+'\')">수강신청 →</button>'
+   +'<button class="cpg-cta" onclick="openBuy(\''+key+'\')">수강신청 →</button>'
    +'<div class="cpg-note">전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원</div>'+shareMini()+'</div></section>';
 }
 function openCourse(key){_sgSub(coursePage(key));}
