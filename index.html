@@ -757,6 +757,7 @@ header nav a{letter-spacing:-.01em}
 .cal-d i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;color:#3c4656}
 .cal-d i.cir{background:#dfe7f5;border-radius:50%;color:#1D2D4F;font-weight:800}
 .cal-d i.hol{background:#ffe1e1;border-radius:50%;color:#e2231a;font-weight:800}
+.cal-hn{display:block;font-style:normal;font-size:8.5px;color:#e2231a;font-weight:800;line-height:1;margin-top:1px}
 .cal-lg{padding:10px 14px 4px;font-size:12px;color:#8a93a6;text-align:center}
 .cal-lg .lg-c{color:#8fa5d6}
 .cal-lg .lg-h{color:#e2231a}
@@ -853,7 +854,7 @@ header nav a{letter-spacing:-.01em}
 @media(max-width:720px){.enr-grid{grid-template-columns:1fr}.rv-stats{grid-template-columns:repeat(2,1fr)}.rv-list{grid-template-columns:1fr}}
 /* 2단 헤더 */
 header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:0 2px 16px rgba(20,33,61,.09);border-bottom:none}
-.htop{display:flex!important;align-items:center;justify-content:space-between;height:80px;flex-wrap:nowrap}
+.htop{display:flex!important;align-items:center;justify-content:space-between;height:108px;flex-wrap:nowrap}
 .logo img{height:52px;width:auto;object-fit:contain}
 .logoko{display:flex;flex-direction:column;justify-content:center;line-height:1.15}
 .logoko b{font-size:22px;font-weight:900;color:var(--red);letter-spacing:-.03em;font-family:'Malgun Gothic','Noto Sans KR',sans-serif}
@@ -1201,11 +1202,11 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
 <header>
   <div class="wrap htop">
   <a class="logo" href="#" onclick="closePage();window.scrollTo(0,0);return false;">
-    <img src="img/intro_logo.png" alt="산본글로벌어학원" style="height:56px;width:auto">
+    <img src="img/intro_logo.png" alt="산본글로벌어학원" style="height:90px;width:auto">
   </a>
   <div class="hicons">
-    <a href="#" onclick="openLv();return false;"><span class="gi">📊</span>레벨테스트</a>
-    <a href="#" onclick="openTT();return false;"><span class="gi">🗓️</span>강의시간표</a>
+    <a href="#" onclick="closePage();window.scrollTo(0,0);return false;"><span class="gi">🏠</span>홈</a>
+    <a href="#" onclick="openPage('회원가입');return false;"><span class="gi">👤</span>회원가입</a>
   </div>
   </div>
   <div class="navbar"><div class="wrap">
@@ -2164,8 +2165,8 @@ var WCONV={
 };
 var _spSubj='영어';
 function _wdays(s){var mp={'일':0,'월':1,'화':2,'수':3,'목':4,'금':5,'토':6};var r=[];for(var i=0;i<s.length;i++){var w=mp[s.charAt(i)];if(w!==undefined&&r.indexOf(w)<0)r.push(w);}if(/주말/.test(s))r=[0,6];if(/평일/.test(s))r=[1,2,3,4,5];if(/월~금|매일/.test(s))r=[1,2,3,4,5];return r;}
-var _spCalD=new Date(2026,9,1);var _calWd=[];var _exRows=[];var _exPay='';var _calHol={'2026-1-1':1,'2026-2-16':1,'2026-2-17':1,'2026-2-18':1,'2026-3-1':1,'2026-3-2':1,'2026-5-5':1,'2026-5-24':1,'2026-5-25':1,'2026-6-6':1,'2026-8-15':1,'2026-8-17':1,'2026-9-24':1,'2026-9-25':1,'2026-9-26':1,'2026-10-3':1,'2026-10-5':1,'2026-10-9':1,'2026-12-25':1};var _calStart=new Date(2026,9,6),_calEnd=new Date(2026,9,31);
-function calHTML(d,wd){var y=d.getFullYear(),m=d.getMonth();var first=new Date(y,m,1).getDay();var dim=new Date(y,m+1,0).getDate();var names=['일','월','화','수','목','금','토'];var cells='';for(var i=0;i<first;i++)cells+='<span class="cal-d"></span>';for(var day=1;day<=dim;day++){var cur=new Date(y,m,day);var hol=_calHol[y+'-'+(m+1)+'-'+day];var inr=cur>=_calStart&&cur<=_calEnd;var on=wd.indexOf(cur.getDay())>=0&&inr&&!hol;var cls=hol?'hol':(on?'cir':'');cells+='<span class="cal-d"><i class="'+cls+'">'+day+'</i></span>';}return '<div class="cal"><div class="cal-h"><button type="button" onclick="spCalNav(-1)">‹</button><b>'+y+'년 '+(m+1)+'월</b><button type="button" onclick="spCalNav(1)">›</button></div><div class="cal-w">'+names.map(function(n){return '<span>'+n+'</span>';}).join('')+'</div><div class="cal-g">'+cells+'</div><div class="cal-lg"><span class="lg-c">●</span> 수업일 &nbsp; <span class="lg-h">●</span> 공휴일(휴강)</div></div>';}
+var _spCalD=new Date(2026,9,1);var _calWd=[];var _exRows=[];var _exPay='';var _calHol={'2026-1-1':'신정','2026-2-16':'설날','2026-2-17':'설날','2026-2-18':'설날','2026-3-1':'삼일절','2026-3-2':'대체','2026-5-5':'어린이날','2026-5-24':'석가탄신','2026-5-25':'대체','2026-6-6':'현충일','2026-8-15':'광복절','2026-8-17':'대체','2026-9-24':'추석','2026-9-25':'추석','2026-9-26':'추석','2026-10-3':'개천절','2026-10-5':'대체','2026-10-9':'한글날','2026-12-25':'성탄절'};var _calStart=new Date(2026,9,6),_calEnd=new Date(2026,9,31);
+function calHTML(d,wd){var y=d.getFullYear(),m=d.getMonth();var first=new Date(y,m,1).getDay();var dim=new Date(y,m+1,0).getDate();var names=['일','월','화','수','목','금','토'];var cells='';for(var i=0;i<first;i++)cells+='<span class="cal-d"></span>';for(var day=1;day<=dim;day++){var cur=new Date(y,m,day);var hol=_calHol[y+'-'+(m+1)+'-'+day];var inr=cur>=_calStart&&cur<=_calEnd;var on=wd.indexOf(cur.getDay())>=0&&inr&&!hol;var cls=hol?'hol':(on?'cir':'');cells+='<span class="cal-d"><i class="'+cls+'">'+day+'</i>'+(hol?'<em class="cal-hn">'+hol+'</em>':'')+'</span>';}return '<div class="cal"><div class="cal-h"><button type="button" onclick="spCalNav(-1)">‹</button><b>'+y+'년 '+(m+1)+'월</b><button type="button" onclick="spCalNav(1)">›</button></div><div class="cal-w">'+names.map(function(n){return '<span>'+n+'</span>';}).join('')+'</div><div class="cal-g">'+cells+'</div><div class="cal-lg"><span class="lg-c">●</span> 수업일 &nbsp; <span class="lg-h">●</span> 공휴일(휴강)</div></div>';}
 function spRenderCal(){var el=document.getElementById('spCal');if(!el)return;var dv=document.getElementById('spDay');el.innerHTML=calHTML(_spCalD,dv?_wdays(dv.value):_calWd);}
 function spCalNav(delta){_spCalD=new Date(_spCalD.getFullYear(),_spCalD.getMonth()+delta,1);spRenderCal();}
 function stepPage(k){
