@@ -1934,7 +1934,7 @@ function enrollPick(cat,item){alert('수강신청 · '+cat+'\n선택 과목: '+i
 function enrollPage(){
  var EA=['eng_11','eng_5','eng_9','eng_1','eng_3','eng_15','eng_6','eng_7','eng_2','eng_4','eng_12'];
  var CATS=[
-  {t:'시험대비반',ic:'📝',c:'linear-gradient(120deg,#c81f2b,#e2413b)',imgs:['eng_13','eng_14','eng_6','eng_15','jpn_7','chn_1'],chips:[['토익','토익','e'],['토플 (모집중)','토플','e'],['오픽','오픽','e'],['JLPT','JLPT','e'],['HSK','HSK','e']]},
+  {t:'시험대비반',ic:'📝',c:'linear-gradient(120deg,#c81f2b,#e2413b)',imgs:['eng_13','eng_14','eng_6','eng_15','jpn_7','chn_1'],chips:[['토익','토익','e'],['토플 (모집중)','토플','e'],['오픽','오픽','e'],['JLPT (모집중)','JLPT','e'],['HSK','HSK','e']]},
   {t:'영어회화',ic:'💬',c:'linear-gradient(120deg,#0e8a5a,#14b06e)',imgs:EA,chips:[['BASIC','영어회화','s'],['STEP1','영어회화','s'],['STEP2','영어회화','s'],['STEP3','영어회화','s'],['STEP4','영어회화','s']]},
   {t:'일본어',ic:'🎌',c:'linear-gradient(120deg,#b83277,#d64f97)',imgs:['jpn_6','jpn_4','jpn_5','','jpn_7','jpn_2'],chips:[['원어민 일본어회화','일본어','e'],['기초 일본어','일본어','e'],['중급 일본어','일본어','e'],['고급 일본어','일본어','e'],['JLPT','JLPT','e']]},
   {t:'중국어',ic:'🀄',c:'linear-gradient(120deg,#b8322a,#d6564a)',imgs:['chn_1','chn_7','chn_3',''],chips:[['중국어 원어민회화','중국어','e'],['기초 중국어','중국어','e'],['중급 중국어','중국어','e'],['고급 중국어','중국어','e'],['HSK','HSK','e']]},
@@ -2136,8 +2136,9 @@ var EXAM={
    {n:'신공략6 중고급',tc:'현지인',day:'오전반',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'},
    {n:'스피킹 고급 (上)',tc:'하홍금',day:'오전반',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'},
    {n:'입문반',tc:'모집예정',day:'문의',time:'문의',price:'월 21만',pay:'상담'}]},
- 'JLPT':{eye:'JLPT · 일본어 시험대비',title:'JLPT — 일본어 정규반에서 대비',photo:'jpn_7',rows:[
-   {n:'JLPT 대비 (정규반 병행)',tc:'서정아',day:'월·수 / 화·목',time:'저녁반',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'}]},
+ 'JLPT':{eye:'JLPT 대비반 · 프로모션 (모집중)',title:'JLPT 대비반 — 12월(2차) 대비 · 9~11월 3개월 과정',photo:'jpn_7',rows:[
+   {n:'JLPT + 회화 동시수강 (JLPT 3개월 + 회화 3개월)',tc:'서정아·히토시',day:'주중+주말',time:'3개월 과정',price:'117만원 → 87만원 (30만원 할인)',pay:'870,000원'},
+   {n:'JLPT만 수강 (주중반 3개월 + 주말반 3개월)',tc:'서정아·모모코',day:'주중+주말',time:'3개월 과정',price:'126만원 → 86만원 (40만원 할인)',pay:'860,000원'}]},
  'HSK':{eye:'HSK · 중국어 시험대비',title:'HSK — 중국어 정규반에서 대비',photo:'chn_1',rows:[
    {n:'HSK 대비 (정규반 병행)',tc:'하홍금',day:'월·수 / 화·목',time:'저녁반',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'}]},
  '토플':{eye:'TOEFL · 모집중',title:'토플 — 모집중',photo:'eng_6',rows:[
