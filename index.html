@@ -746,6 +746,20 @@ header nav a{letter-spacing:-.01em}
 .sp-camt b{font-size:20px;color:#c81f2b;font-weight:900}
 .sp-x{position:absolute;top:12px;right:14px;color:#fff;font-size:20px;cursor:pointer}
 @media(max-width:760px){.sp-top{grid-template-columns:1fr}}
+.sp-back{background:none;border:0;color:#6a7488;font-weight:800;font-size:14px;cursor:pointer;padding:0 0 14px}
+.sp-back:hover{color:#e2231a}
+.ex-head{display:flex;gap:22px;align-items:center;border-bottom:1px solid #eef0f4;padding-bottom:20px;margin-bottom:18px}
+.ex-photo{width:120px;height:120px;border-radius:14px;overflow:hidden;background:#f3f4f7;flex-shrink:0}
+.ex-photo img{width:100%;height:100%;object-fit:cover}
+.ex-badge{display:inline-block;margin-top:8px;background:#c81f2b;color:#fff;font-size:12px;font-weight:800;padding:5px 12px;border-radius:6px}
+.ex-tt{width:100%;border-collapse:collapse;font-size:14px}
+.ex-tt th{background:#f2f4f8;color:#5b667b;font-weight:800;padding:12px 10px;text-align:left;font-size:13px}
+.ex-tt td{border-top:1px solid #eef1f6;padding:14px 10px;vertical-align:middle}
+.ex-tt td.b{font-weight:800;color:#1a2130}
+.ex-tt td.pr{font-weight:800;color:#c81f2b;white-space:nowrap}
+.ex-buy{background:#e2231a;color:#fff;border:0;font-weight:800;font-size:13px;padding:10px 18px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.ex-buy:hover{background:#c81f2b}
+@media(max-width:640px){.ex-head{flex-direction:column;text-align:center}.ex-tt,.ex-tt tbody,.ex-tt tr,.ex-tt td,.ex-tt th{display:block}.ex-tt th{display:none}.ex-tt td{border:0;padding:3px 0}.ex-tt tr{border-top:1px solid #eef1f6;padding:12px 0}}
 .enr-head h4,.enr-head .enr-ic{position:relative;z-index:1}
 .enr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:6px 0 22px}
 .enr-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 10px 26px rgba(20,33,61,.06)}
@@ -1897,7 +1911,7 @@ function enrollPick(cat,item){alert('수강신청 · '+cat+'\n선택 과목: '+i
 function enrollPage(){
  var EA=['eng_11','eng_5','eng_9','eng_1','eng_3','eng_15','eng_6','eng_7','eng_2','eng_4','eng_12'];
  var CATS=[
-  {t:'시험영어',ic:'📝',c:'linear-gradient(120deg,#c81f2b,#e2413b)',imgs:['eng_13','elly','eng_6','eng_15','eng_14'],chips:[['토익','토익'],['오픽','오픽'],['토익스피킹','토스'],['토플','토익'],['G-TELP','토익']]},
+  {t:'시험대비반',ic:'📝',c:'linear-gradient(120deg,#c81f2b,#e2413b)',imgs:['eng_13','eng_14','eng_6','eng_15','jpn_7','chn_1'],chips:[['토익','토익','e'],['토플','토플','e'],['오픽','오픽','e'],['JLPT','JLPT','e'],['HSK','HSK','e']]},
   {t:'영어회화',ic:'💬',c:'linear-gradient(120deg,#0e8a5a,#14b06e)',imgs:EA,chips:[['BASIC','영어회화','s'],['STEP1','영어회화','s'],['STEP2','영어회화','s'],['STEP3','영어회화','s'],['STEP4','영어회화','s']]},
   {t:'일본어',ic:'🎌',c:'linear-gradient(120deg,#b83277,#d64f97)',imgs:['jpn_6','jpn_4','jpn_5','','jpn_7','jpn_2'],chips:[['원어민 일본어회화','일본어'],['기초 일본어','일본어'],['중급 일본어','일본어'],['고급 일본어','일본어'],['JLPT','JLPT']]},
   {t:'중국어',ic:'🀄',c:'linear-gradient(120deg,#b8322a,#d6564a)',imgs:['chn_1','chn_7','chn_3',''],chips:[['중국어 원어민회화','중국어'],['기초 중국어','중국어'],['중급 중국어','중국어'],['고급 중국어','중국어'],['HSK','중국어']]},
@@ -1906,7 +1920,7 @@ function enrollPage(){
  ];
  var cards=CATS.map(function(g){
   var ph=g.imgs.map(function(im){return im?'<img src="img/teachers/'+im+'.png" alt="" loading="lazy">':'<span class="ph-empty">사진<br>준비중</span>';}).join('');
-  var chips=g.chips.map(function(ch){var act=ch[2]==='s'?"openStep('"+ch[1]+"')":(ch[2]?"openPage('"+ch[1]+"')":"openCourse('"+ch[1]+"')");return '<button class="echip" onclick="'+act+'">'+ch[0]+'</button>';}).join('');
+  var chips=g.chips.map(function(ch){var act=ch[2]==='s'?"openStep('"+ch[1]+"')":(ch[2]==='e'?"openExam('"+ch[1]+"')":(ch[2]?"openPage('"+ch[1]+"')":"openCourse('"+ch[1]+"')"));return '<button class="echip" onclick="'+act+'">'+ch[0]+'</button>';}).join('');
   return '<div class="encat"><div class="encat-h" style="background:'+g.c+'"><span class="ei">'+g.ic+'</span>'+g.t+'</div><div class="encat-b"><div class="encat-ph">'+ph+'</div><div class="encat-chips">'+chips+'</div></div></div>';
  }).join('');
  return '<div class="pghero big enr-hero"><div class="pgeyebrow">SGA ADMISSION · 수강신청</div><h2>원하시는 과목을<br>선택하세요</h2><p>상담부터 결제까지 한 번에 — <b>결제까지 올인원 수강신청</b>. 과목을 선택하면 시간표·강사 안내로 이동합니다.</p></div><div class="encat-grid">'+cards+'</div><div class="pgnote">선택하시면 담당 상담사가 반 편성·시간표·결제까지 도와드립니다. · 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>'+CTA();
@@ -2036,7 +2050,7 @@ function stepPage(){
  var dayOpts=days.map(function(d){return '<option>'+d+'</option>';}).join('');
  var timeOpts=times.map(function(t){return '<option>'+t+'</option>';}).join('');
  var steps=['BASIC','STEP1','STEP2','STEP3','STEP4'].map(function(s,i){return '<button class="sp-step'+(i===0?' on':'')+'" onclick="spStep(this)">'+s+'</button>';}).join('');
- return '<div class="sp-wrap"><div class="sp-top"><div class="sp-left">'+
+ return '<div class="sp-wrap"><button class="sp-back" onclick="openPage(\'수강신청\')">‹ 수강신청으로</button><div class="sp-top"><div class="sp-left">'+
   '<div class="sp-badge">기초입문회화 · 관리형</div>'+
   '<div class="sp-photo"><img src="img/teachers/eng_11.png" alt="제롤린 강사"></div>'+
   '<div class="sp-feats"><span>피드백</span><span>복습영상</span><span>추가 학습자료</span><span>발음교정</span><span>첨삭</span><span>출결관리</span><span>1:1 학습상담</span></div>'+
@@ -2068,6 +2082,37 @@ function spBuy(){document.getElementById('spCamt').textContent=document.getEleme
 function spDoLogin(){document.getElementById('spLogin').style.display='none';document.getElementById('spCharge').style.display='block';}
 function spClose(){var m=document.getElementById('spModal');if(m)m.classList.remove('on');var l=document.getElementById('spLogin'),c=document.getElementById('spCharge');if(l)l.style.display='block';if(c)c.style.display='none';}
 function openStep(k){var w=_sgOpenAny();document.getElementById('pgbody').innerHTML=stepPage();document.getElementById('pgModal').classList.add('open');window.scrollTo(0,0);if(!w){try{history.pushState({sg:1},'');}catch(e){}}}
+function spModalHTML(){return '<div class="sp-modal" id="spModal"><div class="sp-sheet"><div class="sp-x" onclick="spClose()">✕</div><div class="sp-mhead">SANBON GLOBAL</div><div id="spLogin"><input placeholder="아이디"><input placeholder="비밀번호" type="password"><button class="sp-login" onclick="spDoLogin()">로그인</button><div class="sp-social">다른 계정으로 로그인 · <b>네이버</b> · <b>카카오</b> · <b>구글</b></div><div class="sp-mfoot"><span onclick="spClose();openPage(\'회원가입\')">회원가입</span><span>아이디/비밀번호 찾기</span></div></div><div id="spCharge" style="display:none"><div class="sp-welcome">✅ 로그인 완료! 결제를 위해 충전해 주세요.</div><div class="sp-camt">결제 예정 <b id="spCamt">-</b></div><button class="sp-charge" onclick="alert(\'토스페이먼츠 결제창으로 연결됩니다.\\n(대표님 결제링크 연결 예정)\')">💳 충전하기 · 토스페이먼츠</button><button class="sp-charge2" onclick="alert(\'무통장 입금 안내\\n농협 301-9944-1055-41 (주)이지교육\\n입금 확인 후 자동 충전됩니다.\')">🏦 무통장 입금 · 농협</button><div class="sp-mfoot"><span onclick="spClose()">닫기</span></div></div></div></div>';}
+function spBuyAmt(a){document.getElementById('spCamt').textContent=a;document.getElementById('spModal').classList.add('on');}
+var EXAM={
+ '토익':{eye:'TOEIC · 오답 프로파일러',title:'토익 — 왜 틀리는지부터 잡습니다',photo:'eng_13',rows:[
+   {n:'토익 스파르타(매일반)',tc:'송윤정',day:'월·화·수·목·금',time:'19:30~21:10',price:'1개월 420,000 / 2개월 640,000(할인)',pay:'640,000원'},
+   {n:'토익 초급 정규',tc:'엘리 킴',day:'월·수',time:'19:30~21:30',price:'2개월 390,000',pay:'390,000원'},
+   {n:'토익 중급',tc:'엘리 킴',day:'화·목',time:'19:30~21:30',price:'2개월 390,000',pay:'390,000원'},
+   {n:'토익 왕기초',tc:'최자운',day:'토',time:'10:00~13:00',price:'월 230,000',pay:'230,000원'}]},
+ '토스':{eye:'TOEIC Speaking',title:'토스 — 목표 등급까지',photo:'eng_14',rows:[
+   {n:'토스 정규',tc:'유미용',day:'토',time:'10:00~13:00',price:'월 210,000',pay:'210,000원'},
+   {n:'토스 저녁반',tc:'최자운',day:'월·수',time:'20:00~21:30',price:'월 210,000',pay:'210,000원'}]},
+ '오픽':{eye:'OPIc',title:'오픽 — IH·AL 실전 발화',photo:'eng_15',rows:[
+   {n:'오픽 정규',tc:'김현정',day:'화·목',time:'19:00~20:30',price:'월 210,000',pay:'210,000원'}]},
+ 'JLPT':{eye:'JLPT · 합격 루트',title:'JLPT — 기출로 증명된 합격 루트',photo:'jpn_7',rows:[
+   {n:'JLPT N3~N1',tc:'서정아',day:'토',time:'10:00~12:30',price:'월 210,000',pay:'210,000원'},
+   {n:'JLPT N5~N2',tc:'김연주',day:'평일반',time:'시간 협의',price:'월 210,000',pay:'210,000원'}]},
+ 'HSK':{eye:'HSK · 급수별 정복',title:'HSK — 급수별 완전정복',photo:'chn_1',rows:[
+   {n:'HSK 대비',tc:'하홍금',day:'토',time:'13:00~15:00',price:'월 210,000',pay:'210,000원'},
+   {n:'HSK 대비',tc:'현지인',day:'월·수',time:'저녁',price:'월 210,000',pay:'210,000원'}]},
+ '토플':{eye:'TOEFL',title:'토플 — 유학·인증 대비',photo:'eng_14',rows:[
+   {n:'토플 정규',tc:'유미용·최자운',day:'협의',time:'협의',price:'상담 후 결정',pay:'상담'}]}
+};
+function examPage(k){var e=EXAM[k]||EXAM['토익'];
+ var rows=e.rows.map(function(r){return '<tr><td class="b">'+r.n+'</td><td>'+r.tc+'</td><td>'+r.day+'</td><td>'+r.time+'</td><td class="pr">'+r.price+'</td><td><button class="ex-buy" onclick="spBuyAmt(\''+r.pay+'\')">수강신청</button></td></tr>';}).join('');
+ return '<div class="sp-wrap"><button class="sp-back" onclick="openPage(\'수강신청\')">‹ 수강신청으로</button>'+
+  '<div class="ex-head"><div class="ex-photo"><img src="img/teachers/'+e.photo+'.png" alt=""></div><div><div class="sp-eye">'+e.eye+'</div><h2 class="sp-title" style="margin:6px 0 0">'+e.title+'</h2><div class="ex-badge">시험대비반 · 관리형</div></div></div>'+
+  '<table class="ex-tt"><tr><th>과정</th><th>강사</th><th>요일</th><th>시간</th><th>수강료</th><th></th></tr>'+rows+'</table>'+
+  '<div class="sp-note">※ 요일·시간·금액은 산본이지어학원 단가 기준 초안이며, 확정가로 조정됩니다. · 상담 031-466-6969</div>'+
+  spModalHTML()+'</div>';
+}
+function openExam(k){var w=_sgOpenAny();document.getElementById('pgbody').innerHTML=examPage(k);document.getElementById('pgModal').classList.add('open');window.scrollTo(0,0);if(!w){try{history.pushState({sg:1},'');}catch(e){}}}
 function openPage(k){var p=PAGES[k];if(!p)return;document.getElementById('pgbody').innerHTML=p;document.getElementById('pgModal').classList.add('open');window.scrollTo(0,0);}
 function closePage(){document.getElementById('pgModal').classList.remove('open');}
 function goCourse(tab){openCourse(tab);}
