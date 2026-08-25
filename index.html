@@ -2172,7 +2172,7 @@ var WCONV={
  desc:'발음·성조부터 HSK·TSC까지 레벨별로 탄탄하게. 원어민·전문 강사의 관리형 수업으로 실전 회화 자신감을 키웁니다.'}
 };
 var _spSubj='영어';
-function _wdays(s){var mp={'일':0,'월':1,'화':2,'수':3,'목':4,'금':5,'토':6};var r=[];for(var i=0;i<s.length;i++){var w=mp[s.charAt(i)];if(w!==undefined&&r.indexOf(w)<0)r.push(w);}if(/주말/.test(s))r=[0,6];if(/평일/.test(s))r=[1,2,3,4,5];if(/월~금|매일/.test(s))r=[1,2,3,4,5];return r;}
+function _wdays(s){var mp={'일':0,'월':1,'화':2,'수':3,'목':4,'금':5,'토':6};s=(s||'').replace(/요일/g,'');var r=[];for(var i=0;i<s.length;i++){var w=mp[s.charAt(i)];if(w!==undefined&&r.indexOf(w)<0)r.push(w);}if(/주말/.test(s))r=[0,6];if(/평일/.test(s))r=[1,2,3,4,5];if(/월~금|매일/.test(s))r=[1,2,3,4,5];return r;}
 var _spCalD=new Date(2026,9,1);var _calWd=[];var _exRows=[];var _exPay='';var _calHol={'2026-1-1':'신정','2026-2-16':'설날','2026-2-17':'설날','2026-2-18':'설날','2026-3-1':'삼일절','2026-3-2':'대체','2026-5-5':'어린이날','2026-5-24':'석가탄신','2026-5-25':'대체','2026-6-6':'현충일','2026-8-15':'광복절','2026-8-17':'대체','2026-9-24':'추석','2026-9-25':'추석','2026-9-26':'추석','2026-10-3':'개천절','2026-10-5':'대체','2026-10-9':'한글날','2026-12-25':'성탄절'};var _calStart=new Date(2026,9,6),_calEnd=new Date(2026,9,31);var _calN=99;
 function _calSess(s){if(/월~금|매일|평일/.test(s))return 18;if(/토/.test(s)&&!/월|화|수|목|금/.test(s))return 4;return 8;}
 function _calOrd(t,wd){var c=0,d=new Date(_calStart.getFullYear(),_calStart.getMonth(),_calStart.getDate());while(d<=t){if(wd.indexOf(d.getDay())>=0&&!_calHol[d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()])c++;d.setDate(d.getDate()+1);}return c;}
