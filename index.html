@@ -756,6 +756,10 @@ header nav a{letter-spacing:-.01em}
 .cal-d{padding:5px 0;font-size:13px}
 .cal-d i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;color:#3c4656}
 .cal-d i.cir{background:#dfe7f5;border-radius:50%;color:#1D2D4F;font-weight:800}
+.cal-d i.hol{background:#ffe1e1;border-radius:50%;color:#e2231a;font-weight:800}
+.cal-lg{padding:10px 14px 4px;font-size:12px;color:#8a93a6;text-align:center}
+.cal-lg .lg-c{color:#8fa5d6}
+.cal-lg .lg-h{color:#e2231a}
 .sp-photo{transition:box-shadow .15s,transform .15s}
 .sp-photo:hover{box-shadow:0 0 0 3px rgba(29,45,79,.55);transform:translateY(-2px)}
 .sp-cart{transition:background .15s}
@@ -2119,12 +2123,12 @@ var WCONV={
 };
 var _spSubj='영어';
 function _wdays(s){var mp={'일':0,'월':1,'화':2,'수':3,'목':4,'금':5,'토':6};var r=[];for(var i=0;i<s.length;i++){var w=mp[s.charAt(i)];if(w!==undefined&&r.indexOf(w)<0)r.push(w);}if(/주말/.test(s))r=[0,6];if(/평일/.test(s))r=[1,2,3,4,5];if(/월~금|매일/.test(s))r=[1,2,3,4,5];return r;}
-var _spCalD=new Date();var _calWd=[];var _exRows=[];var _exPay='';
-function calHTML(d,wd){var y=d.getFullYear(),m=d.getMonth();var first=new Date(y,m,1).getDay();var dim=new Date(y,m+1,0).getDate();var names=['일','월','화','수','목','금','토'];var cells='';for(var i=0;i<first;i++)cells+='<span class="cal-d"></span>';for(var day=1;day<=dim;day++){var on=wd.indexOf(new Date(y,m,day).getDay())>=0;cells+='<span class="cal-d"><i class="'+(on?'cir':'')+'">'+day+'</i></span>';}return '<div class="cal"><div class="cal-h"><button type="button" onclick="spCalNav(-1)">‹</button><b>'+y+'년 '+(m+1)+'월</b><button type="button" onclick="spCalNav(1)">›</button></div><div class="cal-w">'+names.map(function(n){return '<span>'+n+'</span>';}).join('')+'</div><div class="cal-g">'+cells+'</div></div>';}
+var _spCalD=new Date(2026,9,1);var _calWd=[];var _exRows=[];var _exPay='';var _calHol={'2026-1-1':1,'2026-2-16':1,'2026-2-17':1,'2026-2-18':1,'2026-3-1':1,'2026-3-2':1,'2026-5-5':1,'2026-5-24':1,'2026-5-25':1,'2026-6-6':1,'2026-8-15':1,'2026-8-17':1,'2026-9-24':1,'2026-9-25':1,'2026-9-26':1,'2026-10-3':1,'2026-10-5':1,'2026-10-9':1,'2026-12-25':1};var _calStart=new Date(2026,9,6),_calEnd=new Date(2026,9,31);
+function calHTML(d,wd){var y=d.getFullYear(),m=d.getMonth();var first=new Date(y,m,1).getDay();var dim=new Date(y,m+1,0).getDate();var names=['일','월','화','수','목','금','토'];var cells='';for(var i=0;i<first;i++)cells+='<span class="cal-d"></span>';for(var day=1;day<=dim;day++){var cur=new Date(y,m,day);var hol=_calHol[y+'-'+(m+1)+'-'+day];var inr=cur>=_calStart&&cur<=_calEnd;var on=wd.indexOf(cur.getDay())>=0&&inr&&!hol;var cls=hol?'hol':(on?'cir':'');cells+='<span class="cal-d"><i class="'+cls+'">'+day+'</i></span>';}return '<div class="cal"><div class="cal-h"><button type="button" onclick="spCalNav(-1)">‹</button><b>'+y+'년 '+(m+1)+'월</b><button type="button" onclick="spCalNav(1)">›</button></div><div class="cal-w">'+names.map(function(n){return '<span>'+n+'</span>';}).join('')+'</div><div class="cal-g">'+cells+'</div><div class="cal-lg"><span class="lg-c">●</span> 수업일 &nbsp; <span class="lg-h">●</span> 공휴일(휴강)</div></div>';}
 function spRenderCal(){var el=document.getElementById('spCal');if(!el)return;var dv=document.getElementById('spDay');el.innerHTML=calHTML(_spCalD,dv?_wdays(dv.value):_calWd);}
 function spCalNav(delta){_spCalD=new Date(_spCalD.getFullYear(),_spCalD.getMonth()+delta,1);spRenderCal();}
 function stepPage(k){
-if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;_spCalD=new Date();var W=WCONV[k]||WCONV['영어'];
+if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;_spCalD=new Date(2026,9,1);var W=WCONV[k]||WCONV['영어'];
  var lv0=W.levels[0];var init=W.cls[lv0[0]]||[];
  var idays=[];init.forEach(function(x){if(idays.indexOf(x[0])<0)idays.push(x[0]);});
  var dayOpts=idays.map(function(d){return '<option>'+d+' (개강)</option>';}).join('')+'<option>주말반 (추후 모집중)</option>';
@@ -2140,7 +2144,7 @@ if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;_spCalD=new Date();var 
   '<div class="sp-eye">'+W.eye+'</div><h2 class="sp-title">'+W.title+'</h2>'+
   '<div class="sp-steps">'+steps+'</div>'+
   '<div class="sp-form"><label>레벨·요일 선택<select id="spDay" onchange="spRenderCal()">'+dayOpts+'</select></label><label>시간 선택<select id="spTime">'+timeOpts+'</select></label><label>기간 선택<select id="spTerm" onchange="spPrice()"><option value="2">단과 2개월 (무료 없음) — 36만원</option><option value="3">3개월 등록 (+1개월 무료·총4개월) — 54만원</option><option value="4">4개월 등록 (+2개월 무료·총6개월) — 72만원</option><option value="6" selected>6개월 등록 (+4개월 무료·총10개월) — 108만원</option></select></label><label>이벤트 할인<select id="spDisc" onchange="spPrice()"><option value="0">할인 없음</option><option value="0.2">글로벌위크 얼리버드 −20%</option><option value="0.25">글로벌위크 얼리버드 −25% (토익)</option><option value="v0.2">환승 이벤트 −20% (영수증 인증)</option><option value="v0.25">환승 −25% 토익 (영수증 인증)</option></select></label></div>'+
-  '<div class="sp-cal-wrap"><div class="sp-cal-label">수업일 확인 (선택 요일 기준)</div><div id="spCal">'+calHTML(new Date(),_wdays(idays[0]||''))+'</div></div>'+
+  '<div class="sp-cal-wrap"><div class="sp-cal-label">수업일 확인 (선택 요일 기준)</div><div id="spCal">'+calHTML(_spCalD,_wdays(idays[0]||''))+'</div></div>'+
   '<div class="sp-price"><span>수강료</span><b id="spAmt">1,080,000원</b><em id="spPer">+4개월 무료 · 총 10개월 · 최고혜택</em></div>'+
   '<div class="sp-btns"><button class="sp-cart" onclick="alert(\'장바구니에 담았습니다.\')">🛒 장바구니</button><button class="sp-buy" onclick="spBuy()">수강신청</button></div>'+
   '<div class="sp-note">6개월 등록 시 +4개월 무료(총 10개월) · 등록 기간이 길수록 무료 개월 ↑</div>'+
@@ -2197,7 +2201,7 @@ var EXAM={
 };
 var TIMG={'송윤정':'eng_13','엘리 킴':'elly','최자운':'eng_6','김현정':'eng_15','유미용':'eng_14','히토시':'jpn_6','서정아':'jpn_7','모모코':'jpn_4','권은정':'jpn_1','김민정':'jpn_2','이형림':'jpn_11','하홍금':'chn_1','오금한':'chn_5','현지인':'chn_7','노정아':'chn_3'};
 function timg(name){var k=(name||'').split(/[\u00b7\/]/)[0].trim();var im=TIMG[k];return im?'<img class="ex-face" src="img/teachers/'+im+'.png" alt="">':'';}
-function examPage(k){var e=EXAM[k]||EXAM['토익'];_spCalD=new Date();_exRows=e.rows;
+function examPage(k){var e=EXAM[k]||EXAM['토익'];_spCalD=new Date(2026,9,1);_exRows=e.rows;
  var tabs=e.rows.map(function(r,i){return '<button class="sp-step'+(i===0?' on':'')+'" onclick="exSel('+i+')">'+r.n+'</button>';}).join('');
  var r0=e.rows[0];var im0=TIMG[(r0.tc||'').split(/[·\/]/)[0].trim()]||e.photo;_calWd=_wdays(r0.day);_exPay=r0.pay;
  var sch='<h4 style="font-size:16px;font-weight:900;margin:22px 0 10px">개설 시간표 (전체)</h4><table class="ex-tt"><tr><th>과정</th><th>강사</th><th>요일</th><th>시간</th><th>수강료</th></tr>'+e.rows.map(function(r){return '<tr><td class="b">'+r.n+'</td><td><span class="ex-tc">'+timg(r.tc)+'<b>'+r.tc+'</b></span></td><td>'+r.day+'</td><td>'+r.time+'</td><td class="pr">'+r.price+'</td></tr>';}).join('')+'</table>';
@@ -2210,7 +2214,7 @@ function examPage(k){var e=EXAM[k]||EXAM['토익'];_spCalD=new Date();_exRows=e.
   '<div class="sp-eye">'+(e.eye||'')+'</div><h2 class="sp-title">'+e.title+'</h2>'+
   '<div class="sp-steps">'+tabs+'</div>'+
   '<div class="ex-sel"><div class="ex-sel-row"><span>강사</span><b id="exT">'+r0.tc+'</b></div><div class="ex-sel-row"><span>요일</span><b id="exD">'+r0.day+'</b></div><div class="ex-sel-row"><span>시간</span><b id="exTm">'+r0.time+'</b></div><div class="ex-sel-row"><span>수강료</span><b id="exP" class="pr">'+r0.price+'</b></div></div>'+
-  '<div class="sp-cal-wrap"><div class="sp-cal-label">수업일 확인 (선택 반 기준)</div><div id="spCal">'+calHTML(new Date(),_calWd)+'</div></div>'+
+  '<div class="sp-cal-wrap"><div class="sp-cal-label">수업일 확인 (선택 반 기준)</div><div id="spCal">'+calHTML(_spCalD,_calWd)+'</div></div>'+
   '<div class="sp-btns"><button class="sp-cart" onclick="alert(\'장바구니에 담았습니다.\')">🛒 장바구니</button><button class="sp-buy" onclick="spBuyAmt(_exPay)">수강신청</button></div>'+
   '<div class="sp-note">※ 요일·시간·금액은 산본이지어학원 단가 기준 초안이며, 확정가로 조정됩니다. · 상담 031-466-6969</div>'+
   '</div></div>'+
