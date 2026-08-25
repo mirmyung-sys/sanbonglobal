@@ -609,6 +609,30 @@ header nav a{letter-spacing:-.01em}
 .subbtn:hover{filter:brightness(1.06)}
 .subnote{text-align:center;font-size:12.5px;color:#9aa49c;font-weight:600;margin:16px 0 4px}
 @media(max-width:820px){.subgrid{grid-template-columns:1fr}.subhead h3{font-size:24px}}
+/* ===== 어학 상품권 · PASS ===== */
+.pvwrap{max-width:1180px;margin:28px auto 6px;padding:0 20px}
+.pvhead{text-align:center;margin:0 0 20px}
+.pvhead .se{font-size:13px;font-weight:800;letter-spacing:.14em;color:#c69b6d}
+.pvhead h3{font-size:29px;font-weight:900;color:#12203c;margin:9px 0 6px;letter-spacing:-.025em}
+.pvhead p{font-size:14.5px;color:#5c6b60;font-weight:600}
+.pvgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pvc{border-radius:20px;padding:26px 22px 22px;color:#fff;display:flex;flex-direction:column;position:relative;overflow:hidden;box-shadow:0 14px 36px rgba(20,30,50,.16)}
+.pvc.gold{background:linear-gradient(135deg,#7a5a1a,#c6a15b)}
+.pvc.talk{background:linear-gradient(135deg,#14203c,#31507f)}
+.pvc.pass{background:linear-gradient(135deg,#0a6b3d,#12b463)}
+.pvc .pvtag{font-size:11.5px;font-weight:800;letter-spacing:.1em;opacity:.85}
+.pvc h4{font-size:22px;font-weight:900;margin:5px 0 4px;letter-spacing:-.02em}
+.pvc .pvprice{font-size:25px;font-weight:900;margin:8px 0 2px}
+.pvc .pvprice small{font-size:13px;font-weight:700;opacity:.8}
+.pvc ul{list-style:none;padding:0;margin:12px 0 16px;flex:1}
+.pvc li{font-size:13px;font-weight:600;padding:6px 0 6px 20px;position:relative;opacity:.96;line-height:1.45}
+.pvc li::before{content:"\2726";position:absolute;left:0;opacity:.9}
+.pvc .pvbtn{display:block;text-align:center;background:rgba(255,255,255,.95);color:#1a2130;font-weight:800;font-size:14px;padding:12px;border-radius:12px;text-decoration:none}
+.pvnote{margin-top:16px;background:#fff7ef;border:1px solid #f0e2cf;border-radius:16px;padding:16px 18px}
+.pvnote b.h{display:block;font-size:14px;color:#8a5a12;font-weight:900;margin-bottom:8px}
+.pvnote ul{margin:0;padding-left:18px}
+.pvnote li{font-size:12.5px;color:#6a5a3f;line-height:1.6;margin-bottom:3px}
+@media(max-width:820px){.pvgrid{grid-template-columns:1fr}.pvhead h3{font-size:23px}}
 /* ===== 맞춤강의 찾기 그리드(전체화면) ===== */
 .findgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
 .findcard{display:block;border:1px solid var(--line);border-radius:14px;padding:22px 18px;background:#fff;cursor:pointer;transition:.2s}
@@ -1112,6 +1136,46 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
     </div>
     <div class="subnote">※ 약정 12개월 · 기간 연장 불가 · 월 자동결제 · 중도해지 규정 별도 · 구청 성인영어 대비 소수정예·원어민 수업입니다.</div>
     <div style="text-align:center;margin:12px 0 4px"><a href="app.html" style="display:inline-flex;align-items:center;gap:8px;background:#1D2D4F;color:#fff;font-weight:800;font-size:14px;padding:12px 24px;border-radius:999px;text-decoration:none">📱 산본 더 글로벌 앱 (산영모·출석·구독)</a></div>
+  </div>
+  <div class="pvwrap">
+    <div class="pvhead">
+      <div class="se">GIFT PASS · 어학 상품권</div>
+      <h3>산본 더 글로벌만의 특별함, 「구독·상품권」</h3>
+      <p>한 번 등록으로 1년 내내 자유롭게 — 새벽부터 주말까지, 원하는 만큼 배우세요.</p>
+    </div>
+    <div class="pvgrid">
+      <div class="pvc gold">
+        <div class="pvtag">GOLD FREE PASS · 연회권</div>
+        <h4>골드 프리패스권</h4>
+        <div class="pvprice">가격 문의 <small>/ 연</small></div>
+        <ul><li>어학 전 과정 프리패스 (연 단위)</li><li>회화·시험·1:1까지 자유 수강</li><li>VIP 상담·좌석·교재 우선 혜택</li></ul>
+        <a class="pvbtn" href="#" onclick="openPage('수강신청');return false;">프리패스 상담</a>
+      </div>
+      <div class="pvc talk">
+        <div class="pvtag">TALK PASS · 원어민 회화 무제한</div>
+        <h4>TALK 상품권</h4>
+        <div class="pvprice">1,200,000원 <small>/ 연</small></div>
+        <ul><li>새벽반~주말반 원어민 회화 <b>전 강좌 무제한</b></li><li>여러 강좌 <b>중복 수강</b> 가능</li><li>특별 프로모션가 상품</li></ul>
+        <a class="pvbtn" href="#" onclick="openPage('수강신청');return false;">TALK 상품권 신청</a>
+      </div>
+      <div class="pvc pass">
+        <div class="pvtag">PASS · 시험강좌 1년 무제한</div>
+        <h4>PASS 상품권</h4>
+        <div class="pvprice">가격 문의 <small>/ 연</small></div>
+        <ul><li>모든 <b>시험강좌 1년 무제한</b> 수강</li><li>토익 듣다 일본어로 <b>교차 수강</b> OK</li><li>토익·토스·오픽·JLPT·HSK 자유 선택</li></ul>
+        <a class="pvbtn" href="#" onclick="openPage('수강신청');return false;">PASS 상품권 신청</a>
+      </div>
+    </div>
+    <div class="pvnote">
+      <b class="h">⚠ 상품권 환불 주의사항 (교습비 반환 기준)</b>
+      <ul>
+        <li><b>TALK 상품권</b>은 특별 프로모션 상품으로, 환불 시 정가 기준 <b>월 180,000원(강좌당)</b>으로 재산정됩니다. 예) 한 달에 3강좌 수강 시 540,000원(180,000×3)을 공제 후 환불됩니다.</li>
+        <li>TALK 상품권은 <b>이용 개시 후 6개월 경과 시 환불이 불가</b>합니다.</li>
+        <li><b>PASS 상품권</b>은 환불 불가 상품이나, 관련 법령의 <b>교습비 반환 기준</b>에 따라 환불됩니다.</li>
+        <li>모든 상품권 환불은 「학원의 설립·운영 및 과외교습에 관한 법률」과 교습비 반환 기준을 따릅니다.</li>
+        <li>가격·혜택은 프로모션에 따라 변동될 수 있으며, 일부 항목은 대표님 확정 후 반영됩니다.</li>
+      </ul>
+    </div>
   </div>
   <div class="wrap">
   <a class="snsbtn sns-ig" href="#" target="_blank"><span class="si">📷</span> 인스타그램</a>
