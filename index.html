@@ -2084,11 +2084,11 @@ function stepPage(){
   '<div class="sp-form">'+
    '<label>요일 선택<select id="spDay">'+dayOpts+'</select></label>'+
    '<label>시간 선택<select id="spTime">'+timeOpts+'</select></label>'+
-   '<label>기간 선택<select id="spTerm" onchange="spPrice()"><option value="2">2개월</option><option value="4">4개월</option><option value="6">6개월</option><option value="12" selected>연간(12개월)</option></select></label>'+
+   '<label>기간 선택<select id="spTerm" onchange="spPrice()"><option value="2">단과 2개월 (무료 없음)</option><option value="3">3개월 등록 (+1개월 무료·총4개월)</option><option value="4">4개월 등록 (+2개월 무료·총6개월)</option><option value="6" selected>6개월 등록 (+4개월 무료·총10개월)</option></select></label>'+
   '</div>'+
-  '<div class="sp-price"><span>수강료</span><b id="spAmt">1,080,000원</b><em id="spPer">월 9만원 환산 · 최고혜택</em></div>'+
+  '<div class="sp-price"><span>수강료</span><b id="spAmt">1,080,000원</b><em id="spPer">+4개월 무료 · 총 10개월 · 최고혜택</em></div>'+
   '<div class="sp-btns"><button class="sp-cart" onclick="alert(\'장바구니에 담았습니다.\')">🛒 장바구니</button><button class="sp-buy" onclick="spBuy()">수강신청</button></div>'+
-  '<div class="sp-note">최저가(월) 90,000원 ~ 정가 180,000원 · 기간이 길수록 더 저렴</div>'+
+  '<div class="sp-note">6개월 등록 시 +4개월 무료(총 10개월) · 등록 기간이 길수록 무료 개월 ↑</div>'+
   '</div></div>'+
   '<div class="sp-tabs"><span class="on">과목특징</span><span>선생님소개</span><span>수강후기</span><span>강의목록</span></div>'+
   '<div class="sp-desc">STEP BASIC부터 STEP4까지, 왕초보 발음·기초문법에서 실전 프리토킹까지 단계별로 올라갑니다. 관리형 수업으로 피드백·복습영상·발음교정·첨삭·1:1 학습상담이 모두 포함됩니다.</div>'+'<h4 style="font-size:16px;font-weight:900;margin:22px 0 10px">개설 STEP 시간표 (현재 개강반)</h4><table class="ex-tt"><tr><th>Step</th><th>강사</th><th>요일</th><th>시간</th></tr><tr><td class="b">Step Basic</td><td>Kate</td><td>화·목</td><td>10:00~11:30</td></tr><tr><td class="b">Step Basic</td><td>KELLY</td><td>화·목</td><td>18:20~19:50</td></tr><tr><td class="b">Step Basic</td><td>KELLY</td><td>화·목</td><td>20:00~21:30</td></tr><tr><td class="b">Step 1</td><td>Kate</td><td>월·수</td><td>10:00~11:30</td></tr><tr><td class="b">Step 1</td><td>May</td><td>화·목</td><td>18:20~19:50</td></tr><tr><td class="b">Step 1</td><td>May</td><td>화·목</td><td>20:00~21:30</td></tr><tr><td class="b">Step 2</td><td>Jerollyn</td><td>월·수</td><td>11:40~13:10</td></tr><tr><td class="b">Step 2</td><td>Jerollyn</td><td>화·목</td><td>11:40~13:10</td></tr><tr><td class="b">Step 2</td><td>Deborah</td><td>화·목</td><td>20:00~21:30</td></tr><tr><td class="b">Step 3</td><td>Jerollyn</td><td>화·목</td><td>10:00~11:30</td></tr><tr><td class="b">Step 3</td><td>Jerollyn</td><td>화·목</td><td>20:00~21:30</td></tr><tr><td class="b">Step 4</td><td>Jerollyn</td><td>월·수</td><td>10:00~11:30</td></tr><tr><td class="b">Step 4 프리토킹</td><td>Jerollyn</td><td>화·목</td><td>20:00~21:30</td></tr></table><div class="sp-note">※ 원하는 Step·요일·시간을 위에서 선택하거나, 상담 시 배정받으실 수 있습니다.</div>'+
@@ -2100,7 +2100,7 @@ function stepPage(){
 }
 var EWSTEP={'BASIC':[['화·목','10:00~11:30','Kate'],['화·목','18:20~19:50','KELLY'],['화·목','20:00~21:30','KELLY']],'STEP1':[['월·수','10:00~11:30','Kate'],['화·목','18:20~19:50','May'],['화·목','20:00~21:30','May']],'STEP2':[['월·수','11:40~13:10','Jerollyn'],['화·목','11:40~13:10','Jerollyn'],['화·목','20:00~21:30','Deborah']],'STEP3':[['화·목','10:00~11:30','Jerollyn'],['화·목','20:00~21:30','Jerollyn']],'STEP4':[['월·수','10:00~11:30','Jerollyn'],['화·목','20:00~21:30','Jerollyn (프리토킹)']]};
 function spStep(b,step){var ss=document.querySelectorAll('.sp-step');for(var i=0;i<ss.length;i++)ss[i].classList.remove('on');b.classList.add('on');var list=EWSTEP[step]||[];var days=[];list.forEach(function(x){if(days.indexOf(x[0])<0)days.push(x[0]);});document.getElementById('spDay').innerHTML=days.map(function(d){return '<option>'+d+' (개강)</option>';}).join('')+'<option>주말반 (추후 모집중)</option>';document.getElementById('spTime').innerHTML=list.map(function(x){return '<option>'+x[1]+' · '+x[2]+' ('+x[0]+')</option>';}).join('')+'<option>오전반 (추후 모집중)</option><option>오후반 (추후 모집중)</option><option>주말반 (추후 모집중)</option>';}
-function spPrice(){var t=document.getElementById('spTerm').value;var P={'2':360000,'4':640000,'6':900000,'12':1080000};var per={'2':'월 18만원','4':'월 16만원 · 8만원 할인','6':'월 15만원 · 18만원 할인','12':'월 9만원 환산 · 최고혜택'};document.getElementById('spAmt').textContent=P[t].toLocaleString()+'원';document.getElementById('spPer').textContent=per[t];}
+function spPrice(){var t=document.getElementById('spTerm').value;var P={'2':360000,'3':540000,'4':720000,'6':1080000};var per={'2':'2개월 · 무료 없음','3':'+1개월 무료 · 총 4개월','4':'+2개월 무료 · 총 6개월','6':'+4개월 무료 · 총 10개월 · 최고혜택'};document.getElementById('spAmt').textContent=P[t].toLocaleString()+'원';document.getElementById('spPer').textContent=per[t];}
 function spBuy(){document.getElementById('spCamt').textContent=document.getElementById('spAmt').textContent;document.getElementById('spModal').classList.add('on');}
 function spDoLogin(){document.getElementById('spLogin').style.display='none';document.getElementById('spCharge').style.display='block';}
 function spClose(){var m=document.getElementById('spModal');if(m)m.classList.remove('on');var l=document.getElementById('spLogin'),c=document.getElementById('spCharge');if(l)l.style.display='block';if(c)c.style.display='none';}
@@ -2113,7 +2113,8 @@ var EXAM={
    {n:'스파르타 초급 (매일반)',tc:'송윤정',day:'월~금',time:'12:10~14:10',price:'1개월 42만 / 2개월 84만→64만(20만 할인) · 18회',pay:'640,000원'},
    {n:'정규 초급반 (기출입문)',tc:'엘리 킴',day:'월·수',time:'19:30~21:30',price:'1개월 21만 / 2개월 42만→39만(3만 할인) · 16회',pay:'390,000원'},
    {n:'정규 중급반 (기출종합)',tc:'엘리 킴',day:'화·목',time:'19:30~21:30',price:'1개월 21만 / 2개월 42만→39만(3만 할인) · 16회',pay:'390,000원'},
-   {n:'실전반 (ETS 1000제)',tc:'송윤정',day:'토요일',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'}]},
+   {n:'실전반 (ETS 1000제)',tc:'송윤정',day:'토요일',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'},
+   {n:'토익 왕기초',tc:'최자운',day:'토요일',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'}]},
  '토스':{eye:'TOEIC Speaking · 개설반',title:'토스 — 개설 시간표',photo:'eng_6',rows:[
    {n:'토스 정규 (기출단기공략)',tc:'최자운',day:'월·수',time:'20:00~21:30',price:'1개월 21만 / 2개월 42만→39만 · 16회',pay:'390,000원'},
    {n:'토스 오전 실전',tc:'최자운',day:'오전반',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'}]},
