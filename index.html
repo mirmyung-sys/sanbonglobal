@@ -584,6 +584,31 @@ header nav a{letter-spacing:-.01em}
 .findbtn b{font-weight:900;letter-spacing:-.02em}
 .findbtn em{font-style:normal;font-size:13.5px;color:var(--gold2);font-weight:700}
 @media(max-width:640px){.findbtn{flex-direction:column;gap:4px;padding:16px 26px;font-size:16px}.findbtn em{font-size:12px}}
+/* ===== 글로벌 구독제 그리드 ===== */
+.subwrap{max-width:1180px;margin:14px auto 6px;padding:0 20px}
+.subhead{text-align:center;margin:6px 0 24px}
+.subhead .se{font-size:13px;font-weight:800;letter-spacing:.14em;color:#0a8f4f}
+.subhead h3{font-size:31px;font-weight:900;color:#12321f;margin:9px 0 7px;letter-spacing:-.025em}
+.subhead h3 span{color:#e23b34}
+.subhead p{font-size:15px;color:#5c6b60;font-weight:600}
+.subgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.subcard{background:#fff;border:1.5px solid #e4ede7;border-radius:20px;padding:28px 22px 24px;box-shadow:0 10px 30px rgba(20,60,35,.07);display:flex;flex-direction:column;position:relative;transition:.25s}
+.subcard:hover{transform:translateY(-5px);box-shadow:0 22px 48px rgba(20,60,35,.14)}
+.subcard.best{border-color:#0a8f4f;box-shadow:0 18px 44px rgba(10,143,79,.18)}
+.subcard.best::before{content:"BEST";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#0a8f4f;color:#fff;font-size:12px;font-weight:900;letter-spacing:.08em;padding:5px 16px;border-radius:999px}
+.subtier{font-size:15px;font-weight:800;color:#0a8f4f;letter-spacing:.02em}
+.subprice{font-size:35px;font-weight:900;color:#16321f;margin:6px 0 2px;letter-spacing:-.03em}
+.subprice small{font-size:15px;font-weight:700;color:#8a978d}
+.subterm{font-size:12.5px;color:#98a49b;font-weight:700;margin-bottom:15px}
+.subfeat{list-style:none;padding:0;margin:0 0 20px;flex:1}
+.subfeat li{font-size:14px;color:#3c4a40;font-weight:600;padding:8px 0 8px 26px;position:relative;border-top:1px solid #f0f4f1}
+.subfeat li:first-child{border-top:0}
+.subfeat li::before{content:"✓";position:absolute;left:2px;color:#0a8f4f;font-weight:900}
+.subbtn{display:block;text-align:center;background:linear-gradient(120deg,#0a8f4f,#12b463);color:#fff;font-weight:800;font-size:15px;padding:13px;border-radius:12px;text-decoration:none;transition:.2s}
+.subcard.best .subbtn{background:linear-gradient(120deg,#e23b34,#f0564d)}
+.subbtn:hover{filter:brightness(1.06)}
+.subnote{text-align:center;font-size:12.5px;color:#9aa49c;font-weight:600;margin:16px 0 4px}
+@media(max-width:820px){.subgrid{grid-template-columns:1fr}.subhead h3{font-size:24px}}
 /* ===== 맞춤강의 찾기 그리드(전체화면) ===== */
 .findgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
 .findcard{display:block;border:1px solid var(--line);border-radius:14px;padding:22px 18px;background:#fff;cursor:pointer;transition:.2s}
@@ -983,8 +1008,7 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
 <header>
   <div class="wrap htop">
   <a class="logo" href="#" onclick="closePage();window.scrollTo(0,0);return false;">
-    <img src="img/sga_logo.png" alt="SGA 산본글로벌어학원">
-    <span class="logoko"><b>산본글로벌어학원</b><em>SANBON GLOBAL ACADEMY</em></span>
+    <img src="img/intro_logo.png" alt="산본글로벌어학원" style="height:56px;width:auto">
   </a>
   <div class="hicons">
     <a href="#" onclick="openLv();return false;"><span class="gi">📊</span>레벨테스트</a>
@@ -1057,6 +1081,37 @@ header{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop
 <!-- SNS 링크 바 -->
 <div class="snsbar">
   <div class="findwrap"><a class="findbtn" href="#" onclick="openPage('수강신청');return false;"><span class="fi">🎯</span><b>내게 맞는 강의 찾은 후 수강신청까지</b><em>과목·반 추천부터 결제까지 한 번에 →</em></a></div>
+  <div class="subwrap">
+    <div class="subhead">
+      <div class="se">SGA PASS · 월 구독제</div>
+      <h3>글로벌 구독제 <span>— 구청 영어보다 저렴하게</span></h3>
+      <p>10개월 108만원을 한 번에? 부담은 낮추고 꾸준함은 높이는 <b>월 6만원대 구독</b>으로 시작하세요.</p>
+    </div>
+    <div class="subgrid">
+      <div class="subcard">
+        <div class="subtier">베이직 · 일반형</div>
+        <div class="subprice">4.9<small>만원 / 월</small></div>
+        <div class="subterm">12개월 약정 · 월 자동결제</div>
+        <ul class="subfeat"><li>1개 과목 그룹수업 주 2회</li><li>자기주도 학습앱 무제한</li><li>레벨테스트·학습 로드맵</li><li>산영모 회화모임 참여</li></ul>
+        <a class="subbtn" href="#" onclick="openPage('수강신청');return false;">구독 상담 신청</a>
+      </div>
+      <div class="subcard best">
+        <div class="subtier">플러스 · 고급형</div>
+        <div class="subprice">5.9<small>만원 / 월</small></div>
+        <div class="subterm">12개월 약정 · 월 자동결제</div>
+        <ul class="subfeat"><li>그룹수업 주 3회 (과목 선택)</li><li>원어민 회화클럽 포함</li><li>교재 제공 + 월 1회 1:1 첨삭</li><li>산영모 정기모임 우선참여</li></ul>
+        <a class="subbtn" href="#" onclick="openPage('수강신청');return false;">지금 구독하기</a>
+      </div>
+      <div class="subcard">
+        <div class="subtier">프리미엄</div>
+        <div class="subprice">6.9<small>만원 / 월</small></div>
+        <div class="subterm">12개월 약정 · 월 자동결제</div>
+        <ul class="subfeat"><li>전 과목 자유수강 (무제한)</li><li>원어민 회화 + 1:1 PT 월 2회</li><li>출석 80% 시 지원금 트랙 관리</li><li>성인·임원 프리미엄 케어</li></ul>
+        <a class="subbtn" href="#" onclick="openPage('수강신청');return false;">프리미엄 상담</a>
+      </div>
+    </div>
+    <div class="subnote">※ 약정 12개월 · 기간 연장 불가 · 중도해지 규정 별도 · 구청 성인영어 대비 소수정예·원어민 수업 · <b>요금/구성은 확정 전 예시</b>이며 대표님 확정 후 반영됩니다.</div>
+  </div>
   <div class="wrap">
   <a class="snsbtn sns-ig" href="#" target="_blank"><span class="si">📷</span> 인스타그램</a>
   <a class="snsbtn sns-yt" href="#" target="_blank"><span class="si">▶</span> 유튜브</a>
