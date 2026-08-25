@@ -1706,7 +1706,7 @@ function coursePage(key){
    +'<div class="cpg-badge">SANBON GLOBAL WEEK · 최대 25% 할인</div>'
    +'<div class="cpg-eye">'+d.eyebrow+'</div><h1>'+d.hook+'</h1>'
    +(line?'<div class="cpg-line">'+line+'</div>':'')
-   +'<button class="cpg-cta" onclick="closePage();openPage(\'수강신청\')">'+d.subj+' 수강신청 →</button>'
+   +'<button class="cpg-cta" onclick="closePage();openBuy(\''+key+'\')">'+d.subj+' 수강신청 →</button>'
    +'<div class="cpg-scroll">아래로 스크롤 ↓</div></div></section>'
   +'<section class="cpg-prob"><div class="cpg-in"><div class="cpg-kick">혹시 이런 식으로</div><h2>'+d.subj+' 공부하고 있지 않나요?</h2>'
    +'<div class="cpg-lead">유명하다는 강의 다 들어봤는데, 결국 “이것만 외워”, “패턴 익혀”, “많이 풀면 늘어”…<br>오답의 이유를 모른 채 시간만 흘러갑니다.</div>'
@@ -1717,7 +1717,7 @@ function coursePage(key){
   +'<section class="cpg-goal"><div class="cpg-in"><div class="cpg-kick">RESULT</div><h2>'+d.goal+'</h2><p>결과로 증명하는 산본글로벌의 밀착 관리.</p></div></section>'
   +'<section class="cpg-end" style="--ac:'+d.ac+'"><div class="cpg-in"><div class="cpg-badge2">최대 <b>25%</b> 할인 · 지금이 가장 저렴할 때</div>'
    +'<h2>지금 '+d.subj+' 시작하세요</h2>'
-   +'<button class="cpg-cta" onclick="closePage();openPage(\'수강신청\')">수강신청 →</button>'
+   +'<button class="cpg-cta" onclick="closePage();openBuy(\''+key+'\')">수강신청 →</button>'
    +'<div class="cpg-note">전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원</div>'+shareMini()+'</div></section>';
 }
 function openCourse(key){_sgSub(coursePage(key));}
@@ -2151,6 +2151,7 @@ function examPage(k){var e=EXAM[k]||EXAM['토익'];
   '<div class="sp-note">※ 요일·시간·금액은 산본이지어학원 단가 기준 초안이며, 확정가로 조정됩니다. · 상담 031-466-6969</div>'+
   spModalHTML()+'</div>';
 }
+function openBuy(k){if(k==='영어회화'){openStep(k);}else{openExam(k);}}
 function openExam(k){_sgSub(examPage(k));}
 var ONE={
  '영어':{eye:'1:1 PRIVATE · 왕기초 영어',title:'왕기초 일대일 — 영어회화',photo:'eng_5',desc:'번번이 영어의 벽을 넘지 못했던 분, 학원 정규반 최저 레벨도 버거운 분께. 단순 강의가 아니라 공부하는 방법과 학습자료까지 1:1로 관리합니다.',rows:[['1시간','60,000원','60,000원'],['10시간','550,000원 (시간당 5.5만)','550,000원'],['20시간','1,000,000원 (시간당 5만)','1,000,000원']]},
