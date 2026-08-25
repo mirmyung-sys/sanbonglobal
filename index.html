@@ -766,6 +766,17 @@ header nav a{letter-spacing:-.01em}
 .one-note{margin-top:10px;font-size:13px;color:#0a8f4f;font-weight:700}
 .evgrid5{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0}
 @media(max-width:820px){.evgrid5{grid-template-columns:1fr}}
+.td-top{display:flex;gap:30px;align-items:flex-start;flex-wrap:wrap}
+.td-photo{width:280px;flex-shrink:0;border-radius:16px;overflow:hidden;background:#f2f4f8;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center}
+.td-photo img{width:100%;height:100%;object-fit:cover}
+.td-empty{color:#9aa4b6;font-size:14px}
+.td-info{flex:1;min-width:240px;padding-top:6px}
+.td-name{font-size:30px;font-weight:900;color:#1a2130;margin:8px 0 6px}
+.td-subj{font-size:16px;color:#c81f2b;font-weight:800;margin-bottom:14px}
+.td-feats{display:flex;flex-wrap:wrap;gap:7px}
+.td-feats span{border:1px solid #d6dbe6;color:#4a5568;font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:6px}
+.td-bio{font-size:16px;color:#3c4656;line-height:1.9;margin:26px 0 10px}
+@media(max-width:640px){.td-photo{width:100%;aspect-ratio:1/1}}
 .enr-head h4,.enr-head .enr-ic{position:relative;z-index:1}
 .enr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:6px 0 22px}
 .enr-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 10px 26px rgba(20,33,61,.06)}
@@ -1910,7 +1921,7 @@ var T_B2B=[
 ];
 function tcard(t){
  var img=t.img?'<div class="tk-img"><img src="img/teachers/'+t.img+'.png" alt="'+t.n+'" loading="lazy"></div>':'<div class="tk-img tk-empty"><span class="tk-ph">사진<br>준비중</span></div>';
- var act=t.co?"openCourse('"+t.co+"')":(t.pg?"openPage('"+t.pg+"')":"alert('"+t.n+"\\n"+t.title+"\\n수강 상담: 031-466-6969 / 카카오톡 채널 @산본글로벌어학원')");
+ var act=t.co?"openCourse('"+t.co+"')":(t.pg?"openPage('"+t.pg+"')":"openTeacher('"+t.n+"')");
  return '<div class="tk"><div class="tk-top"><div class="tk-txt"><div class="tk-eye">'+(t.eye||'&nbsp;')+'</div><div class="tk-title">'+t.title+'</div></div>'+img+'</div><div class="tk-name">'+t.n+'</div><button class="tk-btn" onclick="'+act+'">자세히 보기</button></div>';
 }
 function tGrid(bc,title,desc,list){return '<div class="tk-hero" style="background:'+bc+'"><div class="cpg-in"><div class="pgeyebrow" style="color:#fff;opacity:.85">SANBON GLOBAL · 강사진</div><h2>'+title+'</h2><p>'+desc+'</p></div></div><div class="tk-grid">'+list.map(tcard).join('')+'</div>'+CTA();}
@@ -2148,6 +2159,20 @@ function onePage(k){var e=ONE[k]||ONE['영어'];
   spModalHTML()+'</div>';
 }
 function openOne(k){var w=_sgOpenAny();document.getElementById('pgbody').innerHTML=onePage(k);document.getElementById('pgModal').classList.add('open');window.scrollTo(0,0);if(!w){try{history.pushState({sg:1},'');}catch(e){}}}
+function openTeacher(name){var w=_sgOpenAny();document.getElementById('pgbody').innerHTML=teacherDetail(name);document.getElementById('pgModal').classList.add('open');window.scrollTo(0,0);if(!w){try{history.pushState({sg:1},'');}catch(e){}}}
+function teacherDetail(name){
+ var all=[].concat(typeof T_ENG!=='undefined'?T_ENG:[],typeof T_JPN!=='undefined'?T_JPN:[],typeof T_CHN!=='undefined'?T_CHN:[]);
+ var t=null;for(var i=0;i<all.length;i++){if(all[i].n===name){t=all[i];break;}}
+ if(!t)t={n:name,title:'',eye:'',img:''};
+ var shortn=t.n.replace(/ 강사.*/,'').replace(/ ·.*/,'').trim();
+ var img=t.img?'<img src="img/teachers/'+t.img+'.png" alt="'+t.n+'">':'<div class="td-empty">사진 준비중</div>';
+ var bio=(t.eye&&t.eye.length>2?'\u201c'+t.eye+'\u201d  ':'')+shortn+' 선생님은 '+(t.title||'회화')+' 전문입니다. 학생 한 분 한 분의 수준과 목표에 맞춰 피드백·복습·발음교정과 밀착 관리를 제공하며, 왕초보부터 실전까지 즐겁고 탄탄하게 실력을 끌어올립니다.';
+ return '<div class="sp-wrap"><button class="sp-back" onclick="openPage(\'강사소개\')">\u2039 강사님 소개로</button>'+
+  '<div class="td-top"><div class="td-photo">'+img+'</div><div class="td-info"><div class="sp-eye">SANBON GLOBAL · 강사 소개</div><h2 class="td-name">'+t.n.replace(/ 강사/,'')+'</h2><div class="td-subj">'+(t.title||'')+'</div><div class="td-feats"><span>피드백</span><span>복습관리</span><span>발음교정</span><span>1:1 상담</span></div></div></div>'+
+  '<div class="td-bio">'+bio+'</div>'+
+  '<div class="pgnote">수업·시간표 문의: 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>'+
+  '<a class="pgcta" href="#" onclick="closePage();openPage(\'수강신청\');return false;">이 선생님 수업 신청하기 \u203a</a></div>';
+}
 function openPage(k){var p=PAGES[k];if(!p)return;document.getElementById('pgbody').innerHTML=p;document.getElementById('pgModal').classList.add('open');window.scrollTo(0,0);}
 function closePage(){document.getElementById('pgModal').classList.remove('open');}
 function goCourse(tab){openCourse(tab);}
