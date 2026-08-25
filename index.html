@@ -2068,10 +2068,10 @@ function submitQuote(f){var c=f.company.value.trim(),m=f.manager.value.trim(),p=
  d.innerHTML='✅ 견적 요청이 접수되었습니다, '+m+'님. 담당자가 1영업일 내 <b>'+p+'</b>로 연락드립니다.<br>급하시면 <a class="qmail" href="tel:0314666969">전화 031-466-6969</a> · 카카오톡 채널 @산본글로벌어학원';
  d.style.display='block';d.scrollIntoView({block:'center'});f.reset();return false;}
 function stepPage(){
- var days=['월·수','화·목','금','토'];var times=['10:00~11:30','11:30~13:00','13:30~15:00','15:00~16:30','17:00~18:30','18:30~20:00'];
- var dayOpts=days.map(function(d){return '<option>'+d+'</option>';}).join('');
- var timeOpts=times.map(function(t){return '<option>'+t+'</option>';}).join('');
- var steps=['BASIC','STEP1','STEP2','STEP3','STEP4'].map(function(s,i){return '<button class="sp-step'+(i===0?' on':'')+'" onclick="spStep(this)">'+s+'</button>';}).join('');
+ var init=EWSTEP['BASIC'];var idays=[];init.forEach(function(x){if(idays.indexOf(x[0])<0)idays.push(x[0]);});
+ var dayOpts=idays.map(function(d){return '<option>'+d+' (개강)</option>';}).join('')+'<option>주말반 (추후 모집중)</option>';
+ var timeOpts=init.map(function(x){return '<option>'+x[1]+' · '+x[2]+' ('+x[0]+')</option>';}).join('')+'<option>오전반 (추후 모집중)</option><option>오후반 (추후 모집중)</option><option>주말반 (추후 모집중)</option>';
+ var steps=['BASIC','STEP1','STEP2','STEP3','STEP4'].map(function(s,i){return '<button class="sp-step'+(i===0?' on':'')+'" onclick="spStep(this,\''+s+'\')">'+s+'</button>';}).join('');
  return '<div class="sp-wrap"><button class="sp-back" onclick="openPage(\'수강신청\')">‹ 수강신청으로</button><div class="sp-top"><div class="sp-left">'+
   '<div class="sp-badge">기초입문회화 · 관리형</div>'+
   '<div class="sp-photo"><img src="img/teachers/eng_11.png" alt="제롤린 강사"></div>'+
@@ -2098,7 +2098,8 @@ function stepPage(){
    '<div id="spCharge" style="display:none"><div class="sp-welcome">✅ 로그인 완료! 수강권 결제를 위해 충전해 주세요.</div><div class="sp-camt">결제 예정 <b id="spCamt">1,080,000원</b></div><button class="sp-charge" onclick="alert(\'토스페이먼츠 결제창으로 연결됩니다.\\n(대표님 결제링크 연결 예정)\')">💳 충전하기 · 토스페이먼츠</button><button class="sp-charge2" onclick="alert(\'무통장 입금 안내\\n농협 301-9944-1055-41 (주)이지교육\\n입금 확인 후 자동 충전됩니다.\')">🏦 무통장 입금 · 농협</button><div class="sp-mfoot"><span onclick="spClose()">닫기</span></div></div>'+
   '</div></div>';
 }
-function spStep(b){var ss=b.parentNode.querySelectorAll('.sp-step');for(var i=0;i<ss.length;i++)ss[i].classList.remove('on');b.classList.add('on');}
+var EWSTEP={'BASIC':[['화·목','10:00~11:30','Kate'],['화·목','18:20~19:50','KELLY'],['화·목','20:00~21:30','KELLY']],'STEP1':[['월·수','10:00~11:30','Kate'],['화·목','18:20~19:50','May'],['화·목','20:00~21:30','May']],'STEP2':[['월·수','11:40~13:10','Jerollyn'],['화·목','11:40~13:10','Jerollyn'],['화·목','20:00~21:30','Deborah']],'STEP3':[['화·목','10:00~11:30','Jerollyn'],['화·목','20:00~21:30','Jerollyn']],'STEP4':[['월·수','10:00~11:30','Jerollyn'],['화·목','20:00~21:30','Jerollyn (프리토킹)']]};
+function spStep(b,step){var ss=document.querySelectorAll('.sp-step');for(var i=0;i<ss.length;i++)ss[i].classList.remove('on');b.classList.add('on');var list=EWSTEP[step]||[];var days=[];list.forEach(function(x){if(days.indexOf(x[0])<0)days.push(x[0]);});document.getElementById('spDay').innerHTML=days.map(function(d){return '<option>'+d+' (개강)</option>';}).join('')+'<option>주말반 (추후 모집중)</option>';document.getElementById('spTime').innerHTML=list.map(function(x){return '<option>'+x[1]+' · '+x[2]+' ('+x[0]+')</option>';}).join('')+'<option>오전반 (추후 모집중)</option><option>오후반 (추후 모집중)</option><option>주말반 (추후 모집중)</option>';}
 function spPrice(){var t=document.getElementById('spTerm').value;var P={'2':360000,'4':640000,'6':900000,'12':1080000};var per={'2':'월 18만원','4':'월 16만원 · 8만원 할인','6':'월 15만원 · 18만원 할인','12':'월 9만원 환산 · 최고혜택'};document.getElementById('spAmt').textContent=P[t].toLocaleString()+'원';document.getElementById('spPer').textContent=per[t];}
 function spBuy(){document.getElementById('spCamt').textContent=document.getElementById('spAmt').textContent;document.getElementById('spModal').classList.add('on');}
 function spDoLogin(){document.getElementById('spLogin').style.display='none';document.getElementById('spCharge').style.display='block';}
