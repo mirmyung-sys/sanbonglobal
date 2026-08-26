@@ -750,6 +750,20 @@ header nav a{letter-spacing:-.01em}
 .sp-welcome{text-align:center;font-size:14px;font-weight:700;color:#0a8f4f;margin:16px 20px 0}
 .sp-camt{text-align:center;font-size:14px;color:#4a5568;margin:6px 20px 0}
 .sp-camt b{font-size:20px;color:#c81f2b;font-weight:900}
+.ev-sheet{background:#fff;width:min(440px,92vw);border-radius:16px;overflow:hidden;padding-bottom:20px;text-align:center}
+.ev-head{background:linear-gradient(135deg,#c81f2b,#e2413b);color:#fff;padding:22px 20px}
+.ev-head.early{background:linear-gradient(135deg,#EFC04A,#d99f22);color:#1a1205}
+.ev-badge{font-size:11.5px;letter-spacing:.16em;font-weight:800;opacity:.92}
+.ev-title{font-size:20px;font-weight:900;margin-top:8px;line-height:1.35}
+.ev-body{padding:20px 22px 0;color:#4a5568;font-size:14px;line-height:1.7}
+.ev-rate{display:inline-block;margin:10px 0 2px;font-size:26px;font-weight:900;color:#c81f2b}
+.ev-head.early+.ev-body .ev-rate{color:#b07d10}
+.ev-period{font-size:12.5px;color:#8a8f99;font-weight:700}
+.ev-btns{display:flex;flex-direction:column;gap:8px;margin:20px 22px 0}
+.ev-go{background:#c81f2b;color:#fff;border:0;border-radius:10px;padding:15px;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit}
+.ev-go:hover{background:#a8151f}
+.ev-skip{background:#fff;color:#8a8f99;border:1.5px solid #dfe3ec;border-radius:10px;padding:13px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit}
+.ev-skip:hover{color:#4a5568;border-color:#c9cfdc}
 .sp-x{position:absolute;top:12px;right:14px;color:#fff;font-size:20px;cursor:pointer}
 @media(max-width:760px){.sp-top{grid-template-columns:1fr}}
 .sp-cal-wrap{margin-top:14px;border-top:1px solid #eef0f4;padding-top:14px}
@@ -2208,7 +2222,7 @@ if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;_spCalD=new Date(2026,9
   '</div><div class="sp-right">'+
   '<div class="sp-eye">'+W.eye+'</div><h2 class="sp-title">'+W.title+'</h2>'+
   '<div class="sp-steps">'+steps+'</div>'+
-  '<div class="sp-form"><label>레벨·요일 선택<select id="spDay" onchange="spRenderCal()">'+dayOpts+'</select></label><label>시간 선택<select id="spTime">'+timeOpts+'</select></label><label>기간 선택<select id="spTerm" onchange="spPrice()"><option value="2">단과 2개월 (무료 없음) — 36만원</option><option value="3">3개월 등록 (+1개월 무료·총4개월) — 54만원</option><option value="4">4개월 등록 (+2개월 무료·총6개월) — 72만원</option><option value="6" selected>6개월 등록 (+4개월 무료·총10개월) — 108만원</option></select></label><label>이벤트 할인<select id="spDisc" onchange="spDiscChange()"><option value="0">할인 없음</option><option value="open"'+(evActive('open')?' selected':'')+'>오픈이벤트 −15%</option><option value="early">글로벌위크 얼리버드 −20%</option><option value="transfer">환승이벤트 −20% (영수증 인증)</option></select></label></div>'+
+  '<div class="sp-form"><label>레벨·요일 선택<select id="spDay" onchange="spRenderCal()">'+dayOpts+'</select></label><label>시간 선택<select id="spTime">'+timeOpts+'</select></label><label>기간 선택<select id="spTerm" onchange="spPrice()"><option value="2">단과 2개월 (무료 없음) — 36만원</option><option value="3">3개월 등록 (+1개월 무료·총4개월) — 54만원</option><option value="4">4개월 등록 (+2개월 무료·총6개월) — 72만원</option><option value="6" selected>6개월 등록 (+4개월 무료·총10개월) — 108만원</option></select></label><label>이벤트 할인<select id="spDisc" onchange="spDiscChange()"><option value="0">할인 없음</option><option value="open">오픈이벤트 −15%</option><option value="early">글로벌위크 얼리버드 −20%</option><option value="transfer">환승이벤트 −20% (영수증 인증)</option></select></label></div>'+
   '<div class="sp-cal-wrap"><div class="sp-cal-label">수업일 확인 (선택 요일 기준)</div><div id="spCal">'+calHTML(_spCalD,_wdays(idays[0]||''))+'</div></div>'+
   '<div class="sp-price"><span>수강료</span><b id="spAmt">1,080,000원</b><em id="spPer">+4개월 무료 · 총 10개월 · 최고혜택</em></div>'+
   '<div class="sp-btns"><button class="sp-cart" onclick="alert(\'장바구니에 담았습니다.\')">🛒 장바구니</button><button class="sp-buy" onclick="spBuy()">수강신청</button></div>'+
@@ -2226,7 +2240,26 @@ function spDoLogin(){document.getElementById('spLogin').style.display='none';doc
 function spClose(){var m=document.getElementById('spModal');if(m)m.classList.remove('on');var l=document.getElementById('spLogin'),c=document.getElementById('spCharge');if(l)l.style.display='block';if(c)c.style.display='none';}
 function openStep(k){_sgSub(stepPage(k));try{spPrice();}catch(e){}}
 function spModalHTML(){return '<div class="sp-modal" id="spModal"><div class="sp-sheet"><div class="sp-x" onclick="spClose()">✕</div><div class="sp-mhead">SANBON GLOBAL</div><div id="spLogin"><input placeholder="아이디"><input placeholder="비밀번호" type="password"><button class="sp-login" onclick="spDoLogin()">로그인</button><div class="sp-social">다른 계정으로 로그인 · <b>네이버</b> · <b>카카오</b> · <b>구글</b></div><div class="sp-mfoot"><span onclick="spClose();openPage(\'회원가입\')">회원가입</span><span>아이디/비밀번호 찾기</span></div></div><div id="spCharge" style="display:none"><div class="sp-welcome">✅ 로그인 완료! 결제를 위해 충전해 주세요.</div><div class="sp-camt">결제 예정 <b id="spCamt">-</b></div><button class="sp-charge" onclick="alert(\'토스페이먼츠 결제창으로 연결됩니다.\\n(대표님 결제링크 연결 예정)\')">💳 충전하기 · 토스페이먼츠</button><button class="sp-charge2" onclick="alert(\'무통장 입금 안내\\n농협 301-9944-1055-41 (주)이지교육\\n입금 확인 후 자동 충전됩니다.\')">🏦 무통장 입금 · 농협</button><div class="sp-mfoot"><span onclick="spClose()">닫기</span></div></div></div></div>';}
-function spBuyAmt(a){document.getElementById('spCamt').textContent=a;document.getElementById('spModal').classList.add('on');}
+function _discSel(){return document.getElementById('exDisc')||document.getElementById('spDisc');}
+function _reprice(){try{if(document.getElementById('txTerm'))txPrice();else if(document.getElementById('exTerm'))exPrice();else if(document.getElementById('spTerm'))spPrice();}catch(e){}}
+function _evBest(){if(evActive('early'))return 'early';if(evActive('open'))return 'open';return '';}
+function evClose(){var m=document.getElementById('evPrompt');if(m&&m.parentNode)m.parentNode.removeChild(m);}
+function spOpenPay(a){var c=document.getElementById('spCamt');if(c)c.innerHTML=a;var m=document.getElementById('spModal');if(m)m.classList.add('on');}
+function _curAmt(){var a=document.getElementById('spAmt');return a?a.innerHTML:'-';}
+function evApply(v){var de=_discSel();if(de)de.value=v;_reprice();evClose();spOpenPay(_curAmt());}
+function evSkip(){evClose();spOpenPay(_curAmt());}
+function evPrompt(v){var e=SGEV[v]||{};var early=(v==='early');
+ var rate=early?'전 과목 20% · 토익 25%':'전 과목 15%';
+ var title=early?'글로벌 위크 얼리버드 기간입니다':'회원 오픈이벤트 적용 회원입니다';
+ var badge=early?'GLOBAL WEEK · EARLY BIRD':'OPEN EVENT · 회원 할인';
+ var period=e.start?('행사기간 '+e.start.slice(5).replace('-','.')+' ~ '+e.end.slice(5).replace('-','.')):'';
+ var d=document.createElement('div');d.className='sp-modal on';d.id='evPrompt';
+ d.innerHTML='<div class="ev-sheet"><div class="ev-head'+(early?' early':'')+'"><div class="ev-badge">'+badge+'</div><div class="ev-title">🎉 '+title+'</div></div>'
+  +'<div class="ev-body">할인을 아직 적용하지 않으셨습니다.<br>지금 적용하면 바로 할인가로 결제됩니다.<div class="ev-rate">'+rate+' 할인</div><div class="ev-period">'+period+'</div></div>'
+  +'<div class="ev-btns"><button class="ev-go" onclick="evApply(\''+v+'\')">할인 적용하고 결제하기</button><button class="ev-skip" onclick="evSkip()">할인 없이 진행</button></div></div>';
+ document.body.appendChild(d);
+ d.addEventListener('click',function(ev){if(ev.target===d)evClose();});}
+function spBuyAmt(a){var v=_evBest();var de=_discSel();if(v&&de&&de.value==='0'){evPrompt(v);return;}spOpenPay(a);}
 var EXAM={
  '토익':{eye:'TOEIC · 현재 개설반',title:'토익 — 개설 시간표',photo:'eng_13',photos:['eng_13','elly','eng_6'],rows:[
    {n:'스파르타 중급 (매일반)',tc:'송윤정',day:'월~금',time:'10:00~12:00',price:'1개월 42만 / 2개월 84만→64만(20만 할인) · 18회',pay:'640,000원'},
@@ -2280,10 +2313,10 @@ function examPage(k){var e=EXAM[k]||EXAM['토익'];_spCalD=new Date(2026,9,1);_e
   '</div><div class="sp-right">'+
   '<div class="sp-eye">'+(e.eye||'')+'</div><h2 class="sp-title">'+e.title+'</h2>'+
   '<div class="sp-steps">'+tabs+'</div>'+
-  '<div class="sp-form"><label>반 · 요일<input id="exD" readonly value="'+r0.day+'"></label><label>시간<input id="exTm" readonly value="'+r0.time+'"></label><label>기간 선택<select id="exTerm" onchange="exPrice()"><option value="1">1개월</option><option value="2" selected>2개월 (할인)</option></select></label><label>이벤트 할인<select id="exDisc" onchange="exDiscChange()"><option value="0">할인 없음</option><option value="open"'+(evActive('open')?' selected':'')+'>오픈이벤트 −15% (전과목)</option><option value="early">글로벌위크 얼리버드 −20~25%</option><option value="transfer">환승이벤트 −20~25% (영수증 인증)</option></select></label></div>'+
+  '<div class="sp-form"><label>반 · 요일<input id="exD" readonly value="'+r0.day+'"></label><label>시간<input id="exTm" readonly value="'+r0.time+'"></label><label>기간 선택<select id="exTerm" onchange="exPrice()"><option value="1">1개월</option><option value="2" selected>2개월 (할인)</option></select></label><label>이벤트 할인<select id="exDisc" onchange="exDiscChange()"><option value="0">할인 없음</option><option value="open">오픈이벤트 −15% (전과목)</option><option value="early">글로벌위크 얼리버드 −20~25%</option><option value="transfer">환승이벤트 −20~25% (영수증 인증)</option></select></label></div>'+
   '<div class="sp-cal-wrap"><div class="sp-cal-label">수업일 확인 (선택 반 기준)</div><div id="spCal">'+calHTML(_spCalD,_calWd)+'</div></div>'+
   '<div class="sp-price"><span>수강료</span><b id="spAmt">'+fmtWon(_exM2)+'</b><em id="exPer">2개월 할인가</em></div>'+
-  '<div class="sp-btns"><button class="sp-cart" onclick="alert(\'장바구니에 담았습니다.\')">🛒 장바구니</button><button class="sp-buy" onclick="spBuyAmt(document.getElementById(\'spAmt\').textContent)">수강신청</button></div>'+
+  '<div class="sp-btns"><button class="sp-cart" onclick="alert(\'장바구니에 담았습니다.\')">🛒 장바구니</button><button class="sp-buy" onclick="spBuyAmt(document.getElementById(\'spAmt\').innerHTML)">수강신청</button></div>'+
   '<div class="sp-note">※ 요일·시간·금액은 개강 반 편성에 따라 변동될 수 있으며, 최종 수강료는 상담 시 확정 안내드립니다. · 상담 031-466-6969</div>'+
   '</div></div>'+spModalHTML()+'</div>';
 }
@@ -2292,10 +2325,10 @@ function openBuy(k){if(k==='영어회화'){openStep(k);}else{openExam(k);}}
 var _txK='토익',_txTab=0;
 var TEXAM={
  '토익':{eye:'점수로 증명하는 토익',title:'토익 — 왕초보부터 950 만점까지<br>STEP별 목표달성반',tabs:[
-   {n:'스파르타 초급',teach:'송윤정',photo:'eng_13',day:'월~금',times:['10:00~11:50 · 송윤정 (월~금)','19:00~20:50 · 송윤정 (월~금)'],terms:[['1개월 스파르타',420000],['2개월 스파르타 (2개월 결제 할인)',640000,840000]]},
-   {n:'스파르타 중급',teach:'송윤정',photo:'eng_13',day:'월~금',times:['13:30~15:20 · 송윤정 (월~금)','19:00~20:50 · 송윤정 (월~금)'],terms:[['1개월 스파르타',420000],['2개월 스파르타 (2개월 결제 할인)',640000,840000]]},
-   {n:'정규 초급',teach:'엘리 킴',photo:'elly',day:'월·수',times:['10:00~11:30 · 엘리킴 (월·수)','19:00~20:30 · 엘리킴 (월·수)'],terms:[['2개월 정규(두달반)',420000],['초중급 4개월',640000]]},
-   {n:'정규 중급',teach:'최자운',photo:'eng_6',day:'화·목',times:['19:00~20:30 · 최자운 (화·목)','20:00~21:30 · 최자운 (화·목)'],terms:[['2개월 정규(두달반)',420000],['초중급 4개월',640000]]},
+   {n:'스파르타 초급',teach:'송윤정',photo:'eng_13',day:'월~금',times:['10:00~12:00 (2시간) · 송윤정 (월~금) · 총 18회','19:00~20:50 · 송윤정 (월~금) · 총 18회'],terms:[['1개월 스파르타',420000],['2개월 스파르타 (2개월 결제 할인)',640000,840000]]},
+   {n:'스파르타 중급',teach:'송윤정',photo:'eng_13',day:'월~금',times:['13:30~15:20 · 송윤정 (월~금) · 총 18회','19:00~20:50 · 송윤정 (월~금) · 총 18회'],terms:[['1개월 스파르타',420000],['2개월 스파르타 (2개월 결제 할인)',640000,840000]]},
+   {n:'정규 초급',teach:'엘리 킴',photo:'elly',day:'월·수',times:['10:00~11:30 · 엘리킴 (월·수) · 총 16회','19:00~20:30 · 엘리킴 (월·수) · 총 16회'],terms:[['2개월 정규(두달반)',420000],['초중급 4개월',640000]]},
+   {n:'정규 중급',teach:'최자운',photo:'eng_6',day:'화·목',times:['19:00~20:30 · 최자운 (화·목) · 총 16회','20:00~21:30 · 최자운 (화·목) · 총 16회'],terms:[['2개월 정규(두달반)',420000],['초중급 4개월',640000]]},
    {n:'왕기초 패키지',teach:'담당 배정',photo:'eng_13',day:'월·수',times:['10:00~11:30 · 담당 (월·수)','19:00~20:30 · 담당 (월·수)'],terms:[['왕기초 2개월 + 초급정규 2개월',640000]]},
    {n:'프리패스 800점 완성반',teach:'담당 배정',photo:'eng_13',day:'월·수',times:['상담 후 배정 (왕기초→초급→중급)'],terms:[['왕기초+초급+중급 + 1:1 토익스킬 10h',0]]},
    {n:'프리패스 950점 만점반',teach:'담당 배정',photo:'eng_6',day:'화·목',times:['상담 후 배정 (중급 실전 + 1:1 마무리)'],terms:[['중급 실전 + 1:1 토익스킬 10h · 정가 139만',840000]]}
@@ -2340,12 +2373,12 @@ function examStepPage(k){var e=TEXAM[k];_txK=k;_txTab=0;_exVerified=false;_spCal
     '<label>반 · 요일 선택<select id="txDay" onchange="txDayChg()"></select></label>'+
     '<label>시간 선택<select id="txTime"></select></label>'+
     '<label>기간 선택<select id="txTerm" onchange="txPrice()"></select></label>'+
-    '<label>이벤트 할인<select id="exDisc" onchange="txDiscChange()"><option value="0">할인 없음</option><option value="open"'+(evActive('open')?' selected':'')+'>오픈이벤트 −15% (전과목)</option><option value="early">글로벌위크 얼리버드 −20~25%</option><option value="transfer">환승이벤트 −20~25% (영수증 인증)</option></select></label>'+
+    '<label>이벤트 할인<select id="exDisc" onchange="txDiscChange()"><option value="0">할인 없음</option><option value="open">오픈이벤트 −15% (전과목)</option><option value="early">글로벌위크 얼리버드 −20~25%</option><option value="transfer">환승이벤트 −20~25% (영수증 인증)</option></select></label>'+
   '</div>'+
   '<div class="sp-cal-wrap"><div class="sp-cal-label">수업일 확인 (선택 반 기준)</div><div id="spCal">'+calHTML(_spCalD,_calWd)+'</div></div>'+
   '<div class="sp-price"><span>수강료</span><b id="spAmt">-</b><em id="spPer"></em></div>'+
   '<div class="sp-disc-note" id="spDiscNote"></div>'+
-  '<div class="sp-btns"><button class="sp-cart" onclick="alert(\'장바구니에 담았습니다.\')">🛒 장바구니</button><button class="sp-buy" onclick="spBuyAmt(document.getElementById(\'spAmt\').textContent)">수강신청</button></div>'+
+  '<div class="sp-btns"><button class="sp-cart" onclick="alert(\'장바구니에 담았습니다.\')">🛒 장바구니</button><button class="sp-buy" onclick="spBuyAmt(document.getElementById(\'spAmt\').innerHTML)">수강신청</button></div>'+
   '<div class="sp-note">※ 요일·시간·금액은 개강 반 편성에 따라 변동될 수 있으며, 최종 수강료는 상담 시 확정 안내드립니다. · 상담 031-466-6969</div>'+
   '</div></div>'+spModalHTML()+'</div>';
 }
