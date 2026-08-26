@@ -2292,8 +2292,8 @@ function openBuy(k){if(k==='영어회화'){openStep(k);}else{openExam(k);}}
 var _txK='토익',_txTab=0;
 var TEXAM={
  '토익':{eye:'점수로 증명하는 토익',title:'토익 — 왕초보부터 950 만점까지<br>STEP별 목표달성반',tabs:[
-   {n:'스파르타 초급',teach:'송윤정',photo:'eng_13',day:'월~금',times:['10:00~11:50 · 송윤정 (월~금)','19:00~20:50 · 송윤정 (월~금)'],terms:[['1개월 스파르타',420000],['2개월 스파르타',640000]]},
-   {n:'스파르타 중급',teach:'송윤정',photo:'eng_13',day:'월~금',times:['13:30~15:20 · 송윤정 (월~금)','19:00~20:50 · 송윤정 (월~금)'],terms:[['1개월 스파르타',420000],['2개월 스파르타',640000]]},
+   {n:'스파르타 초급',teach:'송윤정',photo:'eng_13',day:'월~금',times:['10:00~11:50 · 송윤정 (월~금)','19:00~20:50 · 송윤정 (월~금)'],terms:[['1개월 스파르타',420000],['2개월 스파르타 (2개월 결제 할인)',640000,840000]]},
+   {n:'스파르타 중급',teach:'송윤정',photo:'eng_13',day:'월~금',times:['13:30~15:20 · 송윤정 (월~금)','19:00~20:50 · 송윤정 (월~금)'],terms:[['1개월 스파르타',420000],['2개월 스파르타 (2개월 결제 할인)',640000,840000]]},
    {n:'정규 초급',teach:'엘리 킴',photo:'elly',day:'월·수',times:['10:00~11:30 · 엘리킴 (월·수)','19:00~20:30 · 엘리킴 (월·수)'],terms:[['2개월 정규(두달반)',420000],['초중급 4개월',640000]]},
    {n:'정규 중급',teach:'최자운',photo:'eng_6',day:'화·목',times:['19:00~20:30 · 최자운 (화·목)','20:00~21:30 · 최자운 (화·목)'],terms:[['2개월 정규(두달반)',420000],['초중급 4개월',640000]]},
    {n:'왕기초 패키지',teach:'담당 배정',photo:'eng_13',day:'월·수',times:['10:00~11:30 · 담당 (월·수)','19:00~20:30 · 담당 (월·수)'],terms:[['왕기초 2개월 + 초급정규 2개월',640000]]},
@@ -2353,12 +2353,12 @@ function txTab(i){_txTab=i;var e=TEXAM[_txK];var t=e.tabs[i];var ss=document.que
  var days=Array.isArray(t.day)?t.day:[t.day];
  var dEl=document.getElementById('txDay');if(dEl)dEl.innerHTML=days.map(function(d){return '<option>'+d+' (개강)</option>';}).join('');
  var tEl=document.getElementById('txTime');if(tEl)tEl.innerHTML=(t.times||[]).map(function(x){return '<option>'+x+'</option>';}).join('');
- var mEl=document.getElementById('txTerm');if(mEl)mEl.innerHTML=(t.terms||[]).map(function(x,ix){return '<option value="'+ix+'">'+x[0]+(x[1]?(' — '+Math.round(x[1]/10000)+'만원'):' — 상담')+'</option>';}).join('');
+ var mEl=document.getElementById('txTerm');if(mEl)mEl.innerHTML=(t.terms||[]).map(function(x,ix){var lbl=x[1]?((x[2]&&x[2]>x[1])?(' — '+Math.round(x[2]/10000)+'만원 → '+Math.round(x[1]/10000)+'만원'):(' — '+Math.round(x[1]/10000)+'만원')):' — 상담';return '<option value="'+ix+'">'+x[0]+lbl+'</option>';}).join('');
  var ph=document.getElementById('txPhoto');if(ph&&t.photo)ph.src='img/teachers/'+t.photo+'.png';
  var te=document.getElementById('txTeacher');if(te)te.textContent=t.teach||'';
  _calWd=_wdays(days[0].replace(' (개강)',''));_calN=_calSess(days[0]);spRenderCal();txPrice();}
 function txDayChg(){var dv=document.getElementById('txDay');var d=dv?dv.value.replace(' (개강)',''):'';_calWd=_wdays(d);_calN=_calSess(d);spRenderCal();}
-function txPrice(){var e=TEXAM[_txK];var t=e.tabs[_txTab];var ti=document.getElementById('txTerm');var ix=ti?parseInt(ti.value):0;var term=(t.terms||[])[ix]||['',0];var base=term[1]||0;var de=document.getElementById('exDisc');var v=de?de.value:'0';var d=evRate(_txK,v);var a=document.getElementById('spAmt');var pe=document.getElementById('spPer');if(!base){a.textContent='상담 문의';if(pe)pe.textContent=term[0];var nt0=document.getElementById('spDiscNote');if(nt0)nt0.textContent='';return;}var fin=Math.round(base*(1-d)/1000)*1000;if(d>0){a.innerHTML='<s style="color:#b6bcc9;font-size:18px;font-weight:600">'+base.toLocaleString()+'</s> '+fin.toLocaleString()+'원';}else{a.textContent=base.toLocaleString()+'원';}if(pe)pe.textContent=term[0]+(d>0?' · '+evLabel(v)+' '+Math.round(d*100)+'%':'');var nt=document.getElementById('spDiscNote');if(nt)nt.textContent=(v==='transfer')?'※ 환승 이벤트는 타 어학 수강 영수증 인증 후 적용됩니다.':'';}
+function txPrice(){var e=TEXAM[_txK];var t=e.tabs[_txTab];var ti=document.getElementById('txTerm');var ix=ti?parseInt(ti.value):0;var term=(t.terms||[])[ix]||['',0];var base=term[1]||0;var de=document.getElementById('exDisc');var v=de?de.value:'0';var d=evRate(_txK,v);var a=document.getElementById('spAmt');var pe=document.getElementById('spPer');if(!base){a.textContent='상담 문의';if(pe)pe.textContent=term[0];var nt0=document.getElementById('spDiscNote');if(nt0)nt0.textContent='';return;}var fin=Math.round(base*(1-d)/1000)*1000;var list=term[2]||0;var strike=(list&&list>fin)?list:(d>0?base:0);if(strike&&strike>fin){a.innerHTML='<s style="color:#b6bcc9;font-size:18px;font-weight:600">'+strike.toLocaleString()+'</s> '+fin.toLocaleString()+'원';}else{a.textContent=fin.toLocaleString()+'원';}if(pe)pe.textContent=term[0]+(d>0?' · '+evLabel(v)+' '+Math.round(d*100)+'%':'');var nt=document.getElementById('spDiscNote');var msgs=[];if(list&&list>base)msgs.push('※ 정가 '+list.toLocaleString()+'원 · 2개월 결제 시 '+(list-base).toLocaleString()+'원 할인');if(v==='transfer')msgs.push('※ 환승 이벤트는 타 어학 수강 영수증 인증 후 적용됩니다.');if(nt)nt.textContent=msgs.join('  ');}
 function txDiscChange(){var de=document.getElementById('exDisc');if(!evGate(de.value,'ex')){de.value='0';}txPrice();}
 function openExam(k){if(TEXAM[k]){_sgSub(examStepPage(k));txTab(0);}else{_sgSub(examPage(k));try{exPrice();}catch(e){}}}
 function onePage(k){
