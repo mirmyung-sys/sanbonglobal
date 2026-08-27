@@ -451,9 +451,12 @@ section{scroll-margin-top:130px}
 .amodal.open{display:block}
 .abox{max-width:1040px;width:auto;margin:0 auto;padding:76px 26px 80px;background:#fff;border-radius:0;box-shadow:none;max-height:none;overflow:visible;animation:fsIn .35s ease}
 @keyframes fsIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.aclose{position:fixed;top:50%;right:0;transform:translateY(-50%);width:auto;height:auto;padding:14px 15px 14px 19px;display:inline-flex;flex-direction:column;align-items:center;gap:3px;background:var(--red);border-radius:14px 0 0 14px;font-size:17px;color:#fff;cursor:pointer;z-index:1300;float:none;line-height:1;transition:.15s;box-shadow:-4px 6px 20px rgba(0,0,0,.22)}
-.aclose::after{content:'닫기';font-size:14.5px;font-weight:800;letter-spacing:-.02em}
-.aclose:hover{background:#14213d}
+.aclose{position:fixed;top:50%;right:0;transform:translateY(-50%);width:auto;height:auto;padding:20px 20px 20px 24px;display:inline-flex;flex-direction:column;align-items:center;gap:5px;background:linear-gradient(135deg,#F7CF5B,#E2A413);border:2px solid #fff;border-right:0;border-radius:18px 0 0 18px;font-size:26px;font-weight:900;color:#14213d;cursor:pointer;z-index:1300;float:none;line-height:1;transition:.15s;box-shadow:-6px 8px 26px rgba(20,33,61,.35);animation:aclosePulse 2.4s ease-in-out infinite}
+.aclose::after{content:'닫기';font-size:17px;font-weight:900;letter-spacing:-.02em}
+@keyframes aclosePulse{0%,100%{box-shadow:-6px 8px 26px rgba(20,33,61,.35)}50%{box-shadow:-6px 8px 34px rgba(226,164,19,.75)}}
+@media(prefers-reduced-motion:reduce){.aclose{animation:none}}
+@media(max-width:640px){.aclose{padding:16px 14px 16px 18px;font-size:22px}.aclose::after{font-size:14px}}
+.aclose:hover{background:linear-gradient(135deg,#14213d,#25396b);color:#F7CF5B;border-color:#F7CF5B}
 .cempty{padding:52px 20px;text-align:center;color:#8a8f99;font-size:15px;background:#f7f8fa;border-radius:16px;font-weight:600}
 /* 강사 소개 섹션 노출 (2026-08: display:none 해제) */
 /* 히어로 크게 + 패널 정제 */
@@ -708,6 +711,9 @@ header nav a{letter-spacing:-.01em}
 .sp-badge{display:inline-block;background:#c81f2b;color:#fff;font-size:12px;font-weight:800;padding:5px 12px;border-radius:6px;margin-bottom:10px}
 .sp-photo{background:#f3f4f7;border-radius:12px;overflow:hidden;aspect-ratio:1/1;display:flex;align-items:flex-end;justify-content:center}
 .sp-photo img{width:100%;height:100%;object-fit:cover}
+.sp-photo.duo{display:grid;grid-template-columns:1fr 1fr;gap:2px;align-items:stretch}
+.sp-photo.duo img{aspect-ratio:1/1.15}
+.sp-ph{width:100%;height:100%;display:grid;place-items:center;text-align:center;background:#f2f0e8;color:#8a8f99;font-weight:800;font-size:14px;line-height:1.5}
 .sp-feats{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
 .sp-feats span{border:1px solid #d6dbe6;color:#4a5568;font-size:12px;font-weight:700;padding:5px 10px;border-radius:6px}
 .sp-meta{font-size:13.5px;color:#3a4560;line-height:1.9}
@@ -1617,10 +1623,10 @@ const CHAPTERS=[
  {k:'영어회화',co:'영어회화',s:'기초부터 원어민까지, 써먹는 회화',e:'SPEAKING',bg:'linear-gradient(135deg,#8a4b1f,#c9772f)',imgs:['eng_5','eng_11','eng_9']},
  {k:'일본어',co:'일본어',s:'일본인이 실제 쓰는 살아있는 일본어',e:'JAPANESE',bg:'linear-gradient(135deg,#5f97cf,#a9cdeb)',imgs:['jpn_2','jpn_1','jpn_7']},
  {k:'중국어',co:'중국어',s:'발음부터 HSK까지 탄탄하게',e:'CHINESE',bg:'linear-gradient(135deg,#9c1f24,#c8353b)',imgs:['chn_3','chn_5']},
- {k:'1:1 PT',pg:'1:1 전문',s:'나만을 위한 완전 맞춤 1:1 수업',e:'PRIVATE',bg:'linear-gradient(135deg,#14213d,#33507f)',imgs:['eng_13','eng_6']},
+ {k:'1:1 PT',pg:'1:1 전문',s:'나만을 위한 완전 맞춤 1:1 수업',e:'PRIVATE',bg:'linear-gradient(135deg,#14213d,#33507f)',imgs:['eng_14','eng_13','eng_6']},
  {k:'과외',pg:'과외',s:'학생별 맞춤 밀착 관리 과외',e:'TUTORING',bg:'linear-gradient(135deg,#3a2c5e,#5b4790)',imgs:['eng_7','eng_3']},
  {k:'외고/유학',pg:'유학상담',s:'외고 내신·유학 준비 무료 상담',e:'ABROAD',bg:'linear-gradient(135deg,#1f8058,#146043)',imgs:['jpn_4','jpn_5']},
- {k:'기업출강',pg:'기업출강',s:'회사로 찾아가는 실무 어학 교육',e:'B2B',bg:'linear-gradient(135deg,#293a58,#40587f)',imgs:['eng_12','jpn_2','chn_3']},
+ {k:'기업출강',pg:'기업출강',s:'회사로 찾아가는 실무 어학 교육',e:'B2B',bg:'linear-gradient(135deg,#293a58,#40587f)',imgs:['eng_14','eng_12','jpn_2','chn_3']},
  {k:'임원 1:1 출강',pg:'임원강의',s:'임원 맞춤 1:1 프리미엄 출강',e:'EXECUTIVE',bg:'linear-gradient(135deg,#7a5a1a,#c6a15b)',imgs:[]}
 ];
 function chipHTML(c){var imgs=(c.imgs||[]).map(function(im){return '<img src="img/teachers/'+im+'.png" alt="" loading="lazy">';}).join('');return '<div class="chip'+(c.exp?' exp':'')+'" data-k="'+c.k+'" style="background:'+c.bg+'"><div class="chrev">'+imgs+'</div><div class="chgrad"></div><div class="chtxt"><div class="che">'+c.e+'</div><div class="cht">'+c.k+'</div><div class="chs">'+c.s+'</div><div class="chgo">자세히 보기 ›</div></div></div>';}
@@ -2036,12 +2042,12 @@ function enrollPick(cat,item){alert('수강신청 · '+cat+'\n선택 과목: '+i
 function enrollPage(){
  var EA=['eng_11','eng_5','eng_9','eng_1','eng_3','eng_15','eng_6','eng_7','eng_2','eng_4','eng_12'];
  var CATS=[
-  {t:'시험대비반 강좌',ic:'📝',c:'linear-gradient(120deg,#c81f2b,#e2413b)',imgs:['eng_13','eng_14','eng_6','eng_15','jpn_7','chn_1'],chips:[['토익','토익','e'],['토플 (모집중)','토플','e'],['오픽','오픽','e'],['JLPT (모집중)','JLPT','e'],['HSK (모집중)','HSK','e']]},
+  {t:'시험대비반 강좌',ic:'📝',c:'linear-gradient(120deg,#c81f2b,#e2413b)',imgs:['eng_13','eng_14','eng_6','eng_15','jpn_7','chn_5'],chips:[['토익','토익','e'],['토익스피킹(토스)','토스','e'],['오픽','오픽','e'],['토플 (모집중)','토플','e'],['JLPT (모집중)','JLPT','e'],['HSK (모집중)','HSK','e']]},
   {t:'영어회화',ic:'💬',c:'linear-gradient(120deg,#0e8a5a,#14b06e)',imgs:EA,chips:[['BASIC','영어회화','s'],['STEP1','영어회화','s'],['STEP2','영어회화','s'],['STEP3','영어회화','s'],['STEP4','영어회화','s']]},
   {t:'일본어',ic:'🎌',c:'linear-gradient(120deg,#b83277,#d64f97)',imgs:['jpn_6','jpn_4','jpn_5','','jpn_7','jpn_2'],chips:[['원어민 일본어회화','일본어','s'],['기초 일본어','일본어','s'],['중급 일본어','일본어','s'],['고급 일본어','일본어','s'],['JLPT','JLPT','e']]},
   {t:'중국어',ic:'🀄',c:'linear-gradient(120deg,#b8322a,#d6564a)',imgs:['chn_1','chn_7','chn_3',''],chips:[['중국어 원어민회화','중국어','s'],['기초 중국어','중국어','s'],['중급 중국어','중국어','s'],['고급 중국어','중국어','s'],['HSK','HSK','e']]},
-  {t:'기업체 출강 / 임원 1:1',ic:'🏢',c:'linear-gradient(120deg,#3f4654,#5a6274)',imgs:['eng_5','eng_15','eng_6','eng_13'],chips:[['기업 출강','기업출강',1],['임원 1:1','임원강의',1]]},
-  {t:'일대일',ic:'🎯',c:'linear-gradient(120deg,#9a7b2e,#c6a15b)',imgs:['eng_13','eng_5','eng_6'],chips:[['왕기초 영어 일대일','영어','o'],['왕기초 토익 일대일','토익','o'],['퍼스널 일대일','퍼스널','o'],['빠른추격 전문반','빠른추격',1]]}
+  {t:'기업체 출강 / 임원 1:1',ic:'🏢',c:'linear-gradient(120deg,#3f4654,#5a6274)',imgs:['eng_14','eng_5','eng_15','eng_6','eng_13'],chips:[['기업 출강','기업출강',1],['임원 1:1','임원강의',1]]},
+  {t:'일대일',ic:'🎯',c:'linear-gradient(120deg,#9a7b2e,#c6a15b)',imgs:['eng_14','eng_13','eng_5','eng_6'],chips:[['왕기초 영어 일대일','영어','o'],['왕기초 토익 일대일','토익','o'],['퍼스널 일대일','퍼스널','o'],['빠른추격 전문반','빠른추격',1]]}
  ];
  var cards=CATS.map(function(g){
   var ph=g.imgs.map(function(im){return im?'<img src="img/teachers/'+im+'.png" alt="" loading="lazy">':'<span class="ph-empty">사진<br>준비중</span>';}).join('');
@@ -2174,16 +2180,33 @@ function submitQuote(f){var c=f.company.value.trim(),m=f.manager.value.trim(),p=
  d.style.display='block';d.scrollIntoView({block:'center'});f.reset();return false;}
 var WCONV={
 '영어':{eye:'원어민의 진짜 영어',title:'영어회화 — 왕초보부터 실전까지<br>STEP별 올인원 회화',badge:'기초입문회화 · 관리형',
- levels:[['BASIC','eng_3','공미영 (Olive)'],['STEP1','eng_5','애플 (원어민)'],['STEP2','eng_9','캘리 (KELLY)'],['STEP3','eng_16','데보라 (원어민)'],['STEP4','eng_11','제롤린 (원어민)']],
- cls:{'BASIC':[['화·목','10:00~11:30','Kate'],['화·목','18:20~19:50','KELLY'],['화·목','20:00~21:30','KELLY']],'STEP1':[['월·수','10:00~11:30','Kate'],['화·목','18:20~19:50','May'],['화·목','20:00~21:30','May']],'STEP2':[['월·수','11:40~13:10','Jerollyn'],['화·목','11:40~13:10','Jerollyn'],['화·목','20:00~21:30','Deborah']],'STEP3':[['화·목','10:00~11:30','Jerollyn'],['화·목','20:00~21:30','Jerollyn']],'STEP4':[['월·수','10:00~11:30','Jerollyn'],['화·목','20:00~21:30','Jerollyn (프리토킹)']]},
+ levels:[['BASIC','eng_9','Kate · KELLY'],['STEP1','eng_9','Kate · May'],['STEP2','eng_11','Jerollyn · Deborah'],['STEP3','eng_11','Jerollyn'],['STEP4','eng_11','Jerollyn']],
+ cls:{
+  'BASIC':[['화·목','10:00~11:30','Kate','8강의실','I.C intro'],['화·목','18:20~19:50','KELLY','7강의실','F.C 1'],['화·목','20:00~21:30','KELLY','7강의실','F.C 1']],
+  'STEP1':[['월·수','10:00~11:30','Kate','8강의실','I.C 1'],['화·목','18:20~19:50','May','8강의실','F.C 2'],['화·목','20:00~21:30','May','8강의실','F.C 2']],
+  'STEP2':[['월·수','11:40~13:10','Jerollyn','7강의실','I.C 2'],['화·목','11:40~13:10','Jerollyn','7강의실','I.C 2'],['화·목','20:00~21:30','Deborah','','F.C · 모집중']],
+  'STEP3':[['화·목','10:00~11:30','Jerollyn','6강의실','I.C 3'],['화·목','20:00~21:30','Jerollyn','6강의실','F.C 4']],
+  'STEP4':[['월·수','10:00~11:30','Jerollyn','9강의실','Handout'],['월·수','20:00~21:30','Jerollyn','9강의실','Handout · 프리토킹']]},
  desc:'STEP BASIC부터 STEP4까지, 왕초보 발음·기초문법에서 실전 프리토킹까지 단계별로 올라갑니다. 관리형 수업으로 피드백·복습영상·발음교정·첨삭·1:1 학습상담이 모두 포함됩니다.'},
 '일본어':{eye:'원어민이 가르치는 진짜 일본어',title:'일본어 — 입문부터 JLPT까지<br>레벨별 회화',badge:'일본어 회화 · 관리형',
- levels:[['입문','jpn_7','개강예정'],['초급','jpn_7','서정아'],['중급','jpn_4','모모코 (원어민)'],['중고급','jpn_7','서정아'],['원어민','jpn_6','히토시 (원어민)']],
- cls:{'입문':[['개강예정','문의','미정']],'초급':[['화·목','20:00~21:30','서정아']],'중급':[['화·목','20:00~21:30','모모코']],'중고급':[['화·목','18:20~19:50','서정아']],'원어민':[['월·수','18:20~19:50','히토시'],['월·수','20:00~21:30','히토시']]},
+ levels:[['입문','jpn_7','개강예정 · 모집중'],['초급','jpn_7','서정아'],['초중급','jpn_7','서정아'],['중급','jpn_8','모모코 (원어민)'],['원어민','jpn_6','히토시 (원어민)'],['새벽반','jpn_6','미정 · 회원 모집중']],
+ cls:{
+  '입문':[['화·목','20:00~21:30','미정 · 모집중','','입문반 개강예정']],
+  '초급':[['화·목','20:00~21:30','서정아','9강의실','다이스키2 (초급 1/2)']],
+  '초중급':[['화·목','18:20~19:50','서정아','9강의실','다이스키3']],
+  '중급':[['화·목','20:00~21:30','모모코','5강의실','다이스키3 · 아리가또B (중급 2/4)'],['월·수','18:20~19:50','히토시','5강의실','아리가또 프리토킹1 (중고급 3/4)']],
+  '원어민':[['월·수','20:00~21:30','히토시','5강의실','스쿠스쿠4 (원어민 2단계)']],
+  '새벽반':[['월~금','06:30~07:30','미정 · 회원 모집중','','새벽반 개강 준비중'],['월~금','07:30~08:30','미정 · 회원 모집중','','새벽반 개강 준비중']]},
  desc:'입문부터 원어민 프리토킹까지 레벨별로 배우는 일본어. JLPT 대비까지 자연스럽게 이어집니다. 관리형 피드백·복습·1:1 상담 포함.'},
 '중국어':{eye:'발음부터 HSK까지, 진짜 중국어',title:'중국어 — 입문부터 고급까지<br>레벨별 회화',badge:'중국어 회화 · 관리형',
- levels:[['입문','chn_1','하홍금 (원어민)'],['초급','chn_1','하홍금 (원어민)'],['중급','chn_5','오금한'],['중고급','chn_7','현지인'],['고급','chn_1','하홍금 (원어민)']],
- cls:{'입문':[['월·수','20:30~22:00','하홍금']],'초급':[['월·수','18:50~20:20','하홍금']],'중급':[['월·수','20:00~21:30','오금한'],['화·목','20:00~21:30','오금한']],'중고급':[['토요일','10:00~13:00','현지인']],'고급':[['토요일','10:00~13:00','하홍금']]},
+ levels:[['입문','chn_5','하홍금 (원어민)'],['초급','chn_5','하홍금 (원어민)'],['중급','chn_3','오금한'],['중고급','chn_7','현지인 (원어민)'],['고급','chn_5','하홍금 (원어민)'],['새벽반','chn_5','미정 · 회원 모집중']],
+ cls:{
+  '입문':[['월·수','20:30~22:00','하홍금','8강의실','스피킹중국어1 (입문 3/3)'],['화·목','18:20~19:50','미정 · 모집중','','입문반 모집예정']],
+  '초급':[['월·수','18:50~20:20','하홍금','8강의실','스피킹중국어2 (초급 2/3)']],
+  '중급':[['월·수','20:00~21:30','오금한','7강의실','신공략중국어5 (중급 4/4)'],['화·목','20:00~21:30','오금한','2강의실','맛있는중국어5 (중급 4/4)']],
+  '중고급':[['토요일','10:00~13:00','현지인','3강의실','신공략중국어6']],
+  '고급':[['토요일','10:00~13:00','하홍금','8강의실','스피킹중국어 고급 上']],
+  '새벽반':[['월~금','06:30~07:30','미정 · 회원 모집중','','새벽반 개강 준비중'],['월~금','07:30~08:30','미정 · 회원 모집중','','새벽반 개강 준비중']]},
  desc:'발음·성조부터 HSK·TSC까지 레벨별로 탄탄하게. 원어민·전문 강사의 관리형 수업으로 실전 회화 자신감을 키웁니다.'}
 };
 var _spSubj='영어';
@@ -2206,14 +2229,15 @@ function spDiscChange(){var de=document.getElementById('spDisc');if(!evGate(de.v
 function openVerify(ctx){_vfCtx=ctx;lvOpenRun('<h3 class="lvr-t">환승 이벤트 인증</h3><div class="lvr-note" style="text-align:left">타 어학원·인강·전화영어·학습지 등 <b>다른 어학 수강 증빙</b>(수강증·결제내역·영수증 등) 사진을 올려주세요.</div><label class="vf-up" for="vfFile">📷 인증 사진 첨부</label><input id="vfFile" type="file" accept="image/*" style="display:none" onchange="vfPrev(this)"><div id="vfPrev"></div><button class="lvr-go" style="border:0;cursor:pointer;width:100%" onclick="vfSubmit()">환승 인증 요청 ›</button><div class="lvr-note" style="font-size:12px">※ 첨부하면 할인이 임시 적용되고, 담당자가 최종 확인 후 확정합니다. (자동 AI 인증은 준비 중)</div>');}
 function vfPrev(inp){var f=inp.files&&inp.files[0];if(!f)return;var u=URL.createObjectURL(f);document.getElementById('vfPrev').innerHTML='<img src="'+u+'" style="max-width:100%;border-radius:10px;margin:10px 0">';}
 function vfSubmit(){var inp=document.getElementById('vfFile');if(!inp||!inp.files||!inp.files.length){alert('인증 사진을 먼저 첨부해 주세요.');return;}if(_vfCtx==='ex'){_exVerified=true;var de=document.getElementById('exDisc');if(de)de.value='transfer';exPrice();}else{_spVerified=true;var sd=document.getElementById('spDisc');if(sd)sd.value='transfer';spPrice();}lvCloseRun();alert('환승 인증이 접수되어 할인이 임시 적용되었습니다.\n담당자가 최종 확인 후 확정됩니다.');}
+function _clsLabel(x){return x[1]+' · '+x[2]+' ('+x[0]+')'+(x[3]?' · '+x[3]:'')+(x[4]?' · '+x[4]:'');}
 function stepPage(k){_spVerified=false;
 if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;_spCalD=new Date(2026,9,1);var W=WCONV[k]||WCONV['영어'];
- var lv0=W.levels[0];var init=W.cls[lv0[0]]||[];
+ var lv0=W.levels[0];_spLevel=lv0[0];var init=W.cls[lv0[0]]||[];
  var idays=[];init.forEach(function(x){if(idays.indexOf(x[0])<0)idays.push(x[0]);});_calN=_calSess(idays[0]||'');
  var dayOpts=idays.map(function(d){return '<option>'+d+' (개강)</option>';}).join('')+'<option>주말반 (추후 모집중)</option>';
- var timeOpts=init.map(function(x){return '<option>'+x[1]+' · '+x[2]+' ('+x[0]+')</option>';}).join('')+'<option>오전반 (추후 모집중)</option><option>오후반 (추후 모집중)</option><option>주말반 (추후 모집중)</option>';
+ var timeOpts=init.map(function(x){return '<option>'+_clsLabel(x)+'</option>';}).join('')+'<option>오전반 (추후 모집중)</option><option>오후반 (추후 모집중)</option><option>주말반 (추후 모집중)</option>';
  var steps=W.levels.map(function(l,i){return '<button class="sp-step'+(i===0?' on':'')+'" onclick="spStep(this,\''+l[0]+'\')">'+l[0]+'</button>';}).join('');
- var sch='<h4 style="font-size:16px;font-weight:900;margin:22px 0 10px">개설 시간표 (현재 개강반)</h4><table class="ex-tt"><tr><th>레벨</th><th>강사</th><th>요일</th><th>시간</th></tr>'+W.levels.map(function(l){return (W.cls[l[0]]||[]).map(function(x){return '<tr><td class="b">'+l[0]+'</td><td>'+x[2]+'</td><td>'+x[0]+'</td><td>'+x[1]+'</td></tr>';}).join('');}).join('')+'</table>';
+ var sch='<h4 style="font-size:16px;font-weight:900;margin:22px 0 10px">개설 시간표 (현재 개강반)</h4><table class="ex-tt"><tr><th>레벨</th><th>강사</th><th>요일</th><th>시간</th><th>강의실</th><th>교재</th></tr>'+W.levels.map(function(l){return (W.cls[l[0]]||[]).map(function(x){return '<tr><td class="b">'+l[0]+'</td><td>'+x[2]+'</td><td>'+x[0]+'</td><td>'+x[1]+'</td><td>'+(x[3]||'-')+'</td><td>'+(x[4]||'-')+'</td></tr>';}).join('');}).join('')+'</table>';
  return '<div class="sp-wrap"><button class="sp-back" onclick="openPage(\'수강신청\')">‹ 수강신청으로</button><div class="sp-top"><div class="sp-left">'+
   '<div class="sp-badge">'+W.badge+'</div>'+
   '<div class="sp-photo"><img id="spPhoto" src="img/teachers/'+lv0[1]+'.png" alt="강사"></div>'+
@@ -2222,7 +2246,7 @@ if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;_spCalD=new Date(2026,9
   '</div><div class="sp-right">'+
   '<div class="sp-eye">'+W.eye+'</div><h2 class="sp-title">'+W.title+'</h2>'+
   '<div class="sp-steps">'+steps+'</div>'+
-  '<div class="sp-form"><label>레벨·요일 선택<select id="spDay" onchange="spRenderCal()">'+dayOpts+'</select></label><label>시간 선택<select id="spTime">'+timeOpts+'</select></label><label>기간 선택<select id="spTerm" onchange="spPrice()"><option value="2">단과 2개월 (무료 없음) — 36만원</option><option value="3">3개월 등록 (+1개월 무료·총4개월) — 54만원</option><option value="4">4개월 등록 (+2개월 무료·총6개월) — 72만원</option><option value="6" selected>6개월 등록 (+4개월 무료·총10개월) — 108만원</option></select></label><label>이벤트 할인<select id="spDisc" onchange="spDiscChange()"><option value="0">할인 없음</option><option value="open">오픈이벤트 −15%</option><option value="early">글로벌위크 얼리버드 −20%</option><option value="transfer">환승이벤트 −20% (영수증 인증)</option></select></label></div>'+
+  '<div class="sp-form"><label>레벨·요일 선택<select id="spDay" onchange="spRenderCal()">'+dayOpts+'</select></label><label>시간 선택<select id="spTime" onchange="spTimeChg()">'+timeOpts+'</select></label><label>기간 선택<select id="spTerm" onchange="spPrice()"><option value="2">단과 2개월 (무료 없음) — 36만원</option><option value="3">3개월 등록 (+1개월 무료·총4개월) — 54만원</option><option value="4">4개월 등록 (+2개월 무료·총6개월) — 72만원</option><option value="6" selected>6개월 등록 (+4개월 무료·총10개월) — 108만원</option></select></label><label>이벤트 할인<select id="spDisc" onchange="spDiscChange()"><option value="0">할인 없음</option><option value="open">오픈이벤트 −15%</option><option value="early">글로벌위크 얼리버드 −20%</option><option value="transfer">환승이벤트 −20% (영수증 인증)</option></select></label></div>'+
   '<div class="sp-cal-wrap"><div class="sp-cal-label">수업일 확인 (선택 요일 기준)</div><div id="spCal">'+calHTML(_spCalD,_wdays(idays[0]||''))+'</div></div>'+
   '<div class="sp-price"><span>수강료</span><b id="spAmt">1,080,000원</b><em id="spPer">+4개월 무료 · 총 10개월 · 최고혜택</em></div>'+
   '<div class="sp-btns"><button class="sp-cart" onclick="alert(\'장바구니에 담았습니다.\')">🛒 장바구니</button><button class="sp-buy" onclick="spBuy()">수강신청</button></div>'+
@@ -2233,12 +2257,15 @@ if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;_spCalD=new Date(2026,9
   '<div class="sp-desc">'+W.desc+'</div>'+sch+
   spModalHTML()+'</div>';
 }
-function spStep(b,level){var ss=document.querySelectorAll('.sp-step');for(var i=0;i<ss.length;i++)ss[i].classList.remove('on');b.classList.add('on');var W=WCONV[_spSubj]||WCONV['영어'];var list=W.cls[level]||[];var days=[];list.forEach(function(x){if(days.indexOf(x[0])<0)days.push(x[0]);});document.getElementById('spDay').innerHTML=days.map(function(d){return '<option>'+d+' (개강)</option>';}).join('')+'<option>주말반 (추후 모집중)</option>';document.getElementById('spTime').innerHTML=list.map(function(x){return '<option>'+x[1]+' · '+x[2]+' ('+x[0]+')</option>';}).join('')+'<option>오전반 (추후 모집중)</option><option>오후반 (추후 모집중)</option><option>주말반 (추후 모집중)</option>';var info=null;for(var j=0;j<W.levels.length;j++){if(W.levels[j][0]===level){info=W.levels[j];break;}}if(info){var p=document.getElementById('spPhoto');if(p)p.src='img/teachers/'+info[1]+'.png';var t=document.getElementById('spTeacher');if(t)t.textContent=info[2];}var _dv=document.getElementById('spDay');_calN=_calSess(_dv?_dv.value:'');spRenderCal();}
+var _spLevel='';
+function spTimeChg(){var W=WCONV[_spSubj]||WCONV['영어'];var list=W.cls[_spLevel||W.levels[0][0]]||[];var i=document.getElementById('spTime').selectedIndex;var x=list[i];if(!x)return;var nm=(x[2]||'').split(/[ ·(]/)[0].trim();var im=TIMG.hasOwnProperty(nm)?TIMG[nm]:'';var p=document.getElementById('spPhoto');if(p)_setPhoto(p,im);var t=document.getElementById('spTeacher');if(t)t.textContent=x[2];var dv=document.getElementById('spDay');if(dv){for(var j=0;j<dv.options.length;j++){if(dv.options[j].text.indexOf(x[0])===0){dv.selectedIndex=j;break;}}}_calN=_calSess(x[0]);_calWd=_wdays(x[0]);spRenderCal();}
+function _setPhoto(el,key){var box=el.parentNode;var ph=box?box.querySelector('.sp-ph'):null;if(!key){el.style.display='none';if(!ph){ph=document.createElement('div');ph.className='sp-ph';ph.innerHTML='강사 사진<br>준비중';box.appendChild(ph);}ph.style.display='grid';return;}if(ph)ph.style.display='none';el.style.display='';el.src='img/teachers/'+key+'.png';}
+function spStep(b,level){_spLevel=level;var ss=document.querySelectorAll('.sp-step');for(var i=0;i<ss.length;i++)ss[i].classList.remove('on');b.classList.add('on');var W=WCONV[_spSubj]||WCONV['영어'];var list=W.cls[level]||[];var days=[];list.forEach(function(x){if(days.indexOf(x[0])<0)days.push(x[0]);});document.getElementById('spDay').innerHTML=days.map(function(d){return '<option>'+d+' (개강)</option>';}).join('')+'<option>주말반 (추후 모집중)</option>';document.getElementById('spTime').innerHTML=list.map(function(x){return '<option>'+_clsLabel(x)+'</option>';}).join('')+'<option>오전반 (추후 모집중)</option><option>오후반 (추후 모집중)</option><option>주말반 (추후 모집중)</option>';var info=null;for(var j=0;j<W.levels.length;j++){if(W.levels[j][0]===level){info=W.levels[j];break;}}if(info){var p=document.getElementById('spPhoto');if(p)p.src='img/teachers/'+info[1]+'.png';var t=document.getElementById('spTeacher');if(t)t.textContent=info[2];}var _dv=document.getElementById('spDay');_calN=_calSess(_dv?_dv.value:'');spRenderCal();try{spTimeChg();}catch(e){}}
 function spPrice(){var t=document.getElementById('spTerm').value;var P={'2':360000,'3':540000,'4':720000,'6':1080000};var per={'2':'2개월 · 무료 없음','3':'+1개월 무료 · 총 4개월','4':'+2개월 무료 · 총 6개월','6':'+4개월 무료 · 총 10개월 · 최고혜택'};var base=P[t];var de=document.getElementById('spDisc');var v=de?de.value:'0';var verify=(v==='transfer');var d=evRate('영어회화',v);var fin=Math.round(base*(1-d)/1000)*1000;var a=document.getElementById('spAmt');if(d>0){a.innerHTML='<s style="color:#b6bcc9;font-size:18px;font-weight:600">'+base.toLocaleString()+'</s> '+fin.toLocaleString()+'원';}else{a.textContent=base.toLocaleString()+'원';}document.getElementById('spPer').textContent=per[t]+(d>0?' · '+evLabel(v)+' '+Math.round(d*100)+'%':'');var nt=document.getElementById('spDiscNote');if(nt)nt.textContent=verify?'※ 환승 이벤트는 타 어학원 수강 영수증 인증 후 최종 적용됩니다. 결제 시 영수증 사진 첨부 또는 데스크에서 인증해 주세요.':'';}
-function spBuy(){document.getElementById('spCamt').textContent=document.getElementById('spAmt').textContent;document.getElementById('spModal').classList.add('on');}
+function spBuy(){spBuyAmt(document.getElementById('spAmt').innerHTML);}
 function spDoLogin(){document.getElementById('spLogin').style.display='none';document.getElementById('spCharge').style.display='block';}
 function spClose(){var m=document.getElementById('spModal');if(m)m.classList.remove('on');var l=document.getElementById('spLogin'),c=document.getElementById('spCharge');if(l)l.style.display='block';if(c)c.style.display='none';}
-function openStep(k){_sgSub(stepPage(k));try{spPrice();}catch(e){}}
+function openStep(k){_sgSub(stepPage(k));try{spPrice();}catch(e){}try{spTimeChg();}catch(e){}}
 function spModalHTML(){return '<div class="sp-modal" id="spModal"><div class="sp-sheet"><div class="sp-x" onclick="spClose()">✕</div><div class="sp-mhead">SANBON GLOBAL</div><div id="spLogin"><input placeholder="아이디"><input placeholder="비밀번호" type="password"><button class="sp-login" onclick="spDoLogin()">로그인</button><div class="sp-social">다른 계정으로 로그인 · <b>네이버</b> · <b>카카오</b> · <b>구글</b></div><div class="sp-mfoot"><span onclick="spClose();openPage(\'회원가입\')">회원가입</span><span>아이디/비밀번호 찾기</span></div></div><div id="spCharge" style="display:none"><div class="sp-welcome">✅ 로그인 완료! 결제를 위해 충전해 주세요.</div><div class="sp-camt">결제 예정 <b id="spCamt">-</b></div><button class="sp-charge" onclick="alert(\'토스페이먼츠 결제창으로 연결됩니다.\\n(대표님 결제링크 연결 예정)\')">💳 충전하기 · 토스페이먼츠</button><button class="sp-charge2" onclick="alert(\'무통장 입금 안내\\n농협 301-9944-1055-41 (주)이지교육\\n입금 확인 후 자동 충전됩니다.\')">🏦 무통장 입금 · 농협</button><div class="sp-mfoot"><span onclick="spClose()">닫기</span></div></div></div></div>';}
 function _discSel(){return document.getElementById('exDisc')||document.getElementById('spDisc');}
 function _reprice(){try{if(document.getElementById('txTerm'))txPrice();else if(document.getElementById('exTerm'))exPrice();else if(document.getElementById('spTerm'))spPrice();}catch(e){}}
@@ -2297,7 +2324,7 @@ var EXAM={
  '토플':{eye:'TOEFL · 모집중',title:'토플 — 모집중',photo:'eng_6',rows:[
    {n:'토플',tc:'최자운',day:'월·수',time:'20:00~21:30',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'}]}
 };
-var TIMG={'송윤정':'eng_13','엘리 킴':'elly','최자운':'eng_6','김현정':'eng_15','유미용':'eng_14','히토시':'jpn_6','서정아':'jpn_7','모모코':'jpn_4','권은정':'jpn_1','김민정':'jpn_2','이형림':'jpn_11','하홍금':'chn_1','오금한':'chn_5','현지인':'chn_7','노정아':'chn_3'};
+var TIMG={'KELLY':'','켈리':'','Deborah':'','데보라':'','미정':'','송윤정':'eng_13','엘리 킴':'elly','엘리킴':'elly','최자운':'eng_6','김현정':'eng_15','유미용':'eng_14','케이티':'eng_9','Kate':'eng_9','제롤린':'eng_11','Jerollyn':'eng_11','권미화':'eng_10','May':'eng_10','공미영':'eng_2','Olive':'eng_2','애플':'eng_5','Amy':'eng_1','구지영':'eng_7','김지현':'eng_3','박호임':'eng_4','황보준':'eng_12','히토시':'jpn_6','서정아':'jpn_7','모모코':'jpn_8','김연주':'jpn_4','김은영':'jpn_5','권은정':'jpn_1','김민정':'jpn_2','이형림':'jpn_11','아야코':'jpn_9','조미히로':'jpn_10','하홍금':'chn_5','오금한':'chn_3','현지인':'chn_7','노정아':'chn_1'};
 function timg(name){var k=(name||'').split(/[\u00b7\/]/)[0].trim();var im=TIMG[k];return im?'<img class="ex-face" src="img/teachers/'+im+'.png" alt="">':'';}
 function fmtWon(n){return n?n.toLocaleString()+'원':'상담';}
 function exParse(r){var m=(r.price||'').match(/1개월\s*([\d,]+)만/);_exM1=m?parseInt(m[1].replace(/,/g,''))*10000:0;var pp=parseInt((r.pay||'').replace(/[^\d]/g,''));_exM2=isNaN(pp)?0:pp;}
@@ -2325,45 +2352,48 @@ function openBuy(k){if(k==='영어회화'){openStep(k);}else{openExam(k);}}
 var _txK='토익',_txTab=0;
 var TEXAM={
  '토익':{eye:'점수로 증명하는 토익',title:'토익 — 왕초보부터 950 만점까지<br>STEP별 목표달성반',tabs:[
-   {n:'스파르타 초급',teach:'송윤정',photo:'eng_13',day:'월~금',times:['10:00~12:00 (2시간) · 송윤정 (월~금) · 총 18회','19:00~20:50 · 송윤정 (월~금) · 총 18회'],terms:[['1개월 스파르타',420000],['2개월 스파르타 (2개월 결제 할인)',640000,840000]]},
-   {n:'스파르타 중급',teach:'송윤정',photo:'eng_13',day:'월~금',times:['13:30~15:20 · 송윤정 (월~금) · 총 18회','19:00~20:50 · 송윤정 (월~금) · 총 18회'],terms:[['1개월 스파르타',420000],['2개월 스파르타 (2개월 결제 할인)',640000,840000]]},
-   {n:'정규 초급',teach:'엘리 킴',photo:'elly',day:'월·수',times:['10:00~11:30 · 엘리킴 (월·수) · 총 16회','19:00~20:30 · 엘리킴 (월·수) · 총 16회'],terms:[['2개월 정규(두달반)',420000],['초중급 4개월',640000]]},
-   {n:'정규 중급',teach:'최자운',photo:'eng_6',day:'화·목',times:['19:00~20:30 · 최자운 (화·목) · 총 16회','20:00~21:30 · 최자운 (화·목) · 총 16회'],terms:[['2개월 정규(두달반)',420000],['초중급 4개월',640000]]},
-   {n:'왕기초 패키지',teach:'담당 배정',photo:'eng_13',day:'월·수',times:['10:00~11:30 · 담당 (월·수)','19:00~20:30 · 담당 (월·수)'],terms:[['왕기초 2개월 + 초급정규 2개월',640000]]},
-   {n:'프리패스 800점 완성반',teach:'담당 배정',photo:'eng_13',day:'월·수',times:['상담 후 배정 (왕기초→초급→중급)'],terms:[['왕기초+초급+중급 + 1:1 토익스킬 10h',0]]},
-   {n:'프리패스 950점 만점반',teach:'담당 배정',photo:'eng_6',day:'화·목',times:['상담 후 배정 (중급 실전 + 1:1 마무리)'],terms:[['중급 실전 + 1:1 토익스킬 10h · 정가 139만',840000]]}
+   {n:'스파르타 중급 (매일반)',teach:'송윤정',photo:'eng_13',day:'월~금',times:['10:00~12:00 (2시간) · 송윤정 (월~금) · 4강의실 · 총 18회'],terms:[['1개월 스파르타',420000],['2개월 스파르타 (2개월 결제 할인)',640000,840000]]},
+   {n:'스파르타 초급 (매일반)',teach:'송윤정',photo:'eng_13',day:'월~금',times:['12:10~14:10 (2시간) · 송윤정 (월~금) · 4강의실 · 총 18회'],terms:[['1개월 스파르타',420000],['2개월 스파르타 (2개월 결제 할인)',640000,840000]]},
+   {n:'정규 초급 (기출입문서)',teach:'엘리 킴',photo:'elly',day:['월·수'],times:['19:30~21:30 (120분) · 엘리킴 (월·수) · 4강의실 · 총 16회'],terms:[['1개월',210000],['2개월 (2개월 결제 할인)',390000,420000]]},
+   {n:'정규 중급 (기출종합서)',teach:'엘리 킴',photo:'elly',day:['화·목'],times:['19:30~21:30 (120분) · 엘리킴 (화·목) · 4강의실 · 총 16회'],terms:[['1개월',210000],['2개월 (2개월 결제 할인)',390000,420000]]},
+   {n:'실전반 (ETS 1000제3)',teach:'송윤정',photo:'eng_13',day:['토요일'],times:['10:00~13:00 · 송윤정 (토) · 4강의실 · LC+RC 실전'],terms:[['1개월',210000],['2개월 (2개월 결제 할인)',390000,420000]]},
+   {n:'왕기초 패키지',teach:'유미용',photo:'eng_14',day:['월·수'],times:['상담 후 배정 (왕기초 2개월 → 초급정규 2개월)'],terms:[['왕기초 2개월 + 초급정규 2개월',640000,840000]]},
+   {n:'프리패스 800점 완성반',teach:'담당 배정',photo:'eng_13',day:['월·수'],times:['상담 후 배정 (왕기초→초급→중급)'],terms:[['왕기초+초급+중급 + 1:1 토익스킬 10h',0]]},
+   {n:'프리패스 950점 만점반',teach:'담당 배정',photo:'eng_6',day:['화·목'],times:['상담 후 배정 (중급 실전 + 1:1 마무리)'],terms:[['중급 실전 + 1:1 토익스킬 10h · 정가 139만',840000,1390000]]}
  ]},
  '토스':{eye:'말하기로 끝내는 토익스피킹',title:'토익스피킹(토스)<br>레벨별 목표달성반',tabs:[
-   {n:'토스 입문 (Lv5~6)',teach:'유미용',photo:'eng_14',day:'화·목',times:['19:00~20:30 · 유미용 (화·목)'],terms:[['1개월',210000],['2개월',390000]]},
-   {n:'토스 실전 (Lv7~8)',teach:'유미용',photo:'eng_14',day:'월·수',times:['20:00~21:30 · 유미용 (월·수)'],terms:[['1개월',210000],['2개월',390000]]}
+   {n:'정규반 (월·수 저녁) 신규개설',teach:'최자운 · 유미용',photos:['eng_6','eng_14'],day:['월·수'],times:['20:00~21:30 (90분) · 최자운 (월·수) · 6강의실 · 총 16회'],terms:[['1개월',210000],['2개월 (2개월 결제 할인)',390000,420000]]},
+   {n:'실전반 (토요 집중)',teach:'최자운 · 유미용',photos:['eng_6','eng_14'],day:['토요일'],times:['10:00~13:00 · 최자운 (토) · 6강의실 · ETS 토스기출단기공략'],terms:[['1개월',210000],['2개월 (2개월 결제 할인)',390000,420000]]}
  ]},
  '오픽':{eye:'실전 발화 중심 오픽',title:'오픽(OPIc)<br>등급별 목표달성반',tabs:[
-   {n:'오픽 IM 목표',teach:'유미용',photo:'eng_14',day:'화·목',times:['19:00~20:30 · 유미용 (화·목)'],terms:[['1개월',210000],['2개월',390000]]},
-   {n:'오픽 IH·AL 목표',teach:'유미용',photo:'eng_14',day:'월·수',times:['20:00~21:30 · 유미용 (월·수)'],terms:[['1개월',210000],['2개월',390000]]}
+   {n:'새벽반 STEP 2 (06:30) 진행중',teach:'김현정 · 유미용',photos:['eng_15','eng_14'],day:['월~금'],times:['06:30~07:30 · 김현정 (월~금) · 현재 STEP 2 진행중'],terms:[['1개월',210000],['2개월 (2개월 결제 할인)',390000,420000]]},
+   {n:'새벽반 (07:30) 모집중',teach:'김현정 · 유미용',photos:['eng_15','eng_14'],day:['월~금'],times:['07:30~08:30 · 김현정 (월~금) · 회원 모집중'],terms:[['1개월',210000],['2개월 (2개월 결제 할인)',390000,420000]]},
+   {n:'실전반 (토요 집중)',teach:'김현정 · 유미용',photos:['eng_15','eng_14'],day:['토요일'],times:['10:00~13:00 · 김현정 (토) · 7강의실 · 파고다 오픽의신'],terms:[['1개월',210000],['2개월 (2개월 결제 할인)',390000,420000]]}
  ]},
- '토플':{status:'12월 개강 예정',eye:'TOEFL · 유학·교환학생 대비',title:'토플(TOEFL)<br>목표 점수별 STEP반',tabs:[
-   {n:'토플 입문 (60+)',teach:'최자운',photo:'eng_6',day:['월·수'],times:['20:00~21:30 · 최자운 (월·수)'],terms:[['1개월',210000],['2개월 (3만 할인)',390000]]},
-   {n:'토플 실전 (80~100)',teach:'최자운',photo:'eng_6',day:['화·목'],times:['20:00~21:30 · 최자운 (화·목)'],terms:[['1개월',210000],['2개월 (3만 할인)',390000]]},
+ '토플':{status:'개강 예정',eye:'TOEFL · 유학·교환학생 대비',title:'토플(TOEFL)<br>목표 점수별 STEP반',tabs:[
+   {n:'토플 입문 (60+)',teach:'최자운',photo:'eng_6',day:['월·수'],times:['20:00~21:30 · 최자운 (월·수) · 개강 예정'],terms:[['1개월',210000],['2개월 (2개월 결제 할인)',390000,420000]]},
+   {n:'토플 실전 (80~100)',teach:'최자운',photo:'eng_6',day:['화·목'],times:['20:00~21:30 · 최자운 (화·목) · 개강 예정'],terms:[['1개월',210000],['2개월 (2개월 결제 할인)',390000,420000]]},
    {n:'토플 1:1 보강 패키지',teach:'담당 배정',photo:'eng_6',day:['월·수','화·목'],times:['정규반 + 1:1 스킬 10시간 (상담 후 배정)'],terms:[['정규 2개월 + 1:1 10시간',0]]}
  ]},
  'JLPT':{status:'12월(2차) 대비 모집중',eye:'JLPT 대비반 · 12월(2차) 대비 모집중',title:'JLPT — 9~11월 3개월 완성<br>급수별 목표달성반',tabs:[
-   {n:'JLPT 주중반 (3개월)',teach:'서정아',photo:'jpn_7',day:['화·목'],times:['19:00~20:30 · 서정아 (화·목)','20:00~21:30 · 모모코 (화·목)'],terms:[['3개월 주중 정규',630000]]},
-   {n:'JLPT 주말반 (3개월)',teach:'모모코',photo:'jpn_4',day:['토요일'],times:['10:00~13:00 · 모모코 (토)'],terms:[['3개월 주말 정규',630000]]},
-   {n:'JLPT 주중+주말 패키지',teach:'서정아·모모코',photo:'jpn_7',day:['화·목','토요일'],times:['주중반 3개월 + 주말반 3개월'],terms:[['정가 126만 → 40만 할인',860000]]},
-   {n:'JLPT + 회화 동시수강',teach:'서정아·히토시',photo:'jpn_6',day:['화·목','월·수'],times:['JLPT 3개월 + 원어민 회화 3개월'],terms:[['정가 117만 → 30만 할인',870000]]}
+   {n:'JLPT 주중반 (3개월)',teach:'서정아',photo:'jpn_7',day:['화·목'],times:['20:00~21:30 · 서정아 (화·목) · 9강의실','20:00~21:30 · 모모코 (화·목) · 5강의실'],terms:[['3개월 주중 정규',630000]]},
+   {n:'JLPT 주말반 (3개월)',teach:'모모코',photo:'jpn_8',day:['토요일'],times:['10:00~13:00 · 모모코 (토)'],terms:[['3개월 주말 정규',630000]]},
+   {n:'JLPT 주중+주말 패키지',teach:'서정아·모모코',photo:'jpn_7',day:['화·목','토요일'],times:['주중반 3개월 + 주말반 3개월'],terms:[['정가 126만 → 40만 할인',860000,1260000]]},
+   {n:'JLPT + 회화 동시수강',teach:'서정아·히토시',photo:'jpn_6',day:['화·목','월·수'],times:['JLPT 3개월 + 원어민 회화 3개월'],terms:[['정가 117만 → 30만 할인',870000,1170000]]}
  ]},
  'HSK':{status:'급수별 반 편성중',eye:'HSK · 급수별 대비반 모집중',title:'HSK — 3급부터 6급까지<br>급수별 목표달성반',tabs:[
-   {n:'HSK 3·4급 (평일반)',teach:'하홍금',photo:'chn_1',day:['월·수'],times:['18:50~20:20 · 하홍금 (월·수)','20:30~22:00 · 하홍금 (월·수)'],terms:[['1개월',210000],['2개월 (3만 할인)',390000]]},
-   {n:'HSK 5·6급 (평일반)',teach:'오금한',photo:'chn_5',day:['화·목'],times:['20:00~21:30 · 오금한 (화·목)'],terms:[['1개월',210000],['2개월 (3만 할인)',390000]]},
-   {n:'HSK 토요 집중반',teach:'현지인',photo:'chn_7',day:['토요일'],times:['10:00~13:00 · 현지인 (토)'],terms:[['1개월',210000],['2개월 (3만 할인)',390000]]},
-   {n:'HSK + 회화 동시수강',teach:'하홍금·현지인',photo:'chn_1',day:['월·수','토요일'],times:['평일 HSK + 토요 회화 (상담 후 배정)'],terms:[['2개월 패키지',0]]}
+   {n:'HSK 3·4급 (평일반)',teach:'하홍금',photo:'chn_5',day:['월·수'],times:['18:50~20:20 · 하홍금 (월·수) · 8강의실','20:30~22:00 · 하홍금 (월·수) · 8강의실'],terms:[['1개월',210000],['2개월 (2개월 결제 할인)',390000,420000]]},
+   {n:'HSK 5·6급 (평일반)',teach:'오금한',photo:'chn_3',day:['화·목'],times:['20:00~21:30 · 오금한 (화·목) · 2강의실'],terms:[['1개월',210000],['2개월 (2개월 결제 할인)',390000,420000]]},
+   {n:'HSK 토요 집중반',teach:'현지인',photo:'chn_7',day:['토요일'],times:['10:00~13:00 · 현지인 (토) · 3강의실'],terms:[['1개월',210000],['2개월 (2개월 결제 할인)',390000,420000]]},
+   {n:'HSK + 회화 동시수강',teach:'하홍금·현지인',photo:'chn_5',day:['월·수','토요일'],times:['평일 HSK + 토요 회화 (상담 후 배정)'],terms:[['2개월 패키지',0]]}
  ]}
 };
+function _txImgs(t){var list=(t.photos&&t.photos.length)?t.photos:[t.photo||'eng_13'];return list.map(function(im,i){return im?'<img'+(i===0?' id="txPhoto"':'')+' src="img/teachers/'+im+'.png" alt="">':'<div class="sp-ph">강사 사진<br>준비중</div>';}).join('');}
 function examStepPage(k){var e=TEXAM[k];_txK=k;_txTab=0;_exVerified=false;_spCalD=new Date(2026,9,1);var t0=e.tabs[0];var d0=Array.isArray(t0.day)?t0.day[0]:t0.day;_calWd=_wdays(d0);_calN=_calSess(d0);
  var tabs=e.tabs.map(function(t,i){return '<button class="sp-step'+(i===0?' on':'')+'" onclick="txTab('+i+')">'+t.n+'</button>';}).join('');
  return '<div class="sp-wrap"><button class="sp-back" onclick="openPage(\'수강신청\')">‹ 수강신청으로</button><div class="sp-top"><div class="sp-left">'+
   '<div class="sp-badge">시험대비반 · 관리형</div>'+
-  '<div class="sp-photo"><img id="txPhoto" src="img/teachers/'+(t0.photo||'eng_13')+'.png" alt=""></div>'+
+  '<div class="sp-photo'+((t0.photos&&t0.photos.length>1)?' duo':'')+'" id="txPhotoBox">'+_txImgs(t0)+'</div>'+
   '<div class="sp-feats"><span>피드백</span><span>복습영상</span><span>실전 모의</span><span>오답관리</span><span>첨삭</span><span>출결관리</span><span>1:1 학습상담</span></div>'+
   '<div class="sp-meta">'+(e.rv?'<div><b>수강후기</b>'+e.rv+'건</div>':'<div><b>모집</b>'+(e.status||'상시 모집중')+'</div>')+'<div><b>담당</b><span id="txTeacher">'+(t0.teach||'')+'</span></div></div>'+
   '</div><div class="sp-right">'+
@@ -2387,7 +2417,7 @@ function txTab(i){_txTab=i;var e=TEXAM[_txK];var t=e.tabs[i];var ss=document.que
  var dEl=document.getElementById('txDay');if(dEl)dEl.innerHTML=days.map(function(d){return '<option>'+d+' (개강)</option>';}).join('');
  var tEl=document.getElementById('txTime');if(tEl)tEl.innerHTML=(t.times||[]).map(function(x){return '<option>'+x+'</option>';}).join('');
  var mEl=document.getElementById('txTerm');if(mEl)mEl.innerHTML=(t.terms||[]).map(function(x,ix){var lbl=x[1]?((x[2]&&x[2]>x[1])?(' — '+Math.round(x[2]/10000)+'만원 → '+Math.round(x[1]/10000)+'만원'):(' — '+Math.round(x[1]/10000)+'만원')):' — 상담';return '<option value="'+ix+'">'+x[0]+lbl+'</option>';}).join('');
- var ph=document.getElementById('txPhoto');if(ph&&t.photo)ph.src='img/teachers/'+t.photo+'.png';
+ var pb=document.getElementById('txPhotoBox');if(pb){pb.className='sp-photo'+((t.photos&&t.photos.length>1)?' duo':'');pb.innerHTML=_txImgs(t);}
  var te=document.getElementById('txTeacher');if(te)te.textContent=t.teach||'';
  _calWd=_wdays(days[0].replace(' (개강)',''));_calN=_calSess(days[0]);spRenderCal();txPrice();}
 function txDayChg(){var dv=document.getElementById('txDay');var d=dv?dv.value.replace(' (개강)',''):'';_calWd=_wdays(d);_calN=_calSess(d);spRenderCal();}
