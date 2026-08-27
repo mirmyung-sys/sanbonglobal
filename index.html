@@ -325,6 +325,9 @@ header:hover .megamenu{opacity:1;visibility:visible;transform:translateY(0)}
 .pgfeat .ft .fi{font-size:26px}
 .pgfeat .ft h4{color:var(--red);font-weight:900;font-size:16px;margin:8px 0 6px}
 .pgfeat .ft p{color:#6b7078;font-size:13.5px;line-height:1.6}
+.pgfeat.red .ft{border:2px solid #F2C9C9;background:linear-gradient(135deg,#FFF9F9,#FFF1F1)}
+.pgfeat.red .ft h4{color:#c22030}
+.pgfeat.red .ft p{color:#7a5a5a}
 .pgnote{background:#f7f8fa;border-radius:10px;padding:16px 18px;color:#4b5058;font-size:14px;line-height:1.8;margin-top:8px}
 .notice{width:100%;border-collapse:collapse}
 .notice td{border-bottom:1px solid #eef0f2;padding:14px 6px;font-size:14.5px;color:#3a3f4c}
@@ -826,6 +829,23 @@ header nav a{letter-spacing:-.01em}
 .lc-opts{display:grid;gap:8px}
 .lc-o{text-align:left;border:1.5px solid #dfe3ec;background:#fff;border-radius:12px;padding:13px 15px;font-size:14px;font-weight:700;color:#1a2130;cursor:pointer;font-family:inherit}
 .lc-o:hover{border-color:#2f6fb0;background:#f5f9fd}
+.di-warn{background:#FFF6E5;border:1.5px solid #F0D79A;border-radius:12px;padding:12px 14px;font-size:13px;color:#7a5c12;line-height:1.65;margin:12px 0 8px;font-weight:700}
+.dp-list{display:grid;gap:9px;margin-bottom:4px}
+.dp-o{display:flex;align-items:center;gap:11px;width:100%;text-align:left;background:#fff;border:2px solid #E4E7EE;border-radius:14px;padding:14px 15px;cursor:pointer;font-family:inherit;position:relative;transition:.12s}
+.dp-o .ck{flex:none;width:24px;height:24px;border-radius:7px;border:2px solid #C9CFDA;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;font-weight:900}
+.dp-o.sel{border-color:#0E8A5A;background:#F2FBF7}
+.dp-o.sel .ck{background:#0E8A5A;border-color:#0E8A5A}
+.dp-sum{text-align:center;font-size:16px;font-weight:800;color:#1D2D4F;background:#F4F6FA;border-radius:12px;padding:14px;margin-top:12px}
+.dp-sum b{font-size:24px;color:#C81F2B;font-weight:900}
+.dp-o:hover{border-color:#1D2D4F;background:#F7F9FC}
+.dp-o.best{border-color:#E2A413;background:linear-gradient(135deg,#FFFBF0,#FFF4D9)}
+.dp-o.off{opacity:.45;cursor:not-allowed}
+.dp-o .pc{flex:none;min-width:62px;font-size:21px;font-weight:900;color:#C81F2B;letter-spacing:-.03em}
+.dp-o.best .pc{color:#B8860B}
+.dp-o .tt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.dp-o .tt b{font-size:15px;font-weight:900;color:#1D2D4F}
+.dp-o .tt em{font-style:normal;font-size:12.5px;color:#7a8296;font-weight:600}
+.dp-o .bg{flex:none;background:#E2A413;color:#fff;font-size:11px;font-weight:900;padding:4px 10px;border-radius:999px}
 .dc-no{display:flex;align-items:center;gap:14px;width:100%;background:#FDF2F2;border:3px solid #E8B4B4;color:#8C2B2B;border-radius:20px;padding:19px 18px;margin:14px 0 6px;cursor:pointer}
 .dc-no .ic{flex:none;font-size:34px;line-height:1}
 .dc-no .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;text-align:left}
@@ -1879,7 +1899,7 @@ const CHAPTERS=[
  {k:'1:1 PT',pg:'1:1 전문',s:'나만을 위한 완전 맞춤 1:1 수업',e:'PRIVATE',bg:'linear-gradient(135deg,#14213d,#33507f)',imgs:['eng_14','eng_13','eng_6']},
  {k:'과외',pg:'과외',s:'학생별 맞춤 밀착 관리 과외',e:'TUTORING',bg:'linear-gradient(135deg,#3a2c5e,#5b4790)',imgs:['eng_7','eng_3']},
  {k:'외고/유학',pg:'유학상담',s:'외고 내신·유학 준비 무료 상담',e:'ABROAD',bg:'linear-gradient(135deg,#1f8058,#146043)',imgs:['jpn_4','jpn_5']},
- {k:'기업출강',pg:'기업출강',s:'회사로 찾아가는 실무 어학 교육',e:'B2B',bg:'linear-gradient(135deg,#293a58,#40587f)',imgs:['eng_14','eng_12','jpn_2','chn_3']},
+ {k:'기업출강',pg:'기업출강',s:'회사로 찾아가는 실무 어학 교육',e:'B2B',bg:'linear-gradient(120deg,#c22030,#e2211c)',imgs:['eng_14','eng_12','jpn_2','chn_3']},
  {k:'임원 1:1 출강',pg:'임원강의',s:'임원 맞춤 1:1 프리미엄 출강',e:'EXECUTIVE',bg:'linear-gradient(135deg,#7a5a1a,#c6a15b)',imgs:[]}
 ];
 function chipHTML(c){var imgs=(c.imgs||[]).map(function(im){return '<img src="img/teachers/'+im+'.png" alt="" loading="lazy">';}).join('');return '<div class="chip'+(c.exp?' exp':'')+'" data-k="'+c.k+'" style="background:'+c.bg+'"><div class="chrev">'+imgs+'</div><div class="chgrad"></div><div class="chtxt"><div class="che">'+c.e+'</div><div class="cht">'+c.k+'</div><div class="chs">'+c.s+'</div><div class="chgo">자세히 보기 ›</div></div></div>';}
@@ -2626,9 +2646,9 @@ const PAGES={
   +'<div class="pgfeat"><div class="ft"><div class="fi">🏫</div><h4>학교 선정</h4><p>목표·예산에 맞는 기관을 함께 찾습니다.</p></div><div class="ft"><div class="fi">📑</div><h4>서류·비자</h4><p>필요 서류·비자 절차를 체크리스트로 안내합니다.</p></div><div class="ft"><div class="fi">🗣️</div><h4>사전 일본어</h4><p>생활 회화·JLPT를 병행 준비합니다.</p></div><div class="ft"><div class="fi">🧳</div><h4>현지 정착</h4><p>거주·생활 정보까지 실질 팁을 제공합니다.</p></div></div>'+CTA(),
  '1:1 전문':bigImg('img/gen_pt.jpg')+H('1:1 PROFESSIONAL','완전 1:1,<br>목표까지 최단거리','그룹 수업의 속도가 아쉬웠다면, 오직 나에게 맞춘 1:1 전문관을 추천합니다. 시험 단기 완성, 회화 집중, 취약 영역 보강 등 목적별로 최적화합니다.','🎯')
   +'<div class="pgfeat"><div class="ft"><div class="fi">⚡</div><h4>단기 목표 완성</h4><p>기간과 목표 점수에 맞춰 집중 설계합니다.</p></div><div class="ft"><div class="fi">🔁</div><h4>취약점 집중</h4><p>내가 약한 부분만 골라 반복 교정합니다.</p></div><div class="ft"><div class="fi">💬</div><h4>실전 회화</h4><p>원어민·전문 강사와 실전 대화를 집중 훈련합니다.</p></div><div class="ft"><div class="fi">🕒</div><h4>유연한 스케줄</h4><p>바쁜 직장인·학생 일정에 맞춰 운영합니다.</p></div></div>'+CTA(),
- '기업출강':bigImg('img/gen16.jpg')+H('기업 출강 · B2B','회사로 찾아가는<br>실무 어학 교육','임직원 대상 영어·일본어·중국어 교육을 회사 일정에 맞춰 진행합니다. 업종·직무에 맞춘 실무 커리큘럼과 성과 리포트로, 교육 효과를 눈으로 확인하실 수 있습니다.','🏢')
+ '기업출강':bigImg('img/gen16.jpg')+HV('기업 출강 · B2B','회사로 찾아가는<br>실무 어학 교육','임직원 대상 영어·일본어·중국어 교육을 회사 일정에 맞춰 진행합니다. 업종·직무에 맞춘 실무 커리큘럼과 성과 리포트로, 교육 효과를 눈으로 확인하실 수 있습니다.','linear-gradient(120deg,#c22030,#e2211c)','<div class="pgemoji">🏢</div>')
   +'<div class="tk-sec"><h3 class="tk-sectt">기업 출강 담당 강사진</h3><div class="tk-grid">'+T_B2B.map(tcard).join('')+'</div></div>'
-  +'<div class="pgfeat"><div class="ft"><div class="fi">🧩</div><h4>직무 맞춤 설계</h4><p>영업·CS·개발 등 직무별 실무 표현 중심으로 구성합니다.</p></div><div class="ft"><div class="fi">📈</div><h4>성과 리포트</h4><p>출석·성취도를 정리해 담당자에게 공유합니다.</p></div><div class="ft"><div class="fi">🕘</div><h4>사내 일정 맞춤</h4><p>업무 시간에 맞춰 방문 또는 화상으로 진행합니다.</p></div><div class="ft"><div class="fi">💳</div><h4>세금계산서 발행</h4><p>법인 결제·증빙을 지원합니다.</p></div></div>'+b2bQuoteForm()+CTA(),
+  +'<div class="pgfeat red"><div class="ft"><div class="fi">🧩</div><h4>직무 맞춤 설계</h4><p>영업·CS·개발 등 직무별 실무 표현 중심으로 구성합니다.</p></div><div class="ft"><div class="fi">📈</div><h4>성과 리포트</h4><p>출석·성취도를 정리해 담당자에게 공유합니다.</p></div><div class="ft"><div class="fi">🕘</div><h4>사내 일정 맞춤</h4><p>업무 시간에 맞춰 방문 또는 화상으로 진행합니다.</p></div><div class="ft"><div class="fi">💳</div><h4>세금계산서 발행</h4><p>법인 결제·증빙을 지원합니다.</p></div></div>'+b2bQuoteForm()+CTA(),
  '임원강의':bigImg('img/gen17.jpg')+H('EXECUTIVE · PRIVATE','임원 1:1,<br>어디든 찾아갑니다','바쁜 임원분들을 위해 시간·장소·주제를 완전 맞춤으로 운영하는 프리미엄 1:1 과정입니다. 사무실·자택 어디든 찾아가, 미팅·프레젠테이션·의전 등 상황별 실전 표현에 집중합니다.','👔')
   +'<div class="tk-sec"><h3 class="tk-sectt">임원 1:1 담당 강사진</h3><div class="tk-grid">'+[{n:'Apple 강사',title:'임원 영어 1:1',eye:'실전 비즈니스 회화',img:'eng_5'},{n:'제롤린 강사',title:'임원 영어 1:1',eye:'미팅·프레젠테이션 집중',img:'eng_11'}].map(tcard).join('')+'</div></div>'
   +'<div class="pgfeat"><div class="ft"><div class="fi">🤵</div><h4>완전 맞춤 1:1</h4><p>주제·수준·일정을 전적으로 맞춰 설계합니다.</p></div><div class="ft"><div class="fi">🗓️</div><h4>시간·장소 자유</h4><p>사무실 방문 또는 화상으로 편하게 진행합니다.</p></div><div class="ft"><div class="fi">🎤</div><h4>상황별 실전</h4><p>미팅·발표·네트워킹 등 실제 상황을 훈련합니다.</p></div><div class="ft"><div class="fi">🔒</div><h4>프라이빗 운영</h4><p>비공개·소수 정예로 편안하게 학습합니다.</p></div></div>'+b2bQuoteForm('임원 1:1 맞춤 상담 · 견적 요청')+CTA()
@@ -2649,39 +2669,40 @@ function submitQuote(f){var c=f.company.value.trim(),m=f.manager.value.trim(),p=
  d.style.display='block';d.scrollIntoView({block:'center'});f.reset();return false;}
 var WCONV={
 '영어':{eye:'원어민의 진짜 영어',title:'영어회화 — 왕초보부터 실전까지<br>STEP별 올인원 회화',badge:'기초입문회화 · 관리형',
- levels:[['BASIC','eng_9','Kate · KELLY'],['STEP1','eng_9','Kate · May'],['STEP2','eng_11','Jerollyn · 최자운 (Deborah)'],['STEP3','eng_11','Jerollyn'],['STEP4','eng_11','Jerollyn']],
+ levels:[['새벽반','eng_15','김현정'],['BASIC','eng_9','Kate · KELLY'],['STEP1','eng_9','Kate · May'],['STEP2','eng_11','Jerollyn · 최자운 (Deborah)'],['STEP3','eng_11','Jerollyn'],['STEP4','eng_11','Jerollyn']],
  cls:{
   'BASIC':[['화·목','10:00~11:30','Kate','8강의실','I.C intro'],['화·목','18:20~19:50','KELLY','7강의실','F.C 1'],['화·목','20:00~21:30','KELLY','7강의실','F.C 1']],
   'STEP1':[['월·수','10:00~11:30','Kate','8강의실','I.C 1'],['화·목','18:20~19:50','May','8강의실','F.C 2'],['화·목','20:00~21:30','May','8강의실','F.C 2']],
   'STEP2':[['월·수','11:40~13:10','Jerollyn','7강의실','I.C 2'],['화·목','11:40~13:10','Jerollyn','7강의실','I.C 2'],['화·목','20:00~21:30','최자운 (Deborah)','','F.C · 모집중']],
   'STEP3':[['화·목','10:00~11:30','Jerollyn','6강의실','I.C 3'],['화·목','20:00~21:30','Jerollyn','6강의실','F.C 4']],
-  'STEP4':[['월·수','10:00~11:30','Jerollyn','9강의실','Handout'],['월·수','20:00~21:30','Jerollyn','9강의실','Handout · 프리토킹']]},
+  'STEP4':[['월·수','10:00~11:30','Jerollyn','9강의실','Handout'],['월·수','20:00~21:30','Jerollyn','9강의실','Handout · 프리토킹']],
+  '새벽반':[['화·수·목','06:30~07:30','김현정','','STEP 2 진행중'],['화·수·목','07:30~08:30','김현정','','신규 개강 · 모집중']]},
  desc:'STEP BASIC부터 STEP4까지, 왕초보 발음·기초문법에서 실전 프리토킹까지 단계별로 올라갑니다. 관리형 수업으로 피드백·복습영상·발음교정·첨삭·1:1 학습상담이 모두 포함됩니다.'},
 '일본어':{eye:'원어민이 가르치는 진짜 일본어',title:'일본어 — 입문부터 JLPT까지<br>레벨별 회화',badge:'일본어 회화 · 관리형',
- levels:[['입문','jpn_7','개강예정 · 모집중'],['초급','jpn_7','서정아'],['초중급','jpn_7','서정아'],['중급','jpn_8','모모코 (원어민)'],['원어민','jpn_6','히토시 (원어민)'],['새벽반','jpn_6','미정 · 회원 모집중']],
+ levels:[['새벽반','jpn_6','미정 · 회원 모집중'],['입문','jpn_7','개강예정 · 모집중'],['초급','jpn_7','서정아'],['초중급','jpn_7','서정아'],['중급','jpn_8','모모코 (원어민)'],['원어민','jpn_6','히토시 (원어민)']],
  cls:{
   '입문':[['화·목','20:00~21:30','미정 · 모집중','','입문반 개강예정']],
   '초급':[['화·목','20:00~21:30','서정아','9강의실','다이스키2 (초급 1/2)']],
   '초중급':[['화·목','18:20~19:50','서정아','9강의실','다이스키3']],
   '중급':[['화·목','20:00~21:30','모모코','5강의실','다이스키3 · 아리가또B (중급 2/4)'],['월·수','18:20~19:50','히토시','5강의실','아리가또 프리토킹1 (중고급 3/4)']],
-  '원어민':[['월·수','20:00~21:30','히토시','5강의실','스쿠스쿠4 (원어민 2단계)']],
-  '새벽반':[['월~금','06:30~07:30','미정 · 회원 모집중','','새벽반 개강 준비중'],['월~금','07:30~08:30','미정 · 회원 모집중','','새벽반 개강 준비중']]},
+  '원어민':[['월·수','18:20~19:50','히토시','5강의실','프리토킹 중고급'],['월·수','20:00~21:30','히토시','5강의실','스쿠스쿠4 (원어민 2단계)']],
+  '새벽반':[['화·수·목','06:30~07:30','미정 · 회원 모집중','','새벽반 개강 준비중'],['화·수·목','07:30~08:30','미정 · 회원 모집중','','새벽반 개강 준비중']]},
  desc:'입문부터 원어민 프리토킹까지 레벨별로 배우는 일본어. JLPT 대비까지 자연스럽게 이어집니다. 관리형 피드백·복습·1:1 상담 포함.'},
 '중국어':{eye:'발음부터 HSK까지, 진짜 중국어',title:'중국어 — 입문부터 고급까지<br>레벨별 회화',badge:'중국어 회화 · 관리형',
- levels:[['입문','chn_5','하홍금 (원어민)'],['초급','chn_5','하홍금 (원어민)'],['중급','chn_3','오금한'],['중고급','chn_7','현지인 (원어민)'],['고급','chn_5','하홍금 (원어민)'],['새벽반','chn_5','미정 · 회원 모집중']],
+ levels:[['새벽반','chn_5','미정 · 회원 모집중'],['입문','chn_5','하홍금 (원어민)'],['초급','chn_5','하홍금 (원어민)'],['중급','chn_3','오금한'],['중고급','chn_7','현지인 (원어민)'],['고급','chn_5','하홍금 (원어민)']],
  cls:{
   '입문':[['월·수','20:30~22:00','하홍금','8강의실','스피킹중국어1 (입문 3/3)'],['화·목','18:20~19:50','미정 · 모집중','','입문반 모집예정']],
   '초급':[['월·수','18:50~20:20','하홍금','8강의실','스피킹중국어2 (초급 2/3)']],
   '중급':[['월·수','20:00~21:30','오금한','7강의실','신공략중국어5 (중급 4/4)'],['화·목','20:00~21:30','오금한','2강의실','맛있는중국어5 (중급 4/4)']],
   '중고급':[['토요일','10:00~13:00','현지인','3강의실','신공략중국어6']],
   '고급':[['토요일','10:00~13:00','하홍금','8강의실','스피킹중국어 고급 上']],
-  '새벽반':[['월~금','06:30~07:30','미정 · 회원 모집중','','새벽반 개강 준비중'],['월~금','07:30~08:30','미정 · 회원 모집중','','새벽반 개강 준비중']]},
+  '새벽반':[['화·수·목','06:30~07:30','미정 · 회원 모집중','','새벽반 개강 준비중'],['화·수·목','07:30~08:30','미정 · 회원 모집중','','새벽반 개강 준비중']]},
  desc:'발음·성조부터 HSK·TSC까지 레벨별로 탄탄하게. 원어민·전문 강사의 관리형 수업으로 실전 회화 자신감을 키웁니다.'}
 };
 var _spSubj='영어';
 function _wdays(s){if(Array.isArray(s))s=s.join(' ');var mp={'일':0,'월':1,'화':2,'수':3,'목':4,'금':5,'토':6};s=(s||'').replace(/요일/g,'');var r=[];for(var i=0;i<s.length;i++){var w=mp[s.charAt(i)];if(w!==undefined&&r.indexOf(w)<0)r.push(w);}if(/주말/.test(s))r=[0,6];if(/평일/.test(s))r=[1,2,3,4,5];if(/월~금|매일/.test(s))r=[1,2,3,4,5];return r;}
 var _spCalD=new Date(2026,9,1);var _calWd=[];var _exRows=[];var _exPay='';var _exM1=0,_exM2=0;var _calHol={'2026-1-1':'신정','2026-2-16':'설날','2026-2-17':'설날','2026-2-18':'설날','2026-3-1':'삼일절','2026-3-2':'대체','2026-5-5':'어린이날','2026-5-24':'석가탄신','2026-5-25':'대체','2026-6-6':'현충일','2026-8-15':'광복절','2026-8-17':'대체','2026-9-24':'추석','2026-9-25':'추석','2026-9-26':'추석','2026-10-3':'개천절','2026-10-5':'대체','2026-10-9':'한글날','2026-12-25':'성탄절'};var _calStart=new Date(2026,9,6),_calEnd=new Date(2026,9,31);var _calN=99;
-function _calSess(s){if(Array.isArray(s))s=s.join(" ");if(/월~금|매일|평일/.test(s))return 18;if(/토/.test(s)&&!/월|화|수|목|금/.test(s))return 4;return 8;}
+function _calSess(s){if(Array.isArray(s))s=s.join(" ");if(/월~금|매일|평일/.test(s))return 18;if(/토/.test(s)&&!/월|화|수|목|금/.test(s))return 4;var n=_wdays(s).length;if(n>=3)return n*4;return 8;}
 function _calOrd(t,wd){var c=0,d=new Date(_calStart.getFullYear(),_calStart.getMonth(),_calStart.getDate());while(d<=t){if(wd.indexOf(d.getDay())>=0&&!_calHol[d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()])c++;d.setDate(d.getDate()+1);}return c;}
 function _calRange(wd,n){if(!wd||!wd.length||!n||n>90)return null;var c=0,st=null,ed=null;var dt=new Date(_calStart.getFullYear(),_calStart.getMonth(),_calStart.getDate());var g=0;while(c<n&&g<900){var k=dt.getFullYear()+'-'+(dt.getMonth()+1)+'-'+dt.getDate();if(wd.indexOf(dt.getDay())>=0&&!_calHol[k]){c++;if(c===1)st=new Date(dt);if(c===n)ed=new Date(dt);}dt.setDate(dt.getDate()+1);g++;}if(!st||!ed)return null;return {start:st,end:ed,n:n};}
 function _dstr(x){return (x.getMonth()+1)+'/'+x.getDate();}
@@ -2693,18 +2714,27 @@ function calHTML(d,wd){var y=d.getFullYear(),m=d.getMonth();var first=new Date(y
    cells+='<span class="cal-d"><i class="'+cls+'">'+day+'</i>'+(hol?'<em class="cal-hn">'+hol+'</em>':tag)+'</span>';}return '<div class="cal"><div class="cal-h"><button type="button" onclick="spCalNav(-1)">‹</button><b>'+y+'년 '+(m+1)+'월</b><button type="button" onclick="spCalNav(1)">›</button></div>'+_calSumHTML(wd)+'<div class="cal-w">'+names.map(function(n,ni){return '<span'+(wd.indexOf(ni)>=0?' class="on"':'')+'>'+n+'</span>';}).join('')+'</div><div class="cal-g">'+cells+'</div><div class="cal-lg"><span class="lg-c">●</span> 수업일 &nbsp; <span style="color:#0e8a5a">●</span> 개강일 &nbsp; <span style="color:#c81f2b">●</span> 종강일 &nbsp; <span class="lg-h">●</span> 공휴일(휴강)</div></div>';}
 function spRenderCal(){var el=document.getElementById('spCal');if(!el)return;var dv=document.getElementById('spDay');if(dv)_calN=_calSess(dv.value);el.innerHTML=calHTML(_spCalD,dv?_wdays(dv.value):_calWd);}
 function spCalNav(delta){_spCalD=new Date(_spCalD.getFullYear(),_spCalD.getMonth()+delta,1);spRenderCal();}
-var SGEV={open:{rate:0.15,start:'2026-08-25',end:'2026-10-31'},early:{rate:0.20,toeic:0.25,start:'2026-11-19',end:'2026-11-25'},transfer:{rate:0.20,toeic:0.25,verify:true}};
-var _exSubj='토익',_exVerified=false,_spVerified=false,_vfCtx='';
+var SGEV={open:{rate:0.15,start:'2026-08-25',end:'2026-10-31',nm:'오픈이벤트',dsc:'10월 한시 · 전 과목'},transfer:{rate:0.15,verify:true,nm:'환승이벤트',dsc:'타 어학 수강 영수증 인증 시'},early:{rate:0.08,monthly:[19,25],loyal:true,nm:'재등록 얼리버드',dsc:'기존 수강생 재등록 전용 · 매달 19~25일'}};var EVKEYS=['open','transfer','early'];
+var _exList=0;var _exSubj='토익',_exVerified=false,_spVerified=false,_vfCtx='',_vfWant='';
 function _today(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
-function evActive(k){var e=SGEV[k];if(!e)return false;if(!e.start)return true;var t=_today();return t>=e.start&&t<=e.end;}
-function evRate(subj,v){var e=SGEV[v];if(!e)return 0;if(e.start&&!evActive(v))return 0;return (subj==='토익'&&e.toeic)?e.toeic:e.rate;}
-function evLabel(v){return {open:'오픈이벤트',early:'글로벌위크 얼리버드',transfer:'환승이벤트'}[v]||'';}
-function evGate(v,ctx){if((v==='open'||v==='early')&&!evActive(v)){var e=SGEV[v];alert(evLabel(v)+' 기간이 아닙니다.\n행사기간: '+e.start.slice(5).replace('-','/')+' ~ '+e.end.slice(5).replace('-','/'));return false;}if(v==='transfer'){var ok=ctx==='ex'?_exVerified:_spVerified;if(!ok){openVerify(ctx);return false;}}return true;}
+function evActive(k){var e=SGEV[k];if(!e)return false;
+ if(e.monthly){var d=new Date().getDate();return d>=e.monthly[0]&&d<=e.monthly[1];}
+ if(!e.start)return true;var t=_today();return t>=e.start&&t<=e.end;}
+function evParts(v){return (!v||v==='0')?[]:String(v).split('+');}
+function evPeriod(k){var e=SGEV[k]||{};if(e.monthly)return '매달 '+e.monthly[0]+'일 ~ '+e.monthly[1]+'일';return e.start?(e.start.slice(5).replace('-','.')+' ~ '+e.end.slice(5).replace('-','.')):'상시';}
+function evRate(subj,v){var r=0;evParts(v).forEach(function(k){var e=SGEV[k];if(e&&evActive(k)&&!e.loyal)r+=e.rate;});return Math.round(r*1000)/1000;}
+/* 재등록 할인 — 2개월 결제 할인가에도 추가로 붙습니다 */
+function loyalRate(v){var r=0;evParts(v).forEach(function(k){var e=SGEV[k];if(e&&evActive(k)&&e.loyal)r+=e.rate;});return Math.round(r*1000)/1000;}
+function evLabel(v){var ps=evParts(v);if(!ps.length)return '';return ps.map(function(k){return (SGEV[k]||{}).nm||k;}).join(' + ');}
+function evGate(v,ctx){var ps=evParts(v);
+ for(var i=0;i<ps.length;i++){var k=ps[i];if(!evActive(k)){alert((SGEV[k]||{}).nm+' 기간이 아닙니다.\n행사기간: '+evPeriod(k));return false;}}
+ if(ps.indexOf('transfer')>=0){var ok=ctx==='ex'?_exVerified:_spVerified;if(!ok){openVerify(ctx);return false;}}
+ return true;}
 function exDiscChange(){var de=document.getElementById('exDisc');if(!evGate(de.value,'ex')){de.value='0';}exPrice();}
 function spDiscChange(){var de=document.getElementById('spDisc');if(!evGate(de.value,'sp')){de.value='0';}spPrice();}
 function openVerify(ctx){_vfCtx=ctx;lvOpenRun('<h3 class="lvr-t">환승 이벤트 인증</h3><div class="lvr-note" style="text-align:left">타 어학원·인강·전화영어·학습지 등 <b>다른 어학 수강 증빙</b>(수강증·결제내역·영수증 등) 사진을 올려주세요.</div><label class="vf-up" for="vfFile">📷 인증 사진 첨부</label><input id="vfFile" type="file" accept="image/*" style="display:none" onchange="vfPrev(this)"><div id="vfPrev"></div><button class="lvr-go" style="border:0;cursor:pointer;width:100%" onclick="vfSubmit()">환승 인증 요청 ›</button><div class="lvr-note" style="font-size:12px">※ 첨부하면 할인이 임시 적용되고, 담당자가 최종 확인 후 확정합니다. (자동 AI 인증은 준비 중)</div>');}
 function vfPrev(inp){var f=inp.files&&inp.files[0];if(!f)return;var u=URL.createObjectURL(f);document.getElementById('vfPrev').innerHTML='<img src="'+u+'" style="max-width:100%;border-radius:10px;margin:10px 0">';}
-function vfSubmit(){var inp=document.getElementById('vfFile');if(!inp||!inp.files||!inp.files.length){alert('인증 사진을 먼저 첨부해 주세요.');return;}if(_vfCtx==='ex'){_exVerified=true;var de=document.getElementById('exDisc');if(de)de.value='transfer';exPrice();}else{_spVerified=true;var sd=document.getElementById('spDisc');if(sd)sd.value='transfer';spPrice();}lvCloseRun();alert('환승 인증이 접수되어 할인이 임시 적용되었습니다.\n담당자가 최종 확인 후 확정됩니다.');}
+function vfSubmit(){var inp=document.getElementById('vfFile');if(!inp||!inp.files||!inp.files.length){alert('인증 사진을 먼저 첨부해 주세요.');return;}var want=(typeof _vfWant!=='undefined'&&_vfWant)?_vfWant:'transfer';_vfWant='';if(_vfCtx==='ex'){_exVerified=true;var de=document.getElementById('exDisc');if(de)de.value=want;_reprice();}else{_spVerified=true;var sd=document.getElementById('spDisc');if(sd)sd.value=want;spPrice();}lvCloseRun();alert('환승 인증이 접수되어 할인이 임시 적용되었습니다.\n담당자가 최종 확인 후 확정됩니다.');}
 function _clsLabel(x){return x[1]+' · '+x[2]+' ('+x[0]+')'+(x[3]?' · '+x[3]:'')+(x[4]?' · '+x[4]:'');}
 function stepPage(k,lvl){_spVerified=false;
 if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;_spCalD=new Date(2026,9,1);var W=WCONV[k]||WCONV['영어'];
@@ -2722,7 +2752,7 @@ if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;_spCalD=new Date(2026,9
   '</div><div class="sp-right">'+
   '<div class="sp-eye">'+W.eye+'</div><h2 class="sp-title">'+W.title+'</h2>'+
   '<div class="sp-steps">'+steps+'</div>'+
-  '<div class="sp-form"><label>레벨·요일 선택<select id="spDay" onchange="spRenderCal()">'+dayOpts+'</select></label><label>시간 선택<select id="spTime" onchange="spTimeChg()">'+timeOpts+'</select></label><label>기간 선택<select id="spTerm" onchange="spPrice()"><option value="2">단과 2개월 (무료 없음) — 36만원</option><option value="3">3개월 등록 (+1개월 무료·총4개월) — 54만원</option><option value="4">4개월 등록 (+2개월 무료·총6개월) — 72만원</option><option value="6" selected>6개월 등록 (+4개월 무료·총10개월) — 108만원</option></select></label><label>이벤트 할인<select id="spDisc" onchange="spDiscChange()"><option value="0">할인 없음</option><option value="open">오픈이벤트 −15%</option><option value="early">글로벌위크 얼리버드 −20%</option><option value="transfer">환승이벤트 −20% (영수증 인증)</option></select></label>'+discHintBox(k)+'</div>'+
+  '<div class="sp-form"><label>레벨·요일 선택<select id="spDay" onchange="spRenderCal()">'+dayOpts+'</select></label><label>시간 선택<select id="spTime" onchange="spTimeChg()">'+timeOpts+'</select></label><label>기간 선택<select id="spTerm" onchange="spPrice()"><option value="2">단과 2개월 (무료 없음) — 36만원</option><option value="3">3개월 등록 (+1개월 무료·총4개월) — 54만원</option><option value="4">4개월 등록 (+2개월 무료·총6개월) — 72만원</option><option value="6" selected>6개월 등록 (+4개월 무료·총10개월) — 108만원</option></select></label><label>이벤트 할인<select id="spDisc" onchange="spDiscChange()">'+discOpts()+'</select></label>'+discHintBox(k)+'</div>'+
   '<div class="sp-cal-wrap"><div class="sp-cal-label">수업일 확인 (선택 요일 기준)</div><div id="spCal">'+calHTML(_spCalD,_wdays(idays[0]||''))+'</div></div>'+
   '<div class="sp-price"><span>수강료</span><b id="spAmt">1,080,000원</b><em id="spPer">+4개월 무료 · 총 10개월 · 최고혜택</em></div>'+
   '<div class="sp-btns"><button class="sp-cart" onclick="alert(\'장바구니에 담았습니다.\')">🛒 장바구니</button><button class="sp-buy" onclick="spBuy()">수강신청</button></div>'+
@@ -2782,9 +2812,15 @@ function spModalHTML(){return '<div class="sp-modal" id="spModal"><div class="sp
  +'<button class="sp-charge2" onclick="spPay(\'bank\')">🏦 무통장 입금 · 농협</button>'
  +'<div class="sp-mfoot"><span onclick="spClose()">닫기</span><span onclick="spClose();openPage(\'상품권충전\')">상품권 충전하기</span></div>'
  +'</div></div></div>';}
-function _evPct(subj,v){var e=SGEV[v];if(!e)return 0;return (subj==='토익'&&e.toeic)?e.toeic:e.rate;}
+function _evPct(subj,v){var r=0;evParts(v).forEach(function(k){var e=SGEV[k];if(e)r+=e.rate;});return Math.round(r*1000)/1000;}
+/* 지금 켜져 있는 이벤트를 전부 합친 값 */
+function evAllOn(){return EVKEYS.filter(function(k){return evActive(k);}).join('+');}
+function evComboList(){var on=EVKEYS.filter(function(k){return evActive(k);});var out=[];
+ for(var m=1;m<(1<<on.length);m++){var ps=[];for(var i=0;i<on.length;i++)if(m&(1<<i))ps.push(on[i]);
+  out.push(ps.join('+'));}
+ out.sort(function(a,b){return _evPct('',a)-_evPct('',b);});return out;}
 function _termPct(){try{if(!document.getElementById('txTerm'))return 0;var e=TEXAM[_txK];if(!e)return 0;var t=e.tabs[_txTab];var ti=document.getElementById('txTerm');var ix=ti?parseInt(ti.value):0;var term=(t.terms||[])[ix];if(!term||!term[2]||!term[1])return 0;return (term[2]-term[1])/term[2];}catch(err){return 0;}}
-function _maxPct(subj){var best=0;['open','early','transfer'].forEach(function(v){var r=_evPct(subj,v);if(r>best)best=r;});var tp=(typeof TEXAM!=='undefined'&&TEXAM[subj]&&_txK===subj)?_termPct():0;return Math.floor(Math.round((1-(1-tp)*(1-best))*1000)/10);}
+function _maxPct(subj){var all=evAllOn();var ev=evRate(subj,all),lo=loyalRate(all);var tp=(typeof TEXAM!=='undefined'&&TEXAM[subj]&&_txK===subj)?_termPct():0;var bestBase=Math.max(tp,ev);return Math.round((1-(1-bestBase)*(1-lo))*1000)/10;}
 function discHint(subj){var pct=_maxPct(subj);
  return '<div class="dc-hint" onclick="discInfo(\''+subj+'\')"><span class="dc-ic">&#127881;</span>'
   +'<span class="dc-tx"><b>최대 '+pct+'% 할인</b><em>눌러서 확인해 보세요</em></span>'
@@ -2792,25 +2828,75 @@ function discHint(subj){var pct=_maxPct(subj);
 function discHintBox(subj){return '<div id="dcHintBox" style="grid-column:1/-1;width:100%">'+discHint(subj)+'</div>';}
 function discRefresh(subj){var box=document.getElementById('dcHintBox');if(box)box.innerHTML=discHint(subj);}
 function discClose(){var m=document.getElementById('diModal');if(m&&m.parentNode)m.parentNode.removeChild(m);}
+var _dpSel={};
+function discPick(subj){discClose();_dpSel={};
+ var cur=_discSel();evParts(cur?cur.value:'').forEach(function(k){if(evActive(k))_dpSel[k]=1;});
+ var d=document.createElement('div');d.className='sp-modal on';d.id='diModal';
+ d.innerHTML='<div class="di-sheet"><div class="di-head"><div class="di-x" onclick="discClose()">&#10005;</div>'
+  +'<h3>\uD83C\uDF89 할인 선택</h3><p>'+subj+' 기준 \u00b7 여러 개 함께 고르실 수 있어요</p></div>'
+  +'<div class="di-body"><div class="dp-list" id="dpList"></div>'
+  +'<div class="dp-sum" id="dpSum"></div>'
+  +'<div class="di-warn">\u26A0 오픈\u00b7환승 이벤트는 <b>2개월 결제 할인</b>과 중복되지 않습니다 (더 큰 쪽 자동 적용).<br>\u2b50 <b>재등록 얼리버드 8%</b>는 기존 수강생 전용이며, 위 할인가에 <b>추가로</b> 적용됩니다.</div>'
+  +'<div class="rsv-btns"><button class="rsv-back" onclick="discClose()">닫기</button>'
+  +'<button class="rsv-go" onclick="dpApply()">이 할인으로 적용 &rsaquo;</button></div>'
+  +'<div class="di-note">\u203B 환승 이벤트는 타 어학 수강 영수증 인증 후 확정됩니다.</div></div></div>';
+ document.body.appendChild(d);
+ d.addEventListener('click',function(ev){if(ev.target===d)discClose();});
+ dpDraw();}
+function dpDraw(){var L=document.getElementById('dpList');if(!L)return;
+ L.innerHTML=EVKEYS.map(function(k){var e=SGEV[k];var on=evActive(k);var pick=on&&_dpSel[k];
+  return '<button class="dp-o'+(pick?' sel':'')+(on?'':' off')+'" onclick="'+(on?('dpTog(\''+k+'\')'):('alert(\''+e.nm+' 기간이 아닙니다.\\n행사기간 '+evPeriod(k)+'\')'))+'">'
+   +'<span class="ck">'+(pick?'\u2714':'')+'</span>'
+   +'<span class="pc">'+Math.round(e.rate*100)+'%</span>'
+   +'<span class="tt"><b>'+e.nm+'</b><em>'+(on?e.dsc:'기간 아님 \u00b7 '+evPeriod(k))+'</em></span></button>';}).join('');
+ var tot=0;EVKEYS.forEach(function(k){if(_dpSel[k]&&evActive(k))tot+=SGEV[k].rate;});
+ tot=Math.round(tot*1000)/10;
+ var S=document.getElementById('dpSum');
+ if(S)S.innerHTML=tot?('합계 <b>'+tot+'%</b> 할인'):'선택하신 할인이 없습니다 (2개월 결제 할인가 적용)';}
+function dpTog(k){if(_dpSel[k])delete _dpSel[k];else _dpSel[k]=1;dpDraw();}
+function dpApply(){var ps=EVKEYS.filter(function(k){return _dpSel[k]&&evActive(k);});
+ discApply(ps.length?ps.join('+'):'0');}
+function discApply(v){var sel=_discSel();if(!sel){discClose();return;}
+ if(v!=='0'){var ctx=document.getElementById('exDisc')?'ex':'sp';
+  if(evParts(v).indexOf('transfer')>=0){var ok=ctx==='ex'?_exVerified:_spVerified;
+   if(!ok){_vfWant=v;discClose();openVerify(ctx);return;}}
+  if(!evGate(v,ctx))return;}
+ var has=false;for(var i=0;i<sel.options.length;i++)if(sel.options[i].value===v)has=true;
+ if(!has){var o=document.createElement('option');o.value=v;o.text=(v==='0'?'할인 없음':evLabel(v)+' \u2212'+Math.round(_evPct('',v)*1000)/10+'%');sel.appendChild(o);}
+ sel.value=v;_reprice();discClose();}
 function discInfo(subj){
  discClose();
  var tp=_termPct();
- var rows=[['open','오픈이벤트','전 과목 회원 오픈 기념 할인'],['early','글로벌 위크 얼리버드','1년에 한 번, 가장 큰 할인 주간'],['transfer','환승 이벤트','타 어학원·인강 수강 영수증 인증 시']];
+ var rows=EVKEYS.map(function(k){return [k,SGEV[k].nm,SGEV[k].dsc];});
  var html=rows.map(function(r){
    var e=SGEV[r[0]]||{};var on=evActive(r[0]);var pct=Math.round(_evPct(subj,r[0])*100);
-   var per=e.start?(e.start.slice(5).replace('-','.')+' ~ '+e.end.slice(5).replace('-','.')):'상시';
+   var per=evPeriod(r[0]);
    return '<div class="di-row'+(on?'':' off')+'"><div class="di-rate">'+pct+'%</div><div><div class="di-t">'+r[1]+'<span class="di-badge '+(on?'di-on">진행중':'di-off">기간 아님')+'</span></div><div class="di-d">'+r[2]+'<br>행사기간 '+per+'</div></div></div>';
  }).join('');
- if(tp>0)html+='<div class="di-row"><div class="di-rate">'+Math.round(tp*100)+'%</div><div><div class="di-t">2개월 결제 할인<span class="di-badge di-on">진행중</span></div><div class="di-d">2개월 한 번에 결제하시면 정가에서 바로 할인됩니다.</div></div></div>';
+ 
  var mx=_maxPct(subj);
  var d=document.createElement('div');d.className='sp-modal on';d.id='diModal';
- d.innerHTML='<div class="di-sheet"><div class="di-head"><div class="di-x" onclick="discClose()">&#10005;</div><h3>&#127881; 지금 받으실 수 있는 할인</h3><p>'+subj+' 기준 · 중복 적용 가능</p></div><div class="di-body">'+html+
-  '<div class="di-sum">다 합치면 최대 <b>'+mx+'%</b> 까지 할인됩니다.</div>'+
-  '<div class="rsv-btns"><button class="rsv-back" onclick="discClose()">닫기</button><button class="rsv-go" onclick="discClose()">할인 선택하러 가기</button></div>'+
+ d.innerHTML='<div class="di-sheet"><div class="di-head"><div class="di-x" onclick="discClose()">&#10005;</div><h3>&#127881; 지금 받으실 수 있는 할인</h3><p>'+subj+' 기준 · 이벤트끼리는 중복 가능</p></div><div class="di-body">'+html+
+  '<div class="di-sum">지금 받으실 수 있는 최대 <b>'+mx+'%</b> 할인입니다.</div>'+'<div class="di-warn">\u26A0 오픈\u00b7환승 이벤트는 <b>2개월 결제 할인</b>과 중복되지 않습니다 (더 큰 쪽 자동 적용).<br>\u2b50 <b>재등록 얼리버드 8%</b>는 기존 수강생 전용이며, 위 할인가에 <b>추가로</b> 적용됩니다.</div>'+
+  '<div class="rsv-btns"><button class="rsv-back" onclick="discClose()">닫기</button><button class="rsv-go" onclick="discPick(\''+subj+'\')">할인 선택하러 가기 &rsaquo;</button></div>'+
   '<div class="di-note">※ 이벤트 할인은 행사기간 내에만 적용됩니다. 환승 이벤트는 타 어학 수강 영수증 인증 후 확정됩니다. 표시 금액은 반 편성에 따라 달라질 수 있으며 최종 수강료는 상담 시 안내드립니다.</div></div></div>';
  document.body.appendChild(d);
  d.addEventListener('click',function(e){if(e.target===d)discClose();});
 }
+/* 이벤트 할인과 2개월 결제 할인은 중복 불가 — 손님에게 유리한 쪽 자동 적용 */
+function evCalc(base,list,d,lo){list=list||base;lo=lo||0;
+ var pick=base,note='';
+ if(d){var ev=Math.round(list*(1-d)/1000)*1000;
+  if(ev<=base){pick=ev;note='ev';}else{note='term';}}
+ if(lo){pick=Math.round(pick*(1-lo)/1000)*1000;note=note?(note+'+loyal'):'loyal';}
+ return {fin:pick,strike:(list>pick?list:0),note:note};}
+function discOpts(){var h='<option value="0">할인 없음 (2개월 결제 할인가)</option>';
+ var list=evComboList();
+ list.forEach(function(v){var pct=Math.round(_evPct('',v)*1000)/10;var best=(v===evAllOn()&&list.length>1);
+  h+='<option value="'+v+'">'+(best?'\u2B50 ':'')+evLabel(v)+' \u2212'+pct+'%</option>';});
+ EVKEYS.forEach(function(k){if(evActive(k))return;
+  h+='<option value="'+k+'" disabled>'+SGEV[k].nm+' \u2212'+Math.round(SGEV[k].rate*100)+'% (기간 아님 · '+evPeriod(k)+')</option>';});
+ return h;}
 function _discSel(){return document.getElementById('exDisc')||document.getElementById('spDisc');}
 function _reprice(){try{if(document.getElementById('txTerm'))txPrice();else if(document.getElementById('exTerm'))exPrice();else if(document.getElementById('spTerm'))spPrice();}catch(e){}}
 function _evBest(){if(evActive('early'))return 'early';if(evActive('open'))return 'open';return '';}
@@ -2877,8 +2963,8 @@ var EXAM={
 var TIMG={'KELLY':'eng_17','켈리':'eng_17','Deborah':'eng_6','데보라':'eng_6','미정':'','송윤정':'eng_13','엘리 킴':'elly','엘리킴':'elly','최자운':'eng_6','김현정':'eng_15','유미용':'eng_14','케이티':'eng_9','Kate':'eng_9','제롤린':'eng_11','Jerollyn':'eng_11','권미화':'eng_10','May':'eng_10','공미영':'eng_2','Olive':'eng_2','애플':'eng_5','Amy':'eng_1','구지영':'eng_7','김지현':'eng_3','박호임':'eng_4','황보준':'eng_12','히토시':'jpn_6','서정아':'jpn_7','모모코':'jpn_8','김연주':'jpn_4','김은영':'jpn_5','권은정':'jpn_1','김민정':'jpn_2','이형림':'jpn_11','아야코':'jpn_9','조미히로':'jpn_10','하홍금':'chn_5','오금한':'chn_3','현지인':'chn_7','노정아':'chn_1'};
 function timg(name){var k=(name||'').split(/[\u00b7\/]/)[0].trim();var im=TIMG[k];return im?'<img class="ex-face" src="img/teachers/'+im+'.png" alt="">':'';}
 function fmtWon(n){return n?n.toLocaleString()+'원':'상담';}
-function exParse(r){var m=(r.price||'').match(/1개월\s*([\d,]+)만/);_exM1=m?parseInt(m[1].replace(/,/g,''))*10000:0;var pp=parseInt((r.pay||'').replace(/[^\d]/g,''));_exM2=isNaN(pp)?0:pp;}
-function exPrice(){var tE=document.getElementById('exTerm');var t=tE?tE.value:'2';var base=t==='1'?_exM1:_exM2;var de=document.getElementById('exDisc');var v=de?de.value:'0';var d=evRate(_exSubj,v);var el=document.getElementById('spAmt');var pe=document.getElementById('exPer');if(!base){el.textContent='상담 문의';if(pe)pe.textContent='';return;}var fin=Math.round(base*(1-d)/1000)*1000;if(d>0){el.innerHTML='<s style="color:#b6bcc9;font-size:18px;font-weight:600">'+base.toLocaleString()+'</s> '+fin.toLocaleString()+'원';}else{el.textContent=base.toLocaleString()+'원';}if(pe)pe.textContent=(t==='1'?'1개월':'2개월 할인가')+(d>0?' · '+evLabel(v)+' '+Math.round(d*100)+'%':'');}
+function exParse(r){var m=(r.price||'').match(/1개월\s*([\d,]+)만/);_exM1=m?parseInt(m[1].replace(/,/g,''))*10000:0;var pp=parseInt((r.pay||'').replace(/[^\d]/g,''));_exM2=isNaN(pp)?0:pp;var lm=(r.price||'').match(/2개월\s*([\d,]+)만/);_exList=lm?parseInt(lm[1].replace(/,/g,''))*10000:0;if(_exList&&_exM2&&_exList<=_exM2)_exList=0;}
+function exPrice(){var tE=document.getElementById('exTerm');var t=tE?tE.value:'2';var base=t==='1'?_exM1:_exM2;var de=document.getElementById('exDisc');var v=de?de.value:'0';var d=evRate(_exSubj,v);var el=document.getElementById('spAmt');var pe=document.getElementById('exPer');if(!base){el.textContent='상담 문의';if(pe)pe.textContent='';return;}var lst=(t==='1')?0:(_exList||0);var R=evCalc(base,lst,d,loyalRate(v));var fin=R.fin;var strike=R.strike||(d>0?base:0);if(strike&&strike>fin){el.innerHTML='<s style="color:#b6bcc9;font-size:18px;font-weight:600">'+strike.toLocaleString()+'</s> '+fin.toLocaleString()+'원';}else{el.textContent=fin.toLocaleString()+'원';}var lb=(t==='1'?'1개월':'2개월 할인가');var lo2=loyalRate(v);if(d>0&&R.note.indexOf('ev')===0)lb+=' · 이벤트 '+Math.round(d*100)+'%';else if(d>0&&R.note.indexOf('term')===0)lb+=' · 2개월 결제 할인이 더 큼';if(lo2>0)lb+=' + 재등록 '+Math.round(lo2*100)+'%';if(pe)pe.textContent=lb;}
 function examPage(k){var e=EXAM[k]||EXAM['토익'];_spCalD=new Date(2026,9,1);_exRows=e.rows;_exSubj=k;_exVerified=false;
  var tabs=e.rows.map(function(r,i){return '<button class="sp-step'+(i===0?' on':'')+'" onclick="exSel('+i+')">'+r.n+'</button>';}).join('');
  var r0=e.rows[0];var im0=TIMG[(r0.tc||'').split(/[·\/]/)[0].trim()]||e.photo;_calWd=_wdays(r0.day);_calN=_calSess(r0.day);exParse(r0);
@@ -2890,7 +2976,7 @@ function examPage(k){var e=EXAM[k]||EXAM['토익'];_spCalD=new Date(2026,9,1);_e
   '</div><div class="sp-right">'+
   '<div class="sp-eye">'+(e.eye||'')+'</div><h2 class="sp-title">'+e.title+'</h2>'+
   '<div class="sp-steps">'+tabs+'</div>'+
-  '<div class="sp-form"><label>반 · 요일<input id="exD" readonly value="'+r0.day+'"></label><label>시간<input id="exTm" readonly value="'+r0.time+'"></label><label>기간 선택<select id="exTerm" onchange="exPrice()"><option value="1">1개월</option><option value="2" selected>2개월 (할인)</option></select></label><label>이벤트 할인<select id="exDisc" onchange="exDiscChange()"><option value="0">할인 없음</option><option value="open">오픈이벤트 −15% (전과목)</option><option value="early">글로벌위크 얼리버드 −20~25%</option><option value="transfer">환승이벤트 −20~25% (영수증 인증)</option></select></label>'+discHintBox(k)+'</div>'+
+  '<div class="sp-form"><label>반 · 요일<input id="exD" readonly value="'+r0.day+'"></label><label>시간<input id="exTm" readonly value="'+r0.time+'"></label><label>기간 선택<select id="exTerm" onchange="exPrice()"><option value="1">1개월</option><option value="2" selected>2개월 (할인)</option></select></label><label>이벤트 할인<select id="exDisc" onchange="exDiscChange()">'+discOpts()+'</select></label>'+discHintBox(k)+'</div>'+
   '<div class="sp-cal-wrap"><div class="sp-cal-label">수업일 확인 (선택 반 기준)</div><div id="spCal">'+calHTML(_spCalD,_calWd)+'</div></div>'+
   '<div class="sp-price"><span>수강료</span><b id="spAmt">'+fmtWon(_exM2)+'</b><em id="exPer">2개월 할인가</em></div>'+
   '<div class="sp-btns"><button class="sp-cart" onclick="alert(\'장바구니에 담았습니다.\')">🛒 장바구니</button><button class="sp-buy" onclick="spBuyAmt(document.getElementById(\'spAmt\').innerHTML)">수강신청</button></div>'+
@@ -2902,10 +2988,9 @@ function openBuy(k){if(k==='영어회화'){openStep(k);}else{openExam(k);}}
 var _txK='토익',_txTab=0;
 var TEXAM={
  '토익':{eye:'점수로 증명하는 토익',title:'토익 — 왕초보부터 950 만점까지<br>STEP별 목표달성반',tabs:[
-   {n:'\uD83D\uDD25 무한수강권 1 · 800점 완성',teach:'유미용 · 엘리 킴',photos:['eng_14','elly'],day:['월·수','화·목','토요일'],times:['6개월 무제한 · 시간만 내면 아래 3개 반 전부 수강'],sched:[['왕기초 토익 문법','토요일','10:00~13:00','최자운 (Deborah)'],['정규 초급 (기출입문서)','월·수','19:30~21:30','엘리 킴'],['정규 중급 (기출종합서)','화·목','19:30~21:30','엘리 킴']],ben:['위 <b>3개 반 전부</b>를 6개월 동안 <b>횟수 제한 없이</b> 수강','시간표에 있는 어떤 반이든 <b>시간만 내면 다 들으실 수 있습니다</b>','목표 <b>850점 이상</b> · 현강으로 끝까지 관리','<b>한 달 15만원 꼴</b>로 토익 현강을 무제한 (6개월 90만원)','\u26A0 이벤트 할인은 중복 적용되지 않습니다 — 이미 최저가입니다'],nodisc:1,terms:[['무한수강권 1 · 6개월 무제한',900000]]},
+   {n:'\uD83D\uDD25 무한수강권 1 · 800점 완성',teach:'엘리 킴 · 최자운 (Deborah)',photos:['elly','eng_6'],day:['월·수','화·목','토요일'],times:['6개월 무제한 · 시간만 내면 아래 3개 반 전부 수강'],sched:[['왕기초 토익 문법','토요일','10:00~13:00','최자운 (Deborah)'],['정규 초급 (기출입문서)','월·수','19:30~21:30','엘리 킴'],['정규 중급 (기출종합서)','화·목','19:30~21:30','엘리 킴']],ben:['위 <b>3개 반 전부</b>를 6개월 동안 <b>횟수 제한 없이</b> 수강','시간표에 있는 어떤 반이든 <b>시간만 내면 다 들으실 수 있습니다</b>','목표 <b>850점 이상</b> · 현강으로 끝까지 관리','<b>한 달 15만원 꼴</b>로 토익 현강을 무제한 (6개월 90만원)','\u26A0 이벤트 할인은 중복 적용되지 않습니다 — 이미 최저가입니다'],nodisc:1,terms:[['무한수강권 1 · 6개월 무제한',900000]]},
    {n:'\uD83D\uDD25 무한수강권 2 · 950점 완성',teach:'송윤정 · 엘리 킴',photos:['eng_13','elly'],day:['월·수','화·목','토요일'],times:['무제한 · 정규 초급 + 정규 중급 + 토익 실전반'],sched:[['정규 초급 (기출입문서)','월·수','19:30~21:30','엘리 킴'],['정규 중급 (기출종합서)','화·목','19:30~21:30','엘리 킴'],['실전반 (ETS 1000제)','토요일','10:00~13:00','송윤정']],ben:['위 <b>3개 반 전부</b>를 <b>횟수 제한 없이</b> 수강','시간표에 있는 어떤 반이든 <b>시간만 내면 다 들으실 수 있습니다</b>','목표 <b>950점</b> · 실전 문제풀이까지 한 번에','정가 126만원 → <b>90만원</b>','\u26A0 이벤트 할인은 중복 적용되지 않습니다 — 이미 최저가입니다'],nodisc:1,terms:[['무한수강권 2 · 3개 반 무제한',900000,1260000]]},
-   {n:'왕기초 토익 일대일 (B코스)',teach:'유미용 · 엘리 킴',photos:['eng_14','elly'],day:['상담 후 배정 (요일 자유)'],times:['1:1 20시간 · 회당 60~90분 · 시간 자유 배정'],ben:['<b>1:1 강의 20시간</b> + 학습관리 (기초문법 정리 · 필수어휘 암기관리)','<b>정규반 2개월 또는 스파르타 1개월 무료</b> — 42만원 상당','교재 2권 (초급토익) 포함','인강·학원 토익으로 효과를 못 보신 분 대상','최초 1회 한정 · 재등록 불가'],terms:[['1:1 20시간 패키지 (정규반 무료 포함)',1190000,1650000]]},
-   {n:'왕기초 패키지 (그룹)',teach:'유미용 · 엘리 킴',photos:['eng_14','elly'],day:['월·수'],times:['상담 후 배정 (왕기초 2개월 → 초급정규 2개월)'],ben:['왕기초 2개월 + 초급정규 2개월 연속 과정','그룹 수업 · 주 2회','상담 후 레벨에 맞춰 배정'],terms:[['왕기초 2개월 + 초급정규 2개월',640000,840000]]},
+   {n:'왕기초 토익 일대일 (B코스)',teach:'송윤정 · 최자운 (Deborah)',photos:['eng_13','eng_6'],day:['상담 후 배정 (요일 자유)'],times:['1:1 20시간 · 회당 60~90분 · 시간 자유 배정'],ben:['<b>1:1 강의 20시간</b> + 학습관리 (기초문법 정리 · 필수어휘 암기관리)','<b>정규반 2개월 또는 스파르타 1개월 무료</b> — 42만원 상당','교재 2권 (초급토익) 포함','인강·학원 토익으로 효과를 못 보신 분 대상','최초 1회 한정 · 재등록 불가'],terms:[['1:1 20시간 패키지 (정규반 무료 포함)',1190000,1650000]]},
    {n:'스파르타 중급 (매일반)',teach:'송윤정',photo:'eng_13',day:'월~금',times:['10:00~12:00 (2시간) · 송윤정 (월~금) · 4강의실 · 주 5회'],terms:[['1개월 스파르타 · 18회',420000],['2개월 스파르타 · 36회 (2개월 결제 할인)',640000,840000]]},
    {n:'스파르타 초급 (매일반)',teach:'송윤정',photo:'eng_13',day:'월~금',times:['12:10~14:10 (2시간) · 송윤정 (월~금) · 4강의실 · 주 5회'],terms:[['1개월 스파르타 · 18회',420000],['2개월 스파르타 · 36회 (2개월 결제 할인)',640000,840000]]},
    {n:'정규 초급 (기출입문서)',teach:'엘리 킴',photo:'elly',day:['월·수'],times:['19:30~21:30 (120분) · 엘리킴 (월·수) · 4강의실 · 주 2회'],terms:[['1개월 · 8회',210000],['2개월 · 16회 (2개월 결제 할인)',390000,420000]]},
@@ -2917,8 +3002,6 @@ var TEXAM={
    {n:'실전반 (토요 집중)',teach:'최자운 (Deborah) · 유미용',photos:['eng_6','eng_14'],day:['토요일'],times:['10:00~13:00 · 최자운 (토) · 6강의실 · ETS 토스기출단기공략'],terms:[['1개월 · 4회',210000],['2개월 · 8회 (2개월 결제 할인)',390000,420000]]}
  ]},
  '오픽':{eye:'실전 발화 중심 오픽',title:'오픽(OPIc)<br>등급별 목표달성반',tabs:[
-   {n:'새벽반 06:30 (STEP 2 진행중)',teach:'김현정 · 유미용',photos:['eng_15','eng_14'],day:['월~금'],times:['06:30~07:30 (60분) · 김현정 (월~금) · 현재 STEP 2 진행중'],ben:['출근 전 매일 1시간 · 주 5회','현재 STEP 2 진행중 — 중도 합류는 상담 후 배정'],terms:[['1개월 · 주 5회',210000],['2개월 · 주 5회 (2개월 결제 할인)',390000,420000]]},
-   {n:'새벽반 07:30 (모집중)',teach:'김현정 · 유미용',photos:['eng_15','eng_14'],day:['월~금'],times:['07:30~08:30 (60분) · 김현정 (월~금) · 회원 모집중'],ben:['출근 전 매일 1시간 · 주 5회','<b>신규 개강 · 회원 모집중</b> — 지금 등록하면 STEP 1부터'],terms:[['1개월 · 주 5회',210000],['2개월 · 주 5회 (2개월 결제 할인)',390000,420000]]},
    {n:'실전반 (토요 집중)',teach:'김현정 · 유미용',photos:['eng_15','eng_14'],day:['토요일'],times:['10:00~13:00 · 김현정 (토) · 7강의실 · 파고다 오픽의신'],terms:[['1개월 · 4회',210000],['2개월 · 8회 (2개월 결제 할인)',390000,420000]]}
  ]},
  '토플':{status:'개설중 · 회원 모집중',eye:'TOEFL · 유학·교환학생 대비',title:'토플(TOEFL)<br>토요 집중반 개설중',tabs:[
@@ -2953,7 +3036,7 @@ function examStepPage(k){var e=TEXAM[k];_txK=k;_txTab=0;_exVerified=false;_spCal
     '<label>반 · 요일 선택<select id="txDay" onchange="txDayChg()"></select></label>'+
     '<label>시간 선택<select id="txTime"></select></label>'+
     '<label>기간 선택<select id="txTerm" onchange="txPrice()"></select></label>'+
-    '<label>이벤트 할인<select id="exDisc" onchange="txDiscChange()"><option value="0">할인 없음</option><option value="open">오픈이벤트 −15% (전과목)</option><option value="early">글로벌위크 얼리버드 −20~25%</option><option value="transfer">환승이벤트 −20~25% (영수증 인증)</option></select></label>'+discHintBox(k)+
+    '<label>이벤트 할인<select id="exDisc" onchange="txDiscChange()">'+discOpts()+'</select></label>'+discHintBox(k)+
   '</div>'+
   '<div class="sp-cal-wrap"><div class="sp-cal-label">수업일 확인 (선택 반 기준)</div><div id="spCal">'+calHTML(_spCalD,_calWd)+'</div></div>'+
   '<div class="sp-price"><span>수강료</span><b id="spAmt">-</b><em id="spPer"></em></div>'+
@@ -2987,7 +3070,7 @@ function txTab(i){_txTab=i;var e=TEXAM[_txK];var t=e.tabs[i];var ss=document.que
  var hb=document.getElementById('dcHintBox');if(hb)hb.innerHTML=t.nodisc?_noDiscHTML():discHint(_txK);
  _calWd=_wdays(days[0].replace(' (개강)',''));_calN=_calSess(days[0]);spRenderCal();txPrice();}
 function txDayChg(){var dv=document.getElementById('txDay');var d=dv?dv.value.replace(' (개강)',''):'';_calWd=_wdays(d);_calN=_calSess(d);spRenderCal();}
-function txPrice(){var e=TEXAM[_txK];var t=e.tabs[_txTab];var ti=document.getElementById('txTerm');var ix=ti?parseInt(ti.value):0;var term=(t.terms||[])[ix]||['',0];var base=term[1]||0;var de=document.getElementById('exDisc');var v=de?de.value:'0';if(t.nodisc)v='0';var d=evRate(_txK,v);var a=document.getElementById('spAmt');var pe=document.getElementById('spPer');if(!base){a.textContent='상담 문의';if(pe)pe.textContent=term[0];var nt0=document.getElementById('spDiscNote');if(nt0)nt0.textContent='';return;}var fin=Math.round(base*(1-d)/1000)*1000;var list=term[2]||0;var strike=(list&&list>fin)?list:(d>0?base:0);if(strike&&strike>fin){a.innerHTML='<s style="color:#b6bcc9;font-size:18px;font-weight:600">'+strike.toLocaleString()+'</s> '+fin.toLocaleString()+'원';}else{a.textContent=fin.toLocaleString()+'원';}if(pe)pe.textContent=term[0]+(d>0?' · '+evLabel(v)+' '+Math.round(d*100)+'%':'');try{if(!t.nodisc)discRefresh(_txK);}catch(_e){}var nt=document.getElementById('spDiscNote');var msgs=[];if(list&&list>base)msgs.push('※ 정가 '+list.toLocaleString()+'원 · 2개월 결제 시 '+(list-base).toLocaleString()+'원 할인');if(v==='transfer')msgs.push('※ 환승 이벤트는 타 어학 수강 영수증 인증 후 적용됩니다.');if(nt)nt.textContent=msgs.join('  ');}
+function txPrice(){var e=TEXAM[_txK];var t=e.tabs[_txTab];var ti=document.getElementById('txTerm');var ix=ti?parseInt(ti.value):0;var term=(t.terms||[])[ix]||['',0];var base=term[1]||0;var de=document.getElementById('exDisc');var v=de?de.value:'0';if(t.nodisc)v='0';var d=evRate(_txK,v);var a=document.getElementById('spAmt');var pe=document.getElementById('spPer');if(!base){a.textContent='상담 문의';if(pe)pe.textContent=term[0];var nt0=document.getElementById('spDiscNote');if(nt0)nt0.textContent='';return;}var list=term[2]||0;var R=evCalc(base,list,d,t.nodisc?0:loyalRate(v));var fin=R.fin,strike=R.strike;if(strike&&strike>fin){a.innerHTML='<s style="color:#b6bcc9;font-size:18px;font-weight:600">'+strike.toLocaleString()+'</s> '+fin.toLocaleString()+'원';}else{a.textContent=fin.toLocaleString()+'원';}var lbl=term[0];var lo=t.nodisc?0:loyalRate(v);if(d>0&&R.note.indexOf('ev')===0)lbl+=' · '+evLabel(v.split('+').filter(function(x){return !(SGEV[x]||{}).loyal;}).join('+'))+' '+Math.round(d*100)+'%';else if(d>0&&R.note.indexOf('term')===0)lbl+=' · 2개월 결제 할인이 더 큼';if(lo>0)lbl+=' + 재등록 '+Math.round(lo*100)+'%';if(pe)pe.textContent=lbl;try{if(!t.nodisc)discRefresh(_txK);}catch(_e){}var nt=document.getElementById('spDiscNote');var msgs=[];if(list&&list>base)msgs.push('※ 정가 '+list.toLocaleString()+'원 · 2개월 결제 시 '+(list-base).toLocaleString()+'원 할인('+(Math.round((list-base)/list*1000)/10)+'%)');msgs.push('※ 이벤트 할인과 2개월 결제 할인은 중복되지 않으며, 더 큰 할인이 자동 적용됩니다.');if(d>0&&R.note==='term')msgs.push('※ 선택하신 이벤트 할인보다 2개월 결제 할인이 더 커서 그대로 적용했습니다.');if(v==='transfer'||v==='both')msgs.push('※ 환승 이벤트는 타 어학 수강 영수증 인증 후 확정됩니다.');if(nt)nt.textContent=msgs.join('  ');}
 function txDiscChange(){var de=document.getElementById('exDisc');var t=_txCur();
  if(t&&t.nodisc){de.value='0';ndInfo();txPrice();return;}
  if(!evGate(de.value,'ex')){de.value='0';}txPrice();}
