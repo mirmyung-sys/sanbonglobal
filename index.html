@@ -770,6 +770,48 @@ header nav a{letter-spacing:-.01em}
 .ev-go:hover{background:#a8151f}
 .ev-skip{background:#fff;color:#8a8f99;border:1.5px solid #dfe3ec;border-radius:10px;padding:13px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit}
 .ev-skip:hover{color:#4a5568;border-color:#c9cfdc}
+.rsv-sheet{background:#fff;width:min(520px,94vw);max-height:92vh;overflow-y:auto;border-radius:18px;position:relative}
+.rsv-head{background:linear-gradient(135deg,#14213d,#25396b);color:#fff;padding:22px 24px 20px;position:sticky;top:0;z-index:2}
+.rsv-head h3{margin:0;font-size:20px;font-weight:900;letter-spacing:-.02em}
+.rsv-head p{margin:6px 0 0;font-size:13px;color:#b9c4dc}
+.rsv-x{position:absolute;top:16px;right:18px;font-size:22px;color:#fff;cursor:pointer;opacity:.75;line-height:1}
+.rsv-x:hover{opacity:1}
+.rsv-steps{display:flex;gap:6px;margin-top:16px}
+.rsv-steps i{flex:1;height:4px;border-radius:99px;background:rgba(255,255,255,.22)}
+.rsv-steps i.on{background:#F7CF5B}
+.rsv-body{padding:22px 24px 26px}
+.rsv-q{font-size:15px;font-weight:900;color:#1a2130;margin:0 0 14px}
+.rsv-ways{display:grid;gap:10px}
+.rsv-way{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1.5px solid #dfe3ec;background:#fff;border-radius:14px;padding:15px 16px;cursor:pointer;font-family:inherit;transition:.15s}
+.rsv-way:hover{border-color:#0e8a5a;background:#f5fbf8;transform:translateY(-1px)}
+.rsv-way .ic{font-size:26px;width:34px;text-align:center;flex:none}
+.rsv-way b{display:block;font-size:15px;color:#1a2130;font-weight:900}
+.rsv-way span{display:block;font-size:12.5px;color:#7a8397;margin-top:3px}
+.rsv-way .tag{margin-left:auto;font-size:11px;font-weight:900;color:#0e8a5a;background:#e3f5ec;border-radius:99px;padding:4px 9px;flex:none}
+.rsv-f{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rsv-f label{display:flex;flex-direction:column;gap:6px;font-size:12.5px;font-weight:800;color:#5a6478}
+.rsv-f label.full{grid-column:1/-1}
+.rsv-f input,.rsv-f select{font-family:inherit;font-size:14px;color:#1a2130;border:1.5px solid #dfe3ec;border-radius:10px;padding:12px;background:#fff;width:100%}
+.rsv-f input:focus,.rsv-f select:focus{outline:none;border-color:#0e8a5a}
+.rsv-chk{grid-column:1/-1;display:flex;gap:9px;align-items:flex-start;font-size:13px;color:#5a6478;font-weight:700;background:#f7f8fa;border-radius:10px;padding:12px 14px}
+.rsv-chk input{width:auto;margin-top:2px}
+.rsv-err{grid-column:1/-1;color:#c81f2b;font-size:13px;font-weight:800;display:none}
+.rsv-err.on{display:block}
+.rsv-btns{display:flex;gap:8px;margin-top:18px}
+.rsv-go{flex:1;background:#0e8a5a;color:#fff;border:0;border-radius:12px;padding:15px;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit}
+.rsv-go:hover{background:#0a7048}
+.rsv-back{background:#fff;color:#7a8397;border:1.5px solid #dfe3ec;border-radius:12px;padding:15px 20px;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit}
+.rsv-sum{background:#f7f8fa;border-radius:12px;padding:16px 18px;font-size:14px;line-height:2;color:#1a2130}
+.rsv-sum b{display:inline-block;width:82px;color:#7a8397;font-weight:800;font-size:12.5px}
+.rsv-send{display:grid;gap:9px;margin-top:16px}
+.rsv-send a,.rsv-send button{display:flex;align-items:center;gap:11px;border-radius:12px;padding:14px 16px;font-size:14.5px;font-weight:900;text-decoration:none;cursor:pointer;border:0;font-family:inherit}
+.rsv-sms{background:#14213d;color:#fff}
+.rsv-kko{background:#FEE500;color:#191600}
+.rsv-tel{background:#fff;color:#14213d;border:1.5px solid #dfe3ec!important}
+.rsv-note{font-size:12.5px;color:#8a8f99;line-height:1.75;margin-top:14px}
+.rsv-ok{text-align:center;padding:6px 0 2px}
+.rsv-ok .big{font-size:40px}
+@media(max-width:520px){.rsv-f{grid-template-columns:1fr}}
 .sp-x{position:absolute;top:12px;right:14px;color:#fff;font-size:20px;cursor:pointer}
 @media(max-width:760px){.sp-top{grid-template-columns:1fr}}
 .sp-cal-wrap{margin-top:14px;border-top:1px solid #eef0f4;padding-top:14px}
@@ -1783,7 +1825,83 @@ function shareMini(){return '<div class="sharebar2"><div class="sb2-top"><span c
 '<a class="sb2-ic i-ig" href="#" target="_blank" rel="noopener">◎</a>'+
 '<a class="sb2-ic i-kk" href="http://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener">T</a>'+
 '</div></div>';}
-function CTA(){return '<a class="pgcta" href="#" onclick="alert(\'상담 예약\\n전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원\');return false;">무료 상담 예약하기 ›</a>'+shareMini();}
+var RSV={way:'',wayLabel:'',name:'',tel:'',subj:'',date:'',time:'',level:'',lt:true};
+var RSV_TEL='031-466-6969', RSV_TEL_RAW='0314666969';
+function rsvClose(){var m=document.getElementById('rsvModal');if(m&&m.parentNode)m.parentNode.removeChild(m);}
+function rsvOpen(subj){
+ rsvClose();
+ RSV={way:'',wayLabel:'',name:'',tel:'',subj:subj||'',date:'',time:'',level:'',lt:true};
+ var d=document.createElement('div');d.className='sp-modal on';d.id='rsvModal';
+ d.innerHTML='<div class="rsv-sheet"><div class="rsv-head"><div class="rsv-x" onclick="rsvClose()">&#10005;</div><h3>무료 상담 예약</h3><p>상담·레벨테스트 모두 무료입니다. 30초면 끝나요.</p><div class="rsv-steps"><i id="rsvS1" class="on"></i><i id="rsvS2"></i><i id="rsvS3"></i></div></div><div class="rsv-body" id="rsvBody"></div></div>';
+ document.body.appendChild(d);
+ d.addEventListener('click',function(e){if(e.target===d)rsvClose();});
+ rsvStep1();
+}
+function _rsvMark(n){for(var i=1;i<=3;i++){var e=document.getElementById('rsvS'+i);if(e)e.className=(i<=n?'on':'');}}
+function rsvStep1(){
+ _rsvMark(1);
+ document.getElementById('rsvBody').innerHTML=
+ '<p class="rsv-q">어떤 방법으로 상담받으시겠어요?</p><div class="rsv-ways">'+
+ '<a class="rsv-way" href="tel:'+RSV_TEL_RAW+'"><span class="ic">&#128222;</span><span><b>지금 바로 전화</b><span>'+RSV_TEL+' · 평일 09:30~21:30</span></span><span class="tag">가장 빠름</span></a>'+
+ '<button class="rsv-way" onclick="rsvPick(\'visit\',\'방문 상담\')"><span class="ic">&#127979;</span><span><b>방문 상담 예약</b><span>레벨테스트 + 반 추천까지 한 번에 (약 40분)</span></span><span class="tag">추천</span></button>'+
+ '<button class="rsv-way" onclick="rsvPick(\'call\',\'전화 상담 예약\')"><span class="ic">&#128198;</span><span><b>전화 상담 예약</b><span>원하는 시간에 저희가 전화드립니다</span></span></button>'+
+ '<button class="rsv-way" onclick="rsvPick(\'kakao\',\'카카오톡 상담\')"><span class="ic">&#128172;</span><span><b>카카오톡으로 문의</b><span>편한 시간에 채팅으로</span></span></button>'+
+ '</div><p class="rsv-note">전화가 어려우시면 예약을 남겨주세요. 영업시간 내에 순서대로 연락드립니다.</p>';
+}
+function rsvPick(way,label){RSV.way=way;RSV.wayLabel=label;rsvStep2();}
+function _rsvToday(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
+function rsvStep2(){
+ _rsvMark(2);
+ var SUBJ=['토익','토익스피킹(토스)','오픽','토플','영어회화','일본어 / JLPT','중국어 / HSK','유학·외고 준비','1:1 / 기업출강','아직 모르겠어요'];
+ var TIME=['오전 (10:00~13:00)','오후 (13:00~18:00)','저녁 (18:00~21:30)','새벽 (06:30~08:30)','아무 때나 괜찮아요'];
+ var LV=['완전 처음이에요','기초는 있어요','중급 정도','상급','잘 모르겠어요'];
+ var opt=function(a,sel){return a.map(function(x){return '<option'+(x===sel?' selected':'')+'>'+x+'</option>';}).join('');};
+ document.getElementById('rsvBody').innerHTML=
+ '<p class="rsv-q">'+RSV.wayLabel+' — 예약 정보를 남겨주세요</p><div class="rsv-f">'+
+ '<label>이름<input id="rsvName" type="text" placeholder="홍길동" value="'+RSV.name+'"></label>'+
+ '<label>연락처<input id="rsvTel" type="tel" inputmode="numeric" placeholder="010-0000-0000" value="'+RSV.tel+'"></label>'+
+ '<label class="full">관심 과목<select id="rsvSubj">'+opt(SUBJ,RSV.subj)+'</select></label>'+
+ '<label>희망 날짜<input id="rsvDate" type="date" min="'+_rsvToday()+'" value="'+RSV.date+'"></label>'+
+ '<label>희망 시간대<select id="rsvTime">'+opt(TIME,RSV.time)+'</select></label>'+
+ '<label class="full">현재 수준<select id="rsvLevel">'+opt(LV,RSV.level)+'</select></label>'+
+ '<label class="rsv-chk" for="rsvLt"><input id="rsvLt" type="checkbox"'+(RSV.lt?' checked':'')+'><span>무료 레벨테스트도 같이 받을게요 <b style="color:#0e8a5a">(권장 · 약 40분, 결과지 드립니다)</b></span></label>'+
+ '<div class="rsv-err" id="rsvErr"></div>'+
+ '</div><div class="rsv-btns"><button class="rsv-back" onclick="rsvStep1()">이전</button><button class="rsv-go" onclick="rsvSubmit()">예약 내용 확인 &rsaquo;</button></div>';
+}
+function rsvSubmit(){
+ var g=function(id){var e=document.getElementById(id);return e?e.value.trim():'';};
+ RSV.name=g('rsvName');RSV.tel=g('rsvTel');RSV.subj=g('rsvSubj');RSV.date=g('rsvDate');RSV.time=g('rsvTime');RSV.level=g('rsvLevel');
+ RSV.lt=document.getElementById('rsvLt').checked;
+ var err=document.getElementById('rsvErr');
+ if(!RSV.name){err.textContent='이름을 입력해 주세요.';err.className='rsv-err on';return;}
+ if(RSV.tel.replace(/[^0-9]/g,'').length<9){err.textContent='연락처를 정확히 입력해 주세요.';err.className='rsv-err on';return;}
+ err.className='rsv-err';rsvStep3();
+}
+function _rsvText(){
+ var L=['[산본글로벌어학원 무료상담 예약]','· 상담방법: '+RSV.wayLabel,'· 이름: '+RSV.name,'· 연락처: '+RSV.tel,'· 관심과목: '+RSV.subj,'· 희망일: '+(RSV.date||'협의'),'· 희망시간: '+RSV.time,'· 현재수준: '+RSV.level,'· 레벨테스트: '+(RSV.lt?'같이 받겠습니다':'상담만 받겠습니다')];
+ return L.join('\n');
+}
+function rsvCopy(){
+ var t=_rsvText();
+ var done=function(){alert('예약 내용이 복사되었습니다.\n카카오톡에서 [산본글로벌어학원] 채널을 검색해 붙여넣기 해주세요.');};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){window.prompt('아래 내용을 복사해 카카오톡 채널로 보내주세요.',t);});}
+ else{window.prompt('아래 내용을 복사해 카카오톡 채널로 보내주세요.',t);}
+}
+function rsvStep3(){
+ _rsvMark(3);
+ var body=encodeURIComponent(_rsvText());
+ document.getElementById('rsvBody').innerHTML=
+ '<div class="rsv-ok"><div class="big">&#128203;</div><p class="rsv-q" style="margin:8px 0 14px">예약 내용을 확인하고 보내주세요</p></div>'+
+ '<div class="rsv-sum"><div><b>상담방법</b>'+RSV.wayLabel+'</div><div><b>이름</b>'+RSV.name+'</div><div><b>연락처</b>'+RSV.tel+'</div><div><b>관심과목</b>'+RSV.subj+'</div><div><b>희망일시</b>'+(RSV.date||'협의')+' · '+RSV.time+'</div><div><b>현재수준</b>'+RSV.level+'</div><div><b>레벨테스트</b>'+(RSV.lt?'같이 받기':'상담만')+'</div></div>'+
+ '<div class="rsv-send">'+
+ '<a class="rsv-sms" href="sms:'+RSV_TEL_RAW+'?body='+body+'"><span>&#128172;</span><span>문자로 예약 보내기 (가장 확실)</span></a>'+
+ '<button class="rsv-kko" onclick="rsvCopy()"><span>&#128172;</span><span>카카오톡으로 보내기 (내용 복사)</span></button>'+
+ '<a class="rsv-tel" href="tel:'+RSV_TEL_RAW+'"><span>&#128222;</span><span>바로 전화하기 '+RSV_TEL+'</span></a>'+
+ '</div>'+
+ '<div class="rsv-btns"><button class="rsv-back" onclick="rsvStep2()">수정하기</button><button class="rsv-go" onclick="rsvClose()">닫기</button></div>'+
+ '<p class="rsv-note">※ 접수 후 영업시간 내에 담당자가 연락드려 일정을 확정합니다. 예약 없이 방문하셔도 상담 가능하지만, 상담이 겹치면 기다리실 수 있습니다.</p>';
+}
+function CTA(){return '<a class="pgcta" href="#" onclick="rsvOpen();return false;">무료 상담 예약하기 ›</a>'+shareMini();}
 function copyURL(btn){var u=(location.href||'').split('#')[0].split('?')[0];try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(function(){toastCopy();},function(){window.prompt('아래 주소를 복사하세요',u);});}else{window.prompt('아래 주소를 복사하세요',u);}}catch(e){window.prompt('아래 주소를 복사하세요',u);}}
 function toastCopy(){var t=document.createElement('div');t.textContent='링크가 복사되었습니다 ✓';t.style.cssText='position:fixed;left:50%;bottom:42px;transform:translateX(-50%);background:#1D2D4F;color:#fff;padding:12px 24px;border-radius:30px;font-size:14px;font-weight:800;z-index:99999;box-shadow:0 12px 34px rgba(0,0,0,.32)';document.body.appendChild(t);setTimeout(function(){t.style.transition='opacity .4s';t.style.opacity='0';},1400);setTimeout(function(){t.remove();},1900);}
 function SEC(t,h){return '<div class="sec"><h3>'+t+'</h3>'+h+'</div>';}
