@@ -545,11 +545,28 @@ section{scroll-margin-top:130px}
 .hdots i.on{background:#fff;width:24px;border-radius:6px}
 /* 퀵 링크 바 */
 .quickbar{background:#fff;border-bottom:1px solid var(--line)}
-.quickbar .wrap{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;padding:20px 24px}
-.qcard{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 8px;border:1px solid var(--line);border-radius:14px;font-weight:800;font-size:14px;color:var(--red);transition:.2s;cursor:pointer;background:#fff}
+/* 퀵바 아래 학원 채널 한 줄 — 아래 '친구에게 공유하기'와 같은 아이콘, 크기만 작게 */
+.qsns{display:flex;justify-content:center;align-items:flex-start;gap:clamp(14px,3vw,34px);
+ padding:2px 20px 20px;flex-wrap:nowrap}
+.qs{display:flex;flex-direction:column;align-items:center;gap:7px;text-decoration:none;
+ background:none;border:0;cursor:pointer;padding:0;font-family:inherit}
+.qs .ic{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+ color:#fff;font-weight:900;font-size:13px;letter-spacing:-.02em;box-shadow:0 8px 18px rgba(0,0,0,.14);transition:transform .2s}
+.qs:hover .ic{transform:translateY(-4px)}
+.qs em{font-size:12px;color:#3f4757;font-style:normal;font-weight:700;white-space:nowrap}
+.qs .ic-fb{font-size:20px}.qs .ic-yt{font-size:12px}.qs .ic-url{font-size:17px}
+@media(max-width:860px){
+ .qsns{gap:0;justify-content:space-between;padding:2px 12px 16px}
+ .qs .ic{width:40px;height:40px;font-size:11.5px}
+ .qs em{font-size:10.5px}}
+@media(max-width:380px){.qs .ic{width:36px;height:36px;font-size:10.5px}.qs em{font-size:9.5px}}
+/* 2026-08-30 — 수강신청부터 오시는 길까지 일곱 칸을 한 줄에 놓습니다.
+   여섯 칸이라 '오시는 길'만 아래로 떨어졌습니다. 글씨를 조금 줄여 한 줄에 담았습니다. */
+.quickbar .wrap{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;padding:18px 20px}
+.qcard{display:flex;flex-direction:column;align-items:center;gap:7px;padding:14px 5px;border:1px solid var(--line);border-radius:14px;font-weight:800;font-size:13.5px;color:var(--red);transition:.2s;cursor:pointer;background:#fff;white-space:nowrap;letter-spacing:-.02em}
 .qcard:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(20,33,61,.1);border-color:var(--gold)}
 .qcard .qi{font-size:26px;color:var(--red);display:inline-flex}
-.qcard .qi svg{width:27px;height:27px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;display:block}
+.qcard .qi svg{width:25px;height:25px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;display:block}
 .qcard:hover .qi{color:var(--gold-dk)}
 /* 퀵메뉴 6칸 — 칸마다 고유색 */
 .quickbar .wrap>.qcard{--qc:#c81f2b;color:var(--qc);border:1.5px solid color-mix(in srgb,var(--qc) 34%,#fff);background:linear-gradient(180deg,#fff,color-mix(in srgb,var(--qc) 7%,#fff))}
@@ -562,7 +579,14 @@ section{scroll-margin-top:130px}
 .quickbar .wrap>.qcard:nth-child(4){--qc:#0e8a5a}
 .quickbar .wrap>.qcard:nth-child(5){--qc:#7658c8}
 .quickbar .wrap>.qcard:nth-child(6){--qc:#1c6070}
-@media(max-width:860px){.hero{height:380px}.hs-title{font-size:31px}.hs-sub{font-size:14px}.hs-deco{font-size:92px;right:-6px;opacity:.55}.hs-wrap{padding:0 22px}.quickbar .wrap{grid-template-columns:repeat(3,1fr)}}
+.quickbar .wrap>.qcard:nth-child(7){--qc:#b06a1e}
+@media(max-width:1180px){.qcard{font-size:12.5px;padding:13px 3px}.qcard .qi svg{width:23px;height:23px}.quickbar .wrap{gap:8px;padding:16px 14px}}
+@media(max-width:860px){.hero{height:380px}.hs-title{font-size:31px}.hs-sub{font-size:14px}.hs-deco{font-size:92px;right:-6px;opacity:.55}.hs-wrap{padding:0 22px}
+ /* 폰에서도 한 줄을 지킵니다 — 좁으면 옆으로 밀어서 보십니다 */
+ .quickbar .wrap{display:flex;gap:8px;padding:14px 12px;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+ .quickbar .wrap::-webkit-scrollbar{display:none}
+ .qcard{flex:0 0 82px;scroll-snap-align:start;font-size:12px;padding:12px 2px;gap:6px}
+ .qcard .qi svg{width:22px;height:22px}}
 /* ===== 상세는 전체화면 페이지로 ===== */
 .amodal{position:fixed;inset:0;background:#fff;z-index:1200;display:none;overflow-y:auto;padding:0;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 .amodal.open{display:block}
@@ -2533,7 +2557,17 @@ html,body{overflow-x:hidden;max-width:100%}
   <a class="qcard" href="#" onclick="openPage('전체시간표');return false;"><span class="qi"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 9.5h16M8.5 3v4M15.5 3v4"/></svg></span>전체 시간표</a>
   <a class="qcard" href="#" onclick="openPage('강사소개');return false;"><span class="qi"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20c0-3.8 3-6 6.5-6s6.5 2.2 6.5 6"/></svg></span>강사 소개</a>
   <a class="qcard" href="#" onclick="openPage('오시는길');return false;"><span class="qi"><svg viewBox="0 0 24 24"><path d="M12 21s6.5-6 6.5-11A6.5 6.5 0 0 0 5.5 10c0 5 6.5 11 6.5 11z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>오시는 길</a>
-</div></div>
+</div>
+  <!-- 퀵바 바로 아래 · 학원 채널 -->
+  <div class="wrap qsns">
+    <a class="qs" href="#" onclick="snsSoon(this);return false;" aria-label="블로그"><i class="ic ic-bl">blog</i><em>블로그</em></a>
+    <a class="qs" href="#" onclick="snsSoon(this);return false;" aria-label="페이스북"><i class="ic ic-fb">f</i><em>페이스북</em></a>
+    <a class="qs" href="#" onclick="snsSoon(this);return false;" aria-label="유튜브"><i class="ic ic-yt">&#9654;</i><em>유튜브</em></a>
+    <a class="qs" href="#" onclick="snsSoon(this);return false;" aria-label="인스타그램"><i class="ic ic-ig">&#9678;</i><em>인스타그램</em></a>
+    <a class="qs" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer" aria-label="카카오톡"><i class="ic ic-kk">TALK</i><em>카카오톡</em></a>
+    <button class="qs" type="button" onclick="copyURL(this);return false;" aria-label="URL 복사"><i class="ic ic-url">&#128279;</i><em>URL 복사</em></button>
+  </div>
+</div>
 
 <div id="preBar"></div>
 <div class="agsheet" id="agSheet"><div class="agdim" onclick="agClose()"></div><div class="agcard"><button class="agx" onclick="agClose()">✕</button><div id="agBody"></div></div></div>
@@ -2738,9 +2772,9 @@ html,body{overflow-x:hidden;max-width:100%}
         주소 경기도 군포시 산본로323번길 16-7 롯데프라자 7층 701·702·703호 (산본동, 산본역 인근)<br>
         전화 <b>031-466-6969</b> · 카카오톡 채널 pf.kakao.com/_FxfgQT<br>
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 개업일 2024.10.01<br>
-        업태 교육서비스업·도소매 / 종목 어학원·교재 · 운영시간 평일 10:00~22:00 / 토 10:00~16:00 · 일·공휴일 휴무
+        업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-08-30 (v8)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-08-30 (v10)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-bl" href="#" onclick="snsSoon(this);return false;">blog</a>
@@ -3992,7 +4026,7 @@ const PAGES={
   +SEC('인사말','<div class="lead">“언어는 시험이 아니라 기회입니다.” 산본글로벌어학원은 점수만을 위한 학원이 아니라, 학습자가 실제로 말하고 쓰고 나아가게 만드는 교육을 지향합니다. 영어·일본어·중국어를 각 분야 전문 강사진이 레벨별로 책임 지도하며, 성인·직장인·유학 준비생·기업까지 폭넓게 함께합니다. 정확한 진단과 밀착 관리로 가장 빠른 길을 안내드리겠습니다. <b>— 대표 명충건</b></div>')
   +SEC('강사 소개','<div class="lead">과목별 전문 강사와 원어민 강사가 함께합니다. 관리형 스파르타반부터 실전 회화까지, 목표에 맞는 담당 강사가 진도·숙제·약점을 책임 관리합니다.</div>'+CT(['구분','담당','특징'],[['영어','토익·토스·오픽·회화 전문 + 원어민','시험 점수 + 실전 회화 병행'],['일본어','JLPT·회화·면접 전문 + 원어민','유학·워홀·교환학생 대비'],['중국어','회화·HSK 전문 + 원어민','기초부터 자격까지']]))
   +SEC('학원 둘러보기','<div class="chips"><span>🏫 산본역 도보 1분</span><span>📚 레벨별 강의실</span><span>🗣️ 회화 전용 공간</span><span>💻 자기주도 학습존</span><span>🅿️ 건물 주차</span><span>☕ 라운지</span></div><div class="lead">쾌적한 학습 환경에서 집중도 높은 수업을 제공합니다. 방문 상담 시 시설을 직접 둘러보실 수 있습니다.</div>')
-  +SEC('오시는 길','<div class="pgnote">📍 경기 군포시 산본동 1135-1 롯데프라자 7층<br>🚇 산본역 3번 출구 도보 1분<br>☎ 031-466-6969 · 💬 카카오톡 채널 @산본글로벌어학원<br>🕙 평일 10:00~22:00 / 토 10:00~16:00 · 일·공휴일 휴무</div>')
+  +SEC('오시는 길','<div class="pgnote">📍 경기 군포시 산본동 1135-1 롯데프라자 7층<br>🚇 산본역 3번 출구 도보 1분<br>☎ 031-466-6969 · 💬 카카오톡 채널 @산본글로벌어학원<br>🕙 <b>수업</b> 평일 06:30~22:00 / 토 10:00~16:30<br>🕤 <b>데스크(상담·등록·전화)</b> 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무</div>')
   +SEC('전체 시간표','<div class="lead">반별(주5일·월수·화목·토요) 개강 일정과 공휴일은 강의시간표에서 확인하세요.</div><a class="pgcta" href="#" onclick="closePage();openTT();return false;">강의시간표 열기 ›</a>')
   +CTA(),
  '공지사항':H('NOTICE','공지사항','개강 일정, 이벤트, 휴무 안내 등 산본글로벌어학원의 새로운 소식을 확인하세요.','📢')
@@ -6081,7 +6115,8 @@ function mapPage(){return _pgHero('img/gen18.jpg','LOCATION · 오시는 길','�
   [['주소','경기도 군포시 산본로323번길 16-7 <b>롯데프라자 7층</b> 701·702·703호'],
    ['전화','031-466-6969'],
    ['카카오톡','채널 @산본글로벌어학원'],
-   ['운영시간','평일 06:30 ~ 22:00 · 토요일 09:00 ~ 16:00']]))
+   ['수업 시간','평일 <b>06:30 ~ 22:00</b> · 토요일 <b>10:00 ~ 16:30</b><br><span style="color:#8a90a0">새벽반은 06:30부터, 저녁반은 22:00에 끝납니다</span>'],
+   ['데스크 시간','평일 <b>09:30 ~ 21:30</b> · 토요일 <b>10:00 ~ 16:00</b> · 일·공휴일 휴무<br><span style="color:#8a90a0">상담·등록·전화는 이 시간에 받습니다</span>']]))
  +_pgBand('img/gen11.jpg','지하철로 오실 때',
   '<ul class="oh-ck"><li><b>4호선 산본역 3번 출구</b> — 나오셔서 직진 도보 1분</li>'
   +'<li>롯데프라자 건물 <b>7층</b>, 엘리베이터 이용</li>'
@@ -6521,7 +6556,11 @@ select.txflash{animation:txFlash 1.05s ease-out}
 }
 
 /* 올린 날짜 도장 — 새 파일이 반영됐는지 눈으로 확인하는 용도 */
-.ftver{display:block;margin-top:6px;font-size:11px;letter-spacing:.06em;opacity:.6}
+/* 버전 도장 — 올린 파일이 실제로 반영됐는지 확인하는 자리입니다.
+   눈에 안 띄면 확인이 안 되므로 또렷하게 보이게 했습니다. (2026-08-30) */
+.ftver{display:inline-block;margin-top:10px;padding:6px 14px;border-radius:999px;
+ background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+ font-size:13px;font-weight:800;letter-spacing:.04em;color:#fff;opacity:1}
 </style>
 <script>
 /* ===== 크리스탈 · AI 레벨테스트 (30초 프리토킹) ===== */
