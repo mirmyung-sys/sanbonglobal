@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="SGA">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="img/logo.png">
+<link rel="apple-touch-icon" href="img/app_icon.png">
 <title>산본글로벌어학원 · SGA App</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -62,6 +62,98 @@ a{color:inherit;text-decoration:none}
 .muted{color:var(--ink3);font-size:12.5px}
 
 /* hero */
+
+/* ===== 첫 화면(가입 전) — 2026-08-30 새로 만듦 =====
+   AI 학습앱이 학원의 주 수익원이 되어야 하는데 설명이 한 줄도 없었습니다.
+   무엇을 하는 앱인지, 왜 시중 앱이 아니라 이것인지, 얼마인지까지 담았습니다. */
+.wc-hero{background:linear-gradient(150deg,#141F38,#22345C 55%,#2B4173);color:#fff;border-radius:20px;
+ padding:26px 20px 22px;margin-bottom:16px;position:relative;overflow:hidden;text-align:center}
+.wc-hero:before{content:"";position:absolute;left:50%;top:-120px;width:320px;height:320px;transform:translateX(-50%);
+ border-radius:50%;background:radial-gradient(circle,rgba(198,161,91,.30),transparent 66%)}
+.wc-em{position:relative;width:66px;height:66px;object-fit:contain;filter:drop-shadow(0 8px 18px rgba(0,0,0,.35));margin-bottom:8px}
+.wc-eye{position:relative;font-size:10.5px;font-weight:900;letter-spacing:.22em;color:var(--gold2)}
+.wc-hero h2{position:relative;font-size:22px;font-weight:900;line-height:1.42;margin:8px 0 10px;letter-spacing:-.02em;word-break:keep-all}
+.wc-hero h2 b{color:var(--gold2)}
+.wc-hero p{position:relative;font-size:14px;line-height:1.75;color:#C7D2E6;margin:0}
+.wc-hero p b{color:#fff}
+.wc-badges{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:14px}
+.wc-badges span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;
+ padding:6px 11px;font-size:11.5px;font-weight:800}
+.wc-h{margin:22px 2px 10px}
+.wc-h b{display:block;font-size:18px;font-weight:900;letter-spacing:-.02em}
+.wc-h em{display:block;font-style:normal;font-size:12.5px;color:var(--ink3);margin-top:2px}
+/* 산글이 말풍선 */
+.sgtalk{padding:14px}
+.sgt-hd{display:flex;align-items:center;gap:10px;padding-bottom:11px;border-bottom:1px solid var(--line2);margin-bottom:11px}
+.sgt-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(140deg,#1D2D4F,#2B4173);
+ display:flex;align-items:center;justify-content:center;font-size:19px;flex:none}
+.sgt-hd b{display:block;font-size:14px;font-weight:900;line-height:1.3}
+.sgt-hd i{font-style:normal;font-size:11.5px;color:var(--ink3)}
+.sgt-body{display:flex;flex-direction:column;gap:8px;min-height:96px}
+.sgt-b{background:var(--line2);border-radius:4px 14px 14px 14px;padding:11px 13px;font-size:14px;line-height:1.7;
+ color:var(--ink2);animation:sgtIn .32s ease}
+.sgt-b b{color:var(--navy);font-weight:900}
+@keyframes sgtIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.sgt-b{animation:none}}
+.sgt-again{margin-top:11px;width:100%;border:1.5px solid var(--line);background:#fff;border-radius:11px;
+ padding:10px;font-size:13px;font-weight:800;color:var(--ink2);cursor:pointer}
+/* 화면 미리보기 */
+.wc-shots{display:flex;gap:12px;overflow-x:auto;padding:2px 2px 8px;scroll-snap-type:x proximity;scrollbar-width:none}
+.wc-shots::-webkit-scrollbar{display:none}
+.wc-shot{flex:0 0 168px;scroll-snap-align:center;text-align:center}
+.wc-shot>span{display:block;font-size:12.5px;font-weight:900;color:var(--ink2);margin-top:8px}
+.ph{background:#141A26;border-radius:20px;padding:9px 7px;box-shadow:var(--sh);position:relative}
+.ph-nt{width:44px;height:4px;border-radius:99px;background:#3A4557;margin:1px auto 7px}
+.ph-in{background:#fff;border-radius:13px;padding:9px;min-height:212px;display:flex;flex-direction:column;gap:6px}
+.mk-bar{background:var(--line2);border-radius:8px;padding:6px 8px;font-size:10px;font-weight:900;color:var(--ink2);text-align:left}
+.mk-b{font-size:10.5px;line-height:1.5;border-radius:10px;padding:7px 9px;max-width:88%;text-align:left}
+.mk-b.them{background:var(--line2);color:var(--ink2);border-top-left-radius:3px;align-self:flex-start}
+.mk-b.me{background:var(--navy);color:#fff;border-top-right-radius:3px;align-self:flex-end}
+.mk-mic{margin-top:auto;background:var(--red);color:#fff;border-radius:999px;padding:8px;font-size:10.5px;font-weight:900;text-align:center}
+.mk-sent{font-size:12px;font-weight:800;color:var(--ink);line-height:1.5;text-align:left}
+.mk-sent u{color:var(--red);text-decoration-thickness:2px}
+.mk-score{display:flex;align-items:baseline;justify-content:center;gap:2px;margin:2px 0}
+.mk-score b{font-size:38px;font-weight:900;color:var(--green);line-height:1}
+.mk-score span{font-size:12px;font-weight:900;color:var(--green)}
+.mk-tip{background:#EAF7F0;border-radius:9px;padding:8px;font-size:10px;line-height:1.6;color:#0B5C3D;text-align:left}
+.mk-tip b{font-weight:900}
+.mk-graph{display:flex;align-items:flex-end;gap:4px;height:66px;padding:0 2px}
+.mk-graph i{flex:1;background:linear-gradient(180deg,var(--gold2),var(--gold));border-radius:3px 3px 0 0}
+.mk-rows{display:flex;justify-content:space-between;align-items:center;font-size:10.5px;color:var(--ink3);
+ border-top:1px solid var(--line2);padding-top:5px}
+.mk-rows b{font-size:12px;font-weight:900;color:var(--ink)}
+.wc-swipe{text-align:center;font-size:11.5px;color:var(--ink3);margin:0 0 4px}
+/* 기능 */
+.wc-fx{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.wc-f{background:var(--card);border-radius:14px;padding:13px;box-shadow:var(--sh)}
+.wc-f .fi{font-size:21px;line-height:1;display:block;margin-bottom:6px}
+.wc-f b{display:block;font-size:13.5px;font-weight:900;letter-spacing:-.02em}
+.wc-f p{margin:4px 0 0;font-size:11.5px;line-height:1.65;color:var(--ink3);word-break:keep-all}
+/* 왜 학원 앱인가 */
+.wc-why{margin-top:16px}
+.wy-t{display:block;font-size:15.5px;font-weight:900;margin-bottom:10px}
+.wy-r{border:1.5px solid var(--line);border-radius:12px;padding:11px 12px;margin-bottom:7px}
+.wy-r span{display:block;font-size:12px;font-weight:900;color:var(--ink3)}
+.wy-r em{display:block;font-style:normal;font-size:13px;line-height:1.65;color:var(--ink2);margin-top:3px}
+.wy-r.on{border-color:var(--green);background:#F2FAF6}
+.wy-r.on span{color:var(--green)}
+.wy-r.on em b{color:#0B5C3D;font-weight:900}
+.wy-n{margin:10px 0 0;font-size:12.5px;color:var(--ink3);line-height:1.7}
+.wy-n b{color:var(--ink);font-weight:900}
+/* 값 */
+.wc-price{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.wp{background:var(--card);border-radius:16px;padding:15px 13px;box-shadow:var(--sh);border:1.5px solid var(--line);display:flex;flex-direction:column}
+.wp.free{border-color:var(--green);background:linear-gradient(180deg,#F2FAF6,#fff)}
+.wp-t{font-size:11.5px;font-weight:900;color:var(--ink3)}
+.wp.free .wp-t{color:var(--green)}
+.wp-p{font-size:30px;font-weight:900;letter-spacing:-.03em;margin:4px 0 9px;line-height:1.1}
+.wp-p span{font-size:13px;font-weight:800;color:var(--ink3)}
+.wp.free .wp-p{color:var(--green)}
+.wp ul{margin:0;padding-left:15px;font-size:11.5px;line-height:1.75;color:var(--ink2)}
+.wp ul b{font-weight:900;color:var(--ink)}
+.wp-n{margin-top:auto;padding-top:9px;font-size:10.5px;color:var(--ink3);line-height:1.5}
+.wp-b{margin-top:auto;border:0;background:var(--navy);color:#fff;border-radius:10px;padding:10px;font-size:12.5px;font-weight:900;cursor:pointer}
+.wc-go{margin-top:2px}
 .hero{background:linear-gradient(140deg,var(--navy),var(--navy2));color:#fff;border-radius:18px;padding:18px;margin-bottom:12px;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;right:-30px;top:-40px;width:150px;height:150px;border-radius:50%;background:rgba(198,161,91,.18)}
 .hero .hi{font-size:13px;color:#B9C6DE;position:relative}
@@ -187,7 +279,14 @@ a{color:inherit;text-decoration:none}
 /* modal */
 .sheet{position:fixed;inset:0;z-index:200;background:rgba(15,20,32,.5);display:none;align-items:flex-end}
 .sheet.on{display:flex}
-.sheet .in{background:#fff;width:100%;max-width:520px;margin:0 auto;border-radius:20px 20px 0 0;padding:20px 18px calc(20px + env(safe-area-inset-bottom,0px));max-height:88vh;overflow-y:auto;animation:up .25s ease}
+.sheet .in{position:relative;background:#fff;width:100%;max-width:520px;margin:0 auto;border-radius:20px 20px 0 0;padding:20px 18px calc(20px + env(safe-area-inset-bottom,0px));max-height:88vh;overflow-y:auto;animation:up .25s ease}
+/* 2026-08-30 — 시트를 열면 빠져나올 길이 없었습니다. 항상 보이는 뒤로 버튼을 답니다. */
+.sheet .in:before{content:"";position:sticky;top:0;display:block;height:0}
+.sheet-x{position:sticky;top:-4px;float:right;z-index:5;margin:-6px -4px 0 0;border:1.5px solid var(--line);
+ background:#fff;border-radius:999px;padding:8px 14px;font-size:13.5px;font-weight:900;color:var(--ink2);
+ cursor:pointer;font-family:inherit;line-height:1;box-shadow:0 3px 10px rgba(15,20,32,.10)}
+.sheet-x:hover,.sheet-x:active{border-color:var(--navy);color:var(--navy)}
+.sheet h3{clear:none}
 @keyframes up{from{transform:translateY(30px)}to{transform:none}}
 .sheet h3{margin:0 0 4px;font-size:18px;font-weight:900}
 .sheet .sub{font-size:13px;color:var(--ink3);margin-bottom:14px}
@@ -222,7 +321,7 @@ a{color:inherit;text-decoration:none}
   <button data-t="me" onclick="go('me')"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>내정보</button>
 </div></nav>
 
-<div class="sheet" id="sheet"><div class="in" id="sheetIn"></div></div>
+<div class="sheet" id="sheet"><div class="in"><button class="sheet-x" type="button" onclick="closeSheet()" aria-label="닫기">‹ 뒤로</button><div id="sheetIn"></div></div></div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -408,14 +507,112 @@ function render(){var d=DB.init();var p=document.getElementById('pg');
 
 /* ---------- 온보딩 ---------- */
 function vWelcome(){
- return '<div class="hero"><div class="hi">산본글로벌어학원</div><div class="nm">영어·일본어·중국어<br><b>AI 학습 앱</b></div>'+
- '<div class="streak"><div><b>3</b><span>개 국어</span></div><div><b>AI</b><span>원어민 대화</span></div><div><b>무료</b><span>수강생 전원</span></div></div></div>'+
- '<div class="card"><b style="font-size:15px">이런 걸 할 수 있어요</b>'+
- '<div style="margin-top:10px;display:grid;gap:9px;font-size:13.5px;color:var(--ink2)">'+
- '<div>🗣️ AI 원어민과 상황별 회화 연습</div><div>🎯 발음 정확도 자동 채점</div><div>📚 매일 표현 3개 + 나만의 단어장</div><div>🔥 연속 학습일·출석 기록</div><div>📊 학습 리포트로 실력 추이 확인</div></div></div>'+
- '<button class="btn" onclick="openSheet(\'join\')">시작하기 · 회원가입</button>'+
- '<button class="btn o" style="margin-top:8px" onclick="openSheet(\'login\')">이미 계정이 있어요</button>'+
- '<p class="muted" style="text-align:center;margin-top:14px">학원 수강생은 <b style="color:var(--green)">전 과정 무료</b>입니다.</p>';
+ setTimeout(sgTalkPlay,320);
+ return ''
+ /* --- 첫인상 --- */
+ +'<div class="wc-hero">'
+  +'<img class="wc-em" src="img/sga_emblem.png" alt="" onerror="this.style.display=\'none\'">'
+  +'<div class="wc-eye">SANBON GLOBAL ACADEMY</div>'
+  +'<h2>학원이 문 닫은 시간에도<br><b>선생님이 한 명 더</b> 있습니다</h2>'
+  +'<p>영어 · 일본어 · 중국어를 <b>말로</b> 연습하는 앱입니다.<br>수업에서 배운 걸 그날 저녁에 입으로 굳힙니다.</p>'
+  +'<div class="wc-badges"><span>🇺🇸 🇯🇵 🇨🇳 3개 국어</span><span>🎙 말하기 중심</span><span>🎁 수강생 무료</span></div>'
+ +'</div>'
+
+ /* --- AI가 직접 설명합니다 --- */
+ +'<div class="wc-h"><b>산글이가 직접 설명해 드릴게요</b><em>AI 튜터 · 이 앱의 선생님</em></div>'
+ +'<div class="card sgtalk" id="sgTalk">'
+  +'<div class="sgt-hd"><span class="sgt-av">🐋</span><div><b>산글이</b><i>AI 튜터 · 지금 입력 중…</i></div></div>'
+  +'<div class="sgt-body" id="sgTalkBody"></div>'
+  +'<button class="sgt-again" id="sgTalkAgain" onclick="sgTalkPlay()" hidden>↻ 다시 듣기</button>'
+ +'</div>'
+
+ /* --- 화면으로 보기 --- */
+ +'<div class="wc-h"><b>이런 화면입니다</b><em>가입하면 바로 이 화면이 열립니다</em></div>'
+ +'<div class="wc-shots">'+wcShots()+'</div>'
+ +'<p class="wc-swipe">← 옆으로 밀어 보세요 →</p>'
+
+ /* --- 기능 --- */
+ +'<div class="wc-h"><b>여섯 가지를 합니다</b><em>따로 앱 여러 개 깔 필요가 없습니다</em></div>'
+ +'<div class="wc-fx">'+[
+   ['🎙','AI 원어민과 대화','카페 주문, 면접, 출장 — 상황을 고르면 AI가 그 역할을 맡습니다. 틀려도 아무도 안 봅니다.'],
+   ['🎯','발음 채점','말하면 점수가 나옵니다. 어느 소리에서 새는지 짚어 줍니다.'],
+   ['📚','매일 표현 3개','오늘 배운 반 진도에 맞춰 골라 드립니다. 1분이면 끝납니다.'],
+   ['🗂','나만의 단어장','모르는 말은 눌러 담고, 다음 날 그 단어로 문제가 나옵니다.'],
+   ['📊','학습 리포트','한 달 뒤 뭐가 늘었는지 그래프로 보입니다. 상담 때 같이 봅니다.'],
+   ['🔥','출석·포인트','연속 학습일이 쌓이면 포인트가 되고, 교재·수강료로 바꿉니다.']
+  ].map(function(f){return '<div class="wc-f"><span class="fi">'+f[0]+'</span><b>'+f[1]+'</b><p>'+f[2]+'</p></div>';}).join('')+'</div>'
+
+ /* --- 왜 학원 앱인가 --- */
+ +'<div class="card wc-why">'
+  +'<b class="wy-t">시중 회화 앱과 무엇이 다릅니까</b>'
+  +'<div class="wy-r"><span>혼자 하는 앱</span><em>막히면 거기서 끝. 물어볼 사람이 없습니다.</em></div>'
+  +'<div class="wy-r on"><span>산글이</span><em>막힌 자리가 <b>선생님께 그대로 전달</b>됩니다. 다음 수업에서 그 부분부터 다시 잡아 드립니다.</em></div>'
+  +'<p class="wy-n">앱이 선생님을 대신하지 않습니다. <b>수업과 수업 사이를 메웁니다.</b></p>'
+ +'</div>'
+
+ /* --- 값 --- */
+ +'<div class="wc-h"><b>얼마입니까</b><em>학원 다니시면 낼 게 없습니다</em></div>'
+ +'<div class="wc-price">'
+  +'<div class="wp free"><div class="wp-t">학원 수강생</div><div class="wp-p">0<span>원</span></div>'
+   +'<ul><li>전 과정 <b>무료</b></li><li>AI 회화 · 발음채점 무제한</li><li>리포트를 담임 선생님과 공유</li></ul>'
+   +'<div class="wp-n">데스크에서 확인 후 열어 드립니다</div></div>'
+  +'<div class="wp"><div class="wp-t">앱만 쓰실 분</div><div class="wp-p" style="font-size:20px">월 이용권</div>'
+   +'<ul><li>3개 국어 전부</li><li>학원에 안 다니셔도 됩니다</li></ul>'
+   +'<button class="wp-b" onclick="openSheet(\'plan\')">가격 보기 ›</button></div>'
+ +'</div>'
+
+ /* --- 시작 --- */
+ +'<button class="btn g wc-go" onclick="openSheet(\'join\')">30초 만에 시작하기</button>'
+ +'<button class="btn o" onclick="openSheet(\'login\')">이미 계정이 있어요</button>'
+ +'<p class="muted" style="text-align:center;margin-top:14px">가입하실 때 넣으신 정보는 <b>이 기기에만</b> 저장됩니다.<br>031-466-6969 · 산본역 3번 출구 도보 1분</p>'
+ +'<p class="muted" style="text-align:center;margin-top:6px;font-size:11px;opacity:.75">최종 수정 2026-08-30 (앱 v2)</p>';
+}
+/* 실제 앱 화면을 폰 모양으로 그려 보여줍니다 — 사진이 아니라 화면 그대로라 늘 최신입니다 */
+function wcShots(){
+ var S=[
+  {t:'AI 회화',c:'<div class="mk-bar">🇺🇸 Sarah · 카페에서 주문하기</div>'
+    +'<div class="mk-b them">Hi! What can I get for you?</div>'
+    +'<div class="mk-b me">I\'d like an iced americano.</div>'
+    +'<div class="mk-b them">For here or to go?</div>'
+    +'<div class="mk-mic">🎙 눌러서 말하기</div>'},
+  {t:'발음 채점',c:'<div class="mk-bar">🎯 오늘의 발음</div>'
+    +'<div class="mk-sent">Could you say that <u>again</u>?</div>'
+    +'<div class="mk-score"><b>86</b><span>점</span></div>'
+    +'<div class="mk-tip">again의 <b>g</b>가 약합니다<br>혀 뒤를 조금 더 올려 보세요</div>'},
+  {t:'학습 리포트',c:'<div class="mk-bar">📊 이번 달</div>'
+    +'<div class="mk-graph"><i style="height:28%"></i><i style="height:44%"></i><i style="height:38%"></i><i style="height:62%"></i><i style="height:71%"></i><i style="height:88%"></i></div>'
+    +'<div class="mk-rows"><span>연속 학습</span><b>12일</b></div>'
+    +'<div class="mk-rows"><span>말한 문장</span><b>318개</b></div>'
+    +'<div class="mk-rows"><span>평균 발음</span><b>84점</b></div>'}
+ ];
+ return S.map(function(x){
+  return '<div class="wc-shot"><div class="ph"><div class="ph-nt"></div><div class="ph-in">'+x.c+'</div></div><span>'+x.t+'</span></div>';}).join('');
+}
+/* 산글이가 한 줄씩 말하듯 나타납니다 */
+var SGTALK=[
+ '안녕하세요, 저는 <b>산글이</b>입니다. 이 앱 안에서 여러분과 말로 연습하는 AI 선생님이에요.',
+ '학원 수업은 일주일에 두 번이죠. 그 사이 <b>닷새</b>가 빕니다. 그 닷새를 제가 맡습니다.',
+ '문법 문제만 푸는 게 아니라 <b>소리 내서 말하게</b> 합니다. 제가 상대역을 맡으니 틀려도 부끄럽지 않아요.',
+ '어디서 막히셨는지 저는 다 기억합니다. 그 기록이 <b>담임 선생님께 그대로 갑니다.</b>',
+ '그래서 다음 수업이 달라집니다. 선생님이 <b>여러분이 막힌 자리부터</b> 시작하시거든요.',
+ '학원에 다니시면 저는 <b>무료</b>입니다. 지금 가입하고 오늘 저녁부터 같이 해요. 🙌'
+];
+var _sgtT=[];
+function sgTalkPlay(){
+ var box=document.getElementById('sgTalkBody');if(!box)return;
+ _sgtT.forEach(clearTimeout);_sgtT=[];
+ box.innerHTML='';
+ var again=document.getElementById('sgTalkAgain');if(again)again.hidden=true;
+ var wrap=document.getElementById('sgTalk');
+ SGTALK.forEach(function(line,i){
+  _sgtT.push(setTimeout(function(){
+   var d=document.createElement('div');d.className='sgt-b';d.innerHTML=line;box.appendChild(d);
+   if(wrap&&i===SGTALK.length-1){
+    var st=wrap.querySelector('.sgt-hd i');if(st)st.textContent='AI 튜터 · 앱 안에서 만나요';
+    if(again)again.hidden=false;}
+  },420*(i+1)));
+ });
+ var st0=wrap&&wrap.querySelector('.sgt-hd i');if(st0)st0.textContent='AI 튜터 · 지금 입력 중…';
 }
 
 /* ---------- 홈 ---------- */
@@ -942,14 +1139,14 @@ function vMe(d){
   '<div class="li" onclick="logout()"><div class="ic">🚪</div><div class="tx"><b>로그아웃</b><span>이 기기에서 로그아웃</span></div><span class="go">›</span></div>'+
   '</div><p class="muted" style="text-align:center;margin:16px 0 8px">산본글로벌어학원 · SGA App v1.0</p>';
 }
-function planCards(d){
+function planCards(d,inSheet){
  return '<div class="plan '+(d.offline?'on':'')+'"><div class="pt">학원 수강생</div><h4>오프라인 + 앱</h4>'+
-  '<div class="pr"><s>19,900원</s>9,900원 <span style="font-size:12px;color:var(--ink3)">/ 월</span></div>'+
-  '<ul><li>학원 수강 중이면 <b>50% 할인</b></li><li>AI 회화 · 발음체크 무제한</li><li>레벨테스트 · 리포트 전체</li></ul></div>'+
+  '<div class="pr"><s>19,900원</s>0원 <span style="font-size:12px;color:var(--ink3)">/ 월</span></div>'+
+  '<ul><li>학원에 다니시는 동안 <b>무료</b></li><li>AI 회화 · 발음체크 무제한</li><li>레벨테스트 · 리포트 전체</li><li>데스크에서 확인 후 열어 드립니다</li></ul></div>'+
   '<div class="plan"><div class="pt">온라인 전용</div><h4>앱만 이용</h4>'+
   '<div class="pr">19,900원 <span style="font-size:12px;color:var(--ink3)">/ 월</span></div>'+
   '<ul><li>3개 국어 전부 이용</li><li>AI 회화 하루 15분</li></ul></div>'+
-  '<button class="btn gold" onclick="openSheet(\'plan\')">이용권 안내 보기</button>';
+  (inSheet?'':'<button class="btn gold" onclick="openSheet(\'plan\')">이용권 안내 보기</button>');
 }
 function logout(){if(confirm('로그아웃할까요? 학습 기록은 이 기기에 남습니다.')){DB.save(function(d){d.user=null;});go('me');}}
 function installTip(){
@@ -965,7 +1162,7 @@ function installTip(){
 /* ---------- 시트 ---------- */
 function openSheet(k){
  var d=DB.init();var el=document.getElementById('sheetIn');
- document.getElementById('sheet').classList.add('on');try{el.scrollTop=0;}catch(e){}
+ document.getElementById('sheet').classList.add('on');_shOpened();try{el.scrollTop=0;}catch(e){}
  if(k==='join'){
   el.innerHTML='<h3>회원가입</h3><div class="sub">30초면 끝나요. 학원 수강생은 앱이 무료입니다.</div>'+
    '<label class="fld"><span>이름</span><input id="jn" placeholder="홍길동"></label>'+
@@ -990,14 +1187,33 @@ function openSheet(k){
    '<div class="chips" id="sl">'+LANGS.map(function(l){return '<button class="'+(d.lang===l?'on':'')+'" onclick="pickChip(this,\'sl\')" data-v="'+l+'">'+TUTOR[l].e+' '+l+'</button>';}).join('')+'</div>'+
    '<button class="btn g" style="margin-top:14px" onclick="saveLang()">저장</button>';
  }else if(k==='plan'){
-  el.innerHTML='<h3>💳 이용권 안내</h3><div class="sub">학원 수강생은 절반 가격입니다</div>'+planCards(d)+
+  el.innerHTML='<h3>💳 이용권 안내</h3><div class="sub">학원에 다니시면 앱은 무료입니다</div>'+planCards(d,true)+
    '<div class="card" style="box-shadow:none;background:var(--line2);font-size:13px;color:var(--ink2)">결제는 학원 데스크 또는 상담 후 진행됩니다.<br>문의 031-466-6969</div>'+
    '<button class="btn" onclick="location.href=\'tel:0314666969\'">전화로 문의하기</button>'+
    '<button class="btn o" style="margin-top:8px" onclick="closeSheet()">닫기</button>';
  }
 }
-function openSheetHTML(html){var el=document.getElementById('sheetIn');el.innerHTML=html;document.getElementById('sheet').classList.add('on');try{el.scrollTop=0;}catch(e){}}
-function closeSheet(){document.getElementById('sheet').classList.remove('on');try{speechSynthesis.cancel();}catch(e){}}
+function openSheetHTML(html){var el=document.getElementById('sheetIn');el.innerHTML=html;document.getElementById('sheet').classList.add('on');_shOpened();try{el.scrollTop=0;}catch(e){}}
+function closeSheet(){var sh=document.getElementById('sheet');
+ if(!sh.classList.contains('on'))return;
+ sh.classList.remove('on');try{speechSynthesis.cancel();}catch(e){}
+ /* 뒤로가기용으로 쌓아둔 기록이 남아 있으면 되돌립니다 */
+ if(_shBack){_shBack=false;try{history.back();}catch(e){}}}
+/* 시트가 열려 있을 때 폰의 뒤로가기가 앱을 닫아버리지 않고 시트만 닫도록 */
+var _shBack=false;
+function _shOpened(){
+ if(_shBack)return;
+ try{history.pushState({sgSheet:1},'');_shBack=true;}catch(e){_shBack=false;}}
+window.addEventListener('popstate',function(){
+ var sh=document.getElementById('sheet');
+ if(sh&&sh.classList.contains('on')){_shBack=false;closeSheet();}});
+/* 어두운 바깥을 눌러도 닫힙니다 */
+document.addEventListener('click',function(ev){
+ var sh=document.getElementById('sheet');
+ if(sh&&ev.target===sh)closeSheet();});
+/* 키보드 ESC */
+document.addEventListener('keydown',function(ev){
+ if(ev.key==='Escape')closeSheet();});
 document.getElementById('sheet').addEventListener('click',function(e){if(e.target===this)closeSheet();});
 function pickChip(b,id){var p=document.getElementById(id);p.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');}
 function chipVal(id){var b=document.querySelector('#'+id+' button.on');return b?b.getAttribute('data-v'):null;}
