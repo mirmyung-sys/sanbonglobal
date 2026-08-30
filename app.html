@@ -965,7 +965,7 @@ function installTip(){
 /* ---------- 시트 ---------- */
 function openSheet(k){
  var d=DB.init();var el=document.getElementById('sheetIn');
- document.getElementById('sheet').classList.add('on');
+ document.getElementById('sheet').classList.add('on');try{el.scrollTop=0;}catch(e){}
  if(k==='join'){
   el.innerHTML='<h3>회원가입</h3><div class="sub">30초면 끝나요. 학원 수강생은 앱이 무료입니다.</div>'+
    '<label class="fld"><span>이름</span><input id="jn" placeholder="홍길동"></label>'+
@@ -996,7 +996,7 @@ function openSheet(k){
    '<button class="btn o" style="margin-top:8px" onclick="closeSheet()">닫기</button>';
  }
 }
-function openSheetHTML(html){document.getElementById('sheetIn').innerHTML=html;document.getElementById('sheet').classList.add('on');}
+function openSheetHTML(html){var el=document.getElementById('sheetIn');el.innerHTML=html;document.getElementById('sheet').classList.add('on');try{el.scrollTop=0;}catch(e){}}
 function closeSheet(){document.getElementById('sheet').classList.remove('on');try{speechSynthesis.cancel();}catch(e){}}
 document.getElementById('sheet').addEventListener('click',function(e){if(e.target===this)closeSheet();});
 function pickChip(b,id){var p=document.getElementById(id);p.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');}
