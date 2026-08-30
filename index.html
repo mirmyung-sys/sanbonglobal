@@ -800,28 +800,57 @@ header nav a{letter-spacing:-.01em}
 .intro{position:fixed;inset:0;z-index:9999;background:radial-gradient(120% 120% at 50% 30%,#f7f1e6,#ece2d1);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;perspective:1300px;transition:opacity .7s ease,visibility .7s}
 .intro.hide{opacity:0;visibility:hidden}
 .intro-stage{transform-style:preserve-3d;transition:transform .2s ease-out;will-change:transform}
-.intro-door{position:relative;width:min(96vw,1360px);transform-style:preserve-3d;
- animation:introFloat 4.2s ease-in-out infinite}
-.intro-logo{display:block;width:100%;height:auto;border-radius:0;
+.intro-door{position:relative;width:min(96vw,1360px);
+ animation:introFloat 5s ease-in-out infinite}
+.intro-logo{display:block;width:100%;height:auto;
  filter:drop-shadow(0 24px 44px rgba(150,110,80,.32));
- transition:transform 1.05s cubic-bezier(.62,.02,.28,1),opacity .42s ease .58s;
- backface-visibility:hidden;will-change:transform}
-.intro-logo.dl{clip-path:inset(0 50% 0 0);transform-origin:left center}
-.intro-logo.dr{position:absolute;inset:0;clip-path:inset(0 0 0 50%);transform-origin:right center}
-/* 클릭하면 로고가 양쪽 문처럼 열리고 화면이 안으로 빨려 들어갑니다 */
+ transition:opacity 1.2s ease .55s,filter .8s ease}
+
+/* 엠블럼 한가운데 S — 로고 이미지 기준 가로 50% · 세로 35% */
+.intro-sheen,.intro-burst,.intro-rings{position:absolute;left:50%;top:35%;
+ transform:translate(-50%,-50%);pointer-events:none}
+/* 1) 대기 중 — S 위로 빛이 천천히 지나갑니다 */
+.intro-sheen{width:26%;aspect-ratio:1;border-radius:50%;
+ background:radial-gradient(circle at 38% 34%,rgba(255,252,240,.95),rgba(255,228,170,.5) 42%,transparent 70%);
+ mix-blend-mode:screen;opacity:0;animation:sHeart 4.6s ease-in-out infinite}
+@keyframes sHeart{0%,58%,100%{opacity:0;transform:translate(-50%,-50%) scale(.72)}
+ 70%{opacity:.95;transform:translate(-50%,-50%) scale(1.05)}
+ 84%{opacity:.25;transform:translate(-50%,-50%) scale(1.18)}}
+/* 2) 클릭 순간 — S에서 빛이 터집니다 */
+.intro-burst{width:22%;aspect-ratio:1;border-radius:50%;opacity:0;
+ background:radial-gradient(circle,rgba(255,255,255,1) 0%,rgba(255,241,205,.95) 26%,rgba(246,203,120,.55) 52%,transparent 74%);
+ mix-blend-mode:screen;filter:blur(2px)}
+/* 3) 토끼굴 — 동심원이 밖으로 퍼집니다 */
+.intro-rings{width:22%;aspect-ratio:1}
+.intro-rings i{position:absolute;inset:0;border-radius:50%;opacity:0;
+ border:2px solid rgba(232,196,132,.9);
+ box-shadow:0 0 26px rgba(246,210,150,.55),inset 0 0 22px rgba(255,240,210,.4)}
+
 .intro.open .intro-door{animation:none}
-.intro.open .intro-logo.dl{transform:rotateY(-108deg)}
-.intro.open .intro-logo.dr{transform:rotateY(108deg)}
-.intro.open .intro-logo{opacity:.06}
-.intro.open .intro-stage{transform:scale(3.1)!important;transition:transform 1.05s cubic-bezier(.55,.03,.3,1)}
-.intro.open{background:radial-gradient(120% 120% at 50% 40%,#fffdf8,#f2e9da)}
-.intro.open .intro-hint{opacity:0;transition:opacity .3s}
-@keyframes introFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
-@media(prefers-reduced-motion:reduce){.intro-door{animation:none}
- .intro-logo,.intro.open .intro-stage{transition:opacity .3s ease}}
-.intro-hint{margin-top:26px;font-size:15px;font-weight:800;letter-spacing:.03em;color:#9b7b5e;animation:introPulse 1.8s ease-in-out infinite}
-.intro-hint b{color:#c69b6d;font-weight:900}
-@keyframes introPulse{0%,100%{opacity:.45}50%{opacity:1}}
+.intro.open .intro-sheen{animation:none;opacity:0}
+.intro.open .intro-logo{opacity:0;filter:drop-shadow(0 0 70px rgba(255,224,160,.95)) brightness(1.5)}
+.intro.open .intro-burst{animation:sBurst 1.5s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes sBurst{0%{opacity:0;transform:translate(-50%,-50%) scale(.28)}
+ 16%{opacity:1;transform:translate(-50%,-50%) scale(.62)}
+ 46%{opacity:.92;transform:translate(-50%,-50%) scale(1.9)}
+ 100%{opacity:0;transform:translate(-50%,-50%) scale(5.4)}}
+.intro.open .intro-rings i{animation:sRing 1.7s cubic-bezier(.16,.72,.3,1) forwards}
+.intro.open .intro-rings i:nth-child(2){animation-delay:.22s}
+.intro.open .intro-rings i:nth-child(3){animation-delay:.44s}
+.intro.open .intro-rings i:nth-child(4){animation-delay:.66s}
+@keyframes sRing{0%{opacity:0;transform:scale(.3)}
+ 12%{opacity:.95}
+ 100%{opacity:0;transform:scale(6.5)}}
+/* 4) 안으로 빨려 들어갑니다 — 처음엔 느리게, 끝에 가속 */
+.intro.open .intro-stage{transform:scale(4.8)!important;
+ transition:transform 2.1s cubic-bezier(.55,0,.78,.42)}
+.intro.open{background:radial-gradient(120% 120% at 50% 35%,#FFFDF6 0%,#FBF0DC 42%,#F3E3C9 100%);
+ transition:background 1.4s ease,opacity .85s ease,visibility .85s}
+.intro.open .intro-hint{opacity:0;transition:opacity .35s}
+@media(prefers-reduced-motion:reduce){
+ .intro-door{animation:none}.intro-sheen{animation:none;opacity:.4}
+ .intro.open .intro-stage{transition:none}
+ .intro.open .intro-burst,.intro.open .intro-rings i{animation:none;opacity:0}}
 @media(max-width:640px){.intro-logo{max-width:92vw}.intro-hint{font-size:13px}}
 /* 수강신청 */
 .enr-hero{background:linear-gradient(120deg,#151b12,#4a7a1e)!important}
@@ -1032,10 +1061,10 @@ span.pay-b.tel{cursor:default;opacity:.85}
 .gf-shop{margin:10px 20px 0;background:#0b0d12;border-radius:12px;padding:13px 13px 11px}
 .gf-sh{font-size:12.5px;font-weight:900;color:#ffd94d;letter-spacing:.02em;margin:0 2px 9px}
 .gf-sh b{color:#fff}
-.gf-g{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
-.gf-t{background:#fff;border:2px solid #fff;border-radius:8px;padding:8px 2px 7px;cursor:pointer;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:2px;transition:.14s}
-.gf-t em{font-style:normal;font-size:10.5px;font-weight:900;color:#5c6472;white-space:nowrap}
-.gf-t b{font-size:12px;font-weight:900;color:#111;letter-spacing:-.03em;white-space:nowrap}
+.gf-g{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.gf-t{background:#fff;border:2px solid #fff;border-radius:8px;padding:9px 4px 8px;cursor:pointer;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:2px;transition:.14s;min-width:0;overflow:hidden}
+.gf-t em{font-style:normal;font-size:10.5px;font-weight:900;color:#5c6472;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.gf-t b{font-size:13.5px;font-weight:900;color:#111;letter-spacing:-.03em;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
 .gf-t i{font-style:normal;font-size:9.5px;font-weight:900;color:#c81f2b;white-space:nowrap}
 .gf-t.hot{border-color:#c81f2b;background:#fff5f4}
 .gf-t.hot i{color:#fff;background:#c81f2b;border-radius:3px;padding:1px 5px}
@@ -1443,7 +1472,7 @@ li:first-child > .pgh{margin-top:2px}
 .gf-b button small{font-size:12px;font-weight:800;color:#8a90a0}
 .gf-b button.on{border-color:#c81f2b;background:#fff5f4;color:#c81f2b}
 .gf-b button.on small{color:#c8636b}
-@media(max-width:520px){.gf-g{grid-template-columns:repeat(3,1fr)}.gf-b{grid-template-columns:1fr}}
+@media(max-width:520px){.gf-g{grid-template-columns:repeat(2,1fr)}.gf-b{grid-template-columns:1fr}}
 .sp-sum .mi b{color:#0E8A5A}
 .sp-kko{display:flex;align-items:flex-start;gap:9px;margin:12px 20px 0;background:#fffceb;border:1px solid #f2e3a8;border-radius:10px;padding:11px 13px;font-size:13px;color:#6b5a17;line-height:1.6;cursor:pointer}
 .sp-kko input{margin-top:2px;accent-color:#0E8A5A}
@@ -1791,6 +1820,40 @@ li:first-child > .pgh{margin-top:2px}
 .fr-tag{display:inline-block;background:#0e8a5a;color:#fff;font-size:12px;font-weight:900;border-radius:999px;padding:3px 10px;margin-right:8px;vertical-align:1px}
 .fr-n{font-size:13px;color:#3f6b57;display:block;margin-top:4px}
 .bt-time .bt-b small{font-size:12.5px}
+/* 요일 × 시간대 표 — 요일마다 다른 시간을 고르실 수 있게 (2026-08-30) */
+.bg-tb{border:2px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.bg-hd{display:grid;grid-template-columns:76px repeat(3,1fr);background:#f4f6fa;border-bottom:2px solid var(--line)}
+.bg-hd span{padding:10px 4px;text-align:center;font-size:14.5px;font-weight:900;color:var(--ink2);line-height:1.25}
+.bg-hd span em{display:block;font-style:normal;font-size:11.5px;font-weight:800;color:var(--ink3);margin-top:2px}
+.bg-hd .bg-cn{color:var(--ink3);font-size:13px}
+.bg-r{display:grid;grid-template-columns:76px repeat(3,1fr);border-top:1px solid #eef1f6}
+.bg-r:first-of-type{border-top:0}
+.bg-dy{border:0;border-right:1px solid #eef1f6;background:#fbfcfe;font-family:inherit;cursor:pointer;
+ font-size:19px;font-weight:900;color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:0;transition:.14s}
+.bg-dy em{font-style:normal;font-size:10.5px;font-weight:800;color:var(--ink3)}
+.bg-dy:hover{background:#fff5f4;color:#c81f2b}
+.bg-dy.on{background:#c81f2b;color:#fff}.bg-dy.on em{color:#ffd6d3}
+.bg-c{border:0;border-left:1px solid #eef1f6;background:#fff;cursor:pointer;font-family:inherit;
+ min-height:56px;display:flex;align-items:center;justify-content:center;padding:0;transition:.12s}
+.bg-c i{width:22px;height:22px;border-radius:50%;border:2.5px solid #dfe3ec;display:block;transition:.12s}
+.bg-c:hover{background:#fff8f7}.bg-c:hover i{border-color:#f0a9a4}
+.bg-c.on{background:#fff5f4}
+.bg-c.on i{border-color:#c81f2b;background:#c81f2b;box-shadow:0 0 0 4px rgba(200,31,43,.16)}
+.bg-c.on i:after{content:'✓';display:block;color:#fff;font-size:13px;font-weight:900;line-height:17px;text-align:center}
+.bg-any{width:100%;margin-top:10px;border:2px dashed #cdd5e2;background:#fff;border-radius:14px;padding:14px;
+ font-family:inherit;font-size:15px;font-weight:900;color:var(--ink2);cursor:pointer;transition:.14s}
+.bg-any:hover{border-color:#c81f2b;color:#c81f2b}
+.bg-any.on{border-style:solid;border-color:#c81f2b;background:#fff5f4;color:#c81f2b}
+.bg-pick{margin-top:12px;background:#f7f9fc;border-radius:12px;padding:12px 14px;font-size:15px;font-weight:800;color:#c81f2b;line-height:1.6}
+.bg-pick>span{color:#c81f2b}
+.bg-pick .none{color:#8a90a0;font-weight:700}
+.bg-memo{border:2px solid var(--line);border-radius:12px;padding:13px;font-size:15px;font-weight:700;font-family:inherit;
+ color:var(--ink);width:100%;box-sizing:border-box;background:#fff;line-height:1.6;resize:vertical}
+.bg-memo:focus{outline:0;border-color:#c81f2b}
+@media(max-width:520px){
+ .bg-hd,.bg-r{grid-template-columns:58px repeat(3,1fr)}
+ .bg-hd span{font-size:13px;padding:8px 2px}.bg-hd span em{font-size:10px}
+ .bg-dy{font-size:17px}.bg-c{min-height:50px}}
 .bt-when{display:flex;flex-direction:column;gap:7px;margin-top:14px}
 .bt-when label{font-size:13px;font-weight:900;color:var(--ink3)}
 .bt-when input,.bt-when select{border:2px solid var(--line);border-radius:12px;padding:14px 13px;font-size:16px;font-weight:800;font-family:inherit;color:var(--ink);width:100%;box-sizing:border-box;background:#fff;-webkit-appearance:none;appearance:none}
@@ -1808,12 +1871,26 @@ li:first-child > .pgh{margin-top:2px}
 /* ===== 1대1 안내 · 장바구니 ===== */
 .op-h{font-size:22px;font-weight:900;color:var(--ink);margin:30px 0 4px;letter-spacing:-.02em}
 .op-hs{font-size:14px;color:var(--ink3);margin-bottom:16px;line-height:1.7}
-.op-menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-bottom:8px}
-.op-c{border:1.5px solid var(--line);border-radius:14px;padding:18px;background:#fff;display:flex;flex-direction:column;gap:7px}
-.op-c .ic{font-size:22px}
-.op-c b{font-size:16px;font-weight:900;color:var(--ink)}
-.op-c p{margin:0;font-size:14px;line-height:1.7;color:var(--ink2)}
-.op-c em{font-style:normal;font-size:13px;font-weight:800;color:#c81f2b}
+.op-menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin-bottom:8px}
+.op-c{border:1.5px solid var(--line);border-radius:16px;padding:20px 22px;background:#fff;
+ display:grid;grid-template-columns:46px 1fr;grid-template-rows:auto auto auto auto;
+ column-gap:14px;row-gap:0;align-content:start;
+ transition:border-color .16s,box-shadow .16s,transform .16s}
+.op-c:hover{border-color:#c81f2b;box-shadow:0 12px 28px -18px rgba(200,31,43,.55);transform:translateY(-2px)}
+.op-c .ic{grid-column:1;grid-row:1/3;width:46px;height:46px;border-radius:12px;
+ background:linear-gradient(150deg,#FDF2F2,#F7E4E4);border:1px solid #F0D6D6;
+ display:flex;align-items:center;justify-content:center;font-size:23px}
+.op-c em{grid-column:2;grid-row:1;font-style:normal;font-size:11.5px;font-weight:900;
+ color:#c81f2b;letter-spacing:.09em;margin-bottom:3px}
+.op-c b{grid-column:2;grid-row:2;font-size:18px;font-weight:900;color:var(--ink);
+ letter-spacing:-.02em;line-height:1.3;word-break:keep-all}
+.op-c p{grid-column:1/3;grid-row:3;margin:11px 0 0;font-size:14.5px;line-height:1.75;
+ color:var(--ink2);word-break:keep-all}
+.op-c .tt-b{grid-column:1/3;grid-row:4;justify-self:start;margin-top:14px!important}
+@media(max-width:520px){.op-menu{grid-template-columns:1fr}
+ .op-c{padding:17px 18px;column-gap:12px}
+ .op-c .ic{width:40px;height:40px;font-size:20px}
+ .op-c b{font-size:16.5px}.op-c p{font-size:14px}}
 /* 무료수강 사다리 — 할인과 확실히 구분되게 초록으로 */
 .fr-wrap{border:2px solid #0e8a5a;border-radius:18px;overflow:hidden;margin:14px 0 6px;background:#fff}
 .fr-top{background:#0e8a5a;color:#fff;padding:18px 20px}
@@ -2349,8 +2426,8 @@ html,body{overflow-x:hidden;max-width:100%}
 
 <!-- Intro splash -->
 <div id="introSplash" class="intro">
-  <div class="intro-stage"><div class="intro-door"><img class="intro-logo dl" src="img/intro_logo.png" alt="SGA 산본글로벌아카데미"><img class="intro-logo dr" src="img/intro_logo.png" alt="" aria-hidden="true"></div></div>
-  <div class="intro-hint">화면을 클릭하여 <b>문을 여세요 ›</b></div>
+  <div class="intro-stage"><div class="intro-door"><img class="intro-logo" src="img/intro_logo.png" alt="SGA 산본글로벌아카데미"><span class="intro-sheen" aria-hidden="true"></span><span class="intro-burst" aria-hidden="true"></span><span class="intro-rings" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div></div>
+  <div class="intro-hint">화면을 클릭하면 <b>새로운 세상이 열립니다 ›</b></div>
 </div>
 <script>
 (function(){
@@ -2366,8 +2443,8 @@ html,body{overflow-x:hidden;max-width:100%}
   el.classList.add('open');               /* 문을 열면서 줌인 */
   document.documentElement.style.overflow='';
   try{sessionStorage.setItem('sgIntro','1');}catch(e){}
-  setTimeout(function(){el.classList.add('hide');},760);
-  setTimeout(function(){if(el&&el.parentNode)el.remove();},1500);}
+  setTimeout(function(){el.classList.add('hide');},1560);
+  setTimeout(function(){if(el&&el.parentNode)el.remove();},2450);}
  el.addEventListener('click',enter);
 }());
 </script>
@@ -2663,7 +2740,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 운영시간 평일 10:00~22:00 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-08-30 (v6)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-08-30 (v8)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-bl" href="#" onclick="snsSoon(this);return false;">blog</a>
@@ -2834,7 +2911,7 @@ function renderProg(k){
  renderProg('점수보장반');
 })();
 const SLIDES=[
- {e:'원장 인사말 · 산본글로벌어학원', t:'원장이 직접<br>토익을 가르칩니다', s:'구지영 원장 · 강의 경력 30년 · 민병철어학원 출신 · 토익 · 토플 · 토스 · 오픽 전문 · 미국 대학 졸업 유학파 · 기업체 영어 출강 — 토익부터 유학까지 영어 상담은 원장이 직접 받습니다', act:"openPage('강사소개')", pbg:'linear-gradient(135deg,#1D2D4F,#33507f)', tag:'원장 인사말 보기'},
+ {e:'원장 직접 상담 · 산본글로벌어학원', t:'원장이 직접<br>상담해 드립니다', s:'구지영 원장 — 토익 · 토플 전문 강사 출신 · 강의 경력 30년 · 민병철어학원 · 기업체 영어 출강 · 미국 대학 졸업 유학파. 점수가 왜 안 오르는지, 유학은 어떻게 준비하는지 — 상담은 원장이 직접 받습니다', act:"openPage('강사소개')", pbg:'linear-gradient(135deg,#1D2D4F,#33507f)', tag:'원장 인사말 보기'},
  {e:'2026 · 10월 신규 모집', t:'10월 신규 개강,<br>지금이 시작하기 제일 좋습니다', s:'새벽반 · 주말반 영어부터 토익 · 토스 · 오픽 · 토플까지 — 새로 여는 반만 모았습니다', act:"openPage('신규모집')", pbg:'linear-gradient(135deg,#1D2D4F,#2f6fb0)', tc:'#ffffff', ac:'#ffd98a', bbg:'#ffd94d', btc:'#1a1205', bg:''},
  {e:'무한 현장강의 이벤트', t:'월 15만원으로<br>무제한 수강한다고?', s:'무제한으로 듣고 원하는 점수 가져가세요 — 강사 5인의 시험대비반을 6개월 동안 횟수 제한 없이', act:"openExam('토익')", pbg:'linear-gradient(135deg,#c81f2b,#e0453e)', tc:'#ffffff', ac:'#ffe0dd', bbg:'#ffffff', btc:'#c81f2b', bg:'', faces:['eng_13','elly','eng_6','eng_15','eng_14'], fnames:['송윤정','엘리 킴','최자운','김현정','유미용']},
  {e:'AI LEARNING · 산글 잉글리시', t:'산글이와 매일 3분,<br>막히면 학원으로', s:'토익 문법 40강을 하루 한 칸씩 — 산글이가 매일 다섯 문제를 들고 옵니다. 정가 12만원, 10월 오픈이벤트 3만원, 산글 현강 수강생은 무료', act:"openPage('AI산글')", pbg:'linear-gradient(135deg,rgba(10,13,20,.86),rgba(14,138,90,.86))', tc:'#ffffff', ac:'#3ED598', bbg:'#3ED598', btc:'#0A0D14', bg:'img/ai_cafe1.jpg'},
@@ -3226,7 +3303,7 @@ var AGDOC={
 
  gift:'<b>산글 어학 상품권(충전금) 이용약관 — 「신유형 상품권 표준약관」 준용</b>'
    +'<table><tr><th>사용처</th><td>'+SGA_BIZ.name+' 수강료·교재비 결제 전용 (현금 인출 및 타 가맹점 사용 불가)</td></tr>'
-   +'<tr><th>유효기간</th><td>충전일로부터 <b>5년</b>. 만료 전 문자·알림톡으로 안내드립니다.</td></tr>'
+   +'<tr><th>유효기간</th><td>충전일로부터 권종에 따라 <b>1년 · 2년 · 3년</b> (선물용 1년 / 더블충전권 100만원권 2년 / 150만원권 3년). 만료 <b>30일 전</b>에 문자·알림톡으로 안내드립니다.</td></tr>'
    +'<tr><th>보너스 금액</th><td>충전 이벤트로 추가 지급된 금액은 <b>증정분</b>으로, 환불 시 정산에서 제외되고 실제 납입한 금액을 기준으로 반환합니다.</td></tr>'
    +'<tr><th>환불 기준</th><td>미사용 잔액은 표준약관에 따라 환불 가능하며, 수강이 개시된 부분은 「학원법」 교습비등 <b>반환 기준</b>에 따라 정산합니다.</td></tr>'
    +'<tr><th>잔액 확인</th><td>마이페이지 및 <b>카카오톡 알림톡</b>으로 충전·사용 시마다 잔액을 안내합니다.</td></tr></table>'
@@ -3454,7 +3531,7 @@ var GIFT_TERM=1;      /* 선물용 상품권 유효기간(년) */
 var GIFT_REFUND=0.90; /* 유효기간 경과 후 소멸시효 내 환급률 */
 function chgBuy(pay,get){
  var b=Math.round((get-pay)/pay*1000)/10;
- if(!confirm('산글 어학 상품권 충전\n\n결제금액 '+_won(pay)+'\n충전금액 '+_won(get)+' (보너스 '+b+'%)\n\n· 유효기간 5년\n· 보너스 금액은 증정분으로 환불 정산에서 제외됩니다.\n· 충전 즉시 카카오톡으로 잔액을 보내드립니다.\n\n계속하시겠습니까?'))return;
+ if(!confirm('산글 어학 상품권 충전\n\n결제금액 '+_won(pay)+'\n충전금액 '+_won(get)+'\n\n· 유효기간 '+_chgTerm(pay)+'년\n· 보너스 금액은 증정분으로 환불 정산에서 제외됩니다.\n· 충전 즉시 카카오톡으로 잔액을 보내드립니다.\n\n계속하시겠습니까?'))return;
  SGPT.gift=(SGPT.gift||0)+get;ptSave();
  alert('충전이 접수되었습니다. (데모)\n\n결제대행 연동 후 실제 결제가 진행됩니다.\n현재 잔액 '+_won(SGPT.gift)+'\n\n전화 '+SGA_BIZ.tel+' · 카카오톡 채널 산본글로벌어학원SGA');
  var g=document.getElementById('chgBal');if(g)g.innerHTML=_won(SGPT.gift);}
@@ -4078,6 +4155,18 @@ function _wdays(s){if(Array.isArray(s))s=s.join(' ');var mp={'일':0,'월':1,'�
 var _spCalD=new Date(2026,9,1);var _calWd=[];var _exRows=[];var _exPay='';var _exM1=0,_exM2=0;var _calHol={'2026-1-1':'신정','2026-2-16':'설날','2026-2-17':'설날','2026-2-18':'설날','2026-3-1':'삼일절','2026-3-2':'대체','2026-5-5':'어린이날','2026-5-24':'석가탄신','2026-5-25':'대체','2026-6-6':'현충일','2026-8-15':'광복절','2026-8-17':'대체','2026-9-24':'추석','2026-9-25':'추석','2026-9-26':'추석','2026-10-3':'개천절','2026-10-5':'대체','2026-10-9':'한글날','2026-12-25':'성탄절'};var _calStart=new Date(2026,9,1),_calEnd=new Date(2026,9,31);var _calN=99;
 /* 달력 색: _calColor = 한 가지 반일 때 동그라미 색 / _calGrp = 여러 반을 색으로 구분(무한수강권) */
 var _calColor=null,_calGrp=null,_calUntil=null,_calMon=4;
+/* 2026-08-30 — 등록 기간을 바꾸면 달력도 그만큼 늘어납니다.
+   전에는 어떤 기간을 고르셔도 한 달치만 동그라미가 찍혀서,
+   6개월 등록하신 분이 자기 수업일을 끝까지 볼 수 없었습니다.
+   _calMul = 실제로 다니시는 총 개월수(무료개월 포함). */
+var _calMul=1;
+function setCalMul(n){_calMul=(n&&n>0)?n:1;}
+/* '4개월 등록 (+2개월 무료·총6개월)' 같은 문구에서 총 개월을 읽어냅니다 */
+function _totMon(label,fallback){
+ var m=String(label||'').match(/총\s*(\d+)\s*개월/);
+ if(m)return parseInt(m[1],10);
+ m=String(label||'').match(/(\d+)\s*개월/);
+ return m?parseInt(m[1],10):(fallback||1);}
 var _GCOL=[['월~금','#0e8a5a'],['매일','#0e8a5a'],['평일','#0e8a5a'],['월·수','#2f6fb0'],['월수','#2f6fb0'],['화·목','#7658c8'],['화목','#7658c8'],['토','#C6A15B']];
 function _grpColor(day,i){var d=String(day||'').replace(/\s/g,'');
  for(var k=0;k<_GCOL.length;k++){if(d.indexOf(_GCOL[k][0])>=0)return _GCOL[k][1];}
@@ -4137,7 +4226,7 @@ function _grpEdge(){/* 그룹 모드의 개강일·종강일 — 개강은 과�
  return [ed?st:null,ed];}
 function _calSess(s){if(Array.isArray(s))s=s.join(" ");if(/월~금|매일|평일/.test(s))return 18;if(/토/.test(s)&&!/월|화|수|목|금/.test(s))return 4;var n=_wdays(s).length;if(n>=3)return n*4;return 8;}
 function _calOrd(t,wd){var c=0,d=new Date(_calStart.getFullYear(),_calStart.getMonth(),_calStart.getDate());while(d<=t){if(wd.indexOf(d.getDay())>=0&&!_calHol[d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()])c++;d.setDate(d.getDate()+1);}return c;}
-function _calRange(wd,n,from){if(!wd||!wd.length||!n||n>90)return null;var c=0,st=null,ed=null;var bs=from||_calStart;var dt=new Date(bs.getFullYear(),bs.getMonth(),bs.getDate());var g=0;while(c<n&&g<900){var k=dt.getFullYear()+'-'+(dt.getMonth()+1)+'-'+dt.getDate();if(wd.indexOf(dt.getDay())>=0&&!_calHol[k]){c++;if(c===1)st=new Date(dt);if(c===n)ed=new Date(dt);}dt.setDate(dt.getDate()+1);g++;}if(!st||!ed)return null;return {start:st,end:ed,n:n};}
+function _calRange(wd,n,from){if(!wd||!wd.length||!n||n>400)return null;var c=0,st=null,ed=null;var bs=from||_calStart;var dt=new Date(bs.getFullYear(),bs.getMonth(),bs.getDate());var g=0;while(c<n&&g<1400){var k=dt.getFullYear()+'-'+(dt.getMonth()+1)+'-'+dt.getDate();if(wd.indexOf(dt.getDay())>=0&&!_calHol[k]){c++;if(c===1)st=new Date(dt);if(c===n)ed=new Date(dt);}dt.setDate(dt.getDate()+1);g++;}if(!st||!ed)return null;return {start:st,end:ed,n:n};}
 function _dstr(x){return (x.getMonth()+1)+'/'+x.getDate();}
 function _wlabel(wd){var nm=['일','월','화','수','목','금','토'];if(!wd||!wd.length)return '';if(wd.length===5&&wd.indexOf(1)>=0&&wd.indexOf(5)>=0)return '월~금';return wd.slice().sort(function(a,b){return a-b;}).map(function(i){return nm[i];}).join('·');}
 function _calSumHTML(wd){
@@ -4151,6 +4240,7 @@ function _calSumHTML(wd){
   return '<div class="cal-sum">'+o+'</div>';}
  var lb=_wlabel(wd);if(!lb)return '';var r=_calRange(wd,_calN);var out='<b>'+lb+'</b>';
  if(r){out+='<span class="st">'+_dstr(_calStart)+' 개강 \u2192 '+_dstr(r.end)+' 종강</span>';}
+ if(_calMul>1)out+='<span class="nx">총 '+_calMul+'개월 \u00b7 '+_calN+'회 \u00b7 \u2039 \u203a 화살표로 넘겨 보세요</span>';
  return '<div class="cal-sum">'+out+'</div>';}
 function _calCell(cur,wd,GE,showMonth){
  var y=cur.getFullYear(),m=cur.getMonth(),day=cur.getDate();
@@ -4158,7 +4248,7 @@ function _calCell(cur,wd,GE,showMonth){
  var G=_calGrp?_grpOf(cur.getDay(),cur):null;
  var match=_calGrp?(!!G&&cur>=_calStart&&cur<=_calUntil&&!hol):(wd.indexOf(cur.getDay())>=0&&cur>=_calStart&&!hol);
  var on=false,faint=false,ord=0;
- if(match){ if(_calGrp){on=true;} else {ord=_calOrd(cur,wd); if(ord<=_calN){on=true;faint=(!showMonth)&&cur.getMonth()!==_calStart.getMonth();}} }
+ if(match){ if(_calGrp){on=true;} else {ord=_calOrd(cur,wd); if(ord<=_calN){on=true;faint=false;}} }
  var mark='';
  if(on&&_calGrp){ if(GE[0]&&cur.getTime()===GE[0].getTime())mark='st'; else if(GE[1]&&cur.getTime()===GE[1].getTime())mark='ed'; }
  else if(on){ if(ord===1)mark='st'; else if(ord===_calN)mark='ed'; }
@@ -4193,7 +4283,7 @@ function calHTML(d,wd){
  for(var i=0;i<first;i++)cells+='<span class="cal-d"></span>';
  for(var day=1;day<=dim;day++)cells+=_calCell(new Date(y,m,day),wd,GE,false);
  /* 지금 보고 있는 달이 개강월일 때만 다음 달 종강 주를 이어 붙입니다 */
- if(!_calGrp&&y===_calStart.getFullYear()&&m===_calStart.getMonth())cells+=_calTail(wd,GE);
+ if(!_calGrp&&_calMul<=1&&y===_calStart.getFullYear()&&m===_calStart.getMonth())cells+=_calTail(wd,GE);
  var _mi=_calGrp?_mIdx(y,m):0;
  var _lo=_calGrp&&_mi<=1,_hi=_calGrp&&_mi>=_calMon;
  return '<div class="cal"><div class="cal-h"><button type="button"'+(_lo?' disabled':'')+' onclick="spCalNav(-1)">‹</button>'
@@ -4210,7 +4300,7 @@ function _calLegend(){
    +'<span class="lgi"><i style="background:#fff;border:2px solid #c81f2b;box-sizing:border-box"></i>공휴일(휴강)</span></div>';}
  var c=_calColor||'#F5C518';
  return '<div class="cal-lg"><span class="lg-c" style="color:'+c+'">●</span> 수업일 &nbsp; <span style="color:#2f6fb0">●</span> 개강·종강일 &nbsp; <span style="color:#c81f2b">○</span> 공휴일(휴강)</div>';}
-function spRenderCal(){var el=document.getElementById('spCal');if(!el)return;var dv=document.getElementById('spDay');if(dv){_calN=_calSess(dv.value);_calGrp=null;_calUntil=null;_calColor=_calSolo(dv.value);}el.innerHTML=calHTML(_spCalD,dv?_wdays(dv.value):_calWd);}
+function spRenderCal(){var el=document.getElementById('spCal');if(!el)return;var dv=document.getElementById('spDay');if(dv){_calN=_calSess(dv.value)*_calMul;_calGrp=null;_calUntil=null;_calColor=_calSolo(dv.value);}else if(!_calGrp){_calN=_calSess(_wlabel(_calWd))*_calMul;}el.innerHTML=calHTML(_spCalD,dv?_wdays(dv.value):_calWd);}
 function spCalNav(delta){var n=new Date(_spCalD.getFullYear(),_spCalD.getMonth()+delta,1);
  if(_calGrp){var lo=new Date(_calStart.getFullYear(),_calStart.getMonth(),1);
   var hi=new Date(_calStart.getFullYear(),_calStart.getMonth()+(_calMon-1),1);
@@ -4321,7 +4411,7 @@ function _clsLabel(x){return x[1]+' · '+x[2]+' ('+x[0]+')'+(x[3]?' · '+x[3]:''
 function stepPage(k,lvl){_spVerified=false;
 if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;_spCalD=new Date(2026,9,1);var W=WCONV[k]||WCONV['영어'];
  var lv0=W.levels[0];if(lvl){for(var _i=0;_i<W.levels.length;_i++){if(W.levels[_i][0]===lvl){lv0=W.levels[_i];break;}}}_spLevel=lv0[0];var init=W.cls[lv0[0]]||[];
- var idays=[];init.forEach(function(x){if(idays.indexOf(x[0])<0)idays.push(x[0]);});_calN=_calSess(idays[0]||'');
+ var idays=[];init.forEach(function(x){if(idays.indexOf(x[0])<0)idays.push(x[0]);});_calMul=_totMon((_spP(k).per||{})[_spP(k).sel]||'',parseInt(_spP(k).sel,10)||1);_calN=_calSess(idays[0]||'')*_calMul;
  var dayOpts=idays.map(function(d){return '<option>'+d+' (개강)</option>';}).join('')+'<option>주말반 (추후 모집중)</option>';
  var timeOpts=init.map(function(x){return '<option>'+_clsLabel(x)+'</option>';}).join('')+'<option>오전반 (추후 모집중)</option><option>오후반 (추후 모집중)</option><option>주말반 (추후 모집중)</option>';
  var steps=W.levels.map(function(l,i){return '<button class="sp-step'+(l[0]===lv0[0]?' on':'')+'" onclick="spStep(this,\''+l[0]+'\')">'+l[0]+'</button>';}).join('');
@@ -4358,6 +4448,9 @@ function spPrice(){var tE=document.getElementById('spTerm');if(!tE)return;var t=
  if(strike&&strike>fin){a.innerHTML='<s style="color:#b6bcc9;font-size:18px;font-weight:600">'+strike.toLocaleString()+'</s> '+fin.toLocaleString()+'원';}
  else{a.textContent=fin.toLocaleString()+'원';}
  var lb=P.per[t]||'';
+ /* 무료개월까지 더한 '총 N개월'로 달력을 다시 그립니다 */
+ setCalMul(_totMon(o[1]+' '+(P.per[t]||''),parseInt(t,10)||1));
+ try{spRenderCal();}catch(_e){}
  if(d>0&&R.note.indexOf('ev')===0)lb+=' · '+evLabel(v)+' '+Math.round(d*100)+'%';
  else if(d>0&&R.note.indexOf('term')===0)lb+=' · 기간 결제 할인이 더 큼';
  if(lo>0)lb+=' + 재등록 '+Math.round(lo*100)+'%';
@@ -4417,20 +4510,25 @@ function spRecalc(){
  if(i)i.value=v?_won(v):'';
  var f=document.getElementById('spPtVal');if(f)f.innerHTML='-'+_won(v);
  var t=document.getElementById('spPtTot');if(t)t.innerHTML=_won(Math.max(0,due-g-v));}
+/* 2026-08-30: 결제창 충전샵 — 할인율(반값) 표시를 뺐습니다.
+   상시 할인이 아니라 오픈 기간 프로모션이라, 고정 할인율처럼 보이면 안 됩니다.
+   금액도 '3,000,000원'처럼 길게 쓰면 좁은 결제창 그리드를 넘어가서 만원 단위로 줄였습니다. */
 function spChgShopHTML(){
- return '<div class="gf-sh">산글 어학 상품권 · 넣으신 금액이 그대로 <b>두 배</b></div>'
- +'<div class="gf-g">'+CHGTIER.map(function(t){var b=Math.round((t.get-t.pay)/t.pay*100);
-   return '<button type="button" class="gf-t'+(b>=15?' hot':'')+'" onclick="spChgPick('+t.pay+','+t.get+')">'
-    +'<em>'+Math.round(t.pay/10000)+'만원권</em>'
-    +'<b>'+_won(t.get)+'</b>'
+ return '<div class="gf-sh">산글 어학 상품권 충전 · <b>오픈 프로모션</b></div>'
+ +'<div class="gf-g">'+CHGTIER.map(function(t){
+   return '<button type="button" class="gf-t" onclick="spChgPick('+t.pay+','+t.get+')">'
+    +'<em>'+Math.round(t.pay/10000)+'만원 결제</em>'
+    +'<b>'+Math.round(t.get/10000)+'만원 충전</b>'
     +'<i>'+t.term+'년</i></button>';}).join('')+'</div>'
  +'<div id="spChgBox"></div>';}
+/* 권종별 유효기간 — 결제창에서도 실제 약관과 같은 값을 보여줍니다 */
+function _chgTerm(pay){for(var i=0;i<CHGTIER.length;i++){if(CHGTIER[i].pay===pay)return CHGTIER[i].term||GIFT_TERM;}return GIFT_TERM;}
 function spChgPick(pay,get){
  var b=document.getElementById('spChgBox');if(!b)return;
  var bn=Math.round((get-pay)/pay*100);
- b.innerHTML='<div class="gf-c"><div class="gf-ch">'+_won(pay)+' 결제 → <b>'+_won(get)+'</b> 충전 <span>(+'+bn+'%)</span></div>'
+ b.innerHTML='<div class="gf-c"><div class="gf-ch">'+_won(pay)+' 결제 → <b>'+_won(get)+'</b> 충전</div>'
   +'<div class="gf-acc">'+SG_BANK+'</div>'
-  +'<p>입금자명은 <b>수강생 성함</b>으로 넣어 주세요. 입금이 확인되면 잔액에 반영되고 카카오톡으로 알려드립니다. 유효기간 5년 · 보너스 금액은 증정분이라 환불 정산에서 제외됩니다.</p>'
+  +'<p>입금자명은 <b>수강생 성함</b>으로 넣어 주세요. 입금이 확인되면 잔액에 반영되고 카카오톡으로 알려드립니다. 유효기간 <b>'+_chgTerm(pay)+'년</b> · 보너스 금액은 증정분이라 환불 정산에서 제외됩니다.</p>'
   +'<div class="gf-cb"><a class="gf-sms" href="sms:0314666969?body='+encodeURIComponent('[산글 어학 상품권 충전]\n결제금액 '+_won(pay)+'\n충전금액 '+_won(get)+' (보너스 '+bn+'%)')+'">충전 신청 문자 보내기</a>'
   +'<button type="button" class="gf-ok" onclick="spChgDone('+get+')">입금했습니다 · 잔액 반영</button></div></div>';}
 function spChgDone(get){
@@ -4737,10 +4835,10 @@ var TIMG={'KELLY':'','켈리':'','Deborah':'eng_6','데보라':'eng_6','미정':
 function timg(name){var k=(name||'').split(/[\u00b7\/]/)[0].trim();var im=TIMG[k];return im?'<img class="ex-face" src="img/teachers/'+im+'.png" alt="">':'';}
 function fmtWon(n){return n?n.toLocaleString()+'원':'상담';}
 function exParse(r){var m=(r.price||'').match(/1개월\s*([\d,]+)만/);_exM1=m?parseInt(m[1].replace(/,/g,''))*10000:0;var pp=parseInt((r.pay||'').replace(/[^\d]/g,''));_exM2=isNaN(pp)?0:pp;var lm=(r.price||'').match(/2개월\s*([\d,]+)만/);_exList=lm?parseInt(lm[1].replace(/,/g,''))*10000:0;if(_exList&&_exM2&&_exList<=_exM2)_exList=0;}
-function exPrice(){var tE=document.getElementById('exTerm');var t=tE?tE.value:'2';var base=t==='1'?_exM1:_exM2;var de=document.getElementById('exDisc');var v=de?de.value:'0';var d=evRate(_exSubj,v);var el=document.getElementById('spAmt');var pe=document.getElementById('exPer');if(!base){el.textContent='상담 문의';if(pe)pe.textContent='';return;}var lst=(t==='1')?0:(_exList||0);_fullAmt=lst||base;var R=evCalc(base,lst,d,loyalRate(v));var fin=R.fin;var strike=R.strike||(d>0?base:0);if(strike&&strike>fin){el.innerHTML='<s style="color:#b6bcc9;font-size:18px;font-weight:600">'+strike.toLocaleString()+'</s> '+fin.toLocaleString()+'원';}else{el.textContent=fin.toLocaleString()+'원';}var lb=(t==='1'?'1개월':'2개월 할인가');var lo2=loyalRate(v);if(d>0&&R.note.indexOf('ev')===0)lb+=' · 이벤트 '+Math.round(d*100)+'%';if(lo2>0)lb+=' + 재등록 '+Math.round(lo2*100)+'%';if(pe)pe.textContent=lb;}
+function exPrice(){var tE=document.getElementById('exTerm');var t=tE?tE.value:'2';var base=t==='1'?_exM1:_exM2;var de=document.getElementById('exDisc');var v=de?de.value:'0';var d=evRate(_exSubj,v);var el=document.getElementById('spAmt');var pe=document.getElementById('exPer');if(!base){el.textContent='상담 문의';if(pe)pe.textContent='';return;}var lst=(t==='1')?0:(_exList||0);_fullAmt=lst||base;var R=evCalc(base,lst,d,loyalRate(v));var fin=R.fin;var strike=R.strike||(d>0?base:0);if(strike&&strike>fin){el.innerHTML='<s style="color:#b6bcc9;font-size:18px;font-weight:600">'+strike.toLocaleString()+'</s> '+fin.toLocaleString()+'원';}else{el.textContent=fin.toLocaleString()+'원';}setCalMul(t==='1'?1:2);try{spRenderCal();}catch(_e){}var lb=(t==='1'?'1개월':'2개월 할인가');var lo2=loyalRate(v);if(d>0&&R.note.indexOf('ev')===0)lb+=' · 이벤트 '+Math.round(d*100)+'%';if(lo2>0)lb+=' + 재등록 '+Math.round(lo2*100)+'%';if(pe)pe.textContent=lb;}
 function examPage(k){var e=EXAM[k]||EXAM['토익'];_spCalD=new Date(2026,9,1);_exRows=e.rows;_exSubj=k;_exVerified=false;
  var tabs=e.rows.map(function(r,i){return '<button class="sp-step'+(i===0?' on':'')+'" onclick="exSel('+i+')">'+r.n+'</button>';}).join('');
- var r0=e.rows[0];var im0=TIMG[(r0.tc||'').split(/[·\/]/)[0].trim()]||e.photo;_calWd=_wdays(r0.day);_calN=_calSess(r0.day);_calGrp=null;_calUntil=null;_calColor=_calSolo(r0.day);exParse(r0);
+ var r0=e.rows[0];var im0=TIMG[(r0.tc||'').split(/[·\/]/)[0].trim()]||e.photo;_calMul=2;_calWd=_wdays(r0.day);_calN=_calSess(r0.day)*_calMul;_calGrp=null;_calUntil=null;_calColor=_calSolo(r0.day);exParse(r0);
  return '<div class="sp-wrap"><button class="sp-back" onclick="openPage(\'수강신청\')">‹ 수강신청으로</button><div class="sp-top"><div class="sp-left">'+
   '<div class="sp-badge">시험대비반 · 관리형</div>'+
   '<div class="sp-photo"><img id="spPhoto" src="img/teachers/'+im0+'.png" alt=""></div>'+
@@ -4756,7 +4854,7 @@ function examPage(k){var e=EXAM[k]||EXAM['토익'];_spCalD=new Date(2026,9,1);_e
   '<div class="sp-note">※ 요일·시간·금액은 개강 반 편성에 따라 변동될 수 있으며, 최종 수강료는 상담 시 확정 안내드립니다. · 상담 031-466-6969</div>'+
   '</div></div>'+spModalHTML()+'</div>';
 }
-function exSel(i){var ss=document.querySelectorAll('.sp-step');for(var j=0;j<ss.length;j++)ss[j].classList.remove('on');ss[i].classList.add('on');var r=_exRows[i];document.getElementById('exD').value=r.day;document.getElementById('exTm').value=r.time;var key=(r.tc||'').split(/[·\/]/)[0].trim();var im=TIMG[key];if(im){var p=document.getElementById('spPhoto');if(p)p.src='img/teachers/'+im+'.png';}var t=document.getElementById('spTeacher');if(t)t.textContent=r.tc;_calWd=_wdays(r.day);_calN=_calSess(r.day);_calGrp=null;_calUntil=null;_calColor=_calSolo(r.day);exParse(r);var tE=document.getElementById('exTerm');if(tE)tE.value='2';exPrice();spRenderCal();}
+function exSel(i){var ss=document.querySelectorAll('.sp-step');for(var j=0;j<ss.length;j++)ss[j].classList.remove('on');ss[i].classList.add('on');var r=_exRows[i];_calMul=2;document.getElementById('exD').value=r.day;document.getElementById('exTm').value=r.time;var key=(r.tc||'').split(/[·\/]/)[0].trim();var im=TIMG[key];if(im){var p=document.getElementById('spPhoto');if(p)p.src='img/teachers/'+im+'.png';}var t=document.getElementById('spTeacher');if(t)t.textContent=r.tc;_calWd=_wdays(r.day);_calN=_calSess(r.day);_calGrp=null;_calUntil=null;_calColor=_calSolo(r.day);exParse(r);var tE=document.getElementById('exTerm');if(tE)tE.value='2';exPrice();spRenderCal();}
 function openBuy(k){if(k==='영어회화'){openStep(k);}else{openExam(k);}}
 var _txK='토익',_txTab=0;
 var TEXAM={
@@ -4916,7 +5014,7 @@ function _txSteps(e){
   if(!rows)return;
   out+='<div class="tx-grp tx-'+G.k+'"><div class="tx-gh"><b>'+G.nm+'</b><em>'+G.sub+'</em></div><div class="tx-gr">'+rows+'</div></div>';});
  return out;}
-function examStepPage(k){var e=TEXAM[k];_txK=k;_txTab=0;_exVerified=false;_spCalD=new Date(2026,9,1);var t0=e.tabs[0];var d0=Array.isArray(t0.day)?t0.day[0]:t0.day;_calWd=_wdays(d0);_calN=_calSess(d0);calApply(t0,d0);
+function examStepPage(k){var e=TEXAM[k];_txK=k;_txTab=0;_exVerified=false;_calMul=1;_spCalD=new Date(2026,9,1);var t0=e.tabs[0];var d0=Array.isArray(t0.day)?t0.day[0]:t0.day;_calWd=_wdays(d0);_calN=_calSess(d0);calApply(t0,d0);
  var tabs=_txSteps(e);
  return '<div class="sp-wrap"><button class="sp-back" onclick="openPage(\'수강신청\')">‹ 수강신청으로</button><div class="sp-top"><div class="sp-left">'+
   '<div class="sp-badge">시험대비반 · 관리형</div>'+
@@ -5083,7 +5181,7 @@ function txReveal(){
  setTimeout(function(){bn.classList.remove('txflash');},1100);
 }
 function txDayChg(){var dv=document.getElementById('txDay');var d=dv?dv.value.replace(' (개강)',''):'';var t=_txCur&&_txCur();if(t&&t.sched&&t.sched.length){spRenderCal();return;}_calWd=_wdays(d);_calN=_calSess(d);calApply(t,d);spRenderCal();}
-function txPrice(){try{setTimeout(txHint,0);}catch(e){}var e=TEXAM[_txK];var t=e.tabs[_txTab];var ti=document.getElementById('txTerm');var ix=ti?parseInt(ti.value):0;var term=(t.terms||[])[ix]||['',0];var base=term[1]||0;var de=document.getElementById('exDisc');var v=de?de.value:'0';if(t.nodisc)v='0';var d=evRate(_txK,v);var a=document.getElementById('spAmt');var pe=document.getElementById('spPer');if(!base){a.textContent='상담 문의';if(pe)pe.textContent=term[0];var nt0=document.getElementById('spDiscNote');if(nt0)nt0.textContent='';return;}var list=term[2]||0;_fullAmt=list||base;var R=evCalc(base,list,d,t.nodisc?0:loyalRate(v));var fin=R.fin,strike=R.strike;if(strike&&strike>fin){a.innerHTML='<s style="color:#b6bcc9;font-size:18px;font-weight:600">'+strike.toLocaleString()+'</s> '+fin.toLocaleString()+'원';}else{a.textContent=fin.toLocaleString()+'원';}var lbl=term[0];var lo=t.nodisc?0:loyalRate(v);if(d>0&&R.note.indexOf('ev')===0)lbl+=' · '+evLabel(v.split('+').filter(function(x){return !(SGEV[x]||{}).loyal;}).join('+'))+' '+Math.round(d*100)+'%';if(lo>0)lbl+=' + 재등록 '+Math.round(lo*100)+'%';if(pe)pe.textContent=lbl;try{if(!t.nodisc)discRefresh(_txK);}catch(_e){}var nt=document.getElementById('spDiscNote');var msgs=[];if(list&&list>base)msgs.push('※ 정가 '+list.toLocaleString()+'원 · '+(t.nodisc?'':'2개월 결제 시 ')+(list-base).toLocaleString()+'원 할인('+(Math.round((list-base)/list*1000)/10)+'%)');msgs.push(t.nodisc?'※ 이미 최저가라 더 이상 추가 할인이 없습니다.':'※ 2개월·장기 결제가는 기본 가격이며, 오픈이벤트 할인은 그 금액에서 추가로 적용됩니다.');if(nt)nt.textContent=msgs.join('  ');}
+function txPrice(){try{setTimeout(txHint,0);}catch(e){}var e=TEXAM[_txK];var t=e.tabs[_txTab];var ti=document.getElementById('txTerm');var ix=ti?parseInt(ti.value):0;var term=(t.terms||[])[ix]||['',0];var base=term[1]||0;var de=document.getElementById('exDisc');var v=de?de.value:'0';if(t.nodisc)v='0';var d=evRate(_txK,v);var a=document.getElementById('spAmt');var pe=document.getElementById('spPer');if(!base){a.textContent='상담 문의';if(pe)pe.textContent=term[0];var nt0=document.getElementById('spDiscNote');if(nt0)nt0.textContent='';return;}var list=term[2]||0;_fullAmt=list||base;var R=evCalc(base,list,d,t.nodisc?0:loyalRate(v));var fin=R.fin,strike=R.strike;if(strike&&strike>fin){a.innerHTML='<s style="color:#b6bcc9;font-size:18px;font-weight:600">'+strike.toLocaleString()+'</s> '+fin.toLocaleString()+'원';}else{a.textContent=fin.toLocaleString()+'원';}if(!(t.sched&&t.sched.length)){setCalMul(_totMon(term[0],1));try{spRenderCal();}catch(_e){}}var lbl=term[0];var lo=t.nodisc?0:loyalRate(v);if(d>0&&R.note.indexOf('ev')===0)lbl+=' · '+evLabel(v.split('+').filter(function(x){return !(SGEV[x]||{}).loyal;}).join('+'))+' '+Math.round(d*100)+'%';if(lo>0)lbl+=' + 재등록 '+Math.round(lo*100)+'%';if(pe)pe.textContent=lbl;try{if(!t.nodisc)discRefresh(_txK);}catch(_e){}var nt=document.getElementById('spDiscNote');var msgs=[];if(list&&list>base)msgs.push('※ 정가 '+list.toLocaleString()+'원 · '+(t.nodisc?'':'2개월 결제 시 ')+(list-base).toLocaleString()+'원 할인('+(Math.round((list-base)/list*1000)/10)+'%)');msgs.push(t.nodisc?'※ 이미 최저가라 더 이상 추가 할인이 없습니다.':'※ 2개월·장기 결제가는 기본 가격이며, 오픈이벤트 할인은 그 금액에서 추가로 적용됩니다.');if(nt)nt.textContent=msgs.join('  ');}
 function txDiscChange(){try{txHint();}catch(e){}var de=document.getElementById('exDisc');var t=_txCur();
  if(t&&t.nodisc){de.value='0';ndInfo();txPrice();return;}
  if(!evGate(de.value,'ex')){de.value='0';}txPrice();}
@@ -5316,8 +5414,6 @@ function oneTabHTML(i){
   +'<div class="b1-tc"><img src="img/teachers/'+d.ph+'.png" alt=""><div><b>'+d.tn+'</b><span>'+d.tr+'</span></div></div>'
   +_oneSec('이런 분을 위한 과정입니다','<ul class="oh-ul">'+d.who.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>')
   +_oneSec('왜 1:1로 시작해야 하나','<p class="oh-p">'+d.why+'</p>')
-  +_oneSec('20시간이 이렇게 갑니다','<div class="b1-cur">'+d.cur.map(function(r){
-     return '<div class="b1-r"><b>'+r[0]+'</b><span>'+r[1]+'</span></div>';}).join('')+'</div>')
   +_oneSec('포함된 것','<ul class="oh-ck">'+d.ben.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>')
   +_oneSec('과외에 최적화된 이유','<ul class="oh-ul"><li>정해진 진도가 없습니다 — <b>내 속도</b>로 갑니다</li><li>모르면 몇 번이든 다시 물어보셔도 됩니다</li><li>시간을 <b>원하는 요일·시간</b>으로 잡습니다</li><li>20시간이 끝나면 <b>그룹반으로 무료 연결</b>됩니다</li></ul>')
   +'<div class="one-memo"><label>원하는 요일·시간 (비고)<textarea id="oneMemo" placeholder="예: 평일 저녁 7시 이후 / 토요일 오전 등"></textarea></label><div class="one-note">✅ 원하는 시간을 적어주시면 <b>최대한 강사님이 매칭</b>해 드립니다.</div></div>'
@@ -5450,46 +5546,92 @@ function onePickPage(){
 /* ===== 왕기초 토익 일대일 — 전용 신청·결제 페이지 =====
    1:1이라 정해진 시간표가 없습니다. 원하는 요일·시간을 고르시면
    그대로 담당자에게 전달되고, 바로 결제까지 진행됩니다. */
-var BT={days:[],time:'',start:''};
-var BT_DAY=[['월','월요일'],['화','화요일'],['수','수요일'],['목','목요일'],['금','금요일'],['토','토요일'],['협의','상담 후 결정']];
-var BT_TIME=[['오전','10:00~13:00'],['오후','13:00~18:00'],['저녁','18:00~21:30'],['협의','상담 후 결정']];
-function btDay(d,el){var i=BT.days.indexOf(d);if(i>=0)BT.days.splice(i,1);else BT.days.push(d);el.classList.toggle('on');btSync();}
-function btTime(t,el){BT.time=t;var ls=document.querySelectorAll('.bt-time .bt-b');for(var i=0;i<ls.length;i++)ls[i].classList.remove('on');el.classList.add('on');btSync();}
+/* 2026-08-30 — 요일·시간대 고르는 방식을 바꿨습니다.
+   전에는 '요일 여러 개 + 시간대 하나'라서, 월요일은 오후 · 수요일은 오전처럼
+   요일마다 사정이 다른 분을 담지 못했습니다. 1:1은 오히려 그런 분이 대부분입니다.
+   그래서 요일 × 시간대 표를 놓고 되는 칸만 찍게 했습니다. 칸으로 안 되는 사정은
+   바로 아래 적는 칸에 그대로 쓰시면 신청서에 함께 담깁니다. */
+var BT={slots:{},memo:'',start:'',any:false};
+var BT_D=['월','화','수','목','금','토'];
+var BT_T=[['오전','10~13시'],['오후','13~18시'],['저녁','18~21:30']];
+function btKey(d,t){return d+' '+t;}
+function btCell(d,t,el){
+ var k=btKey(d,t);
+ if(BT.slots[k]){delete BT.slots[k];el.classList.remove('on');}
+ else{BT.slots[k]=1;el.classList.add('on');}
+ if(BT.any){BT.any=false;var a=document.getElementById('btAny');if(a)a.classList.remove('on');}
+ btSync();}
+/* 한 줄(요일) 통째로 — 그 요일은 아무 때나 되는 분 */
+function btRow(d,el){
+ var all=BT_T.every(function(t){return BT.slots[btKey(d,t[0])];});
+ BT_T.forEach(function(t){var k=btKey(d,t[0]);if(all)delete BT.slots[k];else BT.slots[k]=1;});
+ var cs=document.querySelectorAll('.bg-c[data-d="'+d+'"]');
+ for(var i=0;i<cs.length;i++)cs[i].classList[all?'remove':'add']('on');
+ if(el)el.classList[all?'remove':'add']('on');
+ if(BT.any){BT.any=false;var a=document.getElementById('btAny');if(a)a.classList.remove('on');}
+ btSync();}
+function btAnyTog(el){
+ BT.any=!BT.any;
+ if(BT.any){BT.slots={};
+  var cs=document.querySelectorAll('.bg-c,.bg-dy');for(var i=0;i<cs.length;i++)cs[i].classList.remove('on');}
+ el.classList.toggle('on',BT.any);
+ btSync();}
+function btMemo(v){BT.memo=(v||'').slice(0,200);btSync();}
 function btStart(v){BT.start=v;btSync();}
+/* '월 오후 · 수 오전 · 토 오전' 처럼 요일 순서대로 묶어 씁니다 */
+function btText(){
+ if(BT.any)return '요일·시간 상관없음 (상담 후 조율)';
+ var out=[];
+ BT_D.forEach(function(d){
+  var ts=BT_T.filter(function(t){return BT.slots[btKey(d,t[0])];}).map(function(t){return t[0];});
+  if(!ts.length)return;
+  out.push(d+' '+(ts.length===BT_T.length?'아무 때나':ts.join('/')));});
+ return out.join(' · ');}
 /* 연도는 빼고 '10월 5일 (월)' 형태로만 고르시게 합니다 */
 function btDates(){var W=['일','월','화','수','목','금','토'],o='<option value="">선택 안 함</option>',d=new Date();
  d.setDate(d.getDate()+1);
  for(var i=0;i<75;i++){var lb=(d.getMonth()+1)+'월 '+d.getDate()+'일 ('+W[d.getDay()]+')';
   o+='<option value="'+lb+'">'+lb+'</option>';d.setDate(d.getDate()+1);}
  return o;}
+function btGridHTML(){
+ var h='<div class="bg-tb"><div class="bg-hd"><span class="bg-cn">요일</span>'
+  +BT_T.map(function(t){return '<span>'+t[0]+'<em>'+t[1]+'</em></span>';}).join('')+'</div>';
+ h+=BT_D.map(function(d){
+  return '<div class="bg-r"><button type="button" class="bg-dy" onclick="btRow(\''+d+'\',this)">'+d+'<em>전체</em></button>'
+   +BT_T.map(function(t){
+     return '<button type="button" class="bg-c" data-d="'+d+'" onclick="btCell(\''+d+'\',\''+t[0]+'\',this)"><i></i></button>';}).join('')
+   +'</div>';}).join('');
+ h+='</div>';
+ return h;}
 function btSync(){
- var ok=BT.days.length>0&&BT.time;
  var b=document.getElementById('btGo');if(b)b.disabled=false;
+ var pv=document.getElementById('btPick');
+ if(pv)pv.innerHTML=(btText()||'<span class="none">아직 고르지 않으셨습니다</span>');
  var s=document.getElementById('btSum');if(!s)return;
- if(!ok){s.innerHTML='요일·시간대를 안 고르셔도 신청하실 수 있습니다. <b>비워두시면 상담 후 조율</b>로 접수됩니다.<br><span style="font-size:13.5px;color:#5c6472">고르시면 그 일정을 먼저 잡아드립니다.</span>';return;}
- var order=['월','화','수','목','금','토','협의'];
- var ds=order.filter(function(x){return BT.days.indexOf(x)>=0;}).join(' · ');
- s.innerHTML='선택하신 일정 — <b>'+ds+'</b> / <b>'+BT.time+'</b>'
+ var t=btText();
+ if(!t&&!BT.memo){
+  s.innerHTML='요일·시간을 안 고르셔도 신청하실 수 있습니다. <b>비워두시면 상담 후 조율</b>로 접수됩니다.'
+   +'<br><span style="font-size:13.5px;color:#5c6472">고르시면 그 일정을 먼저 잡아드립니다.</span>';return;}
+ s.innerHTML='선택하신 일정 — <b>'+(t||'상담 후 조율')+'</b>'
   +(BT.start?('<br>희망 시작일 <b>'+BT.start+'</b>'):'')
+  +(BT.memo?('<br>남기신 말씀 — <b>'+_esc(BT.memo)+'</b>'):'')
   +'<br><span style="font-size:13.5px;color:#5c6472">이대로 담당자에게 전달됩니다. 신청 후 강사 일정과 맞춰 연락드립니다.</span>';}
 function btBuy(){
  var d=BASE1[_btK]||BASE1['toeic'];
- var order=['월','화','수','목','금','토','협의'];
- var ds=order.filter(function(x){return BT.days.indexOf(x)>=0;}).join('·')||'상담 후 조율';
- var tm=BT.time||'상담 후 조율';
+ var ds=btText()||'상담 후 조율';
  spBuyItem('1,190,000원',
   '<b>'+d.eye+' · 20시간</b><br>'
   +'<span class="free">무료</span><b>'+d.freeT+'</b> — <b>'+d.freeW+'</b><br>'
   +'<span class="free">포함</span>'+d.bookT+' · 학습관리<br>'
-  +'<span style="color:#3f4757;font-weight:700">희망 일정 — '+ds+' / '+tm+(BT.start?(' / '+BT.start+' 시작 희망'):'')+'</span>'+'<br><span style="color:#5c6472;font-size:13.5px">신청 후 담당자가 연락드려 강사 일정과 맞춰 첫 수업일을 확정합니다.</span>',true);}
+  +'<span style="color:#3f4757;font-weight:700">희망 일정 — '+ds+(BT.start?(' / '+BT.start+' 시작 희망'):'')+'</span>'
+  +(BT.memo?('<br><span style="color:#3f4757;font-weight:700">남기신 말씀 — '+_esc(BT.memo)+'</span>'):'')
+  +'<br><span style="color:#5c6472;font-size:13.5px">신청 후 담당자가 연락드려 강사 일정과 맞춰 첫 수업일을 확정합니다.</span>',true);}
 /* 왕기초 일대일 — 영어 · 일본어 · 중국어 · 토익 모두 같은 틀로 (2026-08-30) */
 var _btK='toeic';
 function basePage(k){
  _btK=k||'toeic';
  var d=BASE1[_btK];
- BT={days:[],time:'',start:''};
- var days=BT_DAY.map(function(x){return '<button class="bt-b" onclick="btDay(\''+x[0]+'\',this)">'+x[0]+'<small>'+x[1]+'</small></button>';}).join('');
- var times=BT_TIME.map(function(t){return '<button class="bt-b" onclick="btTime(\''+t[0]+'\',this)">'+t[0]+'<small>'+t[1]+'</small></button>';}).join('');
+ BT={slots:{},memo:'',start:'',any:false};
  return '<div class="sp-wrap"><button class="sp-back" onclick="openPage(\'맞춤수업\')">‹ 1대1 안내로</button>'
  +_pgHero(d.hero,d.eyeL,d.heroT,d.why,d.grad)
 
@@ -5510,17 +5652,16 @@ function basePage(k){
    +'<br><span class="fr-n">깎아드리는 게 아니라 <b>더 드리는 것</b>입니다</span></td></tr>'
   +'<tr><th>교재</th><td>'+d.bookT+'</td></tr></table></div></div>'
 
- +'<div class="bt-sec"><h3>20시간이 이렇게 갑니다</h3>'
-  +'<div class="b1-cur">'+d.cur.map(function(r){
-     return '<div class="b1-r"><b>'+r[0]+'</b><span>'+r[1]+'</span></div>';}).join('')+'</div></div>'
 
- +'<div class="bt-sec"><h3>원하는 요일을 고르세요</h3>'
-  +'<p class="sub">1:1이라 정해진 시간표가 없습니다. <b>여러 개 고르셔도 됩니다.</b></p>'
-  +'<div class="bt-grid bt-day">'+days+'</div></div>'
+ +'<div class="bt-sec"><h3>언제 오실 수 있나요</h3>'
+  +'<p class="sub">1:1이라 정해진 시간표가 없습니다. <b>되는 칸만 눌러 주세요.</b> 월요일은 오후, 수요일은 오전 — 이렇게 요일마다 다르게 고르셔도 됩니다.</p>'
+  +btGridHTML()
+  +'<button type="button" class="bg-any" id="btAny" onclick="btAnyTog(this)">🤝 요일·시간 상관없습니다 — 상담 후 맞출게요</button>'
+  +'<div class="bg-pick">고른 시간 <span id="btPick"><span class="none">아직 고르지 않으셨습니다</span></span></div></div>'
 
- +'<div class="bt-sec"><h3>원하는 시간대를 고르세요</h3>'
-  +'<p class="sub">고르신 시간대 안에서 강사와 맞춰 배정해 드립니다.</p>'
-  +'<div class="bt-grid bt-time">'+times+'</div>'
+ +'<div class="bt-sec"><h3>더 자세히 적으실 게 있나요</h3>'
+  +'<p class="sub">칸으로 담기지 않는 사정은 여기 적어 주세요. 그대로 담당자에게 전달됩니다.</p>'
+  +'<div class="bt-when"><textarea class="bg-memo" rows="3" maxlength="200" oninput="btMemo(this.value)" placeholder="예) 화요일은 3시 이후만 됩니다 / 격주로 토요일만 가능합니다 / 회당 90분으로 몰아서 듣고 싶습니다"></textarea></div>'
   +'<div class="bt-when"><label>희망 시작일 (선택)</label><select onchange="btStart(this.value)">'+btDates()+'</select></div></div>'
 
  +'<div class="bt-sum" id="btSum">요일·시간대를 안 고르셔도 신청하실 수 있습니다. <b>비워두시면 상담 후 조율</b>로 접수됩니다.<br><span style="font-size:13.5px;color:#5c6472">고르신 내용은 신청서에 그대로 담깁니다.</span></div>'
@@ -5632,10 +5773,10 @@ function dirCard(){
  /* 원장 약력 — 사실만 적습니다. 확인 안 된 항목은 넣지 않습니다.
     PAGES 가 이 함수를 정의 시점에 부르므로 배열은 함수 안에 둡니다. */
  var DIR_BIO=[
-  ['민병철어학원','토익 · 토플 강의'],
+  ['민병철어학원','토익 · 토플 전문 강사로 강의'],
   ['기업체 영어 출강','임직원 대상 토익 · 비즈니스 영어'],
   ['미국 대학 졸업','유학 과정을 직접 거친 유학파'],
-  ['토익 · 토플 · 토스 · 오픽','네 시험 모두 직접 강의']
+  ['지금은 상담 전담','수업은 강사진이, 상담은 원장이']
  ];
  return '<div class="dirc">'
  /* TODO(사진교체): 구지영 원장 실사진 나오면 img/teachers/eng_7.png 두 곳(팀 소개 + 이 카드) 교체 */
@@ -5646,11 +5787,10 @@ function dirCard(){
  +'<div class="dirc-b">'
   +'<div class="dirc-e">산본글로벌어학원 원장</div>'
   +'<h3>구지영</h3>'
-  +'<p class="dirc-r">토익 · 토플 · 토스 · 오픽 전문 · <b>민병철어학원</b> 출신 · 기업체 출강 · 유학파</p>'
+  +'<p class="dirc-r">토익 · 토플 전문 강사 출신 · <b>민병철어학원</b> · 기업체 출강 · 미국 대학 졸업 유학파</p>'
   +'<div class="dirc-bio">'+DIR_BIO.map(function(x){
      return '<div class="bi"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>';}).join('')+'</div>'
-  +'<p class="dirc-t">"점수가 왜 안 오르는지, 어떻게 하면 오를지 — 언제든 물어보십시오.<br>'
-  +'<b>토익 · 토플 · 유학 · 과외 · 1대1 · 기업 출강</b>, 영어에 관한 상담은 모두 제가 직접 받습니다."</p>'
+  +'<p class="dirc-t">"수업은 저보다 잘 가르치는 선생님들이 합니다.<br>저는 <b>어디서 막혔는지 찾아 드립니다.</b> 점수가 왜 안 오르는지, 유학은 어떻게 준비하는지 — <b>토익 · 토플 · 유학 · 과외 · 기업 출강</b>, 상담은 모두 제가 직접 받습니다."</p>'
   +'<div class="dirc-g">'
    +'<a class="dirc-a" href="tel:0314666969">📞 031-466-6969</a>'
    +'<a class="dirc-a s" href="#" onclick="openPage(\'무료청강\');return false;">무료 상담 예약</a>'
