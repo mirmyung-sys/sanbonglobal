@@ -735,7 +735,10 @@ header nav a{letter-spacing:-.01em}
 .findbtn b{font-weight:900;letter-spacing:-.02em}
 .findbtn em{font-style:normal;font-size:14px;color:var(--gold2);font-weight:700}
 @media(max-width:640px){.findbtn{flex-direction:column;gap:4px;padding:16px 26px;font-size:16px}.findbtn em{font-size:12px}}
-/* ===== 글로벌 구독제 그리드 ===== */
+/* ===== 글로벌 구독제 그리드 =====
+   2026-08-30: 대표님 지시로 구독제 블록을 홈에서 내렸습니다.
+   정규 등록(월 18만)과 값이 3.7배 차이 나 설명이 안 되었습니다.
+   다시 하실 때 이 스타일을 그대로 쓰시면 됩니다. */
 .subwrap{max-width:1180px;margin:14px auto 6px;padding:0 20px}
 .subhead{text-align:center;margin:6px 0 24px}
 .subhead .se{font-size:13px;font-weight:800;letter-spacing:.14em;color:#0a8f4f}
@@ -1007,11 +1010,25 @@ span.pay-b.tel{cursor:default;opacity:.85}
 .aiv-hero h2 b{background:linear-gradient(100deg,#3ED598,#8FE9C4 45%,#E7C989);-webkit-background-clip:text;background-clip:text;color:transparent}
 .aiv-sub{font-size:clamp(15px,1.6vw,18px);line-height:1.85;color:#AFBACB;margin:14px 0 0;word-break:keep-all}
 .aiv-sub b{color:#fff}
-.aiv-whale{display:inline-flex;align-items:center;gap:11px;margin-top:20px;
- background:rgba(255,255,255,.06);border:1px solid rgba(62,213,152,.32);border-radius:999px;padding:9px 18px 9px 9px}
-.aiv-whale img{width:38px;height:38px;object-fit:contain}
-.aiv-whale span{font-size:13.5px;font-weight:800;color:#CFE9DD}
-.aiv-st{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:26px;max-width:560px}
+.aiv-whale{display:inline-flex;align-items:center;gap:12px;margin-top:22px;
+ background:rgba(255,255,255,.07);border:1px solid rgba(62,213,152,.34);border-radius:999px;padding:8px 20px 8px 8px}
+/* 고래 그림이 흰 배경이라 어두운 바탕에 그냥 얹으면 오려낸 것처럼 보였습니다.
+   밝은 원 안에 앉혀서 원래 그림처럼 보이게 합니다. (2026-08-30) */
+.aiv-whale .wh{width:44px;height:44px;border-radius:50%;flex:none;overflow:hidden;
+ background:radial-gradient(circle at 50% 42%,#FFFFFF,#EAF3EE 72%);
+ border:2px solid rgba(62,213,152,.45);display:flex;align-items:center;justify-content:center;
+ box-shadow:0 4px 12px rgba(0,0,0,.35)}
+.aiv-whale .wh img{width:36px;height:36px;object-fit:contain;display:block}
+.aiv-whale .tx{font-size:14px;font-weight:700;color:#CFE9DD}
+.aiv-whale .tx b{color:#fff;font-weight:900}
+/* 무엇을 하는 곳인가 */
+.aiv-what{display:grid;gap:10px}
+.aiv-what .wt{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;
+ border:1.5px solid var(--line);border-radius:16px;padding:18px 20px;background:#fff}
+.aiv-what .i{font-size:24px;line-height:1.2}
+.aiv-what b{display:block;font-size:17px;font-weight:900;color:var(--ink);letter-spacing:-.02em;line-height:1.55}
+.aiv-what p{margin:5px 0 0;font-size:14.5px;line-height:1.8;color:var(--ink3);word-break:keep-all}
+.aiv-st{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:26px;max-width:600px}
 .aiv-st div{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:13px 8px;text-align:center}
 .aiv-st b{display:block;font-size:26px;font-weight:900;color:#fff;font-variant-numeric:tabular-nums;line-height:1}
 .aiv-st span{display:block;font-size:11px;font-weight:800;color:#8FA0B6;margin-top:5px}
@@ -1031,7 +1048,8 @@ span.pay-b.tel{cursor:default;opacity:.85}
 .ps.inf{--pc:#C6A15B;border-color:#EBD9B4;background:linear-gradient(180deg,#FDF9F0,#fff 60%)}
 .ps.solo{--pc:#1D2D4F}
 .ps-tp{font-size:11px;font-weight:900;letter-spacing:.12em;color:var(--pc)}
-.ps>b{display:block;font-size:19px;font-weight:900;letter-spacing:-.02em;margin:6px 0 8px}
+.ps>b{display:block;font-size:30px;font-weight:900;letter-spacing:-.03em;margin:4px 0 10px;color:var(--pc);line-height:1.15;font-variant-numeric:tabular-nums}
+.ps>b s{font-size:16px;color:#b6bcc9;font-weight:700;margin-right:6px}
 .ps p{margin:0;font-size:14px;line-height:1.75;color:var(--ink3)}
 .ps p b{color:var(--ink2)}
 .ps-p{margin-top:14px;font-size:32px;font-weight:900;letter-spacing:-.03em;color:var(--pc);font-variant-numeric:tabular-nums;line-height:1.1}
@@ -1562,7 +1580,7 @@ li:first-child > .pgh{margin-top:2px}
  .ai-cov{aspect-ratio:16/10}
  .ai-off-g{grid-template-columns:1fr}
 }
-/* ===== 산글 어학 상품권 스토어 ===== */
+/* ===== SGA 어학상품권 스토어 ===== */
 .gf-hero{background:radial-gradient(120% 130% at 50% 0%,#20242e,#07080b);color:#fff;padding:56px 22px 46px;text-align:center;border-radius:18px;border-top:4px solid #c81f2b}
 .gf-eye{display:inline-block;font-size:11.5px;font-weight:900;letter-spacing:.2em;color:#fff;background:#c81f2b;padding:6px 13px;border-radius:3px}
 .gf-hero h2{font-family:'Black Han Sans','Noto Sans KR',sans-serif;font-weight:400;font-size:42px;margin:16px 0 10px;letter-spacing:.01em;line-height:1.2}
@@ -1972,7 +1990,7 @@ li:first-child > .pgh{margin-top:2px}
 .fq{background:#eafaf2;border-left:5px solid #0e8a5a;padding:20px 22px;border-radius:0 14px 14px 0;margin:22px 0}.fq b{display:block;font-size:18px;font-weight:900;color:#0b6a46;line-height:1.5;margin-bottom:7px}.fq span{font-size:15px;color:#3f4757;line-height:1.7}
 /* 홈피 전용 CTA */.sgc{margin:34px 0 10px;padding:32px 24px;border-radius:20px;background:linear-gradient(135deg,#1D2D4F,#2c4472);color:#fff;text-align:center}.sgc-logo img{width:74px;height:74px;border-radius:50%;background:#fff;padding:6px;animation:sgcb 1.6s ease-in-out infinite}@keyframes sgcb{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,217,77,.75)}50%{transform:scale(1.06);box-shadow:0 0 0 16px rgba(255,217,77,0)}}@media(prefers-reduced-motion:reduce){.sgc-logo img{animation:none}}.sgc-t{font-size:25px;font-weight:900;margin:14px 0 8px;letter-spacing:-.02em}.sgc-s{font-size:15px;line-height:1.7;color:#cdd8ec;max-width:34em;margin:0 auto 22px}.sgc-3{display:flex;flex-direction:column;gap:11px;text-align:left;max-width:520px;margin:0 auto 24px}.sgc-3>div{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.09);border-radius:12px;padding:14px 15px}.sgc-3 b{flex:0 0 26px;height:26px;border-radius:50%;background:#ffd94d;color:#1a1205;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900}.sgc-3 span{font-size:14px;line-height:1.62;color:#e7edf8}.sgc-3 em{display:block;font-style:normal;font-weight:900;color:#ffd94d;font-size:15px;margin-bottom:3px}.sgc-btn{display:block;width:100%;max-width:460px;margin:0 auto;padding:20px;border:0;border-radius:14px;cursor:pointer;background:#c81f2b;color:#111;font-size:22px;font-weight:900;box-shadow:0 12px 28px -10px rgba(239,43,34,.8)}.sgc-n{margin-top:16px;font-size:13px;color:#a9b6ce}.pgband{display:flex;flex-direction:column;gap:0;margin:26px 0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}.pgband-im{height:210px;overflow:hidden}.pgband-im img{width:100%;height:100%;object-fit:cover;display:block}.pgband-in{padding:22px}.pgband-in h3{font-size:20px;font-weight:900;margin:0 0 12px;color:#1a1f2b}@media(max-width:520px){.sgc{padding:26px 18px}.sgc-t{font-size:22px}.sgc-btn{font-size:20px;padding:17px}.pgband-im{height:170px}}
 .hs-faces{display:flex;gap:9px;justify-content:center;margin:2px 0 14px;flex-wrap:wrap}.hs-faces span{display:flex;flex-direction:column;align-items:center;gap:4px}.hs-faces img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.85);box-shadow:0 3px 10px rgba(0,0,0,.3)}.hs-faces i{font-style:normal;font-size:11px;font-weight:800;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5)}@media(max-width:520px){.hs-faces img{width:42px;height:42px}.hs-faces i{font-size:11px}.hs-faces{gap:6px}}
-/* 히어로 광고판 — 이미지 우선, 글씨 크기 통일 */.hs-eyebrow{font-size:13px!important;font-weight:900;letter-spacing:.1em;margin-bottom:8px!important;line-height:1.4}.hs-title{font-size:clamp(22px,4.4vw,36px)!important;font-weight:900;line-height:1.32!important;letter-spacing:-.02em;margin-bottom:9px!important}.hs-sub{font-size:clamp(13.5px,2.1vw,16px)!important;line-height:1.65!important;opacity:.94;max-width:44em;margin:0 auto 14px!important;word-break:keep-all}.hs-btn{font-size:15px!important;padding:11px 22px!important;font-weight:900;border-radius:99px}@media(max-width:860px){.hslide{padding-bottom:64px}.hs-title{font-size:22px!important}.hs-sub{font-size:13px!important}}
+/* 히어로 광고판 — 이미지 우선, 글씨 크기 통일 */.hs-eyebrow{font-size:13px!important;font-weight:900;letter-spacing:.1em;margin-bottom:8px!important;line-height:1.4}.hs-title{font-size:clamp(25px,5vw,38px)!important;font-weight:900;line-height:1.3!important;letter-spacing:-.02em;margin-bottom:10px!important}.hs-sub{font-size:clamp(15px,2.4vw,17px)!important;line-height:1.75!important;opacity:.96;max-width:40em;margin:0 auto 14px!important;word-break:keep-all}.hs-btn{font-size:15px!important;padding:11px 22px!important;font-weight:900;border-radius:99px}@media(max-width:860px){.hslide{padding-bottom:64px}.hs-title{font-size:25px!important}.hs-sub{font-size:14.5px!important}}
 /* 광고판 9장 크기 통일 — 강사 사진이 붙은 장도 같은 높이로 */
 .hs-panel{height:344px!important;min-height:0!important;padding:24px 34px!important;overflow:hidden}
 .hs-panel .hs-inner{height:100%;justify-content:center}
@@ -2005,6 +2023,9 @@ li:first-child > .pgh{margin-top:2px}
 .sp-citem b{font-weight:900}
 .sp-citem .free{display:inline-block;background:#0e8a5a;color:#fff;font-size:11.5px;font-weight:900;padding:2px 8px;border-radius:99px;margin-right:5px}
 /* ===== 왕기초 토익 일대일 전용 신청 ===== */
+/* 전단지 이미지 */
+.bt-flyer{margin:18px 0;border:1.5px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 10px 30px -20px rgba(20,33,61,.5)}
+.bt-flyer img{display:block;width:100%;height:auto}
 .bt-price{background:linear-gradient(135deg,#1D2D4F,#2B4173);color:#fff;border-radius:18px;padding:26px 22px;text-align:center;margin:18px 0}
 .bt-price .o{font-size:15px;color:#a9b6ce;text-decoration:line-through;font-variant-numeric:tabular-nums}
 .bt-price .f{font-size:40px;font-weight:900;letter-spacing:-.03em;margin:6px 0 4px;font-variant-numeric:tabular-nums}
@@ -2228,6 +2249,10 @@ li:first-child > .pgh{margin-top:2px}
 .td-top{display:flex;gap:30px;align-items:flex-start;flex-wrap:wrap}
 .td-photo{width:280px;flex-shrink:0;border-radius:16px;overflow:hidden;background:#f2f4f8;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center}
 .td-photo img{width:100%;height:100%;object-fit:cover}
+.td-ill{position:absolute;left:8px;bottom:8px;background:rgba(15,20,32,.7);color:#fff;font-size:11px;font-weight:800;letter-spacing:.04em;padding:4px 9px;border-radius:999px;backdrop-filter:blur(4px);pointer-events:none}
+/* 목록의 작은 썸네일에서는 배지를 더 작게 */
+.tf-im .td-ill{left:3px;bottom:3px;font-size:8.5px;padding:2px 5px;letter-spacing:0}
+.td-photo,.tp,.tf-im{position:relative}
 .td-empty{color:#9aa4b6;font-size:14px}
 .td-info{flex:1;min-width:240px;padding-top:6px}
 .td-name{font-size:30px;font-weight:900;color:#1a1f2b;margin:8px 0 6px}
@@ -2704,7 +2729,7 @@ html,body{overflow-x:hidden;max-width:100%}
   <div class="wrap htop">
   <a class="logo" href="#" onclick="closePage();window.scrollTo(0,0);return false;">
     <img src="img/sga_emblem.png" alt="산본글로벌아카데미" class="lg-em">
-    <span class="lg-wm"><b>SGA</b><em>산본글로벌아카데미</em><i>SANBON GLOBAL ACADEMY</i></span>
+    <span class="lg-wm"><b>SGA</b><em>산본글로벌어학원</em><i>SANBON GLOBAL ACADEMY</i></span>
   </a>
   <div class="hicons">
     <a href="#" onclick="closePage();window.scrollTo(0,0);return false;"><span class="gi">🏠</span>홈</a>
@@ -2747,8 +2772,8 @@ html,body{overflow-x:hidden;max-width:100%}
     <div class="ni"><a href="#" onclick="openPage('강사소개');return false;">강사님 소개</a></div>
     <div class="ni"><a href="#" onclick="openPage('이벤트혜택');return false;">이벤트/혜택<b class="car">▾</b></a>
       <div class="ddown">
-        <a href="#" onclick="openPage('이벤트혜택');return false;">이달의 혜택</a>
-        <a href="#" onclick="openPage('상품권충전');return false;">🎁 산글 어학 상품권 · 장기충전권</a>
+        <a href="#" onclick="openPage('이벤트혜택');return false;">10~11월 오픈이벤트</a>
+        <a href="#" onclick="openPage('상품권충전');return false;">🎁 SGA 어학상품권 · 장기충전권</a>
         <a href="#" onclick="openPage('AI산글');return false;">🐋 AI 산글 · 토익 문법 학습관</a>
         <a href="#" onclick="openPage('가을학기 할인');return false;">글로벌 위크</a>
         <a href="#" onclick="openPage('네이버 리뷰 이벤트');return false;">네이버 리뷰 이벤트</a>
@@ -2809,40 +2834,11 @@ html,body{overflow-x:hidden;max-width:100%}
     <div class="cpanel" id="cpanel"></div>
     <div class="btnrow">
       <a class="bbtn k" href="#" onclick="openAll();return false;">전체 강의 보기 ›</a>
-      <a class="bbtn r" href="#" onclick="alert('곧 업데이트 됩니다.');return false;">글로벌 강의 보기 (업데이트 예정) ›</a>
+      <a class="bbtn r" href="#" onclick="openPage('전체시간표');return false;">전체 시간표 보기 ›</a>
     </div>
   </div>
 </div></section>
   <div class="subwrap">
-    <div class="subhead">
-      <div class="se">SGA PASS · 월 구독제</div>
-      <h3>글로벌 구독제 <span>— 구청 영어보다 저렴하게</span></h3>
-      <p>10개월 108만원을 한 번에? 부담은 낮추고 꾸준함은 높이는 <b>월 6만원대 구독</b>으로 시작하세요.</p>
-    </div>
-    <div class="subgrid">
-      <div class="subcard">
-        <div class="subtier">베이직 · 일반형</div>
-        <div class="subprice">4.9<small>만원 / 월</small></div>
-        <div class="subterm">12개월 약정 · 월 자동결제</div>
-        <ul class="subfeat"><li>1개 과목 그룹수업 주 2회</li><li>자기주도 학습앱 무제한</li><li>레벨테스트·학습 로드맵</li><li>산영모 회화모임 참여</li></ul>
-        <a class="subbtn" href="#" onclick="openPage('수강신청');return false;">구독 상담 신청</a>
-      </div>
-      <div class="subcard best">
-        <div class="subtier">플러스 · 고급형</div>
-        <div class="subprice">5.9<small>만원 / 월</small></div>
-        <div class="subterm">12개월 약정 · 월 자동결제</div>
-        <ul class="subfeat"><li>그룹수업 주 3회 (과목 선택)</li><li>원어민 회화클럽 포함</li><li>교재 제공 + 월 1회 1:1 첨삭</li><li>산영모 정기모임 우선참여</li></ul>
-        <a class="subbtn" href="#" onclick="openPage('수강신청');return false;">지금 구독하기</a>
-      </div>
-      <div class="subcard">
-        <div class="subtier">프리미엄</div>
-        <div class="subprice">6.9<small>만원 / 월</small></div>
-        <div class="subterm">12개월 약정 · 월 자동결제</div>
-        <ul class="subfeat"><li>전 과목 자유수강 (무제한)</li><li>원어민 회화 + 1:1 PT 월 2회</li><li>출석 80% 시 지원금 트랙 관리</li><li>성인·임원 프리미엄 케어</li></ul>
-        <a class="subbtn" href="#" onclick="openPage('수강신청');return false;">프리미엄 상담</a>
-      </div>
-    </div>
-    <div class="subnote">※ 약정 12개월 · 기간 연장 불가 · 월 자동결제 · 중도해지 규정 별도 · 구청 성인영어 대비 소수정예·원어민 수업입니다.</div>
     <div style="text-align:center;margin:16px 0 4px">
       <a href="app.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;background:linear-gradient(120deg,#1D2D4F,#2B4173);color:#fff;font-weight:900;font-size:15px;padding:14px 26px;border-radius:999px;text-decoration:none;box-shadow:0 10px 24px -12px rgba(29,45,79,.7)">📱 AI 학습앱 열기<span style="background:#C6A15B;color:#1D2D4F;font-size:11px;font-weight:900;padding:2px 7px;border-radius:999px">수강생 무료</span></a>
       <div style="font-size:12px;color:#8A94A8;margin-top:7px">영어·일본어·중국어 AI 회화 · 발음채점 · 단어장 · 출석 · 학습리포트</div>
@@ -2890,13 +2886,13 @@ html,body{overflow-x:hidden;max-width:100%}
       </div>
     </div>
     <div class="pvnote">
-      <b class="h">⚠ 산글 어학 상품권 환불 주의사항 (교습비 반환 기준)</b>
+      <b class="h">⚠ SGA 어학상품권 환불 주의사항 (교습비 반환 기준)</b>
       <ul>
         <li><b>산상권 TALK</b>은 특별 프로모션 상품으로, 환불 시 정가 기준 <b>월 180,000원(강좌당)</b>으로 재산정됩니다. 예) 한 달에 3강좌 수강 시 540,000원(180,000×3)을 공제 후 환불됩니다.</li>
         <li>산상권 TALK은 <b>이용 개시 후 6개월 경과 시 환불이 불가</b>합니다.</li>
         <li><b>산상권 PASS</b>는 환불 불가 상품이나, 관련 법령의 <b>교습비 반환 기준</b>에 따라 환불됩니다.</li>
-        <li>모든 산글 어학 상품권 환불은 「학원의 설립·운영 및 과외교습에 관한 법률」과 교습비 반환 기준을 따릅니다.</li>
-        <li>가격·혜택은 프로모션에 따라 변동될 수 있으며, 일부 항목은 대표님 확정 후 반영됩니다.</li>
+        <li>모든 SGA 어학상품권 환불은 「학원의 설립·운영 및 과외교습에 관한 법률」과 교습비 반환 기준을 따릅니다.</li>
+        <li>가격과 혜택은 프로모션 기간에 따라 달라질 수 있습니다.</li>
       </ul>
     </div>
   </div>
@@ -2963,11 +2959,11 @@ html,body{overflow-x:hidden;max-width:100%}
 <!-- 수강후기 -->
 <section class="review"><div class="wrap">
   <div class="tabs2"><button class="on">토익</button><button>토스/오픽</button><button>토플/지텔프</button><button>일본어</button><button>중국어</button></div>
-  <div class="rvtop">산본글로벌 실제 수강생들의 생생 후기</div>
+  <div class="rvtop">수강생이 직접 남긴 후기</div>
   <div class="rv3">
-    <div class="rc"><div class="stars">★★★★★</div><h4>토익 800+ 1개월 완성</h4><p>소수정예 집중반으로 4주 만에 목표 달성! 송윤정 강사님 피드백이 빨라서 실전 감각이 확 올라왔어요. 인원이 적어 집중도가 달랐습니다.</p><div class="w">토익 수강생 · 김○○</div></div>
-    <div class="rc"><div class="stars">★★★★★</div><h4>오픽 IH 취득 성공</h4><p>발화형 수업이라 실제로 말이 늘어요. 유미용 강사님 템플릿이 실전에서 그대로 통했습니다. 두 달 만에 IH 달성!</p><div class="w">오픽 수강생 · 이○○</div></div>
-    <div class="rc"><div class="stars">★★★★★</div><h4>원어민 회화 왕초보 탈출</h4><p>정말 기초부터 시작했는데 원어민 선생님이 편하게 이끌어주셔서 이제 여행 회화는 자신 있어요. 수업 분위기가 따뜻합니다.</p><div class="w">영어회화 수강생 · 박○○</div></div>
+    <div class="rc"><div class="stars">★★★★★</div><h4>토익 초급반 엘리쌤 후기</h4><p>오랜만에 하는 영어공부라 걱정이 컸는데, 첫 수업부터 차근차근 짚어 주셔서 따라갈 수 있었습니다.</p><span class="rw">토익 초급 · 엘리 킴 선생님</span></div>
+    <div class="rc"><div class="stars">★★★★★</div><h4>일본어능력시험 N3 합격 후기</h4><p>중학생입니다. 12월 시험을 위해 3개월 대비반을 들었고, 우수한 성적으로 합격했습니다.</p><span class="rw">일본어 회화 + JLPT 대비반</span></div>
+    <div class="rc"><div class="stars">★★★★★</div><h4>원어민 선생님인데 수강료도 저렴했어요</h4><p>매 수업 small talk과 기사글 위주라 어휘력과 문법 실력을 키우는 데 도움이 많이 됐습니다.</p><span class="rw">영어회화 STEP4 · Jerollyn 선생님</span></div>
   </div>
 </div></section>
 
@@ -3000,7 +2996,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-08-30 (v17)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-08-30 (v22)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-bl" href="#" onclick="snsSoon(this);return false;">blog</a>
@@ -3030,7 +3026,7 @@ html,body{overflow-x:hidden;max-width:100%}
     <div class="tttabs" id="tttabs"></div>
     <div class="ttsub">10월 수업일정</div>
     <table class="cal" id="cal"></table>
-    <div class="ttnote">※ 수강등록은 9월 22일(월)부터 가능합니다.<span>※ 주5일반은 월~금 수업 / 월수반·화목반은 주 2회 수업입니다.</span><span>※ 토요반은 토요일 집중 수업으로 진행합니다. · 문의 031-466-6969</span></div>
+    <div class="ttnote">※ 10월 개강반 수강등록을 받고 있습니다.<span>※ 주5일반은 월~금 수업 / 월수반·화목반은 주 2회 수업입니다.</span><span>※ 토요반은 토요일 집중 수업으로 진행합니다. · 문의 031-466-6969</span></div>
   </div>
 </div>
 <!-- 레벨테스트 모달 -->
@@ -3059,7 +3055,7 @@ html,body{overflow-x:hidden;max-width:100%}
       </div>
     </div>
     <div class="sec"><h3>이렇게 진행돼요</h3><div class="evsteps"><div class="evstep"><div class="evn">STEP 1</div><div class="evb"><b>예약</b><p>카카오톡 채널 또는 전화 031-466-6969로 원하는 시간에 예약하세요. 방문·화상 모두 가능합니다.</p></div></div><div class="evstep"><div class="evn">STEP 2</div><div class="evb"><b>진단</b><p>원어민·전문 강사와 1:1로 말하기·듣기·문법을 확인하거나, 온라인 문제로 자가진단합니다. (약 20~30분)</p></div></div><div class="evstep"><div class="evn">STEP 3</div><div class="evb"><b>맞춤 추천</b><p>결과를 바탕으로 지금 시작하기 딱 좋은 반과 학습 플랜, 목표까지의 로드맵을 무료로 안내해 드립니다.</p></div></div></div></div>
-    <div class="sec"><h3>자주 묻는 질문</h3><div class="lead">· 비용은 <b>무료</b>입니다. · 소요 시간은 20~30분입니다. · 결과는 상담과 함께 바로 안내해 드립니다. · 온라인 자가진단은 곧 응시 페이지가 연결됩니다.</div></div>
+    <div class="sec"><h3>자주 묻는 질문</h3><div class="lead">· 비용은 <b>무료</b>입니다. · 소요 시간은 20~30분입니다. · 결과는 상담과 함께 바로 안내해 드립니다. · 온라인 자가진단은 이 화면에서 바로 응시하실 수 있습니다.</div></div>
     <div class="pgnote">지금 예약하면 가장 빠른 길을 찾을 수 있어요. 문의 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>
     <a class="pgcta" href="#" onclick="closeLv();openPage('수강신청');return false;">진단 후 수강신청 바로가기 ›</a>
   </div>
@@ -3155,7 +3151,7 @@ function goChapters(){closePage();var e=document.getElementById('chapters');if(e
 
 /* ===== 히어로 슬라이더 (6칸) ===== */
 const PROGRAMS={
- '점수보장반':[{n:'01',t:'토익 점수보장반',d:'목표 점수 미달 시 응시료 환급',go:'영어'},{n:'02',t:'스파르타 관리형',d:'출결·과제·단어까지 밀착 관리',go:'영어'},{n:'03',t:'JLPT 합격반',d:'기출로 증명된 합격 루트',go:'일본어'},{n:'04',t:'HSK 집중반',d:'급수별 필수 유형 완전 정복',go:'중국어'}],
+ '점수보장반':[{n:'01',t:'토익 관리형 집중반',d:'출결 · 과제 · 단어까지 밀착 관리',go:'영어'},{n:'02',t:'스파르타 관리형',d:'출결·과제·단어까지 밀착 관리',go:'영어'},{n:'03',t:'JLPT 합격반',d:'기출로 증명된 합격 루트',go:'일본어'},{n:'04',t:'HSK 집중반',d:'급수별 필수 유형 완전 정복',go:'중국어'}],
  '영어':[{n:'01',t:'왕기초 문법',d:'문장이 만들어지는 원리부터',go:'영어'},{n:'02',t:'토익 650+',d:'파트별 전략 + 관리형 학습',go:'영어'},{n:'03',t:'오픽·토스',d:'실전 스피킹 단기 완성',go:'영어'},{n:'04',t:'원어민 회화',d:'레벨별 소수정예 실전 회화',go:'영어'}],
  '중국어':[{n:'01',t:'기초 중국어',d:'발음·성조부터 탄탄하게',go:'중국어'},{n:'02',t:'중국어 회화',d:'수준별 맞춤 소수정예',go:'중국어'},{n:'03',t:'HSK',d:'급수별 합격 커리큘럼',go:'중국어'},{n:'04',t:'비즈니스 중국어',d:'실무·취업 중국어',go:'중국어'}],
  '일본어':[{n:'01',t:'기초 일본어',d:'히라가나부터 회화까지',go:'일본어'},{n:'02',t:'JLPT',d:'N5~N1 합격 대비',go:'일본어'},{n:'03',t:'원어민 회화·면접',d:'유학·취업 면접까지',go:'일본어'},{n:'04',t:'워홀·유학반',d:'일본 체류 준비 종합',go:'유학상담'}],
@@ -3171,17 +3167,17 @@ function renderProg(k){
  renderProg('점수보장반');
 })();
 const SLIDES=[
- {e:'원장 직접 상담 · 산본글로벌어학원', t:'원장이 직접<br>상담해 드립니다', s:'구지영 원장 — 토익 · 토플 전문 강사 출신 · Georgetown TESOL · 민병철어학원 금정지점 · CNN Language Institute · 청화대학 출강 · 미국 학부 졸업 유학파. 점수가 왜 안 오르는지, 유학은 어떻게 준비하는지 — 상담은 원장이 직접 받습니다', act:"openPage('강사소개')", pbg:'linear-gradient(135deg,#1D2D4F,#33507f)', tag:'원장 인사말 보기'},
+ {e:'원장 직접 상담 · 산본글로벌어학원', t:'원장이 직접<br>상담해 드립니다', s:'토익과 토플을 가르치던 사람이 직접 상담합니다. 점수가 왜 안 오르는지 먼저 짚어 드립니다', act:"openPage('강사소개')", pbg:'linear-gradient(135deg,#1D2D4F,#33507f)', tag:'원장 인사말 보기'},
  {e:'2026 · 10월 신규 모집', t:'10월 신규 개강,<br>지금이 시작하기 제일 좋습니다', s:'새벽반 · 주말반 영어부터 토익 · 토스 · 오픽 · 토플까지 — 새로 여는 반만 모았습니다', act:"openPage('신규모집')", pbg:'linear-gradient(135deg,#1D2D4F,#2f6fb0)', tc:'#ffffff', ac:'#ffd98a', bbg:'#ffd94d', btc:'#1a1205', bg:''},
- {e:'무한 현장강의 이벤트', t:'월 15만원으로<br>무제한 수강한다고?', s:'무제한으로 듣고 원하는 점수 가져가세요 — 강사 5인의 시험대비반을 6개월 동안 횟수 제한 없이', act:"openExam('토익')", pbg:'linear-gradient(135deg,#c81f2b,#e0453e)', tc:'#ffffff', ac:'#ffe0dd', bbg:'#ffffff', btc:'#c81f2b', bg:'', faces:['eng_13','elly','eng_6','eng_15','eng_14'], fnames:['송윤정','엘리 킴','최자운','김현정','유미용']},
+ {e:'무한 현장강의 이벤트', t:'같은 반을<br>한 번 더 듣습니다', s:'산글 무한수강권 — 앞 단계를 통째로 다시 듣고, AI 산글 40강이 함께 열립니다. 정규 넉 달 · 스파르타 두 달, 740,000원', act:"openExam('토익')", pbg:'linear-gradient(135deg,#c81f2b,#e0453e)', tc:'#ffffff', ac:'#ffe0dd', bbg:'#ffffff', btc:'#c81f2b', bg:'', faces:['eng_13','elly','eng_6','eng_15','eng_14'], fnames:['송윤정','엘리 킴','최자운','김현정','유미용']},
  {e:'AI LEARNING · 산글 잉글리시', t:'산글이와 매일 3분,<br>막히면 학원으로', s:'토익 문법 40강을 하루 한 칸씩 — 산글이가 매일 다섯 문제를 들고 옵니다. 정가 12만원, 10월 오픈이벤트 3만원, 산글 현강 수강생은 무료', act:"openPage('AI산글')", pbg:'linear-gradient(135deg,rgba(10,13,20,.86),rgba(14,138,90,.86))', tc:'#ffffff', ac:'#3ED598', bbg:'#3ED598', btc:'#0A0D14', bg:'img/ai_cafe1.jpg'},
- {e:'GIFT CHARGE · 산글 어학 상품권', t:'넣으신 금액이<br>그대로 두 배', s:'50만원 넣으면 75만원, 100만원 넣으면 150만원. 손자에게, 자녀에게. 모바일과 실물 각인 카드를 둘 다 드립니다', act:"openPage('상품권충전')", pbg:'linear-gradient(135deg,#0b0d12,#3a1013)', tc:'#ffffff', ac:'#ffd94d', bbg:'#c81f2b', btc:'#ffffff', bg:''},
+ {e:'GIFT CHARGE · SGA 어학상품권', t:'넣은 금액에<br>절반을 더', s:'50만원 넣으면 75만원, 100만원 넣으면 150만원. 손자에게, 자녀에게. 모바일과 실물 각인 카드를 둘 다 드립니다', act:"openPage('상품권충전')", pbg:'linear-gradient(135deg,#0b0d12,#3a1013)', tc:'#ffffff', ac:'#ffd94d', bbg:'#c81f2b', btc:'#ffffff', bg:''},
  {e:'OPEN EVENT · 10~11월', t:'산본이지어학원이<br>산본글로벌어학원이 됩니다', s:'강사도 교실도 그대로 — 바뀌는 건 이름과 혜택뿐입니다. 두 달 동안 전 과목 10% 할인', act:"openPage('오픈이벤트')", pbg:'linear-gradient(135deg,#1D2D4F,#33507f)', tc:'#ffffff', ac:'#ffd98a', bbg:'#ffd94d', btc:'#1a1205', bg:''},
  {e:'무료 레벨 진단', t:'내 실력, 무료로<br>정확하게 진단', s:'문법·어휘·듣기 자가진단 + 원어민 회화 레벨테스트 · 결과 리포트를 바로 드립니다', act:"openPage('레벨테스트')", pbg:'linear-gradient(135deg,#0e8f88,#12a89f)', tc:'#ffffff', ac:'#ccf5f1', bbg:'#ffffff', btc:'#0e8f88', bg:''},
- {e:'1:1 GLOBAL', t:'나만을 위한<br>완전 맞춤 수업', s:'일대일 · 퍼스널 · 왕기초 1:1 · 시험일 맞춤 단기집중', act:"openPage('맞춤수업')", pbg:'linear-gradient(135deg,#7658c8,#9a7ee0)', tc:'#ffffff', ac:'#efe6ff', bbg:'#ffffff', btc:'#5a3f92', bg:''},
+ {e:'1:1 GLOBAL', t:'나만을 위한<br>완전 맞춤 수업', s:'목표와 일정에 맞는 1대1 수업을 골라 드립니다', act:"openPage('맞춤수업')", pbg:'linear-gradient(135deg,#7658c8,#9a7ee0)', tc:'#ffffff', ac:'#efe6ff', bbg:'#ffffff', btc:'#5a3f92', bg:''},
  {e:'FREE · 무료 상담 + 무료 청강', t:'듣고 나서<br>판단하세요', s:'산본글로벌어학원은 회원님께 무료 청강 혜택을 드립니다 — 유학 · 토익 · 영어 · 시험대비 전 과목 무료 상담과 실제 수업 청강 1회', act:"openPage('무료청강')", pbg:'linear-gradient(135deg,#0E8A5A,#14B06E)', tc:'#ffffff', ac:'#D6F5E7', bbg:'#ffffff', btc:'#0E8A5A', bg:''},
- {e:'유학 · 외고 · 과외', t:'늦었다고 생각할 때가<br>가장 빠릅니다, 어머님', s:'유학부터 외고, 그리고 과외까지 — 지금 시작해도 늦지 않습니다. 무료 상담으로 먼저 길만 잡아보세요', act:"openPage('무료청강')", pbg:'linear-gradient(135deg,#2aa06f,#1f8a63)', tc:'#ffffff', ac:'#e2fbd3', bbg:'#ffffff', btc:'#1f7a56', bg:''},
- {e:'동글 · 동네가 글로벌해진다', t:'동글이<br>동네 영어 모임', s:'동(네)와 글(로벌)을 합쳐 동글이 — 산본에서 영어로 떠드는 가장 가벼운 자리. 평일·주말 오후 1시~6시 30분, 1시간 1,000원, 커피는 무료입니다', act:"openPage('동글이')", pbg:'linear-gradient(135deg,#3F5D4A,#5C8069)', tc:'#ffffff', ac:'#e3ebe3', bbg:'#ffffff', btc:'#3F5D4A', bg:''}
+ {e:'유학 · 외고 · 과외', t:'늦었다고 생각할 때가<br>가장 빠릅니다', s:'유학부터 외고, 그리고 과외까지 — 지금 시작해도 늦지 않습니다. 무료 상담으로 먼저 길만 잡아보세요', act:"openPage('무료청강')", pbg:'linear-gradient(135deg,#2aa06f,#1f8a63)', tc:'#ffffff', ac:'#e2fbd3', bbg:'#ffffff', btc:'#1f7a56', bg:''},
+ {e:'동글 · 동네가 글로벌해진다', t:'동글이<br>동네 영어 모임', s:'동네와 글로벌을 합쳐 동글입니다. 산본에서 영어로 떠드는 가장 가벼운 자리 — 1시간 1,000원, 커피는 무료', act:"openPage('동글이')", pbg:'linear-gradient(135deg,#3F5D4A,#5C8069)', tc:'#ffffff', ac:'#e3ebe3', bbg:'#ffffff', btc:'#3F5D4A', bg:''}
 ];
 
 (function(){
@@ -3277,7 +3273,7 @@ var LVLIMIT={'토익':9,'토플':12,'JLPT':9,'오픽':7,'토스':7};
 var _lvRemain=0;
 function lvFmt(s){var m=Math.floor(s/60),x=s%60;return m+':'+(x<10?'0':'')+x;}
 var _lvT=null,_lvSec=0;
-function lvChoose(){lvOpenRun('<h3 class="lvr-t">무료 레벨테스트</h3><p class="lvr-d">어떤 레벨을 확인해 볼까요?<br>둘 다 <b>무료</b>이고 3분이면 끝납니다.</p>'+
+function lvChoose(){lvOpenRun('<h3 class="lvr-t">무료 레벨테스트</h3><p class="lvr-d">어떤 레벨을 확인해 볼까요?<br>둘 다 <b>무료</b>이고 회화 테스트는 30초, 자가진단은 10분 안에 끝납니다.</p>'+
  '<div class="lvpick2">'+
  '<button class="lvp2 talk" onclick="lvPickTalk()"><span class="ic">&#128483;</span><b>회화 레벨테스트</b><em>AI 크리스탈과 30초 프리토킹 · 영어 / 일본어 / 중국어<br>BASIC · STEP 1~4 자동 판정</em></button>'+
  '<button class="lvp2 quiz" onclick="lvPickQuiz()"><span class="ic">&#128221;</span><b>시험대비 레벨테스트</b><em>문제 풀이 · 토익 / 토스 / 오픽 / 토플 / JLPT<br>바로 예상 점수 확인</em></button>'+
@@ -3290,7 +3286,7 @@ function lvExamGo(subj){if(lcHas(subj)){lcStart(subj);}else{lvQuizReady(subj);}}
 function lvPickQuiz(){lvOpenRun('<h3 class="lvr-t">시험대비 레벨테스트</h3><p class="lvr-d">시험을 선택하세요.<br><b>듣기(LC)</b>는 음성으로 문제가 나오고, 이어서 <b>읽기(RC)</b>를 풉니다.</p><div class="lvr-pick"><button onclick="lvExamGo(\'토익\')">TOEIC 토익 · LC+RC</button><button onclick="lvExamGo(\'토플\')">TOEFL 토플 · LC+RC</button><button onclick="lvExamGo(\'JLPT\')">JLPT · 청해+독해</button><button onclick="lvExamGo(\'오픽\')">OPIc 오픽</button><button onclick="lvExamGo(\'토스\')">TOEIC Speaking 토스</button></div><button class="lvr-go tk-ghost" onclick="lvChoose()">&larr; 다른 테스트 고르기</button>');}
 function lvQuizStart(subj){var qs=LVQUIZ[subj]||[];var lim=(LVLIMIT[subj]||9)*60;_lvRemain=lim;var body='<h3 class="lvr-t">'+subj+' 자가진단 (10문제)</h3><div class="lvr-timer2">남은 시간 <b id="lvSec">'+lvFmt(lim)+'</b> · 제한 '+(LVLIMIT[subj]||9)+'분</div><form id="lvQz" onsubmit="return false;">'+qs.map(function(q,i){var tag=i<3?'쉬움':(i<6?'중간':'어려움');var tc=i<3?1:(i<6?2:3);return '<div class="lvq"><div class="lvq-q"><span class="lvq-tag t'+tc+'">'+tag+'</span>'+(i+1)+'. '+q.q+'</div>'+q.o.map(function(o,j){return '<label class="lvq-o"><input type="radio" name="q'+i+'" value="'+j+'"> '+o+'</label>';}).join('')+'</div>';}).join('')+'</form><button class="lvr-go" onclick="lvQuizSubmit(\''+subj+'\')">제출하고 결과 보기</button>';lvOpenRun(body);if(_lvT)clearInterval(_lvT);_lvT=setInterval(function(){_lvRemain--;var e=document.getElementById('lvSec');if(e)e.textContent=lvFmt(_lvRemain);if(_lvRemain<=0){clearInterval(_lvT);_lvT=null;lvQuizSubmit(subj);}},1000);}
 function lvQuizSubmit(subj){var qs=LVQUIZ[subj]||[];var sc=0;qs.forEach(function(q,i){var s=document.querySelector('input[name="q'+i+'"]:checked');if(s&&parseInt(s.value)===q.a)sc++;});if(_lvT){clearInterval(_lvT);_lvT=null;}var EST={'토익':function(s){return (250+s*70)+'점 / 990';},'토플':function(s){return (20+s*10)+'점 / 120';},'JLPT':function(s){return ['N5 미만','N5','N5','N4','N4','N3','N3','N2','N2','N1','N1'][s];},'오픽':function(s){return ['NL','NL','NM','IL','IL','IM1','IM2','IM3','IH','IH','AL'][s];},'토스':function(s){return ['Lv2','Lv3','Lv3','Lv4','Lv4','Lv5','Lv6','Lv6','Lv7','Lv7','Lv8'][s];}};var unit={'토익':'점수','토플':'점수','JLPT':'예상 급수','오픽':'예상 등급','토스':'예상 레벨'}[subj]||'성적';var est=EST[subj]?EST[subj](sc):(sc+'/10');var used=(LVLIMIT[subj]||9)*60-(_lvRemain>0?_lvRemain:0);lvOpenRun('<h3 class="lvr-t">진단 완료 ✅</h3><div class="lvr-res"><span style="font-size:15px;color:#8a90a0">정답 '+sc+'/10 · 소요 '+lvFmt(used)+'</span><br>당신의 '+subj+' '+unit+'는 약<br><b>'+est+'</b> 입니다.</div><div class="lvr-note">※ 레벨 결과는 참고용이며 정확하지 않을 수 있습니다. <b>무료 수업 후 레벨업·레벨다운이 가능</b>합니다.</div><a class="lvr-go" href="#" onclick="lvCloseRun();closeLv();openPage(\'수강신청\');return false;">지금 수강신청 바로가기 ›</a>');}
-function lvQuizReady(subj){lvOpenRun('<h3 class="lvr-t">'+subj+' 자가진단</h3><p class="lvr-d">5문제를 풉니다. 시작을 누르면 타이머가 작동해요.<br>몇 분 안에 푸는지도 함께 기록됩니다.</p><div class="lvr-note">준비되셨나요?</div><button class="lvr-go" onclick="lvQuizStart(\''+subj+'\')">Are you ready? 시작하기 ›</button>');}
+function lvQuizReady(subj){lvOpenRun('<h3 class="lvr-t">'+subj+' 자가진단</h3><p class="lvr-d">10문제를 풉니다. 시작을 누르면 제한 시간이 흐릅니다.<br>몇 분 안에 푸는지도 함께 기록됩니다.</p><div class="lvr-note">준비되셨나요?</div><button class="lvr-go" onclick="lvQuizStart(\''+subj+'\')">시작하기 ›</button>');}
 function openLvPage(){document.getElementById('lvModal').classList.add('open');_mTop('lvModal');}
 function openLv(){lvChoose();}
 function closeLv(){document.getElementById('lvModal').classList.remove('open');_sgBackScroll();}
@@ -3475,14 +3471,14 @@ function coursePage(key){
    +'<div class="cpg-mths">'+mth+'</div></div></section>'
   +(tcs?'<section class="cpg-tchsec"><div class="cpg-in"><h2>담당 <b>강사진</b></h2><div class="cpg-tcs">'+tcs+'</div></div></section>':'')
   +'<section class="cpg-goal"><div class="cpg-in"><div class="cpg-kick">RESULT</div><h2>'+d.goal+'</h2><p>결과로 증명하는 산본글로벌의 밀착 관리.</p></div></section>'
-  +'<section class="cpg-end" style="--ac:'+d.ac+'"><div class="cpg-in"><div class="cpg-badge2">최대 <b>25%</b> 할인 · 지금이 가장 저렴할 때</div>'
+  +'<section class="cpg-end" style="--ac:'+d.ac+'"><div class="cpg-in"><div class="cpg-badge2">오픈이벤트 <b>10%</b> 적용 · 11월 30일까지</div>'
    +'<h2>지금 '+d.subj+' 시작하세요</h2>'
    +'<button class="cpg-cta" onclick="openBuy(\''+key+'\')">수강신청 →</button>'
    +'<div class="cpg-note">전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원</div>'+shareMini()+'</div></section>';
 }
 function openCourse(key){_sgSub(coursePage(key));}
 var TEACHERS=[
- {n:'송윤정',img:'eng_13',subj:'토익',cat:'토익·토스·오픽',tags:['#스파르타','#점수보장','#밀착관리'],desc:'오답을 유형별로 분석해 약점을 잡아주는 관리형 스파르타. 단기 고득점의 확실한 선택.',rev:'93'},
+ {n:'송윤정',img:'eng_13',subj:'토익',cat:'토익·토스·오픽',tags:['#스파르타','#기출분석','#밀착관리'],desc:'오답을 유형별로 분석해 약점을 잡아주는 관리형 스파르타. 단기 고득점의 확실한 선택.',rev:'93'},
  {n:'유미용',img:'eng_14',subj:'토익스피킹·오픽',cat:'토익·토스·오픽',tags:['#실전발화','#IH·AL','#피드백'],desc:'외운 답이 아니라 내 말로 나오게. 파트별 발화 설계와 1:1 피드백으로 목표 등급 달성.',rev:'49'},
  {n:'김현정',img:'eng_15',subj:'오픽·토익',cat:'토익·토스·오픽',tags:['#기초부터','#친절한','#꼼꼼'],desc:'기초부터 꼼꼼하게. 처음 시작하는 분도 부담 없이 따라오는 친절한 밀착 지도.',rev:'8'},
  {n:'엘리 킴',img:'elly',subj:'원어민 영어회화',cat:'영어회화',tags:['#원어민','#프리토킹','#친근한'],desc:'매 수업이 실전 대화. 부담 없이 말하다 보면 어느새 프리토킹까지 트이는 회화 전문.',rev:'46'},
@@ -3538,8 +3534,15 @@ function joinPage(){return memberTabs()
 var SGA_BIZ={name:'산본글로벌어학원',tel:'031-466-6969',mgr:'개인정보 보호책임자 · 원장'};
 
 /* ===== 적립금 · 상품권 잔액 (데모: 로컬 저장) ===== */
-var SGPT={pt:12000,gift:0};
-try{var _sgw=localStorage.getItem('sga_wallet');if(_sgw)SGPT=JSON.parse(_sgw);}catch(e){}
+/* 2026-08-30 · 적립금 12,000원은 화면 확인용 데모 값이었습니다.
+   모든 방문자에게 똑같이 떠서, 드린 적 없는 돈이 잔액으로 보이고 있었습니다.
+   실제 적립금은 회원 계정이 붙은 뒤에 쌓입니다. 그때까지는 0입니다. */
+var SGPT={pt:0,gift:0};
+try{var _sgw=localStorage.getItem('sga_wallet');
+ if(_sgw){SGPT=JSON.parse(_sgw);
+  /* 예전에 저장된 데모 적립금이 남아 있으면 한 번만 지웁니다 */
+  if(SGPT.pt===12000&&!SGPT._c){SGPT.pt=0;SGPT._c=1;localStorage.setItem('sga_wallet',JSON.stringify(SGPT));}}
+}catch(e){}
 function ptSave(){try{localStorage.setItem('sga_wallet',JSON.stringify(SGPT));}catch(e){}}
 function _won(n){return (n||0).toString().replace(/\B(?=(\d{3})+(?!\d))/g,',')+'원';}
 function _num(s){return parseInt(String(s).replace(/[^0-9]/g,''),10)||0;}
@@ -3584,7 +3587,7 @@ var AGDOC={
    +'<tr><th>제공 목적</th><td>결제 승인, 취소·환불, 거래 내역 확인, 부정거래 방지</td></tr>'
    +'<tr><th>보유 기간</th><td>관계 법령에 따른 보존기간(전자상거래법상 결제 기록 5년)</td></tr></table>',
 
- gift:'<b>산글 어학 상품권(충전금) 이용약관 — 「신유형 상품권 표준약관」 준용</b>'
+ gift:'<b>SGA 어학상품권(충전금) 이용약관 — 「신유형 상품권 표준약관」 준용</b>'
    +'<table><tr><th>사용처</th><td>'+SGA_BIZ.name+' 수강료·교재비 결제 전용 (현금 인출 및 타 가맹점 사용 불가)</td></tr>'
    +'<tr><th>유효기간</th><td>충전일로부터 권종에 따라 <b>1년 · 2년 · 3년</b> (선물용 1년 / 장기충전권 100만원권 2년 / 150만원권 3년). 만료 <b>30일 전</b>에 문자·알림톡으로 안내드립니다.</td></tr>'
    +'<tr><th>보너스 금액</th><td>충전 이벤트로 추가 지급된 금액은 <b>증정분</b>으로, 환불 시 정산에서 제외되고 실제 납입한 금액을 기준으로 반환합니다.</td></tr>'
@@ -3669,7 +3672,7 @@ var AGFULL={
   +'<tr><th>1/2 경과 후</th><td>반환하지 않습니다</td></tr></table>'
   +'<p>무료 개월이 포함된 상품은 <b>실제 납부한 금액</b>을 기준으로, 이미 수강한 개월 수의 정가 상당액을 공제하고 정산합니다.</p>'
   +'<h4>제8조 (청약철회)</h4><p>「전자상거래 등에서의 소비자보호에 관한 법률」에 따라 결제일로부터 7일 이내 청약철회가 가능합니다. 다만 이미 수강이 개시된 경우에는 제7조의 반환 기준에 따라 정산합니다.</p>'
-  +'<h4>제9조 (이벤트 할인)</h4><p>이벤트 할인은 각 이벤트에 정해진 기간과 조건에서만 적용되며, 어떤 조합으로도 <b>정가 대비 10%</b>를 넘지 않습니다. 무료 개월이 포함된 상품과는 중복되지 않고 더 유리한 쪽이 자동 적용됩니다. 재등록 얼리버드는 학생 명부에서 확인된 뒤 환급 방식으로 지급합니다.</p>'
+  +'<h4>제9조 (이벤트 할인)</h4><p>이벤트 할인은 각 이벤트에 정해진 기간과 조건에서만 적용되며, 온라인에서 즉시 적용되는 할인은 어떤 조합으로도 <b>정가 대비 10%</b>를 넘지 않습니다. 무료 개월이 포함된 상품과는 중복되지 않고 더 유리한 쪽이 자동 적용됩니다. 재등록 얼리버드는 학생 명부에서 확인된 뒤 환급 방식으로 지급합니다.</p>'
   +'<h4>제4장 기타</h4>'
   +'<h4>제10조 (회원의 의무)</h4><ul><li>수업 중 녹음·녹화 및 교재의 무단 복제·배포를 하지 않습니다.</li><li>계정을 타인에게 대여·양도하지 않습니다.</li><li>다른 수강생의 학습을 방해하지 않습니다.</li></ul>'
   +'<h4>제11조 (탈퇴)</h4><p>회원은 언제든지 데스크 또는 '+SGA_BIZ.tel+'로 탈퇴를 요청할 수 있으며, 학원은 지체 없이 처리합니다. 다만 관계 법령상 보존 의무가 있는 기록은 해당 기간 동안 보관합니다.</p>'
@@ -3781,7 +3784,7 @@ function agDone(){
  if(!(_agSt.sel.tos&&_agSt.sel.priv&&_agSt.sel.age)){alert('필수 항목에 모두 동의해 주세요.');return;}
  agStep(3);}
 
-/* ===== 산글 어학 상품권 충전 ===== */
+/* ===== SGA 어학상품권 충전 ===== */
 /* 권종 · 보너스율
    장기등록 무료개월(3개월 등록 시 +1개월 등)과 충전 보너스는 둘 다
    '목돈 선결제'를 유도하는 장치라 곱해집니다. 보너스를 50%로 두면
@@ -3812,21 +3815,21 @@ var CHGTIER=[
  {pay:1000000,get:1500000,tag:'장기충전권',dbl:true,term:2},
  {pay:1500000,get:2250000,tag:'장기충전권 · 3년',dbl:true,term:3}
 ];
-/* 300만원을 2년 안에 쓰려면 회화를 16.7개월 다녀야 합니다 — 24개월 중 69%로 빠듯합니다.
+/* 225만원을 3년 안에 쓰려면 회화를 12.5개월 다녀야 합니다 — 36개월 중 35%로 여유가 있습니다.
    남은 잔액은 이익이 아니라 부채입니다. 「신유형 상품권 표준약관」상 5년 안에
    미사용분의 90%를 환급해야 하므로, 못 쓰게 두면 가르치고도 돈이 나갑니다.
    그래서 150만원권만 유효기간을 3년으로 늘렸습니다.
-   16.7개월 / 36개월 = 46% — 100만원권(11.1/24 = 46%)과 같은 압박입니다. */
+   100만원권도 8.3/24 = 35%로 같은 자리입니다. */
 var GIFT_TERM=1;      /* 선물용 상품권 유효기간(년) */
 var GIFT_REFUND=0.90; /* 유효기간 경과 후 소멸시효 내 환급률 */
 function chgBuy(pay,get){
  var b=Math.round((get-pay)/pay*1000)/10;
- if(!confirm('산글 어학 상품권 충전\n\n결제금액 '+_won(pay)+'\n충전금액 '+_won(get)+'\n\n· 유효기간 '+_chgTerm(pay)+'년\n· 보너스 금액은 증정분으로 환불 정산에서 제외됩니다.\n· 충전 즉시 카카오톡으로 잔액을 보내드립니다.\n\n계속하시겠습니까?'))return;
+ if(!confirm('SGA 어학상품권 충전\n\n결제금액 '+_won(pay)+'\n충전금액 '+_won(get)+'\n\n· 유효기간 '+_chgTerm(pay)+'년\n· 보너스 금액은 증정분으로 환불 정산에서 제외됩니다.\n· 충전 즉시 카카오톡으로 잔액을 보내드립니다.\n\n계속하시겠습니까?'))return;
  SGPT.gift=(SGPT.gift||0)+get;ptSave();
  alert('충전이 접수되었습니다. (데모)\n\n결제대행 연동 후 실제 결제가 진행됩니다.\n현재 잔액 '+_won(SGPT.gift)+'\n\n전화 '+SGA_BIZ.tel+' · 카카오톡 채널 산본글로벌어학원SGA');
  var g=document.getElementById('chgBal');if(g)g.innerHTML=_won(SGPT.gift);}
 
-/* ===== 산글 어학 상품권 스토어 =====
+/* ===== SGA 어학상품권 스토어 =====
    모바일 상품권 · 실물 카드 · 선물하기 · 유효기간 · 발행번호 */
 var GF={tier:2,to:'',msg:''};  /* 모바일·실물은 선택이 아니라 둘 다 드립니다 */
 function gfPick(i){GF.tier=i;gfRender();}
@@ -3849,7 +3852,7 @@ function gfExpiry(){var d=new Date();d.setFullYear(d.getFullYear()+gfTerm());
 function _gc(kind){
  var t=CHGTIER[GF.tier];var b=Math.round((t.get-t.pay)/t.pay*100);var real=(kind==='real');
  return '<div class="gc'+(real?' real':'')+'">'
-  +'<div class="gc-top"><span class="gc-bd">산글 어학 상품권</span><span class="gc-tp">'+(real?'실물 각인 카드':'모바일')+'</span></div>'
+  +'<div class="gc-top"><span class="gc-bd">SGA 어학상품권</span><span class="gc-tp">'+(real?'실물 각인 카드':'모바일')+'</span></div>'
   +'<div class="gc-amt">'+_won(t.get)+'</div>'
   +(b>0?'<div class="gc-bo">'+_won(t.pay)+' 결제 · 보너스 +'+b+'%</div>':'<div class="gc-bo">액면 그대로 · 선물 전용</div>')
   +(GF.to?'<div class="gc-to">TO. '+_esc(GF.to)+'</div>':'')
@@ -3906,14 +3909,18 @@ var GF_USE=[
    ['정규·실전 2개월',420000,'2개월'],
    ['스파르타 1개월 (매일반)',420000,'1개월'],
    ['스파르타 2개월 (매일반)',840000,'2개월'],
-   ['토익 무한수강권 6개월',900000,'6개월']]}
+   ['정규·실전 4개월 (초중급/중실전)',1680000,'4개월']]}
 ];
 function gfUseHTML(){
  var t=CHGTIER[GF.tier];var cr=t.get;
  var conv=Math.floor(cr/180000),exam=Math.floor(cr/210000);
+ /* 10만원권처럼 한 달치도 안 되는 권종은 0으로 나눠 Infinity가 뜨던 자리입니다 (2026-08-30) */
+ function _mo(n,unit){
+  if(!n)return '<b>—</b><span>한 달치에 못 미칩니다<br>교재·잔액 보태기용</span>';
+  return '<b>'+n+'개월</b><span>월 '+_won(Math.round(t.pay/n/1000)*1000)+' 꼴</span>';}
  return '<div class="gu-cap">'+_won(t.pay)+' 내시고 <b>'+_won(cr)+'</b> — 들으실 수 있는 기간</div>'
- +'<div class="gu-big"><div><em>회화</em><b>'+conv+'개월</b><span>월 '+_won(Math.round(t.pay/conv/1000)*1000)+' 꼴</span></div>'
- +'<div><em>시험대비</em><b>'+exam+'개월</b><span>월 '+_won(Math.round(t.pay/exam/1000)*1000)+' 꼴</span></div></div>'
+ +'<div class="gu-big"><div><em>회화</em>'+_mo(conv)+'</div>'
+ +'<div><em>시험대비</em>'+_mo(exam)+'</div></div>'
  +GF_USE.map(function(G){
   return '<div class="gu-g">'+G.g+'</div><div class="tblwrap"><table class="gu-t">'
    +'<tr><th>과정</th><th>정가</th><th>이 권종으로</th></tr>'
@@ -3928,7 +3935,7 @@ function gfUseHTML(){
 function gfBuy(){
  var t=CHGTIER[GF.tier];var b=Math.round((t.get-t.pay)/t.pay*100);var ship=gfShip();
  spBuyItem(_won(t.pay+ship),
-  '<b>산글 어학 상품권 '+Math.round(t.pay/10000)+'만원권</b><br>'
+  '<b>SGA 어학상품권 '+Math.round(t.pay/10000)+'만원권</b><br>'
   +'<span class="free">충전</span><b>'+_won(t.get)+'</b>'+(b>0?' (보너스 +'+b+'%)':'')+'<br>'
   +'<span class="free">기본</span><b>모바일 + 실물 각인 카드</b> — 둘 다 드립니다<br>'
   +'<span style="color:#3f4757;font-weight:700">수령 — 모바일 즉시 발송 · 실물 카드는 학원 방문 수령</span><br>'
@@ -3943,7 +3950,7 @@ function chargePage(){
  +'<p>넣으신 금액에 <b>절반을 더</b> 얹어 드립니다.<br>50만원이면 75만원, 100만원이면 150만원.<br>모바일과 실물 각인 카드를 <b>둘 다</b> 드립니다.</p></div>'
 
  +'<div class="gf-wrap">'
- +'<div class="pt-row"><span class="lb">🎁 내 산글 어학 상품권 잔액</span><span class="vl" id="chgBal">'+_won(SGPT.gift)+'</span></div>'
+ +'<div class="pt-row"><span class="lb">🎁 내 SGA 어학상품권 잔액</span><span class="vl" id="chgBal">'+_won(SGPT.gift)+'</span></div>'
 
  +'<div class="gf-sec"><h3 class="gf-h">1. 권종을 고르세요</h3>'
  +'<div class="gv-grid" id="gfTiers"></div></div>'
@@ -3976,7 +3983,7 @@ function chargePage(){
  +'<tr><td class="b">의무수강</td><td>없음</td><td>등록월 포함 <b>2개월</b></td></tr>'
  +'<tr><td class="b">차감 기준</td><td colspan="2">정가 — 무료개월 · 결제할인 · 이벤트 중복 없음</td></tr>'
  +'</table></div>'
- +'<div class="gf-tip"><b>고르는 법</b> — 값어치는 어느 권종이나 같습니다. 넣으신 돈에 절반이 더 채워지고, 회화 기준 <b>월 90,000원</b>으로 다니십니다. '
+ +'<div class="gf-tip"><b>고르는 법</b> — 값어치는 어느 권종이나 같습니다. 넣으신 돈에 절반이 더 채워지고, 회화 기준 <b>월 125,000원</b>으로 다니십니다. '
  +'다른 건 <b>누가 쓰느냐</b>와 <b>기한</b>뿐입니다.<br><br>'
  +'· 남에게 <b>주실</b> 거면 — 선물용 (1년, 양도 가능)<br>'
  +'· <b>본인이</b> 길게 다니실 거면 — 장기충전권 100만원권 (2년, 회화 8개월)<br>'
@@ -3987,21 +3994,21 @@ function chargePage(){
  +'<div class="tblwrap"><table class="oh-cmp"><tr><th>　</th><th>50만원권</th><th>현금 3개월 등록</th><th>현금 6개월 등록</th></tr>'
  +'<tr><td class="b">내시는 돈</td><td class="hi">500,000원</td><td>540,000원</td><td>1,080,000원<br><small>이벤트가 972,000원</small></td></tr>'
  +'<tr><td class="b">받는 수업</td><td class="hi">회화 4개월</td><td>회화 4개월</td><td>회화 10개월</td></tr>'
- +'<tr><td class="b">월 실질</td><td class="hi">90,000원</td><td>135,000원</td><td>97,200원</td></tr>'
+ +'<tr><td class="b">월 실질</td><td>125,000원</td><td>135,000원</td><td class="hi">108,000원</td></tr>'
  +'<tr><td class="b">기한</td><td class="hi">1년 안에 언제든<br>(장기충전권 2년)</td><td>등록 즉시 시작</td><td>등록 즉시 시작</td></tr>'
  +'<tr><td class="b">과목 변경</td><td class="hi">회화 ↔ 시험대비 자유</td><td>결제한 과목</td><td>결제한 과목</td></tr>'
  +'<tr><td class="b">선물</td><td class="hi">가능</td><td>본인만</td><td>본인만</td></tr>'
  +'</table></div>'
- +'<div class="gf-tip"><b>정리하면</b> — 상품권이 <b>가장 쌉니다.</b> 회화 기준 월 90,000원으로, 학원에서 나가는 제일 낮은 값입니다. '
- +'현금으로 제일 크게 묶으셔도 월 97,200원(6개월 등록 + 오픈이벤트)이 한계입니다.<br>'
+ +'<div class="gf-tip"><b>정리하면</b> — <b>가장 싼 것은 현금 장기등록</b>입니다. 회화 6개월 등록(총 10개월)이 월 108,000원으로 학원에서 나가는 제일 낮은 값입니다.<br>'
+ +'상품권은 월 125,000원입니다. 조금 더 내시는 대신 <b>과목을 바꿔 들으실 수 있고, 선물로 주실 수 있고, 기한 안에 언제든 쓰실 수 있습니다.</b><br>'
  +'대신 상품권은 <b>정가로 차감</b>되니, 무료개월이나 이벤트 10%를 또 얹어드리지는 못합니다. 절반을 더 얹어드린 것으로 이미 그만큼이 들어가 있습니다.</div></div>'
 
  +'<div class="gf-sec"><h3 class="gf-h">다 쓰실 수 있습니까</h3>'
  +'<div class="gf-bs">가장 많이 받는 질문입니다. 정가로 차감하니 <b>몇 개월을 다녀야 소진되는지</b> 그대로 적어 둡니다.</div>'
  +'<div class="tblwrap"><table class="oh-cmp"><tr><th>권종</th><th>크레딧</th><th>회화로 다 쓰면</th><th>기한</th><th>여유</th></tr>'
- +'<tr><td class="b">50만원권</td><td>1,000,000원</td><td>5.5개월</td><td>1년</td><td class="hi">넉넉합니다</td></tr>'
- +'<tr><td class="b">100만원권</td><td>2,000,000원</td><td>11개월</td><td>2년</td><td class="hi">넉넉합니다</td></tr>'
- +'<tr><td class="b">150만원권</td><td>3,000,000원</td><td>16.7개월</td><td class="hi">3년</td><td class="hi">넉넉합니다</td></tr>'
+ +'<tr><td class="b">50만원권</td><td>750,000원</td><td>4.1개월</td><td>1년</td><td class="hi">넉넉합니다</td></tr>'
+ +'<tr><td class="b">100만원권</td><td>1,500,000원</td><td>8.3개월</td><td>2년</td><td class="hi">넉넉합니다</td></tr>'
+ +'<tr><td class="b">150만원권</td><td>2,250,000원</td><td>12.5개월</td><td class="hi">3년</td><td class="hi">넉넉합니다</td></tr>'
  +'</table></div>'
  +'<div class="gf-tip"><b>150만원권만 3년입니다.</b> 2년으로 두면 24개월 중 16.7개월 — <b>69%</b>를 다니셔야 해서 빠듯합니다. '
  +'3년이면 36개월 중 46%로, 100만원권(24개월 중 46%)과 똑같은 여유가 됩니다.<br><br>'
@@ -4034,7 +4041,7 @@ function chargePage(){
  +'<div class="ag-law" style="border-color:#f2c4c0;background:#fff5f4;color:#8a1720">⚠ <b>충전금으로 결제하시면 오픈이벤트 10% 할인은 중복 적용되지 않습니다.</b> 충전하실 때 이미 보너스를 받으셨기 때문입니다. 결제창에서 <b>충전금 결제</b>와 <b>이벤트 할인 결제</b> 중 유리한 쪽을 고르실 수 있습니다.</div>'
  +'<div class="ag-box" id="agChg" data-btn="">'
  +'<label class="ag-all" style="cursor:default"><span style="flex:1">구매 전 꼭 확인해 주세요</span></label>'
- +agNotice('산글 어학 상품권 이용약관 (유효기간·환불)',AGDOC.gift,'agChg','g1')
+ +agNotice('SGA 어학상품권 이용약관 (유효기간·환불)',AGDOC.gift,'agChg','g1')
  +agNotice('개인정보 처리위탁 현황 (결제대행·알림톡)',AGDOC.out,'agChg','g2')
  +'</div>'
  +'<div class="sp-kko" style="margin:14px 0"><span>💬 <b>카카오톡 안내</b><br>발행·사용·잔액 변동이 있을 때마다 <b>남은 잔액과 유효기간</b>을 알림톡으로 보내드립니다. 계약 이행에 필요한 정보성 안내라 광고 수신동의 여부와 관계없이 발송됩니다.</span></div>'
@@ -4056,12 +4063,12 @@ function joinFormPage(){return memberTabs()
  +'<button class="jf-submit" id="jfSubmit" type="button" disabled onclick="joinSubmit()">가입 완료하기</button>'
  +'<div class="pgnote">※ 아이디·비밀번호 등 입력 정보는 이 화면에서 외부로 전송되지 않습니다. 현재는 접수용 폼이며, 정식 회원 시스템은 준비 중입니다.</div>'
  +'</div>'+CTA();}
-function loginPage(){return '<div class="plog">'+'<div class="plog-top"><img src="img/intro_logo.png" alt="산본글로벌어학원"><span>산본글로벌어학원</span></div>'+'<div class="plog-body"><div class="plog-l">'+'<input class="plog-f" type="text" placeholder="아이디" autocomplete="off">'+'<input class="plog-f" type="password" placeholder="비밀번호" autocomplete="off">'+'<label class="plog-save"><input type="checkbox"> 아이디저장</label>'+'<button class="plog-btn" type="button" onclick="alert(\'로그인 기능은 준비 중입니다.\\n전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원으로 상담해 주세요.\')">로그인</button>'+'<div class="plog-sns-t">다른 계정으로 로그인</div>'+'<div class="plog-sns">'+'<a href="#" class="psi psi-n" title="네이버로 로그인" onclick="alert(\'네이버 간편로그인은 준비 중입니다.\');return false;"><b>N</b></a>'+'<a href="#" class="psi psi-k" title="카카오로 로그인" onclick="alert(\'카카오 간편로그인은 준비 중입니다.\');return false;"><b>TALK</b></a>'+'<a href="#" class="psi psi-g" title="구글로 로그인" onclick="alert(\'구글 간편로그인은 준비 중입니다.\');return false;"><b>G+</b></a>'+'</div></div>'+'<div class="plog-r"><div class="plog-promo"><div class="plog-pr-head">지금은<br><b>10월 수강등록 기간</b>입니다<em>개강일 : 10/6 (화)</em></div><div class="plog-pr-body"><div class="plog-pr-gw">글로벌 위크 11/19 ~ 11/25</div><div class="plog-pr-big">지금 등록,<br>최대 <b>25%</b> <span class="plog-ar">↓</span></div><a class="plog-pr-go" href="#" onclick="sgCloseOrBack();openPage(\'수강신청\');return false;">온라인 수강신청 바로가기 <span>GO</span></a></div></div></div>'+'</div>'+'<div class="plog-foot"><a href="#" onclick="openPage(\'회원가입\');return false;">회원가입</a><a href="#" onclick="alert(\'아이디/비밀번호 찾기는 준비 중입니다.\');return false;">아이디/비밀번호찾기</a></div>'+'</div>';}
+function loginPage(){return '<div class="plog">'+'<div class="plog-top"><img src="img/intro_logo.png" alt="산본글로벌어학원"><span>산본글로벌어학원</span></div>'+'<div class="plog-body"><div class="plog-l">'+'<input class="plog-f" type="text" placeholder="아이디" autocomplete="off">'+'<input class="plog-f" type="password" placeholder="비밀번호" autocomplete="off">'+'<label class="plog-save"><input type="checkbox"> 아이디저장</label>'+'<button class="plog-btn" type="button" onclick="alert(\'로그인 기능은 준비 중입니다.\\n전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원으로 상담해 주세요.\')">로그인</button>'+'<div class="plog-sns-t">다른 계정으로 로그인</div>'+'<div class="plog-sns">'+'<a href="#" class="psi psi-n" title="네이버로 로그인" onclick="alert(\'네이버 간편로그인은 준비 중입니다.\');return false;"><b>N</b></a>'+'<a href="#" class="psi psi-k" title="카카오로 로그인" onclick="alert(\'카카오 간편로그인은 준비 중입니다.\');return false;"><b>TALK</b></a>'+'<a href="#" class="psi psi-g" title="구글로 로그인" onclick="alert(\'구글 간편로그인은 준비 중입니다.\');return false;"><b>G+</b></a>'+'</div></div>'+'<div class="plog-r"><div class="plog-promo"><div class="plog-pr-head">지금은<br><b>10월 수강등록 기간</b>입니다<em>개강일 : 10월 1일</em></div><div class="plog-pr-body"><div class="plog-pr-gw">10월 수강등록 기간</div><div class="plog-pr-big">지금 등록,<br>오픈이벤트 <b>10%</b><span class="plog-ar">↓</span></div><a class="plog-pr-go" href="#" onclick="sgCloseOrBack();openPage(\'수강신청\');return false;">온라인 수강신청 바로가기 <span>GO</span></a></div></div></div>'+'</div>'+'<div class="plog-foot"><a href="#" onclick="openPage(\'회원가입\');return false;">회원가입</a><a href="#" onclick="alert(\'아이디/비밀번호 찾기는 준비 중입니다.\');return false;">아이디/비밀번호찾기</a></div>'+'</div>';}
 function bigImg(src){return '<div class="pgimg"><img src="'+src+'" alt="" loading="eager"></div>';}
 function eventHubPage(){
  var openOn=evActive('open');
  var pre=(typeof _preOpen==='function')&&_preOpen();
- return _pgHero('img/gen13.jpg','EVENT · 이달의 혜택','10월 1일,<br>이름이 바뀌면서<br>혜택이 시작됩니다',
+ return _pgHero('img/gen13.jpg','EVENT · 10~11월 오픈이벤트','10월 1일,<br>이름이 바뀌면서<br>혜택이 시작됩니다',
   '산본이지어학원이 <b>산본글로벌어학원</b>이 됩니다. 강사도 교실도 그대로이고, 바뀌는 건 이름과 혜택뿐입니다.',
   'linear-gradient(120deg,#1D2D4F,#33507f)')
 
@@ -4093,12 +4100,12 @@ function eventHubPage(){
   +'<div style="margin-top:14px"><button class="tt-b" onclick="openPage(\'맞춤수업\')">1대1 안내 보기 ›</button></div>')
 
  +_pgBand('img/gen14.jpg','④ 무한수강권 — 이미 최저가라 할인이 없습니다',
-  '<p class="lead">토익 <b>3개 반을 6개월 동안 횟수 제한 없이</b> 듣는 상품입니다. 한 달 15만원 꼴이라 이벤트 할인이 붙지 않습니다. 할인을 더 드릴 수 없는 게 아니라, <b>이미 그보다 싸게</b> 드리고 있는 겁니다.</p>'
+  '<p class="lead">앞 단계를 <b>통째로 한 번 더</b> 듣는 상품입니다. 정규는 넉 달, 스파르타는 두 달이라 이벤트 할인이 붙지 않습니다. 할인을 더 드릴 수 없는 게 아니라, <b>이미 그보다 싸게</b> 드리고 있는 겁니다.</p>'
   +'<ul class="oh-ck"><li><b>정규 무한수강권 1</b> — 정규 초급 2개월 → 중급 2개월 + <b>초급 재수강</b> + AI 산글 (넉 달 · 740,000원)</li>'
   +'<li><b>정규 무한수강권 2</b> — 정규 중급 2개월 → 실전 2개월 + <b>중급 재수강</b> + AI 산글 (넉 달 · 740,000원)</li>'
   +'<li><b>스파르타 무한수강권 1</b> — 초급 1개월 → 중급 1개월 + <b>초급 재수강</b> + AI 산글 (두 달 · 740,000원)</li>'
   +'<li><b>스파르타 무한수강권 2</b> — 중급 1개월 → 실전 + <b>중급 재수강</b> + AI 산글 (두 달 · 740,000원)</li>'
-  +'<li>6개월 90만원 · 강사 5인</li></ul>'
+  +'<li>정규 넉 달 / 스파르타 두 달 · 740,000원</li></ul>'
   +'<div style="margin-top:14px"><button class="tt-b" onclick="openExam(\'토익\')">무한수강권 보기 ›</button></div>')
 
  +SEC('⑤ 돈을 안 내고 먼저 해보시는 것',
@@ -4140,7 +4147,7 @@ function guidePage(){
  return '<div class="pghero big" style="background:linear-gradient(120deg,#14261c,#2a7a4e)"><div class="pgeyebrow">COURSE GUIDE · 강의안내</div><h2>내게 맞는 커리큘럼,<br>제대로 배우자</h2><p>산본글로벌 전 과목 커리큘럼을 한눈에. 과목을 클릭하면 상세 강의 페이지로 이동합니다.</p></div>'+rows+CTA();}
 function reviewExtra(){
  var photos=[
-  {img:'img/teachers/elly.png',ti:'토익 초급반 엘리쌤 후기',b:'토익 초급 · 엘리 킴 선생님',p:'오랫만에 하는 영어공부에 걱정도 많고 자신감도 없이 두꺼운 교재 2권 받아두니 개강일이 가까워 올수록 점점 더 가기 싫어졌어요. 그래도 어쩔 수 없이..? 왔는데 첫날 너무 에너지 넘치는 선생님 덕에 열심히라도 해야겠다는 생각이 들어서 꾸준히 할 수 있었습니다. 몸과 목을 아끼지 않고 열정강의 해주시는 선생님께 감사하고 열심히 해서 원하는 점수 받아보겠습니다!!!',m:'장*경 · 2026.08'},
+  {img:'img/teachers/elly.png',ti:'토익 초급반 엘리쌤 후기',b:'토익 초급 · 엘리 킴 선생님',p:'오랜만에 하는 영어공부에 걱정도 많고 자신감도 없이 두꺼운 교재 2권 받아두니 개강일이 가까워 올수록 점점 더 가기 싫어졌어요. 그래도 어쩔 수 없이..? 왔는데 첫날 너무 에너지 넘치는 선생님 덕에 열심히라도 해야겠다는 생각이 들어서 꾸준히 할 수 있었습니다. 몸과 목을 아끼지 않고 열정강의 해주시는 선생님께 감사하고 열심히 해서 원하는 점수 받아보겠습니다!!!',m:'장*경 · 2026.08'},
   {img:'img/teachers/eng_11.png',ti:'원어민 선생님인데 수강료도 저렴한 편이었어요',b:'영어회화 STEP4 · Jerollyn 선생님',p:'매 수업 때마다 small talk + 기사글 위주로 강의해주셔서 어휘력과 문법 실력 키우는데 많이 도움됐습니다. 대화하다가도 좋은 이디엄이 있으면 하나라도 빼놓지 않고 화이트보드에 적어 설명해 주시는 점이 가장 좋았습니다. 처음엔 서툰 영어로 말하는 게 부끄럽고 힘들었는데, 쌤 성격이 워낙 시원시원하시고 재밌으셔서 빠르게 적응하는데 도움된 것 같습니다.',m:'산본 수강생 후기'},
   {img:'img/teachers/jpn_2.png',ti:'일자무식이었던 처음보다 정말 훨씬 늘었어요',b:'일본어 1:1 · 김민정 선생님',p:'독학을 시도해보다가도 금방 실패하고 포기하기 일쑤였던 직장인입니다. 일본여행을 다녀온 후 제대로 배우고 싶어 초급반 1:1 수업을 등록했습니다. 2달 정도 지났는데 이해력이 정말 훨씬 늘었구요, 강사님께서 적지도 과하지도 않게 담백한 온도로 수업을 이끌어주셔서 제게 딱 알맞는 환경에서 공부하고 있습니다. 취미로 시작했는데 JLPT 취득에도 욕심이 생겼어요!',m:'산본 수강생 후기'}
  ];
@@ -4200,7 +4207,7 @@ var T_CHN=[
  {n:'오금한 강사',title:'입문/초급회화',eye:'중국어 공부 이젠 쉽고 재미있게!!',img:'chn_5'}
 ];
 var T_EXAM=[
- {n:'토익 대비반',title:'TOEIC',eye:'오답 프로파일러 · 점수보장',img:'eng_13',co:'토익'},
+ {n:'토익 대비반',title:'TOEIC',eye:'오답 프로파일러 · 밀착 관리',img:'eng_13',co:'토익'},
  {n:'토스·오픽 대비반',title:'TOEIC S · OPIc',eye:'실전 발화로 목표 등급',img:'eng_14',co:'토스'},
  {n:'JLPT 대비반',title:'JLPT',eye:'기출로 증명된 합격 루트',img:'jpn_2',co:'JLPT'},
  {n:'EJU 대비반',title:'EJU 일본유학시험',eye:'일본 대학 진학 대비',img:'jpn_4',pg:'유학상담'},
@@ -4238,15 +4245,15 @@ function enrollPage(){
  var CATS=[
   {t:'왕기초부터 토익만점까지',ic:'📝',c:'linear-gradient(120deg,#c81f2b,#e0453e)',imgs:['eng_13','eng_14','eng_6','eng_15','jpn_7','chn_5'],chips:[['토익','토익','e'],['🎯 왕기초 토익 1:1','토익','o'],['토익스피킹(토스)','토스','e'],['오픽','오픽','e'],['토플 (모집중)','토플','e'],['JLPT (모집중)','JLPT','e'],['HSK (모집중)','HSK','e']]},
   {t:'영어회화',ic:'💬',c:'linear-gradient(120deg,#0e8a5a,#14b06e)',imgs:EA,chips:[['🌅 새벽반 (모집중)','영어회화','s','새벽반'],['🎯 왕기초 영어 1:1','영어','o'],['BASIC','영어회화','s','BASIC'],['STEP1','영어회화','s','STEP1'],['STEP2','영어회화','s','STEP2'],['STEP3','영어회화','s','STEP3'],['STEP4','영어회화','s','STEP4']]},
-  {t:'일본어',ic:'🎌',c:'linear-gradient(120deg,#b83277,#d64f97)',imgs:['jpn_6','jpn_4','jpn_5','','jpn_7','jpn_2'],chips:[['🌅 새벽반 (모집중)','일본어','s','새벽반'],['🎌 왕기초 1:1 (첫걸음)','일본어','o'],['원어민 회화','일본어','s','원어민'],['입문 (모집중)','일본어','s','입문'],['초급','일본어','s','초급'],['초중급','일본어','s','초중급'],['중급','일본어','s','중급'],['JLPT','JLPT','e']]},
-  {t:'중국어',ic:'🀄',c:'linear-gradient(120deg,#b8322a,#d6564a)',imgs:['chn_1','chn_7','chn_3',''],chips:[['🌅 새벽반 (모집중)','중국어','s','새벽반'],['🀄 왕기초 1:1 (첫걸음)','중국어','o'],['입문 (모집중)','중국어','s','입문'],['초급','중국어','s','초급'],['중급','중국어','s','중급'],['중고급','중국어','s','중고급'],['고급','중국어','s','고급'],['HSK','HSK','e']]},
+  {t:'일본어',ic:'🎌',c:'linear-gradient(120deg,#b83277,#d64f97)',imgs:['jpn_6','jpn_4','jpn_5','','jpn_7','jpn_2'],chips:[['🌅 새벽반 (모집중)','일본어','s','새벽반'],['🎌 1:1 개인수업','','one'],['원어민 회화','일본어','s','원어민'],['입문 (모집중)','일본어','s','입문'],['초급','일본어','s','초급'],['초중급','일본어','s','초중급'],['중급','일본어','s','중급'],['JLPT','JLPT','e']]},
+  {t:'중국어',ic:'🀄',c:'linear-gradient(120deg,#b8322a,#d6564a)',imgs:['chn_1','chn_7','chn_3',''],chips:[['🌅 새벽반 (모집중)','중국어','s','새벽반'],['🀄 1:1 개인수업','','one'],['입문 (모집중)','중국어','s','입문'],['초급','중국어','s','초급'],['중급','중국어','s','중급'],['중고급','중국어','s','중고급'],['고급','중국어','s','고급'],['HSK','HSK','e']]},
   {t:'1대1 글로벌 강의관',ic:'🎯',c:'linear-gradient(120deg,#c81f2b,#e0453e)',hot:1,imgs:['eng_14','eng_13','eng_5','eng_6'],d:'스무 명 중 한 명일 땐 안 보이던 것이, 1대1에서는 첫 시간에 보입니다. 진도를 따라가는 수업이 아니라 <b>놓친 자리로 돌아가는 수업</b>입니다. 원하는 과목·시간·목표에 맞춰 한인·원어민·시험대비 강사를 직접 매칭해 드립니다.',pts:[['어디서 막혔는지 찾아드립니다 — ','그룹반에서는 보이지 않던 구멍을 첫 시간에 짚어 드리고, 그 지점부터 다시 쌓습니다.'],['시간을 마음대로 씁니다 — ','10시간·20시간 시간권으로 등록하고 원하는 요일·시간에 배정합니다. 출장·야근이 잦아도 흐름이 끊기지 않습니다.'],['강사를 골라 드립니다 — ','한인 강사(기초·문법), 원어민(발화·프리토킹), 시험대비(토익·토스·오픽·JLPT·HSK) 중 목표에 맞게 매칭합니다.'],],chips:[['일대일 (시간권)','퍼스널','o'],['퍼스널 50·80분','퍼스널',1],['왕기초 영어 일대일','영어','o'],['왕기초 토익 일대일','토익','o'],['시험일 맞춤 단기집중','시험일 맞춤 단기집중',1]],go:['1대1 수강신청 하기 ›',"openOne('퍼스널')"]},
   {t:'기업체 출강 / 임원 1:1',ic:'🏢',c:'linear-gradient(120deg,#3f4654,#5a6274)',imgs:['eng_14','eng_5','eng_15','eng_6','eng_13'],chips:[['기업 출강','기업출강',1],['임원 1:1','임원강의',1]]},
   
  ];
  var cards=CATS.map(function(g){
   var ph=g.imgs.map(function(im){return im?'<img src="img/teachers/'+im+'.png" alt="" loading="lazy">':'<span class="ph-empty">사진<br>준비중</span>';}).join('');
-  var chips=g.chips.map(function(ch){var act=(ch[0]==='왕기초 토익 일대일')?"openPage('왕기초토익')":ch[2]==='s'?"openStep('"+ch[1]+"'"+(ch[3]?",'"+ch[3]+"'":"")+")":(ch[2]==='e'?"openExam('"+ch[1]+"')":(ch[2]==='o'?"openOne('"+ch[1]+"')":(ch[2]?"openPage('"+ch[1]+"')":"openCourse('"+ch[1]+"')")));return '<button class="echip" onclick="'+act+'">'+ch[0]+'</button>';}).join('');
+  var chips=g.chips.map(function(ch){var act=(ch[0]==='왕기초 토익 일대일')?"openPage('왕기초B')":ch[2]==='s'?"openStep('"+ch[1]+"'"+(ch[3]?",'"+ch[3]+"'":"")+")":(ch[2]==='e'?"openExam('"+ch[1]+"')":(ch[2]==='one'?"openPage('맞춤수업')":(ch[2]==='o'?"openOne('"+ch[1]+"')":(ch[2]?"openPage('"+ch[1]+"')":"openCourse('"+ch[1]+"')"))));return '<button class="echip" onclick="'+act+'">'+ch[0]+'</button>';}).join('');
   var desc=g.d?'<div class="encat-d">'+g.d+'</div>':'';
   var pts=g.pts?'<ul class="encat-pts">'+g.pts.map(function(x){return '<li><b>'+x[0]+'</b>'+x[1]+'</li>';}).join('')+'</ul>':'';
   var go=g.go?'<button class="encat-go" onclick="'+g.go[1]+'">'+g.go[0]+'</button>':'';
@@ -4257,24 +4264,25 @@ function enrollPage(){
 function reviewPage(){
  var STATS=[
    {lv:'레벨 IH',t:'오픽',d:'오픽 IM2 → IH, 두 달 만에',n:'김○○ · 26년 7월 수강'},
-   {lv:'930점',t:'토익',d:'620 → 930, 점수보장반',n:'이○○ · 26년 6월 수강'},
+   {lv:'930점',t:'토익',d:'620 → 930, 토익 관리형 집중반',n:'이○○ · 26년 6월 수강'},
    {lv:'레벨 AL',t:'토익스피킹',d:'실전 발화 훈련으로 AL 달성',n:'박○○ · 26년 6월 수강'},
    {lv:'N2 합격',t:'JLPT',d:'노베이스에서 6개월 N2',n:'최○○ · 26년 5월 수강'}
  ];
  var cards=STATS.map(function(s){return '<div class="rv-card"><div class="rv-lv">'+s.lv+'</div><div class="rv-t">'+s.t+'</div><div class="rv-d">'+s.d+'</div><div class="rv-n">'+s.n+'</div></div>';}).join('');
- var REV=[
-   {tag:'BEST',ti:'왜 틀리는지 알려주니 점수가 확 올랐어요',b:'토익 · 송윤정 선생님',p:'문제풀이만 반복하던 예전 학원과 달라요. 오답을 유형별로 분석해 주셔서 같은 실수를 반복하지 않게 됐고, 두 달 만에 900을 넘겼습니다.'},
-   {tag:'BEST',ti:'원어민 회화, 드디어 입이 트였어요',b:'영어회화 · 원어민쌤',p:'매 수업이 실전이라 부담 없이 말하게 돼요. 여행 가서 처음으로 영어로 대화했는데 통했습니다!'},
-   {tag:'',ti:'혼모노 일본어, 진짜 살아있는 표현',b:'일본어 · 김민정 선생님',p:'교과서 일본어가 아니라 실제 쓰는 표현을 배워서 드라마가 들리기 시작했어요. JLPT도 자연스럽게 준비됐습니다.'},
-   {tag:'',ti:'회사 다니면서도 꾸준히, 임원 1:1',b:'기업·임원 출강',p:'바쁜 일정에 맞춰 회사로 와주시니 꾸준히 이어져요. 실무 이메일·미팅 영어가 눈에 띄게 좋아졌습니다.'}
+ /* 2026-08-30 · 대표님 지시 — 후기는 산본이지어학원 게시판에 실제로 올라온 것만 씁니다.
+   지어낸 '예시' 후기는 전부 뺐습니다. */
+var REV=[
+   {tag:'실제 후기',ti:'토익 초급반 엘리쌤 후기',b:'토익 초급 · 엘리 킴 선생님',p:'오랜만에 하는 영어공부라 걱정이 컸는데, 첫 수업부터 차근차근 짚어 주셔서 따라갈 수 있었습니다.'},
+   {tag:'실제 후기',ti:'일본어능력시험 N3 합격 후기',b:'일본어 회화 + JLPT 대비반',p:'저는 중학생이고 현재 일본어회화반을 수강하고 있어요. 12월 시험을 위해 3개월은 일본어능력시험 대비반을 수강했습니다. 다행히 우수한 성적으로 합격해서 이렇게 후기도 올리고 기쁘네요~'},
+   {tag:'',ti:'원어민 선생님인데 수강료도 저렴한 편이었어요',b:'영어회화 STEP4 · Jerollyn 선생님',p:'매 수업 때마다 small talk과 기사글 위주로 강의해 주셔서 어휘력과 문법 실력을 키우는 데 도움이 많이 됐습니다.'},
+   {tag:'',ti:'일자무식이었던 처음보다 정말 훨씬 늘었어요',b:'일본어 1:1 · 김민정 선생님',p:'독학을 시도해 보다가도 금방 포기하기 일쑤였던 직장인입니다. 선생님과 1:1로 하니 빠지지 않고 이어 갈 수 있었어요.'}
  ];
  var revs=REV.map(function(r){return '<div class="rv-item">'+(r.tag?'<span class="rv-badge">'+r.tag+'</span>':'')+'<h4>'+r.ti+'</h4><div class="rv-meta">'+r.b+'</div><p>'+r.p+'</p></div>';}).join('');
- return bigImg('img/gen15.jpg')+'<div class="pghero big rv-hero"><div class="pgeyebrow">REAL REVIEWS · 수강후기</div><h2>실 수강생이 들려주는<br>생생한 진짜 후기</h2><p>산본글로벌 수강생들이 직접 남긴 후기를 확인하세요. 점수·레벨 향상부터 회화 자신감까지, 결과가 증명합니다.</p></div>'
-  +'<div class="rv-stats">'+cards+'</div>'
+ return bigImg('img/gen15.jpg')+'<div class="pghero big rv-hero"><div class="pgeyebrow">REAL REVIEWS · 수강후기</div><h2>수강생이<br>직접 남긴 후기</h2><p>산본글로벌 수강생들이 직접 남긴 후기를 확인하세요. 점수·레벨 향상부터 회화 자신감까지, 결과가 증명합니다.</p></div>'
   +'<div class="rv-filter"><span>전체</span><span>토익·토스·오픽</span><span>영어회화</span><span>일본어</span><span>중국어</span><span>기업·임원</span></div>'
   +'<div class="rv-block"><h3 class="rv-bh"><b>BEST</b> 수강 후기</h3><div class="rv-list">'+revs+'</div></div>'
   +reviewExtra()
-  +'<div class="pgnote">※ 후기는 실제 수강생 사례를 바탕으로 정리한 예시이며, 개인정보 보호를 위해 이름은 익명 처리했습니다.</div>'
+  +'<div class="pgnote">※ 산본이지어학원 수강후기 게시판에 올라온 실제 후기입니다 (누적 142건). 개인정보 보호를 위해 이름은 일부만 표기합니다.</div>'
   +'<a class="pgcta" href="#" onclick="closePage();openPage(\'수강신청\');return false;">나도 수강신청하기 ›</a>'+CTA();
 }
 const PAGES={
@@ -4282,11 +4290,11 @@ const PAGES={
   +SEC('인사말','<div class="lead">“언어는 시험이 아니라 기회입니다.” 산본글로벌어학원은 점수만을 위한 학원이 아니라, 학습자가 실제로 말하고 쓰고 나아가게 만드는 교육을 지향합니다. 영어·일본어·중국어를 각 분야 전문 강사진이 레벨별로 책임 지도하며, 성인·직장인·유학 준비생·기업까지 폭넓게 함께합니다. 정확한 진단과 밀착 관리로 가장 빠른 길을 안내드리겠습니다. <b>— 대표 명충건</b></div>')
   +SEC('강사 소개','<div class="lead">과목별 전문 강사와 원어민 강사가 함께합니다. 관리형 스파르타반부터 실전 회화까지, 목표에 맞는 담당 강사가 진도·숙제·약점을 책임 관리합니다.</div>'+CT(['구분','담당','특징'],[['영어','토익·토스·오픽·회화 전문 + 원어민','시험 점수 + 실전 회화 병행'],['일본어','JLPT·회화·면접 전문 + 원어민','유학·워홀·교환학생 대비'],['중국어','회화·HSK 전문 + 원어민','기초부터 자격까지']]))
   +SEC('학원 둘러보기','<div class="chips"><span>🏫 산본역 도보 1분</span><span>📚 레벨별 강의실</span><span>🗣️ 회화 전용 공간</span><span>💻 자기주도 학습존</span><span>🅿️ 건물 주차</span><span>☕ 라운지</span></div><div class="lead">쾌적한 학습 환경에서 집중도 높은 수업을 제공합니다. 방문 상담 시 시설을 직접 둘러보실 수 있습니다.</div>')
-  +SEC('오시는 길','<div class="pgnote">📍 경기 군포시 산본동 1135-1 롯데프라자 7층<br>🚇 산본역 3번 출구 도보 1분<br>☎ 031-466-6969 · 💬 카카오톡 채널 @산본글로벌어학원<br>🕙 <b>수업</b> 평일 06:30~22:00 / 토 10:00~16:30<br>🕤 <b>데스크(상담·등록·전화)</b> 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무</div>')
+  +SEC('오시는 길','<div class="pgnote">📍 경기도 군포시 산본로323번길 16-7 롯데프라자 7층<br>🚇 산본역 3번 출구 도보 1분<br>☎ 031-466-6969 · 💬 카카오톡 채널 @산본글로벌어학원<br>🕙 <b>수업</b> 평일 06:30~22:00 / 토 10:00~16:30<br>🕤 <b>데스크(상담·등록·전화)</b> 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무</div>')
   +SEC('전체 시간표','<div class="lead">반별(주5일·월수·화목·토요) 개강 일정과 공휴일은 강의시간표에서 확인하세요.</div><a class="pgcta" href="#" onclick="closePage();openTT();return false;">강의시간표 열기 ›</a>')
   +CTA(),
  '공지사항':H('NOTICE','공지사항','개강 일정, 이벤트, 휴무 안내 등 산본글로벌어학원의 새로운 소식을 확인하세요.','📢')
-  +'<table class="notice"><tr><td><b>[개강]</b> 10월 정규반 개강 안내 (주5일·월수·화목·토요반)</td><td class="dt">2026.09.22</td></tr><tr><td><b>[이벤트]</b> 10월 1일 상호 변경 · 오픈이벤트 전 과목 10% 할인</td><td class="dt">2026.09.20</td></tr><tr><td><b>[안내]</b> 무료 레벨테스트 상시 접수 (영·일·중)</td><td class="dt">2026.09.15</td></tr><tr><td><b>[휴무]</b> 추석 연휴 휴무 안내 (9/24~9/26)</td><td class="dt">2026.09.10</td></tr></table>'
+  +'<table class="notice"><tr><td><b>[개강]</b> 10월 정규반 개강 안내 (주5일·월수·화목·토요반)</td><td class="dt">2026.08.28</td></tr><tr><td><b>[이벤트]</b> 10월 1일 상호 변경 · 오픈이벤트 전 과목 10% 할인</td><td class="dt">2026.08.27</td></tr><tr><td><b>[안내]</b> 무료 레벨테스트 상시 접수 (영·일·중)</td><td class="dt">2026.08.24</td></tr><tr><td><b>[휴무]</b> 추석 연휴 휴무 안내 (9/24~9/26)</td><td class="dt">2026.08.20</td></tr></table>'
   +'<div class="pgnote">자세한 내용은 전화 또는 카카오톡 채널로 문의해 주세요. · 031-466-6969</div>',
  '영어':H('ENGLISH','시험 점수부터<br>실전 회화까지, 영어','왕기초 문법 → 기초·회화 → 오픽·토스 → 토익 650+까지 단계별로 설계된 영어 과정. 관리형 스파르타반과 원어민 회화를 병행해 “점수”와 “실전”을 동시에 잡습니다.','🇺🇸')
   +SEC('과정 한눈에 보기',CT(['과정','대상','목표'],[['왕기초 문법','영어를 처음/다시 시작','문장 구조·기초 어휘 완성'],['기초·회화','기초 회화가 필요한 성인','일상 표현·말하기 자신감'],['오픽·토스','취업·승진 스피킹','OPIc IH~AL / TOEIC S Lv7+'],['토익 650+','단기 점수 필요','650 → 800+ 실전 점수']]))
@@ -4305,9 +4313,9 @@ const PAGES={
   +SEC('기초·회화','<div class="lead">성조와 병음부터 시작해 일상 회화까지, 원어민 발음으로 정확하게 익힙니다.</div>')
   +SEC('HSK','<div class="lead">급수별 필수 어휘·유형을 집중 학습하고 기출로 마무리해 목표 급수 합격을 돕습니다.</div><div class="chips"><span>HSK 4급</span><span>HSK 5급</span><span>HSK 6급</span></div>')
   +'<div class="pgnote">담당: 오금한·하홍금 외 원어민 강사 · 시간표는 강의관에서 확인</div>'+GO('중국어')+CTA(),
- '가을학기 할인':bigImg('img/gen14.jpg')+HV('GLOBAL WEEK · 얼리버드 할인','글로벌 위크,<br>오직 7일간 할인주간','10.19(월) ~ 10.25(일) 단 7일! 얼리버드 최저가로 등록하세요. 토익 25% · 그 외 과목 20% 할인.','linear-gradient(120deg,#12203d,#caa23a)',ART_GIFT)
+ '가을학기 할인':bigImg('img/gen14.jpg')+HV('GLOBAL WEEK · 얼리버드 할인','글로벌 위크,<br>오직 7일간 할인주간','10월 19일(월)부터 25일(일)까지 일주일. 오픈이벤트 10%가 적용된 값으로 미리 자리를 잡아 두세요.','linear-gradient(120deg,#12203d,#caa23a)',ART_GIFT)
   +'<div class="evtimeline"><div class="evt on"><div class="evt-d">NOW</div><div class="evt-b"><b>오픈이벤트 10%</b><p>10월 1일 ~ 11월 30일 · 전 과목 자동 적용</p></div></div><div class="evt"><div class="evt-d">재등록</div><div class="evt-b"><b>얼리버드 5%</b><p>기존 수강생 · 매달 19~25일 · 명부 확인 후 환급</p></div></div><div class="evt"><div class="evt-d">상시</div><div class="evt-b"><b>무료수강</b><p>1대1 등록 시 그룹반을 무료로 더 다니십니다</p></div></div></div>'
-  +SEC('이런 혜택도 있어요',CT(['이벤트','내용'],[['오픈이벤트','<b>전 과목 10%</b> · 10월 1일 ~ 11월 30일'],['재등록 얼리버드','학생 명부 확인 후 <b>5% 환급</b> 또는 교재비 지원 · 매달 19~25일'],['산글 패스','오래 다닐수록 싸지는 월 결제 (최대 15%)'],['다과목 수강','추가 할인 + 교재 지원'],['국비지원','내일배움카드 과정 별도 안내'],['<b>상한</b>','<b>오픈이벤트 10%가 전부입니다</b>']]))
+  +SEC('이런 혜택도 있어요',CT(['이벤트','내용'],[['오픈이벤트','<b>전 과목 10%</b> · 10월 1일 ~ 11월 30일'],['재등록 얼리버드','학생 명부 확인 후 <b>5% 환급</b> 또는 교재비 지원 · 매달 19~25일'],['산글 패스','오래 다니실수록 무료 개월이 붙습니다'],['다과목 수강','교재 지원 · 상담 후 안내'],['국비지원','내일배움카드 과정 별도 안내'],['<b>상한</b>','<b>오픈이벤트 10%가 전부입니다</b>']]))
   +'<div class="pgnote">※ 할인 폭·대상은 등록 시점·과정에 따라 달라질 수 있어요. 정확한 금액은 상담 시 안내드립니다. · 031-466-6969</div><a class="pgcta" href="#" onclick="closePage();openTT();return false;">개강 일정 보기 ›</a>'+CTA(),
  '수강신청':enrollPage(),
  '수강후기':reviewPage(),
@@ -4336,19 +4344,23 @@ const PAGES={
  '맞춤수업':onePickPage,
  'AI산글':aiPage,
  'AI학습':aiPage,
- '왕기초토익':function(){return basePage('toeic');},
- '왕기초영어':function(){return basePage('eng');},
- '왕기초일본어':function(){return basePage('jpn');},
- '왕기초중국어':function(){return basePage('chn');},
+ '왕기초A':function(){return basePage('a');},
+ '왕기초B':function(){return basePage('b');},
+ '왕기초영어':function(){return basePage('a');},
+ '왕기초토익':function(){return basePage('b');},
+ '왕기초일본어':function(){return oneHubPage(0);},
+ '왕기초중국어':function(){return oneHubPage(0);},
  '신규모집':newOpenPage,
- '산글패스':passPage,
+ /* 2026-08-30 · 대표님 지시로 구독제(산글패스)는 내렸습니다.
+    함수는 남겨 두었지만 PAGES 에서 빼서 화면에서는 열리지 않습니다.
+    다시 쓰실 때 이 줄을 살리시면 됩니다: '산글패스':passPage, */
  '강사소개':staffPage,
  '오시는길':mapPage,
  '전체시간표':ttPage,
  '무료청강':freePage,
  '오픈이벤트':openEvPage,
  '레벨테스트':lvIntroPage,
- '동글이':'<div class="dongle-bn">'+DONGLE_BANNER+'</div>'+HV('동글이 · 산본 동네 영어 모임','동네가<br>글로벌해진다','동(네)와 글(로벌)을 합쳐 동글이. 산본에서 영어로 떠드는 가장 가벼운 자리입니다. 문법 안 따지고, 숙제 없고, 못해도 아무도 신경 안 써요.','linear-gradient(135deg,#3F5D4A,#5C8069)',ART_DONGLE)+SEC('왜 만들었냐면요','<div class="lead">산본에는 영어를 다시 해보고 싶은데 학원은 부담스러운 분들이 많습니다. 그렇다고 카페에서 모이자니 자리 눈치가 보이고, 어렵게 모임을 만들어도 이끌어주던 분이 지치면 서너 달 만에 조용히 사라지곤 했어요.<br><br>저희는 저녁에 비어 있는 강의실이 있고, 영어로 먹고사는 선생님들이 있습니다. 그래서 <b>자리만 내어드리기로 했습니다.</b> 수업이 아니라 모임이고, 가르치는 사람이 아니라 진행하는 사람이 앉습니다. 동글에서는 아무도 실력을 평가하지 않아요.</div>')+SEC('이런 자리입니다','<div class="chips"><span>📖 교재 없음</span><span>✏️ 숙제 없음</span><span>🙅 첨삭 없음</span><span>😌 못해도 괜찮음</span><span>☕ 커피 무료</span><span>🚗 주차 지원</span></div><div class="lead">틀린 문장을 고쳐주지 않습니다. 말이 막히면 한국말로 하셔도 됩니다. 한 시간 반 동안 그냥 웃고 떠들다 가시면 그게 전부예요. 그런데 그렇게 몇 번 나오시면, 신기하게도 입이 먼저 열립니다.</div>')+SEC('언제 여나요',CT(['구분','시간','안내'],[['<b>평일</b>','오후 1:00 ~ 6:30','강의실이 비는 시간입니다. 편하게 오세요'],['<b>주말</b>','오후 1:00 ~ 6:30','토·일 모두 같은 시간에 엽니다'],['<b>예약</b>','전화 또는 카카오톡','자리가 차면 다음 타임으로 안내드립니다']]))+SEC('이용 안내',CT(['구분','내용'],[['이용료','1시간 1,000원 (인당)'],['정원','한 자리에 6~8인'],['무료 제공','커피 · 물 · 사탕'],['진행','영어로 일하는 선생님이 함께 앉습니다'],['주차','상담 시 주차 지원 안내'],['예약','카카오톡 채널 또는 전화 · 자리가 차면 다음 주로 안내드립니다']]))+'<div class="pgnote">☕ 커피·물·사탕 무료 · 1시간 1,000원 · 예약 문의 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>'+'<h3 class="pgh2">영어에 관한 것은 원장님께 물어보세요</h3>'+'<p class="pgp">동글이에 오셔서 <b>영어 공부 이야기가 나오면</b> — 토익 점수가 안 오른다, 아이 유학을 보내고 싶다, 회사에서 영어를 쓰게 됐다 — 그 자리에서 <b>구지영 원장님께</b> 물어보십시오. 동글이 자리에 자주 앉아 계시고, 안 계시면 연락을 드립니다. <b>상담은 무료이고, 등록 권유는 하지 않습니다.</b></p>'+dirCard()+SGCTA('동글이는 예약만 하시면 됩니다. 등록도 결제도 없습니다.')+CTA(),
+ '동글이':'<div class="dongle-bn">'+DONGLE_BANNER+'</div>'+HV('동글이 · 산본 동네 영어 모임','동네가<br>글로벌해진다','동(네)와 글(로벌)을 합쳐 동글이. 산본에서 영어로 떠드는 가장 가벼운 자리입니다. 문법 안 따지고, 숙제 없고, 못해도 아무도 신경 안 써요.','linear-gradient(135deg,#3F5D4A,#5C8069)',ART_DONGLE)+SEC('왜 만들었냐면요','<div class="lead">산본에는 영어를 다시 해보고 싶은데 학원은 부담스러운 분들이 많습니다. 그렇다고 카페에서 모이자니 자리 눈치가 보이고, 어렵게 모임을 만들어도 이끌어주던 분이 지치면 서너 달 만에 조용히 사라지곤 했어요.<br><br>저희는 저녁에 비어 있는 강의실이 있고, 영어로 먹고사는 선생님들이 있습니다. 그래서 <b>자리만 내어드리기로 했습니다.</b> 수업이 아니라 모임이고, 가르치는 사람이 아니라 진행하는 사람이 앉습니다. 동글에서는 아무도 실력을 평가하지 않아요.</div>')+SEC('이런 자리입니다','<div class="chips"><span>📖 교재 없음</span><span>✏️ 숙제 없음</span><span>🙅 첨삭 없음</span><span>😌 못해도 괜찮음</span><span>☕ 커피 무료</span><span>🚗 주차 지원</span></div><div class="lead">틀린 문장을 고쳐주지 않습니다. 말이 막히면 한국말로 하셔도 됩니다. 한 시간 반 동안 그냥 웃고 떠들다 가시면 그게 전부예요. 그런데 그렇게 몇 번 나오시면, 신기하게도 입이 먼저 열립니다.</div>')+SEC('언제 여나요',CT(['구분','시간','안내'],[['<b>평일</b>','오후 1:00 ~ 6:30','강의실이 비는 시간입니다. 편하게 오세요'],['<b>주말</b>','오후 1:00 ~ 6:30','토요일에 엽니다 (일요일 휴무)'],['<b>예약</b>','전화 또는 카카오톡','자리가 차면 다음 타임으로 안내드립니다']]))+SEC('이용 안내',CT(['구분','내용'],[['이용료','1시간 1,000원 (인당)'],['정원','한 자리에 6~8인'],['무료 제공','커피 · 물 · 사탕'],['진행','영어로 일하는 선생님이 함께 앉습니다'],['주차','상담 시 주차 지원 안내'],['예약','카카오톡 채널 또는 전화 · 자리가 차면 다음 주로 안내드립니다']]))+'<div class="pgnote">☕ 커피·물·사탕 무료 · 1시간 1,000원 · 예약 문의 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>'+'<h3 class="pgh2">영어에 관한 것은 원장님께 물어보세요</h3>'+'<p class="pgp">동글이에 오셔서 <b>영어 공부 이야기가 나오면</b> — 토익 점수가 안 오른다, 아이 유학을 보내고 싶다, 회사에서 영어를 쓰게 됐다 — 그 자리에서 <b>구지영 원장님께</b> 물어보십시오. 동글이 자리에 자주 앉아 계시고, 안 계시면 연락을 드립니다. <b>상담은 무료이고, 등록 권유는 하지 않습니다.</b></p>'+dirCard()+SGCTA('동글이는 예약만 하시면 됩니다. 등록도 결제도 없습니다.')+CTA(),
  '외고':H('외고·특목고 대비','외고 내신,<br>전략이 점수를 만듭니다','학교 진도와 시험 범위를 학생별로 분석해, 진단 → 내신 밀착 → 실전 마무리 3단계로 준비합니다. 무작정 많은 양이 아니라 “필요한 것을 정확히”가 산본글로벌의 방식입니다.','🎓')
   +'<div class="steps"><div class="step"><div class="sh">STEP 01 · 진단 &amp; 기초</div><div class="sb"><b>정확한 출발점 찾기</b><p>레벨 진단으로 약점을 먼저 파악하고, 어휘·문법의 빈틈을 메워 내신 학습의 토대를 만듭니다.</p></div></div><div class="step"><div class="sh">STEP 02 · 내신 밀착</div><div class="sb"><b>학교별 맞춤 진도</b><p>재학 중인 학교의 진도·출제 경향에 맞춰 핵심 위주로 집중 학습하고, 부족한 부분을 반복 교정합니다.</p></div></div><div class="step"><div class="sh">STEP 03 · 실전 마무리</div><div class="sb"><b>시험 직전 요점 정리</b><p>시험 범위를 압축 정리하고 실전 문제로 마무리해, 마지막까지 점수를 끌어올립니다.</p></div></div></div>'
   +'<div class="pgnote">외고·특목고 대비반은 소수정예로 운영되며, 학생별 학습 리포트를 제공합니다.</div>'+CTA(),
@@ -4598,7 +4610,7 @@ function spCalNav(delta){var n=new Date(_spCalD.getFullYear(),_spCalD.getMonth()
   if(n<lo||n>hi)return;}
  _spCalD=n;spRenderCal();}
 var DCAP=0.10;/* 온라인에서 바로 깎이는 할인은 오픈이벤트 10%가 전부입니다 */
-var SGEV={open:{rate:0.10,start:'2026-08-01',end:'2026-11-30',plabel:'10월 1일 ~ 11월 30일',nm:'오픈이벤트',dsc:'상호 변경 기념 · 10·11월 두 달 · 영어·일본어·중국어·시험대비 전 과목'},early:{rate:0.05,monthly:[19,25],loyal:true,offline:true,nm:'재등록 얼리버드',dsc:'기존 수강생인지 온라인에서는 확인할 수 없습니다. 재등록 확인 신청 후 확정해 드립니다 · 매달 19~25일'}};var EVKEYS=['open','early'];
+var SGEV={open:{rate:0.10,start:'2026-10-01',end:'2026-11-30',plabel:'10월 1일 ~ 11월 30일',nm:'오픈이벤트',dsc:'상호 변경 기념 · 10·11월 두 달 · 영어·일본어·중국어·시험대비 전 과목'},early:{rate:0.05,monthly:[19,25],loyal:true,offline:true,nm:'재등록 얼리버드',dsc:'기존 수강생인지 온라인에서는 확인할 수 없습니다. 재등록 확인 신청 후 확정해 드립니다 · 매달 19~25일'}};var EVKEYS=['open','early'];
 var _exList=0;var _exSubj='토익',_exVerified=false,_spVerified=false,_vfCtx='',_vfWant='';
 function _today(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
 /* ===== 9월 사전예약 배너 =====
@@ -4711,7 +4723,7 @@ if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;_spCalD=new Date(2026,9
   '<div class="sp-badge">'+W.badge+'</div>'+
   '<div class="sp-photo"><img id="spPhoto" src="img/teachers/'+lv0[1]+'.png" alt="강사"></div>'+
   '<div class="sp-feats"><span>피드백</span><span>복습영상</span><span>추가 학습자료</span><span>발음교정</span><span>첨삭</span><span>출결관리</span><span>1:1 학습상담</span></div>'+
-  '<div class="sp-meta"><div><b>수강후기</b>541건</div><div><b>강사명</b><span id="spTeacher">'+lv0[2]+'</span></div></div>'+
+  '<div class="sp-meta"><div><b>수강후기</b>142건</div><div><b>강사명</b><span id="spTeacher">'+lv0[2]+'</span></div></div>'+
   '</div><div class="sp-right">'+
   '<div class="sp-eye">'+W.eye+'</div><h2 class="sp-title">'+W.title+'</h2>'+
   '<div class="sp-steps">'+steps+'</div>'+
@@ -4756,7 +4768,7 @@ function payAgreeHTML(){var b='agPay';
   +'<label class="ag-all"><input type="checkbox" class="agall" onchange="agAll(\''+b+'\',this)"> 아래 내용에 모두 동의합니다</label>'
   +agItem(b,'order',1,'주문 내용 확인 및 결제 진행 동의',AGDOC.pay)
   +agItem(b,'pg',1,'결제대행 서비스 이용 및 개인정보 제3자 제공 동의',AGDOC.pg)
-  +agItem(b,'gift',1,'산글 어학 상품권·충전금 이용약관 (유효기간·환불기준) 동의',AGDOC.gift)
+  +agItem(b,'gift',1,'SGA 어학상품권·충전금 이용약관 (유효기간·환불기준) 동의',AGDOC.gift)
   +agItem(b,'refund',1,'교습비 반환 기준 확인','수강 개시 후 환불은 「학원의 설립·운영 및 과외교습에 관한 법률 시행령」 별표4 <b>교습비등 반환 기준</b>에 따릅니다.<br>· 교습 개시 전: <b>전액 반환</b><br>· 총 교습시간의 1/3 경과 전: 납입액의 <b>2/3</b> 반환<br>· 1/2 경과 전: 납입액의 <b>1/2</b> 반환<br>· 1/2 경과 후: 반환하지 않음<br>충전 이벤트로 <b>추가 지급된 보너스 금액은 반환 대상에서 제외</b>되며, 실제 납입액 기준으로 정산합니다.')
   +'</div>';}
 
@@ -4782,7 +4794,7 @@ function spRenderGift(){
  if(_noGift){el.innerHTML='<div class="gf-no">🎁 충전금 잔액 '+_won(SGPT.gift)+'이 있지만, <b>1:1 수업·왕기초 패키지·무한수강권·상품권 구매는 충전금으로 결제되지 않습니다.</b> 계좌이체나 카드로만 등록하실 수 있습니다.</div>';return;}
  var save=_payList-_payBase;
  el.innerHTML='<div class="gf-q">충전금(산상권)으로 결제하시겠습니까?</div>'
-  +'<div class="gf-x">상품권은 넣으신 금액에 <b>절반을 더</b> 얹어 채워드렸기 때문에, 충전금은 <b>정가로 차감</b>됩니다. 무료개월·결제할인·오픈이벤트는 <b>현금 결제에만</b> 붙습니다 — 그래도 충전금 쪽이 더 쌉니다.'
+  +'<div class="gf-x">상품권은 넣으신 금액에 <b>절반을 더</b> 얹어 채워드렸기 때문에, 충전금은 <b>정가로 차감</b>됩니다. 무료개월·결제할인·오픈이벤트는 <b>현금 결제에만</b> 붙습니다. 값만 보면 현금 장기등록이 더 싸고, 충전금은 <b>과목을 바꿔 들으실 수 있다는 것</b>이 장점입니다.'
   +(save>0?(' (현금이면 이 자리에서 '+_won(save)+'이 깎입니다)'):'')+'</div>'
   +'<div class="gf-b">'
    +'<button type="button" class="'+(_payGift?'on':'')+'" onclick="spGiftMode(true)">🎁 충전금으로 결제<small>정가 '+_won(_payList)+'</small></button>'
@@ -4805,7 +4817,7 @@ function spRecalc(){
    상시 할인이 아니라 오픈 기간 프로모션이라, 고정 할인율처럼 보이면 안 됩니다.
    금액도 '3,000,000원'처럼 길게 쓰면 좁은 결제창 그리드를 넘어가서 만원 단위로 줄였습니다. */
 function spChgShopHTML(){
- return '<div class="gf-sh">산글 어학 상품권 · 넣은 금액에 <b>절반을 더</b></div>'
+ return '<div class="gf-sh">SGA 어학상품권 · 넣은 금액에 <b>절반을 더</b></div>'
  +'<div class="gf-g">'+CHGTIER.map(function(t){
    return '<button type="button" class="gf-t" onclick="spChgPick('+t.pay+','+t.get+')">'
     +'<em>'+Math.round(t.pay/10000)+'만원 결제</em>'
@@ -4820,7 +4832,7 @@ function spChgPick(pay,get){
  b.innerHTML='<div class="gf-c"><div class="gf-ch">'+_won(pay)+' 결제 → <b>'+_won(get)+'</b> 충전</div>'
   +'<div class="gf-acc">'+SG_BANK+'</div>'
   +'<p>입금자명은 <b>수강생 성함</b>으로 넣어 주세요. 입금이 확인되면 잔액에 반영되고 카카오톡으로 알려드립니다. 유효기간 <b>'+_chgTerm(pay)+'년</b> · 보너스 금액은 증정분이라 환불 정산에서 제외됩니다.</p>'
-  +'<div class="gf-cb"><a class="gf-sms" href="sms:0314666969?body='+encodeURIComponent('[산글 어학 상품권 충전]\n결제금액 '+_won(pay)+'\n충전금액 '+_won(get)+' (보너스 '+bn+'%)')+'">충전 신청 문자 보내기</a>'
+  +'<div class="gf-cb"><a class="gf-sms" href="sms:0314666969?body='+encodeURIComponent('[SGA 어학상품권 충전]\n결제금액 '+_won(pay)+'\n충전금액 '+_won(get)+' (보너스 '+bn+'%)')+'">충전 신청 문자 보내기</a>'
   +'<button type="button" class="gf-ok" onclick="spChgDone('+get+')">입금했습니다 · 잔액 반영</button></div></div>';}
 function spChgDone(get){
  SGPT.gift=(SGPT.gift||0)+get;ptSave();
@@ -4912,18 +4924,21 @@ function spModalHTML(){return '<div class="sp-modal" id="spModal"><div class="sp
  +'<div class="sp-welcome">결제 내용을 확인해 주세요.</div>'
  +'<div class="sp-camt">결제 예정 <b id="spCamt">-</b></div>'
  +'<div class="sp-citem" id="spCitem"></div>'
- +'<div class="pt-row"><span class="lb">🎁 산글 어학 상품권 잔액</span><span class="vl" id="spGiftVal">'+_won(SGPT.gift)+'</span></div>'
+ +'<div class="pt-row"><span class="lb">🎁 SGA 어학상품권 잔액</span><span class="vl" id="spGiftVal">'+_won(SGPT.gift)+'</span></div>'
  +'<div class="gf-shop" id="spChgShop"></div>'
  +'<div class="gf-pick" id="spGiftPick"></div>'
  +'<div class="pt-row" style="flex-wrap:wrap"><span class="lb">💰 보유 적립금</span><span class="vl">'+_won(SGPT.pt)+'</span>'
- +'<div class="pt-use" style="width:100%"><input id="spPtUse" inputmode="numeric" placeholder="사용할 적립금" oninput="ptApply()"><button type="button" onclick="ptMax()">전액사용</button></div></div>'
+ +(SGPT.pt>0
+   ? '<div class="pt-use" style="width:100%"><input id="spPtUse" inputmode="numeric" placeholder="사용할 적립금" oninput="ptApply()"><button type="button" onclick="ptMax()">전액사용</button></div>'
+   : '<div style="width:100%;font-size:13px;color:#8a90a0;line-height:1.7;margin-top:6px">적립금은 수강 등록·출석·후기 작성으로 쌓입니다. 다음 등록 때 현금처럼 쓰실 수 있습니다.</div>')
+ +'</div>'
  +'<div class="sp-sum"><div><span id="spSumLb">수강료</span><b id="spSumAmt">-</b></div><div class="mi" id="spGiftRow" style="display:none"><span>충전금(산상권) 사용</span><b id="spGiftUse">-0원</b></div><div class="mi"><span>적립금 사용</span><b id="spPtVal">-0원</b></div><div><span>최종 결제금액</span><b id="spPtTot">-</b></div></div>'
  +payAgreeHTML()
  +'<label class="sp-kko" id="spKkoWrap"><input type="checkbox" id="spKko" checked><span><b>카카오톡으로 결제내역·잔액 바로 받기</b><br>결제·충전 시마다 알림톡으로 <b>남은 잔액</b>을 보내드립니다. 계약 이행에 필요한 정보성 안내라 광고 수신동의와 무관하게 발송됩니다.</span></label>'
  +'<button class="sp-charge2" id="spPayBtn" disabled onclick="spPay(\'card\')">💳 카드 결제 요청하기 (담당자 연락)</button>'
  +'<button class="sp-charge" onclick="spPay(\'bank\')">🏦 계좌이체로 지금 결제하기</button>'
  +'<div id="spDone" style="display:none"></div>'
- +'<div class="sp-mfoot"><span onclick="spClose()">닫기</span><span onclick="spClose();openPage(\'상품권충전\')">산글 어학 상품권 충전하기</span></div>'
+ +'<div class="sp-mfoot"><span onclick="spClose()">닫기</span><span onclick="spClose();openPage(\'상품권충전\')">SGA 어학상품권 충전하기</span></div>'
  +'</div></div></div>';}
 function _evPct(subj,v){var r=0;evParts(v).forEach(function(k){var e=SGEV[k];if(e)r+=e.rate;});if(r>DCAP)r=DCAP;return Math.round(r*1000)/1000;}
 /* 지금 켜져 있는 이벤트를 전부 합친 값 */
@@ -5026,11 +5041,14 @@ function discInfo(subj){
  d.addEventListener('click',function(e){if(e.target===d)discClose();});
 }
 /* 이벤트 할인과 2개월 결제 할인은 중복 불가 — 손님에게 유리한 쪽 자동 적용 */
-/* 이벤트 + 재등록을 합쳐도 정가 대비 20%를 넘지 못하게 눌러 줍니다 */
-function _evCap(d,lo){var t=1-(1-d)*(1-(lo||0));if(t<=DCAP+1e-9)return [d,lo||0];
- if(d>=DCAP)return [DCAP,0];
- return [d,1-((1-DCAP)/(1-d))];}
-function _dfloor(base,list){var f=Math.round(list*(1-DCAP)/1000)*1000;return Math.min(base,f);}
+/* 즉시할인(이벤트)은 10%가 상한이고, 재등록 5%는 그 위에 따로 붙습니다 */
+/* 2026-08-30 · 대표님 방침 정정
+   재등록 얼리버드 5%는 <b>상한 밖</b>입니다. 오픈이벤트 10%와 관계없이 무조건 더 드립니다.
+   즉 즉시할인은 10%가 상한이고, 재등록 5%는 그 위에 얹힙니다 (최대 14.5%).
+   전에는 둘을 합쳐 10%로 잘라서 재등록 5%를 약속만 하고 안 주고 있었습니다. */
+function _evCap(d,lo){return [d>DCAP?DCAP:d, lo||0];}
+function _dfloor(base,list){var f=Math.round(list*(1-DCAP)*(1-LOYALMAX)/1000)*1000;return Math.min(base,f);}
+var LOYALMAX=0.05;
 /* 2개월·4개월·10개월 묶음가는 '할인'이 아니라 산본이지어학원 때부터 쓰던 기본가입니다.
    오픈이벤트 10%는 그 기본가 위에 추가로 붙습니다. */
 function evCalc(base,list,d,lo){list=list||base;lo=lo||0;
@@ -5087,8 +5105,8 @@ function evPrompt(v){var e=SGEV[v]||{};var early=(v==='early');
 function spBuyAmt(a){var v=_evBest();var de=_discSel();if(v&&de&&de.value==='0'){evPrompt(v);return;}spOpenPay(a);}
 var EXAM={
  '토익':{eye:'TOEIC · 현재 개설반',title:'토익 — 개설 시간표',photo:'eng_13',photos:['eng_13','elly','eng_6'],rows:[
-   {n:'스파르타 중급 (매일반)',tc:'송윤정',day:'월~금',time:'10:00~12:00',price:'1개월 42만 / 2개월 84만→64만(20만 할인) · 18회',pay:'640,000원'},
-   {n:'스파르타 초급 (매일반)',tc:'송윤정',day:'월~금',time:'12:10~14:10',price:'1개월 42만 / 2개월 84만→64만(20만 할인) · 18회',pay:'640,000원'},
+   {n:'스파르타 중급 (매일반)',tc:'송윤정',day:'월~금',time:'10:00~12:00',price:'1개월 42만 / 2개월 84만→64만(20만 할인) · 36회',pay:'640,000원'},
+   {n:'스파르타 초급 (매일반)',tc:'송윤정',day:'월~금',time:'12:10~14:10',price:'1개월 42만 / 2개월 84만→64만(20만 할인) · 36회',pay:'640,000원'},
    {n:'정규 초급반 (기출입문)',tc:'엘리 킴',day:'월·수',time:'19:30~21:30',price:'1개월 21만 / 2개월 42만→39만(3만 할인) · 16회',pay:'390,000원'},
    {n:'정규 중급반 (기출종합)',tc:'엘리 킴',day:'화·목',time:'19:30~21:30',price:'1개월 21만 / 2개월 42만→39만(3만 할인) · 16회',pay:'390,000원'},
    {n:'실전반 (ETS 1000제)',tc:'송윤정',day:'토요일',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'},
@@ -5099,30 +5117,30 @@ var EXAM={
  '오픽':{eye:'OPIc · 개설반',title:'오픽 — 개설 시간표',photo:'eng_15',rows:[
    {n:'오픽 토요반 (파고다 오픽의신)',tc:'김현정',day:'토요일',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'}]},
  '일본어':{eye:'JAPANESE · 개설반',title:'일본어 — 개설 시간표',photo:'jpn_6',rows:[
-   {n:'원어민 프리토킹 중고급',tc:'히토시',day:'월·수',time:'18:20~19:50',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'원어민 2단계',tc:'히토시',day:'월·수',time:'20:00~21:30',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'다이스키3 (초중급)',tc:'서정아',day:'화·목',time:'18:20~19:50',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'중급 (다이스키·아리가또B)',tc:'모모코',day:'화·목',time:'20:00~21:30',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'초급 (다이스키2)',tc:'서정아',day:'화·목',time:'20:00~21:30',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'입문반',tc:'개강예정',day:'문의',time:'문의',price:'월 21만',pay:'상담'}]},
+   {n:'원어민 프리토킹 중고급',tc:'히토시',day:'월·수',time:'18:20~19:50',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'원어민 2단계',tc:'히토시',day:'월·수',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'다이스키3 (초중급)',tc:'서정아',day:'화·목',time:'18:20~19:50',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'중급 (다이스키·아리가또B)',tc:'모모코',day:'화·목',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'초급 (다이스키2)',tc:'서정아',day:'화·목',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'입문반',tc:'개강예정',day:'문의',time:'문의',price:'월 18만',pay:'상담'}]},
  '중국어':{eye:'CHINESE · 개설반',title:'중국어 — 개설 시간표',photo:'chn_1',rows:[
-   {n:'스피킹중국어 초급',tc:'하홍금',day:'월·수',time:'18:50~20:20',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'스피킹중국어 입문',tc:'하홍금',day:'월·수',time:'20:30~22:00',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'신공략 중급',tc:'오금한',day:'월·수',time:'20:00~21:30',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'맛있는중국어 중급',tc:'오금한',day:'화·목',time:'20:00~21:30',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'신공략6 중고급',tc:'현지인',day:'오전반',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'스피킹 고급 (上)',tc:'하홍금',day:'오전반',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만→39만',pay:'390,000원'},
-   {n:'입문반',tc:'모집예정',day:'문의',time:'문의',price:'월 21만',pay:'상담'}]},
- 'JLPT':{eye:'JLPT 대비반 · 프로모션 (모집중)',title:'JLPT 대비반 — 12월(2차) 대비 · 9~11월 3개월 과정',photo:'jpn_7',rows:[
-   {n:'JLPT + 회화 동시수강 (JLPT 3개월 + 회화 3개월)',tc:'서정아·히토시',day:'주중+주말',time:'3개월 과정',price:'117만원 → 87만원 (30만원 할인)',pay:'870,000원'},
-   {n:'JLPT만 수강 (주중반 3개월 + 주말반 3개월)',tc:'서정아·모모코',day:'주중+주말',time:'3개월 과정',price:'126만원 → 86만원 (40만원 할인)',pay:'860,000원'}]},
+   {n:'스피킹중국어 초급',tc:'하홍금',day:'월·수',time:'18:50~20:20',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'스피킹중국어 입문',tc:'하홍금',day:'월·수',time:'20:30~22:00',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'신공략 중급',tc:'오금한',day:'월·수',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'맛있는중국어 중급',tc:'오금한',day:'화·목',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'신공략6 중고급',tc:'현지인',day:'오전반',time:'10:00~13:00',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'스피킹 고급 (上)',tc:'하홍금',day:'오전반',time:'10:00~13:00',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'입문반',tc:'모집예정',day:'문의',time:'문의',price:'월 18만',pay:'상담'}]},
+ 'JLPT':{eye:'JLPT 대비반 · 프로모션 (모집중)',title:'JLPT 대비반 — 12월 시험 대비 · 10~11월 두 달 과정',photo:'jpn_7',rows:[
+   {n:'JLPT 대비반 (10~11월 두 달)',tc:'서정아·모모코',day:'화·목',time:'두 달 과정 · 12월 시험 대비',price:'2개월 42만원 · 회화 2개월 무료 (36만원 상당)',pay:'420,000원'},
+   {n:'JLPT + 회화 동시 (두 달)',tc:'서정아·히토시',day:'화·목 + 월·수',time:'두 달 과정',price:'JLPT 42만원 · 회화 두 달은 무료로 드립니다',pay:'420,000원'}]},
  'HSK':{eye:'HSK · 모집중',title:'HSK 대비반 — 모집중',photo:'chn_1',photos:['chn_1','chn_7'],rows:[
    {n:'HSK 평일반 (모집중)',tc:'하홍금·현지인',day:'평일반',time:'모집중',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'상담'},
    {n:'HSK 토요반 (모집중)',tc:'하홍금·현지인',day:'토요일',time:'모집중',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'상담'}]},
  '토플':{eye:'TOEFL · 모집중',title:'토플 — 모집중',photo:'eng_15',rows:[
    {n:'토플 토요반 (모집중)',tc:'김현정',day:'토요일',time:'13:30~16:30',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'}]}
 };
-var TIMG={'KELLY':'','켈리':'','Deborah':'eng_6','데보라':'eng_6','미정':'','송윤정':'eng_13','엘리 킴':'elly','엘리킴':'elly','최자운':'eng_6','김현정':'eng_15','유미용':'eng_14','케이티':'eng_9','Kate':'eng_9','제롤린':'eng_11','Jerollyn':'eng_11','권미화':'eng_10','May':'eng_10','공미영':'eng_2','Olive':'eng_2','애플':'eng_5','Amy':'eng_1','구지영':'director','김지현':'eng_3','박호임':'eng_4','황보준':'eng_12','히토시':'jpn_6','서정아':'jpn_7','모모코':'jpn_8','김연주':'jpn_4','김은영':'jpn_5','권은정':'jpn_1','김민정':'jpn_2','이형림':'jpn_11','아야코':'jpn_9','조미히로':'jpn_10','하홍금':'chn_5','오금한':'chn_3','현지인':'chn_7','노정아':'chn_1'};
+var TIMG={'KELLY':'kelly','켈리':'kelly','Deborah':'eng_6','데보라':'eng_6','미정':'','송윤정':'eng_13','엘리 킴':'elly','엘리킴':'elly','최자운':'eng_6','김현정':'eng_15','유미용':'eng_14','케이티':'eng_9','Kate':'eng_9','제롤린':'eng_11','Jerollyn':'eng_11','권미화':'eng_10','May':'eng_10','공미영':'eng_2','Olive':'eng_2','애플':'eng_5','Amy':'eng_1','구지영':'director','김지현':'eng_3','박호임':'eng_4','황보준':'eng_12','히토시':'jpn_6','서정아':'jpn_7','모모코':'jpn_8','김연주':'jpn_4','김은영':'jpn_5','권은정':'jpn_1','김민정':'jpn_2','이형림':'jpn_11','아야코':'jpn_9','조미히로':'jpn_10','하홍금':'chn_5','오금한':'chn_3','현지인':'chn_7','노정아':'chn_1'};
 function timg(name){var k=(name||'').split(/[\u00b7\/]/)[0].trim();var im=TIMG[k];return im?'<img class="ex-face" src="img/teachers/'+im+'.png" alt="">':'';}
 function fmtWon(n){return n?n.toLocaleString()+'원':'상담';}
 function exParse(r){var m=(r.price||'').match(/1개월\s*([\d,]+)만/);_exM1=m?parseInt(m[1].replace(/,/g,''))*10000:0;var pp=parseInt((r.pay||'').replace(/[^\d]/g,''));_exM2=isNaN(pp)?0:pp;var lm=(r.price||'').match(/2개월\s*([\d,]+)만/);_exList=lm?parseInt(lm[1].replace(/,/g,''))*10000:0;if(_exList&&_exM2&&_exList<=_exM2)_exList=0;}
@@ -5134,7 +5152,7 @@ function examPage(k){var e=EXAM[k]||EXAM['토익'];_spCalD=new Date(2026,9,1);_e
   '<div class="sp-badge">시험대비반 · 관리형</div>'+
   '<div class="sp-photo"><img id="spPhoto" src="img/teachers/'+im0+'.png" alt=""></div>'+
   '<div class="sp-feats"><span>피드백</span><span>복습영상</span><span>추가 학습자료</span><span>발음교정</span><span>첨삭</span><span>출결관리</span><span>1:1 학습상담</span></div>'+
-  '<div class="sp-meta"><div><b>수강후기</b>541건</div><div><b>강사명</b><span id="spTeacher">'+r0.tc+'</span></div></div>'+
+  '<div class="sp-meta"><div><b>수강후기</b>142건</div><div><b>강사명</b><span id="spTeacher">'+r0.tc+'</span></div></div>'+
   '</div><div class="sp-right">'+
   '<div class="sp-eye">'+(e.eye||'')+'</div><h2 class="sp-title">'+e.title+'</h2>'+
   '<div class="sp-steps">'+tabs+'</div>'+
@@ -5271,11 +5289,11 @@ var TEXAM={
  '토플':{status:'개설중 · 회원 모집중',eye:'TOEFL · 유학·교환학생 대비',title:'토플(TOEFL)<br>토요 집중반 개설중',tabs:[
    {n:'토플 토요반 (모집중)',teach:'김현정',photo:'eng_15',day:['토요일'],times:['13:30~16:30 (3시간) · 김현정 (토) · 회원 모집중'],terms:[['1개월 · 4회',210000],['2개월 · 8회 (2개월 결제 할인)',390000,420000]]}
  ]},
- 'JLPT':{status:'12월(2차) 대비 모집중',eye:'JLPT 대비반 · 12월(2차) 대비 모집중',title:'JLPT — 9~11월 3개월 완성<br>급수별 목표달성반',tabs:[
+ 'JLPT':{status:'12월(2차) 대비 모집중',eye:'JLPT 대비반 · 12월(2차) 대비 모집중',title:'JLPT — 10~11월 두 달 완성<br>급수별 목표달성반',tabs:[
    {n:'JLPT 주중반 (3개월)',teach:'서정아',photo:'jpn_7',day:['화·목'],times:['20:00~21:30 · 서정아 (화·목) · 9강의실','20:00~21:30 · 모모코 (화·목) · 5강의실'],terms:[['3개월 주중 정규',630000]]},
    {n:'JLPT 주말반 (3개월)',teach:'모모코',photo:'jpn_8',day:['토요일'],times:['10:00~13:00 · 모모코 (토)'],terms:[['3개월 주말 정규',630000]]},
-   {n:'JLPT 주중+주말 패키지',teach:'서정아·모모코',photo:'jpn_7',day:['화·목','토요일'],times:['주중반 3개월 + 주말반 3개월'],terms:[['정가 126만 → 40만 할인',860000,1260000]]},
-   {n:'JLPT + 회화 동시수강',teach:'서정아·히토시',photo:'jpn_6',day:['화·목','월·수'],times:['JLPT 3개월 + 원어민 회화 3개월'],terms:[['정가 117만 → 30만 할인',870000,1170000]]}
+   {n:'JLPT 대비반 (10~11월 두 달)',teach:'서정아·모모코',photo:'jpn_7',day:['화·목'],times:['두 달 과정 · 12월 시험 대비'],terms:[['JLPT 2개월 · 회화 2개월 무료',420000]]},
+   {n:'JLPT + 회화 동시 (두 달)',teach:'서정아·히토시',photo:'jpn_6',day:['화·목','월·수'],times:['JLPT 화·목 + 원어민 회화 월·수'],terms:[['JLPT 2개월 42만 · 회화 2개월은 무료',420000]]}
  ]},
  'HSK':{status:'급수별 반 편성중',eye:'HSK · 급수별 대비반 모집중',title:'HSK — 3급부터 6급까지<br>급수별 목표달성반',tabs:[
    {n:'HSK 3·4급 (평일반)',teach:'하홍금',photo:'chn_5',day:['월·수'],times:['18:50~20:20 · 하홍금 (월·수) · 8강의실','20:30~22:00 · 하홍금 (월·수) · 8강의실'],terms:[['1개월 · 8회',210000],['2개월 · 16회 (2개월 결제 할인)',390000,420000]]},
@@ -5358,7 +5376,7 @@ function _vacName(d){var m=(d||_calStart).getMonth()+1;return (m===7||m===8)?'�
 /* 아직 개설 전인 SNS 채널 — 빈 탭을 열지 않고 안내만 합니다 */
 function snsSoon(a){var c=(a&&a.className||'')+' '+(a&&a.getAttribute('aria-label')||'')+' '+(a&&a.title||'');
  var nm=/ig|insta/i.test(c)?'인스타그램':/yt|you/i.test(c)?'유튜브':/fb|face/i.test(c)?'페이스북':/bl|blog|naver/i.test(c)?'네이버 블로그':'SNS 채널';
- sgToast('<b>'+nm+' 개설 준비 중입니다</b><br>10월 개원에 맞춰 엽니다. 문의는 카카오톡 채널 @산본글로벌어학원 또는 031-466-6969.');}
+ sgToast('<b>'+nm+' 개설 준비 중입니다</b><br>10월 상호 변경에 맞춰 엽니다. 문의는 카카오톡 채널 @산본글로벌어학원 또는 031-466-6969.');}
 function vacHTML(t){if(!t||!t.vac)return '';
  var now=_calStart, blocked=_isVac(now);
  return '<div class="vacb'+(blocked?' off':'')+'">'
@@ -5533,7 +5551,7 @@ function oneBuy(){
 function oneDiscChange(){var de=document.getElementById('exDisc');if(!evGate(de.value,'ex')){de.value='0';}onePrice();}
 function oneBuy(i){spBuyAmt(oneAmt(i).toLocaleString()+'원');}
 var PERS=[
- {n:'A과정 · 50분 × 주 2회',d:'한인 강사 회화 · 짧고 자주 · 월 8회',rows:[['2개월 · 총 14회 (최소 등록 단위)',480000]],ic:'\u23F1'},
+ {n:'A과정 · 50분 × 주 2회',d:'한인 강사 회화 · 짧고 자주 · 월 8회',rows:[['2개월 · 총 16회 (최소 등록 단위)',480000]],ic:'\u23F1'},
  {n:'B과정 · 80분 × 주 1회',d:'시험대비 · 원어민 회화 · 월 4회',rows:[['2개월 · 총 8회 (최소 등록 단위)',480000]],ic:'\uD83C\uDFAF'}
 ];
 function _persAmt(base){var de=document.getElementById('exDisc');var v=de?de.value:'0';
@@ -5597,7 +5615,7 @@ function onePage(k){
    '<table class="ex-tt"><tr><th>구분</th><th>수강료</th><th></th></tr>'+er+'</table>'+
    '<div class="sp-disc-note" id="oneDiscNote"></div>'+
    '<div class="one-memo"><label>원하는 요일·시간 (비고)<textarea id="oneMemo" placeholder="예: 평일 저녁 7시 이후 / 토요일 오전 등"></textarea></label><div class="one-note">✅ 원하는 시간을 적어주시면 <b>최대한 강사님이 매칭</b>해 드립니다.</div></div>'+
-   '<div class="sp-note">※ 1시간 수강료: 한인회화 6만 / 원어민·시험대비 7만 · 월 8시간 미만 또는 주1회는 할인 미적용 · 1:2 수업 시 시간당 +1~2만(회화 +1만·시험 +2만).</div>'+
+   '<div class="sp-note">※ 월 8시간 미만 또는 주1회는 할인 미적용 · 1:2 수업 시 시간당 +1~2만(회화 +1만·시험 +2만).</div>'+
    spModalHTML()+'</div>';
  }
  var isT=(k==='토익');
@@ -5622,34 +5640,35 @@ var ONEPER=[
  ['영어 · 원어민·시험대비·Biz(첨삭)',   650000,1200000,'시간당 6~6.5만'],
  ['일본어·중국어 · 한인/원어민',        550000,1000000,'시간당 5~5.5만'],
  ['일본어·중국어 · 시험대비',           600000,1100000,'시간당 6만'] ];
-var ONETABS=['일대일 (시간권)','퍼스널 (고정)','왕기초 영어','왕기초 일본어','왕기초 중국어','왕기초 토익','시험일 맞춤 단기집중'];
+var ONETABS=['일대일 (시간권)','퍼스널 (고정)','왕기초 A과정 (회화)','왕기초 B과정 (토익)','시험일 맞춤 단기집중'];
 /* 왕기초 과정 — 언어마다 글도 사진도 다릅니다 */
+/* 왕기초 일대일 Package — 2026-08-30 대표님 확정
+   과정은 A(회화) / B(토익) 딱 둘입니다. 일본어·중국어 왕기초는 없애고
+   그냥 1:1 시간권으로 받습니다. 값과 혜택은 학원 전단지 기준입니다. */
 var BASE1={
- 'eng':{hero:'img/gen11.jpg',grad:'linear-gradient(120deg,#c81f2b,#e0453e)',eyeL:'1:1 PRIVATE · 왕기초 영어',heroT:'영어가 처음이라<br>그룹 수업이<br>겁나신다면',freeT:'원어민 회화 정규반 <b>2개월</b>',freeW:'360,000원',bookT:'수준에 맞는 교재 지원',tchT:'박호임 (Grace) · 처음 시작하는 분 전담',tn:'박호임 (Grace)',tr:'왕기초 영어 전담 · 처음 시작하는 분 전담',eye:'왕기초 영어 일대일',t:'영어가 처음이라<br>그룹 수업이 겁나신다면',ph:'eng_6',
-  o:'1,650,000',f:'1,190,000',pay:'1,190,000원',
-  ben:['<b>1:1 강의 20시간</b> — 알파벳 · 발음 · be동사부터','<b>정규 회화반 2개월 무료</b> (36만원 상당)','<b>교재 지원</b> — 수준에 맞춰 배정'],
-  who:['영어를 처음 시작하거나 다시 시작하시는 분','그룹 수업에서 못 따라갈까 봐 망설이시는 분','학교 다닐 때 배웠지만 다 잊어버리신 분'],
-  why:'첫 영어는 <b>남들 앞에서 틀리는 게 제일 무섭습니다.</b> 그래서 먼저 1:1로 20시간을 채워 기본기를 만들고, 자신이 붙었을 때 그룹반으로 넘어가시게 합니다. <b>그룹반은 무료</b>입니다.',
+ 'a':{hero:'img/gen11.jpg',grad:'linear-gradient(120deg,#c81f2b,#e0453e)',
+  eyeL:'왕기초 일대일 PACKAGE · A 과정',heroT:'영어의 벽 앞에서<br>번번이 돌아섰다면',
+  freeT:'정규반 <b>2개월</b>',freeW:'360,000원',bookT:'Basic 교재 1권 증정',
+  tchT:'박호임 (Grace) · 처음 시작하는 분 전담',tn:'박호임 (Grace)',tr:'왕기초 전담 · 처음 시작하는 분 전담',
+  eye:'왕기초 일대일 A 과정 (회화)',t:'영어의 벽 앞에서<br>번번이 돌아섰다면',ph:'eng_6',
+  o:'1,380,000',f:'990,000',pay:'990,000원',
+  ben:['<b>1:1 강의 20시간</b> — 강의 + 학습관리','<b>정규반 2개월 무료</b> (360,000원 상당)','<b>Basic 교재 1권</b> 증정'],
+  who:['학원 정규반의 가장 낮은 레벨도 따라가기 어려우신 분','영어를 처음 시작하거나 다시 시작하시는 분','그룹 수업에서 못 따라갈까 봐 망설이시는 분'],
+  why:'첫 영어는 <b>남들 앞에서 틀리는 게 제일 무섭습니다.</b> 그래서 1:1로 20시간을 먼저 채워 기본기를 만들고, 자신이 붙었을 때 그룹반으로 넘어가시게 합니다. <b>그 그룹반 두 달이 무료</b>입니다.',
   cur:[['1~5시간','알파벳 · 발음 · 인사 표현'],['6~12시간','be동사 · 일반동사 · 현재/과거'],['13~20시간','짧은 문장 만들기 · 자기소개 · 여행 회화']]},
- 'jpn':{hero:'img/gen6.jpg',grad:'linear-gradient(120deg,#8c2360,#d64f97)',eyeL:'1:1 PRIVATE · 왕기초 일본어',heroT:'히라가나에서<br>막혀 포기하셨다면',freeT:'일본어 정규반 <b>2개월</b>',freeW:'360,000원',bookT:'수준에 맞는 교재 지원',tchT:'일본어 담당 강사 · 상담 후 배정',tn:'일본어 담당 강사',tr:'히라가나부터 JLPT까지 · 상담 후 배정',eye:'왕기초 일본어 일대일',t:'히라가나부터<br>천천히 시작하십시오',ph:'jpn_4',
+ 'b':{hero:'img/gen7.jpg',grad:'linear-gradient(120deg,#1D2D4F,#2B4173)',
+  eyeL:'왕기초 일대일 PACKAGE · B 과정',heroT:'인강도 학원도<br>효과를 못 보셨다면',
+  freeT:'정규반 <b>2개월</b> 또는 스파르타 <b>1개월</b>',freeW:'420,000원',bookT:'초급 토익 교재 2권 증정',
+  tchT:'송윤정 · 최자운 (Deborah)',tn:'송윤정 · 최자운',tr:'토익 왕기초 전담',
+  eye:'왕기초 일대일 B 과정 (토익)',t:'인강도 학원도<br>효과를 못 보셨다면',ph:'eng_13',
   o:'1,650,000',f:'1,190,000',pay:'1,190,000원',
-  ben:['<b>1:1 강의 20시간</b> — 히라가나 · 가타카나 · 기초 회화','<b>정규 일본어반 2개월 무료</b> (36만원 상당)','<b>교재 지원</b> — 수준에 맞춰 배정'],
-  who:['히라가나부터 시작하셔야 하는 분','일본 여행·드라마를 계기로 시작하시는 분','JLPT를 목표로 하지만 글자부터 막히시는 분'],
-  why:'일본어는 <b>글자 두 벌(히라가나·가타카나)</b>을 먼저 넘어야 합니다. 여기서 대부분 포기합니다. 1:1로 20시간이면 글자와 기초 문장까지 확실히 잡히고, 그다음 그룹반은 <b>무료</b>로 들어가십니다.',
-  cur:[['1~6시간','히라가나 · 가타카나 완성'],['7~13시간','인사 · 숫자 · です/ます 문형'],['14~20시간','동사 활용 기초 · 여행 회화 · JLPT N5 준비']]},
- 'chn':{hero:'img/gen12.jpg',grad:'linear-gradient(120deg,#8f2620,#d6564a)',eyeL:'1:1 PRIVATE · 왕기초 중국어',heroT:'성조가 안 잡혀<br>중국어를<br>포기하셨다면',freeT:'중국어 정규반 <b>2개월</b>',freeW:'360,000원',bookT:'수준에 맞는 교재 지원',tchT:'중국어 담당 강사 · 상담 후 배정',tn:'중국어 담당 강사',tr:'병음·성조 교정 전문 · 상담 후 배정',eye:'왕기초 중국어 일대일',t:'성조 때문에<br>포기하지 마십시오',ph:'chn_2',
-  o:'1,650,000',f:'1,190,000',pay:'1,190,000원',
-  ben:['<b>1:1 강의 20시간</b> — 병음 · 성조 · 기초 회화','<b>정규 중국어반 2개월 무료</b> (36만원 상당)','<b>교재 지원</b> — 수준에 맞춰 배정'],
-  who:['병음과 성조가 도무지 안 잡히시는 분','한자가 부담스러워 못 시작하시는 분','HSK를 목표로 하지만 발음부터 막히시는 분'],
-  why:'중국어는 <b>성조</b>에서 갈립니다. 그룹 수업에서는 한 사람씩 발음을 잡아줄 시간이 없습니다. 1:1이라 <b>입을 열 때마다 바로 교정</b>받습니다. 성조가 잡히면 그다음은 훨씬 수월합니다.',
-  cur:[['1~6시간','병음 · 4성 · 발음 교정'],['7~13시간','인사 · 숫자 · 기본 어순'],['14~20시간','일상 회화 · 여행 중국어 · HSK 1~2급 준비']]},
- 'toeic':{hero:'img/gen7.jpg',grad:'linear-gradient(120deg,#c81f2b,#e0453e)',eyeL:'1:1 PRIVATE · 왕기초 토익',heroT:'토익이 처음이거나,<br>학원을 다녀도<br>점수가 안 올랐다면',freeT:'토익 정규반 <b>2개월</b> / 스파르타 <b>1달</b>',freeW:'420,000원',bookT:'초급토익 교재 2권 포함',tchT:'송윤정 · 엘리 킴 · 데보라 · 김현정 · 유미용 · 공미영 · 이선주',tn:'송윤정 · 최자운 (Deborah)',tr:'왕기초 토익 1:1 전담',eye:'왕기초 토익 일대일',t:'토익이 처음이거나,<br>학원을 다녀도 점수가 안 오르셨다면',ph:'eng_13',
-  o:'1,650,000',f:'1,190,000',pay:'1,190,000원',
-  ben:['<b>1:1 강의 20시간</b> — 기초문법 정리 + 필수어휘 암기관리','<b>정규반 2개월 또는 스파르타 1개월 무료</b> (42만원 상당)','<b>교재 2권</b> (초급토익) 포함'],
-  who:['토익을 한 번도 안 봤거나 400점대에 머물러 계신 분','인강·학원을 다녀봤지만 효과를 못 보신 분','문법이 무너져 있어 문제 풀이가 안 되는 분'],
-  why:'토익은 기초가 무너져 있으면 아무리 문제를 풀어도 오르지 않습니다. 20시간 동안 <b>어디가 비어 있는지 찾아 그 자리부터 메우고</b>, 그다음 정규반에 넣어드립니다. 정규반은 무료입니다.',
-  cur:[['1~6시간','품사 자리 · 문장 구조 진단'],['7~13시간','시제 · 수일치 · 전치사 · 필수어휘'],['14~20시간','파트별 풀이법 · 실전 문제 · 정규반 연결']]}
+  ben:['<b>1:1 강의 20시간</b> — 강의 + 학습관리','<b>정규반 2개월 또는 스파르타 1개월 무료</b> (420,000원 상당)','<b>초급 토익 교재 2권</b> 증정'],
+  who:['인강과 학원 수강으로 효과를 전혀 못 보신 분','토익이 처음이거나 기초 문법부터 다시 잡아야 하는 분','단어가 안 외워져 매번 중간에 포기하신 분'],
+  why:'토익은 <b>문법을 모르면 해석부터 막힙니다.</b> 1:1로 기초 문법을 정리하고 필수 어휘를 관리해 드린 뒤, 정규반이나 스파르타로 넘기십시오. <b>그 두 달(또는 한 달)이 무료</b>입니다.',
+  cur:[['1~6시간','품사와 자리 · 문장의 뼈대'],['7~13시간','시제 · 태 · 준동사'],['14~20시간','Part 5 기출 유형 · 필수 어휘 관리']]}
 };
+/* 옛 주소로 들어오시던 분들을 위해 남겨 둡니다 */
+BASE1['eng']=BASE1['a'];BASE1['toeic']=BASE1['b'];BASE1['jpn']=BASE1['a'];BASE1['chn']=BASE1['a'];
 var _oneT=0;
 /* 왕기초 일대일 결제 — 충전금(산상권)으로는 결제되지 않습니다 */
 function b1Buy(k){var d=BASE1[k];if(!d)return;
@@ -5727,9 +5746,9 @@ function oneTabHTML(i){
   +_oneSec('일대일과 뭐가 다른가요?','<div class="tblwrap"><table class="oh-cmp"><tr><th></th><th>일대일 (시간권)</th><th>퍼스널 (고정)</th></tr>'
     +'<tr><td class="b">시간</td><td>매번 자유롭게 잡음</td><td class="hi">매주 같은 요일·시간 고정</td></tr>'
     +'<tr><td class="b">횟수</td><td>10시간 · 20시간 시간권</td><td class="hi">A과정 주 2회 · B과정 주 1회</td></tr>'
-    +'<tr><td class="b">수강료</td><td>시간당 5~6.5만원</td><td class="hi">2개월 48만원 <small>(A 총14회 · B 총8회)</small></td></tr>'
+    +'<tr><td class="b">수강료</td><td>시간당 5~6.5만원</td><td class="hi">2개월 48만원 <small>(A 총 16회 · B 총 8회)</small></td></tr>'
     +'<tr><td class="b">수업 길이</td><td>회당 60~90분</td><td class="hi">A 50분 · B 80분</td></tr>'
-    +'<tr><td class="b">덤</td><td>—</td><td class="hi">4개월 등록 시 정규반 1개월 무료<br>6개월 등록 시 2개월 무료</td></tr>'
+    +'<tr><td class="b">덤</td><td>10시간 → 정규반 1개월 무료<br>20시간 → 2개월 무료</td><td class="hi">4개월 등록 시 정규반 1개월 무료<br>6개월 등록 시 2개월 무료</td></tr>'
     +'<tr><td class="b">추천</td><td>일정이 불규칙한 분</td><td class="hi">일정이 일정한 분</td></tr></table></div>')
   +_oneSec('과정과 수강료','<div class="pv-grid">'+cards+'</div>'
     +'<div class="sp-form" style="margin:12px 0 4px"><label>이벤트 할인<select id="exDisc" onchange="persDiscChange()">'+discOpts()+'</select></label>'+discHintBox('퍼스널')+'</div>'
@@ -5751,7 +5770,7 @@ function oneTabHTML(i){
 
  /* 왕기초 네 과정은 왕기초 토익과 같은 전용 화면으로 보냅니다 */
  if(i>=2&&i<=5){
-  var PG=['왕기초영어','왕기초일본어','왕기초중국어','왕기초토익'][i-2];
+  var PG=['왕기초A','왕기초B'][i-2];
   setTimeout(function(){openPage(PG);},0);
   return '<div class="oh-body"><div class="oh-card"><p>화면을 여는 중입니다…</p></div></div>';}
  if(false){
@@ -5781,7 +5800,7 @@ function oneTabHTML(i){
  +'<div class="one-memo"><label>목표 시험 · 시험일 · 현재 상태<textarea id="oneMemo" placeholder="예: 편입 영어 / 내년 1월 시험 / 토익 600점대"></textarea></label><div class="one-note">✅ 적어주시면 <b>계획과 견적</b>을 함께 안내드립니다.</div></div>'
  +'<div class="sp-note">※ 특수목적 과정은 강사 배정이 필요해 상담 후 개강일을 확정합니다.</div></div>';}
 
-function openOne(k){var pg={'토익':'왕기초토익','영어':'왕기초영어','일본어':'왕기초일본어','중국어':'왕기초중국어'};
+function openOne(k){var pg={'토익':'왕기초B','영어':'왕기초A','일본어':'','중국어':''};
  if(pg[k]){openPage(pg[k]);return;}var m={'퍼스널':0};_sgSub(oneHubPage(m[k]||0));try{onePrice();}catch(e){}}
 function openTeacher(name){_sgSub(teacherDetail(name));}
 function teacherDetail(name){
@@ -5789,7 +5808,8 @@ function teacherDetail(name){
  var t=null;for(var i=0;i<all.length;i++){if(all[i].n===name){t=all[i];break;}}
  if(!t)t={n:name,title:'',eye:'',img:''};
  var shortn=t.n.replace(/ 강사.*/,'').replace(/ ·.*/,'').trim();
- var img=t.img?'<img src="img/teachers/'+t.img+'.png" alt="'+t.n+'">':'<div class="td-empty">사진 준비중</div>';
+ /* 켈리 선생님은 본인 사진 대신 일러스트를 씁니다 — 사진으로 오해되지 않게 표시합니다 (2026-08-30) */
+ var img=t.img?'<img src="img/teachers/'+t.img+'.png" alt="'+t.n+'">'+(t.img==='kelly'?'<span class="td-ill">일러스트</span>':''):'<div class="td-empty">사진 준비중</div>';
  var bio=(t.eye&&t.eye.length>2?'\u201c'+t.eye+'\u201d  ':'')+shortn+' 선생님은 '+(t.title||'회화')+' 전문입니다. 학생 한 분 한 분의 수준과 목표에 맞춰 피드백·복습·발음교정과 밀착 관리를 제공하며, 왕초보부터 실전까지 즐겁고 탄탄하게 실력을 끌어올립니다.';
  return '<div class="sp-wrap"><button class="sp-back" onclick="openPage(\'강사소개\')">\u2039 강사님 소개로</button>'+
   '<div class="td-top"><div class="td-photo">'+img+'</div><div class="td-info"><div class="sp-eye">SANBON GLOBAL · 강사 소개</div><h2 class="td-name">'+t.n.replace(/ 강사/,'')+'</h2><div class="td-subj">'+(t.title||'')+'</div><div class="td-feats"><span>피드백</span><span>복습관리</span><span>발음교정</span><span>1:1 상담</span></div></div></div>'+
@@ -5805,10 +5825,8 @@ function teacherDetail(name){
 var ONEMENU=[
  {ic:'🎯',n:'일대일 (시간권)',d:'10시간·20시간을 한 번에 등록하고 원하는 요일·시간에 배정합니다. 출장·야근이 잦아도 흐름이 끊기지 않습니다.',go:"openOne('퍼스널')",t:'가장 자유롭게'},
  {ic:'⏱',n:'퍼스널 (고정)',d:'매주 같은 요일·시간으로 고정합니다. A과정 50분 주2회 / B과정 80분 주1회, 2개월 48만원.',tab:1,t:'가장 저렴하게'},
- {ic:'🔤',n:'왕기초 영어 일대일',d:'알파벳과 be동사부터 다시 시작합니다. 그룹반에서 손 못 들던 분들을 위한 수업입니다.',go:"openPage('왕기초영어')",t:'처음부터'},
- {ic:'🎌',n:'왕기초 일본어 일대일',d:'히라가나·가타카나부터 시작합니다. 글자에서 막혀 포기하셨던 분들을 위한 수업입니다.',go:"openPage('왕기초일본어')",t:'처음부터'},
- {ic:'🀄',n:'왕기초 중국어 일대일',d:'병음과 성조부터 잡습니다. 발음을 한 사람씩 교정받아야 넘어갑니다.',go:"openPage('왕기초중국어')",t:'처음부터'},
- {ic:'📘',n:'왕기초 토익 일대일',d:'1:1 20시간으로 기초문법·필수어휘를 세운 뒤 정규반에 넣어 드립니다. 원하는 요일·시간을 고르고 바로 결제하실 수 있습니다.',go:"openPage('왕기초토익')",tab2:5,t:'점수가 필요하면'},
+ {ic:'🔤',n:'왕기초 일대일 A과정 (회화)',d:'1:1 20시간으로 기초를 세운 뒤 <b>정규 회화반 2개월을 무료로</b> 다니십니다. 교재 1권도 드립니다.',go:"openPage('왕기초A')",t:'처음부터'},
+ {ic:'📘',n:'왕기초 일대일 B과정 (토익)',d:'1:1 20시간으로 기초문법·필수어휘를 세운 뒤 <b>정규반 2개월 또는 스파르타 1개월을 무료로</b> 다니십니다. 교재 2권도 드립니다.',go:"openPage('왕기초B')",t:'토익이 처음이면'},
  {ic:'⏳',n:'시험일 맞춤 단기집중',d:'외고·편입·재수처럼 <b>시험 날짜가 정해진</b> 경우입니다. 남은 날짜에서 거꾸로 계획을 세워, 그 시험에 나오는 것만 집중해서 끝냅니다.',tab:6,t:'날짜가 정해졌다면'}
 ];
 /* 상품 — [키, 이름, 부제, 10시간, 20시간] */
@@ -5966,9 +5984,10 @@ function btSync(){
   +(BT.memo?('<br>남기신 말씀 — <b>'+_esc(BT.memo)+'</b>'):'')
   +'<br><span style="font-size:13.5px;color:#5c6472">이대로 담당자에게 전달됩니다. 신청 후 강사 일정과 맞춰 연락드립니다.</span>';}
 function btBuy(){
- var d=BASE1[_btK]||BASE1['toeic'];
+ var d=BASE1[_btK]||BASE1['b'];
  var ds=btText()||'상담 후 조율';
- spBuyItem('1,190,000원',
+ _fullAmt=parseInt(String(d.o).replace(/[^0-9]/g,''),10)||0;
+ spBuyItem(d.pay,
   '<b>'+d.eye+' · 20시간</b><br>'
   +'<span class="free">무료</span><b>'+d.freeT+'</b> — <b>'+d.freeW+'</b><br>'
   +'<span class="free">포함</span>'+d.bookT+' · 학습관리<br>'
@@ -5976,17 +5995,19 @@ function btBuy(){
   +(BT.memo?('<br><span style="color:#3f4757;font-weight:700">남기신 말씀 — '+_esc(BT.memo)+'</span>'):'')
   +'<br><span style="color:#5c6472;font-size:13.5px">신청 후 담당자가 연락드려 강사 일정과 맞춰 첫 수업일을 확정합니다.</span>',true);}
 /* 왕기초 일대일 — 영어 · 일본어 · 중국어 · 토익 모두 같은 틀로 (2026-08-30) */
-var _btK='toeic';
+var _btK='b';
 function basePage(k){
- _btK=k||'toeic';
+ _btK=k||'b';
  var d=BASE1[_btK];
  BT={slots:{},memo:'',start:'',any:false};
  return '<div class="sp-wrap"><button class="sp-back" onclick="openPage(\'맞춤수업\')">‹ 1대1 안내로</button>'
  +_pgHero(d.hero,d.eyeL,d.heroT,d.why,d.grad)
 
- +'<div class="bt-price"><div class="o">정가 1,650,000원</div>'
-  +'<div class="f">1,190,000<em>원</em></div>'
+ +'<div class="bt-price"><div class="o">정가 '+d.o+'원</div>'
+  +'<div class="f">'+d.f+'<em>원</em></div>'
   +'<div class="n">1:1 강의 <b>20시간</b> + 학습관리<br>여기에 <b>'+d.freeT+' 무료</b> ('+d.freeW+')<br>'+d.bookT+' · 최초 1회 한정</div></div>'
+ /* 학원 전단지 — 두 과정을 한눈에 (2026-08-30) */
+ +'<div class="bt-flyer"><img src="img/base_package.png" alt="왕기초 일대일 Package 강좌 — A과정 회화 990,000원 / B과정 토익 1,190,000원" loading="lazy"></div>'
 
  +'<div class="bt-sec"><h3>어떤 분께 맞습니까</h3>'
   +'<ul class="oh-ck">'+d.who.map(function(x){return '<li>'+x+'</li>';}).join('')
@@ -6014,11 +6035,12 @@ function basePage(k){
   +'<div class="bt-when"><label>희망 시작일 (선택)</label><select onchange="btStart(this.value)">'+btDates()+'</select></div></div>'
 
  +'<div class="bt-sum" id="btSum">요일·시간대를 안 고르셔도 신청하실 수 있습니다. <b>비워두시면 상담 후 조율</b>로 접수됩니다.<br><span style="font-size:13.5px;color:#5c6472">고르신 내용은 신청서에 그대로 담깁니다.</span></div>'
- +'<button class="bt-go" id="btGo" onclick="btBuy()">일대일 전용 수강신청<small>1,190,000원 · 신청 후 일정 조율 연락</small></button>'
- +'<div class="pgnote">※ 정가 1,650,000원에서 <b>460,000원</b>을 뺀 패키지 가격입니다. 이미 28% 낮춘 값이라 오픈이벤트 10%는 따로 붙지 않습니다.<br>'
+ +'<button class="bt-go" id="btGo" onclick="btBuy()">이 과정으로 수강신청<small>'+d.pay+' · 신청 후 일정 조율 연락</small></button>'
+ +'<div class="pgnote">※ 정가 '+d.o+'원에서 뺀 패키지 가격입니다. 이미 크게 낮춘 값이라 오픈이벤트 10%는 따로 붙지 않습니다.<br>'
+ +'※ 왕기초 일대일 Package는 <b>최초 1회</b>에 한해 수강하실 수 있으며, 재등록은 되지 않습니다.<br>'
  +'※ 결제 후 담당자가 연락드려 강사와 첫 수업 일정을 확정합니다. 문의 031-466-6969</div>'
  +spModalHTML()+'</div>';}
-function baseToeicPage(){return basePage('toeic');}
+function baseToeicPage(){return basePage('b');}
 
 
 /* ===== AI 학습 · 산글 잉글리시 전자책 =====
@@ -6026,7 +6048,7 @@ function baseToeicPage(){return basePage('toeic');}
 var AIB=[
  {k:'회화',t:'산글 잉글리시 · SPEAKING',lv:'STEP BASIC ~ STEP 4',n:5,u:12,
   img:'ai_cover1',price:49000,off:24500,
-  d:'산본에서 20년 가르치며 한국인이 어디서 막히는지 다 봤습니다. 그 지점만 골라 담았습니다.',
+  d:'산본에서 오래 가르치며 한국인이 어디서 막히는지 다 봤습니다. 그 지점만 골라 담았습니다.',
   li:['원어민 2인 대화 음성 · 0.75배속 포함','한국인이 놓치는 링킹·발음만 집중','AI 회화 상대와 그 자리에서 연습','발음 녹음하면 AI가 채점']},
  {k:'토익',t:'산글 토익 · BASIC',lv:'왕초보 ~ 600점',n:4,u:10,
   img:'ai_cover2',price:59000,off:29500,
@@ -6599,12 +6621,13 @@ function _md(d){return (d.getMonth()+1)+'/'+d.getDate();}
 
 function aiCalHTML(){
  var T=AITRACK[_aiTrk];
- /* 데모: 정규는 시작 후 24일, 스파르타는 12일 지난 상태로 보여드립니다 */
+ /* 2026-08-30 · 데모 기록을 뺐습니다.
+    전에는 '24일 지난 상태 · 4강 결석'을 지어내서 보여줬습니다. 처음 오신 분께
+    남의 출석부처럼 보여서, 이제는 실제 개강일 기준의 예정표만 보여드립니다. */
  var start=new Date(2026,9,5); start.setHours(0,0,0,0);
- var today=new Date(start); today.setDate(today.getDate()+(_aiTrk==='reg'?24:12));
+ var today=new Date(); today.setHours(0,0,0,0);
  var plan=aiPlan(_aiTrk,start);
- /* 데모 결석: 정규 4강·9강, 스파르타 3강 */
- var absent=(_aiTrk==='reg')?{4:1,9:1}:{3:1};
+ var absent={};
  var done=0,miss=0,next=null,cells='';
  for(var i=0;i<plan.length;i++){
   var L=plan[i], past=L.d<today, now=(+L.d===+today), c, tip;
@@ -6623,13 +6646,13 @@ function aiCalHTML(){
 
  return '<div class="aic" id="aiCal">'
  +'<div class="aic-h"><b>AI 산글 학습 달력</b><span>전 과정 40강</span>'
-  +'<span class="aic-n">'+done+'강 완료'+(miss?' · <b class="ms">'+miss+'강 결석</b>':'')+'</span></div>'
+  +'<span class="aic-n">'+(done?(done+'강 완료'+(miss?' · <b class="ms">'+miss+'강 결석</b>':'')):'10월 5일 개강')+'</span></div>'
  +'<div class="aic-tabs">'+tabs+'</div>'
  +'<div class="aic-eq">두 트랙 모두 <b>40강으로 같습니다.</b> 다른 건 <b>'+T.sub+'</b>에 나눠 듣는다는 것뿐입니다 — '+T.note+'.</div>'
  +'<div class="aic-g">'+cells+'</div>'
  +'<div class="aic-l"><span><i class="done"></i>완료</span><span><i class="miss"></i>결석</span>'
   +'<span><i class="now"></i>오늘</span><span><i class="soon"></i>예정</span></div>'
- +'<div class="aic-t"><em>'+(cur.rv?'복습':(cur.no+'강'))+' · '+_md(cur.d)+'</em><b>'+cur.unit+'</b>'
+ +'<div class="aic-t"><em>'+(done?'다음 강의 · ':'첫 강의 · ')+(cur.rv?'복습':(cur.no+'강'))+' · '+_md(cur.d)+'</em><b>'+cur.unit+'</b>'
   +'<span>5문항 · 3분'+(miss?(' · 결석 '+miss+'강은 언제든 보충하실 수 있습니다'):'')+'</span></div>'
  +'<div class="ai-say" style="margin:16px 0 0"><img src="img/whale.png" alt="산글이"><div class="ai-bub">'
  +'한 번에 다 열어드리면 사흘이면 다 푸시고 안 오세요. 그래서 <b>현강 나오는 날에 한 강씩</b>만 엽니다.<br>'
@@ -6683,10 +6706,10 @@ function aiBookHTML(){var B=AIB[_aiT];
   +'<ul class="ai-li">'+B.li.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>'
   +(B.ev
     ? ('<div class="ai-pr"><div class="ai-pr-r"><span>정가</span><b><s>'+_won(B.price)+'</s> <small>/ 4개월</small></b></div>'
-       +'<div class="ai-pr-r ev"><span>🎉 10월 오픈 이벤트</span><b>'+_won(B.off)+' <em>75% 할인</em></b></div>'
+       +'<div class="ai-pr-r ev"><span>🎉 10월 오픈 이벤트</span><b>'+_won(B.off)+' <em>오픈 가격</em></b></div>'
        +'<div class="ai-pr-r hi"><span>🏫 산글 현강 수강생</span><b>0원 <em>무료 제공</em></b></div></div>'
        +'<button class="ai-buy" onclick="aiBuy()">30,000원에 시작하기</button>'
-       +'<p class="ai-n">※ <b>매달 새 이벤트</b>로 열립니다. 이번 달은 오픈 기념 75% 할인입니다.<br>'
+       +'<p class="ai-n">※ 10~11월 <b>오픈 기간 가격</b>입니다. 기간이 끝나면 정가로 돌아갑니다.<br>'
        +'※ 산글 현강(정규·스파르타·무한수강권)에 등록하신 분께는 <b>무료로 드립니다.</b> 증정분이라 중도 환불 시 공제되지 않습니다.<br>'
        +'※ <b>전 과정 40강</b>은 두 트랙이 같습니다. 정규반은 4개월(월·수 + 격주 금), 스파르타는 2개월(월~금)에 나눠 열립니다.<br>'
        +'※ 한 번에 다 열리지 않습니다. 못 하고 넘어간 강은 <b>결석</b>으로 남고, 언제든 보충하실 수 있습니다.</p>')
@@ -6699,7 +6722,7 @@ function aiBuy(){var B=AIB[_aiT];
  if(B.ev){
   spBuyItem(_won(B.off),
    '<b>'+B.t+'</b> · 4개월 · 40강<br>'
-   +'<span class="free">이벤트</span>정가 '+_won(B.price)+' → <b>'+_won(B.off)+'</b> (10월 오픈 75% 할인)<br>'
+   +'<span class="free">오픈</span>정가 '+_won(B.price)+' → <b>'+_won(B.off)+'</b> (10~11월 오픈 기간 가격)<br>'
    +'<span class="free">포함</span>2단계 풀이 · 자동 복습 · 하루 5문항<br>'
    +'<span style="color:#3f4757;font-weight:700">산글 현강 수강생은 무료입니다 — 데스크에서 확인 후 열어 드립니다.</span>'
    +'<br><span style="color:#5c6472;font-size:13.5px">4개월간 하루 한 칸씩 열립니다. 결제 다음 날부터 시작됩니다.</span>',true);
@@ -6712,39 +6735,50 @@ function aiPage(){
  setTimeout(function(){aiTab(_aiT);var w=document.getElementById('ai40');if(w)w.innerHTML=ai40HTML();},0);
  var tabs=AIB.map(function(b,i){return '<button class="ai-tab'+(i===_aiT?' on':'')+'" onclick="aiTab('+i+')">'+b.k+'</button>';}).join('');
  return ''
- /* ── 관 입구 ── */
+ /* ── 첫인상 ── */
  +'<div class="aiv-hero">'
   +'<div class="aiv-grid" aria-hidden="true"></div>'
   +'<div class="aiv-in">'
-   +'<div class="aiv-eye">SANBON GLOBAL · AI LEARNING HALL</div>'
-   +'<h2>AI 산글 <b>학습관</b></h2>'
-   +'<p class="aiv-sub">토익 문법 <b>40강</b>을 회원께 지급합니다.<br>하루 한 강씩 열립니다. 한 강은 <b>3분</b>이면 끝납니다.</p>'
-   +'<div class="aiv-whale"><img src="img/whale.png" alt="산글이"><span>산글이가 매일 데리러 옵니다</span></div>'
+   +'<div class="aiv-eye">산본글로벌어학원 · 온라인 토익 문법</div>'
+   +'<h2>토익 문법,<br><b>40번이면 끝납니다</b></h2>'
+   +'<p class="aiv-sub">하루에 <b>한 번, 3분</b>입니다.<br>개념 한 장을 읽고 문제 다섯 개를 풉니다. 그게 전부입니다.</p>'
+   +'<div class="aiv-whale"><span class="wh"><img src="img/whale.png" alt=""></span>'
+    +'<span class="tx"><b>산글이</b>가 매일 문제를 들고 옵니다</span></div>'
    +'<div class="aiv-st">'
-    +'<div><b>40</b><span>강좌</span></div>'
-    +'<div><b>5</b><span>관 · 단계</span></div>'
-    +'<div><b>24</b><span>시간 열림</span></div>'
-    +'<div><b>0</b><span>원 · 현강 수강생</span></div>'
+    +'<div><b>40</b><span>개 강의</span></div>'
+    +'<div><b>200</b><span>개 문제</span></div>'
+    +'<div><b>3</b><span>분이면 한 강</span></div>'
+    +'<div><b>무료</b><span>학원 수강생</span></div>'
    +'</div>'
   +'</div>'
  +'</div>'
 
  +'<div class="sp-wrap">'
 
- /* ── 지급 방식 · 입장권 ── */
- +'<div class="aiv-h"><span class="k">입장</span><b>이 학습관은 <em>지급</em>됩니다</b>'
-  +'<p>파는 물건이 아니라, 등록하시면 열어 드리는 강의실입니다.</p></div>'
+ /* ── 무엇을 하는 곳인가 ── */
+ +'<div class="aiv-h"><span class="k">이런 곳입니다</span><b>수업이 없는 날, 여기서 이어 갑니다</b></div>'
+ +'<div class="aiv-what">'
+  +[['📅','일주일에 두 번 나오시죠. 나머지 닷새가 빕니다.','그 닷새를 하루 3분으로 메웁니다. 지하철에서 끝납니다.'],
+    ['🔒','하루에 한 강씩만 열립니다.','한 번에 다 열면 사흘 만에 몰아보고 덮으십니다. 문법은 그렇게 안 붙습니다.'],
+    ['🔁','틀린 문제는 다시 나옵니다.','산글이가 어디서 막히셨는지 기억했다가 뒤에서 또 냅니다.'],
+    ['🏫','계속 막히면 학원으로 오십시오.','앱이 선생님을 대신하지 않습니다. 사람이 다시 잡아 드립니다.']]
+   .map(function(x){return '<div class="wt"><span class="i">'+x[0]+'</span><div><b>'+x[1]+'</b><p>'+x[2]+'</p></div></div>';}).join('')
+ +'</div>'
+
+ /* ── 값 ── */
+ +'<div class="aiv-h"><span class="k">얼마입니까</span><b>학원에 다니시면 낼 게 없습니다</b>'
+  +'<p>따로만 쓰실 분을 위해 단독 이용권도 두었습니다.</p></div>'
  +'<div class="aiv-pass">'
-  +'<div class="ps free"><div class="ps-tp">PASS · 무료 지급</div><b>산글 현강 수강생</b>'
-   +'<p>토익 정규·스파르타 등 <b>현강에 등록해 다니시는 동안</b> 40강이 그대로 열립니다.</p>'
-   +'<div class="ps-p">0<span>원</span></div><div class="ps-n">데스크에서 명부 확인 후 열어 드립니다</div></div>'
-  +'<div class="ps inf"><div class="ps-tp">PASS · 수강권 포함</div><b>무한수강권 회원</b>'
-   +'<p>정규 1·2 / 스파르타 1·2 <b>네 상품 모두</b>에 40강이 들어 있습니다. 따로 결제하실 것이 없습니다.</p>'
-   +'<div class="ps-p">포함<span> · 740,000원</span></div><div class="ps-n">현강 재수강 무제한 + AI 산글 40강</div></div>'
-  +'<div class="ps solo"><div class="ps-tp">PASS · 단독 이용</div><b>학습관만 이용</b>'
-   +'<p>학원에 안 다니셔도 40강을 여실 수 있습니다.</p>'
-   +'<div class="ps-p"><s>120,000</s>30,000<span>원</span></div><div class="ps-n">10월 오픈이벤트가</div>'
-   +'<button class="ps-b" onclick="aiSoloBuy()">이 학습관 열기 ›</button></div>'
+  +'<div class="ps free"><div class="ps-tp">학원 수강생</div><b>0원</b>'
+   +'<p>토익·회화 어느 반이든 <b>학원에 다니시는 동안</b> 40강이 그대로 열립니다.</p>'
+   +'<div class="ps-n">데스크에서 확인 후 열어 드립니다</div></div>'
+  +'<div class="ps inf"><div class="ps-tp">무한수강권 회원</div><b>이미 포함</b>'
+   +'<p>정규 1·2 / 스파르타 1·2 <b>네 상품 모두</b>에 들어 있습니다. 따로 결제하실 것이 없습니다.</p>'
+   +'<div class="ps-n">수강권 740,000원 안에 포함</div></div>'
+  +'<div class="ps solo"><div class="ps-tp">학원에 안 다니셔도</div><b><s>120,000</s> 30,000원</b>'
+   +'<p>40강 전부를 여실 수 있습니다. 한 번 결제하면 끝이고, 매달 내는 돈은 없습니다.</p>'
+   +'<div class="ps-n">10월 오픈 기간 가격</div>'
+   +'<button class="ps-b" onclick="aiSoloBuy()">40강 열기 ›</button></div>'
  +'</div>'
 
  /* ── 가르치는 법 ── */
@@ -6975,39 +7009,39 @@ var TSTAFF=[
   ['최자운 (Deborah)','eng_6','토스 · 토익 왕기초','말하기부터 트이게 하는 실전 발화 훈련','현재 담당 — 토스 정규반(월·수), 토요 토스 실전반, 왕기초 토익 문법'],
   ['김현정 (Vivienne Kim)','eng_15','토플 · 오픽 · 새벽 회화','토플 전문 · 아침을 여는 새벽반 담당','현재 담당 — 영어 새벽반(화·수·목 · 월 12회), 토요 오픽·토플 집중반'],
   ['유미용','eng_14','토익 · 토스 · 지텔프','시험별 유형을 나눠 접근하는 정리형 수업','현재 담당 — 토스·오픽·토플 보조 및 지텔프'],
-  ['황보준','eng_12','토익','기초부터 실전까지 체계적인 시험 대비 강의','산본이지어학원 토익 강사']]},
+  ['황보준','eng_12','토익','기초부터 실전까지 체계적인 시험 대비 강의','토익 담당']]},
  {g:'영어회화',c:'#0e8a5a',list:[
   ['Jerollyn','eng_11','회화 STEP 2~4','프리토킹까지 끌어올리는 원어민 수업','현재 담당 — STEP2·3·4 (월·수 / 화·목)'],
   ['Kate','eng_9','회화 BASIC · STEP 1','왕초보도 편하게 입을 떼는 수업','현재 담당 — BASIC(화·목), STEP1(월·수)'],
-  ['KELLY','','회화 BASIC','기초 발음과 문장 만들기부터','현재 담당 — BASIC(화·목 저녁)'],
+  ['KELLY','kelly','회화 BASIC','기초 발음과 문장 만들기부터','현재 담당 — BASIC(화·목 저녁)'],
   ['권미화 (May)','eng_10','회화 STEP 1','왕기초부터 초급까지 차근차근','현재 담당 — STEP1(화·목 저녁)'],
-  ['공미영 (Olive)','eng_2','영어 기초 집중','기초 문법과 회화를 함께','산본이지어학원 영어회화 강사'],
+  ['공미영 (Olive)','eng_2','영어 기초 집중','기초 문법과 회화를 함께','영어회화 담당'],
   ['Apple','eng_5','원어민 회화 · 기업 출강','실무 영어와 프리토킹','기업체 출강 담당'],
   ['구지영','director','원장 · 영어회화','Georgetown TESOL · 토익 · 토플 전문 강사 출신','미국 학부 졸업 유학파 · 상담 전담'],
-  ['김지현 (Leah)','eng_3','영어 기초','기초 문법 정리','산본이지어학원 영어회화 강사'],
-  ['박호임 (Grace)','eng_4','왕기초 영어','처음 시작하는 분 전담','산본이지어학원 영어회화 강사']]},
+  ['김지현 (Leah)','eng_3','영어 기초','기초 문법 정리','영어회화 담당'],
+  ['박호임 (Grace)','eng_4','왕기초 영어','처음 시작하는 분 전담','영어회화 담당']]},
  {g:'일본어',c:'#b83277',list:[
   ['마무로 히토시','jpn_6','원어민 회화 · 중고급','입문부터 원어민 고급회화·JLPT까지','현재 담당 — 중고급(월·수 18:20), 원어민 2단계(월·수 20:00)'],
   ['나카무라 모모코','jpn_8','원어민 고급회화','살아있는 표현으로 배우는 일본어','현재 담당 — 중급(화·목 20:00), JLPT 주말반'],
   ['서정아','jpn_7','일본어회화 · JLPT','초급부터 JLPT까지 이어지는 커리큘럼','현재 담당 — 초중급(화·목 18:20), 초급(화·목 20:00)'],
   ['조미히로','jpn_10','고급 일본어 · 새벽반','자연스러운 회화 중심','현재 담당 — 일본어 새벽반(화·수·목 · 월 12회)'],
   ['김민정','jpn_2','일본어회화','입문자를 위한 친절한 수업','현재 담당 — 입문(월·수 20:00)'],
-  ['스즈키 아야코','jpn_9','고급 일본어','원어민 고급 회화','산본이지어학원 일본어 강사'],
-  ['권은정','jpn_1','중고급 회화','“더 이상의 두려움은 No! 쉽고 재밌게 배우는 일본어!”','산본이지어학원 일본어 강사'],
-  ['김은영','jpn_5','초급 회화 · JLPT','“나도 일본어 할 수 있다! 기초부터 탄탄하게!”','산본이지어학원 일본어 강사'],
-  ['김연주','jpn_4','일본어회화','회화 중심 수업','산본이지어학원 일본어 강사'],
-  ['이형림','jpn_11','일본어회화','기초 회화','산본이지어학원 일본어 강사']]},
+  ['스즈키 아야코','jpn_9','고급 일본어','원어민 고급 회화','일본어 담당'],
+  ['권은정','jpn_1','중고급 회화','“더 이상의 두려움은 No! 쉽고 재밌게 배우는 일본어!”','일본어 담당'],
+  ['김은영','jpn_5','초급 회화 · JLPT','“나도 일본어 할 수 있다! 기초부터 탄탄하게!”','일본어 담당'],
+  ['김연주','jpn_4','일본어회화','회화 중심 수업','일본어 담당'],
+  ['이형림','jpn_11','일본어회화','기초 회화','일본어 담당']]},
  {g:'중국어',c:'#b8322a',list:[
   ['하홍금','chn_5','원어민 회화 · 고급','발음·성조부터 고급 회화까지','현재 담당 — 초급(월·수), 토요 고급반, HSK 3·4급'],
   ['오금한','chn_3','입문 · 초급 · 중급','처음 배우는 분도 편하게','현재 담당 — 중급(월·수 20:00 / 화·목 20:00), HSK 5·6급'],
   ['현지인','chn_7','HSK · 중국어회화','시험과 회화를 함께','현재 담당 — 토요 중고급반, 중국어 새벽반(화·수·목 · 월 12회)'],
-  ['노정아','chn_1','중국어회화','기초 회화 중심','산본이지어학원 중국어 강사']]}
+  ['노정아','chn_1','중국어회화','기초 회화 중심','중국어 담당']]}
 ];
 function staffPage(){
  var body=TSTAFF.map(function(G){
   return '<div class="tf-g"><h3 class="tf-gh" style="border-color:'+G.c+'">'+G.g+'<em>'+G.list.length+'명</em></h3><div class="tf-list">'
   +G.list.map(function(t){
-    return '<div class="tf-c"><div class="tf-im"><img src="img/teachers/'+t[1]+'.png" alt="'+t[0]+'" loading="lazy" onerror="this.parentNode.innerHTML=\'<span class=&quot;tf-ph&quot;>사진<br>준비중</span>\'"></div>'
+    return '<div class="tf-c"><div class="tf-im"><img src="img/teachers/'+t[1]+'.png" alt="'+t[0]+'" loading="lazy" onerror="this.parentNode.innerHTML=\'<span class=&quot;tf-ph&quot;>사진<br>준비중</span>\'">'+(t[1]==='kelly'?'<span class="td-ill">일러스트</span>':'')+'</div>'
     +'<div class="tf-in"><b>'+t[0]+'</b><span class="tf-sub" style="color:'+G.c+'">'+t[2]+'</span>'
     +'<p class="tf-d">'+t[3]+'</p><p class="tf-n">'+t[4]+'</p></div></div>';}).join('')
   +'</div></div>';}).join('');
@@ -7455,10 +7489,10 @@ select.txflash{animation:txFlash 1.05s ease-out}
  .hero{height:min(58vh,540px)!important;min-height:392px}
  .hslide{align-items:center!important;padding:0!important}
  .hs-panel{min-height:0!important;max-width:640px;padding:24px 34px!important}
- .hs-panel .hs-eyebrow{font-size:12.5px!important;letter-spacing:2.4px!important}
+ .hs-panel .hs-eyebrow{font-size:13px!important;letter-spacing:2.2px!important}
  .hs-panel{max-width:700px}
- .hs-panel .hs-title{font-size:clamp(29px,3.1vw,44px)!important;line-height:1.16;word-break:keep-all;text-wrap:balance}
- .hs-panel .hs-sub{font-size:15px!important;margin-top:10px!important;max-width:560px}
+ .hs-panel .hs-title{font-size:clamp(34px,3.6vw,52px)!important;line-height:1.18;word-break:keep-all;text-wrap:balance}
+ .hs-panel .hs-sub{font-size:18px!important;line-height:1.75!important;margin-top:14px!important;max-width:600px}
  .hs-panel .hs-btn{margin-top:16px!important;padding:12px 30px!important;font-size:15px!important}
  .hdots{bottom:19px;right:28px}
  .hero-vtag{font-size:12px}
@@ -7482,8 +7516,8 @@ select.txflash{animation:txFlash 1.05s ease-out}
 /* ===== 크리스탈 · AI 레벨테스트 (30초 프리토킹) ===== */
 var CRY={
  '영어':{code:'en-US',me:'크리스탈',en:'Crystal',
-  intro:'안녕! 난 산본글로벌 SGA에서 영어 레벨을 담당하는 <b>크리스탈</b>이라고 해. 나랑 <b>30초 동안</b> 자유롭게 대화해 보자. 부담 갖지 말고 편하게 얘기해 줘. 준비되면 <b>스타트</b> 버튼을 눌러줘!',
-  introSay:'안녕! 난 산본글로벌 에스지에이에서 영어 레벨을 담당하는 크리스탈이라고 해. 나랑 삼십 초 동안 자유롭게 대화해 보자. 부담 갖지 말고 편하게 얘기해 줘. 준비되면 스타트 버튼을 눌러줘!',
+  intro:'안녕하세요, 산본글로벌 SGA에서 영어 레벨을 맡고 있는 <b>크리스탈</b>입니다. 저와 <b>30초 동안</b> 자유롭게 이야기해 주세요. 부담 갖지 마시고 편하게 말씀하시면 됩니다. 준비되시면 <b>스타트</b>를 눌러 주세요.',
+  introSay:'안녕하세요, 산본글로벌 에스지에이에서 영어 레벨을 맡고 있는 크리스탈입니다. 저와 삼십 초 동안 자유롭게 이야기해 주세요. 부담 갖지 마시고 편하게 말씀하시면 됩니다. 준비되시면 스타트를 눌러 주세요.',
   open:"Hi! Nice to meet you. I'm Crystal. Tell me a little about yourself.",
   probe:["That's interesting. What do you usually do on weekends?",
          "Nice. Can you tell me why you want to study English?",
@@ -7493,8 +7527,8 @@ var CRY={
   push:["Could you say a little more about that?","Go on, I'm listening.","And why do you think so?"],
   bye:"Great job! That's thirty seconds. Let me check your level now."},
  '일본어':{code:'ja-JP',me:'아야카',en:'Ayaka 綾香',
-  intro:'안녕! 난 산본글로벌 SGA에서 일본어 레벨을 담당하는 <b>아야카</b>야. 나랑 <b>30초 동안</b> 일본어로 자유롭게 얘기해 보자. 틀려도 괜찮아. 준비되면 <b>스타트</b>를 눌러줘!',
-  introSay:'안녕! 난 산본글로벌 에스지에이에서 일본어 레벨을 담당하는 아야카야. 나랑 삼십 초 동안 일본어로 자유롭게 얘기해 보자. 틀려도 괜찮아. 준비되면 스타트를 눌러줘!',
+  intro:'안녕하세요, 산본글로벌 SGA에서 일본어 레벨을 맡고 있는 <b>아야카</b>입니다. 저와 <b>30초 동안</b> 일본어로 자유롭게 이야기해 주세요. 틀리셔도 괜찮습니다. 준비되시면 <b>스타트</b>를 눌러 주세요.',
+  introSay:'안녕하세요, 산본글로벌 에스지에이에서 일본어 레벨을 맡고 있는 아야카입니다. 저와 삼십 초 동안 일본어로 자유롭게 이야기해 주세요. 틀리셔도 괜찮습니다. 준비되시면 스타트를 눌러 주세요.',
   open:'こんにちは。はじめまして、綾香（あやか）です。まず、自己紹介をしてください。',
   probe:['いいですね。週末はふだん何をしていますか。',
          'どうして日本語を勉強したいと思いましたか。',
@@ -7504,8 +7538,8 @@ var CRY={
   push:['もう少し話してもらえますか。','はい、聞いています。どうぞ。','どうしてそう思いますか。'],
   bye:'おつかれさまでした。三十秒たちました。では、レベルを見てみましょう。'},
  '중국어':{code:'zh-CN',me:'린신',en:'Lin Xin 林欣',
-  intro:'안녕! 난 산본글로벌 SGA에서 중국어 레벨을 담당하는 <b>린신</b>이야. 나랑 <b>30초 동안</b> 중국어로 편하게 얘기해 보자. 준비되면 <b>스타트</b>를 눌러줘!',
-  introSay:'안녕! 난 산본글로벌 에스지에이에서 중국어 레벨을 담당하는 린신이야. 나랑 삼십 초 동안 중국어로 편하게 얘기해 보자. 준비되면 스타트를 눌러줘!',
+  intro:'안녕하세요, 산본글로벌 SGA에서 중국어 레벨을 맡고 있는 <b>린신</b>입니다. 저와 <b>30초 동안</b> 중국어로 편하게 이야기해 주세요. 준비되시면 <b>스타트</b>를 눌러 주세요.',
+  introSay:'안녕하세요, 산본글로벌 에스지에이에서 중국어 레벨을 맡고 있는 린신입니다. 저와 삼십 초 동안 중국어로 편하게 이야기해 주세요. 준비되시면 스타트를 눌러 주세요.',
   open:'你好！很高兴认识你，我是林欣。请先简单地介绍一下你自己。',
   probe:['很好。你周末一般做什么？',
          '你为什么想学中文呢？',
