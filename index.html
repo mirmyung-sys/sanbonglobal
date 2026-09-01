@@ -1453,12 +1453,12 @@ li:first-child > .pgh{margin-top:2px}
 .ai-st{background:#F2F8F5;border:1px solid #D5E9DF;border-radius:12px;padding:16px 14px}
 .ai-st em{display:block;font-style:normal;font-size:16px;font-weight:900;color:#0E8A5A;margin-bottom:6px}
 .ai-st span{font-size:13px;line-height:1.65;color:#3f4757;font-weight:600}
-.ai-tabs{display:flex;gap:8px;margin:30px 0 16px;flex-wrap:wrap}
+.ai-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0 20px}
 /* 2026-09-01 · 전자책이 언어 3 × 단계 4 = 12권으로 늘어, 단계 탭을 한 줄 더 두었습니다 */
 /* 2026-09-01 · 3단 구조: 회화반/시험대비반 → 과목 → 단계 */
 .ai-subs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
-.ai-sub{font:inherit;font-size:14.5px;font-weight:700;padding:9px 18px;border-radius:999px;cursor:pointer;
- border:1.5px solid var(--line);background:#fff;color:var(--ink3);
+.ai-sub{font:inherit;font-size:17px;font-weight:900;padding:13px 28px;border-radius:999px;cursor:pointer;
+ border:2px solid var(--line);background:#fff;color:var(--ink2);letter-spacing:-.02em;
  transition:border-color .14s ease,background .14s ease,color .14s ease}
 .ai-sub:hover{border-color:var(--navy);color:var(--navy)}
 .ai-sub.on{background:var(--brand);border-color:var(--brand);color:#fff}
@@ -1571,10 +1571,16 @@ li:first-child > .pgh{margin-top:2px}
  .ls-key tr{display:block;border-bottom:1px solid var(--line2);padding:9px 0}
  .ls-opt{grid-template-columns:1fr}}
 @media(max-width:720px){.ai-steps{grid-template-columns:repeat(2,1fr)}.ai-toc ol{grid-template-columns:1fr}}
-.ai-tab{background:#fff;border:2px solid var(--line);border-radius:99px;padding:10px 22px;
- font-family:inherit;font-size:14.5px;font-weight:900;color:var(--ink3);cursor:pointer;transition:.14s}
-.ai-tab:hover{border-color:#0E8A5A;color:#0E8A5A}
-.ai-tab.on{background:#0E8A5A;border-color:#0E8A5A;color:#fff}
+/* 2026-09-01 대표님 — 회화반/시험대비반이 메인 갈림길인데 안 보인다 하심. 알약 → 큰 선택판 */
+.ai-tab{background:#fff;border:2.5px solid var(--line);border-radius:16px;padding:18px 14px 16px;text-align:center;
+ font-family:inherit;color:var(--ink3);cursor:pointer;transition:.14s}
+.ai-tab .ic{display:block;font-size:28px;line-height:1;margin-bottom:8px}
+.ai-tab b{display:block;font-size:21px;font-weight:900;letter-spacing:-.02em;color:var(--ink)}
+.ai-tab small{display:block;margin-top:5px;font-size:12.5px;font-weight:700;color:var(--muted);line-height:1.5}
+.ai-tab:hover{border-color:#0E8A5A}
+.ai-tab.on{background:#0E8A5A;border-color:#0E8A5A}
+.ai-tab.on b{color:#fff}.ai-tab.on small{color:rgba(255,255,255,.8)}
+.ai-lb{font-size:13px;font-weight:900;letter-spacing:.06em;color:var(--muted);margin:0 0 8px}
 .ai-book{display:grid;grid-template-columns:300px 1fr;gap:26px;background:#fff;
  border:1px solid var(--line);border-radius:16px;padding:22px;align-items:start}
 .ai-cov{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/4;background:#0A0D14}
@@ -3142,7 +3148,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-01 (v42)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-01 (v43)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -6998,7 +7004,9 @@ function aiBookHTML(){
         return '<li'+(on?' class="go" onclick="aiLesson('+(i+1)+')"':'')+'>'+t+tag+'</li>';}).join('')
      +'</ol></div>')
   : '';
- return '<div class="ai-subs">'+gtab+'</div>'
+ return '<div class="ai-lb">② 과목</div>'
+ +'<div class="ai-subs">'+gtab+'</div>'
+ +'<div class="ai-lb">③ 단계</div>'
  +'<div class="ai-steps">'+stab+'</div>'
  +'<div class="ai-book">'
  +'<div class="ai-cov"><img src="img/books/'+B.img+'.jpg" alt="'+G.k+' '+B.s+' 표지" '
@@ -7356,7 +7364,9 @@ function aiToeicX(){
 
 function aiPage(){
  setTimeout(function(){aiTab(_aiT);},0);
- var tabs=AIB.map(function(b,i){return '<button class="ai-tab'+(i===_aiT?' on':'')+'" onclick="aiTab('+i+')">'+b.k+'</button>';}).join('');
+ var TABI={'회화반':['💬','영어 · 일본어 · 중국어 — 말하기'],'시험대비반':['📝','토익 · 토스 · 오픽 · 토플 · JLPT · HSK']};
+ var tabs=AIB.map(function(b,i){var x=TABI[b.k]||['📚',''];
+  return '<button class="ai-tab'+(i===_aiT?' on':'')+'" onclick="aiTab('+i+')"><span class="ic">'+x[0]+'</span><b>'+b.k+'</b><small>'+x[1]+'</small></button>';}).join('');
  return ''
  /* ── 첫인상 ── */
  +'<div class="aiv-hero">'
@@ -7421,6 +7431,7 @@ function aiPage(){
  /* ── 전자책 ── */
  +'<div class="aiv-h"><span class="k">부속</span><b>같이 보시면 좋은 전자책</b>'
   +'<p>학습관과 별개로, 과목별 전자책을 따로 두었습니다.</p></div>'
+ +'<div class="ai-lb">① 배우실 반을 고르세요</div>'
  +'<div class="ai-tabs">'+tabs+'</div><div id="aiBody"></div>'
 
  +'<div class="ai-off">'
