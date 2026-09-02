@@ -34,12 +34,22 @@
     {
       "name": "출석부",
       "url": "/checkin.html",
-      "icons": [{ "src": "img/icon_192.png", "sizes": "192x192" }]
+      "icons": [
+        {
+          "src": "img/icon_192.png",
+          "sizes": "192x192"
+        }
+      ]
     },
     {
       "name": "AI 학습관",
-      "url": "/index.html",
-      "icons": [{ "src": "img/icon_192.png", "sizes": "192x192" }]
+      "url": "/index.html#ai",
+      "icons": [
+        {
+          "src": "img/icon_192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }

@@ -3337,7 +3337,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-03 (v67)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-03 (v69)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -3801,7 +3801,9 @@ function coursePage(key){
  var tcs=ts.map(function(t){var rows=t.rows.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>';}).join('');return '<div class="cpg-tc"><img src="img/teachers/'+t.img+'.png" alt="'+t.n+'"><div class="cpg-tc-b"><h4>'+t.n+'</h4><table>'+rows+'</table></div></div>';}).join('');
  var pains=d.pains.map(function(p){return '<div class="cpg-pain"><span class="cpg-x">✕</span><p>'+p+'</p></div>';}).join('');
  var mth=d.method.map(function(m,i){return '<div class="cpg-mth"><div class="cpg-mn">0'+(i+1)+'</div><div class="cpg-mi">'+m[0]+'</div><h4>'+m[1]+'</h4><p>'+m[2]+'</p></div>';}).join('');
- return '<section class="cpg-hero" style="--ac:'+d.ac+'"><div class="cpg-in">'
+ /* 2026-09-03 대표님 지시: 토익으로 들어오면 원장 강의 사진이 먼저 보입니다 */
+ return (key==='토익'?'<div class="pgimg"><img src="img/gen_direct.jpg" alt="" loading="eager"></div>':'')
+  +'<section class="cpg-hero" style="--ac:'+d.ac+'"><div class="cpg-in">'
    +'<div class="cpg-badge">오픈이벤트 · 전 과목 10% 할인</div>'
    +'<div class="cpg-eye">'+d.eyebrow+'</div><h1>'+d.hook+'</h1>'
    +(line?'<div class="cpg-line">'+line+'</div>':'')
@@ -4710,7 +4712,7 @@ const PAGES={
   +'<div class="pgnote">외고·특목고 대비반은 소수정예로 운영되며, 학생별 학습 리포트를 제공합니다.</div>'+CTA(),
  '과외':H('1:1 · 소수정예','나만을 위한<br>완전 맞춤 수업','정해진 커리큘럼이 아니라, 나의 레벨·목표·일정에 맞춰 설계하는 프라이빗 수업입니다. 원하는 요일과 시간에, 담당 선생님이 끝까지 관리합니다.','📖')
   +'<div class="pgfeat"><div class="ft"><div class="fi">🧭</div><h4>레벨 진단 후 설계</h4><p>첫 수업 전 진단으로 정확한 커리큘럼을 만듭니다.</p></div><div class="ft"><div class="fi">🗓️</div><h4>원하는 요일·시간</h4><p>학생 일정에 맞춰 시간표를 자유롭게 구성합니다.</p></div><div class="ft"><div class="fi">🤝</div><h4>담당제 밀착관리</h4><p>한 명의 담당 선생님이 진도·숙제·약점을 책임 관리합니다.</p></div><div class="ft"><div class="fi">📊</div><h4>학습 리포트</h4><p>진도와 성취도를 정리해 학부모님께 공유합니다.</p></div></div>'+CTA(),
- '유학상담':bigImg('img/gen12.jpg')+H('일본유학 · 어학연수','유학, 상담부터<br>준비까지 한 번에','어학원·학교 선정, 서류·비자, 현지 생활 준비까지 단계별로 안내합니다. EJU(일본유학시험)·전문학교 진학·일본 취업까지, 일본어 학습과 유학 준비를 한 곳에서 연결합니다.','✈️')
+ '유학상담':bigImg('img/gen_direct.jpg')+H('일본유학 · 어학연수','유학, 상담부터<br>준비까지 한 번에','어학원·학교 선정, 서류·비자, 현지 생활 준비까지 단계별로 안내합니다. EJU(일본유학시험)·전문학교 진학·일본 취업까지, 일본어 학습과 유학 준비를 한 곳에서 연결합니다.','✈️')
   +SEC('EJU (일본유학시험)','<div class="lead">일본 대학 진학에 필요한 EJU를 과목별로 대비합니다. 일본어(독해·청해·기술)와 종합과목·수학까지, 목표 대학 기준에 맞춰 준비합니다.</div><div class="chips"><span>일본어</span><span>종합과목</span><span>수학</span><span>대학별 기준 관리</span></div>')
   +SEC('전문학교 진학','<div class="lead">관심 분야(디자인·IT·조리·항공·뷰티 등)에 맞는 전문학교를 함께 찾고, 지원 서류와 면접을 준비합니다.</div>')
   +SEC('일본 취업','<div class="lead">이력서(리레키쇼)·면접 일본어와 비즈니스 매너까지, 현지 취업에 필요한 실전 준비를 지원합니다.</div>')
@@ -7194,7 +7196,7 @@ function benAllHTML(){
    원장은 '제2의 강사'입니다. 토익·유학·시험대비를 원장이 직접 진단하고,
    무료 상담 + 청강 1회 무료를 원장 이름으로 겁니다. 학부모님께 전문성이 보이게. */
 function dirPage(){
- return _pgHero('img/gen16.jpg','DIRECTOR · 원장 직접 상담','토익 · 유학 · 시험대비,<br>원장이 직접 봐 드립니다',
+ return _pgHero('img/gen_direct.jpg','DIRECTOR · 원장 직접 상담','토익 · 유학 · 시험대비,<br>원장이 직접 봐 드립니다',
   '30년 강의 경력의 원장이 <b>등록 전에 먼저</b> 진단합니다. 상담은 무료이고, 지금 돌아가는 반에 <b>1회 무료로 청강</b>하실 수 있습니다.',
   'linear-gradient(120deg,#1D2D4F,#33507f)')
  +'<div class="oh-tsel" style="margin:18px 0 22px">'
@@ -8492,6 +8494,22 @@ function sgHoverize(){
 (function(){var pb=document.getElementById('pgbody');
  if(pb&&window.MutationObserver){new MutationObserver(function(){sgHoverize();dgAuto();}).observe(pb,{childList:true,subtree:true});}
  sgHoverize();
+})();
+
+/* 앱·외부 링크에서 바로 들어오는 문 (2026-09-03) —
+   index.html#ai      → AI 학습관이 바로 열립니다
+   index.html#ai-free → AI 학습관 + 1과 무료 맛보기까지 자동으로 열립니다
+   앱의 「무료 체험관 입장」이 이 주소를 씁니다. 경로: 앱 버튼 → 맛보기, 두 번이면 끝. */
+(function(){
+ var h=(location.hash||'');
+ if(h!=='#ai'&&h!=='#ai-free')return;
+ setTimeout(function(){
+  try{
+   var sp=document.getElementById('introSplash');if(sp)sp.style.display='none';
+   openPage('AI산글');
+   if(h==='#ai-free')setTimeout(function(){try{aiLesson(1);}catch(e){}},800);
+  }catch(e){}
+ },400);
 })();
 
 /* ===== 동글이 예약잡기 (2026-09-02) =====
