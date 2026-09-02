@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1D2D4F">
+<title>매일 출석체크 · 산본글로벌어학원</title>
+<link rel="icon" href="img/favicon.png">
+<style>
+:root{
+  --navy:#1D2D4F; --navy2:#33507f; --gold:#C6A15B; --gold2:#e7c98a;
+  --red:#C81F2B; --green:#0e9e5a; --line:#e7e9ef; --ink:#1c2333; --mut:#8a90a0;
+  --bg:#f3f5f9;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  font-size:15px;line-height:1.6}
+.app{max-width:520px;margin:0 auto;min-height:100vh;background:#fff;
+  box-shadow:0 0 40px rgba(20,33,61,.08);display:flex;flex-direction:column;overflow:hidden}
+
+/* ── 헤더 ── */
+header{background:linear-gradient(140deg,#16233d,#1D2D4F 45%,#33507f);color:#fff;
+  padding:18px 20px 22px;position:relative;overflow:hidden}
+header::after{content:'';position:absolute;right:-60px;top:-70px;width:210px;height:210px;
+  border-radius:50%;background:radial-gradient(circle,rgba(198,161,91,.30),transparent 68%)}
+.hbar{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2}
+.logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:19px;letter-spacing:.5px;
+  background:linear-gradient(90deg,var(--gold2),var(--gold));-webkit-background-clip:text;
+  background-clip:text;color:transparent}
+.logo b{color:#fff;-webkit-text-fill-color:#fff}
+.hhome{font-size:12.5px;font-weight:800;color:#cdd8ea;text-decoration:none;
+  border:1px solid rgba(255,255,255,.28);padding:6px 12px;border-radius:999px}
+.hhome:active{background:rgba(255,255,255,.12)}
+
+.streak{position:relative;z-index:2;text-align:center;margin-top:16px}
+.streak .lab{font-size:12.5px;letter-spacing:.02em;color:#b9c6dd;font-weight:800}
+.streak .num{font-size:66px;font-weight:900;line-height:1.05;margin:2px 0 0;
+  font-family:'Montserrat',sans-serif;
+  background:linear-gradient(180deg,#fff,var(--gold2));-webkit-background-clip:text;
+  background-clip:text;color:transparent}
+.streak .num em{font-style:normal;font-size:26px;-webkit-text-fill-color:#e7c98a;color:#e7c98a}
+.streak .sub{font-size:13.5px;color:#cdd8ea;margin-top:4px}
+.streak .sub b{color:#fff}
+
+/* ── 오늘 도장 ── */
+.today{padding:20px 18px 4px}
+.stampbtn{width:100%;border:none;border-radius:20px;padding:22px 18px;cursor:pointer;
+  font-family:inherit;color:#fff;display:flex;align-items:center;gap:16px;text-align:left;
+  background:linear-gradient(135deg,#0e9e5a,#12b869);
+  box-shadow:0 12px 28px rgba(14,158,90,.28);transition:transform .12s}
+.stampbtn:active{transform:scale(.985)}
+.stampbtn .ic{width:54px;height:54px;flex:none;border-radius:50%;background:rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;font-size:27px}
+.stampbtn .tx b{display:block;font-size:19px;font-weight:900}
+.stampbtn .tx span{font-size:13px;opacity:.9}
+.stampbtn.done{background:linear-gradient(135deg,#e8ecf4,#f4f6fa);color:var(--navy);
+  box-shadow:none;border:1px solid var(--line);cursor:default}
+.stampbtn.done .ic{background:rgba(29,45,79,.09)}
+
+/* ── 한 문장 ── */
+.sent{margin:14px 18px 0;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.sent .sh{background:#f6f8fc;padding:10px 16px;font-size:12px;font-weight:900;color:var(--navy);
+  letter-spacing:.04em;display:flex;justify-content:space-between;align-items:center}
+.sent .sh i{font-style:normal;color:var(--mut);font-weight:700}
+.sent .sb{padding:16px}
+.sent .q{font-size:19px;font-weight:800;color:var(--navy);line-height:1.45;word-break:keep-all}
+.sent .a{font-size:14px;color:#5c6478;margin-top:7px;word-break:keep-all}
+.sent .langs{display:flex;gap:7px;margin-top:13px}
+.sent .langs button{flex:1;border:1px solid var(--line);background:#fff;border-radius:10px;
+  padding:9px 0;font-size:13px;font-weight:800;color:var(--mut);cursor:pointer;font-family:inherit}
+.sent .langs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.speak{margin-top:11px;width:100%;border:1px solid #d8e0ee;background:#f6f8fc;border-radius:12px;
+  padding:11px 0;font-size:14px;font-weight:800;color:var(--navy);cursor:pointer;font-family:inherit}
+.speak:active{background:#eaf0f9}
+
+/* ── 달력 ── */
+.sec{padding:22px 18px 0}
+.sec h2{font-size:16px;margin:0 0 3px;color:var(--navy)}
+.sec p.mut{color:var(--mut);font-size:13px;margin:0 0 13px}
+.calhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.calhead b{font-size:15.5px;color:var(--navy)}
+.calhead button{border:1px solid var(--line);background:#fff;width:34px;height:34px;
+  border-radius:10px;font-size:16px;color:var(--navy);cursor:pointer;font-family:inherit}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cal .dow{text-align:center;font-size:11.5px;font-weight:900;color:var(--mut);padding:3px 0}
+.cal .dow.s{color:var(--red)}
+.cal .d{aspect-ratio:1;border-radius:11px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;font-size:13px;font-weight:700;
+  background:#fafbfd;border:1px solid #eef1f6;color:#9aa1b1;position:relative}
+.cal .d.pad{background:none;border:none}
+.cal .d.ok{background:linear-gradient(140deg,#0e9e5a,#14b268);color:#fff;border-color:transparent;
+  font-weight:900;box-shadow:0 4px 10px rgba(14,158,90,.22)}
+.cal .d.frz{background:linear-gradient(140deg,#5b9bd8,#7fb5e6);color:#fff;border-color:transparent;font-weight:900}
+.cal .d.today{border:2px solid var(--gold);color:var(--navy)}
+.cal .d.ok.today,.cal .d.frz.today{border:2px solid var(--gold2)}
+.cal .d small{font-size:9px;opacity:.9;line-height:1}
+.legend{display:flex;gap:14px;justify-content:center;margin-top:11px;font-size:11.5px;color:var(--mut)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+
+/* ── 보상 ── */
+.rw{border:1px solid var(--line);border-radius:16px;padding:15px 16px;margin-bottom:11px;
+  display:flex;gap:13px;align-items:center;background:#fff}
+.rw.hit{border-color:var(--gold);background:linear-gradient(120deg,#fffaf0,#fff)}
+.rw.got{opacity:.62}
+.rw .rn{width:46px;height:46px;flex:none;border-radius:13px;background:#f2f5fa;color:var(--navy);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900;line-height:1.05}
+.rw.hit .rn{background:linear-gradient(140deg,var(--gold),#dcb877);color:#fff}
+.rw .rn b{font-size:19px;font-family:'Montserrat',sans-serif}
+.rw .rn span{font-size:9.5px;letter-spacing:.04em}
+.rw .rt{flex:1;min-width:0}
+.rw .rt b{display:block;font-size:14.5px;color:var(--navy);word-break:keep-all}
+.rw .rt span{font-size:12.5px;color:var(--mut)}
+.bar{height:6px;background:#eef1f6;border-radius:99px;margin-top:7px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.rw .rb{flex:none}
+.rw .rb button{border:none;background:var(--navy);color:#fff;border-radius:10px;padding:9px 13px;
+  font-size:12.5px;font-weight:900;cursor:pointer;font-family:inherit;white-space:nowrap}
+.rw .rb button.off{background:#eef1f6;color:#b0b6c4;cursor:default}
+.rw .rb .gotx{font-size:12px;font-weight:900;color:var(--green);white-space:nowrap}
+
+/* ── 지킴이 ── */
+.frzbox{background:#f4f8fd;border:1px solid #d8e6f5;border-radius:16px;padding:14px 16px;
+  display:flex;align-items:center;gap:12px}
+.frzbox .fi{font-size:24px}
+.frzbox .ft{flex:1}
+.frzbox .ft b{display:block;font-size:14px;color:var(--navy)}
+.frzbox .ft span{font-size:12.5px;color:#6b7688}
+.frzbox button{border:none;background:#5b9bd8;color:#fff;border-radius:10px;padding:9px 13px;
+  font-size:12.5px;font-weight:900;cursor:pointer;font-family:inherit;white-space:nowrap}
+.frzbox button.off{background:#dde5ee;color:#9aa8b8;cursor:default}
+
+/* ── 통계 ── */
+.stats{display:flex;gap:9px}
+.stats div{flex:1;background:#f6f8fc;border-radius:14px;padding:15px 8px;text-align:center}
+.stats b{display:block;font-size:25px;color:var(--navy);font-family:'Montserrat',sans-serif;font-weight:900}
+.stats span{font-size:11.5px;color:var(--mut);font-weight:700}
+
+/* ── CTA ── */
+.cta{margin:24px 18px 0;border-radius:20px;overflow:hidden;
+  background:linear-gradient(135deg,#1D2D4F,#33507f);color:#fff;padding:22px 20px;text-align:center}
+.cta h3{margin:0 0 6px;font-size:18px}
+.cta p{margin:0 0 15px;font-size:13.5px;color:#cdd8ea;word-break:keep-all}
+.cta a{display:block;background:linear-gradient(90deg,var(--gold),var(--gold2));color:#1D2D4F;
+  text-decoration:none;font-weight:900;padding:14px;border-radius:13px;font-size:15px}
+
+footer{padding:26px 18px 34px;text-align:center;color:var(--mut);font-size:11.5px;line-height:1.75}
+footer b{color:#6b7688}
+
+/* ── 모달 ── */
+.mask{position:fixed;inset:0;background:rgba(16,24,40,.55);display:none;align-items:center;
+  justify-content:center;padding:22px;z-index:80}
+.mask.on{display:flex}
+.sheet{background:#fff;border-radius:22px;max-width:400px;width:100%;overflow:hidden;
+  box-shadow:0 24px 60px rgba(0,0,0,.32);animation:pop .22s ease}
+@keyframes pop{from{transform:scale(.93);opacity:0}to{transform:scale(1);opacity:1}}
+.sheet .sh{background:linear-gradient(135deg,var(--gold),#dcb877);color:#fff;padding:22px;text-align:center}
+.sheet .sh .em{font-size:44px;line-height:1}
+.sheet .sh h3{margin:8px 0 0;font-size:20px}
+.sheet .sb{padding:20px}
+.sheet .sb p{margin:0 0 14px;font-size:14px;color:#5c6478;text-align:center;word-break:keep-all}
+.code{background:#f6f8fc;border:2px dashed #cdd8ea;border-radius:14px;padding:16px;text-align:center;
+  font-family:'Montserrat',monospace;font-size:26px;font-weight:900;color:var(--navy);letter-spacing:3px}
+.sheet .sf{padding:0 20px 20px;display:flex;gap:9px}
+.sheet .sf button{flex:1;border:none;border-radius:12px;padding:14px;font-size:14.5px;
+  font-weight:900;cursor:pointer;font-family:inherit}
+.bt-g{background:var(--navy);color:#fff}
+.bt-w{background:#f2f5fa;color:#5c6478}
+.toast{position:fixed;left:50%;bottom:32px;transform:translateX(-50%);background:#1D2D4F;color:#fff;
+  padding:14px 26px;border-radius:30px;font-size:15px;font-weight:800;z-index:99;opacity:0;
+  transition:opacity .3s;box-shadow:0 12px 34px rgba(0,0,0,.3);pointer-events:none;max-width:88vw;text-align:center}
+.toast.show{opacity:1}
+@media(max-width:360px){.streak .num{font-size:56px}}
+</style>
+</head>
+<body>
+<div class="app">
+
+<header>
+  <div class="hbar">
+    <div class="logo">SANBON <b>GLOBAL</b></div>
+    <a class="hhome" href="index.html">홈으로</a>
+  </div>
+  <div class="streak">
+    <div class="lab">연속 출석</div>
+    <div class="num" id="stNum">0<em>일</em></div>
+    <div class="sub" id="stSub">오늘 도장을 찍고 시작해 보세요</div>
+  </div>
+</header>
+
+<div class="today">
+  <button class="stampbtn" id="stampBtn" onclick="doStamp()">
+    <span class="ic" id="stampIc">✓</span>
+    <span class="tx"><b id="stampT">오늘 출석 도장 찍기</b><span id="stampS">하루 한 번 · 자정에 초기화됩니다</span></span>
+  </button>
+</div>
+
+<div class="sent">
+  <div class="sh"><span>오늘의 한 문장</span><i id="sentDate"></i></div>
+  <div class="sb">
+    <div class="q" id="sentQ"></div>
+    <div class="a" id="sentA"></div>
+    <div class="langs">
+      <button data-l="en" onclick="setLang('en')">English</button>
+      <button data-l="jp" onclick="setLang('jp')">日本語</button>
+      <button data-l="cn" onclick="setLang('cn')">中文</button>
+    </div>
+    <button class="speak" onclick="speak()">🔊 발음 들어보기</button>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>출석 달력</h2>
+  <p class="mut">초록은 출석, 파랑은 지킴이로 채운 날입니다.</p>
+  <div class="calhead">
+    <button onclick="mv(-1)">‹</button><b id="calTit"></b><button onclick="mv(1)">›</button>
+  </div>
+  <div class="cal" id="cal"></div>
+  <div class="legend">
+    <span><i style="background:#0e9e5a"></i>출석</span>
+    <span><i style="background:#5b9bd8"></i>지킴이</span>
+    <span><i style="background:#fff;border:2px solid #C6A15B"></i>오늘</span>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>연속 출석 보상</h2>
+  <p class="mut">끊기면 1일부터 다시 시작합니다.</p>
+  <div id="rwList"></div>
+</div>
+
+<div class="sec">
+  <div class="frzbox">
+    <span class="fi">🛡️</span>
+    <span class="ft"><b>출석 지킴이</b><span id="frzS">주 1회, 어제 하루를 메울 수 있어요</span></span>
+    <button id="frzB" onclick="useFreeze()">사용</button>
+  </div>
+</div>
+
+<div class="sec">
+  <h2>내 기록</h2>
+  <p class="mut">이 기기에 저장됩니다.</p>
+  <div class="stats">
+    <div><b id="s1">0</b><span>총 출석일</span></div>
+    <div><b id="s2">0</b><span>최고 연속</span></div>
+    <div><b id="s3">0</b><span>이번 달</span></div>
+  </div>
+</div>
+
+<div class="cta">
+  <h3>AI 산글 학습관</h3>
+  <p>7일만 채우면 40강좌 중 첫 강좌가 열립니다. 자리를 보는 눈부터 관계와 비교까지, 순서대로 쌓아 올립니다.</p>
+  <a href="app.html">학습관 들어가기 ›</a>
+</div>
+
+<footer>
+  <b>산본글로벌어학원</b> · 상담 031-466-6969<br>
+  데스크 평일 09:30~21:30 · 토 10:00~16:00<br>
+  <span style="font-size:11px;color:#b0b6c4">출석 기록은 이 기기에만 저장됩니다. 보상은 데스크에서 인증코드 확인 후 지급됩니다.</span>
+</footer>
+</div>
+
+<div class="mask" id="mask" onclick="if(event.target===this)closeM()">
+  <div class="sheet">
+    <div class="sh"><div class="em" id="mEm">🎉</div><h3 id="mT"></h3></div>
+    <div class="sb"><p id="mP"></p><div class="code" id="mC"></div></div>
+    <div class="sf"><button class="bt-w" onclick="closeM()">닫기</button><button class="bt-g" id="mB" onclick="closeM()">확인</button></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===== 저장소 ===== */
+var KEY='sga_checkin_v1';
+function load(){try{var r=localStorage.getItem(KEY);return r?JSON.parse(r):null;}catch(e){return null;}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(D));}catch(e){}}
+var D=load()||{stamps:{},claimed:{},frzWeek:'',best:0};
+if(!D.stamps)D.stamps={};if(!D.claimed)D.claimed={};if(!D.best)D.best=0;
+
+/* ===== 날짜 ===== */
+function ds(d){return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
+function today(){return ds(new Date());}
+function addD(s,n){var p=s.split('-');var d=new Date(+p[0],+p[1]-1,+p[2]);d.setDate(d.getDate()+n);return ds(d);}
+function weekKey(){var d=new Date();var t=new Date(d.getFullYear(),d.getMonth(),d.getDate());
+  t.setDate(t.getDate()-((t.getDay()+6)%7));return ds(t);}
+
+/* ===== 연속 계산 ===== */
+function streak(){
+  var c=0,k=today();
+  if(!D.stamps[k])k=addD(k,-1);
+  while(D.stamps[k]){c++;k=addD(k,-1);}
+  return c;
+}
+function totalDays(){var n=0;for(var k in D.stamps)n++;return n;}
+function monthCount(y,m){var n=0;for(var k in D.stamps){var p=k.split('-');
+  if(+p[0]===y&&+p[1]===m+1)n++;}return n;}
+
+/* ===== 보상 ===== */
+var RW=[
+ {k:'r7', n:7,  t:'AI 산글 학습관 강좌 1개 해금', s:'첫 강좌를 바로 열어 드립니다'},
+ {k:'r14',n:14, t:'수강 포인트 5,000P',           s:'다음 결제에 바로 쓸 수 있습니다'},
+ {k:'r30',n:30, t:'수강 포인트 10,000P',          s:'다음 결제에 바로 쓸 수 있습니다'}
+];
+function code(k){
+  var s=k+'|'+today()+'|'+streak(); var h=0;
+  for(var i=0;i<s.length;i++){h=((h<<5)-h+s.charCodeAt(i))|0;}
+  return 'SG-'+Math.abs(h).toString(36).toUpperCase().slice(0,6);
+}
+
+/* ===== 렌더 ===== */
+function render(){
+  var st=streak(), tk=today(), on=!!D.stamps[tk];
+  if(st>D.best){D.best=st;save();}
+
+  document.getElementById('stNum').innerHTML=st+'<em>일</em>';
+  var sub=document.getElementById('stSub');
+  if(!st) sub.innerHTML='오늘 도장을 찍고 시작해 보세요';
+  else{
+    var nx=null;for(var i=0;i<RW.length;i++){if(st<RW[i].n){nx=RW[i];break;}}
+    sub.innerHTML = nx ? ('<b>'+(nx.n-st)+'일</b> 더 채우면 '+nx.t)
+                       : '최고 기록 <b>'+D.best+'일</b> · 계속 이어가고 계세요';
+  }
+
+  var b=document.getElementById('stampBtn');
+  b.className='stampbtn'+(on?' done':'');
+  document.getElementById('stampIc').textContent=on?'🎯':'✓';
+  document.getElementById('stampT').textContent=on?'오늘 출석 완료':'오늘 출석 도장 찍기';
+  document.getElementById('stampS').textContent=on?'내일 또 만나요 · 자정에 새로 열립니다':'하루 한 번 · 자정에 초기화됩니다';
+
+  drawCal();
+
+  document.getElementById('rwList').innerHTML=RW.map(function(r){
+    var hit=st>=r.n, got=!!D.claimed[r.k];
+    var pct=Math.min(100,Math.round(st/r.n*100));
+    return '<div class="rw'+(got?' got':(hit?' hit':''))+'">'
+      +'<div class="rn"><b>'+r.n+'</b><span>DAYS</span></div>'
+      +'<div class="rt"><b>'+r.t+'</b><span>'+r.s+'</span>'
+      +(got?'':'<div class="bar"><i style="width:'+pct+'%"></i></div>')+'</div>'
+      +'<div class="rb">'+(got?'<span class="gotx">받음 ✓</span>'
+        :'<button class="'+(hit?'':'off')+'" onclick="'+(hit?"claim('"+r.k+"')":"toast('아직 "+(r.n-st)+"일 남았습니다')")+'">'
+        +(hit?'받기':(r.n-st)+'일')+'</button>')+'</div></div>';
+  }).join('');
+
+  var fb=document.getElementById('frzB'), fs=document.getElementById('frzS');
+  var used=(D.frzWeek===weekKey());
+  var y=addD(tk,-1), need=!D.stamps[y]&&st>0;
+  if(used){fb.className='off';fb.textContent='사용함';fs.textContent='이번 주는 이미 사용하셨어요 · 월요일에 다시 열립니다';}
+  else if(!need){fb.className='off';fb.textContent='대기';fs.textContent='어제 빠진 날이 있을 때 쓸 수 있어요 (주 1회)';}
+  else{fb.className='';fb.textContent='사용';fs.textContent='어제를 메워 연속 기록을 살립니다';}
+
+  document.getElementById('s1').textContent=totalDays();
+  document.getElementById('s2').textContent=D.best;
+  var n=new Date();document.getElementById('s3').textContent=monthCount(n.getFullYear(),n.getMonth());
+}
+
+/* ===== 달력 ===== */
+var cy,cm;{var n=new Date();cy=n.getFullYear();cm=n.getMonth();}
+function mv(d){cm+=d;if(cm<0){cm=11;cy--;}if(cm>11){cm=0;cy++;}drawCal();}
+function drawCal(){
+  document.getElementById('calTit').textContent=cy+'년 '+(cm+1)+'월';
+  var first=new Date(cy,cm,1).getDay(), last=new Date(cy,cm+1,0).getDate(), tk=today();
+  var h=['일','월','화','수','목','금','토'].map(function(w,i){
+    return '<div class="dow'+(i===0||i===6?' s':'')+'">'+w+'</div>';}).join('');
+  for(var i=0;i<first;i++)h+='<div class="d pad"></div>';
+  for(var d=1;d<=last;d++){
+    var k=cy+'-'+('0'+(cm+1)).slice(-2)+'-'+('0'+d).slice(-2);
+    var v=D.stamps[k], c='d';
+    if(v==='frz')c+=' frz'; else if(v)c+=' ok';
+    if(k===tk)c+=' today';
+    h+='<div class="'+c+'">'+d+(v==='frz'?'<small>🛡</small>':(v?'<small>✓</small>':''))+'</div>';
+  }
+  document.getElementById('cal').innerHTML=h;
+}
+
+/* ===== 동작 ===== */
+function doStamp(){
+  var tk=today();
+  if(D.stamps[tk]){toast('오늘은 이미 출석하셨어요');return;}
+  D.stamps[tk]='ok';save();
+  var st=streak();
+  render();
+  var hit=null;for(var i=0;i<RW.length;i++)if(RW[i].n===st)hit=RW[i];
+  if(hit) modal('🎁','연속 '+st+'일 달성','<b>'+hit.t+'</b><br>아래 코드를 데스크에 보여 주세요.',code(hit.k));
+  else toast('출석 완료 · 연속 '+st+'일 🔥');
+}
+function claim(k){
+  var r=null;for(var i=0;i<RW.length;i++)if(RW[i].k===k)r=RW[i];
+  if(!r)return;
+  if(streak()<r.n){toast('아직 조건을 채우지 못했습니다');return;}
+  D.claimed[k]=today();save();render();
+  modal('🎁',r.t,'데스크에 이 코드를 보여 주시면 바로 처리해 드립니다.<br>연속 '+streak()+'일 · '+today(),code(k));
+}
+function useFreeze(){
+  if(D.frzWeek===weekKey()){toast('이번 주는 이미 사용하셨어요');return;}
+  var y=addD(today(),-1);
+  if(D.stamps[y]){toast('어제는 이미 출석하셨어요');return;}
+  if(streak()===0){toast('연속 기록이 있어야 쓸 수 있어요');return;}
+  D.stamps[y]='frz';D.frzWeek=weekKey();save();render();
+  toast('지킴이 사용 · 연속 '+streak()+'일 유지 🛡️');
+}
+
+/* ===== 오늘의 한 문장 ===== */
+var SENT=[
+ {en:["Let's call it a day.","오늘은 여기까지 하죠."],jp:["お疲れさまでした。","수고하셨습니다."],cn:["辛苦了。","수고하셨습니다."]},
+ {en:["I'll get back to you on that.","그건 다시 알려드릴게요."],jp:["また ご連絡します。","다시 연락드리겠습니다."],cn:["我再跟你联系。","다시 연락드릴게요."]},
+ {en:["It's up to you.","당신이 정하기 나름이에요."],jp:["お任せします。","맡기겠습니다."],cn:["你决定就好。","네가 정하면 돼."]},
+ {en:["That makes sense.","그거 말 되네요."],jp:["なるほど。","그렇군요."],cn:["有道理。","일리 있네요."]},
+ {en:["I'm running a bit late.","조금 늦을 것 같아요."],jp:["少し 遅れます。","조금 늦겠습니다."],cn:["我会晚一点到。","조금 늦게 도착할게요."]},
+ {en:["Could you say that again?","다시 한 번 말씀해 주시겠어요?"],jp:["もう一度 お願いします。","다시 한 번 부탁드립니다."],cn:["能再说一遍吗？","다시 말해 줄 수 있나요?"]},
+ {en:["I'd rather stay in tonight.","오늘 밤은 그냥 집에 있을래요."],jp:["今夜は 家に いたいです。","오늘 밤은 집에 있고 싶어요."],cn:["今晚我想待在家里。","오늘 밤은 집에 있고 싶어요."]},
+ {en:["It slipped my mind.","깜빡했어요."],jp:["うっかり 忘れました。","깜빡 잊었어요."],cn:["我一时忘了。","잠깐 잊었어요."]},
+ {en:["Let me think it over.","좀 생각해 볼게요."],jp:["考えてみます。","생각해 보겠습니다."],cn:["我考虑一下。","좀 생각해 볼게요."]},
+ {en:["That works for me.","저는 그걸로 괜찮아요."],jp:["それで 大丈夫です。","그걸로 괜찮습니다."],cn:["我没问题。","저는 괜찮아요."]},
+ {en:["I'm on my way.","가는 중이에요."],jp:["今 向かっています。","지금 가고 있어요."],cn:["我在路上了。","가는 중이에요."]},
+ {en:["Keep me posted.","계속 알려주세요."],jp:["また 教えてください。","또 알려주세요."],cn:["有消息告诉我。","소식 있으면 알려줘요."]},
+ {en:["It's not a big deal.","별일 아니에요."],jp:["大したことでは ありません。","대단한 일 아닙니다."],cn:["没什么大不了的。","별거 아니에요."]},
+ {en:["I couldn't agree more.","전적으로 동감이에요."],jp:["まったく 同感です。","완전히 동감입니다."],cn:["我完全同意。","완전히 동의해요."]},
+ {en:["Let's play it by ear.","상황 봐서 정하죠."],jp:["様子を 見ましょう。","상황을 봅시다."],cn:["看情况再说吧。","상황 보고 정하죠."]},
+ {en:["I'm swamped today.","오늘 정신없이 바빠요."],jp:["今日は 忙しいです。","오늘은 바쁩니다."],cn:["我今天忙死了。","오늘 너무 바빠요."]},
+ {en:["Sorry to bother you.","방해해서 죄송해요."],jp:["お邪魔して すみません。","방해해서 죄송합니다."],cn:["不好意思打扰你。","방해해서 미안해요."]},
+ {en:["That's a relief.","다행이네요."],jp:["よかったです。","다행입니다."],cn:["那就放心了。","그럼 안심이네요."]},
+ {en:["I'll take care of it.","제가 처리할게요."],jp:["私が やります。","제가 하겠습니다."],cn:["我来处理。","제가 처리할게요."]},
+ {en:["Long time no see.","오랜만이에요."],jp:["お久しぶりです。","오랜만입니다."],cn:["好久不见。","오랜만이에요."]},
+ {en:["Just to be safe.","혹시 모르니까요."],jp:["念のため。","혹시 모르니까요."],cn:["以防万一。","만일을 대비해서요."]},
+ {en:["I'm looking forward to it.","기대하고 있어요."],jp:["楽しみに しています。","기대하고 있습니다."],cn:["我很期待。","기대하고 있어요."]},
+ {en:["Feel free to ask.","편하게 물어보세요."],jp:["遠慮なく 聞いてください。","사양 말고 물어보세요."],cn:["有问题尽管问。","궁금한 건 얼마든지 물어보세요."]},
+ {en:["It depends.","경우에 따라 달라요."],jp:["場合に よります。","경우에 따릅니다."],cn:["看情况。","상황에 따라 달라요."]},
+ {en:["I owe you one.","신세 졌네요."],jp:["恩に 着ます。","신세 지겠습니다."],cn:["我欠你一个人情。","신세 졌어요."]},
+ {en:["Let's keep in touch.","계속 연락해요."],jp:["連絡を 取り合いましょう。","연락하고 지냅시다."],cn:["保持联系。","연락하고 지내요."]},
+ {en:["I'm almost done.","거의 다 됐어요."],jp:["もうすぐ 終わります。","곧 끝납니다."],cn:["我快好了。","거의 다 됐어요."]},
+ {en:["Take your time.","천천히 하세요."],jp:["ごゆっくり どうぞ。","천천히 하세요."],cn:["你慢慢来。","천천히 하세요."]},
+ {en:["That's what I meant.","제 말이 그거예요."],jp:["そういう 意味です。","그런 의미입니다."],cn:["我就是这个意思。","제 말이 그 뜻이에요."]},
+ {en:["Better late than never.","늦더라도 안 하는 것보단 낫죠."],jp:["遅くても やらないより まし。","늦어도 안 하는 것보단 낫죠."],cn:["迟做总比不做好。","늦게라도 하는 게 낫죠."]},
+ {en:["I'll keep that in mind.","명심할게요."],jp:["覚えて おきます。","기억해 두겠습니다."],cn:["我会记住的。","기억해 둘게요."]}
+];
+var LANG='en';
+try{var sl=localStorage.getItem('sga_lang');if(sl)LANG=sl;}catch(e){}
+function dayIdx(){var n=new Date();var s=new Date(n.getFullYear(),0,0);
+  return Math.floor((n-s)/864e5)%SENT.length;}
+function setLang(l){LANG=l;try{localStorage.setItem('sga_lang',l);}catch(e){}drawSent();}
+function drawSent(){
+  var s=SENT[dayIdx()][LANG];
+  document.getElementById('sentQ').textContent=s[0];
+  document.getElementById('sentA').textContent=s[1];
+  var n=new Date();
+  document.getElementById('sentDate').textContent=(n.getMonth()+1)+'월 '+n.getDate()+'일';
+  var bs=document.querySelectorAll('.langs button');
+  for(var i=0;i<bs.length;i++)bs[i].className=(bs[i].getAttribute('data-l')===LANG?'on':'');
+}
+function speak(){
+  try{
+    if(!window.speechSynthesis){toast('이 브라우저는 발음 재생을 지원하지 않아요');return;}
+    var s=SENT[dayIdx()][LANG][0];
+    var u=new SpeechSynthesisUtterance(s);
+    u.lang=LANG==='en'?'en-US':(LANG==='jp'?'ja-JP':'zh-CN');
+    u.rate=.92; speechSynthesis.cancel(); speechSynthesis.speak(u);
+  }catch(e){toast('발음 재생을 사용할 수 없습니다');}
+}
+
+/* ===== UI ===== */
+var _tt;
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');
+  clearTimeout(_tt);_tt=setTimeout(function(){t.classList.remove('show');},2100);}
+function modal(em,ti,p,c){
+  document.getElementById('mEm').textContent=em;
+  document.getElementById('mT').textContent=ti;
+  document.getElementById('mP').innerHTML=p;
+  document.getElementById('mC').textContent=c||'';
+  document.getElementById('mC').style.display=c?'block':'none';
+  document.getElementById('mask').classList.add('on');
+}
+function closeM(){document.getElementById('mask').classList.remove('on');}
+
+drawSent();render();
+</script>
+</body>
+</html>

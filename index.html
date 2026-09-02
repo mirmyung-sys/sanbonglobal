@@ -524,6 +524,34 @@ section{scroll-margin-top:130px}
 .hs-panel .hs-sub{text-shadow:none;opacity:.92}
 .hs-panel .hs-btn{box-shadow:0 10px 26px rgba(0,0,0,.18)}
 @media(max-width:640px){.hs-panel{padding:26px 26px;max-width:none}}
+/* 2026-09-01 대표님 — 무한수강권처럼 내용이 긴 슬라이드가 위아래로 잘리던 것: 모바일에서 전체를 압축해 판 안에 다 들어가게 */
+@media(max-width:640px){.hslide{align-items:center;padding-bottom:64px}
+ .hs-panel{min-height:0;padding:20px 18px}
+ .hs-panel .hs-title{font-size:26px;line-height:1.22}
+ .hs-panel .hs-sub{font-size:13.5px;margin-top:10px;line-height:1.55}
+ .hs-panel .hs-eyebrow{font-size:12.5px;margin-bottom:8px}
+ .hs-panel .hs-btn{margin-top:15px;padding:12px 24px;font-size:14px}
+ .hs-faces img{width:34px;height:34px}.hs-faces{margin:10px 0 0}}
+/* 슬라이드마다 독립된 얼굴 — 글자체·눈썹 스타일 (2026-09-01 대표님) */
+.hsty-impact .hs-title{font-family:'Black Han Sans','Noto Sans KR',sans-serif;font-weight:400;letter-spacing:.012em}
+.hsty-impact .hs-eyebrow{display:inline-block;background:rgba(255,255,255,.17);padding:5px 13px;border-radius:99px;letter-spacing:.05em}
+.hsty-soft .hs-title{font-weight:800;letter-spacing:-.015em}
+.hsty-line .hs-eyebrow{display:inline-block;border-bottom:2.5px solid currentColor;padding-bottom:4px;letter-spacing:.13em}
+.hsty-dark .hs-eyebrow{background:rgba(0,0,0,.14)}
+.hsty-dark .hs-fill{opacity:1!important} /* 금색 판은 반투명이면 탁해집니다 */
+/* 전체 시간표 — 과목별 색 카드 그리드 (2026-09-01) */
+.ttg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.ttg-c{border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+.ttg-h{color:#fff;font-weight:900;font-size:16px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:8px;cursor:pointer}
+.ttg-h span{font-size:12px;font-weight:700;opacity:.85;white-space:nowrap}
+.ttg-r{padding:11px 16px;border-top:1px solid var(--line2)}
+.ttg-r:first-of-type{border-top:0}
+.ttg-r .ttg-tp{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ttg-r .ttg-tp b{font-size:15px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.ttg-r .d{flex-shrink:0;background:var(--surf);border:1px solid var(--line);border-radius:99px;padding:2px 10px;font-size:12px;font-weight:800;color:var(--ink2);white-space:nowrap}
+.ttg-r .ttg-bt{display:flex;justify-content:space-between;gap:8px;margin-top:4px}
+.ttg-r .t{font-size:13px;color:var(--ink3)}
+.ttg-r .tc{font-size:12.5px;color:var(--muted)}
 .heroslides{position:absolute;inset:0;z-index:2}
 .hslide{position:absolute;inset:0;opacity:0;visibility:hidden;z-index:1;transition:opacity .55s ease,visibility 0s linear .55s;display:flex;align-items:flex-end;padding-bottom:74px}
 .hslide.on{opacity:1;visibility:visible;z-index:2;transition:opacity .55s ease,visibility 0s linear 0s}
@@ -2118,11 +2146,12 @@ li:first-child > .pgh{margin-top:2px}
 /* 홈피 전용 CTA */.sgc{margin:34px 0 10px;padding:32px 24px;border-radius:20px;background:linear-gradient(135deg,#1D2D4F,#2c4472);color:#fff;text-align:center}.sgc-logo img{width:74px;height:74px;border-radius:50%;background:#fff;padding:6px;animation:sgcb 1.6s ease-in-out infinite}@keyframes sgcb{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,217,77,.75)}50%{transform:scale(1.06);box-shadow:0 0 0 16px rgba(255,217,77,0)}}@media(prefers-reduced-motion:reduce){.sgc-logo img{animation:none}}.sgc-t{font-size:25px;font-weight:900;margin:14px 0 8px;letter-spacing:-.02em}.sgc-s{font-size:15px;line-height:1.7;color:#cdd8ec;max-width:34em;margin:0 auto 22px}.sgc-3{display:flex;flex-direction:column;gap:11px;text-align:left;max-width:520px;margin:0 auto 24px}.sgc-3>div{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.09);border-radius:12px;padding:14px 15px}.sgc-3 b{flex:0 0 26px;height:26px;border-radius:50%;background:#ffd94d;color:#1a1205;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900}.sgc-3 span{font-size:14px;line-height:1.62;color:#e7edf8}.sgc-3 em{display:block;font-style:normal;font-weight:900;color:#ffd94d;font-size:15px;margin-bottom:3px}.sgc-btn{display:block;width:100%;max-width:460px;margin:0 auto;padding:20px;border:0;border-radius:14px;cursor:pointer;background:#c81f2b;color:#111;font-size:22px;font-weight:900;box-shadow:0 12px 28px -10px rgba(239,43,34,.8)}.sgc-n{margin-top:16px;font-size:13px;color:#a9b6ce}.pgband{display:flex;flex-direction:column;gap:0;margin:26px 0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}.pgband-im{height:210px;overflow:hidden}.pgband-im img{width:100%;height:100%;object-fit:cover;display:block}.pgband-in{padding:22px}.pgband-in h3{font-size:20px;font-weight:900;margin:0 0 12px;color:#1a1f2b}@media(max-width:520px){.sgc{padding:26px 18px}.sgc-t{font-size:22px}.sgc-btn{font-size:20px;padding:17px}.pgband-im{height:170px}}
 .hs-faces{display:flex;gap:9px;justify-content:center;margin:2px 0 14px;flex-wrap:wrap}.hs-faces span{display:flex;flex-direction:column;align-items:center;gap:4px}.hs-faces img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.85);box-shadow:0 3px 10px rgba(0,0,0,.3)}.hs-faces i{font-style:normal;font-size:11px;font-weight:800;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5)}@media(max-width:520px){.hs-faces img{width:42px;height:42px}.hs-faces i{font-size:11px}.hs-faces{gap:6px}}
 /* 히어로 광고판 — 이미지 우선, 글씨 크기 통일 */.hs-eyebrow{font-size:13px!important;font-weight:900;letter-spacing:.1em;margin-bottom:8px!important;line-height:1.4}.hs-title{font-size:clamp(25px,5vw,38px)!important;font-weight:900;line-height:1.3!important;letter-spacing:-.02em;margin-bottom:10px!important}.hs-sub{font-size:clamp(15px,2.4vw,17px)!important;line-height:1.75!important;opacity:.96;max-width:40em;margin:0 auto 14px!important;word-break:keep-all}.hs-btn{font-size:15px!important;padding:11px 22px!important;font-weight:900;border-radius:99px}@media(max-width:860px){.hslide{padding-bottom:64px}.hs-title{font-size:25px!important}.hs-sub{font-size:14.5px!important}}
-/* 광고판 9장 크기 통일 — 강사 사진이 붙은 장도 같은 높이로 */
-.hs-panel{height:344px!important;min-height:0!important;padding:24px 34px!important;overflow:hidden}
+/* 광고판 크기 — 기본 높이는 맞추되, 내용이 긴 장(무한수강권 등)은 판이 늘어나게.
+   2026-09-01 대표님: 고정 height+overflow:hidden 때문에 버튼이 잘려 보였음. 다시 고정하지 마세요. */
+.hs-panel{height:auto!important;min-height:344px!important;padding:24px 34px!important}
 .hs-panel .hs-inner{height:100%;justify-content:center}
 .hs-faces img{width:44px!important;height:44px!important}
-@media(max-width:860px){.hs-panel{height:308px!important;padding:18px 16px!important}.hs-faces img{width:36px!important;height:36px!important}}
+@media(max-width:860px){.hs-panel{min-height:0!important;padding:18px 16px!important}.hs-faces img{width:36px!important;height:36px!important}}
 /* 헤더 로고 */.logo{display:flex;align-items:center;gap:13px;text-decoration:none}.lg-em{height:82px;width:auto;display:block}.lg-wm{display:flex;flex-direction:column;line-height:1;gap:4px}.lg-wm b{font-size:34px;font-weight:900;color:#c81f2b;letter-spacing:.02em;line-height:1}.lg-wm em{font-style:normal;font-size:16px;font-weight:900;color:#c81f2b;letter-spacing:-.02em}.lg-wm i{font-style:normal;font-size:11px;font-weight:700;color:#8a90a0;letter-spacing:.13em}@media(max-width:860px){.htop{height:84px}.lg-em{height:58px}.lg-wm b{font-size:24px}.lg-wm em{font-size:13px}.lg-wm i{display:none}}@media(max-width:380px){.lg-em{height:50px}.lg-wm b{font-size:22px}.lg-wm em{font-size:11px}}
 .oh-bn{position:relative;width:100vw;left:50%;transform:translateX(-50%);margin-top:-76px;height:56vh;min-height:340px;overflow:hidden;background:#0d1017}.oh-bn img{width:100%;height:100%;object-fit:cover;display:block;opacity:.42}.oh-bn-in{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 22px 30px;max-width:760px;margin:0 auto}.oh-bn .oh-eye{color:#ffb3ad;margin-bottom:10px}.oh-bn .oh-t{color:#fff;font-size:clamp(21px,5.6vw,36px);line-height:1.36;text-shadow:0 2px 18px rgba(0,0,0,.55);word-break:keep-all;margin:0}.oh-bn .oh-t em{font-style:normal;color:#ffd84d}.oh-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}.oh-kpi>div{background:#fff5f4;border:1px solid #f2c4c0;border-radius:12px;padding:14px 10px;text-align:center}.oh-kpi b{display:block;font-size:26px;font-weight:900;color:#c81f2b;line-height:1.1}.oh-kpi span{display:block;margin-top:6px;font-size:12px;line-height:1.5;color:#5c6472}
 /* 1대1 허브 */.oh-hero{padding:26px 0 6px}.oh-eye{font-size:13px;font-weight:900;letter-spacing:.1em;color:#c81f2b;margin-bottom:8px}.oh-t{font-size:26px;line-height:1.38;font-weight:900;margin:0 0 10px;color:#1a1f2b;letter-spacing:-.02em}.oh-d{font-size:15px;line-height:1.75;color:#3f4757;margin:0}.oh-pick{margin:22px 0 10px;font-size:15px;font-weight:900;color:#1a1f2b}.oh-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}.oh-body{padding-top:18px}.oh-card{background:#f6f7fa;border:1px solid #e3e6ee;border-radius:14px;padding:20px;margin-bottom:22px}.oh-card.hi{background:#fff5f4;border-color:#f2c4c0}.oh-card p{font-size:15px;line-height:1.78;color:#3f4757;margin:0 0 10px}.oh-card p:last-child{margin-bottom:0}.oh-tag{display:inline-block;background:#1D2D4F;color:#fff;font-size:13px;font-weight:900;padding:5px 12px;border-radius:99px;margin-bottom:12px}.oh-tag.red{background:#c81f2b}.oh-bt{font-size:22px;line-height:1.42;font-weight:900;margin:0 0 12px;color:#1a1f2b}.oh-sec{margin:0 0 26px}.oh-h{font-size:18px;font-weight:900;margin:0 0 12px;color:#1a1f2b;padding-left:11px;border-left:4px solid #c81f2b}.oh-p{font-size:15px;line-height:1.8;color:#3f4757;margin:0}.oh-ul,.oh-ck{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}.oh-ul li{font-size:15px;line-height:1.7;color:#3f4757;padding-left:17px;position:relative}.oh-ul li:before{content:'';position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:#c81f2b}.oh-ck li{font-size:15px;line-height:1.7;color:#3f4757;padding-left:26px;position:relative}.oh-ck li:before{content:'\2705';position:absolute;left:0;top:0;font-size:14px}.oh-cmp{width:100%;border-collapse:collapse;min-width:420px}.oh-cmp th,.oh-cmp td{border:1px solid #e3e6ee;padding:11px 12px;font-size:14px;text-align:left}.oh-cmp th{background:#1D2D4F;color:#fff;font-weight:800;font-size:13px}.oh-cmp td.b{background:#f6f7fa;font-weight:800;width:74px;white-space:nowrap}.oh-cmp td.hi{background:#fff8e8;font-weight:800;color:#1a1f2b}.tblwrap{overflow-x:auto}.ex-tt td.hr{color:#8a90a0;font-size:13px;white-space:nowrap}.pv-grid{display:flex;flex-direction:column;gap:12px}.pv-c{border:1px solid #e3e6ee;border-radius:12px;padding:16px;background:#fff}.pv-h{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:900;color:#1a1f2b}.pv-d{font-size:14px;color:#8a90a0;margin:4px 0 10px}.pv-r{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:1px dashed #e3e6ee;font-size:15px;color:#3f4757}.pv-p b{color:#c81f2b;font-size:16px}.pv-p s{color:#b6bcc9;font-size:13px;margin-right:5px}.one-cta{display:block;width:100%;margin:26px auto 14px;padding:22px 20px;border:0;border-radius:14px;cursor:pointer;background:#c81f2b;color:#fff;font-size:22px;font-weight:900;letter-spacing:-.02em;text-align:center;box-shadow:0 12px 28px -10px rgba(239,43,34,.7)}
@@ -2902,6 +2931,7 @@ html,body{overflow-x:hidden;max-width:100%}
     <a href="#" onclick="agOpen();return false;">회원가입</a><span class="sep">|</span>
     <a href="#" onclick="openPage('로그인');return false;">로그인</a><span class="sep">|</span>
     <a href="#" onclick="openPage('통합회원안내');return false;">사이트맵</a><span class="sep">|</span>
+    <a href="checkin.html" style="color:#C6A15B;font-weight:800">🎯 출석체크</a><span class="sep">|</span>
     <a href="app.html" target="_blank" rel="noopener" style="color:#C6A15B;font-weight:800">📱 AI앱</a>
   </div>
   </div>
@@ -2926,10 +2956,12 @@ html,body{overflow-x:hidden;max-width:100%}
         <a href="#" onclick="openCourse('JLPT');return false;">JLPT</a>
         <a href="#" onclick="openPage('유학상담');return false;">EJU</a>
         <a href="#" onclick="openExam('HSK');return false;">HSK</a>
+        <a href="#" onclick="openExam('지텔프');return false;">지텔프</a>
         <a href="#" onclick="openCourse('일본어');return false;">일본어</a>
       </div>
     </div>
     <div class="ni"><a href="app.html" target="_blank" rel="noopener" style="color:#C6A15B;font-weight:900">AI 학습앱<b style="display:inline-block;margin-left:5px;background:#C81F2B;color:#fff;font-size:11px;font-weight:900;padding:1px 5px;border-radius:999px;vertical-align:2px">NEW</b></a></div>
+    <div class="ni"><a href="checkin.html" style="color:#0e9e5a;font-weight:900">매일 출석체크<b style="display:inline-block;margin-left:5px;background:#0e9e5a;color:#fff;font-size:11px;font-weight:900;padding:1px 5px;border-radius:999px;vertical-align:2px">EVENT</b></a></div>
     <div class="ni"><a href="#" onclick="openPage('수강후기');return false;">수강후기</a></div>
     <div class="ni"><a href="#" onclick="openPage('강사소개');return false;">강사님 소개</a></div>
     <div class="ni"><a href="#" onclick="openPage('이벤트혜택');return false;">이벤트/혜택<b class="car">▾</b></a>
@@ -3148,7 +3180,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-01 (v43)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-02 (v46)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -3221,12 +3253,12 @@ html,body{overflow-x:hidden;max-width:100%}
 <script>
 const COURSES={
  '토익':[
-  {n:'송윤정 (스파르타반)',img:'eng_13',rows:[['초급','월·화·수·목·금','10:00~12:00'],['중급','월·화·수·목·금','12:10~14:10'],['고급반','토요일','10:00~13:00']]},
+  {n:'송윤정 (스파르타반)',img:'eng_13',rows:[['중급','월·화·수·목·금','10:00~12:00'],['초급','월·화·수·목·금','12:10~14:10'],['실전반 (ETS 1000제)','토요일','10:00~13:00']]},
   {n:'엘리 킴',img:'elly',rows:[['초급반','월·수','19:30~21:30'],['중급반','화·목','19:30~21:30']]},
-  {n:'최자운 (데보라)',img:'eng_6',rows:[['실전반','토요일','10:00~13:00']]}
+  {n:'Deborah (원어민)',img:'_none',rows:[['토익 왕기초','토요일','10:00~13:00']]}
  ],
  '토스':[
-  {n:'최자운 (Deborah)',img:'eng_6',rows:[['정규반','월·수','20:00~21:30'],['실전반','토요일','10:00~13:00']]}
+  {n:'최자운',img:'eng_6',rows:[['정규반','월·수','20:00~21:30'],['실전반','토요일','10:00~13:00']]}
  ],
  '오픽':[
   {n:'김현정',img:'eng_15',rows:[['오픽 정규','토요일','10:00~13:00']]}
@@ -3236,7 +3268,10 @@ const COURSES={
  ],
  '영어회화':[
   {n:'제롤린 (원어민)',img:'eng_11',rows:[['STEP 3','화·목','10:00~11:30'],['STEP 3','화·목','20:00~21:30'],['STEP 2','월·수','11:40~13:10'],['STEP 4 프리토킹','월·수','20:00~21:30']]},
-  {n:'케이티',img:'eng_9',rows:[['STEP 1','월·수','10:00~11:30'],['BASIC','화·목','10:00~11:30'],['왕기초','화·목','11:40~12:40']]}
+  {n:'케이티',img:'eng_9',rows:[['STEP 1','월·수','10:00~11:30'],['BASIC','화·목','10:00~11:30'],['왕기초','화·목','11:40~12:40']]},
+  {n:'권미화 (May)',img:'eng_10',rows:[['STEP 1','화·목','18:20~19:50'],['STEP 1','화·목','20:00~21:30']]},
+  {n:'KELLY',img:'kelly',rows:[['BASIC','화·목','18:20~19:50'],['BASIC','화·목','20:00~21:30']]},
+  {n:'김현정',img:'eng_15',rows:[['새벽 STEP 2','화·수·목','06:30~07:30']]}
  ],
  '일본어':[
   {n:'김민정',img:'jpn_2',rows:[['입문','월·수','20:00~21:30']]},
@@ -3246,7 +3281,8 @@ const COURSES={
  ],
  '중국어':[
   {n:'오금한',img:'chn_5',rows:[['입문','화·목','18:20~19:50'],['중급','월·수','20:00~21:30'],['중급','화·목','20:00~21:30']]},
-  {n:'하홍금 (원어민)',img:'chn_1',rows:[['입문','월·수','20:30~22:00'],['초급','월·수','18:50~20:20'],['고급','토요일','10:00~13:00']]}
+  {n:'하홍금 (원어민)',img:'chn_1',rows:[['입문','월·수','20:30~22:00'],['초급','월·수','18:50~20:20'],['고급','토요일','10:00~13:00']]},
+  {n:'현지인 (원어민)',img:'chn_7',rows:[['중고급','토요일','10:00~13:00']]}
  ]
 };
 const SPECIAL={
@@ -3260,7 +3296,7 @@ function renderCourse(c){
   const list=COURSES[c]||[];
   document.getElementById('cpanel').innerHTML=list.map(t=>`
     <div class="icard">
-      <div class="iph"><img src="img/teachers/${t.img}.png" alt="${t.n}"></div>
+      <div class="iph"><img src="img/teachers/${t.img}.png" alt="${t.n}" onerror="this.onerror=null;this.src=TPH"></div>
       <div class="iname"><b>${t.n}</b></div>
       <div class="ihover">
         <div class="ihn">${t.n}</div>
@@ -3315,23 +3351,23 @@ function renderProg(k){
  renderProg('점수보장반');
 })();
 const SLIDES=[
- {e:'원장 인사말 · 산본글로벌어학원', t:'산본<span style="color:#8fa3c9;font-weight:700">이지어학원</span>이<br>산본<span style="color:#ffd94d">글로벌</span>어학원이 됩니다', s:'강사진 그대로 · 수강료 그대로 · 교실도 수강권도 전부 그대로 — 바뀌는 건 이름과 혜택뿐입니다', act:"openPage('오픈이벤트')", pbg:'linear-gradient(135deg,#1D2D4F,#33507f)', tag:'무엇이 바뀌는지 보기'},
- {e:'DIRECTOR · 원장 직접 상담', t:'토익·유학·시험대비,<br>원장이 직접 봐 드립니다', s:'Georgetown TESOL · 토익과 토플을 가르치던 강사 출신 원장 — 무료 상담과 청강 1회 무료로 등록 전에 먼저 진단해 드립니다', act:"openPage('원장상담')", pbg:'linear-gradient(135deg,#1D2D4F,#33507f)', tag:'원장 직접 상담 보기'},
- {e:'2026 · 10월 신규 모집', t:'10월 신규 개강,<br>지금이 시작하기 제일 좋습니다', s:'새벽반 · 주말반 영어부터 토익 · 토스 · 오픽 · 토플까지 — 새로 여는 반만 모았습니다', act:"openPage('신규모집')", pbg:'linear-gradient(135deg,#1D2D4F,#2f6fb0)', tc:'#ffffff', ac:'#ffd98a', bbg:'#ffd94d', btc:'#1a1205', bg:''},
- {e:'무한 현장강의 이벤트', t:'같은 반을<br>한 번 더 듣습니다', s:'산글 무한수강권 — 앞 단계를 통째로 다시 듣고, AI 산글 40강이 함께 열립니다. 정규 넉 달 · 스파르타 두 달, 740,000원', act:"openExam('토익')", pbg:'linear-gradient(135deg,#c81f2b,#e0453e)', tc:'#ffffff', ac:'#ffe0dd', bbg:'#ffffff', btc:'#c81f2b', bg:'', faces:['eng_13','elly','eng_6','eng_15','eng_14'], fnames:['송윤정','엘리 킴','최자운','김현정','유미용']},
- {e:'산본글로벌어학원', t:'AI 학습관이<br>열렸습니다', s:'영어·일본어·중국어 회화부터 토익·토스·오픽·토플·JLPT·HSK까지 — 한 과 3분, 듣기와 채점은 AI가 합니다. 학원 수강생은 무료. 산글 현강 수강생은 무료', act:"openPage('AI산글')", pbg:'linear-gradient(135deg,rgba(10,13,20,.86),rgba(14,138,90,.86))', tc:'#ffffff', ac:'#3ED598', bbg:'#3ED598', btc:'#0A0D14', bg:'img/ai_cafe1.jpg'},
- {e:'GIFT CHARGE · SGA 어학상품권', t:'넣은 금액에<br>절반을 더', s:'50만원 넣으면 75만원, 100만원 넣으면 150만원. 손자에게, 자녀에게. 모바일과 실물 각인 카드를 둘 다 드립니다', act:"openPage('상품권충전')", pbg:'linear-gradient(135deg,#0b0d12,#3a1013)', tc:'#ffffff', ac:'#ffd94d', bbg:'#c81f2b', btc:'#ffffff', bg:''},
- {e:'OPEN EVENT · 10~11월', t:'새 이름 기념,<br>두 달 전 과목 10%', s:'10월 1일부터 11월 30일까지 — 신규 등록 10%, 재등록은 얼리버드 5%가 더 붙습니다', act:"openPage('오픈이벤트')", pbg:'linear-gradient(135deg,#1D2D4F,#33507f)', tc:'#ffffff', ac:'#ffd98a', bbg:'#ffd94d', btc:'#1a1205', bg:''},
- {e:'무료 레벨 진단', t:'내 실력, 무료로<br>정확하게 진단', s:'문법·어휘·듣기 자가진단 + 원어민 회화 레벨테스트 · 결과 리포트를 바로 드립니다', act:"openPage('레벨테스트')", pbg:'linear-gradient(135deg,#0e8f88,#12a89f)', tc:'#ffffff', ac:'#ccf5f1', bbg:'#ffffff', btc:'#0e8f88', bg:''},
- {e:'1:1 GLOBAL', t:'나만을 위한<br>완전 맞춤 수업', s:'목표와 일정에 맞는 1대1 수업을 골라 드립니다', act:"openPage('맞춤수업')", pbg:'linear-gradient(135deg,#7658c8,#9a7ee0)', tc:'#ffffff', ac:'#efe6ff', bbg:'#ffffff', btc:'#5a3f92', bg:''},
- {e:'FREE · 무료 상담 + 무료 청강', t:'듣고 나서<br>판단하세요', s:'산본글로벌어학원은 회원님께 무료 청강 혜택을 드립니다 — 유학 · 토익 · 영어 · 시험대비 전 과목 무료 상담과 실제 수업 청강 1회', act:"openPage('무료청강')", pbg:'linear-gradient(135deg,#0E8A5A,#14B06E)', tc:'#ffffff', ac:'#D6F5E7', bbg:'#ffffff', btc:'#0E8A5A', bg:''},
- {e:'유학 · 외고 · 과외', t:'늦었다고 생각할 때가<br>가장 빠릅니다', s:'유학부터 외고, 그리고 과외까지 — 지금 시작해도 늦지 않습니다. 무료 상담으로 먼저 길만 잡아보세요', act:"openPage('무료청강')", pbg:'linear-gradient(135deg,#2aa06f,#1f8a63)', tc:'#ffffff', ac:'#e2fbd3', bbg:'#ffffff', btc:'#1f7a56', bg:''},
- {e:'동글 · 동네가 글로벌해진다', t:'동글이<br>동네 영어 모임', s:'동네와 글로벌을 합쳐 동글입니다. 산본에서 영어로 떠드는 가장 가벼운 자리 — 1시간 1,000원, 커피는 무료', act:"openPage('동글이')", pbg:'linear-gradient(135deg,#3F5D4A,#5C8069)', tc:'#ffffff', ac:'#e3ebe3', bbg:'#ffffff', btc:'#3F5D4A', bg:''}
+ {e:'원장 인사말 · 산본글로벌어학원', t:'산본<span style="color:#8fa3c9;font-weight:700">이지어학원</span>이<br>산본<span style="color:#ffd94d">글로벌</span>어학원이 됩니다', s:'강사진 그대로 · 수강료 그대로 · 교실도 수강권도 전부 그대로 — 바뀌는 건 이름과 혜택뿐입니다', act:"openPage('오픈이벤트')", pbg:'linear-gradient(135deg,#1D2D4F,#33507f)', tc:'#f5f1e4', tc2:'#cdd8ec', ac:'#ffd94d', bbg:'#ffd94d', btc:'#1a1205', bg:'', cls:'hsty-line'},
+ {e:'DIRECTOR · 원장 직접 상담', t:'토익·유학·시험대비,<br>원장이 직접 봐 드립니다', s:'Georgetown TESOL · 토익과 토플을 가르치던 강사 출신 원장 — 무료 상담과 청강 1회 무료로 등록 전에 먼저 진단해 드립니다', act:"openPage('원장상담')", pbg:'linear-gradient(135deg,#0c1b33,#27508a)', tc:'#f3e7cd', tc2:'#b9c6dd', ac:'#C6A15B', bbg:'#C6A15B', btc:'#14213d', bg:'', cls:'hsty-soft'},
+ {e:'2026 · 10월 신규 모집', t:'10월 신규 개강,<br>지금이 시작하기 제일 좋습니다', s:'새벽반 · 주말반 영어부터 토익 · 토스 · 오픽 · 토플까지 — 새로 여는 반만 모았습니다', act:"openPage('신규모집')", pbg:'linear-gradient(135deg,#155e9e,#2f8fd8)', tc:'#ffe98a', tc2:'#ddefff', ac:'#ffd98a', bbg:'#ffd94d', btc:'#1a1205', bg:''},
+ {e:'무한 현장강의 이벤트', t:'같은 반을<br>한 번 더 듣습니다', s:'산글 무한수강권 — 앞 단계를 통째로 다시 듣고, AI 산글 40강이 함께 열립니다. 정규 넉 달 · 스파르타 두 달, 740,000원', act:"openExam('토익')", pbg:'linear-gradient(135deg,#c81f2b,#e0453e)', tc:'#ffd94d', tc2:'#ffe3e0', ac:'#ffe0dd', bbg:'#ffffff', btc:'#c81f2b', bg:'', cls:'hsty-impact', faces:['eng_13','elly','eng_6','eng_15','eng_14'], fnames:['송윤정','엘리 킴','최자운','김현정','유미용']},
+ {e:'산본글로벌어학원', t:'AI 학습관이<br>열렸습니다', s:'영어·일본어·중국어 회화부터 토익·토스·오픽·토플·JLPT·HSK까지 — 한 과 3분, 듣기와 채점은 AI가 합니다. 학원 수강생은 무료. 산글 현강 수강생은 무료', act:"openPage('AI산글')", pbg:'linear-gradient(135deg,rgba(10,13,20,.86),rgba(14,138,90,.86))', tc:'#8df5c3', tc2:'#d6f5e7', ac:'#3ED598', bbg:'#3ED598', btc:'#0A0D14', bg:'img/ai_cafe1.jpg', cls:'hsty-impact'},
+ {e:'GIFT CHARGE · SGA 어학상품권', t:'넣은 금액에<br>절반을 더', s:'50만원 넣으면 75만원, 100만원 넣으면 150만원. 손자에게, 자녀에게. 모바일과 실물 각인 카드를 둘 다 드립니다', act:"openPage('상품권충전')", pbg:'linear-gradient(135deg,#0b0d12,#3a1013)', tc:'#ffd94d', tc2:'#e6d9d9', ac:'#ffd94d', bbg:'#c81f2b', btc:'#ffffff', bg:'', cls:'hsty-line'},
+ {e:'OPEN EVENT · 10~11월', t:'새 이름 기념,<br>두 달 전 과목 10%', s:'10월 1일부터 11월 30일까지 — 신규 등록 10%, 재등록은 얼리버드 5%가 더 붙습니다', act:"openPage('오픈이벤트')", pbg:'linear-gradient(135deg,#e8b02c,#d08e00)', tc:'#231603', ac:'#7a4d00', bbg:'#1a1205', btc:'#ffd94d', bg:'', cls:'hsty-impact hsty-dark'},
+ {e:'무료 레벨 진단', t:'내 실력, 무료로<br>정확하게 진단', s:'문법·어휘·듣기 자가진단 + 원어민 회화 레벨테스트 · 결과 리포트를 바로 드립니다', act:"openPage('레벨테스트')", pbg:'linear-gradient(135deg,#0e8f88,#12a89f)', tc:'#fff3b0', tc2:'#ccf5f1', ac:'#ccf5f1', bbg:'#ffffff', btc:'#0e8f88', bg:''},
+ {e:'1:1 GLOBAL', t:'나만을 위한<br>완전 맞춤 수업', s:'목표와 일정에 맞는 1대1 수업을 골라 드립니다', act:"openPage('맞춤수업')", pbg:'linear-gradient(135deg,#7658c8,#9a7ee0)', tc:'#f1eaff', tc2:'#dccffa', ac:'#efe6ff', bbg:'#ffffff', btc:'#5a3f92', bg:'', cls:'hsty-soft'},
+ {e:'FREE · 무료 상담 + 무료 청강', t:'듣고 나서<br>판단하세요', s:'산본글로벌어학원은 회원님께 무료 청강 혜택을 드립니다 — 유학 · 토익 · 영어 · 시험대비 전 과목 무료 상담과 실제 수업 청강 1회', act:"openPage('무료청강')", pbg:'linear-gradient(135deg,#0E8A5A,#14B06E)', tc:'#eaffd6', tc2:'#d6f5e7', ac:'#D6F5E7', bbg:'#ffffff', btc:'#0E8A5A', bg:''},
+ {e:'유학 · 외고 · 과외', t:'늦었다고 생각할 때가<br>가장 빠릅니다', s:'유학부터 외고, 그리고 과외까지 — 지금 시작해도 늦지 않습니다. 무료 상담으로 먼저 길만 잡아보세요', act:"openPage('무료청강')", pbg:'linear-gradient(135deg,#434b7c,#5d68a8)', tc:'#ffd9c4', tc2:'#dfe3ff', ac:'#dfe3ff', bbg:'#ffffff', btc:'#3c4470', bg:'', cls:'hsty-soft'},
+ {e:'동글 · 동네가 글로벌해진다', t:'동글이<br>동네 영어 모임', s:'동네와 글로벌을 합쳐 동글입니다. 산본에서 영어로 떠드는 가장 가벼운 자리 — 1시간 1,000원, 커피는 무료', act:"openPage('동글이')", pbg:'linear-gradient(135deg,#3F5D4A,#5C8069)', tc:'#f2ecd9', tc2:'#dfe9df', ac:'#e3ebe3', bbg:'#ffffff', btc:'#3F5D4A', bg:'', cls:'hsty-impact'}
 ];
 
 (function(){
  var hs=document.getElementById('heroslides');
- hs.innerHTML=SLIDES.map(function(s,i){return '<div class="hslide'+(i===0?' on':'')+'"'+(s.bg?' style="background-image:linear-gradient(rgba(9,13,26,.35),rgba(9,13,26,.35)),url('+s.bg+');background-size:cover;background-position:center"':'')+'><div class="hs-wrap"><div class="hs-panel" style="color:'+s.tc+'"><div class="hs-fill" style="background:'+s.pbg+'"></div><div class="hs-inner"><div class="hs-eyebrow" style="color:'+s.ac+'">'+s.e+'</div><div class="hs-title" style="color:'+s.tc+'">'+s.t+'</div><div class="hs-sub" style="color:'+s.tc+'">'+s.s+'</div>'+(s.faces?('<div class="hs-faces">'+s.faces.map(function(f,k){return '<span><img src="img/teachers/'+f+'.png" alt=""><i>'+(s.fnames?s.fnames[k]:'')+'</i></span>';}).join('')+'</div>'):'')+'<button class="hs-btn" style="background:'+s.bbg+';color:'+s.btc+';border-color:'+s.bbg+'" onclick="'+s.act+'">자세히 보기 →</button></div></div></div></div>';}).join('');
+ hs.innerHTML=SLIDES.map(function(s,i){return '<div class="hslide'+(i===0?' on':'')+(s.cls?(' '+s.cls):'')+'"'+(s.bg?' style="background-image:linear-gradient(rgba(9,13,26,.35),rgba(9,13,26,.35)),url('+s.bg+');background-size:cover;background-position:center"':'')+'><div class="hs-wrap"><div class="hs-panel" style="color:'+s.tc+'"><div class="hs-fill" style="background:'+s.pbg+'"></div><div class="hs-inner"><div class="hs-eyebrow" style="color:'+s.ac+'">'+s.e+'</div><div class="hs-title" style="color:'+s.tc+'">'+s.t+'</div><div class="hs-sub" style="color:'+(s.tc2||s.tc)+'">'+s.s+'</div>'+(s.faces?('<div class="hs-faces">'+s.faces.map(function(f,k){return '<span><img src="img/teachers/'+f+'.png" alt=""><i>'+(s.fnames?s.fnames[k]:'')+'</i></span>';}).join('')+'</div>'):'')+'<button class="hs-btn" style="background:'+s.bbg+';color:'+s.btc+';border-color:'+s.bbg+'" onclick="'+s.act+'">자세히 보기 →</button></div></div></div></div>';}).join('');
  document.getElementById('hdots').innerHTML=SLIDES.map(function(s,i){return '<i data-i="'+i+'"'+(i===0?' class="on"':'')+'></i>';}).join('');
  var si=0, slides=hs.querySelectorAll('.hslide'), dots=document.querySelectorAll('#hdots i'), N=SLIDES.length;
  function show(){for(var i=0;i<N;i++){slides[i].classList.toggle('on',i===si);dots[i].classList.toggle('on',i===si);}
@@ -4560,7 +4596,7 @@ var WCONV={
   '초중급':[['화·목','18:20~19:50','서정아','9강의실','다이스키3']],
   '중급':[['화·목','20:00~21:30','모모코','5강의실','다이스키3 · 아리가또B (중급 2/4)'],['월·수','18:20~19:50','히토시','5강의실','아리가또 프리토킹1 (중고급 3/4)']],
   '원어민':[['월·수','18:20~19:50','히토시','5강의실','프리토킹 중고급'],['월·수','20:00~21:30','히토시','5강의실','스쿠스쿠4 (원어민 2단계)']],
-  '새벽반':[['화·수·목','06:30~07:30','조미히로','','월 12회 · 신규 개강 · 모집중'],['화·수·목','07:30~08:30','조미히로','','월 12회 · 신규 개강 · 모집중']]},
+  '새벽반':[['화·수·목','06:30~07:30','조미히로','','월 12회 · 신규 개강 · 모집중'],['화·수·목','07:35~08:35','조미히로','','월 12회 · 신규 개강 · 모집중']]},
  desc:'입문부터 원어민 프리토킹까지 레벨별로 배우는 일본어. JLPT 대비까지 자연스럽게 이어집니다. 관리형 피드백·복습·1:1 상담 포함.'},
 '중국어':{eye:'발음부터 HSK까지, 진짜 중국어',title:'중국어 — 입문부터 고급까지<br>레벨별 회화',badge:'중국어 회화 · 관리형',
  levels:[['새벽반','chn_7','현지인 (원어민)'],['입문','chn_1','하홍금 (원어민)'],['초급','chn_1','하홍금 (원어민)'],['중급','chn_5','오금한'],['중고급','chn_7','현지인 (원어민)'],['고급','chn_5','하홍금 (원어민)']],
@@ -4570,7 +4606,7 @@ var WCONV={
   '중급':[['월·수','20:00~21:30','오금한','7강의실','신공략중국어5 (중급 4/4)'],['화·목','20:00~21:30','오금한','2강의실','맛있는중국어5 (중급 4/4)']],
   '중고급':[['토요일','10:00~13:00','현지인','3강의실','신공략중국어6']],
   '고급':[['토요일','10:00~13:00','하홍금','8강의실','스피킹중국어 고급 上']],
-  '새벽반':[['화·수·목','06:30~07:30','현지인','','월 12회 · 신규 개강 · 모집중'],['화·수·목','07:30~08:30','현지인','','월 12회 · 신규 개강 · 모집중']]},
+  '새벽반':[['화·수·목','06:30~07:30','현지인','','월 12회 · 신규 개강 · 모집중'],['화·수·목','07:35~08:35','현지인','','월 12회 · 신규 개강 · 모집중']]},
  desc:'발음·성조부터 HSK·TSC까지 레벨별로 탄탄하게. 원어민·전문 강사의 관리형 수업으로 실전 회화 자신감을 키웁니다.'}
 };
 /* 회화반 수강료 — 과목별로 따로 관리합니다.
@@ -5257,10 +5293,10 @@ var EXAM={
    {n:'정규 초급반 (기출입문)',tc:'엘리 킴',day:'월·수',time:'19:30~21:30',price:'1개월 21만 / 2개월 42만→39만(3만 할인) · 16회',pay:'390,000원'},
    {n:'정규 중급반 (기출종합)',tc:'엘리 킴',day:'화·목',time:'19:30~21:30',price:'1개월 21만 / 2개월 42만→39만(3만 할인) · 16회',pay:'390,000원'},
    {n:'실전반 (ETS 1000제)',tc:'송윤정',day:'토요일',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'},
-   {n:'토익 왕기초',tc:'최자운',day:'토요일',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'}]},
+   {n:'토익 왕기초',tc:'Deborah',day:'토요일',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'}]},
  '토스':{eye:'TOEIC Speaking · 개설반',title:'토스 — 개설 시간표',photo:'eng_6',rows:[
    {n:'토스 정규 (기출단기공략)',tc:'최자운',day:'월·수',time:'20:00~21:30',price:'1개월 21만 / 2개월 42만→39만(3만 할인) · 16회',pay:'390,000원'},
-   {n:'토스 오전 실전',tc:'최자운',day:'오전반',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'}]},
+   {n:'토스 실전 (토요반)',tc:'최자운',day:'토요일',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'}]},
  '오픽':{eye:'OPIc · 개설반',title:'오픽 — 개설 시간표',photo:'eng_15',rows:[
    {n:'오픽 토요반 (파고다 오픽의신)',tc:'김현정',day:'토요일',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'}]},
  '일본어':{eye:'JAPANESE · 개설반',title:'일본어 — 개설 시간표',photo:'jpn_6',rows:[
@@ -5269,35 +5305,40 @@ var EXAM={
    {n:'다이스키3 (초중급)',tc:'서정아',day:'화·목',time:'18:20~19:50',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
    {n:'중급 (다이스키·아리가또B)',tc:'모모코',day:'화·목',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
    {n:'초급 (다이스키2)',tc:'서정아',day:'화·목',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
-   {n:'입문반',tc:'개강예정',day:'문의',time:'문의',price:'월 18만',pay:'상담'}]},
+   {n:'입문 (다이스키1)',tc:'김민정',day:'월·수',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'}]},
  '중국어':{eye:'CHINESE · 개설반',title:'중국어 — 개설 시간표',photo:'chn_1',rows:[
    {n:'스피킹중국어 초급',tc:'하홍금',day:'월·수',time:'18:50~20:20',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
-   {n:'스피킹중국어 입문',tc:'하홍금',day:'월·수',time:'20:30~22:00',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'스피킹중국어 입문 (밤)',tc:'하홍금',day:'월·수',time:'20:30~22:00',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
    {n:'신공략 중급',tc:'오금한',day:'월·수',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
    {n:'맛있는중국어 중급',tc:'오금한',day:'화·목',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
-   {n:'신공략6 중고급',tc:'현지인',day:'오전반',time:'10:00~13:00',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
-   {n:'스피킹 고급 (上)',tc:'하홍금',day:'오전반',time:'10:00~13:00',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
-   {n:'입문반',tc:'모집예정',day:'문의',time:'문의',price:'월 18만',pay:'상담'}]},
+   {n:'신공략6 중고급',tc:'현지인',day:'토요일',time:'10:00~13:00',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'스피킹 고급 (上)',tc:'하홍금',day:'토요일',time:'10:00~13:00',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'스피킹중국어 입문 (저녁)',tc:'오금한',day:'화·목',time:'18:20~19:50',price:'1개월 18만 / 2개월 36만',pay:'360,000원'}]},
  'JLPT':{eye:'JLPT 대비반 · 프로모션 (모집중)',title:'JLPT 대비반 — 12월 시험 대비 · 10~11월 두 달 과정',photo:'jpn_7',rows:[
    {n:'JLPT 대비반 (10~11월 두 달)',tc:'서정아·모모코',day:'화·목',time:'두 달 과정 · 12월 시험 대비',price:'2개월 42만원 · 회화 2개월 무료 (36만원 상당)',pay:'420,000원'},
    {n:'JLPT + 회화 동시 (두 달)',tc:'서정아·히토시',day:'화·목 + 월·수',time:'두 달 과정',price:'JLPT 42만원 · 회화 두 달은 무료로 드립니다',pay:'420,000원'}]},
  'HSK':{eye:'HSK · 모집중',title:'HSK 대비반 — 모집중',photo:'chn_1',photos:['chn_1','chn_7'],rows:[
    {n:'HSK 평일반 (모집중)',tc:'하홍금·현지인',day:'평일반',time:'모집중',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'상담'},
    {n:'HSK 토요반 (모집중)',tc:'하홍금·현지인',day:'토요일',time:'모집중',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'상담'}]},
+ '지텔프':{eye:'G-TELP · 토요 집중반',title:'지텔프 — 개설 시간표',photo:'eng_14',rows:[
+   {n:'지텔프 입문 (Level 2)',tc:'유미용',day:'토요일',time:'10:30~13:00',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'},
+   {n:'지텔프 실전 (Level 2)',tc:'유미용',day:'토요일',time:'13:30~16:00',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'}]},
  '토플':{eye:'TOEFL · 모집중',title:'토플 — 모집중',photo:'eng_15',rows:[
    {n:'토플 토요반 (모집중)',tc:'김현정',day:'토요일',time:'13:30~16:30',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'}]}
 };
-var TIMG={'KELLY':'kelly','켈리':'kelly','Deborah':'eng_6','데보라':'eng_6','미정':'','송윤정':'eng_13','엘리 킴':'elly','엘리킴':'elly','최자운':'eng_6','김현정':'eng_15','유미용':'eng_14','케이티':'eng_9','Kate':'eng_9','제롤린':'eng_11','Jerollyn':'eng_11','권미화':'eng_1','May':'eng_1','공미영':'eng_3','Olive':'eng_3','애플':'eng_5','Amy':'eng_4','구지영':'director','김지현':'eng_7','박호임':'eng_2','황보준':'eng_12','히토시':'jpn_6','서정아':'jpn_7','모모코':'jpn_4','김연주':'jpn_3','김은영':'jpn_9','권은정':'jpn_1','김민정':'jpn_2','이형림':'jpn_11','조미히로':'jpn_5','하홍금':'chn_1','오금한':'chn_5','현지인':'chn_7','노정아':'chn_3'};
+var TIMG={'KELLY':'kelly','켈리':'kelly','Deborah':'','데보라':'eng_6','미정':'','송윤정':'eng_13','엘리 킴':'elly','엘리킴':'elly','최자운':'eng_6','김현정':'eng_15','유미용':'eng_14','케이티':'eng_9','Kate':'eng_9','제롤린':'eng_11','Jerollyn':'eng_11','권미화':'eng_1','May':'eng_1','공미영':'eng_3','Olive':'eng_3','애플':'eng_5','Amy':'eng_4','구지영':'director','김지현':'eng_7','박호임':'eng_2','황보준':'eng_12','히토시':'jpn_6','서정아':'jpn_7','모모코':'jpn_4','김연주':'jpn_3','김은영':'jpn_9','권은정':'jpn_1','김민정':'jpn_2','이형림':'jpn_11','조미히로':'jpn_5','하홍금':'chn_1','오금한':'chn_5','현지인':'chn_7','노정아':'chn_3'};
+var TPH="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20360'%3E%3Crect%20width='300'%20height='360'%20fill='%23eef1f6'/%3E%3Ccircle%20cx='150'%20cy='140'%20r='52'%20fill='%23c9d2e0'/%3E%3Cpath%20d='M60%20320c0-52%2040-88%2090-88s90%2036%2090%2088z'%20fill='%23c9d2e0'/%3E%3Ctext%20x='150'%20y='348'%20font-size='19'%20font-family='sans-serif'%20font-weight='700'%20fill='%238a90a0'%20text-anchor='middle'%3E%EA%B0%95%EC%82%AC%20%EC%82%AC%EC%A7%84%20%EC%A4%80%EB%B9%84%EC%A4%91%3C/text%3E%3C/svg%3E";
+function tface(name,fb){var k=(name||'').split(/[\u00b7\/]/)[0].trim();var im=TIMG[k];if(im)return 'img/teachers/'+im+'.png';if(im==='')return TPH;return fb?'img/teachers/'+fb+'.png':TPH;}
 function timg(name){var k=(name||'').split(/[\u00b7\/]/)[0].trim();var im=TIMG[k];return im?'<img class="ex-face" src="img/teachers/'+im+'.png" alt="">':'';}
 function fmtWon(n){return n?n.toLocaleString()+'원':'상담';}
 function exParse(r){var m=(r.price||'').match(/1개월\s*([\d,]+)만/);_exM1=m?parseInt(m[1].replace(/,/g,''))*10000:0;var pp=parseInt((r.pay||'').replace(/[^\d]/g,''));_exM2=isNaN(pp)?0:pp;var lm=(r.price||'').match(/2개월\s*([\d,]+)만/);_exList=lm?parseInt(lm[1].replace(/,/g,''))*10000:0;if(_exList&&_exM2&&_exList<=_exM2)_exList=0;}
 function exPrice(){var tE=document.getElementById('exTerm');var t=tE?tE.value:'2';var base=t==='1'?_exM1:_exM2;var de=document.getElementById('exDisc');var v=de?de.value:'0';var d=evRate(_exSubj,v);var el=document.getElementById('spAmt');var pe=document.getElementById('exPer');if(!base){el.textContent='상담 문의';if(pe)pe.textContent='';return;}var lst=(t==='1')?0:(_exList||0);_fullAmt=lst||base;var R=evCalc(base,lst,d,loyalRate(v));var fin=R.fin;var strike=R.strike||(d>0?base:0);if(strike&&strike>fin){el.innerHTML='<s style="color:#b6bcc9;font-size:18px;font-weight:600">'+strike.toLocaleString()+'</s> '+fin.toLocaleString()+'원';}else{el.textContent=fin.toLocaleString()+'원';}setCalMul(t==='1'?1:2);try{spRenderCal();}catch(_e){}var lb=(t==='1'?'1개월':'2개월 할인가');var lo2=loyalRate(v);if(d>0&&R.note.indexOf('ev')===0)lb+=' · 이벤트 '+Math.round(d*100)+'%';if(lo2>0)lb+=' + 재등록 '+Math.round(lo2*100)+'%';if(pe)pe.textContent=lb;}
 function examPage(k){var e=EXAM[k]||EXAM['토익'];_spCalD=new Date(2026,9,1);_exRows=e.rows;_exSubj=k;_exVerified=false;
  var tabs=e.rows.map(function(r,i){return '<button class="sp-step'+(i===0?' on':'')+'" onclick="exSel('+i+')">'+r.n+'</button>';}).join('');
- var r0=e.rows[0];var im0=TIMG[(r0.tc||'').split(/[·\/]/)[0].trim()]||e.photo;_calMul=2;_calWd=_wdays(r0.day);_calN=_calSess(r0.day)*_calMul;_calGrp=null;_calUntil=null;_calColor=_calSolo(r0.day);exParse(r0);
+ var r0=e.rows[0];var f0=tface(r0.tc,e.photo);_calMul=2;_calWd=_wdays(r0.day);_calN=_calSess(r0.day)*_calMul;_calGrp=null;_calUntil=null;_calColor=_calSolo(r0.day);exParse(r0);
  return '<div class="sp-wrap"><button class="sp-back" onclick="openPage(\'수강신청\')">‹ 수강신청으로</button><div class="sp-top"><div class="sp-left">'+
   '<div class="sp-badge">시험대비반 · 관리형</div>'+
-  '<div class="sp-photo"><img id="spPhoto" src="img/teachers/'+im0+'.png" alt=""></div>'+
+  '<div class="sp-photo"><img id="spPhoto" src="'+f0+'" alt=""></div>'+
   '<div class="sp-feats"><span>피드백</span><span>복습영상</span><span>추가 학습자료</span><span>발음교정</span><span>첨삭</span><span>출결관리</span><span>1:1 학습상담</span></div>'+
   '<div class="sp-meta"><div><b>수강후기</b>142건</div><div><b>강사명</b><span id="spTeacher">'+r0.tc+'</span></div></div>'+
   '</div><div class="sp-right">'+
@@ -5310,7 +5351,7 @@ function examPage(k){var e=EXAM[k]||EXAM['토익'];_spCalD=new Date(2026,9,1);_e
   '<div class="sp-note">※ 요일·시간·금액은 개강 반 편성에 따라 변동될 수 있으며, 최종 수강료는 상담 시 확정 안내드립니다. · 상담 031-466-6969</div>'+
   '</div></div>'+spModalHTML()+'</div>';
 }
-function exSel(i){var ss=document.querySelectorAll('.sp-step');for(var j=0;j<ss.length;j++)ss[j].classList.remove('on');ss[i].classList.add('on');var r=_exRows[i];_calMul=2;document.getElementById('exD').value=r.day;document.getElementById('exTm').value=r.time;var key=(r.tc||'').split(/[·\/]/)[0].trim();var im=TIMG[key];if(im){var p=document.getElementById('spPhoto');if(p)p.src='img/teachers/'+im+'.png';}var t=document.getElementById('spTeacher');if(t)t.textContent=r.tc;_calWd=_wdays(r.day);_calN=_calSess(r.day);_calGrp=null;_calUntil=null;_calColor=_calSolo(r.day);exParse(r);var tE=document.getElementById('exTerm');if(tE)tE.value='2';exPrice();spRenderCal();}
+function exSel(i){var ss=document.querySelectorAll('.sp-step');for(var j=0;j<ss.length;j++)ss[j].classList.remove('on');ss[i].classList.add('on');var r=_exRows[i];_calMul=2;document.getElementById('exD').value=r.day;document.getElementById('exTm').value=r.time;var p=document.getElementById('spPhoto');if(p)p.src=tface(r.tc,'');var t=document.getElementById('spTeacher');if(t)t.textContent=r.tc;_calWd=_wdays(r.day);_calN=_calSess(r.day);_calGrp=null;_calUntil=null;_calColor=_calSolo(r.day);exParse(r);var tE=document.getElementById('exTerm');if(tE)tE.value='2';exPrice();spRenderCal();}
 function openBuy(k){if(k==='영어회화'){openStep(k);}else{openExam(k);}}
 var _txK='토익',_txTab=0;
 var TEXAM={
@@ -7530,8 +7571,8 @@ function newOpenPage(){return _pgHero('img/gen7.jpg','2026 · 10월 신규 모�
  'linear-gradient(120deg,#2f6fb0,#5b9bd8)')
  +SEC('새벽반 · 출근 전에 끝냅니다',CT(['과목','요일','시간','횟수','강사'],
   [['영어','화·수·목','06:30~07:30 / 07:35~08:35','월 12회','김현정'],
-   ['일본어','화·수·목','06:30~07:30 / 07:30~08:30','월 12회','조미히로 (원어민)'],
-   ['중국어','화·수·목','06:30~07:30 / 07:30~08:30','월 12회','현지인 (원어민)']])
+   ['일본어','화·수·목','06:30~07:30 / 07:35~08:35','월 12회','조미히로 (원어민)'],
+   ['중국어','화·수·목','06:30~07:30 / 07:35~08:35','월 12회','현지인 (원어민)']])
   +'<div class="lead">영어 · 일본어 · 중국어 <b>모두 화 · 수 · 목 주 3회, 한 달 총 12회</b>입니다. 하루를 영어로 열면 저녁 약속에 흔들리지 않습니다. 출근 전 한 시간이 가장 안 깨지는 시간이에요.</div>')
  +_pgBand('img/gen15.jpg','주말반 영어 · 평일에 시간이 안 나신다면',
   '<p class="lead">토요일 오전 하나로 한 주를 채웁니다. 평일 저녁마다 나오기 어려운 직장인·학부모님을 위해 엽니다.</p>'
@@ -7684,7 +7725,17 @@ function ttPage(){
   (e.tabs||[]).forEach(function(t){(t.times||[]).forEach(function(tm){
    var d=Array.isArray(t.day)?t.day.join(' / '):(t.day||'-');
    rows.push([k,t.n,d,String(tm).split('·')[0].trim(),t.teach||'-','-']);});});});
- var tb=rows.map(function(r){return '<tr><td class="b">'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td class="num">'+r[3]+'</td><td>'+r[4]+'</td><td>'+r[5]+'</td></tr>';}).join('');
+ /* 2026-09-01 대표님 — 글만 나열된 표는 안 읽힌다: 과목별 색 카드 그리드로 */
+ var TTG={};rows.forEach(function(r){(TTG[r[0]]=TTG[r[0]]||[]).push(r);});
+ var TTC={'영어 회화':'#0e8a5a','일본어 회화':'#b83277','중국어 회화':'#b8322a','토익':'#1D2D4F','토스':'#2f6fb0','오픽':'#7658c8','토플':'#155e9e','JLPT':'#b83277','HSK':'#b8322a'};
+ var TTGO={'영어 회화':"openCourse('영어회화')",'일본어 회화':"openCourse('일본어')",'중국어 회화':"openCourse('중국어')"};
+ var ttcards=Object.keys(TTG).map(function(k){
+  var c=TTC[k]||'#3f4757';
+  var go=TTGO[k]||("openExam('"+k+"')");
+  var rws=TTG[k].map(function(r){
+   return '<div class="ttg-r"><div class="ttg-tp"><b>'+r[1]+'</b><span class="d">'+r[2]+'</span></div>'
+    +'<div class="ttg-bt"><span class="t">🕐 '+r[3]+'</span><span class="tc">'+r[4]+'</span></div></div>';}).join('');
+  return '<div class="ttg-c"><div class="ttg-h" style="background:'+c+'" onclick="'+go+'">'+k+'<span>'+TTG[k].length+'개 반 · 자세히 ›</span></div>'+rws+'</div>';}).join('');
  return _pgHero('img/gen7.jpg','TIMETABLE · 전체 시간표','열려 있는 반을<br>한 장에 담았습니다',
   '지금 개강해 있거나 곧 여는 반 <b>전부</b>입니다. 요일과 시간으로 훑어보시고 마음에 드는 반을 고르세요.',
   'linear-gradient(120deg,#1D2D4F,#33507f)')
@@ -7697,7 +7748,7 @@ function ttPage(){
  +_pgBand('img/gen15.jpg','시간이 안 맞으시면',
   '<p class="lead">여기 없는 시간대를 원하시면 <b>1대1 또는 퍼스널</b>이 있습니다. 일대일은 매번 원하는 시간에 잡고, 퍼스널은 원하는 요일·시간으로 고정합니다.</p>'
   +'<div style="margin-top:14px"><button class="tt-b" onclick="openOne(\'퍼스널\')">1대1 글로벌 강의관 보기 ›</button></div>')
- +SEC('전체 개설 시간표','<div class="tblwrap"><table class="ex-tt"><tr><th>과목</th><th>반</th><th>요일</th><th>시간</th><th>강사</th><th>강의실</th></tr>'+tb+'</table></div>')
+ +SEC('전체 개설 시간표 — 과목별로 한눈에','<div class="ttg">'+ttcards+'</div>')
  +'<div class="pgnote">※ 개강일과 종강일은 과목을 선택하시면 달력으로 확인하실 수 있습니다.</div>'
  +SGCTA('시간표에서 반을 고르셨다면 바로 신청하실 수 있습니다.');}
 
