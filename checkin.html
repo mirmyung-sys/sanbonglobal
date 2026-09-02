@@ -180,6 +180,39 @@ footer b{color:#6b7688}
 </style>
 </head>
 <body>
+<!-- 입장코드 게이트 (2026-09-02) — 10월 1일 0시에 자동으로 풀립니다. GATE_ON을 false로 바꾸면 즉시 해제 -->
+<div id="sgGate" style="position:fixed;inset:0;z-index:2147483647;background:linear-gradient(160deg,#101830,#1D2D4F);display:flex;align-items:center;justify-content:center;padding:24px">
+  <div style="width:100%;max-width:360px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:34px 26px;text-align:center">
+    <img src="img/app_emblem.png" alt="" style="width:74px;height:74px;margin-bottom:14px" onerror="this.style.display='none'">
+    <div style="color:#E7C989;font-size:12px;font-weight:900;letter-spacing:.2em;margin-bottom:8px">SANBON GLOBAL ACADEMY</div>
+    <div style="color:#fff;font-size:21px;font-weight:900;letter-spacing:-.02em;line-height:1.4;margin-bottom:6px">새 홈페이지 준비 중입니다</div>
+    <div style="color:#B9C6DE;font-size:13px;line-height:1.7;margin-bottom:20px">10월 1일 정식 오픈 — 그 전에는<br>안내받으신 입장코드로 들어오세요</div>
+    <input id="sgGateIn" type="tel" inputmode="numeric" maxlength="8" placeholder="입장코드" autocomplete="off"
+      style="width:100%;box-sizing:border-box;border:1.5px solid rgba(255,255,255,.3);background:rgba(0,0,0,.25);color:#fff;border-radius:12px;padding:13px;font-size:17px;text-align:center;letter-spacing:.3em;font-weight:800;outline:none"
+      onkeydown="if(event.key==='Enter')sgGateTry()">
+    <button type="button" onclick="sgGateTry()"
+      style="width:100%;border:0;margin-top:10px;background:#C6A15B;color:#14213D;border-radius:12px;padding:13px;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit">입장하기</button>
+    <div id="sgGateMsg" style="color:#FF8D96;font-size:12.5px;font-weight:700;min-height:18px;margin-top:9px"></div>
+    <div style="color:#8A94A8;font-size:11.5px;margin-top:6px">문의 031-466-6969 · 카카오톡 채널 산본글로벌어학원</div>
+  </div>
+</div>
+<script>
+(function(){
+ var GATE_ON=true, CODE='1001', OPEN_FROM=new Date(2026,9,1); /* 2026-10-01 자동 오픈 */
+ var g=document.getElementById('sgGate');
+ function off(){if(g&&g.parentNode)g.parentNode.removeChild(g);document.documentElement.style.overflow='';}
+ try{
+  if(!GATE_ON||new Date()>=OPEN_FROM||localStorage.getItem('sga_gate_ok')==='1'){off();return;}
+ }catch(e){off();return;}
+ document.documentElement.style.overflow='hidden';
+ window.sgGateTry=function(){
+  var i=document.getElementById('sgGateIn'),v=(i&&i.value||'').replace(/\s/g,'');
+  if(v===CODE){try{localStorage.setItem('sga_gate_ok','1');}catch(e){} off();}
+  else{var m=document.getElementById('sgGateMsg');if(m)m.textContent='코드가 맞지 않습니다. 다시 입력해 주세요';if(i)i.value='';}
+ };
+})();
+</script>
+
 <div class="app">
 
 <header>
