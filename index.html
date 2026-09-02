@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1D2D4F">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="img/app_icon.png">
+<meta name="apple-mobile-web-app-title" content="SGA">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -494,6 +498,11 @@ section{scroll-margin-top:130px}
 @media(max-width:860px){.hero-vtag{left:14px;bottom:12px;font-size:10px;padding:5px 9px}}
 .hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(9,14,26,.5),rgba(9,14,26,.22) 60%,rgba(9,14,26,.08))}
 /* 광고 패널(틀) */
+.tsn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;font-size:12px;font-weight:900;color:#fff!important;margin-left:6px;vertical-align:-2px;text-decoration:none}
+.nb-sns{order:99;margin-left:14px;display:flex;gap:2px;align-items:center;position:relative;z-index:5}
+.tsn.yt{background:#ff0000}
+.tsn.ig{background:linear-gradient(45deg,#f09433,#e6683c 40%,#dc2743 60%,#bc1888)}
+.tsn.nv{background:#03c75a}
 .hs-fill{opacity:.87}
 /* 마우스를 올리면 흰 가벽이 덮여 글이 또렷해지고, 자세히 보기가 점등합니다 */
 .hero-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -2932,10 +2941,13 @@ html,body{overflow-x:hidden;max-width:100%}
     <a href="#" onclick="openPage('로그인');return false;">로그인</a><span class="sep">|</span>
     <a href="#" onclick="openPage('통합회원안내');return false;">사이트맵</a><span class="sep">|</span>
     <a href="checkin.html" style="color:#C6A15B;font-weight:800">🎯 출석체크</a><span class="sep">|</span>
-    <a href="app.html" target="_blank" rel="noopener" style="color:#C6A15B;font-weight:800">📱 AI앱</a>
+    <a href="app.html" target="_blank" rel="noopener" style="color:#C6A15B;font-weight:800">📱 AI앱</a><span class="sep">|</span>
+    <a class="tsn yt" href="#" onclick="sgToast('<b>유튜브 채널 준비 중입니다</b><br>곧 열립니다!');return false;" title="유튜브">▶</a>
+    <a class="tsn ig" href="#" onclick="sgToast('<b>인스타그램 준비 중입니다</b><br>곧 열립니다!');return false;" title="인스타그램">◎</a>
+    <a class="tsn nv" href="https://search.naver.com/search.naver?query=%EC%82%B0%EB%B3%B8%EA%B8%80%EB%A1%9C%EB%B2%8C%EC%96%B4%ED%95%99%EC%9B%90" target="_blank" rel="noopener" title="네이버">N</a>
   </div>
   </div>
-  <div class="navbar"><div class="wrap">
+  <div class="navbar"><div class="wrap"><span class="nb-sns"><a class="tsn yt" href="#" onclick="sgToast('<b>유튜브 채널 준비 중입니다</b><br>곧 열립니다!');return false;" title="유튜브">▶</a><a class="tsn ig" href="#" onclick="sgToast('<b>인스타그램 준비 중입니다</b><br>곧 열립니다!');return false;" title="인스타그램">◎</a><a class="tsn nv" href="https://search.naver.com/search.naver?query=%EC%82%B0%EB%B3%B8%EA%B8%80%EB%A1%9C%EB%B2%8C%EC%96%B4%ED%95%99%EC%9B%90" target="_blank" rel="noopener" title="네이버">N</a></span>
   <nav>
     <div class="ni"><a href="#" onclick="openPage('수강신청');return false;">수강신청<b class="car">▾</b></a>
       <div class="ddown">
@@ -3180,7 +3192,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-02 (v46)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-02 (v48)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -6232,7 +6244,7 @@ function baseToeicPage(){return basePage('b');}
 
 
 /* ===== AI 학습 · 산글 잉글리시 전자책 =====
-   오프라인 회원은 50% 할인. 온라인에서 전자책으로 공부하다 학원으로 오시게 하는 통로입니다. */
+   오프라인 수강생은 전부 무료(2026-09-02 대표님 — 쿠팡플레이 전략). 온라인에서 전자책으로 공부하다 학원으로 오시게 하는 통로입니다. */
 var AIB=[
  {k:'회화반',en:'SPEAKING',subs:[
   {k:'영어',en:'ENGLISH',steps:[
@@ -7068,9 +7080,9 @@ function aiBookHTML(){
        +'※ 산글 현강(정규·스파르타·무한수강권)에 등록하신 분께는 <b>무료로 드립니다.</b> 증정분이라 중도 환불 시 공제되지 않습니다.<br>'
        +'※ 하루 한 강씩 열립니다. 못 하고 넘어간 강은 <b>결석</b>으로 남고, 언제든 보충하실 수 있습니다.</p>')
     : ('<div class="ai-pr"><div class="ai-pr-r"><span>온라인 회원</span><b>'+_won(B.price)+'</b></div>'
-       +'<div class="ai-pr-r hi"><span>🏫 학원 수강생</span><b>'+_won(B.off)+' <em>50% 할인</em></b></div></div>'
+       +'<div class="ai-pr-r hi"><span>🏫 학원 수강생</span><b>무료 <em>전권 열림</em></b></div></div>'
        +'<button class="ai-buy" onclick="aiBuy()">전자책 신청하기</button>'
-       +'<p class="ai-n">※ 학원 수강 중이신 분은 반 배정 확인 후 50% 할인가로 결제해 드립니다. 별도 인증 절차 없이 데스크에서 처리됩니다.</p>')))
+       +'<p class="ai-n">※ 학원 수강 중이신 분은 <b>무료</b>입니다 — 데스크에서 확인 후 전권을 열어 드립니다. 수강 기간 내내, 앱으로도 그대로 쓰실 수 있습니다.</p>')))
  +'</div></div>'+toc;}
 
 function aiSub(i){_aiG=i;_aiS=0;var b=document.getElementById('aiBody');if(b)b.innerHTML=aiBookHTML();_aiTX();}
@@ -7261,7 +7273,7 @@ function aiLockShow(n){
   +'<div class="lk-ic">🔒</div><h3 class="lk-t">'+n+'과부터는 전자책입니다</h3>'
   +'<p class="lk-d">맛보기로 <b>1과는 언제나 무료</b>이고,<br><b>매일 한 과가 새로 무료</b>로 열립니다.<br>오늘의 무료 과 — <b>'+f+'과 · '+ft+'</b><br><span class="lk-sm">내일 아침이면 다른 과로 바뀝니다. 매일 오세요.</span></p>'
   +'<button class="lk-free" onclick="aiLsClose();aiLesson('+f+')">오늘의 무료 과 읽기 ›</button>'
-  +'<div class="lk-pr">'+B.u+'과 전부 — <b>'+_won(B.price)+'</b><span>학원 수강생은 50% 할인 · 데스크에서 확인해 드립니다</span></div>'
+  +'<div class="lk-pr">'+B.u+'과 전부 — <b>'+_won(B.price)+'</b><span>학원 수강생은 무료 · 데스크에서 확인 후 전권 열림</span></div>'
   +'<button class="lk-buy" onclick="aiLsClose();aiBuy()">전자책 전체 열기</button></div>';
  document.body.appendChild(m);document.body.style.overflow='hidden';
  m.onclick=function(ev){if(ev.target===m)aiLsClose();};}
@@ -7355,7 +7367,7 @@ function aiBuy(){var T=AIB[_aiT], G=T.subs[_aiG]||T.subs[0], B=G.steps[_aiS]||G.
   '<b>산글 '+G.k+' · '+B.s+'</b> · 전자책 '+B.u+'과<br>'
   +'<span class="free">수준</span>'+B.lv+' · '+B.book+'<br>'
   +'<span class="free">포함</span>원어민 음성 · AI 회화 상대 · 발음 채점<br>'
-  +'<span style="color:#3f4757;font-weight:700">학원 수강생은 '+_won(B.off)+' (50% 할인) — 데스크에서 확인 후 처리해 드립니다.</span>',true);}
+  +'<span style="color:#3f4757;font-weight:700">학원 수강생은 무료 — 데스크에서 확인 후 전권을 열어 드립니다.</span>',true);}
 
 /* 시험대비반 → 토익 → 기초문법을 보고 있을 때만 40강 상세(풀이법·커리큘럼·달력)를 보여줍니다 */
 function _aiTX(){
@@ -7476,9 +7488,9 @@ function aiPage(){
  +'<div class="ai-tabs">'+tabs+'</div><div id="aiBody"></div>'
 
  +'<div class="ai-off">'
- +'<div class="ai-off-t">🏫 학원 수강생은 <b>50% 할인</b></div>'
- +'<p>산본글로벌어학원에 등록해 수업을 듣고 계시면 전자책이 절반값입니다. '
- +'수업에서 배운 걸 집에서 AI로 복습하시라고 만든 것이라, 수강생께는 원가만 받습니다.</p>'
+ +'<div class="ai-off-t">🏫 학원 수강생은 <b>전부 무료</b></div>'
+ +'<p>산본글로벌어학원에 등록해 수업을 듣고 계시면 AI 학습관 전체가 무료입니다 — 전자책 12권, 듣기, 채점, 출석체크까지. '
+ +'수강 중에는 앱으로도 그대로 쓰시고, 단계(베이직→초급→중급→고급)가 올라갈수록 다음 권이 이어집니다. 다니시는 동안 계속 커지는 혜택입니다.</p>'
  +'<div class="ai-off-g">'
   +'<div><b>수업</b><span>강사에게 배우고</span></div>'
   +'<div><b>전자책</b><span>집에서 다시 읽고</span></div>'

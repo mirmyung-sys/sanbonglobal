@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1D2D4F">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="img/app_icon.png">
 <title>매일 출석체크 · 산본글로벌어학원</title>
 <link rel="icon" href="img/favicon.png">
 <style>
@@ -129,6 +131,10 @@ header::after{content:'';position:absolute;right:-60px;top:-70px;width:210px;hei
 .frzbox button{border:none;background:#5b9bd8;color:#fff;border-radius:10px;padding:9px 13px;
   font-size:12.5px;font-weight:900;cursor:pointer;font-family:inherit;white-space:nowrap}
 .frzbox button.off{background:#dde5ee;color:#9aa8b8;cursor:default}
+.frzbox.rvv{background:#fdf6ec;border-color:#f0dcbd}
+.frzbox.rvv button{background:#e8912c}
+.frzbox.rvv button.off{background:#efe3d2;color:#c0a37c}
+.cal .d.rvv{background:linear-gradient(140deg,#e8912c,#f2ab52);color:#fff;border-color:transparent;font-weight:900}
 
 /* ── 통계 ── */
 .stats{display:flex;gap:9px}
@@ -219,6 +225,7 @@ footer b{color:#6b7688}
   <div class="legend">
     <span><i style="background:#0e9e5a"></i>출석</span>
     <span><i style="background:#5b9bd8"></i>지킴이</span>
+    <span><i style="background:#e8912c"></i>부활</span>
     <span><i style="background:#fff;border:2px solid #C6A15B"></i>오늘</span>
   </div>
 </div>
@@ -234,6 +241,14 @@ footer b{color:#6b7688}
     <span class="fi">🛡️</span>
     <span class="ft"><b>출석 지킴이</b><span id="frzS">주 1회, 어제 하루를 메울 수 있어요</span></span>
     <button id="frzB" onclick="useFreeze()">사용</button>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="frzbox rvv">
+    <span class="fi">🔥</span>
+    <span class="ft"><b>출석 부활의 날</b><span id="rvvS">매달 10일·25일, 끊긴 연속 기록을 이어붙입니다 (월 1회)</span></span>
+    <button id="rvvB" class="off" onclick="useRevive()">부활</button>
   </div>
 </div>
 
@@ -298,7 +313,7 @@ function monthCount(y,m){var n=0;for(var k in D.stamps){var p=k.split('-');
 /* ===== 보상 ===== */
 var RW=[
  {k:'r7', n:7,  t:'AI 산글 학습관 강좌 1개 해금', s:'첫 강좌를 바로 열어 드립니다'},
- {k:'r14',n:14, t:'수강 포인트 5,000P',           s:'다음 결제에 바로 쓸 수 있습니다'},
+ {k:'r14',n:14, t:'수강 포인트 3,000P',           s:'로그인 도입 후엔 자동 지급 · 지금은 데스크 확인'},
  {k:'r30',n:30, t:'수강 포인트 10,000P',          s:'다음 결제에 바로 쓸 수 있습니다'}
 ];
 function code(k){
@@ -348,6 +363,14 @@ function render(){
   else if(!need){fb.className='off';fb.textContent='대기';fs.textContent='어제 빠진 날이 있을 때 쓸 수 있어요 (주 1회)';}
   else{fb.className='';fb.textContent='사용';fs.textContent='어제를 메워 연속 기록을 살립니다';}
 
+  var rb=document.getElementById('rvvB'), rs=document.getElementById('rvvS');
+  if(rb){
+    var rUsed=(D.rvvMonth===rvvMonthKey()), rGap=lastGap();
+    if(!rvvDayOK()){rb.className='off';rb.textContent='10·25일';rs.textContent='매달 10일·25일에 열립니다 · 끊긴 연속 기록을 이어붙여요 (월 1회)';}
+    else if(rUsed){rb.className='off';rb.textContent='사용함';rs.textContent='이번 달 부활은 이미 사용하셨어요';}
+    else if(!rGap){rb.className='off';rb.textContent='대기';rs.textContent='오늘은 부활의 날! 끊긴 기록(빈 날 1~7일)이 있을 때 쓸 수 있어요';}
+    else{rb.className='';rb.textContent='부활';rs.textContent='끊긴 '+rGap.gap+'일을 이어붙여 연속 기록을 되살립니다';}
+  }
   document.getElementById('s1').textContent=totalDays();
   document.getElementById('s2').textContent=D.best;
   var n=new Date();document.getElementById('s3').textContent=monthCount(n.getFullYear(),n.getMonth());
@@ -365,9 +388,9 @@ function drawCal(){
   for(var d=1;d<=last;d++){
     var k=cy+'-'+('0'+(cm+1)).slice(-2)+'-'+('0'+d).slice(-2);
     var v=D.stamps[k], c='d';
-    if(v==='frz')c+=' frz'; else if(v)c+=' ok';
+    if(v==='frz')c+=' frz'; else if(v==='rvv')c+=' rvv'; else if(v)c+=' ok';
     if(k===tk)c+=' today';
-    h+='<div class="'+c+'">'+d+(v==='frz'?'<small>🛡</small>':(v?'<small>✓</small>':''))+'</div>';
+    h+='<div class="'+c+'">'+d+(v==='frz'?'<small>🛡</small>':(v==='rvv'?'<small>🔥</small>':(v?'<small>✓</small>':'')))+'</div>';
   }
   document.getElementById('cal').innerHTML=h;
 }
@@ -389,6 +412,27 @@ function claim(k){
   if(streak()<r.n){toast('아직 조건을 채우지 못했습니다');return;}
   D.claimed[k]=today();save();render();
   modal('🎁',r.t,'데스크에 이 코드를 보여 주시면 바로 처리해 드립니다.<br>연속 '+streak()+'일 · '+today(),code(k));
+}
+/* ===== 출석 부활 — 매달 10일·25일, 월 1회, 빈 날 1~7일을 이어붙임 ===== */
+function rvvDayOK(){var d=new Date().getDate();return d===10||d===25;}
+function rvvMonthKey(){var n=new Date();return n.getFullYear()+'-'+(n.getMonth()+1);}
+function lastGap(){
+  var k=today(); if(!D.stamps[k])k=addD(k,-1);
+  while(D.stamps[k])k=addD(k,-1);
+  var gap=0,g=k;
+  while(!D.stamps[g]&&gap<=14){gap++;g=addD(g,-1);}
+  if(D.stamps[g]&&gap>=1&&gap<=7)return {gap:gap,firstEmpty:k};
+  return null;
+}
+function useRevive(){
+  if(!rvvDayOK()){toast('출석 부활은 매달 10일·25일에만 열립니다');return;}
+  if(D.rvvMonth===rvvMonthKey()){toast('이번 달 부활은 이미 사용하셨어요');return;}
+  var gp=lastGap();
+  if(!gp){toast('이어붙일 끊긴 기록이 없어요 (빈 날 1~7일일 때 가능)');return;}
+  var k=gp.firstEmpty;
+  for(var i=0;i<gp.gap;i++){D.stamps[k]='rvv';k=addD(k,-1);}
+  D.rvvMonth=rvvMonthKey();save();render();
+  toast('부활 성공 · 연속 '+streak()+'일로 이어졌습니다 🔥');
 }
 function useFreeze(){
   if(D.frzWeek===weekKey()){toast('이번 주는 이미 사용하셨어요');return;}
