@@ -300,13 +300,88 @@ a{color:inherit;text-decoration:none}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(-6px)}
 .empty{text-align:center;padding:38px 20px;color:var(--ink3);font-size:13.5px}
 .empty .e{font-size:36px;display:block;margin-bottom:8px}
+
+/* ===== 가입 전 첫 화면 v3 — "진짜 AI가 온 것처럼" (2026-09-02 대표님 지시) =====
+   어두운 바탕 + 브랜드 적색 그리드. 로고는 app_emblem.png(흰 테두리 제거판)만 씁니다. */
+body.wdark{background:#0A0E19}
+body.wdark #app{max-width:none;background:#0A0E19}
+body.wdark .top{background:rgba(10,14,25,.92);border-bottom-color:#1A2233}
+body.wdark .top h1{color:#fff}
+body.wdark .top .act{color:#8A94A8}
+body.wdark .pg{padding:0 0 8px;max-width:none}
+.aiw{color:#E8ECF5}
+.aiw .in{max-width:820px;margin:0 auto;padding:0 16px}
+/* 영상 히어로 — 화면 꽉 차게 */
+.aiw-vh{position:relative;background:#070A12;overflow:hidden}
+.aiw-vwrap{position:relative;max-width:820px;margin:0 auto}
+.aiw-v{display:block;width:100%;aspect-ratio:1/1;max-height:76vh;object-fit:cover;background:radial-gradient(circle at 50% 38%,#22345C,#070A12 75%)}
+@media(min-width:720px){.aiw-v{aspect-ratio:16/10}}
+.aiw-vh:after{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(180deg,transparent,rgba(7,10,18,.94));pointer-events:none}
+.aiw-cap{position:absolute;left:0;right:0;bottom:0;z-index:3;text-align:center;padding:0 18px 20px}
+.aiw-eye{font-size:11px;font-weight:900;letter-spacing:.24em;color:#FF8D96}
+.aiw-cap h2{margin:6px 0 6px;font-size:clamp(24px,6vw,34px);font-weight:900;letter-spacing:-.02em;line-height:1.3;color:#fff;word-break:keep-all;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.aiw-cap h2 b{color:#FFD94D}
+.aiw-cap p{margin:0;font-size:13.5px;line-height:1.7;color:#C7D2E6;word-break:keep-all;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.aiw-snd{position:absolute;right:14px;top:14px;z-index:4;display:flex;align-items:center;gap:7px;border:1.5px solid rgba(255,255,255,.45);background:rgba(7,10,18,.55);backdrop-filter:blur(6px);color:#fff;border-radius:999px;padding:9px 14px;font-size:12.5px;font-weight:900;cursor:pointer}
+.aiw-snd.on{background:var(--red);border-color:var(--red)}
+.aiw-em{position:absolute;left:14px;top:12px;z-index:4;display:flex;align-items:center;gap:8px}
+.aiw-em img{width:40px;height:40px;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
+.aiw-em b{font-size:12.5px;font-weight:900;color:#fff;letter-spacing:.02em;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.aiw-em i{display:block;font-style:normal;font-size:10px;color:#C7D2E6;font-weight:700;letter-spacing:.12em}
+/* 섹션 제목 */
+.aiw-h{margin:26px 2px 12px;text-align:center}
+.aiw-h b{display:block;font-size:19px;font-weight:900;letter-spacing:-.02em;color:#fff}
+.aiw-h b u{text-decoration:none;color:#FF6B75}
+.aiw-h em{display:block;font-style:normal;font-size:12.5px;color:#8A94A8;margin-top:3px}
+/* 적색 그리드 — 강의관풍 타일 */
+.aiw-fx{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(min-width:720px){.aiw-fx{grid-template-columns:repeat(3,1fr)}}
+.aiw-f{position:relative;background:linear-gradient(165deg,#171E30,#101523);border:1.5px solid rgba(200,31,43,.55);border-radius:14px;padding:14px 13px;overflow:hidden}
+.aiw-f:before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),#FF6B75)}
+.aiw-f .fi{font-size:22px;line-height:1;display:block;margin-bottom:7px}
+.aiw-f b{display:block;font-size:14px;font-weight:900;letter-spacing:-.02em;color:#fff}
+.aiw-f p{margin:4px 0 0;font-size:12px;line-height:1.65;color:#A9B4C8;word-break:keep-all}
+/* 무료 체험관 */
+.aiw-try{background:linear-gradient(150deg,#3A0E13,#C81F2B 130%);border:1.5px solid rgba(255,120,130,.5);border-radius:18px;padding:20px 16px;text-align:center;margin-top:6px}
+.aiw-try .tt{font-size:11px;font-weight:900;letter-spacing:.22em;color:#FFB3B9}
+.aiw-try h3{margin:7px 0 8px;font-size:22px;font-weight:900;color:#fff;letter-spacing:-.02em;word-break:keep-all}
+.aiw-try h3 b{color:#FFD94D}
+.aiw-try p{margin:0 0 4px;font-size:13px;line-height:1.75;color:#FFE0E3;word-break:keep-all}
+.aiw-try .rr{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:12px 0 14px}
+.aiw-try .rr span{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 12px;font-size:11.5px;font-weight:800;color:#fff}
+.aiw-try .bb{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.aiw-try .bb a{display:flex;align-items:center;justify-content:center;gap:6px;border-radius:12px;padding:13px 8px;font-size:13.5px;font-weight:900;text-decoration:none}
+.aiw-try .bb a.w{background:#fff;color:var(--red)}
+.aiw-try .bb a.o{border:1.5px solid rgba(255,255,255,.55);color:#fff}
+/* 가입 = 무료 */
+.aiw-free{background:linear-gradient(160deg,#171E30,#101523);border:1.5px solid rgba(198,161,91,.55);border-radius:18px;padding:20px 16px;text-align:center}
+.aiw-free .zt{font-size:11px;font-weight:900;letter-spacing:.2em;color:var(--gold2)}
+.aiw-free .zp{font-size:44px;font-weight:900;color:#fff;line-height:1.1;margin:6px 0 2px}
+.aiw-free .zp span{font-size:17px;color:var(--gold2)}
+.aiw-free p{margin:4px 0 0;font-size:13px;line-height:1.75;color:#A9B4C8;word-break:keep-all}
+.aiw-free p b{color:#fff}
+/* 다크판 위 기존 요소 손질 */
+body.wdark .sgtalk{background:#121828;border:1px solid #232D42}
+body.wdark .sgt-hd{border-bottom-color:#232D42}
+body.wdark .sgt-hd b{color:#fff}
+body.wdark .sgt-b{background:#1B2436;color:#C7D2E6}
+body.wdark .sgt-b b{color:#FFD94D}
+body.wdark .sgt-again{background:#121828;border-color:#2C3852;color:#C7D2E6}
+body.wdark .wc-shot>span{color:#A9B4C8}
+body.wdark .wc-swipe{color:#6E7A90}
+body.wdark .muted{color:#6E7A90}
+.aiw-go{max-width:520px;margin:0 auto}
+body.wdark .nav{background:rgba(10,14,25,.96);border-top-color:#1A2233}
+body.wdark .nav button{color:#6E7A90}
+body.wdark .nav button.on{color:#fff}
+body.wdark .nav button.on svg{stroke:#fff}
 </style>
 </head>
 <body>
 
 <div id="app">
   <div class="top">
-    <img class="logo" src="img/sga_logo.png" alt="SGA" onerror="this.style.display='none'">
+    <img class="logo" src="img/app_emblem.png" alt="SGA" onerror="this.style.display='none'">
     <h1 id="ttl">홈</h1>
     <button class="act" onclick="openSheet('set')" aria-label="설정">⚙️</button>
   </div>
@@ -501,25 +576,69 @@ function go(t){TAB=t;document.getElementById('ttl').textContent=TITLES[t]||'';
  document.querySelectorAll('.nav button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-t')===hl);});
  render();window.scrollTo(0,0);}
 function render(){var d=DB.init();var p=document.getElementById('pg');
- if(!d.user&&TAB!=='me'){p.innerHTML=vWelcome();return;}
+ var wel=!d.user&&TAB!=='me';
+ document.body.classList.toggle('wdark',wel);
+ if(wel){p.innerHTML=vWelcome();return;}
  p.innerHTML=({home:vHome,learn:vLearn,memo:vMemo,shop:vShop,talk:vTalk,rep:vRep,me:vMe}[TAB]||vHome)(d);
  if(TAB==='home')drawRing(d);}
 
-/* ---------- 온보딩 ---------- */
+/* ---------- 온보딩 (v3 · 2026-09-02) ---------- */
 function vWelcome(){
- setTimeout(sgTalkPlay,320);
- return ''
- /* --- 첫인상 --- */
- +'<div class="wc-hero">'
-  +'<img class="wc-em" src="img/sga_emblem.png" alt="" onerror="this.style.display=\'none\'">'
-  +'<div class="wc-eye">SANBON GLOBAL ACADEMY</div>'
-  +'<h2>학원이 문 닫은 시간에도<br><b>선생님이 한 명 더</b> 있습니다</h2>'
-  +'<p>영어 · 일본어 · 중국어를 <b>말로</b> 연습하는 앱입니다.<br>수업에서 배운 걸 그날 저녁에 입으로 굳힙니다.</p>'
-  +'<div class="wc-badges"><span>🇺🇸 🇯🇵 🇨🇳 3개 국어</span><span>🎙 말하기 중심</span><span>🎁 수강생 무료</span></div>'
+ setTimeout(sgTalkPlay,320);setTimeout(sgiInit,60);
+ return '<div class="aiw">'
+
+ /* --- AI 산글이 인사 영상 · 화면 꽉 차게 --- */
+ +'<div class="aiw-vh">'
+  +'<div class="aiw-vwrap">'
+   +'<video class="aiw-v" id="sgiV" autoplay muted loop playsinline preload="metadata" poster="img/sgi_poster.jpg">'
+    +'<source src="media/sgi_hello.mp4" type="video/mp4">'
+   +'</video>'
+   +'<div class="aiw-em"><img src="img/app_emblem.png" alt=""><span><b>산본글로벌어학원</b><i>SGA · AI CAMPUS</i></span></div>'
+   +'<button class="aiw-snd" id="sgiSnd" type="button" onclick="sgiSnd()">🔇 소리 켜기</button>'
+  +'</div>'
+  +'<div class="aiw-cap">'
+   +'<div class="aiw-eye">SANGEUL AI · 인공지능 선생님</div>'
+   +'<h2>안녕하세요,<br>저는 <b>AI 산글이</b>입니다</h2>'
+   +'<p>산본글로벌어학원의 AI 선생님 — 24시간, 여러분 곁에 있습니다.<br>소리 켜기를 누르면 제 목소리로 인사드릴게요.</p>'
+  +'</div>'
  +'</div>'
 
- /* --- AI가 직접 설명합니다 --- */
- +'<div class="wc-h"><b>산글이가 직접 설명해 드릴게요</b><em>AI 튜터 · 이 앱의 선생님</em></div>'
+ +'<div class="in">'
+
+ /* --- 무료 체험관 --- */
+ +'<div class="aiw-h" style="margin-top:22px"><b><u>무료 체험관</u>이 열려 있습니다</b><em>가입 없이 지금 바로 들어가 보세요</em></div>'
+ +'<div class="aiw-try">'
+  +'<div class="tt">FREE · 매일 새로 열립니다</div>'
+  +'<h3>출석부만 찍으면<br>매일 <b>한 과씩</b> 열립니다</h3>'
+  +'<p>1과는 늘 무료, 오늘의 무료 과는 매일 바뀝니다.<br>출석 도장을 찍으면 그날의 과가 열리고, <b>카카오톡으로도 보내드립니다.</b></p>'
+  +'<div class="rr"><span>🇺🇸🇯🇵🇨🇳 회화</span><span>토익 · 토스 · 오픽</span><span>토플 · JLPT · HSK</span><span>한 과 3분</span></div>'
+  +'<div class="bb">'
+   +'<a class="w" href="index.html#" onclick="location.href=\'index.html\';return false;">🎁 무료 체험관 입장</a>'
+   +'<a class="o" href="checkin.html">📅 출석부 찍으러 가기</a>'
+  +'</div>'
+ +'</div>'
+
+ /* --- 가입하면 전부 무료 --- */
+ +'<div class="aiw-h"><b>회원가입하면 <u>전부 무료</u></b><em>홈페이지에서도, 이 앱에서도 — 온라인 학습관 전 과정</em></div>'
+ +'<div class="aiw-free">'
+  +'<div class="zt">MEMBERS · 온라인 전 과정</div>'
+  +'<div class="zp">0<span>원</span></div>'
+  +'<p><b>회원가입만 하면</b> 영어·일본어·중국어 회화부터 시험대비까지<br>온라인 AI 학습관 전 과정이 무료입니다.<br>학원 수강생은 담임 선생님과 리포트까지 이어집니다.</p>'
+ +'</div>'
+
+ /* --- 적색 그리드 · 하는 것 --- */
+ +'<div class="aiw-h"><b>산글이와 하는 여섯 가지</b><em>따로 앱 여러 개 깔 필요가 없습니다</em></div>'
+ +'<div class="aiw-fx">'+[
+   ['🎙','AI 원어민과 대화','카페 주문, 면접, 출장 — 상황을 고르면 AI가 그 역할을 맡습니다. 틀려도 아무도 안 봅니다.'],
+   ['🎯','발음 채점','말하면 점수가 나옵니다. 어느 소리에서 새는지 짚어 줍니다.'],
+   ['📚','매일 표현 3개','오늘 배운 반 진도에 맞춰 골라 드립니다. 1분이면 끝납니다.'],
+   ['🗂','나만의 단어장','모르는 말은 눌러 담고, 다음 날 그 단어로 문제가 나옵니다.'],
+   ['📊','학습 리포트','한 달 뒤 뭐가 늘었는지 그래프로 보입니다. 상담 때 같이 봅니다.'],
+   ['🔥','출석·포인트','연속 학습일이 쌓이면 포인트가 되고, 교재·수강료로 바꿉니다.']
+  ].map(function(f){return '<div class="aiw-f"><span class="fi">'+f[0]+'</span><b>'+f[1]+'</b><p>'+f[2]+'</p></div>';}).join('')+'</div>'
+
+ /* --- 산글이 채팅 --- */
+ +'<div class="aiw-h"><b>산글이가 직접 설명해 드릴게요</b><em>AI 튜터 · 이 앱의 선생님</em></div>'
  +'<div class="card sgtalk" id="sgTalk">'
   +'<div class="sgt-hd"><span class="sgt-av">🐋</span><div><b>산글이</b><i>AI 튜터 · 지금 입력 중…</i></div></div>'
   +'<div class="sgt-body" id="sgTalkBody"></div>'
@@ -527,45 +646,36 @@ function vWelcome(){
  +'</div>'
 
  /* --- 화면으로 보기 --- */
- +'<div class="wc-h"><b>이런 화면입니다</b><em>가입하면 바로 이 화면이 열립니다</em></div>'
+ +'<div class="aiw-h"><b>이런 화면입니다</b><em>가입하면 바로 이 화면이 열립니다</em></div>'
  +'<div class="wc-shots">'+wcShots()+'</div>'
  +'<p class="wc-swipe">← 옆으로 밀어 보세요 →</p>'
 
- /* --- 기능 --- */
- +'<div class="wc-h"><b>여섯 가지를 합니다</b><em>따로 앱 여러 개 깔 필요가 없습니다</em></div>'
- +'<div class="wc-fx">'+[
-   ['🎙','AI 원어민과 대화','카페 주문, 면접, 출장 — 상황을 고르면 AI가 그 역할을 맡습니다. 틀려도 아무도 안 봅니다.'],
-   ['🎯','발음 채점','말하면 점수가 나옵니다. 어느 소리에서 새는지 짚어 줍니다.'],
-   ['📚','매일 표현 3개','오늘 배운 반 진도에 맞춰 골라 드립니다. 1분이면 끝납니다.'],
-   ['🗂','나만의 단어장','모르는 말은 눌러 담고, 다음 날 그 단어로 문제가 나옵니다.'],
-   ['📊','학습 리포트','한 달 뒤 뭐가 늘었는지 그래프로 보입니다. 상담 때 같이 봅니다.'],
-   ['🔥','출석·포인트','연속 학습일이 쌓이면 포인트가 되고, 교재·수강료로 바꿉니다.']
-  ].map(function(f){return '<div class="wc-f"><span class="fi">'+f[0]+'</span><b>'+f[1]+'</b><p>'+f[2]+'</p></div>';}).join('')+'</div>'
-
- /* --- 왜 학원 앱인가 --- */
- +'<div class="card wc-why">'
-  +'<b class="wy-t">시중 회화 앱과 무엇이 다릅니까</b>'
-  +'<div class="wy-r"><span>혼자 하는 앱</span><em>막히면 거기서 끝. 물어볼 사람이 없습니다.</em></div>'
-  +'<div class="wy-r on"><span>산글이</span><em>막힌 자리가 <b>선생님께 그대로 전달</b>됩니다. 다음 수업에서 그 부분부터 다시 잡아 드립니다.</em></div>'
-  +'<p class="wy-n">앱이 선생님을 대신하지 않습니다. <b>수업과 수업 사이를 메웁니다.</b></p>'
- +'</div>'
-
- /* --- 값 --- */
- +'<div class="wc-h"><b>얼마입니까</b><em>학원 다니시면 낼 게 없습니다</em></div>'
- +'<div class="wc-price">'
-  +'<div class="wp free"><div class="wp-t">학원 수강생</div><div class="wp-p">0<span>원</span></div>'
-   +'<ul><li>전 과정 <b>무료</b></li><li>AI 회화 · 발음채점 무제한</li><li>리포트를 담임 선생님과 공유</li></ul>'
-   +'<div class="wp-n">데스크에서 확인 후 열어 드립니다</div></div>'
-  +'<div class="wp"><div class="wp-t">앱만 쓰실 분</div><div class="wp-p" style="font-size:20px">월 이용권</div>'
-   +'<ul><li>3개 국어 전부</li><li>학원에 안 다니셔도 됩니다</li></ul>'
-   +'<button class="wp-b" onclick="openSheet(\'plan\')">가격 보기 ›</button></div>'
- +'</div>'
-
  /* --- 시작 --- */
- +'<button class="btn g wc-go" onclick="openSheet(\'join\')">30초 만에 시작하기</button>'
- +'<button class="btn o" onclick="openSheet(\'login\')">이미 계정이 있어요</button>'
+ +'<div class="aiw-go">'
+ +'<button class="btn r wc-go" onclick="openSheet(\'join\')">30초 만에 무료로 시작하기</button>'
+ +'<button class="btn o" style="background:transparent;color:#C7D2E6;border-color:#2C3852" onclick="openSheet(\'login\')">이미 계정이 있어요</button>'
  +'<p class="muted" style="text-align:center;margin-top:14px">가입하실 때 넣으신 정보는 <b>이 기기에만</b> 저장됩니다.<br>031-466-6969 · 산본역 3번 출구 도보 1분</p>'
- +'<p class="muted" style="text-align:center;margin-top:6px;font-size:11px;opacity:.75">최종 수정 2026-08-30 (앱 v2)</p>';
+ +'<p class="muted" style="text-align:center;margin-top:6px;font-size:11px;opacity:.75">최종 수정 2026-09-02 (앱 v3)</p>'
+ +'</div>'
+
+ +'</div></div>';
+}
+/* 영상 파일이 아직 없거나 로드 실패하면 영상만 감추고 글자 인사로 대신합니다 */
+function sgiInit(){
+ var v=document.getElementById('sgiV');if(!v)return;
+ var s=v.querySelector('source');
+ /* 영상이 없어도 판은 유지(배경 그라데이션이 보임) — 소리 버튼만 감춥니다 */
+ function off(){v.dataset.dead='1';var b=document.getElementById('sgiSnd');if(b)b.style.display='none';}
+ if(s)s.addEventListener('error',off);
+ v.addEventListener('error',off);
+}
+/* 인사 영상 소리 토글 — 처음엔 음소거, 켜면 처음부터 목소리로 인사 */
+function sgiSnd(){
+ var v=document.getElementById('sgiV'),b=document.getElementById('sgiSnd');
+ if(!v||v.dataset.dead){toast('인사 영상을 준비 중입니다');return;}
+ if(v.muted){v.muted=false;v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(function(){});
+  b.textContent='🔊 소리 끄기';b.classList.add('on');}
+ else{v.muted=true;b.textContent='🔇 소리 켜기';b.classList.remove('on');}
 }
 /* 실제 앱 화면을 폰 모양으로 그려 보여줍니다 — 사진이 아니라 화면 그대로라 늘 최신입니다 */
 function wcShots(){

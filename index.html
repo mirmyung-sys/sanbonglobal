@@ -499,7 +499,7 @@ section{scroll-margin-top:130px}
 .hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(9,14,26,.5),rgba(9,14,26,.22) 60%,rgba(9,14,26,.08))}
 /* 광고 패널(틀) */
 .tsn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;font-size:12px;font-weight:900;color:#fff!important;margin-left:6px;vertical-align:-2px;text-decoration:none}
-.nb-sns{order:99;margin-left:14px;display:flex;gap:2px;align-items:center;position:relative;z-index:5}
+.sns-strip{display:flex;justify-content:center;align-items:center;gap:8px;padding:7px 0;background:#fff;border-bottom:1px solid var(--line)}
 .tsn.yt{background:#ff0000}
 .tsn.ig{background:linear-gradient(45deg,#f09433,#e6683c 40%,#dc2743 60%,#bc1888)}
 .tsn.nv{background:#03c75a}
@@ -547,6 +547,10 @@ section{scroll-margin-top:130px}
 .hsty-soft .hs-title{font-weight:800;letter-spacing:-.015em}
 .hsty-line .hs-eyebrow{display:inline-block;border-bottom:2.5px solid currentColor;padding-bottom:4px;letter-spacing:.13em}
 .hsty-dark .hs-eyebrow{background:rgba(0,0,0,.14)}
+/* 2026-09-02 대표님 — 모바일 정리정돈 */
+h1,h2,h3,h4,.hs-sub,.hs-title,.sp-desc,.lead,.oh-p{text-wrap:pretty}
+@media(max-width:860px){.progcards{grid-template-columns:1fr 1fr!important;gap:12px!important}}
+
 .hsty-dark .hs-fill{opacity:1!important} /* 금색 판은 반투명이면 탁해집니다 */
 /* 전체 시간표 — 과목별 색 카드 그리드 (2026-09-01) */
 .ttg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
@@ -593,7 +597,7 @@ section{scroll-margin-top:130px}
 .qs em{font-size:12px;color:#3f4757;font-style:normal;font-weight:700;white-space:nowrap}
 .qs .ic-fb{font-size:20px}.qs .ic-yt{font-size:12px}.qs .ic-url{font-size:17px}
 @media(max-width:860px){
- .qsns{gap:0;justify-content:space-between;padding:2px 12px 16px}
+ .qsns{gap:clamp(22px,9vw,44px);justify-content:center;padding:2px 12px 16px}
  .qs .ic{width:40px;height:40px;font-size:11.5px}
  .qs em{font-size:10.5px}}
 @media(max-width:380px){.qs .ic{width:36px;height:36px;font-size:10.5px}.qs em{font-size:9.5px}}
@@ -762,6 +766,18 @@ header nav a{letter-spacing:-.01em}
 .chrow .chip:hover .chs{color:#ffdf4d;font-weight:800}
 .chrow .chip:hover .che{color:#ff6a6a}
 @media(max-width:860px){.chrow{flex-wrap:wrap}.chip{flex:1 1 44%;height:120px}.chrow .chip:hover{flex-grow:0}}
+/* 2026-09-02 대표님 — 폰에서 타일 글자가 겹치고 잘리던 것 정돈 */
+@media(max-width:640px){
+ .chip{height:114px;padding:13px 13px}
+ .chip .cht{font-size:17px;white-space:normal;line-height:1.25;word-break:keep-all}
+ .chip .chs{font-size:11.5px;margin-top:5px;line-height:1.4}
+ .chip .che{font-size:10px;top:9px;right:11px;letter-spacing:.5px}
+ .chip .chrev{display:none}
+ .chip.exp{flex-grow:1}
+ .progcards .pc{padding:16px 14px}
+ .progcards .pc h4{font-size:16px}
+ .progcards .pc p{font-size:12.5px}
+}
 /* ===== 내게 맞는 강의 CTA ===== */
 .findwrap{display:flex;justify-content:center;padding:30px 24px 12px}
 .findwrap{position:relative}
@@ -2161,6 +2177,13 @@ li:first-child > .pgh{margin-top:2px}
 .hs-panel .hs-inner{height:100%;justify-content:center}
 .hs-faces img{width:44px!important;height:44px!important}
 @media(max-width:860px){.hs-panel{min-height:0!important;padding:18px 16px!important}.hs-faces img{width:36px!important;height:36px!important}}
+/* 통짜 이미지 광고판 (2026-09-02) — 대표님이 주신 완성 이미지를 그대로 씁니다.
+   글자·버튼이 이미지 안에 박혀 있으므로 잘리면 안 됨 → contain으로 전체를 보여주고,
+   남는 위아래·좌우는 같은 이미지를 블러로 깔아 채웁니다. 슬라이드 전체가 클릭됩니다. */
+.hs-imgs{cursor:pointer;background:#0d1426;padding-bottom:0!important}
+.hs-imgs .hsi-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(44px) brightness(.9);transform:scale(1.28)}
+.hs-imgs .hsi-fg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:2}
+@media(max-width:640px){.hs-imgs .hsi-fg{object-position:center top}.hs-imgs .hsi-bg{object-position:center top}}
 /* 헤더 로고 */.logo{display:flex;align-items:center;gap:13px;text-decoration:none}.lg-em{height:82px;width:auto;display:block}.lg-wm{display:flex;flex-direction:column;line-height:1;gap:4px}.lg-wm b{font-size:34px;font-weight:900;color:#c81f2b;letter-spacing:.02em;line-height:1}.lg-wm em{font-style:normal;font-size:16px;font-weight:900;color:#c81f2b;letter-spacing:-.02em}.lg-wm i{font-style:normal;font-size:11px;font-weight:700;color:#8a90a0;letter-spacing:.13em}@media(max-width:860px){.htop{height:84px}.lg-em{height:58px}.lg-wm b{font-size:24px}.lg-wm em{font-size:13px}.lg-wm i{display:none}}@media(max-width:380px){.lg-em{height:50px}.lg-wm b{font-size:22px}.lg-wm em{font-size:11px}}
 .oh-bn{position:relative;width:100vw;left:50%;transform:translateX(-50%);margin-top:-76px;height:56vh;min-height:340px;overflow:hidden;background:#0d1017}.oh-bn img{width:100%;height:100%;object-fit:cover;display:block;opacity:.42}.oh-bn-in{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 22px 30px;max-width:760px;margin:0 auto}.oh-bn .oh-eye{color:#ffb3ad;margin-bottom:10px}.oh-bn .oh-t{color:#fff;font-size:clamp(21px,5.6vw,36px);line-height:1.36;text-shadow:0 2px 18px rgba(0,0,0,.55);word-break:keep-all;margin:0}.oh-bn .oh-t em{font-style:normal;color:#ffd84d}.oh-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}.oh-kpi>div{background:#fff5f4;border:1px solid #f2c4c0;border-radius:12px;padding:14px 10px;text-align:center}.oh-kpi b{display:block;font-size:26px;font-weight:900;color:#c81f2b;line-height:1.1}.oh-kpi span{display:block;margin-top:6px;font-size:12px;line-height:1.5;color:#5c6472}
 /* 1대1 허브 */.oh-hero{padding:26px 0 6px}.oh-eye{font-size:13px;font-weight:900;letter-spacing:.1em;color:#c81f2b;margin-bottom:8px}.oh-t{font-size:26px;line-height:1.38;font-weight:900;margin:0 0 10px;color:#1a1f2b;letter-spacing:-.02em}.oh-d{font-size:15px;line-height:1.75;color:#3f4757;margin:0}.oh-pick{margin:22px 0 10px;font-size:15px;font-weight:900;color:#1a1f2b}.oh-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}.oh-body{padding-top:18px}.oh-card{background:#f6f7fa;border:1px solid #e3e6ee;border-radius:14px;padding:20px;margin-bottom:22px}.oh-card.hi{background:#fff5f4;border-color:#f2c4c0}.oh-card p{font-size:15px;line-height:1.78;color:#3f4757;margin:0 0 10px}.oh-card p:last-child{margin-bottom:0}.oh-tag{display:inline-block;background:#1D2D4F;color:#fff;font-size:13px;font-weight:900;padding:5px 12px;border-radius:99px;margin-bottom:12px}.oh-tag.red{background:#c81f2b}.oh-bt{font-size:22px;line-height:1.42;font-weight:900;margin:0 0 12px;color:#1a1f2b}.oh-sec{margin:0 0 26px}.oh-h{font-size:18px;font-weight:900;margin:0 0 12px;color:#1a1f2b;padding-left:11px;border-left:4px solid #c81f2b}.oh-p{font-size:15px;line-height:1.8;color:#3f4757;margin:0}.oh-ul,.oh-ck{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}.oh-ul li{font-size:15px;line-height:1.7;color:#3f4757;padding-left:17px;position:relative}.oh-ul li:before{content:'';position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:#c81f2b}.oh-ck li{font-size:15px;line-height:1.7;color:#3f4757;padding-left:26px;position:relative}.oh-ck li:before{content:'\2705';position:absolute;left:0;top:0;font-size:14px}.oh-cmp{width:100%;border-collapse:collapse;min-width:420px}.oh-cmp th,.oh-cmp td{border:1px solid #e3e6ee;padding:11px 12px;font-size:14px;text-align:left}.oh-cmp th{background:#1D2D4F;color:#fff;font-weight:800;font-size:13px}.oh-cmp td.b{background:#f6f7fa;font-weight:800;width:74px;white-space:nowrap}.oh-cmp td.hi{background:#fff8e8;font-weight:800;color:#1a1f2b}.tblwrap{overflow-x:auto}.ex-tt td.hr{color:#8a90a0;font-size:13px;white-space:nowrap}.pv-grid{display:flex;flex-direction:column;gap:12px}.pv-c{border:1px solid #e3e6ee;border-radius:12px;padding:16px;background:#fff}.pv-h{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:900;color:#1a1f2b}.pv-d{font-size:14px;color:#8a90a0;margin:4px 0 10px}.pv-r{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:1px dashed #e3e6ee;font-size:15px;color:#3f4757}.pv-p b{color:#c81f2b;font-size:16px}.pv-p s{color:#b6bcc9;font-size:13px;margin-right:5px}.one-cta{display:block;width:100%;margin:26px auto 14px;padding:22px 20px;border:0;border-radius:14px;cursor:pointer;background:#c81f2b;color:#fff;font-size:22px;font-weight:900;letter-spacing:-.02em;text-align:center;box-shadow:0 12px 28px -10px rgba(239,43,34,.7)}
@@ -2179,7 +2202,13 @@ li:first-child > .pgh{margin-top:2px}
 .oh-tsel.benall{grid-template-columns:repeat(4,1fr);margin-bottom:10px}
 @media(max-width:900px){.oh-tsel.benall{grid-template-columns:repeat(2,1fr)}}
 .oh-ts.bn{cursor:pointer;transition:.15s}
-.oh-ts.bn:hover{border-color:var(--brand);box-shadow:0 8px 22px -14px rgba(200,31,43,.55)}
+/* 2026-09-02 대표님 — 혜택 카드는 적색 그리드, 호버 시 반투명 창이 위에서 내려옴 */
+.oh-ts.bn{position:relative;overflow:hidden;border:2px solid var(--brand)}
+.oh-ts.bn>b{color:var(--brand)}
+.oh-ts.bn:hover{box-shadow:0 10px 26px -12px rgba(200,31,43,.6)}
+.bn-ov{position:absolute;inset:0;background:rgba(200,31,43,.9);color:#fff;display:flex;align-items:center;justify-content:center;padding:16px;text-align:center;border-radius:inherit;transform:translateY(-102%);transition:transform .28s ease;pointer-events:none}
+.bn-ov b{font-size:14.5px;font-weight:800;line-height:1.65;word-break:keep-all;color:#fff}
+@media(hover:hover){.oh-ts.bn:hover .bn-ov{transform:translateY(0)}}
 /* AI 학습관 무료 맛보기 (2026-09-01) */
 .toc-b{display:inline-block;font-size:11px;font-weight:900;border-radius:99px;padding:2px 8px;margin-left:6px;vertical-align:1px}
 .toc-b.free{background:#e7f6ef;color:#0e8a5a}
@@ -2941,13 +2970,10 @@ html,body{overflow-x:hidden;max-width:100%}
     <a href="#" onclick="openPage('로그인');return false;">로그인</a><span class="sep">|</span>
     <a href="#" onclick="openPage('통합회원안내');return false;">사이트맵</a><span class="sep">|</span>
     <a href="checkin.html" style="color:#C6A15B;font-weight:800">🎯 출석체크</a><span class="sep">|</span>
-    <a href="app.html" target="_blank" rel="noopener" style="color:#C6A15B;font-weight:800">📱 AI앱</a><span class="sep">|</span>
-    <a class="tsn yt" href="#" onclick="sgToast('<b>유튜브 채널 준비 중입니다</b><br>곧 열립니다!');return false;" title="유튜브">▶</a>
-    <a class="tsn ig" href="#" onclick="sgToast('<b>인스타그램 준비 중입니다</b><br>곧 열립니다!');return false;" title="인스타그램">◎</a>
-    <a class="tsn nv" href="https://search.naver.com/search.naver?query=%EC%82%B0%EB%B3%B8%EA%B8%80%EB%A1%9C%EB%B2%8C%EC%96%B4%ED%95%99%EC%9B%90" target="_blank" rel="noopener" title="네이버">N</a>
+    <a href="app.html" target="_blank" rel="noopener" style="color:#C6A15B;font-weight:800">📱 AI앱</a>
   </div>
   </div>
-  <div class="navbar"><div class="wrap"><span class="nb-sns"><a class="tsn yt" href="#" onclick="sgToast('<b>유튜브 채널 준비 중입니다</b><br>곧 열립니다!');return false;" title="유튜브">▶</a><a class="tsn ig" href="#" onclick="sgToast('<b>인스타그램 준비 중입니다</b><br>곧 열립니다!');return false;" title="인스타그램">◎</a><a class="tsn nv" href="https://search.naver.com/search.naver?query=%EC%82%B0%EB%B3%B8%EA%B8%80%EB%A1%9C%EB%B2%8C%EC%96%B4%ED%95%99%EC%9B%90" target="_blank" rel="noopener" title="네이버">N</a></span>
+  <div class="navbar"><div class="wrap">
   <nav>
     <div class="ni"><a href="#" onclick="openPage('수강신청');return false;">수강신청<b class="car">▾</b></a>
       <div class="ddown">
@@ -2997,6 +3023,11 @@ html,body{overflow-x:hidden;max-width:100%}
 </header>
 
 <!-- Hero -->
+<div class="sns-strip">
+  <a class="tsn yt" href="#" onclick="sgToast('<b>유튜브 채널 준비 중입니다</b><br>곧 열립니다!');return false;" title="유튜브">▶</a>
+  <a class="tsn ig" href="#" onclick="sgToast('<b>인스타그램 준비 중입니다</b><br>곧 열립니다!');return false;" title="인스타그램">◎</a>
+  <a class="tsn nv" href="https://search.naver.com/search.naver?query=%EC%82%B0%EB%B3%B8%EA%B8%80%EB%A1%9C%EB%B2%8C%EC%96%B4%ED%95%99%EC%9B%90" target="_blank" rel="noopener" title="네이버">N</a>
+</div>
 <section class="hero" id="hero">
   <video class="hero-vid" autoplay muted loop playsinline preload="metadata"><source src="media/promo.mp4" type="video/mp4"></video>
   <div class="hero-veil" id="heroVeil"></div>
@@ -3031,7 +3062,7 @@ html,body{overflow-x:hidden;max-width:100%}
   <section class="star-sec"><div class="wrap">
   <div class="star-card">
     <h2><span class="r">산본글로벌</span> 강의관</h2>
-    <p class="cguide">과목에 마우스를 올리면 커지고, 클릭하면 담당 강사와 수강신청이 펼쳐집니다.</p>
+    <p class="cguide">과목을 누르면 담당 강사와 시간표·수강신청이 펼쳐집니다.</p>
     <div class="chapters" id="chapters"></div>
     <div class="cpanel" id="cpanel"></div>
     <div class="btnrow">
@@ -3192,7 +3223,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-02 (v48)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-02 (v53)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -3365,21 +3396,24 @@ function renderProg(k){
 const SLIDES=[
  {e:'원장 인사말 · 산본글로벌어학원', t:'산본<span style="color:#8fa3c9;font-weight:700">이지어학원</span>이<br>산본<span style="color:#ffd94d">글로벌</span>어학원이 됩니다', s:'강사진 그대로 · 수강료 그대로 · 교실도 수강권도 전부 그대로 — 바뀌는 건 이름과 혜택뿐입니다', act:"openPage('오픈이벤트')", pbg:'linear-gradient(135deg,#1D2D4F,#33507f)', tc:'#f5f1e4', tc2:'#cdd8ec', ac:'#ffd94d', bbg:'#ffd94d', btc:'#1a1205', bg:'', cls:'hsty-line'},
  {e:'DIRECTOR · 원장 직접 상담', t:'토익·유학·시험대비,<br>원장이 직접 봐 드립니다', s:'Georgetown TESOL · 토익과 토플을 가르치던 강사 출신 원장 — 무료 상담과 청강 1회 무료로 등록 전에 먼저 진단해 드립니다', act:"openPage('원장상담')", pbg:'linear-gradient(135deg,#0c1b33,#27508a)', tc:'#f3e7cd', tc2:'#b9c6dd', ac:'#C6A15B', bbg:'#C6A15B', btc:'#14213d', bg:'', cls:'hsty-soft'},
- {e:'2026 · 10월 신규 모집', t:'10월 신규 개강,<br>지금이 시작하기 제일 좋습니다', s:'새벽반 · 주말반 영어부터 토익 · 토스 · 오픽 · 토플까지 — 새로 여는 반만 모았습니다', act:"openPage('신규모집')", pbg:'linear-gradient(135deg,#155e9e,#2f8fd8)', tc:'#ffe98a', tc2:'#ddefff', ac:'#ffd98a', bbg:'#ffd94d', btc:'#1a1205', bg:''},
- {e:'무한 현장강의 이벤트', t:'같은 반을<br>한 번 더 듣습니다', s:'산글 무한수강권 — 앞 단계를 통째로 다시 듣고, AI 산글 40강이 함께 열립니다. 정규 넉 달 · 스파르타 두 달, 740,000원', act:"openExam('토익')", pbg:'linear-gradient(135deg,#c81f2b,#e0453e)', tc:'#ffd94d', tc2:'#ffe3e0', ac:'#ffe0dd', bbg:'#ffffff', btc:'#c81f2b', bg:'', cls:'hsty-impact', faces:['eng_13','elly','eng_6','eng_15','eng_14'], fnames:['송윤정','엘리 킴','최자운','김현정','유미용']},
- {e:'산본글로벌어학원', t:'AI 학습관이<br>열렸습니다', s:'영어·일본어·중국어 회화부터 토익·토스·오픽·토플·JLPT·HSK까지 — 한 과 3분, 듣기와 채점은 AI가 합니다. 학원 수강생은 무료. 산글 현강 수강생은 무료', act:"openPage('AI산글')", pbg:'linear-gradient(135deg,rgba(10,13,20,.86),rgba(14,138,90,.86))', tc:'#8df5c3', tc2:'#d6f5e7', ac:'#3ED598', bbg:'#3ED598', btc:'#0A0D14', bg:'img/ai_cafe1.jpg', cls:'hsty-impact'},
- {e:'GIFT CHARGE · SGA 어학상품권', t:'넣은 금액에<br>절반을 더', s:'50만원 넣으면 75만원, 100만원 넣으면 150만원. 손자에게, 자녀에게. 모바일과 실물 각인 카드를 둘 다 드립니다', act:"openPage('상품권충전')", pbg:'linear-gradient(135deg,#0b0d12,#3a1013)', tc:'#ffd94d', tc2:'#e6d9d9', ac:'#ffd94d', bbg:'#c81f2b', btc:'#ffffff', bg:'', cls:'hsty-line'},
+ {img:'img/sl_new.jpg', e:'2026 · 10월 신규 모집', t:'10월 신규 개강,<br>지금이 시작하기 제일 좋습니다', s:'새벽반 · 주말반 영어부터 토익 · 토스 · 오픽 · 토플까지 — 새로 여는 반만 모았습니다', act:"openPage('신규모집')", pbg:'linear-gradient(135deg,#155e9e,#2f8fd8)', tc:'#ffe98a', tc2:'#ddefff', ac:'#ffd98a', bbg:'#ffd94d', btc:'#1a1205', bg:''},
+ {img:'img/sl_moohan.jpg', e:'무한 현장강의 이벤트', t:'같은 반을<br>한 번 더 듣습니다', s:'산글 무한수강권 — 앞 단계를 통째로 다시 듣고, AI 산글 40강이 함께 열립니다. 정규 넉 달 · 스파르타 두 달, 740,000원', act:"openExam('토익')", pbg:'linear-gradient(135deg,#c81f2b,#e0453e)', tc:'#ffd94d', tc2:'#ffe3e0', ac:'#ffe0dd', bbg:'#ffffff', btc:'#c81f2b', bg:'', cls:'hsty-impact', faces:['eng_13','elly','eng_6','eng_15','eng_14'], fnames:['송윤정','엘리 킴','최자운','김현정','유미용']},
+ {img:'img/sl_ai.jpg', e:'산본글로벌어학원', t:'AI 학습관이<br>열렸습니다', s:'영어·일본어·중국어 회화부터 토익·토스·오픽·토플·JLPT·HSK까지 — 한 과 3분, 듣기와 채점은 AI가 합니다. 학원 수강생은 무료. 산글 현강 수강생은 무료', act:"openPage('AI산글')", pbg:'linear-gradient(135deg,rgba(10,13,20,.86),rgba(14,138,90,.86))', tc:'#8df5c3', tc2:'#d6f5e7', ac:'#3ED598', bbg:'#3ED598', btc:'#0A0D14', bg:'img/ai_cafe1.jpg', cls:'hsty-impact'},
+ {img:'img/sl_gift.jpg', e:'GIFT CHARGE · SGA 어학상품권', t:'넣은 금액에<br>절반을 더', s:'50만원 넣으면 75만원, 100만원 넣으면 150만원. 손자에게, 자녀에게. 모바일과 실물 각인 카드를 둘 다 드립니다', act:"openPage('상품권충전')", pbg:'linear-gradient(135deg,#0b0d12,#3a1013)', tc:'#ffd94d', tc2:'#e6d9d9', ac:'#ffd94d', bbg:'#c81f2b', btc:'#ffffff', bg:'', cls:'hsty-line'},
  {e:'OPEN EVENT · 10~11월', t:'새 이름 기념,<br>두 달 전 과목 10%', s:'10월 1일부터 11월 30일까지 — 신규 등록 10%, 재등록은 얼리버드 5%가 더 붙습니다', act:"openPage('오픈이벤트')", pbg:'linear-gradient(135deg,#e8b02c,#d08e00)', tc:'#231603', ac:'#7a4d00', bbg:'#1a1205', btc:'#ffd94d', bg:'', cls:'hsty-impact hsty-dark'},
- {e:'무료 레벨 진단', t:'내 실력, 무료로<br>정확하게 진단', s:'문법·어휘·듣기 자가진단 + 원어민 회화 레벨테스트 · 결과 리포트를 바로 드립니다', act:"openPage('레벨테스트')", pbg:'linear-gradient(135deg,#0e8f88,#12a89f)', tc:'#fff3b0', tc2:'#ccf5f1', ac:'#ccf5f1', bbg:'#ffffff', btc:'#0e8f88', bg:''},
+ {img:'img/sl_level.jpg', e:'무료 레벨 진단', t:'내 실력, 무료로<br>정확하게 진단', s:'문법·어휘·듣기 자가진단 + 원어민 회화 레벨테스트 · 결과 리포트를 바로 드립니다', act:"openPage('레벨테스트')", pbg:'linear-gradient(135deg,#0e8f88,#12a89f)', tc:'#fff3b0', tc2:'#ccf5f1', ac:'#ccf5f1', bbg:'#ffffff', btc:'#0e8f88', bg:''},
  {e:'1:1 GLOBAL', t:'나만을 위한<br>완전 맞춤 수업', s:'목표와 일정에 맞는 1대1 수업을 골라 드립니다', act:"openPage('맞춤수업')", pbg:'linear-gradient(135deg,#7658c8,#9a7ee0)', tc:'#f1eaff', tc2:'#dccffa', ac:'#efe6ff', bbg:'#ffffff', btc:'#5a3f92', bg:'', cls:'hsty-soft'},
  {e:'FREE · 무료 상담 + 무료 청강', t:'듣고 나서<br>판단하세요', s:'산본글로벌어학원은 회원님께 무료 청강 혜택을 드립니다 — 유학 · 토익 · 영어 · 시험대비 전 과목 무료 상담과 실제 수업 청강 1회', act:"openPage('무료청강')", pbg:'linear-gradient(135deg,#0E8A5A,#14B06E)', tc:'#eaffd6', tc2:'#d6f5e7', ac:'#D6F5E7', bbg:'#ffffff', btc:'#0E8A5A', bg:''},
  {e:'유학 · 외고 · 과외', t:'늦었다고 생각할 때가<br>가장 빠릅니다', s:'유학부터 외고, 그리고 과외까지 — 지금 시작해도 늦지 않습니다. 무료 상담으로 먼저 길만 잡아보세요', act:"openPage('무료청강')", pbg:'linear-gradient(135deg,#434b7c,#5d68a8)', tc:'#ffd9c4', tc2:'#dfe3ff', ac:'#dfe3ff', bbg:'#ffffff', btc:'#3c4470', bg:'', cls:'hsty-soft'},
- {e:'동글 · 동네가 글로벌해진다', t:'동글이<br>동네 영어 모임', s:'동네와 글로벌을 합쳐 동글입니다. 산본에서 영어로 떠드는 가장 가벼운 자리 — 1시간 1,000원, 커피는 무료', act:"openPage('동글이')", pbg:'linear-gradient(135deg,#3F5D4A,#5C8069)', tc:'#f2ecd9', tc2:'#dfe9df', ac:'#e3ebe3', bbg:'#ffffff', btc:'#3F5D4A', bg:'', cls:'hsty-impact'}
+ {img:'img/sl_dongle.jpg', e:'동글 · 동네가 글로벌해진다', t:'동글이<br>동네 영어 모임', s:'동네와 글로벌을 합쳐 동글입니다. 산본에서 영어로 떠드는 가장 가벼운 자리 — 1시간 1,000원, 커피는 무료', act:"openPage('동글이')", pbg:'linear-gradient(135deg,#3F5D4A,#5C8069)', tc:'#f2ecd9', tc2:'#dfe9df', ac:'#e3ebe3', bbg:'#ffffff', btc:'#3F5D4A', bg:'', cls:'hsty-impact'}
 ];
 
 (function(){
  var hs=document.getElementById('heroslides');
- hs.innerHTML=SLIDES.map(function(s,i){return '<div class="hslide'+(i===0?' on':'')+(s.cls?(' '+s.cls):'')+'"'+(s.bg?' style="background-image:linear-gradient(rgba(9,13,26,.35),rgba(9,13,26,.35)),url('+s.bg+');background-size:cover;background-position:center"':'')+'><div class="hs-wrap"><div class="hs-panel" style="color:'+s.tc+'"><div class="hs-fill" style="background:'+s.pbg+'"></div><div class="hs-inner"><div class="hs-eyebrow" style="color:'+s.ac+'">'+s.e+'</div><div class="hs-title" style="color:'+s.tc+'">'+s.t+'</div><div class="hs-sub" style="color:'+(s.tc2||s.tc)+'">'+s.s+'</div>'+(s.faces?('<div class="hs-faces">'+s.faces.map(function(f,k){return '<span><img src="img/teachers/'+f+'.png" alt=""><i>'+(s.fnames?s.fnames[k]:'')+'</i></span>';}).join('')+'</div>'):'')+'<button class="hs-btn" style="background:'+s.bbg+';color:'+s.btc+';border-color:'+s.bbg+'" onclick="'+s.act+'">자세히 보기 →</button></div></div></div></div>';}).join('');
+ hs.innerHTML=SLIDES.map(function(s,i){
+  /* img가 있는 슬라이드는 이미지 자체가 광고판 — 글자판 없이 통짜 이미지 + 전체 클릭 (2026-09-02) */
+  if(s.img){return '<div class="hslide hs-imgs'+(i===0?' on':'')+'" onclick="'+s.act+'" role="button" tabindex="0" aria-label="'+s.e.replace(/<[^>]*>/g,'')+'"><img class="hsi-bg" src="'+s.img+'" alt="" aria-hidden="true" loading="lazy"><img class="hsi-fg" src="'+s.img+'" alt="" loading="lazy"></div>';}
+  return '<div class="hslide'+(i===0?' on':'')+(s.cls?(' '+s.cls):'')+'"'+(s.bg?' style="background-image:linear-gradient(rgba(9,13,26,.35),rgba(9,13,26,.35)),url('+s.bg+');background-size:cover;background-position:center"':'')+'><div class="hs-wrap"><div class="hs-panel" style="color:'+s.tc+'"><div class="hs-fill" style="background:'+s.pbg+'"></div><div class="hs-inner"><div class="hs-eyebrow" style="color:'+s.ac+'">'+s.e+'</div><div class="hs-title" style="color:'+s.tc+'">'+s.t+'</div><div class="hs-sub" style="color:'+(s.tc2||s.tc)+'">'+s.s+'</div>'+(s.faces?('<div class="hs-faces">'+s.faces.map(function(f,k){return '<span><img src="img/teachers/'+f+'.png" alt=""><i>'+(s.fnames?s.fnames[k]:'')+'</i></span>';}).join('')+'</div>'):'')+'<button class="hs-btn" style="background:'+s.bbg+';color:'+s.btc+';border-color:'+s.bbg+'" onclick="'+s.act+'">자세히 보기 →</button></div></div></div></div>';}).join('');
  document.getElementById('hdots').innerHTML=SLIDES.map(function(s,i){return '<i data-i="'+i+'"'+(i===0?' class="on"':'')+'></i>';}).join('');
  var si=0, slides=hs.querySelectorAll('.hslide'), dots=document.querySelectorAll('#hdots i'), N=SLIDES.length;
  function show(){for(var i=0;i<N;i++){slides[i].classList.toggle('on',i===si);dots[i].classList.toggle('on',i===si);}
@@ -7004,19 +7038,20 @@ function dirCard(){
 /* 혜택 모음 — 원장상담 창과 상호변경 안내 창 공용 (2026-09-01 대표님: "가격은 내리고 혜택은 올리고") */
 function benAllHTML(){
  var B=[
-  ['🎉','오픈이벤트 10%','10~11월 전 과목 10% 할인, 결제창에서 자동 적용',"openPage('오픈이벤트')"],
-  ['🔁','재등록 얼리버드 5%','재원생은 명부 확인 후 5% 환급 (매달 19~25일)',"openPage('오픈이벤트')"],
-  ['🎁','SGA 어학상품권','50만원 충전하면 75만원 — 넣은 금액에 절반을 더',"openPage('상품권충전')"],
-  ['🐋','AI 학습관','영·일·중 회화부터 토익·JLPT·HSK까지, 수강생은 무료',"openPage('AI산글')"],
-  ['♾️','무한수강권','같은 반을 한 번 더 — 재수강 무제한 + AI 산글 40강',"openExam('토익')"],
-  ['📊','무료 레벨 진단','5분 자가진단과 결과 리포트, 등록 안 하셔도 드립니다',"openPage('레벨테스트')"],
-  ['🪑','무료 상담 · 청강 1회','원장이 직접 상담하고, 진짜 수업에 앉아보세요',"openPage('원장상담')"],
-  ['🎯','1대1 글로벌 강의관','일대일·퍼스널·왕기초 — 20시간이면 정규반 1개월 무료',"openPage('맞춤수업')"]
+  ['🎉','오픈이벤트 10%','10~11월 전 과목 10% 할인, 결제창에서 자동 적용',"openPage('오픈이벤트')",'12월부터는 정가입니다 — 두 달뿐인 가격'],
+  ['🔁','재등록 얼리버드 5%','재원생은 명부 확인 후 5% 환급 (매달 19~25일)',"openPage('오픈이벤트')",'다니던 분이 제일 큽니다 — 10%에 5%를 더, 매달 19~25일'],
+  ['🎁','SGA 어학상품권','50만원 충전하면 75만원 — 넣은 금액에 절반을 더',"openPage('상품권충전')",'부모님이 자녀에게, 사장님이 직원에게 — 넣은 돈의 1.5배로'],
+  ['🐋','AI 학습관','영·일·중 회화부터 토익·JLPT·HSK까지, 수강생은 무료',"openPage('AI산글')",'수강생은 전자책 12권이 전부 공짜 — 오늘의 무료 과부터'],
+  ['♾️','무한수강권','같은 반을 한 번 더 — 재수강 무제한 + AI 산글 40강',"openExam('토익')",'한 번 듣고 다 남는 사람은 없습니다 — 같은 반을 무료로 한 번 더'],
+  ['📊','무료 레벨 진단','5분 자가진단과 결과 리포트, 등록 안 하셔도 드립니다',"openPage('레벨테스트')",'5분 진단이 두 달 시행착오를 줄입니다'],
+  ['🪑','무료 상담 · 청강 1회','원장이 직접 상담하고, 진짜 수업에 앉아보세요',"openPage('원장상담')",'말보다 한 번 앉아보는 게 빠릅니다 — 진짜 수업에 초대합니다'],
+  ['🎯','1대1 글로벌 강의관','일대일·퍼스널·왕기초 — 20시간이면 정규반 1개월 무료',"openPage('맞춤수업')",'스무 명 중 한 명 말고, 선생님 앞에 나 한 명']
  ];
  return '<div class="ben-h">가격은 내리고, <em>혜택은 올립니다</em></div>'
   +'<div class="ben-hs">이름이 바뀌면서 새로 생기거나 올라간 혜택 전부입니다. 카드를 누르면 바로 이동합니다.</div>'
   +'<div class="oh-tsel benall">'+B.map(function(x){
-    return '<div class="oh-ts bn" onclick="'+x[3]+'"><span class="ic">'+x[0]+'</span><b>'+x[1]+'</b><p>'+x[2]+'</p></div>';}).join('')+'</div>';}
+    return '<div class="oh-ts bn" onclick="'+x[3]+'"><span class="ic">'+x[0]+'</span><b>'+x[1]+'</b><p>'+x[2]+'</p>'
+     +'<div class="bn-ov"><b>'+(x[4]||'내용은 뭐라 할까요?')+'</b></div></div>';}).join('')+'</div>';}
 
 /* ===== 원장 직접 상담 페이지 — 2026-09-01 대표님 =====
    원장은 '제2의 강사'입니다. 토익·유학·시험대비를 원장이 직접 진단하고,
