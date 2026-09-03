@@ -1562,6 +1562,49 @@ li:first-child > .pgh{margin-top:2px}
  background:#fff;color:var(--ink2);border:1.5px solid var(--line);border-radius:50%;
  font-size:16px;box-shadow:0 6px 16px rgba(0,0,0,.16)}
 .ls-book{font-size:12px;letter-spacing:.06em;color:var(--gold);font-weight:700;margin-bottom:14px}
+/* ===== AI 학습관 대화식 수업 (산글이 총괄 + 강사 아바타) 2026-09-03 ===== */
+.at-sheet{text-align:center;padding-bottom:28px}
+.at-top{display:flex;align-items:center;justify-content:center;gap:7px;font-size:12.5px;color:var(--ink3);
+ background:var(--surf);border-radius:999px;padding:7px 14px;width:fit-content;margin:2px auto 18px}
+.at-top img{width:22px;height:22px;object-fit:contain}
+.at-top b{color:var(--navy)}
+.at-stage{margin:0 0 16px}
+.at-face{width:148px;height:148px;margin:0 auto 10px;border-radius:50%;overflow:hidden;position:relative;
+ background:radial-gradient(circle at 50% 30%,#f3f6ff,#dfe6f7);box-shadow:0 10px 30px -12px rgba(29,45,79,.5);
+ outline:3px solid #fff;transition:box-shadow .2s}
+.at-face img{width:100%;height:100%;object-fit:cover;display:block}
+.at-face.talk{box-shadow:0 0 0 6px rgba(198,161,91,.28),0 12px 32px -12px rgba(29,45,79,.55);animation:atBob 1.4s ease-in-out}
+@keyframes atBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@media(prefers-reduced-motion:reduce){.at-face.talk{animation:none}}
+.at-nm{font-size:18px;font-weight:900;color:var(--navy);line-height:1.35}
+.at-nm span{display:block;font-size:12.5px;font-weight:700;color:var(--muted);margin-top:2px}
+.at-bub{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:17px 18px;
+ margin:0 auto 14px;max-width:520px;font-size:15.5px;line-height:1.75;color:var(--ink);text-align:left;
+ box-shadow:0 6px 18px -10px rgba(29,45,79,.3);opacity:0;transform:translateY(6px);transition:.22s}
+.at-bub.on{opacity:1;transform:none}
+.at-bub.ai{background:#f2f6ff;border-color:#d9e4fb}
+.at-bub.t{background:#fffdf5;border-color:#f0e2bf}
+.at-bub.d{background:var(--surf)}
+.at-bub .at-sp{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;
+ background:var(--navy);color:#fff;font-size:12px;font-weight:900;margin-right:8px;vertical-align:2px}
+.at-bub.d.b .at-sp{background:var(--brand)}
+.at-bub .at-ko{display:block;font-size:13.5px;color:var(--ink3);margin-bottom:3px}
+.at-bub .at-en{display:block;font-size:19px;font-weight:900;color:var(--navy);line-height:1.45}
+.at-bub .at-tip{display:block;font-size:13px;color:var(--ink3);margin-top:7px;padding-top:7px;border-top:1px dashed var(--line)}
+.at-bub .at-warn{color:var(--brand)}
+.at-bub em{display:block;font-style:normal;font-size:13.5px;color:var(--ink3);margin-top:4px}
+.at-bar{height:5px;background:var(--line2);border-radius:99px;max-width:520px;margin:0 auto 14px;overflow:hidden}
+.at-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#e7c989);transition:width .3s}
+.at-btns{display:flex;gap:8px;max-width:520px;margin:0 auto}
+.at-b{flex:1;border:0;border-radius:12px;padding:14px;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit;
+ background:linear-gradient(135deg,var(--brand),var(--brand-lt));color:#fff}
+.at-b.ghost{flex:0 0 auto;background:#fff;color:var(--ink3);border:1.5px solid var(--line);padding:14px 16px}
+.at-foot{display:flex;gap:8px;justify-content:center;margin-top:14px}
+.at-foot button{border:0;background:none;color:var(--muted);font-size:13px;font-weight:700;cursor:pointer;
+ font-family:inherit;padding:6px 8px;text-decoration:underline;text-underline-offset:3px}
+.at-q{display:none;text-align:left;margin-top:8px}
+@media(max-width:520px){.at-face{width:120px;height:120px}.at-bub{font-size:15px}.at-bub .at-en{font-size:17.5px}}
+
 .ls-hd{border-bottom:2px solid var(--navy);padding-bottom:14px;margin-bottom:20px}
 .ls-no{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;color:#fff;
  background:var(--navy);padding:3px 10px;border-radius:999px;margin-bottom:8px}
@@ -3358,7 +3401,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-03 (v78)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-03 (v80)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -8072,8 +8115,108 @@ function aiLockShow(n){
  m.onclick=function(ev){if(ev.target===m)aiLsClose();};}
 
 var _lsQ=0,_lsPick=[];
-function aiLesson(n){
+/* ════════════════════════════════════════════════════════════════
+   AI 학습관 — 산글이 지휘 아래 강사 아바타가 한 마디씩 가르치는 방식
+   (2026-09-03 대표님 지시: "산글이가 첫 말만 하고 끝나는 게 아니라,
+    진짜 AI 학습관답게. 강사 얼굴이 크게 나와서 서로 대화하는 식으로.
+    토익은 송윤정 아바타로.")
+   기존 aiLesson()의 정적 화면은 「교재로 보기」로 남겨 둡니다.
+   ════════════════════════════════════════════════════════════════ */
+/* 2026-09-03 대표님 확정 배정 — 산글이 지휘 아래 강사 네 분 */
+var AITEACH={
+ tc_basic:{n:'송윤정',img:'eng_13',subj:'토익',hi:'토익은 외우는 게 아니라 자리를 보는 겁니다.'},
+ tc_lc   :{n:'송윤정',img:'eng_13',subj:'토익 LC',hi:'귀는 훈련하면 열립니다. 천천히 가겠습니다.'},
+ op_basic:{n:'김현정',img:'eng_15',subj:'오픽',hi:'오픽은 말이 되는 순서만 잡으면 됩니다.'},
+ op_real :{n:'김현정',img:'eng_15',subj:'오픽',hi:'실전 발화로 바로 가겠습니다.'},
+ hs_basic:{n:'하홍금',img:'chn_1',subj:'HSK',hi:'한자는 눈에 익히는 게 먼저입니다.'},
+ hs_real :{n:'하홍금',img:'chn_1',subj:'HSK',hi:'급수 유형부터 정리하겠습니다.'},
+ jl_basic:{n:'서정아',img:'jpn_7',subj:'JLPT',hi:'문형 하나씩 확실히 가져가겠습니다.'},
+ jl_real :{n:'서정아',img:'jpn_7',subj:'JLPT',hi:'기출 순서 그대로 갑니다.'}
+};
+function _aiTeacher(k){
+ if(AITEACH[k])return AITEACH[k];
+ if(k.indexOf('eng_')===0)return {n:'최자운 (Deborah)',img:'eng_6',subj:'영어회화',hi:'천천히, 입이 먼저 트이게 하겠습니다.'};
+ if(k.indexOf('jpn_')===0)return {n:'서정아',img:'jpn_7',subj:'일본어',hi:'문형 하나씩 확실히 가져가겠습니다.'};
+ if(k.indexOf('chn_')===0)return {n:'하홍금',img:'chn_1',subj:'중국어',hi:'성조부터 귀에 붙이겠습니다.'};
+ return {n:'최자운 (Deborah)',img:'eng_6',subj:'어학',hi:'차근차근 가겠습니다.'};
+}
+/* 레슨 데이터(L)로 대화 대본을 만듭니다 — 없는 자료는 알아서 건너뜁니다 */
+function _aiScript(L,n,T){
+ var S=[],i;
+ S.push({who:'ai',t:'<b>'+n+'과 · '+L.t+'</b><br>오늘은 '+T.n+' 선생님이 맡으십니다.'});
+ S.push({who:'t',t:T.hi});
+ S.push({who:'t',t:L.goal});
+ if(L.key&&L.key.length){
+  S.push({who:'t',t:'먼저 <b>이 표현들</b>만 가져가시면 됩니다. 하나씩 소리로 들려 드릴게요.'});
+  for(i=0;i<L.key.length;i++)
+   S.push({who:'t',t:'<span class="at-ko">'+L.key[i][0]+'</span><span class="at-en">'+L.key[i][1]+'</span><span class="at-tip">'+L.key[i][2]+'</span>',say:L.key[i][1]});
+ }
+ if(L.dlg&&L.dlg.length){
+  S.push({who:'t',t:'이제 <b>대화 속에서</b> 어떻게 쓰이는지 보겠습니다.'});
+  for(i=0;i<L.dlg.length;i++)
+   S.push({who:L.dlg[i][0]==='A'?'a':'b',t:'<b>'+L.dlg[i][1]+'</b><em>'+L.dlg[i][2]+'</em>',say:L.dlg[i][1]});
+ }
+ if(L.gram){
+  S.push({who:'t',t:'<b class="at-warn">한국인이 여기서 틀립니다</b><br>'+L.gram.t});
+  S.push({who:'t',t:L.gram.d});
+ }
+ S.push({who:'t',t:'여기까지 오셨으면 이제 <b>문제로 확인</b>해 보시죠.',last:true});
+ return S;
+}
+var _at={i:0,S:[],T:null,n:1,auto:true};
+function aiTeach(n){
  var k=aiTxtKey(), arr=AITXT[k];
+ if(!arr||!arr[n-1]){sgToast('<b>'+n+'과는 준비 중입니다</b>');return;}
+ if(n!==1&&n!==aiFreeN()){aiLockShow(n);return;}
+ _lsQ=0;_lsPick=[];_lsN=n;_lsUseAlt={};_lsTickStop();
+ var L=arr[n-1], T=_aiTeacher(k);
+ _at={i:0,S:_aiScript(L,n,T),T:T,n:n,auto:true};
+ var m=document.createElement('div');
+ m.className='sp-modal on'; m.id='lsModal';
+ m.innerHTML='<div class="sp-sheet at-sheet">'
+  +'<div class="sp-x" onclick="aiLsClose()">✕</div>'
+  +'<div class="at-top"><img src="img/whale.png" alt="산글이" onerror="this.style.display=\'none\'">'
+   +'<span><b>AI 학습관</b> · 산글이가 진행합니다</span></div>'
+  +'<div class="at-stage"><div class="at-face" id="atFace">'
+   +'<img src="img/teachers/'+T.img+'.png" alt="'+T.n+' 강사" onerror="this.src=\'img/whale.png\'"></div>'
+   +'<div class="at-nm">'+T.n+'<span>'+T.subj+' 담당</span></div></div>'
+  +'<div class="at-bub" id="atBub"></div>'
+  +'<div class="at-bar"><i id="atBar"></i></div>'
+  +'<div class="at-btns">'
+   +'<button class="at-b ghost" onclick="atReplay()">🔊 다시 듣기</button>'
+   +'<button class="at-b" id="atNext" onclick="atNext()">다음 ›</button></div>'
+  +'<div class="at-foot"><button onclick="aiLesson('+n+',1)">📖 교재로 한번에 보기</button>'
+   +'<button onclick="aiLsClose()">✕ 창닫기</button></div>'
+  +'<div id="lsQ" class="at-q"></div></div>';
+ document.body.appendChild(m);
+ document.body.style.overflow='hidden';
+ m.onclick=function(ev){if(ev.target===m)aiLsClose();};
+ atShow();
+}
+function atShow(){
+ var s=_at.S[_at.i]; if(!s)return;
+ var b=document.getElementById('atBub'); if(!b)return;
+ b.className='at-bub on '+(s.who==='ai'?'ai':(s.who==='t'?'t':'d '+s.who));
+ b.innerHTML=(s.who==='a'?'<span class="at-sp">A</span>':(s.who==='b'?'<span class="at-sp">B</span>':''))+s.t;
+ var f=document.getElementById('atFace'); if(f){f.classList.add('talk');setTimeout(function(){f.classList.remove('talk');},1400);}
+ var bar=document.getElementById('atBar'); if(bar)bar.style.width=Math.round((_at.i+1)/_at.S.length*100)+'%';
+ var nx=document.getElementById('atNext');
+ if(nx)nx.textContent=s.last?'문제 풀러 가기 ›':'다음 ›';
+ if(s.say)try{lsSay(s.say);}catch(e){}
+}
+function atReplay(){var s=_at.S[_at.i];if(s&&s.say){try{lsSay(s.say);}catch(e){}}else{sgToast('이 화면은 읽어 줄 문장이 없습니다');}}
+function atNext(){
+ var s=_at.S[_at.i];
+ if(s&&s.last){document.getElementById('atBub').style.display='none';
+  var q=document.getElementById('lsQ'); if(q){q.style.display='block';lsQDraw();q.scrollIntoView({block:'center'});}
+  var bt=document.querySelector('.at-btns'); if(bt)bt.style.display='none';
+  return;}
+ if(_at.i<_at.S.length-1){_at.i++;atShow();}
+}
+function aiLesson(n,plain){
+ var k=aiTxtKey(), arr=AITXT[k];
+ if(!plain&&arr&&arr[n-1]&&(n===1||n===aiFreeN())){var e=document.getElementById('lsModal');if(e&&e.parentNode)e.parentNode.removeChild(e);return aiTeach(n);}
+ if(plain){var e2=document.getElementById('lsModal');if(e2&&e2.parentNode)e2.parentNode.removeChild(e2);}
  if(!arr||!arr[n-1]){sgToast('<b>'+n+'과는 준비 중입니다</b><br>영어 베이직부터 순서대로 열어 드리고 있습니다.');return;}
  if(n!==1&&n!==aiFreeN()){aiLockShow(n);return;}
  _lsQ=0;_lsPick=[];_lsN=n;_lsUseAlt={};_lsTickStop(); /* 지금 몇 과인지 — 결과 화면의 「다음 과」가 이 값을 씁니다 */
