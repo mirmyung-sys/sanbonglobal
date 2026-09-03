@@ -3358,7 +3358,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-03 (v77)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-03 (v78)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -7963,8 +7963,44 @@ function _lsClean(t,lang){
  var blank=lang==='ja-JP'?'、空欄、':(lang==='zh-CN'?'，空格，':', blank, ');
  t=t.replace(/_{2,}/g,blank).replace(/\s{2,}/g,' ');
  return t.trim();}
+/* 카톡·네이버·인스타 인앱 브라우저(안드로이드 WebView)는 음성 기능이 아예 없습니다.
+   손님 대부분이 카톡/인스타 링크로 들어오므로, 안내만 띄우고 끝내면 그대로 막힙니다.
+   안드로이드는 intent:// 로 크롬을 바로 열어 주고, 아이폰은 주소 복사를 도와줍니다. (2026-09-03) */
+function _inApp(){var u=navigator.userAgent||'';
+ return /KAKAOTALK|NAVER\(inapp|Instagram|FBAN|FBAV|Line\/|DaumApps|everytimeApp|zumapp|whale\/|Snapchat/i.test(u);}
+function _isAndroid(){return /Android/i.test(navigator.userAgent||'');}
+function ttsHelpClose(){var e=document.getElementById('ttsHelp');if(e)e.remove();}
+function ttsOpenChrome(){
+ var url=location.href.split('#')[0];
+ if(_isAndroid()){
+  location.href='intent://'+url.replace(/^https?:\/\//,'')+'#Intent;scheme=https;package=com.android.chrome;end';
+  setTimeout(ttsHelpClose,1200);
+ }else{
+  try{navigator.clipboard.writeText(url);sgToast('<b>주소를 복사했습니다</b><br>사파리에 붙여넣어 열어 주십시오.');}
+  catch(e){sgToast('<b>사파리에서 열어 주십시오</b><br>아래 공유 버튼 → Safari로 열기');}
+  ttsHelpClose();
+ }
+}
+function ttsNoSupport(){
+ if(document.getElementById('ttsHelp'))return;
+ var and=_isAndroid();
+ var d=document.createElement('div'); d.id='ttsHelp';
+ d.style.cssText='position:fixed;inset:0;z-index:2147483000;background:rgba(10,15,28,.62);display:flex;align-items:center;justify-content:center;padding:24px';
+ d.innerHTML='<div style="width:100%;max-width:330px;background:#fff;border-radius:18px;padding:26px 22px 20px;text-align:center;box-shadow:0 18px 50px -12px rgba(0,0,0,.5)">'
+  +'<div style="font-size:34px;line-height:1;margin-bottom:12px">&#128266;</div>'
+  +'<div style="font-size:18px;font-weight:900;color:#1D2D4F;line-height:1.45;margin-bottom:8px">지금 앱 안에서 열려 있어<br>소리가 나오지 않습니다</div>'
+  +'<div style="font-size:14px;color:#5c6472;line-height:1.65;margin-bottom:18px">카카오톡·네이버·인스타그램 안에서는<br>음성 기능이 막혀 있습니다.<br><b style="color:#1a1f2b">'
+  +(and?'크롬으로 열면 바로 들으실 수 있습니다.':'사파리로 열면 바로 들으실 수 있습니다.')+'</b></div>'
+  +'<button type="button" onclick="ttsOpenChrome()" style="width:100%;border:0;background:linear-gradient(135deg,#c81f2b,#e0453e);color:#fff;border-radius:12px;padding:14px;font-size:16px;font-weight:900;cursor:pointer;font-family:inherit">'
+  +(and?'크롬에서 열기':'주소 복사하기')+'</button>'
+  +(and?'':'<div style="font-size:12.5px;color:#8a90a0;margin-top:9px;line-height:1.6">복사한 뒤 사파리 주소창에 붙여넣으세요</div>')
+  +'<button type="button" onclick="ttsHelpClose()" style="width:100%;border:0;background:none;color:#8a90a0;padding:12px 0 2px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">그냥 볼게요</button>'
+  +'</div>';
+ d.addEventListener('click',function(ev){if(ev.target===d)ttsHelpClose();});
+ document.body.appendChild(d);
+}
 function lsSay(txt,btn){
- if(!('speechSynthesis' in window)){sgToast('<b>이 브라우저는 듣기를 지원하지 않습니다</b><br>크롬이나 사파리에서 열어 주십시오.');return;}
+ if(!('speechSynthesis' in window)){ttsNoSupport();return;}
  try{speechSynthesis.cancel();}catch(e){}
  _lsSeq=null;
  var lang=_lsLang();
@@ -7983,7 +8019,7 @@ function lsRate(r,el){
 }
 /* 대화문 전체를 순서대로 읽습니다 */
 function lsPlayAll(btn){
- if(!('speechSynthesis' in window)){sgToast('<b>이 브라우저는 듣기를 지원하지 않습니다</b>');return;}
+ if(!('speechSynthesis' in window)){ttsNoSupport();return;}
  var rows=document.querySelectorAll('#lsDlg .dl');
  if(!rows.length)return;
  if(_lsSeq){ lsStop(); return; }
@@ -9276,7 +9312,10 @@ function crLipStart(txt){
 function crLipStop(){if(_crAnim){clearInterval(_crAnim);_crAnim=null;}crMouthSet('rest');crStageCls('');}
 
 function crSay(text,code,cb){
- if(!window.speechSynthesis){crLipStart(text);setTimeout(function(){crLipStop();if(cb)cb();},Math.min(6000,text.length*70));return;}
+ if(!window.speechSynthesis){
+  /* 소리 없이 입만 움직이면 고장난 줄 압니다 — 첫 회에 한 번만 안내합니다 (2026-09-03) */
+  if(!window._ttsWarned){window._ttsWarned=1;try{ttsNoSupport();}catch(e){}}
+  crLipStart(text);setTimeout(function(){crLipStop();if(cb)cb();},Math.min(6000,text.length*70));return;}
  try{speechSynthesis.cancel();}catch(e){}
  var u=new SpeechSynthesisUtterance(text);
  u.lang=code;var v=_pickVoice(code);if(v)u.voice=v;
