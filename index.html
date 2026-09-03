@@ -1674,6 +1674,41 @@ li:first-child > .pgh{margin-top:2px}
 @media(max-width:520px){.at-face{width:120px;height:120px}.at-bub{font-size:15px}.at-bub .at-en{font-size:17.5px}}
 
 /* 레벨테스트 결과지 받아가기 (2026-09-03) */
+/* ── AI 학습관 진단서 (2026-09-03) ── */
+.ai-dg{text-align:left}
+.dg-hd{display:flex;justify-content:space-between;align-items:baseline;
+ border-bottom:2px solid var(--navy);padding-bottom:8px;margin-bottom:14px}
+.dg-hd span{font-size:15px;font-weight:800;color:var(--navy);letter-spacing:.02em}
+.dg-hd em{font-style:normal;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.dg-sc{display:flex;align-items:baseline;gap:6px;margin-bottom:14px}
+.dg-sc b{font-size:36px;font-weight:800;color:var(--brand);line-height:1;font-variant-numeric:tabular-nums}
+.dg-sc i{font-style:normal;font-size:16px;color:var(--muted);font-weight:700}
+.dg-sc p{margin:0 0 0 auto;font-size:13px;color:var(--ink3);font-weight:700;text-align:right}
+.dg-l{margin:0 0 14px;display:grid;grid-template-columns:76px 1fr;gap:10px 12px;align-items:start}
+.dg-l dt{font-size:12.5px;font-weight:800;color:var(--muted);padding-top:2px}
+.dg-l dd{margin:0}
+.dg-l dd b{display:block;font-size:15px;color:var(--ink);line-height:1.5}
+.dg-l dd span{display:block;font-size:13px;color:var(--ink3);margin-top:2px;line-height:1.6}
+.dg-say{display:flex;gap:9px;align-items:flex-start;margin:0 0 16px}
+.dg-say img{width:38px;height:38px;flex:0 0 38px;object-fit:contain}
+.dg-bub{background:#eef7f2;border:1px solid #cfe8dc;border-radius:4px 14px 14px 14px;
+ padding:11px 13px;font-size:14px;color:#1f5c45;line-height:1.65}
+.dg-bub b{color:#0e8a5a}
+.dg-cta{background:#fff8f8;border:1.5px solid #f3d3d6;border-radius:14px;padding:15px 16px;margin-bottom:12px}
+.dg-ct{font-size:13px;font-weight:800;color:var(--brand);margin-bottom:4px}
+.dg-cd{font-size:14px;color:var(--ink2);line-height:1.7;margin-bottom:12px}
+.dg-cd b{color:var(--ink)}
+.dg-b{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.dg-b button{padding:12px 0;border:0;border-radius:10px;background:var(--navy);color:#fff;
+ font:inherit;font-size:14px;font-weight:800;cursor:pointer}
+.dg-b button.g{background:#fff;color:var(--navy);border:1.5px solid #ccd6e8}
+.dg-rsv{width:100%;margin-top:8px;padding:13px 0;border:0;border-radius:10px;
+ background:linear-gradient(120deg,#c81f2b,#e0453e);color:#fff;font:inherit;font-size:15px;
+ font-weight:800;cursor:pointer;letter-spacing:.02em}
+.dg-note{font-size:12px;color:var(--muted);line-height:1.7;margin:0 0 4px}
+.dg-note a{color:var(--navy);font-weight:700}
+.dg-re{display:block;width:100%;margin-top:10px;border:0;background:none;font:inherit;
+ font-size:13.5px;font-weight:800;color:var(--muted);cursor:pointer;text-decoration:underline}
 .lv-send{background:#f6f8fd;border:1.5px solid #dde5f4;border-radius:14px;padding:15px 16px;margin:14px 0 4px;text-align:left}
 .lv-send-t{font-size:14.5px;font-weight:900;color:var(--navy);margin-bottom:3px}
 .lv-send-d{font-size:13px;color:#5c6472;line-height:1.65;margin-bottom:11px}
@@ -3489,7 +3524,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-03 (v85)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-03 (v86)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -8402,23 +8437,18 @@ function lsQDraw(){
  var box=document.getElementById('lsQ'); if(!box)return;
  _lsTickStop();
  if(_lsQ>=L.q.length){
-  var right=0;
-  for(var i=0;i<L.q.length;i++) if(_lsPick[i]===_lsQof(L,i)[2]) right++;
-  /* 2026-09-03 대표님 지시: 결과 화면 버튼은 「다음 과로 넘어가기」와 「창닫기」.
-     마지막 과(책 전체를 다 끝낸 사람)는 다음이 없으니 축하 문구 + 창닫기만. */
+  var right=0, wrongs=[];
+  for(var i=0;i<L.q.length;i++){
+   var Qi=_lsQof(L,i);
+   if(_lsPick[i]===Qi[2]) right++;
+   else wrongs.push(Qi[1].split('|')[Qi[2]]);
+  }
   var n=_lsCur(), T=AIB[_aiT], G=(T&&T.subs&&T.subs[_aiG])||T, B=G&&G.steps?G.steps[_aiS]:null;
   var tot=(B&&B.u)?B.u:arr.length;
   var last=(n>=tot);
-  box.innerHTML='<div class="ls-res"><b>'+right+' / '+L.q.length+'</b>'
-   +'<p>'+(last
-       ? '🎉 마지막 과까지 전부 끝내셨습니다. 축하드립니다!'
-       : (right===L.q.length?'전부 맞히셨어요! 다음 과로 가셔도 좋습니다.'
-          :'틀린 건 위 표현만 다시 보시면 돼요. 처음엔 다 그렇습니다.'))+'</p>'
-   +(last
-     ? '<div class="lr-b" style="margin-top:14px;grid-template-columns:1fr"><button class="lr-next" onclick="aiLsClose()">✕ 창닫기</button></div>'
-     : '<div class="lr-b" style="margin-top:14px"><button class="lr-again" onclick="aiLsClose()">✕ 창닫기</button>'
-       +'<button class="lr-next" onclick="aiLsNext()">다음 과로 넘어가기 ›</button></div>')
-   +'<button type="button" onclick="_lsQ=0;_lsPick=[];_lsUseAlt={};lsQDraw()" style="margin-top:12px;border:0;background:none;font:inherit;font-size:13.5px;font-weight:800;color:#8a90a0;cursor:pointer;text-decoration:underline">↻ 이 과 다시 풀기</button></div>';
+  _aiDG={subj:(G?G.k:''),step:(B?B.s:''),n:n,tot:tot,right:right,q:L.q.length,
+         wrongs:wrongs,band:_aiBand(right,L.q.length,(B?B.s:'')),weak:_aiWeak(L,wrongs)};
+  box.innerHTML=_aiDiagHTML(last);
   return;}
  var Q=_lsQof(L,_lsQ), opts=Q[1].split('|');
  box.innerHTML='<div class="ls-qn">'+(_lsQ+1)+' / '+L.q.length+(_lsUseAlt[_lsQ]?' <em class="ls-retag">🔁 같은 유형</em>':'')+'</div>'
@@ -8428,6 +8458,97 @@ function lsQDraw(){
     return '<button onclick="lsPick('+i+')">'+o+'</button>';}).join('')+'</div>';
  _lsTimer=setTimeout(function(){var t=document.getElementById('lsTmr');
   if(t){t.className='ls-tmr over';t.querySelector('span').textContent='천천히 고르셔도 괜찮아요 · 실전에서는 이쯤에서 넘어갑니다';}},10000);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   1과를 끝낸 사람에게 「진단서」를 남깁니다 (2026-09-03)
+   대표님 지적: "1강 듣고 다음 강을 돈 주고 들을 생각이 1도 안 든다"
+   → 맞습니다. 지금까지는 점수만 띄우고 끝나서 아무것도 안 남았습니다.
+   무료 구간에서 손님이 가져갈 「자산」을 만들어야 결제로 넘어갑니다.
+   (산타토익 12문항 예측 · 시원스쿨 결과리포트 · 밀당PT 진단서 구조를 참고)
+   ※ 표시광고법 — 단정적 점수는 쓰지 않습니다. 반드시 「구간 + 추정」,
+     그리고 산출 기준을 화면에 한 줄로 밝힙니다. (야나두 과태료 사유가 근거 없는 수치)
+   ════════════════════════════════════════════════════════════════ */
+var _aiDG=null;
+function _aiBand(right,q,step){
+ var r=q?right/q:0;
+ if(r>=1)   return {t:'이 단계는 이미 잡고 계십니다', d:'다음 단계로 올라가셔도 됩니다.', lv:4};
+ if(r>=0.75)return {t:(step||'이 단계')+' 중간 구간으로 추정', d:'틀린 자리 하나만 메우면 됩니다.', lv:3};
+ if(r>=0.5) return {t:(step||'이 단계')+' 초입으로 추정', d:'개념은 아시는데 아직 손에 안 붙었습니다.', lv:2};
+ return {t:(step||'이 단계')+'부터 시작하시면 됩니다', d:'여기서 시작하는 게 맞습니다. 돌아가지 않아도 됩니다.', lv:1};
+}
+function _aiWeak(L,wrongs){
+ if(!wrongs.length) return '';
+ if(L&&L.gram&&L.gram.t) return L.gram.t;
+ return wrongs[0]+' 자리';
+}
+function _aiWeeks(left){
+ var w=Math.ceil(left/3);              /* 주 3회 기준 */
+ return w<=1?'1주':(w+'주');
+}
+function _aiDiagText(){
+ var d=_aiDG; if(!d) return '';
+ var L=['[산본글로벌어학원 · 산글 AI 학습관 진단서]',
+  '· 과목: '+d.subj+' '+d.step,
+  '· '+d.n+'과 · 정답 '+d.right+' / '+d.q,
+  '· 현재 구간: '+d.band.t];
+ if(d.weak) L.push('· 약한 자리: '+d.weak);
+ L.push('· 남은 과: '+(d.tot-d.n)+'과 (주 3회면 '+_aiWeeks(d.tot-d.n)+')');
+ L.push('');
+ L.push('이 진단서로 맞는 반을 추천받고 싶습니다.');
+ L.push('(무료 상담 · 031-466-6969)');
+ return L.join('\n');
+}
+function aiDiagSms(){
+ try{sgTrack('ai_diag_sms',{subject:(_aiDG&&_aiDG.subj)||''});}catch(e){}
+ location.href='sms:'+(typeof RSV_TEL_RAW!=='undefined'?RSV_TEL_RAW:'0314666969')
+  +'?body='+encodeURIComponent(_aiDiagText());
+}
+function aiDiagShare(){
+ var t=_aiDiagText();
+ try{sgTrack('ai_diag_share',{subject:(_aiDG&&_aiDG.subj)||''});}catch(e){}
+ try{ if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t); }catch(e){}
+ if(navigator.share){ navigator.share({title:'산글 진단서',text:t}).catch(function(){}); return; }
+ sgToast('<b>진단서를 복사했습니다</b><br>카톡 채널이나 문자로 보내시면 반을 정해 드립니다.');
+}
+function _aiDiagHTML(last){
+ var d=_aiDG; if(!d) return '';
+ var left=d.tot-d.n;
+ var today=new Date(), ds=today.getFullYear()+'.'+('0'+(today.getMonth()+1)).slice(-2)+'.'+('0'+today.getDate()).slice(-2);
+ return '<div class="ai-dg">'
+  +'<div class="dg-hd"><span>산글 진단서</span><em>'+ds+'</em></div>'
+  +'<div class="dg-sc"><b>'+d.right+'</b><i>/ '+d.q+'</i>'
+   +'<p>'+d.subj+' '+d.step+' · '+d.n+'과</p></div>'
+  +'<dl class="dg-l">'
+   +'<dt>지금 구간</dt><dd><b>'+d.band.t+'</b><span>'+d.band.d+'</span></dd>'
+   +(d.weak?('<dt>약한 자리</dt><dd><b>'+d.weak+'</b><span>'
+      +(d.wrongs.length?('놓친 답 — '+d.wrongs.join(', ')):'')+'</span></dd>'):'')
+   +'<dt>남은 길</dt><dd><b>'+(last?'전 과정 완료':(d.tot+'과 중 '+d.n+'과 완료 · 남은 '+left+'과'))+'</b>'
+     +'<span>'+(last?'축하드립니다. 다음 단계로 가시면 됩니다.':('주 3회 속도면 약 '+_aiWeeks(left)+' 걸립니다.'))+'</span></dd>'
+  +'</dl>'
+  +'<div class="dg-say"><img src="img/whale.png" alt="산글이" onerror="this.style.display=\'none\'">'
+   +'<div class="dg-bub">'+(d.band.lv>=3
+      ? '여기까지 오셨으면 혼자서도 하실 수 있어요. 다만 <b>막히는 자리</b>는 사람이 봐야 빨리 뚫립니다.'
+      : '괜찮습니다. 이 구간에서 혼자 하시면 대부분 <b>같은 자리에서 계속 막히십니다.</b> 그 자리만 잡아 드릴게요.')
+   +'</div></div>'
+  +'<div class="dg-cta">'
+   +'<div class="dg-ct">이 진단서를 가져오시면</div>'
+   +'<div class="dg-cd">원장이 직접 보고 <b>맞는 반과 시작 지점</b>을 정해 드립니다. '
+     +'<b>무료 체험수업</b>도 그 자리에서 잡아 드립니다.</div>'
+   +'<div class="dg-b">'
+    +'<button type="button" onclick="aiDiagSms()">진단서 문자로 받기</button>'
+    +'<button type="button" class="g" onclick="aiDiagShare()">복사 · 공유</button>'
+   +'</div>'
+   +'<button type="button" class="dg-rsv" onclick="aiLsClose();rsvOpen()">무료 체험수업 예약하기 ›</button>'
+  +'</div>'
+  +'<p class="dg-note">※ 1과 문제 '+d.q+'개로 낸 <b>간이 진단</b>입니다. 점수를 확정하는 것이 아니라 시작 지점을 잡기 위한 것입니다. '
+   +'더 정확히 보시려면 <a href="#" onclick="aiLsClose();openPage(\'레벨테스트\');return false;">무료 레벨테스트(10문제)</a>를 보세요.</p>'
+  +(last
+    ? '<div class="lr-b" style="margin-top:14px;grid-template-columns:1fr"><button class="lr-next" onclick="aiLsClose()">✕ 창닫기</button></div>'
+    : '<div class="lr-b" style="margin-top:14px"><button class="lr-again" onclick="aiLsClose()">✕ 창닫기</button>'
+      +'<button class="lr-next" onclick="aiLsNext()">다음 과 열기 ›</button></div>')
+  +'<button type="button" onclick="_lsQ=0;_lsPick=[];_lsUseAlt={};lsQDraw()" class="dg-re">↻ 이 과 다시 풀기</button>'
+ +'</div>';
 }
 function _lsCur(){return _lsN||1;}
 var _lsN=1;
