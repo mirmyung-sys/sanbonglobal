@@ -1,7 +1,7 @@
 {
-  "name": "산본글로벌어학원 SGA",
-  "short_name": "SGA",
-  "description": "영어·일본어·중국어 AI 학습 앱 — 산본글로벌어학원",
+  "name": "준비 중",
+  "short_name": "준비중",
+  "description": "정식 오픈 전 준비 중인 앱입니다.",
   "id": "/app.html",
   "start_url": "/app.html",
   "scope": "/",
@@ -51,5 +51,10 @@
         }
       ]
     }
-  ]
+  ],
+  "_원본_10월1일복구": {
+    "name": "산본글로벌어학원 SGA",
+    "short_name": "SGA",
+    "description": "영어·일본어·중국어 AI 학습 앱 — 산본글로벌어학원"
+  }
 }
