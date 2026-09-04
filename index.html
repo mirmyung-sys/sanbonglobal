@@ -3200,6 +3200,54 @@ html,body{overflow-x:hidden;max-width:100%}
 .jn-cautions li::before{content:"–";position:absolute;left:0;color:var(--red)}
 .jn-tip{color:var(--red);font-weight:900;margin:14px 0 4px}
 @media(max-width:720px){.jn-grid{grid-template-columns:1fr}}
+
+/* ── 공지사항 게시판 (2026-09-04) ── */
+.nt-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.nt-tb{border:1.5px solid #d8dee9;background:#fff;color:#5b6478;border-radius:999px;padding:8px 16px;
+ font-size:14px;font-weight:800;font-family:inherit;cursor:pointer}
+.nt-tb.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.nt-tbl{width:100%;border-collapse:collapse;font-size:15px;table-layout:fixed}
+.nt-tbl thead th{background:#f4f6fa;color:#5b6478;font-size:13px;font-weight:800;padding:11px 8px;
+ border-top:2px solid var(--navy);border-bottom:1px solid #e3e8f0;text-align:center}
+.nt-tbl thead th:nth-child(2){text-align:left;padding-left:14px}
+.nt-tbl tbody tr{border-bottom:1px solid #edf1f6;cursor:pointer}
+.nt-tbl tbody tr:hover{background:#f8fafd}
+.nt-tbl td{padding:13px 8px;text-align:center;color:#5b6478;font-size:13.5px;vertical-align:middle}
+.nt-no{width:62px}
+.nt-d{width:96px}
+.nt-h{width:64px}
+.nt-t{text-align:left!important;padding-left:14px!important;color:var(--navy)!important;font-size:15px!important}
+.nt-tt{font-weight:700}
+.nt-tbl tbody tr:hover .nt-tt{text-decoration:underline}
+.nt-pin{display:inline-block;background:var(--brand);color:#fff;border-radius:5px;padding:2px 7px;font-size:11px;font-weight:900}
+.nt-tag{display:inline-block;border-radius:5px;padding:2px 8px;font-size:11.5px;font-weight:900;margin-right:8px;vertical-align:1px}
+.nt-공지{background:#e8eefb;color:#2b4c8f}
+.nt-이벤트{background:#fdeaec;color:#c81f2b}
+.nt-개강{background:#e6f6ee;color:#0E8A5A}
+.nt-휴무{background:#f0f1f4;color:#6b7280}
+.nt-empty{padding:40px 0!important;color:#98a2b3!important}
+.nt-view{margin-top:4px}
+.nt-vhead{border-top:2px solid var(--navy);border-bottom:1px solid #e3e8f0;padding:18px 4px 14px}
+.nt-vhead h3{margin:8px 0 0;font-size:21px;font-weight:900;color:var(--navy);letter-spacing:-.02em;line-height:1.4}
+.nt-vmeta{margin-top:9px;color:#8a94a8;font-size:13px;font-weight:700}
+.nt-body{padding:22px 4px;color:#3d4657;font-size:15.5px;line-height:1.85}
+.nt-body p{margin:0 0 14px}
+.nt-body ul{margin:0 0 14px;padding-left:20px}
+.nt-body li{margin:0 0 7px}
+.nt-body b{color:var(--navy)}
+.nt-back{border-top:1px solid #e3e8f0;padding:16px 4px 0;margin-top:8px}
+.nt-back a{color:#5b6478;font-weight:800;font-size:14px;text-decoration:none}
+@media(max-width:640px){
+ .nt-tbl thead{display:none}
+ .nt-tbl,.nt-tbl tbody,.nt-tbl tr,.nt-tbl td{display:block;width:auto}
+ .nt-tbl tbody tr{padding:13px 2px;border-bottom:1px solid #edf1f6}
+ .nt-tbl td{padding:0;text-align:left}
+ .nt-no{display:none!important}
+ .nt-t{padding-left:0!important;margin-bottom:6px}
+ .nt-d,.nt-h{display:inline-block!important;color:#98a2b3;font-size:12.5px}
+ .nt-h:before{content:' · 조회 '}
+}
+
 /* 이벤트/혜택 허브 */
 .ev-banner{width:100vw;position:relative;left:50%;transform:translateX(-50%);margin-top:-76px;background:var(--red);color:#fff;padding:22px 26px;display:flex;align-items:baseline;gap:14px}
 .ev-banner b{font-size:24px;font-weight:900}.ev-banner span{font-size:14px;opacity:.92}
@@ -3446,6 +3494,7 @@ html,body{overflow-x:hidden;max-width:100%}
     <a href="#" onclick="closePage();window.scrollTo(0,0);return false;">HOME</a><span class="sep">|</span>
     <a href="#" onclick="agOpen();return false;">회원가입</a><span class="sep">|</span>
     <a href="#" onclick="openPage('로그인');return false;">로그인</a><span class="sep">|</span>
+    <a href="#" onclick="openPage('공지사항');return false;">공지사항</a><span class="sep">|</span>
     <a href="#" onclick="openPage('통합회원안내');return false;">사이트맵</a><span class="sep">|</span>
     <a href="checkin.html" style="color:#C6A15B;font-weight:800">🎯 출석체크</a><span class="sep">|</span>
     <a href="app.html" target="_blank" rel="noopener" style="color:#C6A15B;font-weight:800">📱 AI앱</a>
@@ -3482,6 +3531,7 @@ html,body{overflow-x:hidden;max-width:100%}
     <div class="ni"><a href="#" onclick="openPage('강사소개');return false;">강사님 소개</a></div>
     <div class="ni"><a href="#" onclick="openPage('이벤트혜택');return false;">이벤트/혜택<b class="car">▾</b></a>
       <div class="ddown">
+        <a href="#" onclick="openPage('공지사항');return false;">📢 공지사항</a>
         <a href="#" onclick="openPage('이벤트혜택');return false;">10~11월 오픈이벤트</a>
         <a href="#" onclick="openPage('상품권충전');return false;">🎁 SGA 어학상품권 · 장기충전권</a>
         <a href="#" onclick="openPage('AI산글');return false;">🐋 AI 학습관</a>
@@ -3705,7 +3755,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-04 (v93)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-04 (v95)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -3877,9 +3927,169 @@ function renderProg(k){
  tb.querySelectorAll('button').forEach(function(b){b.onclick=function(){renderProg(b.getAttribute('data-k'));};});
  renderProg('점수관리반');
 })();
+
+/* ═══════════════════════════════════════════════════════════════
+   공지사항 게시판 (2026-09-04)
+   · 중간광고판(히어로 슬라이드)에 뜨는 이벤트를 전부 글로 옮겨 담았습니다.
+   · 조회수는 구글 Apps Script(SGA 로그인 서버)의 시트에 실제로 쌓입니다.
+     불러오지 못하면 숫자 대신 '—' 가 뜨고, 가짜 숫자는 절대 넣지 않습니다.
+   ═══════════════════════════════════════════════════════════════ */
+var SGA_HITS = null;            /* {글ID: 조회수} — 백엔드에서 채워집니다 */
+function sgaHitsLoad(cb){
+ if(SGA_HITS){ if(cb)cb(); return; }
+ try{
+  var fn='sgaHitsCb'+Date.now();
+  window[fn]=function(d){ SGA_HITS=d||{}; try{delete window[fn];}catch(e){} if(cb)cb(); };
+  var sc=document.createElement('script');
+  sc.src=SGA_AUTH+'?action=hits&cb='+fn;
+  sc.onerror=function(){ SGA_HITS={}; if(cb)cb(); };
+  document.head.appendChild(sc);
+  setTimeout(function(){ if(!SGA_HITS){ SGA_HITS={}; if(cb)cb(); } }, 4000);
+ }catch(e){ SGA_HITS={}; if(cb)cb(); }
+}
+function sgaHit(id){
+ try{
+  var sc=document.createElement('script');
+  sc.src=SGA_AUTH+'?action=hit&id='+encodeURIComponent(id);
+  document.head.appendChild(sc);
+  if(SGA_HITS) SGA_HITS[id]=(SGA_HITS[id]||0)+1;
+ }catch(e){}
+}
+function _hitTxt(id){
+ if(!SGA_HITS) return '—';
+ return (SGA_HITS[id]||0).toLocaleString();
+}
+
+/* 글 목록 — 위에 있을수록 최신. 광고판에 뜨는 이벤트는 tag:'이벤트' 로 통일했습니다. */
+var NOTICES=[
+ {id:'n15', tag:'이벤트', t:'중도입학 안내 — 등록하신 그날이 1일차입니다', d:'2026.09.04', pin:1,
+  b:'<p><b>"학원은 꼭 월초에 들어가야 하나요?"</b><br>상담에서 제일 많이 듣는 질문입니다. 저희 대답은 늘 같습니다. <b>아니요.</b></p>'
+    +'<p>산본글로벌어학원은 <b>등록하신 그날이 그분의 1일차</b>입니다. 반이 3주차든 5주차든, 그분은 그날부터 1과부터 끝까지 전 과정을 이수하고 나가십니다.</p>'
+    +'<p>빠진 진도는 보충으로 채우고, 못 들은 회차는 다음 사이클에서 다시 듣습니다. 그래서 저희는 <b>"중간에 오셔서 어렵겠는데요"</b> 라는 말을 하지 않습니다.</p>'
+    +'<p>중간부터 해도 완주하면 되는 것 아닌가요. <b>끝까지 가는 건 저희가 책임집니다.</b></p>',
+  act:"rsvOpen()", actLabel:'무료 상담 예약하기'},
+
+ {id:'n14', tag:'이벤트', t:'오픈이벤트 — 10~11월 전 과목 10% 할인', d:'2026.09.01', pin:1,
+  b:'<p>새 이름을 기념해 <b>10월 1일부터 11월 30일까지</b> 전 과목 10% 할인을 진행합니다.</p>'
+    +'<ul><li>신규 등록 <b>10%</b> — 결제창에서 자동 적용됩니다</li>'
+    +'<li>재등록은 <b>얼리버드 5%</b>가 더 붙습니다 (매달 19~25일, 명부 확인 후 환급)</li>'
+    +'<li>12월부터는 정가입니다 — 두 달뿐인 가격입니다</li></ul>',
+  act:"openPage('오픈이벤트')", actLabel:'오픈이벤트 자세히 보기'},
+
+ {id:'n13', tag:'공지', t:'상호 변경 안내 — 산본이지어학원이 산본글로벌어학원이 됩니다', d:'2026.08.30', pin:1,
+  b:'<p>10월 1일부터 <b>산본글로벌어학원(SANBON GLOBAL ACADEMY)</b>으로 새롭게 시작합니다.</p>'
+    +'<ul><li><b>강사진 그대로</b> · 수강료 그대로 · 교실 그대로</li>'
+    +'<li>기존 수강권·잔여 회차 <b>전부 그대로 승계</b>됩니다</li>'
+    +'<li>위치와 전화번호도 동일합니다 (산본역 3번 출구 · 031-466-6969)</li></ul>'
+    +'<p>바뀌는 것은 <b>이름과 혜택뿐</b>입니다.</p>'},
+
+ {id:'n12', tag:'이벤트', t:'AI 학습관 오픈 — 한 과 3분, 채점은 AI가', d:'2026.08.28',
+  b:'<p>영어·일본어·중국어 회화부터 토익·토스·오픽·토플·JLPT·HSK까지, <b>한 과 3분</b>으로 끊어 듣는 AI 학습관이 열렸습니다.</p>'
+    +'<ul><li>듣기와 채점은 AI가 합니다</li><li>학원 수강생은 <b>무료</b></li><li>산글 현강 수강생도 <b>무료</b></li></ul>',
+  act:"openPage('AI산글')", actLabel:'AI 학습관 열어보기'},
+
+ {id:'n11', tag:'개강', t:'10월 정규반 개강 안내 (주5일·월수·화목·토요반)', d:'2026.08.28',
+  b:'<p>10월 신규 개강 반을 모았습니다. 새벽반·주말반 영어부터 토익·토스·오픽·토플까지 새로 여는 반만 정리했습니다.</p>'
+    +'<p>반별 요일·시간과 공휴일 휴강은 강의시간표에서 확인하실 수 있습니다.</p>',
+  act:"closePage();openTT();", actLabel:'강의시간표 열기'},
+
+ {id:'n10', tag:'이벤트', t:'무한수강권 — 안 붙으면 같은 반을 한 번 더', d:'2026.08.27',
+  b:'<p>한 번 들어서 안 붙으면 <b>같은 반을 통째로 다시 듣는</b> 수강권입니다.</p>'
+    +'<ul><li>앞 단계 재수강 + AI 산글 40강이 함께 열립니다</li>'
+    +'<li>정규 넉 달 · 스파르타 두 달 — <b>740,000원</b></li></ul>',
+  act:"openExam('토익')", actLabel:'토익 과정 보기'},
+
+ {id:'n09', tag:'이벤트', t:'SGA 어학상품권 · 장기충전권 — 넣은 금액에 절반을 더', d:'2026.08.26',
+  b:'<p>충전 금액에 <b>절반을 더</b> 얹어 드립니다.</p>'
+    +'<ul><li>50만원 → <b>75만원</b></li><li>100만원 → <b>150만원</b></li><li>150만원 → <b>225만원</b></li></ul>'
+    +'<p>모바일 상품권과 실물 각인 카드를 함께 드립니다. 손자에게, 자녀에게 선물하실 수 있습니다.</p>',
+  act:"openPage('상품권충전')", actLabel:'상품권 충전하기'},
+
+ {id:'n08', tag:'이벤트', t:'글로벌 위크 얼리버드 — 11/19~11/25', d:'2026.08.25',
+  b:'<p>글로벌 위크 기간에 등록하시면 <b>얼리버드 20%</b>(토익 25%)가 적용됩니다.</p>'
+    +'<p>기간은 <b>11월 19일 ~ 11월 25일</b>이며, 오픈이벤트와 중복되지 않고 더 큰 쪽 하나만 적용됩니다.</p>',
+  act:"openPage('가을학기 할인')", actLabel:'글로벌 위크 보기'},
+
+ {id:'n07', tag:'공지', t:'원장 직접 상담 — 등록 전에 먼저 진단받으세요', d:'2026.08.24',
+  b:'<p>Georgetown TESOL 출신, 토익과 토플을 가르치던 강사 출신 원장이 <b>직접</b> 상담해 드립니다.</p>'
+    +'<ul><li>무료 상담</li><li>실제 수업 <b>청강 1회 무료</b></li></ul>'
+    +'<p>등록 전에 먼저 지금 실력과 필요한 기간을 진단해 드립니다.</p>',
+  act:"openPage('원장상담')", actLabel:'원장 상담 신청'},
+
+ {id:'n06', tag:'공지', t:'무료 레벨테스트 상시 접수 (영어·일본어·중국어)', d:'2026.08.24',
+  b:'<p>문법·어휘·듣기 자가진단과 원어민 회화 레벨테스트를 <b>무료</b>로 받으실 수 있습니다.</p>'
+    +'<p>결과 리포트를 바로 드리며, 결과에 맞는 반을 안내해 드립니다.</p>',
+  act:"openPage('레벨테스트')", actLabel:'레벨테스트 신청'},
+
+ {id:'n05', tag:'이벤트', t:'동글 — 1시간 1,000원, 동네 영어 모임', d:'2026.08.22',
+  b:'<p>동네와 글로벌을 합쳐 <b>동글</b>입니다. 산본에서 영어로 떠드는 가장 가벼운 자리입니다.</p>'
+    +'<ul><li>1시간 <b>1,000원</b></li><li>커피는 <b>무료</b></li></ul>',
+  act:"openPage('동글이')", actLabel:'동글 자세히 보기'},
+
+ {id:'n04', tag:'이벤트', t:'네이버 리뷰 이벤트', d:'2026.08.21',
+  b:'<p>네이버 플레이스에 후기를 남겨 주시면 소정의 혜택을 드립니다. 자세한 내용은 데스크에서 안내해 드립니다.</p>',
+  act:"openPage('네이버 리뷰 이벤트')", actLabel:'리뷰 이벤트 보기'},
+
+ {id:'n03', tag:'휴무', t:'추석 연휴 휴무 안내 (9/24~9/26)', d:'2026.08.20',
+  b:'<p>추석 연휴 기간 <b>9월 24일(목) ~ 9월 26일(토)</b> 휴원합니다.</p>'
+    +'<p>해당 기간 결강분은 보충 일정으로 안내해 드립니다. 데스크 전화 상담도 쉽니다.</p>'},
+
+ {id:'n02', tag:'공지', t:'유학 · 외고 · 과외 상담 안내', d:'2026.08.18',
+  b:'<p>유학부터 외고 준비, 그리고 과외까지 상담해 드립니다.</p>'
+    +'<p>늦었다고 생각하실 때가 가장 빠릅니다. 무료 상담으로 먼저 길만 잡아보세요.</p>',
+  act:"openPage('무료청강')", actLabel:'무료 상담 신청'},
+
+ {id:'n01', tag:'공지', t:'운영 시간 안내', d:'2026.08.15',
+  b:'<p><b>수업</b> 평일 06:30~22:00 / 토요일 10:00~16:30<br>'
+    +'<b>데스크(상담·등록·전화)</b> 평일 09:30~21:30 / 토요일 10:00~16:00<br>'
+    +'일요일과 공휴일은 휴무입니다.</p>'
+    +'<p>📍 경기도 군포시 산본로323번길 16-7 롯데프라자 7층 · 산본역 3번 출구 도보 1분<br>☎ 031-466-6969</p>'}
+];
+
+var _ntFilter='전체';
+function noticeFilter(t){ _ntFilter=t; _sgSub(noticePage()); }
+function noticeOpen(id){
+ var n=null; for(var i=0;i<NOTICES.length;i++){ if(NOTICES[i].id===id){ n=NOTICES[i]; break; } }
+ if(!n) return;
+ sgaHit(id);
+ _sgSub(noticeView(n));
+}
+function noticeView(n){
+ return H('NOTICE','공지사항','','📢')
+  +'<div class="nt-view">'
+  +'<div class="nt-vhead"><span class="nt-tag nt-'+n.tag+'">'+n.tag+'</span><h3>'+n.t+'</h3>'
+  +'<div class="nt-vmeta">'+n.d+' · 조회 '+_hitTxt(n.id)+'</div></div>'
+  +'<div class="nt-body">'+n.b+'</div>'
+  +(n.act?('<a class="pgcta" href="#" onclick="'+n.act+'return false;">'+(n.actLabel||'자세히 보기')+' ›</a>'):'')
+  +'<div class="nt-back"><a href="#" onclick="_sgSub(noticePage());return false;">← 목록으로</a></div>'
+  +'</div>';
+}
+function noticePage(){
+ sgaHitsLoad(function(){
+  var el=document.querySelectorAll('.nt-hit');
+  for(var i=0;i<el.length;i++){ el[i].textContent=_hitTxt(el[i].getAttribute('data-id')); }
+ });
+ var tabs=['전체','공지','이벤트','개강','휴무'];
+ var list=NOTICES.filter(function(n){ return _ntFilter==='전체'||n.tag===_ntFilter; });
+ var rows=list.map(function(n,i){
+  return '<tr onclick="noticeOpen(\''+n.id+'\')">'
+   +'<td class="nt-no">'+(n.pin?'<span class="nt-pin">중요</span>':(list.length-i))+'</td>'
+   +'<td class="nt-t"><span class="nt-tag nt-'+n.tag+'">'+n.tag+'</span><span class="nt-tt">'+n.t+'</span></td>'
+   +'<td class="nt-d">'+n.d+'</td>'
+   +'<td class="nt-h"><span class="nt-hit" data-id="'+n.id+'">'+_hitTxt(n.id)+'</span></td></tr>';
+ }).join('');
+ return H('NOTICE','공지사항','개강 일정, 이벤트, 휴무 안내 등 산본글로벌어학원의 새로운 소식입니다.','📢')
+  +'<div class="nt-tabs">'+tabs.map(function(t){
+     return '<button class="nt-tb'+(t===_ntFilter?' on':'')+'" onclick="noticeFilter(\''+t+'\')">'+t+'</button>';}).join('')+'</div>'
+  +'<table class="nt-tbl"><thead><tr><th>번호</th><th>제목</th><th>등록일</th><th>조회</th></tr></thead>'
+  +'<tbody>'+(rows||'<tr><td colspan="4" class="nt-empty">해당하는 글이 없습니다.</td></tr>')+'</tbody></table>'
+  +'<div class="pgnote">자세한 내용은 전화 또는 카카오톡 채널로 문의해 주세요. · 031-466-6969</div>';
+}
+
 const SLIDES=[
  {img:'img/sbg_hall.jpg', e:'원장 인사말 · 산본글로벌어학원', t:'산본<span style="color:#8fa3c9;font-weight:700">이지어학원</span>이<br>산본<span style="color:#ffd94d">글로벌</span>어학원이 됩니다', s:'강사진 그대로 · 수강료 그대로 · 교실도 수강권도 전부 그대로 — 바뀌는 건 이름과 혜택뿐입니다', act:"openPage('오픈이벤트')", pbg:'linear-gradient(135deg,#1D2D4F,#33507f)', tc:'#f5f1e4', tc2:'#cdd8ec', ac:'#ffd94d', bbg:'#ffd94d', btc:'#1a1205', bg:'', cls:'hsty-line'},
  {img:'img/sl_dir.jpg', e:'DIRECTOR · 원장 직접 상담', t:'토익·유학·시험대비,<br>원장이 직접 봐 드립니다', s:'Georgetown TESOL · 토익과 토플을 가르치던 강사 출신 원장 — 무료 상담과 청강 1회 무료로 등록 전에 먼저 진단해 드립니다', act:"openPage('원장상담')", pbg:'linear-gradient(135deg,#0c1b33,#27508a)', tc:'#f3e7cd', tc2:'#b9c6dd', ac:'#C6A15B', bbg:'#C6A15B', btc:'#14213d', bg:'', cls:'hsty-soft'},
+ {e:'MID-TERM · 중도입학', t:'배움의 시작이<br>어디 있습니까', s:'"학원은 꼭 월초에 들어가야 하나요?" — 상담에서 제일 많이 듣는 질문입니다. 저희 대답은 늘 같습니다. <b>아니요.</b> 등록하신 그날이 그분의 1일차입니다. 반이 3주차든 5주차든 1과부터 끝까지 전 과정을 이수하고 나가십니다. 빠진 진도는 보충으로 채우고, 못 들은 회차는 다음 사이클에서 다시 듣습니다. 끝까지 가는 건 저희가 책임집니다', act:"rsvOpen()", pbg:'linear-gradient(135deg,#2A2520,#7A5628)', tc:'#FFE9B8', tc2:'#E9DCC6', ac:'#F0C05A', bbg:'#F0C05A', btc:'#2A2520', bg:'', cls:'hsty-impact'},
  {img:'img/sl_new.jpg', e:'2026 · 10월 신규 모집', t:'10월 신규 개강,<br>지금이 시작하기 제일 좋습니다', s:'새벽반 · 주말반 영어부터 토익 · 토스 · 오픽 · 토플까지 — 새로 여는 반만 모았습니다', act:"openPage('신규모집')", pbg:'linear-gradient(135deg,#155e9e,#2f8fd8)', tc:'#ffe98a', tc2:'#ddefff', ac:'#ffd98a', bbg:'#ffd94d', btc:'#1a1205', bg:''},
  {img:'img/sl_moohan.jpg', e:'무한 현장강의 이벤트', t:'무한수강권 —<br>같은 반을 한 번 더', s:'한 번 들어서 안 붙으면 같은 반을 통째로 다시 듣는 수강권입니다. 앞 단계 재수강 + AI 산글 40강이 함께 열립니다. 정규 넉 달 · 스파르타 두 달, 740,000원', act:"openExam('토익')", pbg:'linear-gradient(135deg,#c81f2b,#e0453e)', tc:'#ffd94d', tc2:'#ffe3e0', ac:'#ffe0dd', bbg:'#ffffff', btc:'#c81f2b', bg:'', cls:'hsty-impact', faces:['eng_13','elly','eng_6','eng_15','eng_14'], fnames:['송윤정','엘리 킴','최자운','김현정','유미용']},
  {img:'img/sl_ai.jpg', e:'산본글로벌어학원', t:'AI 학습관이<br>열렸습니다', s:'영어·일본어·중국어 회화부터 토익·토스·오픽·토플·JLPT·HSK까지 — 한 과 3분, 듣기와 채점은 AI가 합니다. 학원 수강생은 무료. 산글 현강 수강생은 무료', act:"openPage('AI산글')", pbg:'linear-gradient(135deg,rgba(10,13,20,.86),rgba(14,138,90,.86))', tc:'#8df5c3', tc2:'#d6f5e7', ac:'#3ED598', bbg:'#3ED598', btc:'#0A0D14', bg:'img/ai_cafe1.jpg', cls:'hsty-impact'},
@@ -5116,9 +5326,8 @@ const PAGES={
   +SEC('오시는 길','<div class="pgnote">📍 경기도 군포시 산본로323번길 16-7 롯데프라자 7층<br>🚇 산본역 3번 출구 도보 1분<br>☎ 031-466-6969 · 💬 카카오톡 채널 @산본글로벌어학원<br>🕙 <b>수업</b> 평일 06:30~22:00 / 토 10:00~16:30<br>🕤 <b>데스크(상담·등록·전화)</b> 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무</div>')
   +SEC('전체 시간표','<div class="lead">반별(주5일·월수·화목·토요) 개강 일정과 공휴일은 강의시간표에서 확인하세요.</div><a class="pgcta" href="#" onclick="closePage();openTT();return false;">강의시간표 열기 ›</a>')
   +CTA(),
- '공지사항':H('NOTICE','공지사항','개강 일정, 이벤트, 휴무 안내 등 산본글로벌어학원의 새로운 소식을 확인하세요.','📢')
-  +'<table class="notice"><tr><td><b>[개강]</b> 10월 정규반 개강 안내 (주5일·월수·화목·토요반)</td><td class="dt">2026.08.28</td></tr><tr><td><b>[이벤트]</b> 10월 1일 상호 변경 · 오픈이벤트 전 과목 10% 할인</td><td class="dt">2026.08.27</td></tr><tr><td><b>[안내]</b> 무료 레벨테스트 상시 접수 (영·일·중)</td><td class="dt">2026.08.24</td></tr><tr><td><b>[휴무]</b> 추석 연휴 휴무 안내 (9/24~9/26)</td><td class="dt">2026.08.20</td></tr></table>'
-  +'<div class="pgnote">자세한 내용은 전화 또는 카카오톡 채널로 문의해 주세요. · 031-466-6969</div>',
+ '공지사항':noticePage,
+ '공지글':noticePage,
  '영어':H('ENGLISH','시험 점수부터<br>실전 회화까지, 영어','왕기초 문법 → 기초·회화 → 오픽·토스 → 토익 650+까지 단계별로 설계된 영어 과정. 관리형 스파르타반과 원어민 회화를 병행해 “점수”와 “실전”을 동시에 잡습니다.','🇺🇸')
   +SEC('과정 한눈에 보기',CT(['과정','대상','목표'],[['왕기초 문법','영어를 처음/다시 시작','문장 구조·기초 어휘 완성'],['기초·회화','기초 회화가 필요한 성인','일상 표현·말하기 자신감'],['오픽·토스','취업·승진 스피킹','OPIc IH~AL / TOEIC S Lv7+'],['토익 650+','단기 점수 필요','650 → 800+ 실전 점수']]))
   +SEC('왕기초 문법','<div class="lead">영어가 막막한 분을 위한 출발 과정. 문장이 만들어지는 원리부터 차근차근, 시험·회화의 공통 토대를 다집니다.</div><div class="chips"><span>노베이스 대상</span><span>어휘·문법 기초</span><span>주2~3회</span></div>')
