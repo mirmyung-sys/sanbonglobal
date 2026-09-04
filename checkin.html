@@ -18,8 +18,24 @@
 body{margin:0;background:var(--bg);color:var(--ink);
   font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
   font-size:15px;line-height:1.6}
-.app{max-width:520px;margin:0 auto;min-height:100vh;background:#fff;
+.app{max-width:1100px;margin:0 auto;min-height:100vh;background:#fff;
   box-shadow:0 0 40px rgba(20,33,61,.08);display:flex;flex-direction:column;overflow:hidden}
+/* 2026-09-05 대표님 지시 — 달력을 화면 전체 크기로 */
+@media(min-width:760px){
+  .cal{gap:10px}
+  .cal .d{border-radius:16px;font-size:19px}
+  .cal .d small{font-size:12px}
+  .cal .dow{font-size:14px;padding:6px 0}
+  .calhead b{font-size:21px}
+  .calhead button{width:44px;height:44px;font-size:18px}
+}
+/* 닫기 버튼 — 어디서든 바로 나가실 수 있게 */
+.xout{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:9000;
+  border:0;border-radius:999px;padding:15px 34px;font-size:16px;font-weight:900;cursor:pointer;
+  font-family:inherit;background:#C6A15B;color:#14213D;box-shadow:0 10px 26px rgba(0,0,0,.28);
+  text-decoration:none;display:inline-block}
+.xout:active{transform:translateX(-50%) scale(.97)}
+body{padding-bottom:84px}
 
 /* ── 헤더 ── */
 header{background:linear-gradient(140deg,#16233d,#1D2D4F 45%,#33507f);color:#fff;
@@ -213,12 +229,14 @@ footer b{color:#6b7688}
 })();
 </script>
 
+<a class="xout" href="index.html">✕ 닫고 홈으로</a>
+
 <div class="app">
 
 <header>
   <div class="hbar">
     <div class="logo">SANBON <b>GLOBAL</b></div>
-    <a class="hhome" href="index.html">홈으로</a>
+    <a class="hhome" href="index.html">✕ 닫기</a>
   </div>
   <div class="streak">
     <div class="lab">연속 출석</div>
