@@ -3209,6 +3209,50 @@ html,body{overflow-x:hidden;max-width:100%}
 .jn-tip{color:var(--red);font-weight:900;margin:14px 0 4px}
 @media(max-width:720px){.jn-grid{grid-template-columns:1fr}}
 
+/* ── 갤러리 · 토익 기초문법 강좌 (2026-09-04) ── */
+.gl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 6px}
+@media(max-width:760px){.gl-grid{grid-template-columns:repeat(2,1fr);gap:8px}}
+.gl-c{position:relative;border-radius:14px;overflow:hidden;background:#eef1f6;cursor:pointer;aspect-ratio:4/3}
+.gl-c img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+.gl-c:hover img{transform:scale(1.06)}
+.gl-c em{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 10px;font-style:normal;font-size:13px;font-weight:800;color:#fff;
+ background:linear-gradient(to top,rgba(10,16,30,.72),rgba(10,16,30,0))}
+.gl-lb{position:fixed;inset:0;z-index:2147482000;background:rgba(8,12,22,.93);display:flex;align-items:center;justify-content:center;padding:20px}
+.gl-lb img{max-width:96vw;max-height:82vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.gl-lb .cap{position:absolute;bottom:26px;left:0;right:0;text-align:center;color:#dfe6f5;font-size:14px;font-weight:700}
+.gl-lb .x{position:absolute;top:18px;right:20px;width:44px;height:44px;border-radius:50%;border:0;background:#C6A15B;color:#14213D;font-size:20px;font-weight:900;cursor:pointer;font-family:inherit}
+.gl-lb .nv{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:60px;border:0;border-radius:10px;background:rgba(255,255,255,.14);color:#fff;font-size:22px;cursor:pointer;font-family:inherit}
+.gl-lb .nv.l{left:12px}.gl-lb .nv.r{right:12px}
+.rt-map{background:linear-gradient(150deg,#0F1A33,#1D2D4F);border-radius:18px;padding:22px 18px;margin:14px 0;color:#fff}
+.rt-row{display:flex;align-items:center;gap:0;margin:0 auto;max-width:640px}
+.rt-n{flex:1;text-align:center}
+.rt-n b{display:block;width:56px;height:56px;line-height:56px;margin:0 auto 8px;border-radius:50%;font-size:22px;
+ background:rgba(255,255,255,.1);border:2px solid rgba(198,161,91,.6)}
+.rt-n span{display:block;font-size:13px;font-weight:800;line-height:1.5}
+.rt-n i{display:block;font-style:normal;font-size:11.5px;color:#A9B6D0;margin-top:3px}
+.rt-a{flex:0 0 38px;text-align:center;color:#C6A15B;font-size:20px;font-weight:900;padding-bottom:26px}
+.rt-cap{text-align:center;font-size:13px;color:#B9C6DE;margin-top:14px;line-height:1.7}
+.rt-cap b{color:#F0C05A}
+.tb-hero{background:linear-gradient(135deg,#101B33,#28406E);border-radius:20px;padding:30px 22px;color:#fff;margin-bottom:16px}
+.tb-hero em{display:block;font-style:normal;font-size:12.5px;font-weight:900;letter-spacing:.14em;color:#F0C05A;margin-bottom:10px}
+.tb-hero h2{font-size:27px;font-weight:900;line-height:1.34;margin:0 0 12px}
+.tb-hero p{font-size:14.5px;line-height:1.75;color:#CBD6EC;margin:0}
+.tb-stat{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}
+.tb-stat div{background:rgba(255,255,255,.08);border-radius:12px;padding:12px 6px;text-align:center}
+.tb-stat b{display:block;font-size:20px;font-weight:900;color:#F0C05A}
+.tb-stat span{font-size:11.5px;color:#B9C6DE;font-weight:700}
+@media(max-width:520px){.tb-stat{grid-template-columns:repeat(2,1fr)}.tb-hero h2{font-size:22px}}
+.tb-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:14px 0}
+.tb-k{border:1.5px solid var(--line);border-radius:16px;padding:16px 16px 14px;background:#fff}
+.tb-k b{display:block;font-size:15px;font-weight:900;color:var(--navy);margin-bottom:6px}
+.tb-k span{font-size:13.5px;line-height:1.7;color:var(--ink3)}
+.tb-l{border:1.5px solid var(--line);border-radius:16px;overflow:hidden;margin:12px 0}
+.tb-lh{background:#14213D;color:#fff;padding:12px 16px;font-size:14.5px;font-weight:900;display:flex;justify-content:space-between;align-items:center}
+.tb-lh i{font-style:normal;font-size:12px;font-weight:800;color:#F0C05A}
+.tb-li{display:flex;gap:10px;align-items:baseline;padding:10px 16px;border-top:1px dashed var(--line);font-size:13.5px}
+.tb-li u{text-decoration:none;flex:0 0 40px;font-weight:900;color:#C6A15B;font-variant-numeric:tabular-nums}
+.tb-li s{text-decoration:none;flex:1;color:var(--ink);font-weight:700}
+.tb-li em{font-style:normal;font-size:11.5px;font-weight:800;color:#0e9e5a;flex:0 0 auto}
 /* ── 공지사항 게시판 (2026-09-04) ── */
 .nt-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
 .nt-tb{border:1.5px solid #d8dee9;background:#fff;color:#5b6478;border-radius:999px;padding:8px 16px;
@@ -3503,6 +3547,7 @@ html,body{overflow-x:hidden;max-width:100%}
     <a href="#" onclick="agOpen();return false;">회원가입</a><span class="sep">|</span>
     <a href="#" onclick="openPage('로그인');return false;">로그인</a><span class="sep">|</span>
     <a href="#" onclick="openPage('공지사항');return false;">공지사항</a><span class="sep">|</span>
+    <a href="#" onclick="openPage('갤러리');return false;">학원갤러리</a><span class="sep">|</span>
     <a href="#" onclick="openPage('통합회원안내');return false;">사이트맵</a><span class="sep">|</span>
     <a href="checkin.html" style="color:#C6A15B;font-weight:800">🎯 출석체크</a><span class="sep">|</span>
     <a href="app.html" target="_blank" rel="noopener" style="color:#C6A15B;font-weight:800">📱 AI앱</a>
@@ -3548,8 +3593,10 @@ html,body{overflow-x:hidden;max-width:100%}
         <a href="#" onclick="openPage('동글이');return false;">동글이</a>
       </div>
     </div>
+    <div class="ni"><a href="#" onclick="openPage('토익기초문법');return false;" style="color:#C81F2B;font-weight:900">토익 기초문법 40강<b style="display:inline-block;margin-left:5px;background:#C81F2B;color:#fff;font-size:11px;font-weight:900;padding:1px 5px;border-radius:999px;vertical-align:2px">무료</b></a></div>
     <div class="ni"><a href="#" onclick="openPage('수강후기');return false;">수강후기</a></div>
     <div class="ni"><a href="#" onclick="openPage('강사소개');return false;">강사님 소개</a></div>
+    <div class="ni"><a href="#" onclick="openPage('갤러리');return false;">학원 갤러리</a></div>
     <div class="ni"><a href="#" onclick="openPage('외고');return false;">외고</a></div>
     <div class="ni"><a href="#" onclick="openPage('과외');return false;">과외</a></div>
     <div class="ni"><a href="#" onclick="openPage('1:1 전문');return false;">1:1 전문</a></div>
@@ -3765,7 +3812,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-04 (v100)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-04 (v101)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -5401,6 +5448,10 @@ const PAGES={
     다시 쓰실 때 이 줄을 살리시면 됩니다: '산글패스':passPage, */
  '강사소개':staffPage,
  '오시는길':mapPage,
+ '갤러리':galleryPage,
+ '학원갤러리':galleryPage,
+ '토익기초문법':tb40Page,
+ '토익 기초문법 40강':tb40Page,
  '전체시간표':ttPage,
  '무료청강':freePage,
  '원장상담':dirPage,
@@ -8888,7 +8939,16 @@ function _lsSegs(t,defLang){
  }
  return out;}
 
-function _lsSpeakSegs(txt,defLang,onDone,btn){
+/* 2026-09-04 대표님 지시 — 대화는 A와 B가 서로 다른 목소리로 읽습니다.
+   전에는 한 목소리가 혼자 다 읽어서 대화로 안 들렸습니다. */
+function _lsVoice2(lang){
+ var pre=lang.slice(0,2);
+ var v=_lsVoices.filter(function(x){return x.lang&&String(x.lang).replace('_','-').toLowerCase().indexOf(pre)===0;});
+ if(v.length<2) return _lsVoice(lang);
+ var first=_lsVoice(lang);
+ for(var i=0;i<v.length;i++){ if(v[i]!==first) return v[i]; }
+ return first;}
+function _lsSpeakSegs(txt,defLang,onDone,btn,who){
  var segs=_lsSegs(txt,defLang), i=0;
  function nx(){
   if(i>=segs.length){ if(btn)btn.classList.remove('on'); if(onDone)onDone(); return; }
@@ -8896,7 +8956,9 @@ function _lsSpeakSegs(txt,defLang,onDone,btn){
   if(!t){ nx(); return; }
   var u=new SpeechSynthesisUtterance(t);
   u.lang=sg.lang; u.rate=_lsRate;
-  var v=_lsVoice(sg.lang); if(v)u.voice=v;
+  var v=(who==='b')?_lsVoice2(sg.lang):_lsVoice(sg.lang); if(v)u.voice=v;
+  if(who==='b')u.pitch=0.88;      /* 목소리가 하나뿐인 기기에서도 두 사람으로 들리게 */
+  else if(who==='a')u.pitch=1.08;
   u.onend=nx; u.onerror=nx;
   try{speechSynthesis.speak(u);}catch(e){nx();}
  }
@@ -8942,7 +9004,9 @@ function lsSay(txt,btn){
  try{speechSynthesis.cancel();}catch(e){}
  _lsSeq=null;
  if(btn)btn.classList.add('on');
- _lsSpeakSegs(txt,_lsLang(),null,btn);
+ var who=null;
+ try{ var r=btn&&btn.closest?btn.closest('.dl'):null; if(r)who=r.classList.contains('b')?'b':'a'; }catch(e){}
+ _lsSpeakSegs(txt,_lsLang(),null,btn,who);
 }
 function lsRate(r,el){
  _lsRate=r;
@@ -8964,10 +9028,11 @@ function lsPlayAll(btn){
   for(var j=0;j<rows.length;j++)rows[j].classList.remove('now');
   rows[i].classList.add('now');
   try{rows[i].scrollIntoView({block:'nearest',behavior:'smooth'});}catch(e){}
+  var who=rows[i].classList.contains('b')?'b':'a';
   _lsSpeakSegs(rows[i].getAttribute('data-en')||'', lang, function(){
    if(!_lsSeq) return;      /* 멈춤을 누르셨으면 여기서 끝냅니다 */
-   i++; setTimeout(step,420);
-  });
+   i++; setTimeout(step,480);   /* 사람이 말을 주고받는 정도의 사이 */
+  }, null, who);
  }
  step();
 }
@@ -9819,23 +9884,137 @@ function staffPage(){
  +'<div class="pgnote">※ 담당 반은 개강 시점에 따라 조정될 수 있습니다. 시간표에서 최신 배정을 확인하실 수 있어요.</div>'
  +SGCTA('원하는 강사님 반이 있으시면 신청 시 적어주세요. 최대한 맞춰드립니다.');}
 
+/* ===== 학원 갤러리 (2026-09-04 대표님 지시) =====
+   실제 학원 사진입니다. 눌러서 크게 보고 좌우로 넘길 수 있습니다. */
+var GALLERY=[
+ ['hall_01','로비에서 강의실로 이어지는 복도'],
+ ['hall_02','과정 안내 — 영어·일본어·중국어 한자리에'],
+ ['hall_03','소수 정예 회화 강의실'],
+ ['hall_04','대형 강의실 — 시험대비 정규반'],
+ ['hall_05','창가 강의실 — 오전반이 쓰는 자리'],
+ ['hall_06','강의실 벽면 — 도시 사진으로 꾸몄습니다'],
+ ['hall_07','빔프로젝터를 갖춘 강의실'],
+ ['hall_08','복도 한켠, 직접 가꾸는 화분들'],
+ ['hall_09','도쿄 — 일본어반 앞 복도'],
+ ['hall_10','책상 위의 작은 것들'],
+ ['hall_11','데스크 앞 라운지'],
+ ['hall_12','한 해를 마무리하는 학원 행사']
+];
+var _glI=0;
+function galleryPage(){
+ var cells=GALLERY.map(function(g,i){
+  return '<div class="gl-c" onclick="glOpen('+i+')"><img src="img/'+g[0]+'.jpg" alt="'+g[1]+'" loading="lazy"><em>'+g[1]+'</em></div>';
+ }).join('');
+ return _pgHero('img/hall_01.jpg','GALLERY · 학원 둘러보기','사진 그대로입니다',
+  '보정하지 않은 <b>실제 학원 사진</b>입니다. 오시기 전에 어떤 곳인지 먼저 보십시오. 강의실 여덟 개, 전부 소수 정예로 씁니다.',
+  'linear-gradient(120deg,#14213D,#2C4574)')
+ +'<div class="op-h">강의실과 복도</div>'
+ +'<div class="op-hs">사진을 누르시면 크게 보실 수 있습니다.</div>'
+ +'<div class="gl-grid">'+cells+'</div>'
+ +'<div class="pgnote">📷 모든 사진은 산본로323번길 16-7 롯데프라자 7층 현장에서 찍은 것입니다. 직접 오셔서 보시는 것이 가장 정확합니다.</div>'
+ +SGCTA('둘러보러 오시는 것도 환영합니다. 미리 연락 주시면 조용한 시간에 안내해 드립니다.');}
+function glOpen(i){
+ _glI=i;
+ var d=document.getElementById('glLb');
+ if(!d){ d=document.createElement('div'); d.className='gl-lb'; d.id='glLb';
+  d.addEventListener('click',function(ev){if(ev.target===d)glClose();});
+  document.body.appendChild(d); }
+ glPaint();
+ document.onkeydown=function(e){ if(e.key==='Escape')glClose(); if(e.key==='ArrowRight')glNav(1); if(e.key==='ArrowLeft')glNav(-1); };
+}
+function glPaint(){
+ var d=document.getElementById('glLb'); if(!d)return;
+ var g=GALLERY[_glI];
+ d.innerHTML='<button class="x" onclick="glClose()" aria-label="닫기">✕</button>'
+  +'<button class="nv l" onclick="glNav(-1)" aria-label="이전">‹</button>'
+  +'<img src="img/'+g[0]+'.jpg" alt="'+g[1]+'">'
+  +'<button class="nv r" onclick="glNav(1)" aria-label="다음">›</button>'
+  +'<div class="cap">'+g[1]+' <span style="color:#8a93aa">('+(_glI+1)+' / '+GALLERY.length+')</span></div>';
+}
+function glNav(d){ _glI=(_glI+d+GALLERY.length)%GALLERY.length; glPaint(); }
+function glClose(){ var d=document.getElementById('glLb'); if(d&&d.parentNode)d.parentNode.removeChild(d); document.onkeydown=null; }
+
+/* ===== 토익 기초문법 40강 — 단독 강좌 페이지 (2026-09-04 대표님 지시) =====
+   AI 학습관 안에만 있던 것을 밖으로 꺼내 따로 보이게 합니다. */
+var TB40=[
+ ['1관 · 자리를 보는 눈','1~10강','빈칸 앞뒤만 보고 명사·동사·형용사·부사를 5초 안에 가릅니다. <b>Part 5의 절반이 여기서 끝납니다.</b>',[
+  '문장의 네 자리 — 주어·동사·목적어·보어','명사 자리 — 관사와 전치사가 알려 줍니다','명사의 두 얼굴 — 셀 수 있는가 없는가',
+  '사람명사 vs 사물명사','동사 자리 — 문장에 동사가 없으면 거기입니다','형용사 자리 — 명사 앞, be동사 뒤',
+  '부사 자리 — 빼도 문장이 되는 곳','대명사 — 격만 맞으면 끝납니다','한정사와 소유격','1관 총정리 — 자리 판정 20문제']],
+ ['2관 · 동사의 규칙','11~18강','자리를 찾았으면 형태를 정합니다. 수·태·시제 <b>세 가지뿐</b>입니다.',[
+  '수일치 — 주어의 진짜 머리를 찾습니다','시제 기본 — 시간 표현이 답을 줍니다','완료시제 — since·for·already',
+  '수동태 — 목적어가 없으면 수동입니다','수동태 심화 — by 없는 수동, 감정동사','조동사와 가정법 기초',
+  '자주 나오는 동사 어법 20','2관 총정리 — 동사 20문제']],
+ ['3관 · 준동사','19~24강','to부정사·동명사·분사 — 동사에서 나왔지만 <b>동사 자리에 못 앉는 것들</b>입니다.',[
+  'to부정사 — 목적·명사·형용사 세 쓰임','동명사 — 전치사 뒤는 무조건 -ing','to V만 / -ing만 받는 동사',
+  '현재분사 vs 과거분사','분사구문 — 앞뒤 주어가 같을 때','3관 총정리 — 준동사 20문제']],
+ ['4관 · 연결의 문법','25~32강','전치사냐 접속사냐. <b>뒤에 무엇이 오는지</b>만 보면 됩니다.',[
+  '전치사 뒤엔 명사, 접속사 뒤엔 문장','시간·장소 전치사 in·on·at','자주 나오는 전치사 25개',
+  '등위·상관접속사','명사절 — that·whether·what','부사절 — 시간·조건·양보',
+  'Part 6 문장 넣기 — 연결어가 답입니다','4관 총정리 — 연결 20문제']],
+ ['5관 · 관계와 비교','33~40강','마지막 관문입니다. 여기까지 오면 <b>Part 5에서 틀릴 자리가 거의 없습니다.</b>',[
+  '관계대명사 who·which·that','관계대명사 계속 — whose·목적격 생략','관계부사 where·when·why',
+  '비교급 — than이 보이면 -er/more','최상급과 원급','도치와 강조','실전 혼합 30문제','최종 점검 — 40강 압축 정리']]
+];
+function tb40Page(){
+ var n=0;
+ var lists=TB40.map(function(g){
+  var items=g[3].map(function(t){ n++; var free=(n===1)?'<em>무료</em>':''; 
+   return '<div class="tb-li"><u>'+n+'강</u><s>'+t+'</s>'+free+'</div>'; }).join('');
+  return '<div class="tb-l"><div class="tb-lh"><span>'+g[0]+'</span><i>'+g[1]+'</i></div>'
+   +'<div style="padding:12px 16px;font-size:13.5px;line-height:1.7;color:#5c6472">'+g[2]+'</div>'+items+'</div>';
+ }).join('');
+ return '<div class="tb-hero"><em>SGA TOEIC · BASIC GRAMMAR 40</em>'
+  +'<h2>토익은 문법을 아는 시험이<br>아니라 <span style="color:#F0C05A">자리를 아는 시험</span>입니다</h2>'
+  +'<p>해석해서 푸는 사람은 한 문제에 40초를 씁니다. 자리를 보는 사람은 8초를 씁니다.<br>이 40강은 그 8초를 만드는 훈련만 합니다.</p>'
+  +'<div class="tb-stat"><div><b>40강</b><span>전 과정</span></div><div><b>10분</b><span>한 강 분량</span></div>'
+  +'<div><b>216문항</b><span>ETS 형식 문제</span></div><div><b>1강</b><span>무료 체험</span></div></div></div>'
+ +'<div class="tb-g">'
+  +'<div class="tb-k"><b>왜 자리부터입니까</b><span>Part 5·6은 어형 문제가 절반입니다. 뜻을 몰라도 빈칸 앞뒤 구조만 보면 답이 나옵니다. 이 책은 40강 내내 그 하나만 훈련합니다.</span></div>'
+  +'<div class="tb-k"><b>하루 한 강, 10분</b><span>출근 전이나 점심시간에 한 강이 끝나는 분량입니다. 산글이가 하루에 한 강씩만 열어 드립니다.</span></div>'
+  +'<div class="tb-k"><b>틀린 자리를 기억합니다</b><span>오답이 쌓이면 계속 틀리는 유형만 다시 뽑아 복습 문제를 만들어 드립니다.</span></div>'
+  +'<div class="tb-k"><b>혼자 하다 막히면</b><span>산본으로 오시면 됩니다. 같은 커리큘럼을 현장 강의로 이어서 들으실 수 있습니다.</span></div>'
+ +'</div>'
+ +'<div class="op-h">40강 전체 목차</div>'
+ +'<div class="op-hs">1강과 매일 바뀌는 오늘의 무료 강은 그냥 열립니다. 나머지는 아래 이용권으로 열립니다.</div>'
+ +lists
+ +'<div class="op-h">어떻게 여십니까</div>'
+ +CT(['방법','내용','금액'],[
+   ['현강 수강생','정규반·스파르타반 수강 중이면 <b>전 강 무료</b>','0원'],
+   ['산글 무한수강권','재수강 무제한 + 이 40강 전 과정','740,000원'],
+   ['AI 산글 단독','이 40강만 여는 이용권 <span style="color:#8a90a0">(정가 120,000원)</span>','오픈 30,000원']])
+ +'<div class="pgnote">※ 이 교재의 지문·문항·해설은 전부 산본글로벌어학원이 새로 집필했습니다. 시중 교재의 문장을 옮기지 않았습니다.</div>'
+ +'<div class="one-cta" style="cursor:pointer" onclick="openPage(\'AI산글\')">1강 무료로 들어보기 ›</div>'
+ +SGCTA('한 강만 들어 보시고 결정하셔도 됩니다. 1강은 언제나 무료입니다.');}
+
 /* ===== 오시는 길 ===== */
-function mapPage(){return _pgHero('img/gen18.jpg','LOCATION · 오시는 길','산본역 3번 출구<br>도보 1분',
+function mapPage(){return _pgHero('img/hall_01.jpg','LOCATION · 오시는 길','산본역 3번 출구<br>도보 1분',
  '롯데프라자 <b>7층</b>입니다. 지하철에서 내려 신호 한 번 안 건너고 오실 수 있어요.',
  'linear-gradient(120deg,#2f6fb0,#5b9bd8)')
+ /* 2026-09-04 — 산본역에서 오시는 길을 한눈에 (대표님 지시) */
+ +'<div class="rt-map"><div class="rt-row">'
+  +'<div class="rt-n"><b>🚇</b><span>산본역</span><i>4호선</i></div>'
+  +'<div class="rt-a">›</div>'
+  +'<div class="rt-n"><b>3</b><span>3번 출구</span><i>계단 올라와서</i></div>'
+  +'<div class="rt-a">›</div>'
+  +'<div class="rt-n"><b>🚶</b><span>직진 1분</span><i>신호 없음</i></div>'
+  +'<div class="rt-a">›</div>'
+  +'<div class="rt-n"><b>🏢</b><span>롯데프라자</span><i>7층 701~703호</i></div>'
+ +'</div><div class="rt-cap">산본역 <b>3번 출구</b>에서 나와 <b>그대로 직진</b>하시면 롯데프라자입니다.<br>횡단보도를 건너지 않으셔도 되고, 비 오는 날에도 거의 젖지 않습니다.</div></div>'
  +SEC('주소와 연락처',CT(['구분','내용'],
   [['주소','경기도 군포시 산본로323번길 16-7 <b>롯데프라자 7층</b> 701·702·703호'],
    ['전화','031-466-6969'],
    ['카카오톡','채널 @산본글로벌어학원'],
    ['수업 시간','평일 <b>06:30 ~ 22:00</b> · 토요일 <b>10:00 ~ 16:30</b><br><span style="color:#8a90a0">새벽반은 06:30부터, 저녁반은 22:00에 끝납니다</span>'],
    ['데스크 시간','평일 <b>09:30 ~ 21:30</b> · 토요일 <b>10:00 ~ 16:00</b> · 일·공휴일 휴무<br><span style="color:#8a90a0">상담·등록·전화는 이 시간에 받습니다</span>']]))
- +_pgBand('img/gen11.jpg','지하철로 오실 때',
+ +_pgBand('img/hall_11.jpg','지하철로 오실 때',
   '<ul class="oh-ck"><li><b>4호선 산본역 3번 출구</b> — 나오셔서 직진 도보 1분</li>'
   +'<li>롯데프라자 건물 <b>7층</b>, 엘리베이터 이용</li>'
   +'<li>비 오는 날에도 거의 젖지 않는 거리입니다</li></ul>')
  +SEC('차로 오실 때','<div class="lead">건물 지하 주차장을 이용하시면 됩니다. <b>수강생과 상담 방문객 모두 주차를 지원해 드립니다.</b> 데스크에 차량번호만 알려주세요.</div>'
   +CT(['구분','안내'],[['주차','롯데프라자 지하주차장 · 데스크에서 등록'],['상담 방문','상담 오시는 분도 주차 지원됩니다'],['혼잡 시간','평일 저녁 7시 전후는 자리가 붐빌 수 있습니다']]))
  +'<div class="pgnote">📍 처음 오시는 길이 헷갈리시면 031-466-6969로 전화 주세요. 바로 안내해 드립니다.</div>'
+ +'<div class="one-cta" style="cursor:pointer" onclick="openPage(\'갤러리\')">학원 내부 사진 보기 ›</div>'
  +SGCTA('오시기 전에 미리 반을 정해두시면 상담이 훨씬 빨라집니다.');}
 
 /* ===== 전체 시간표 ===== */
