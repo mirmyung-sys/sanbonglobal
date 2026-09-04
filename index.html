@@ -3859,7 +3859,7 @@ function renderProg(k){
  renderProg('점수관리반');
 })();
 const SLIDES=[
- {img:'img/sl_name.jpg', e:'원장 인사말 · 산본글로벌어학원', t:'산본<span style="color:#8fa3c9;font-weight:700">이지어학원</span>이<br>산본<span style="color:#ffd94d">글로벌</span>어학원이 됩니다', s:'강사진 그대로 · 수강료 그대로 · 교실도 수강권도 전부 그대로 — 바뀌는 건 이름과 혜택뿐입니다', act:"openPage('오픈이벤트')", pbg:'linear-gradient(135deg,#1D2D4F,#33507f)', tc:'#f5f1e4', tc2:'#cdd8ec', ac:'#ffd94d', bbg:'#ffd94d', btc:'#1a1205', bg:'', cls:'hsty-line'},
+ {img:'img/sbg_hall.jpg', e:'원장 인사말 · 산본글로벌어학원', t:'산본<span style="color:#8fa3c9;font-weight:700">이지어학원</span>이<br>산본<span style="color:#ffd94d">글로벌</span>어학원이 됩니다', s:'강사진 그대로 · 수강료 그대로 · 교실도 수강권도 전부 그대로 — 바뀌는 건 이름과 혜택뿐입니다', act:"openPage('오픈이벤트')", pbg:'linear-gradient(135deg,#1D2D4F,#33507f)', tc:'#f5f1e4', tc2:'#cdd8ec', ac:'#ffd94d', bbg:'#ffd94d', btc:'#1a1205', bg:'', cls:'hsty-line'},
  {img:'img/sl_dir.jpg', e:'DIRECTOR · 원장 직접 상담', t:'토익·유학·시험대비,<br>원장이 직접 봐 드립니다', s:'Georgetown TESOL · 토익과 토플을 가르치던 강사 출신 원장 — 무료 상담과 청강 1회 무료로 등록 전에 먼저 진단해 드립니다', act:"openPage('원장상담')", pbg:'linear-gradient(135deg,#0c1b33,#27508a)', tc:'#f3e7cd', tc2:'#b9c6dd', ac:'#C6A15B', bbg:'#C6A15B', btc:'#14213d', bg:'', cls:'hsty-soft'},
  {img:'img/sl_new.jpg', e:'2026 · 10월 신규 모집', t:'10월 신규 개강,<br>지금이 시작하기 제일 좋습니다', s:'새벽반 · 주말반 영어부터 토익 · 토스 · 오픽 · 토플까지 — 새로 여는 반만 모았습니다', act:"openPage('신규모집')", pbg:'linear-gradient(135deg,#155e9e,#2f8fd8)', tc:'#ffe98a', tc2:'#ddefff', ac:'#ffd98a', bbg:'#ffd94d', btc:'#1a1205', bg:''},
  {img:'img/sl_moohan.jpg', e:'무한 현장강의 이벤트', t:'무한수강권 —<br>같은 반을 한 번 더', s:'한 번 들어서 안 붙으면 같은 반을 통째로 다시 듣는 수강권입니다. 앞 단계 재수강 + AI 산글 40강이 함께 열립니다. 정규 넉 달 · 스파르타 두 달, 740,000원', act:"openExam('토익')", pbg:'linear-gradient(135deg,#c81f2b,#e0453e)', tc:'#ffd94d', tc2:'#ffe3e0', ac:'#ffe0dd', bbg:'#ffffff', btc:'#c81f2b', bg:'', cls:'hsty-impact', faces:['eng_13','elly','eng_6','eng_15','eng_14'], fnames:['송윤정','엘리 킴','최자운','김현정','유미용']},
@@ -4810,7 +4810,8 @@ function bigImg(src){return '<div class="pgimg"><img src="'+src+'" alt="" loadin
 function eventHubPage(){
  var openOn=evActive('open');
  var pre=(typeof _preOpen==='function')&&_preOpen();
- return _pgHero('img/gen13.jpg','EVENT · 10~11월 오픈이벤트','10월 1일,<br>이름이 바뀌면서<br>혜택이 시작됩니다',
+ return bigImg('img/sbg_hall.jpg')
+ +_pgHero('img/gen13.jpg','EVENT · 10~11월 오픈이벤트','10월 1일,<br>이름이 바뀌면서<br>혜택이 시작됩니다',
   '산본<span style="color:#9fb3d9">이지어학원</span>이 <b style="color:#ffd94d">산본글로벌어학원</b>이 됩니다. 강사도 교실도 그대로이고, 바뀌는 건 이름과 혜택뿐입니다.',
   'linear-gradient(120deg,#1D2D4F,#33507f)')
 
