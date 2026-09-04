@@ -5499,18 +5499,9 @@ function spTimeChg(){var W=WCONV[_spSubj]||WCONV['영어'];var list=W.cls[_spLev
 function _setPhoto(el,key){var box=el.parentNode;var ph=box?box.querySelector('.sp-ph'):null;if(!key){el.style.display='none';if(!ph){ph=document.createElement('div');ph.className='sp-ph';ph.innerHTML='강사 사진<br>준비중';box.appendChild(ph);}ph.style.display='grid';return;}if(ph)ph.style.display='none';el.style.display='';el.onerror=function(){_setPhoto(el,'');};el.src='img/teachers/'+key+'.png';}
 function spStep(b,level){_spLevel=level;var ss=document.querySelectorAll('.sp-step');for(var i=0;i<ss.length;i++)ss[i].classList.remove('on');b.classList.add('on');var W=WCONV[_spSubj]||WCONV['영어'];var list=W.cls[level]||[];var days=[];list.forEach(function(x){if(days.indexOf(x[0])<0)days.push(x[0]);});document.getElementById('spDay').innerHTML=days.map(function(d){return '<option>'+d+' (개강)</option>';}).join('')+'<option>주말반 (추후 모집중)</option>';document.getElementById('spTime').innerHTML=list.map(function(x){return '<option>'+_clsLabel(x)+'</option>';}).join('')+'<option>오전반 (추후 모집중)</option><option>오후반 (추후 모집중)</option><option>주말반 (추후 모집중)</option>';var info=null;for(var j=0;j<W.levels.length;j++){if(W.levels[j][0]===level){info=W.levels[j];break;}}if(info){var p=document.getElementById('spPhoto');if(p)p.src='img/teachers/'+info[1]+'.png';var t=document.getElementById('spTeacher');if(t)t.textContent=info[2];}var _dv=document.getElementById('spDay');_calN=_calSess(_dv?_dv.value:'');spRenderCal();try{spTimeChg();}catch(e){}try{spPrice();}catch(e){}}
 function spPrice(){var tE=document.getElementById('spTerm');if(!tE)return;
- /* 새벽반 조조할인 30% (2026-09-02 대표님 확정) — 6개월 등록(총 10개월) 1,080,000 → 756,000원.
-    이미 30%가 빠진 가격이라 기간·이벤트·재등록 등 다른 할인과 중복되지 않습니다. */
- if(_spLevel==='새벽반'){
-  tE.value='6';tE.disabled=true;
-  var deD=document.getElementById('spDisc');if(deD){deD.value='0';deD.disabled=true;}
-  _fullAmt=1080000;
-  var aD=document.getElementById('spAmt');
-  if(aD)aD.innerHTML='<s style="color:#b6bcc9;font-size:18px;font-weight:600">1,080,000</s> 756,000원';
-  var pD=document.getElementById('spPer');if(pD)pD.textContent='새벽 조조할인 30% · +4개월 무료 · 총 10개월 · 추가 할인 없음';
-  var nD=document.getElementById('spDiscNote');if(nD)nD.textContent='새벽반은 조조할인 30%가 이미 적용된 가격입니다. 다른 할인·이벤트와 중복되지 않습니다.';
-  setCalMul(10);try{spRenderCal();}catch(_e){}
-  return;}
+ /* 새벽반 조조할인 30% (2026-09-04 대표님 지시로 전 기간 적용)
+    — 예전에는 6개월 하나로 고정돼 있었습니다. 이제 2·3·4·6개월 전부 30%입니다.
+    할인은 evRate() 안의 dawnRate() 가 자동으로 더합니다. 여기서 따로 계산하지 마세요. */
  tE.disabled=false;
  var deE=document.getElementById('spDisc');if(deE)deE.disabled=false;
  var t=tE.value;
@@ -5525,11 +5516,15 @@ function spPrice(){var tE=document.getElementById('spTerm');if(!tE)return;
  /* 무료개월까지 더한 '총 N개월'로 달력을 다시 그립니다 */
  setCalMul(_totMon(o[1]+' '+(P.per[t]||''),parseInt(t,10)||1));
  try{spRenderCal();}catch(_e){}
- if(d>0&&R.note.indexOf('ev')===0)lb+=' · '+evLabel(v)+' '+Math.round(d*100)+'%';
+ var dw=dawnRate(_spSubj);
+ var nms=[]; if(dw>0)nms.push('새벽 조조할인 '+Math.round(dw*100)+'%');
+ var el=evLabel(v); if(el)nms.push(el);
+ if(d>0&&R.note.indexOf('ev')===0)lb+=' · '+(nms.length?nms.join(' + '):'할인 '+Math.round(d*100)+'%')+(nms.length>1?(' 합계 '+Math.round(d*100)+'%'):'');
  else if(d>0&&R.note.indexOf('term')===0)lb+=' · 기간 결제 할인이 더 큼';
  if(lo>0)lb+=' + 재등록 '+Math.round(lo*100)+'%';
  document.getElementById('spPer').textContent=lb;
- var nt=document.getElementById('spDiscNote');if(nt)nt.textContent='';}
+ var nt=document.getElementById('spDiscNote');
+ if(nt)nt.textContent=dw>0?'새벽반은 조조할인 30%가 붙습니다. 온라인 즉시할인 상한이 30%라 다른 이벤트를 더 고르셔도 30%까지만 적용됩니다.':'';}
 function spBuy(){
  /* 새벽반은 조조할인 30% 고정가 — 이벤트 할인 안내창을 건너뛰고 바로 결제창으로 갑니다 */
  if(_spLevel==='새벽반'){
@@ -5732,7 +5727,9 @@ function _termPct(){try{if(!document.getElementById('txTerm'))return 0;var e=TEX
 function _maxPct(subj){var all=evAllOn();var ev=evRate(subj,all),lo=loyalRate(all);var tp=(typeof TEXAM!=='undefined'&&TEXAM[subj]&&_txK===subj)?_termPct():0;var bestBase=Math.max(tp,ev);var r=sumRate(bestBase,lo);return Math.round(r*1000)/10;}
 /* 지금 고르신 반이 새벽반인지 — 새벽반만 조조할인이 붙습니다 */
 function _isDawn(){
- try{var t=(typeof _txCur==='function')?_txCur():null;
+ try{
+  if(typeof _spLevel!=='undefined'&&/새벽/.test(_spLevel||''))return 1;
+  var t=(typeof _txCur==='function')?_txCur():null;
   if(t&&/새벽/.test(t.n||''))return 1;
   var ids=['txDay','spDay'];
   for(var i=0;i<ids.length;i++){var d=document.getElementById(ids[i]);
@@ -6697,13 +6694,20 @@ var CARTP=[
 ];
 var CART=[];
 function _cp(k){for(var i=0;i<CARTP.length;i++)if(CARTP[i][0]===k)return CARTP[i];return null;}
-function cartAdd(){
- var k=document.getElementById('cpItem').value, h=document.getElementById('cpHour').value;
- var P=_cp(k);if(!P)return;
+function cartAdd(quiet){
+ var ki=document.getElementById('cpItem'), hi=document.getElementById('cpHour');
+ if(!ki||!hi)return false;
+ var k=ki.value, h=hi.value;
+ var P=_cp(k);if(!P)return false;
  var price=(h==='10')?P[3]:P[4];
- if(!price){alert('이 과정은 20시간 패키지로만 운영됩니다.');document.getElementById('cpHour').value='20';return;}
+ if(!price){
+  if(!quiet){sgToast('<b>이 과정은 20시간 패키지로만 운영됩니다</b><br>20시간으로 바꿔 드렸습니다');hi.value='20';return false;}
+  hi.value='20'; price=P[4]; if(!price)return false; h='20';
+ }
  CART.push({k:k,n:P[1],s:P[2],h:parseInt(h,10),p:price});
- cartDraw();}
+ cartDraw();
+ if(!quiet)sgToast('<b>담았습니다</b><br>'+P[1]+' · '+h+'시간');
+ return true;}
 function cartDel(i){CART.splice(i,1);cartDraw();}
 function _cartHours(){var t=0;CART.forEach(function(x){t+=x.h;});return t;}
 function cartDraw(){
@@ -6724,7 +6728,13 @@ function cartDraw(){
   +(CART.length?free:'')
   +'<div class="cart-sum"><span>결제하실 금액'+(hrs?' · 총 '+hrs+'시간':'')+'</span><b>'+tot.toLocaleString()+'원</b></div>';}
 function cartGo(){
- if(!CART.length){alert('먼저 원하시는 과정을 담아 주세요.');return;}
+ /* 2026-09-04 대표님 지시 — 「장바구니에 담기」를 안 누르고 바로 수강신청을 누르셔도
+    지금 화면에서 고르신 과정·시간으로 그대로 진행합니다. 막지 않습니다. */
+ if(!CART.length){
+  var added=false;
+  try{ added=cartAdd(true); }catch(e){}
+  if(!added){ sgToast('<b>과정과 시간을 먼저 고르세요</b><br>위에서 과정을 선택하시면 바로 진행됩니다'); return; }
+ }
  var t=0;CART.forEach(function(x){t+=x.p;});
  spBuyAmt(t.toLocaleString()+'원');}
 function onePickPage(){
