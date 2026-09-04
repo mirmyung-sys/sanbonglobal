@@ -7076,7 +7076,12 @@ function cartHr(i,h){
  h=parseInt(h,10);
  var price=(h===10)?P[3]:P[4];
  if(!price){ sgToast('<b>이 과정은 20시간권만 있습니다</b>'); cartDraw(); return; }
- x.h=h; x.p=price; cartDraw();}
+ x.h=h; x.p=price; cartDraw();
+ /* 위쪽 선택칸도 같이 맞춰 둡니다 — 화면에 서로 다른 금액이 보이지 않게 (2026-09-04) */
+ try{
+  var ki=document.getElementById('cpItem'), hi=document.getElementById('cpHour');
+  if(ki&&hi){ ki.value=x.k; var o10=hi.querySelector('option[value="10"]'); if(o10)o10.disabled=!P[3]; hi.value=String(h); cartPrev(); }
+ }catch(e){}}
 function cartDel(i){CART.splice(i,1);cartDraw();}
 function _cartHours(){var t=0;CART.forEach(function(x){t+=x.h;});return t;}
 function cartDraw(){
