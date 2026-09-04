@@ -1017,6 +1017,27 @@ header nav a{letter-spacing:-.01em}
 .encat-ph img{width:58px;height:70px;object-fit:cover;border-radius:8px;border:1px solid #eceff5;background:#f2f4f8}
 .encat-ph .ph-empty{width:58px;height:70px;border-radius:8px;background:#eef1f6;display:flex;align-items:center;justify-content:center;font-size:11px;color:#9aa4b6;text-align:center;line-height:1.25;font-weight:700}
 .encat-chips{display:flex;flex-wrap:wrap;gap:9px}
+.tt-key{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 9px}
+.tt-key .k{font-size:11.5px;font-weight:900;padding:4px 10px;border-radius:999px;border:1.5px solid}
+.tt-key .k.dawn{color:#5b3fa8;border-color:#d8ccf3;background:#f5f1ff}
+.tt-key .k.morn{color:#b56a00;border-color:#f2dcb4;background:#fff8ec}
+.tt-key .k.noon{color:#0e8a5a;border-color:#c3e7d6;background:#f1fbf6}
+.tt-key .k.eve{color:#1D2D4F;border-color:#ccd6e8;background:#f3f6fc}
+.tt-key .k.week{color:#c81f2b;border-color:#f3cdd1;background:#fff5f5}
+.ex-tt.tt-c tr.tt-dawn td:first-child{color:#5b3fa8}
+.ex-tt.tt-c tr.tt-morn td:first-child{color:#b56a00}
+.ex-tt.tt-c tr.tt-noon td:first-child{color:#0e8a5a}
+.ex-tt.tt-c tr.tt-eve td:first-child{color:#1D2D4F}
+.ex-tt.tt-c tr.tt-week td:first-child{color:#c81f2b}
+.ex-tt.tt-c tr.tt-dawn{background:#faf8ff}
+.ex-tt.tt-c tr.tt-morn{background:#fffcf6}
+.ex-tt.tt-c tr.tt-noon{background:#f8fdfa}
+.ex-tt.tt-c tr.tt-week{background:#fffafa}
+.ex-tt.tt-c tr.tt-dawn td:nth-child(4),.ex-tt.tt-c tr.tt-morn td:nth-child(4),
+.ex-tt.tt-c tr.tt-noon td:nth-child(4),.ex-tt.tt-c tr.tt-eve td:nth-child(4),
+.ex-tt.tt-c tr.tt-week td:nth-child(4){font-weight:800}
+.ex-tt.tt-c .tt-b{display:inline-block;font-style:normal;font-size:10.5px;font-weight:900;color:#fff;
+ background:#5b3fa8;border-radius:5px;padding:2px 6px;margin-left:5px;vertical-align:1px}
 .rh{margin-top:16px;border:2px solid var(--navy);border-radius:16px;overflow:hidden;background:#fff}
 .rh-h{background:linear-gradient(120deg,#1D2D4F,#33456f);color:#fff;padding:15px 16px}
 .rh-h b{display:block;font-size:17px;font-weight:900}
@@ -5097,10 +5118,10 @@ const PAGES={
   +'<div class="pgfeat"><div class="ft"><div class="fi">🏫</div><h4>학교 선정</h4><p>목표·예산에 맞는 기관을 함께 찾습니다.</p></div><div class="ft"><div class="fi">📑</div><h4>서류·비자</h4><p>필요 서류·비자 절차를 체크리스트로 안내합니다.</p></div><div class="ft"><div class="fi">🗣️</div><h4>사전 일본어</h4><p>생활 회화·JLPT를 병행 준비합니다.</p></div><div class="ft"><div class="fi">🧳</div><h4>현지 정착</h4><p>거주·생활 정보까지 실질 팁을 제공합니다.</p></div></div>'+CTA(),
  '1:1 전문':bigImg('img/gen_pt.jpg')+H('1:1 PROFESSIONAL','완전 1:1,<br>목표까지 최단거리','그룹 수업의 속도가 아쉬웠다면, 오직 나에게 맞춘 1:1 전문관을 추천합니다. 시험 단기 완성, 회화 집중, 취약 영역 보강 등 목적별로 최적화합니다.','🎯')
   +'<div class="pgfeat"><div class="ft"><div class="fi">⚡</div><h4>단기 목표 완성</h4><p>기간과 목표 점수에 맞춰 집중 설계합니다.</p></div><div class="ft"><div class="fi">🔁</div><h4>취약점 집중</h4><p>내가 약한 부분만 골라 반복 교정합니다.</p></div><div class="ft"><div class="fi">💬</div><h4>실전 회화</h4><p>원어민·전문 강사와 실전 대화를 집중 훈련합니다.</p></div><div class="ft"><div class="fi">🕒</div><h4>유연한 스케줄</h4><p>바쁜 직장인·학생 일정에 맞춰 운영합니다.</p></div></div>'+CTA(),
- '기업출강':bigImg('img/gen16.jpg')+HV('기업 출강 · B2B','회사로 찾아가는<br>실무 어학 교육','임직원 대상 영어·일본어·중국어 교육을 회사 일정에 맞춰 진행합니다. 업종·직무에 맞춘 실무 커리큘럼과 성과 리포트로, 교육 효과를 눈으로 확인하실 수 있습니다.','linear-gradient(120deg,#c81f2b,#c81f2b)','<div class="pgemoji">🏢</div>')
+ '기업출강':bigImg('img/biz_main.jpg')+HV('기업 출강 · B2B','회사로 찾아가는<br>실무 어학 교육','임직원 대상 영어·일본어·중국어 교육을 회사 일정에 맞춰 진행합니다. 업종·직무에 맞춘 실무 커리큘럼과 성과 리포트로, 교육 효과를 눈으로 확인하실 수 있습니다.','linear-gradient(120deg,#c81f2b,#c81f2b)','<div class="pgemoji">🏢</div>')
   +'<div class="tk-sec"><h3 class="tk-sectt">기업 출강 담당 강사진</h3><div class="tk-grid">'+T_B2B.map(tcard).join('')+'</div></div>'
   +'<div class="pgfeat red"><div class="ft"><div class="fi">🧩</div><h4>직무 맞춤 설계</h4><p>영업·CS·개발 등 직무별 실무 표현 중심으로 구성합니다.</p></div><div class="ft"><div class="fi">📈</div><h4>성과 리포트</h4><p>출석·성취도를 정리해 담당자에게 공유합니다.</p></div><div class="ft"><div class="fi">🕘</div><h4>사내 일정 맞춤</h4><p>업무 시간에 맞춰 방문 또는 화상으로 진행합니다.</p></div><div class="ft"><div class="fi">💳</div><h4>세금계산서 발행</h4><p>법인 결제·증빙을 지원합니다.</p></div></div>'+'<div class="b2b-why"><h3>왜 산본글로벌 기업 출강인가요?</h3>'+'<div class="wy"><span class="n">1</span><div><b>강사가 회사로 갑니다</b><p>직원들이 이동하는 시간이 사라집니다. 점심시간·업무 종료 직후 등 회사 일정에 맞춰 진행합니다.</p></div></div>'+'<div class="wy"><span class="n">2</span><div><b>업무에서 실제로 쓰는 표현만</b><p>영업은 협상·견적, CS는 응대·컴플레인, 개발은 문서·회의 — 직무별로 쓰는 말이 다릅니다. 그 부분만 집중합니다.</p></div></div>'+'<div class="wy"><span class="n">3</span><div><b>담당자가 성과를 확인할 수 있습니다</b><p>출석·성취도·수업 내용을 정리해 매월 공유드립니다. 교육비가 어디에 쓰였는지 숫자로 남습니다.</p></div></div>'+'<div class="wy"><span class="n">4</span><div><b>수준이 달라도 됩니다</b><p>레벨테스트 후 반을 나누거나 난이도를 조정합니다. 왕초보와 중급이 섞여도 진행할 수 있습니다.</p></div></div>'+'<div class="wy"><span class="n">5</span><div><b>법인 결제·증빙 지원</b><p>세금계산서 발행, 교육비 지원 사업 서류까지 도와드립니다.</p></div></div>'+'<div class="b2b-free"><div class="tag">부담 없이 먼저 확인하세요</div>'+'<h4>무료 시범 수업 1회</h4>'+'<p>계약 전에 <b>실제 강사가 회사로 방문해 1회 수업을 무료로</b> 진행해 드립니다. 직원분들 반응과 수업 방식을 직접 보시고 결정하세요.</p>'+'<div class="b2b-btns"><button class="b2b-go" onclick="rsvOpen()">무료 시범 수업 신청 &rsaquo;</button>'+'<button class="b2b-tel" onclick="if(_isPhone()){location.href=\'tel:0314666969\';}else{sgCopy(\'0314666969\');sgToast(\'<b>전화번호를 복사했습니다</b><br>031-466-6969\');}">📞 031-466-6969</button></div></div></div>'+b2bQuoteForm()+CTA(),
- '임원강의':bigImg('img/gen17.jpg')+H('EXECUTIVE · PRIVATE','임원 1:1,<br>어디든 찾아갑니다','바쁜 임원분들을 위해 시간·장소·주제를 완전 맞춤으로 운영하는 프리미엄 1:1 과정입니다. 사무실·자택 어디든 찾아가, 미팅·프레젠테이션·의전 등 상황별 실전 표현에 집중합니다.','👔')
+ '임원강의':bigImg('img/exec_one.jpg')+H('EXECUTIVE · PRIVATE','임원 1:1,<br>어디든 찾아갑니다','바쁜 임원분들을 위해 시간·장소·주제를 완전 맞춤으로 운영하는 프리미엄 1:1 과정입니다. 사무실·자택 어디든 찾아가, 미팅·프레젠테이션·의전 등 상황별 실전 표현에 집중합니다.','👔')
   +'<div class="tk-sec"><h3 class="tk-sectt">임원 1:1 담당 강사진</h3><div class="tk-grid">'+[{n:'Apple 강사',title:'임원 영어 1:1',eye:'실전 비즈니스 회화',img:'eng_5'},{n:'제롤린 강사',title:'임원 영어 1:1',eye:'미팅·프레젠테이션 집중',img:'eng_11'}].map(tcard).join('')+'</div></div>'
   +'<div class="pgfeat"><div class="ft"><div class="fi">🤵</div><h4>완전 맞춤 1:1</h4><p>주제·수준·일정을 전적으로 맞춰 설계합니다.</p></div><div class="ft"><div class="fi">🗓️</div><h4>시간·장소 자유</h4><p>사무실 방문 또는 화상으로 편하게 진행합니다.</p></div><div class="ft"><div class="fi">🎤</div><h4>상황별 실전</h4><p>미팅·발표·네트워킹 등 실제 상황을 훈련합니다.</p></div><div class="ft"><div class="fi">🔒</div><h4>프라이빗 운영</h4><p>비공개·소수 정예로 편안하게 학습합니다.</p></div></div>'+b2bQuoteForm('임원 1:1 맞춤 상담 · 견적 요청')+CTA()
 };
@@ -5173,8 +5194,30 @@ var SPRICE={
  per:{'2':'2개월 · 무료 없음','3':'+1개월 무료 · 총 4개월','4':'+2개월 무료 · 총 6개월','6':'+4개월 무료 · 총 10개월 · 최고혜택'}}
 };
 function _spP(k){return SPRICE[k]||SPRICE['영어'];}
-function spTermOpts(k){var P=_spP(k);return P.opt.map(function(o){
- return '<option value="'+o[0]+'"'+(o[0]===P.sel?' selected':'')+'>'+o[1]+' — '+Math.round(o[2]/10000)+'만원</option>';}).join('');}
+
+/* 개설 시간표 색 구분 — 새벽/오전/낮/저녁/주말 (2026-09-04 대표님 지시) */
+function _ttCls(lvl,day,time){
+ if(/새벽/.test(lvl||''))return 'dawn';
+ if(/토|일|주말/.test(day||''))return 'week';
+ var h=parseInt(String(time||'').slice(0,2),10);
+ if(isNaN(h))return 'noon';
+ if(h<9)return 'dawn';
+ if(h<12)return 'morn';
+ if(h<17)return 'noon';
+ return 'eve';}
+function spTermOpts(k,lvl){var P=_spP(k);
+ /* 새벽반은 조조 30%가 붙으므로 정가 옆에 할인가를 같이 보여 드립니다 */
+ var dawn=/새벽/.test(lvl||'');
+ return P.opt.map(function(o){
+  var t=o[1]+' — '+Math.round(o[2]/10000)+'만원';
+  if(dawn){var f=Math.round(o[2]*0.7/1000)*1000;
+   t=o[1]+' — '+Math.round(o[2]/10000)+'만원 → '+f.toLocaleString()+'원 (30% 할인)';}
+  return '<option value="'+o[0]+'"'+(o[0]===P.sel?' selected':'')+'>'+t+'</option>';}).join('');}
+/* 반을 바꾸면 기간 목록의 표기도 다시 그립니다 */
+function spTermRedraw(){
+ var e=document.getElementById('spTerm'); if(!e)return;
+ var cur=e.value; e.innerHTML=spTermOpts(_spSubj,_spLevel);
+ if(cur)e.value=cur;}
 function _spBase(k,v){var P=_spP(k);for(var i=0;i<P.opt.length;i++){if(P.opt[i][0]===v)return P.opt[i];}return P.opt[0];}
 var _spSubj='영어';
 function _wdays(s){if(Array.isArray(s))s=s.join(' ');var mp={'일':0,'월':1,'화':2,'수':3,'목':4,'금':5,'토':6};s=(s||'').replace(/요일/g,'');var r=[];for(var i=0;i<s.length;i++){var w=mp[s.charAt(i)];if(w!==undefined&&r.indexOf(w)<0)r.push(w);}if(/주말/.test(s))r=[0,6];if(/평일/.test(s))r=[1,2,3,4,5];if(/월~금|매일/.test(s))r=[1,2,3,4,5];return r;}
@@ -5474,7 +5517,10 @@ if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;_spCalD=new Date(2026,9
  var dayOpts=idays.map(function(d){return '<option>'+d+' (개강)</option>';}).join('')+'<option>주말반 (추후 모집중)</option>';
  var timeOpts=init.map(function(x){return '<option>'+_clsLabel(x)+'</option>';}).join('')+'<option>오전반 (추후 모집중)</option><option>오후반 (추후 모집중)</option><option>주말반 (추후 모집중)</option>';
  var steps=W.levels.map(function(l,i){return '<button class="sp-step'+(l[0]===lv0[0]?' on':'')+'" onclick="spStep(this,\''+l[0]+'\')">'+l[0]+'</button>';}).join('');
- var sch='<h4 style="font-size:16px;font-weight:900;margin:22px 0 10px">개설 시간표 (현재 개강반)</h4><table class="ex-tt"><tr><th>레벨</th><th>강사</th><th>요일</th><th>시간</th><th>강의실</th><th>교재</th></tr>'+W.levels.map(function(l){return (W.cls[l[0]]||[]).map(function(x){return '<tr><td class="b">'+l[0]+'</td><td>'+x[2]+'</td><td>'+x[0]+'</td><td>'+x[1]+'</td><td>'+(x[3]||'-')+'</td><td>'+(x[4]||'-')+'</td></tr>';}).join('');}).join('')+'</table>';
+ var sch='<h4 style="font-size:16px;font-weight:900;margin:22px 0 10px">개설 시간표 (현재 개강반)</h4>'
+  +'<div class="tt-key"><span class="k dawn">새벽</span><span class="k morn">오전</span>'
+  +'<span class="k noon">낮</span><span class="k eve">저녁</span><span class="k week">주말</span></div>'
+  +'<table class="ex-tt tt-c"><tr><th>레벨</th><th>강사</th><th>요일</th><th>시간</th><th>강의실</th><th>교재</th></tr>'+W.levels.map(function(l){return (W.cls[l[0]]||[]).map(function(x){var tc=_ttCls(l[0],x[0],x[1]);return '<tr class="tt-'+tc+'"><td class="b">'+l[0]+(/새벽/.test(l[0])?' <em class="tt-b">조조 30%</em>':'')+'</td><td>'+x[2]+'</td><td>'+x[0]+'</td><td>'+x[1]+'</td><td>'+(x[3]||'-')+'</td><td>'+(x[4]||'-')+'</td></tr>';}).join('');}).join('')+'</table>';
  return '<div class="sp-wrap"><button class="sp-back" onclick="openPage(\'수강신청\')">‹ 수강신청으로</button><div class="sp-top"><div class="sp-left">'+
   '<div class="sp-badge">'+W.badge+'</div>'+
   '<div class="sp-photo"><img id="spPhoto" src="img/teachers/'+lv0[1]+'.png" alt="강사"></div>'+
@@ -5483,7 +5529,7 @@ if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;_spCalD=new Date(2026,9
   '</div><div class="sp-right">'+
   '<div class="sp-eye">'+W.eye+'</div><h2 class="sp-title">'+W.title+'</h2>'+
   '<div class="sp-steps">'+steps+'</div>'+
-  '<div class="sp-form"><label>레벨·요일 선택<select id="spDay" onchange="spRenderCal()">'+dayOpts+'</select></label><label>시간 선택<select id="spTime" onchange="spTimeChg()">'+timeOpts+'</select></label><label>기간 선택<select id="spTerm" onchange="spPrice()">'+spTermOpts(k)+'</select></label><label>이벤트 할인<select id="spDisc" onchange="spDiscChange()">'+discOpts()+'</select></label>'+discHintBox(k)+'</div>'+
+  '<div class="sp-form"><label>레벨·요일 선택<select id="spDay" onchange="spRenderCal()">'+dayOpts+'</select></label><label>시간 선택<select id="spTime" onchange="spTimeChg()">'+timeOpts+'</select></label><label>기간 선택<select id="spTerm" onchange="spPrice()">'+spTermOpts(k,lv0[0])+'</select></label><label>이벤트 할인<select id="spDisc" onchange="spDiscChange()">'+discOpts()+'</select></label>'+discHintBox(k)+'</div>'+
   '<div class="sp-cal-wrap"><div class="sp-cal-label">수업일 확인 (선택 요일 기준)</div><div id="spCal">'+calHTML(_spCalD,_wdays(idays[0]||''))+'</div></div>'+
   '<div class="sp-price"><span>수강료</span><b id="spAmt">1,080,000원</b><em id="spPer">+4개월 무료 · 총 10개월 · 최고혜택</em></div>'+
   '<div class="sp-btns"><button class="sp-cart" onclick="alert(\'장바구니에 담았습니다.\')">🛒 장바구니</button><button class="sp-buy" onclick="spBuy()">수강신청</button></div>'+
@@ -5497,7 +5543,7 @@ if(k==='영어회화')k='영어';k=k||'영어';_spSubj=k;_spCalD=new Date(2026,9
 var _spLevel='';
 function spTimeChg(){var W=WCONV[_spSubj]||WCONV['영어'];var list=W.cls[_spLevel||W.levels[0][0]]||[];var i=document.getElementById('spTime').selectedIndex;var x=list[i];if(!x)return;var nm=(x[2]||'').split(/[ ·(]/)[0].trim();var im=TIMG.hasOwnProperty(nm)?TIMG[nm]:'';var p=document.getElementById('spPhoto');if(p)_setPhoto(p,im);var t=document.getElementById('spTeacher');if(t)t.textContent=x[2];var dv=document.getElementById('spDay');if(dv){for(var j=0;j<dv.options.length;j++){if(dv.options[j].text.indexOf(x[0])===0){dv.selectedIndex=j;break;}}}_calN=_calSess(x[0]);_calWd=_wdays(x[0]);spRenderCal();}
 function _setPhoto(el,key){var box=el.parentNode;var ph=box?box.querySelector('.sp-ph'):null;if(!key){el.style.display='none';if(!ph){ph=document.createElement('div');ph.className='sp-ph';ph.innerHTML='강사 사진<br>준비중';box.appendChild(ph);}ph.style.display='grid';return;}if(ph)ph.style.display='none';el.style.display='';el.onerror=function(){_setPhoto(el,'');};el.src='img/teachers/'+key+'.png';}
-function spStep(b,level){_spLevel=level;var ss=document.querySelectorAll('.sp-step');for(var i=0;i<ss.length;i++)ss[i].classList.remove('on');b.classList.add('on');var W=WCONV[_spSubj]||WCONV['영어'];var list=W.cls[level]||[];var days=[];list.forEach(function(x){if(days.indexOf(x[0])<0)days.push(x[0]);});document.getElementById('spDay').innerHTML=days.map(function(d){return '<option>'+d+' (개강)</option>';}).join('')+'<option>주말반 (추후 모집중)</option>';document.getElementById('spTime').innerHTML=list.map(function(x){return '<option>'+_clsLabel(x)+'</option>';}).join('')+'<option>오전반 (추후 모집중)</option><option>오후반 (추후 모집중)</option><option>주말반 (추후 모집중)</option>';var info=null;for(var j=0;j<W.levels.length;j++){if(W.levels[j][0]===level){info=W.levels[j];break;}}if(info){var p=document.getElementById('spPhoto');if(p)p.src='img/teachers/'+info[1]+'.png';var t=document.getElementById('spTeacher');if(t)t.textContent=info[2];}var _dv=document.getElementById('spDay');_calN=_calSess(_dv?_dv.value:'');spRenderCal();try{spTimeChg();}catch(e){}try{spPrice();}catch(e){}}
+function spStep(b,level){_spLevel=level;var ss=document.querySelectorAll('.sp-step');for(var i=0;i<ss.length;i++)ss[i].classList.remove('on');b.classList.add('on');var W=WCONV[_spSubj]||WCONV['영어'];var list=W.cls[level]||[];var days=[];list.forEach(function(x){if(days.indexOf(x[0])<0)days.push(x[0]);});document.getElementById('spDay').innerHTML=days.map(function(d){return '<option>'+d+' (개강)</option>';}).join('')+'<option>주말반 (추후 모집중)</option>';document.getElementById('spTime').innerHTML=list.map(function(x){return '<option>'+_clsLabel(x)+'</option>';}).join('')+'<option>오전반 (추후 모집중)</option><option>오후반 (추후 모집중)</option><option>주말반 (추후 모집중)</option>';var info=null;for(var j=0;j<W.levels.length;j++){if(W.levels[j][0]===level){info=W.levels[j];break;}}if(info){var p=document.getElementById('spPhoto');if(p)p.src='img/teachers/'+info[1]+'.png';var t=document.getElementById('spTeacher');if(t)t.textContent=info[2];}var _dv=document.getElementById('spDay');_calN=_calSess(_dv?_dv.value:'');spRenderCal();try{spTermRedraw();}catch(e){}try{spTimeChg();}catch(e){}try{spPrice();}catch(e){}}
 function spPrice(){var tE=document.getElementById('spTerm');if(!tE)return;
  /* 새벽반 조조할인 30% (2026-09-04 대표님 지시로 전 기간 적용)
     — 예전에는 6개월 하나로 고정돼 있었습니다. 이제 2·3·4·6개월 전부 30%입니다.
@@ -5517,6 +5563,8 @@ function spPrice(){var tE=document.getElementById('spTerm');if(!tE)return;
  setCalMul(_totMon(o[1]+' '+(P.per[t]||''),parseInt(t,10)||1));
  try{spRenderCal();}catch(_e){}
  var dw=dawnRate(_spSubj);
+ var deX=document.getElementById('spDisc');
+ if(deX){ if(dw>0){deX.value='0';deX.disabled=true;} else deX.disabled=false; }
  var nms=[]; if(dw>0)nms.push('새벽 조조할인 '+Math.round(dw*100)+'%');
  var el=evLabel(v); if(el)nms.push(el);
  if(d>0&&R.note.indexOf('ev')===0)lb+=' · '+(nms.length?nms.join(' + '):'할인 '+Math.round(d*100)+'%')+(nms.length>1?(' 합계 '+Math.round(d*100)+'%'):'');
@@ -5524,7 +5572,7 @@ function spPrice(){var tE=document.getElementById('spTerm');if(!tE)return;
  if(lo>0)lb+=' + 재등록 '+Math.round(lo*100)+'%';
  document.getElementById('spPer').textContent=lb;
  var nt=document.getElementById('spDiscNote');
- if(nt)nt.textContent=dw>0?'새벽반은 조조할인 30%가 붙습니다. 온라인 즉시할인 상한이 30%라 다른 이벤트를 더 고르셔도 30%까지만 적용됩니다.':'';}
+ if(nt)nt.innerHTML=dw>0?'※ 새벽반은 <b>조조할인 30%</b>가 이미 최대치입니다. <b>오픈이벤트 10%는 중복 적용되지 않습니다.</b> (온라인 즉시할인 상한 30%)':'';}
 function spBuy(){
  /* 새벽반은 조조할인 30% 고정가 — 이벤트 할인 안내창을 건너뛰고 바로 결제창으로 갑니다 */
  if(_spLevel==='새벽반'){
@@ -6499,7 +6547,7 @@ var BASE1={
   who:['학원 정규반의 가장 낮은 레벨도 따라가기 어려우신 분','영어를 처음 시작하거나 다시 시작하시는 분','그룹 수업에서 못 따라갈까 봐 망설이시는 분'],
   why:'첫 영어는 <b>남들 앞에서 틀리는 게 제일 무섭습니다.</b> 그래서 1:1로 20시간을 먼저 채워 기본기를 만들고, 자신이 붙었을 때 그룹반으로 넘어가시게 합니다. <b>그 그룹반 두 달이 무료</b>입니다.',
   cur:[['1~5시간','알파벳 · 발음 · 인사 표현'],['6~12시간','be동사 · 일반동사 · 현재/과거'],['13~20시간','짧은 문장 만들기 · 자기소개 · 여행 회화']]},
- 'j':{hero:'img/gen10.jpg',grad:'linear-gradient(120deg,#b83277,#d64f97)',
+ 'j':{hero:'img/one_jpn.jpg',grad:'linear-gradient(120deg,#b83277,#d64f97)',
   eyeL:'왕기초 일대일 PACKAGE · 일본어 회화',heroT:'히라가나 앞에서<br>번번이 멈추셨다면',
   freeT:'정규반 <b>2개월</b>',freeW:'360,000원',bookT:'기초 교재 1권 증정',
   tchT:'한인 · 원어민 강사 중 상담 후 매칭',tn:'일본어 담당 강사',tr:'상담 후 매칭',
@@ -6509,7 +6557,7 @@ var BASE1={
   who:['히라가나 앞에서 시작을 미뤄 오신 분','일본어를 처음 시작하거나 다시 시작하시는 분','그룹 수업에서 못 따라갈까 봐 망설이시는 분'],
   why:'첫 외국어는 <b>남들 앞에서 틀리는 게 제일 무섭습니다.</b> 그래서 1:1로 20시간을 먼저 채워 글자와 기본 문형을 만들고, 자신이 붙었을 때 그룹반으로 넘어가시게 합니다. <b>그 그룹반 두 달이 무료</b>입니다.',
   cur:[['1~5시간','히라가나 · 가타카나 · 발음'],['6~12시간','です · ます 기본 문형 · 조사'],['13~20시간','자기소개 · 쇼핑 · 여행 회화']]},
- 'c':{hero:'img/gen10.jpg',grad:'linear-gradient(120deg,#b8322a,#d6564a)',
+ 'c':{hero:'img/one_chn.jpg',grad:'linear-gradient(120deg,#b8322a,#d6564a)',
   eyeL:'왕기초 일대일 PACKAGE · 중국어 회화',heroT:'성조 앞에서<br>번번이 멈추셨다면',
   freeT:'정규반 <b>2개월</b>',freeW:'360,000원',bookT:'기초 교재 1권 증정',
   tchT:'한인 · 원어민 강사 중 상담 후 매칭',tn:'중국어 담당 강사',tr:'상담 후 매칭',
