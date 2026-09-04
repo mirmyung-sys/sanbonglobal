@@ -1038,6 +1038,30 @@ header nav a{letter-spacing:-.01em}
 .ex-tt.tt-c tr.tt-week td:nth-child(4){font-weight:800}
 .ex-tt.tt-c .tt-b{display:inline-block;font-style:normal;font-size:10.5px;font-weight:900;color:#fff;
  background:#5b3fa8;border-radius:5px;padding:2px 6px;margin-left:5px;vertical-align:1px}
+.opt-t{display:flex;gap:18px;align-items:flex-start;margin:20px 0 6px;padding:18px;
+ border:1.5px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 10px 30px -22px rgba(20,30,50,.5)}
+.opt-ph{flex:0 0 154px;border-radius:14px;overflow:hidden;background:var(--surf)}
+.opt-ph img{width:100%;height:196px;object-fit:cover;display:block}
+.opt-b{flex:1 1 auto;min-width:0}
+.opt-e{font-size:12px;font-weight:900;letter-spacing:.05em;color:var(--brand);margin-bottom:4px}
+.opt-b h3{margin:0 0 8px;font-size:24px;font-weight:900;color:var(--navy);letter-spacing:-.02em}
+.opt-r{margin:0 0 10px;font-size:14px;line-height:1.65;color:var(--ink3)}
+.opt-tag{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.opt-tag span{font-size:11.5px;font-weight:800;color:var(--navy);background:var(--surf);
+ border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+.opt-l{margin:0 0 14px;padding:0;list-style:none}
+.opt-l li{position:relative;padding-left:17px;font-size:14px;line-height:1.7;color:var(--ink2)}
+.opt-l li::before{content:'';position:absolute;left:2px;top:11px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.opt-g{display:flex;flex-wrap:wrap;gap:8px}
+.opt-a{border:0;border-radius:11px;padding:12px 18px;font-size:14px;font-weight:900;font-family:inherit;
+ cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand-lt))}
+.opt-a.s{background:#fff;color:var(--navy);border:1.5px solid var(--navy)}
+.opt-div{display:flex;align-items:center;gap:12px;margin:26px 0 4px;color:var(--muted)}
+.opt-div::before,.opt-div::after{content:'';flex:1 1 auto;height:1px;background:var(--line)}
+.opt-div span{font-size:12.5px;font-weight:900;letter-spacing:.06em;color:var(--navy);white-space:nowrap}
+@media(max-width:560px){.opt-t{flex-direction:column;gap:14px;padding:15px}
+ .opt-ph{flex:0 0 auto;width:100%}.opt-ph img{height:230px}
+ .opt-b h3{font-size:21px}.opt-a{flex:1 1 100%;text-align:center}}
 .rh{margin-top:16px;border:2px solid var(--navy);border-radius:16px;overflow:hidden;background:#fff}
 .rh-h{background:linear-gradient(120deg,#1D2D4F,#33456f);color:#fff;padding:15px 16px}
 .rh-h b{display:block;font-size:17px;font-weight:900}
@@ -5117,8 +5141,7 @@ const PAGES={
   +SEC('일본 취업','<div class="lead">이력서(리레키쇼)·면접 일본어와 비즈니스 매너까지, 현지 취업에 필요한 실전 준비를 지원합니다.</div>')
   +SEC('준비 절차',CT(['단계','내용'],[['1. 상담','목표·예산·일정 진단'],['2. 학교 선정','어학원/전문학교 후보 선정'],['3. 서류·비자','서류 작성·비자 절차'],['4. 사전 일본어','생활 회화·JLPT 병행'],['5. 출국·정착','현지 생활 정보 안내']]))
   +'<div class="pgfeat"><div class="ft"><div class="fi">🏫</div><h4>학교 선정</h4><p>목표·예산에 맞는 기관을 함께 찾습니다.</p></div><div class="ft"><div class="fi">📑</div><h4>서류·비자</h4><p>필요 서류·비자 절차를 체크리스트로 안내합니다.</p></div><div class="ft"><div class="fi">🗣️</div><h4>사전 일본어</h4><p>생활 회화·JLPT를 병행 준비합니다.</p></div><div class="ft"><div class="fi">🧳</div><h4>현지 정착</h4><p>거주·생활 정보까지 실질 팁을 제공합니다.</p></div></div>'+CTA(),
- '1:1 전문':bigImg('img/gen_pt.jpg')+H('1:1 PROFESSIONAL','완전 1:1,<br>목표까지 최단거리','그룹 수업의 속도가 아쉬웠다면, 오직 나에게 맞춘 1:1 전문관을 추천합니다. 시험 단기 완성, 회화 집중, 취약 영역 보강 등 목적별로 최적화합니다.','🎯')
-  +'<div class="pgfeat"><div class="ft"><div class="fi">⚡</div><h4>단기 목표 완성</h4><p>기간과 목표 점수에 맞춰 집중 설계합니다.</p></div><div class="ft"><div class="fi">🔁</div><h4>취약점 집중</h4><p>내가 약한 부분만 골라 반복 교정합니다.</p></div><div class="ft"><div class="fi">💬</div><h4>실전 회화</h4><p>원어민·전문 강사와 실전 대화를 집중 훈련합니다.</p></div><div class="ft"><div class="fi">🕒</div><h4>유연한 스케줄</h4><p>바쁜 직장인·학생 일정에 맞춰 운영합니다.</p></div></div>'+CTA(),
+ '1:1 전문':function(){return oneProPage();},
  '기업출강':bigImg('img/biz_main.jpg')+HV('기업 출강 · B2B','회사로 찾아가는<br>실무 어학 교육','임직원 대상 영어·일본어·중국어 교육을 회사 일정에 맞춰 진행합니다. 업종·직무에 맞춘 실무 커리큘럼과 성과 리포트로, 교육 효과를 눈으로 확인하실 수 있습니다.','linear-gradient(120deg,#c81f2b,#c81f2b)','<div class="pgemoji">🏢</div>')
   +'<div class="tk-sec"><h3 class="tk-sectt">기업 출강 담당 강사진</h3><div class="tk-grid">'+T_B2B.map(tcard).join('')+'</div></div>'
   +'<div class="pgfeat red"><div class="ft"><div class="fi">🧩</div><h4>직무 맞춤 설계</h4><p>영업·CS·개발 등 직무별 실무 표현 중심으로 구성합니다.</p></div><div class="ft"><div class="fi">📈</div><h4>성과 리포트</h4><p>출석·성취도를 정리해 담당자에게 공유합니다.</p></div><div class="ft"><div class="fi">🕘</div><h4>사내 일정 맞춤</h4><p>업무 시간에 맞춰 방문 또는 화상으로 진행합니다.</p></div><div class="ft"><div class="fi">💳</div><h4>세금계산서 발행</h4><p>법인 결제·증빙을 지원합니다.</p></div></div>'+'<div class="b2b-why"><h3>왜 산본글로벌 기업 출강인가요?</h3>'+'<div class="wy"><span class="n">1</span><div><b>강사가 회사로 갑니다</b><p>직원들이 이동하는 시간이 사라집니다. 점심시간·업무 종료 직후 등 회사 일정에 맞춰 진행합니다.</p></div></div>'+'<div class="wy"><span class="n">2</span><div><b>업무에서 실제로 쓰는 표현만</b><p>영업은 협상·견적, CS는 응대·컴플레인, 개발은 문서·회의 — 직무별로 쓰는 말이 다릅니다. 그 부분만 집중합니다.</p></div></div>'+'<div class="wy"><span class="n">3</span><div><b>담당자가 성과를 확인할 수 있습니다</b><p>출석·성취도·수업 내용을 정리해 매월 공유드립니다. 교육비가 어디에 쓰였는지 숫자로 남습니다.</p></div></div>'+'<div class="wy"><span class="n">4</span><div><b>수준이 달라도 됩니다</b><p>레벨테스트 후 반을 나누거나 난이도를 조정합니다. 왕초보와 중급이 섞여도 진행할 수 있습니다.</p></div></div>'+'<div class="wy"><span class="n">5</span><div><b>법인 결제·증빙 지원</b><p>세금계산서 발행, 교육비 지원 사업 서류까지 도와드립니다.</p></div></div>'+'<div class="b2b-free"><div class="tag">부담 없이 먼저 확인하세요</div>'+'<h4>무료 시범 수업 1회</h4>'+'<p>계약 전에 <b>실제 강사가 회사로 방문해 1회 수업을 무료로</b> 진행해 드립니다. 직원분들 반응과 수업 방식을 직접 보시고 결정하세요.</p>'+'<div class="b2b-btns"><button class="b2b-go" onclick="rsvOpen()">무료 시범 수업 신청 &rsaquo;</button>'+'<button class="b2b-tel" onclick="if(_isPhone()){location.href=\'tel:0314666969\';}else{sgCopy(\'0314666969\');sgToast(\'<b>전화번호를 복사했습니다</b><br>031-466-6969\');}">📞 031-466-6969</button></div></div></div>'+b2bQuoteForm()+CTA(),
@@ -6786,6 +6809,31 @@ function cartGo(){
  }
  var t=0;CART.forEach(function(x){t+=x.p;});
  spBuyAmt(t.toLocaleString()+'원');}
+
+/* ── 1:1 전문 (2026-09-04 대표님 지시) ─────────────────────
+   순서: ① 송윤정 강사 ② 1대1 글로벌 강의관 ③ 구지영 원장
+   ③은 openPage() 가 창 맨 아래에 자동으로 붙입니다. 여기서 부르지 마세요. */
+function oneProPage(){
+ return bigImg('img/gen_pt.jpg')
+ +H('1:1 PROFESSIONAL','완전 1:1,<br>목표까지 최단거리',
+   '그룹 수업의 속도가 아쉬웠다면, 오직 나에게 맞춘 1:1 전문관을 추천합니다. 시험 단기 완성, 회화 집중, 취약 영역 보강 등 목적별로 최적화합니다.','🎯')
+ /* ① 송윤정 강사 */
+ +'<div class="opt-t"><div class="opt-ph"><img src="img/teachers/eng_13.png" alt="송윤정 강사" loading="lazy"></div>'
+  +'<div class="opt-b"><div class="opt-e">1:1 전문 · 토익 · 토스 · 오픽</div>'
+  +'<h3>송윤정</h3>'
+  +'<p class="opt-r">관리형 스파르타 담당 · 오답을 <b>유형별로 분석해</b> 약점을 잡아 드립니다. 단기 고득점이 목표라면 이 방식이 가장 빠릅니다.</p>'
+  +'<div class="opt-tag"><span>#스파르타</span><span>#기출분석</span><span>#밀착관리</span></div>'
+  +'<ul class="opt-l">'
+   +'<li><b>내가 약한 자리만</b> 골라 반복 교정합니다</li>'
+   +'<li><b>기간과 목표 점수</b>에 맞춰 진도를 거꾸로 설계합니다</li>'
+   +'<li>출결 · 과제 · 단어까지 <b>밀착 관리</b>합니다</li>'
+  +'</ul>'
+  +'<div class="opt-g"><button class="opt-a" onclick="openOne(\'토익\')">토익 1:1 보기 ›</button>'
+   +'<button class="opt-a s" onclick="rsvOpen()">무료 상담 예약</button></div>'
+ +'</div></div>'
+ +'<div class="opt-div"><span>1대1 글로벌 강의관</span></div>'
+ /* ② 1대1 글로벌 강의관 — ③ 구지영 원장은 openPage 가 뒤에 붙입니다 */
+ +onePickPage();}
 function onePickPage(){
  CART=[];
  var menu=ONEMENU.map(function(m){
