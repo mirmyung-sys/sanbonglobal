@@ -1739,6 +1739,9 @@ li:first-child > .pgh{margin-top:2px}
  outline:3px solid #fff;transition:box-shadow .2s}
 .at-face img{width:100%;height:100%;object-fit:cover;display:block}
 .at-face.talk{box-shadow:0 0 0 6px rgba(198,161,91,.28),0 12px 32px -12px rgba(29,45,79,.55);animation:atBob 1.4s ease-in-out}
+/* 2026-09-04 산글이를 전신 캐릭터 이미지로 교체 — 강사 사진은 cover 그대로, 산글이만 contain */
+.at-face img[src*='whale']{object-fit:contain;padding:7px;box-sizing:border-box}
+
 @keyframes atBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 @media(prefers-reduced-motion:reduce){.at-face.talk{animation:none}}
 .at-nm{font-size:18px;font-weight:900;color:var(--navy);line-height:1.35}
@@ -3617,7 +3620,7 @@ html,body{overflow-x:hidden;max-width:100%}
   <div class="tqwrap"><div class="tq">
     <div class="tq-l">
       <div class="tq-eye">AI 산글 · 오늘의 한 문제</div>
-      <div class="tq-mas"><img src="img/whale.png" alt="산글이"><span><b>산글이</b>가 매일 한 문제씩 들고 옵니다</span></div>
+      <div class="tq-mas"><img src="img/whale_smile.png" alt="산글이"><span><b>산글이</b>가 매일 한 문제씩 들고 옵니다</span></div>
       <h3 id="tqDate">매일 아침 한 문제.<br>3초에 풀리는 자리를 익힙니다</h3>
       <p>토익 Part 5는 <b>해석하면 집니다.</b> 빈칸 앞뒤 두 단어만 보고 자리를 잡는 연습을 매일 한 문제씩 드립니다. 회원가입도 로그인도 필요 없습니다.</p>
       <a class="tq-go" href="#" onclick="openPage('AI산글');return false;">AI 학습관 보기 →</a>
@@ -3762,7 +3765,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-04 (v99)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-04 (v100)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -8827,10 +8830,77 @@ function _lsVoice(lang){
  return v[0];}
 /* 빈칸(___)을 소리내 읽지 않게 — '언더스코어'라고 읽던 것을 언어별 '빈칸' 낱말로 바꿉니다 (2026-09-03) */
 function _lsClean(t,lang){
- t=String(t).replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').replace(/&#39;/g,"'");
- var blank=lang==='ja-JP'?'、空欄、':(lang==='zh-CN'?'，空格，':', blank, ');
- t=t.replace(/_{2,}/g,blank).replace(/\s{2,}/g,' ');
+ t=String(t).replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').replace(/&#39;/g,"'").replace(/&quot;/g,'"');
+ var ko=(lang==='ko-KR');
+ var blank=ko?', 빈칸, ':(lang==='ja-JP'?'、空欄、':(lang==='zh-CN'?'，空格，':', blank, '));
+ t=t.replace(/_{2,}/g,blank);
+ /* 2026-09-04 — 기호를 그대로 읽히면 '화살표'·'가운뎃점'처럼 읽거나 문장이 끊깁니다 */
+ t=t.replace(/\s*→\s*/g, ko?' 이면 ':' becomes ')
+    .replace(/\s*[—–]\s*/g,', ')
+    .replace(/\s*·\s*/g,', ')
+    .replace(/\s*\/\s*/g,', ')
+    .replace(/\s*\+\s*/g, ko?' 다음에 ':' plus ');
+ if(ko) t=t.replace(/\(([A-D])\)/g,' 보기 $1, ');
+ t=t.replace(/\s{2,}/g,' ');
  return t.trim();}
+
+/* ===== 2026-09-04 대표님 지적 — 시험대비반 '대화 전체 듣기' =====
+   시험대비반은 해설이 한국어인데 영어 음성이 한글을 그대로 읽어 알아들을 수 없었습니다.
+   문장을 한글 구간 / 외국어 구간으로 나눠, 각 구간을 그 언어 음성으로 이어서 읽습니다. */
+function _lsSegs(t,defLang){
+ t=String(t).replace(/<[^>]+>/g,'');
+ var HAN=/[\uAC00-\uD7A3]/;
+ var toks=t.split(/(\s+)/), out=[], buf='', cur=null;
+ for(var i=0;i<toks.length;i++){
+  var w=toks[i];
+  if(!w) continue;
+  if(/^\s+$/.test(w)){ buf+=w; continue; }
+  var lg;
+  if(HAN.test(w)) lg='ko-KR';
+  else if(/^[^A-Za-z0-9\u3040-\u30ff\u4e00-\u9fff]+$/.test(w)){ buf+=w; continue; } /* 기호만 있는 토막은 앞에 붙입니다 */
+  else lg=defLang;
+  if(cur===null) cur=lg;
+  if(lg!==cur){ if(buf.trim()) out.push({t:buf,lang:cur}); buf=''; cur=lg; }
+  buf+=w;
+ }
+ if(buf.trim()) out.push({t:buf,lang:cur||defLang});
+ /* 낱말 하나마다 음성이 바뀌면 뚝뚝 끊겨 더 어색합니다.
+    짧은 구간은 옆 구간에 붙이고, 한쪽이 한국어면 한국어 음성으로 읽습니다
+    (한국어 음성이 영어 낱말을 읽는 쪽이, 영어 음성이 한글을 읽는 것보다 훨씬 낫습니다) */
+ var MIN=10, moved=true, guard=0;
+ while(moved && out.length>1 && guard++<200){
+  moved=false;
+  for(var j=0;j<out.length;j++){
+   if(out[j].t.trim().length>=MIN) continue;
+   var tg=(j>0)?j-1:j+1;
+   var a=Math.min(j,tg), b=Math.max(j,tg);
+   var lg=(out[a].lang==='ko-KR'||out[b].lang==='ko-KR')?'ko-KR':out[a].lang;
+   out[a]={t:out[a].t.replace(/\s+$/,'')+' '+out[b].t.replace(/^\s+/,''),lang:lg};
+   out.splice(b,1); moved=true; break;
+  }
+ }
+ /* 같은 언어끼리 붙어 있으면 한 번에 읽습니다 — 사이에 뜸이 생기지 않게 */
+ for(var m2=out.length-1;m2>0;m2--){
+  if(out[m2].lang===out[m2-1].lang){
+   out[m2-1]={t:out[m2-1].t.replace(/\s+$/,'')+' '+out[m2].t.replace(/^\s+/,''),lang:out[m2].lang};
+   out.splice(m2,1);
+  }
+ }
+ return out;}
+
+function _lsSpeakSegs(txt,defLang,onDone,btn){
+ var segs=_lsSegs(txt,defLang), i=0;
+ function nx(){
+  if(i>=segs.length){ if(btn)btn.classList.remove('on'); if(onDone)onDone(); return; }
+  var sg=segs[i++], t=_lsClean(sg.t,sg.lang);
+  if(!t){ nx(); return; }
+  var u=new SpeechSynthesisUtterance(t);
+  u.lang=sg.lang; u.rate=_lsRate;
+  var v=_lsVoice(sg.lang); if(v)u.voice=v;
+  u.onend=nx; u.onerror=nx;
+  try{speechSynthesis.speak(u);}catch(e){nx();}
+ }
+ nx();}
 /* 카톡·네이버·인스타 인앱 브라우저(안드로이드 WebView)는 음성 기능이 아예 없습니다.
    손님 대부분이 카톡/인스타 링크로 들어오므로, 안내만 띄우고 끝내면 그대로 막힙니다.
    안드로이드는 intent:// 로 크롬을 바로 열어 주고, 아이폰은 주소 복사를 도와줍니다. (2026-09-03) */
@@ -8871,13 +8941,8 @@ function lsSay(txt,btn){
  if(!('speechSynthesis' in window)){ttsNoSupport();return;}
  try{speechSynthesis.cancel();}catch(e){}
  _lsSeq=null;
- var lang=_lsLang();
- var t=_lsClean(txt,lang);
- var u=new SpeechSynthesisUtterance(t);
- u.lang=lang; u.rate=_lsRate;
- var v=_lsVoice(lang); if(v)u.voice=v;
- if(btn){btn.classList.add('on'); u.onend=u.onerror=function(){btn.classList.remove('on');};}
- try{speechSynthesis.speak(u);}catch(e){}
+ if(btn)btn.classList.add('on');
+ _lsSpeakSegs(txt,_lsLang(),null,btn);
 }
 function lsRate(r,el){
  _lsRate=r;
@@ -8899,12 +8964,10 @@ function lsPlayAll(btn){
   for(var j=0;j<rows.length;j++)rows[j].classList.remove('now');
   rows[i].classList.add('now');
   try{rows[i].scrollIntoView({block:'nearest',behavior:'smooth'});}catch(e){}
-  var t=_lsClean(rows[i].getAttribute('data-en')||'',lang);
-  var u=new SpeechSynthesisUtterance(t);
-  u.lang=lang; u.rate=_lsRate; if(v)u.voice=v;
-  u.onend=function(){ i++; setTimeout(step,420); };
-  u.onerror=function(){ i++; setTimeout(step,120); };
-  try{speechSynthesis.speak(u);}catch(e){lsStop();}
+  _lsSpeakSegs(rows[i].getAttribute('data-en')||'', lang, function(){
+   if(!_lsSeq) return;      /* 멈춤을 누르셨으면 여기서 끝냅니다 */
+   i++; setTimeout(step,420);
+  });
  }
  step();
 }
@@ -9006,7 +9069,13 @@ function _atFlush(){if(_at&&_at.pend)_atRender();}
 
 /* 산글이 표정 — idle / talking / listening / celebrate */
 function _atMood(m){var f=document.getElementById('atFace'); if(!f)return;
- f.className='at-face '+m;}
+ f.className='at-face '+m;
+ /* 2026-09-04 — 칭찬할 때는 웃는 산글이로 바뀝니다 (강사 사진일 때는 건드리지 않습니다) */
+ try{var im=document.getElementById('atFaceImg');
+  if(im&&im.getAttribute('data-w')==='1'){
+   var want=(m==='celebrate')?'img/whale_smile.png':'img/whale.png';
+   if(im.getAttribute('src')!==want)im.src=want;
+  }}catch(e){}}
 
 function aiTeach(n){
  var k=aiTxtKey(), arr=AITXT[k];
@@ -9021,7 +9090,7 @@ function aiTeach(n){
   +'<div class="sp-x" onclick="aiLsClose()">✕</div>'
   /* ── 시작 화면 : 이 버튼 한 번이 소리 잠금까지 풀어 줍니다 ── */
   +'<div class="at-start" id="atStart">'
-   +'<div class="at-face idle" id="atFace0"><img src="img/whale.png" alt="산글이"></div>'
+   +'<div class="at-face idle" id="atFace0"><img src="img/whale_smile.png" alt="산글이"></div>'
    +'<h3>산글이가 진행하는<br><b>'+n+'과 · '+L.t+'</b></h3>'
    +'<p>제가 한 마디씩 말씀드립니다. 화면 아무 곳이나 누르시면 넘어갑니다.</p>'
    +'<button class="at-start-b" onclick="atBegin()">산글이랑 시작하기 ›</button>'
