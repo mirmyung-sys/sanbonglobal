@@ -3715,7 +3715,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-04 (v89)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-04 (v90)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -4296,13 +4296,51 @@ function joinPage(){return memberTabs()
  +'<div class="jn-c" style="margin-top:16px"><h4>아이핀(i-PIN)이란?</h4><div class="jd">주민등록번호를 대신하여 온라인상에서 신원을 확인하는 수단입니다.</div><button class="jn-btn" type="button" onclick="alert(\'회원 시스템은 11월에 엽니다.\\n등록·상담은 전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원으로 해주세요.\')">아이핀 인증</button><div class="jn-note">아이핀이 없는 경우 발급 기관에서 발급받으셔야 합니다.</div></div></div>'
  +'<div class="jn-c"><h4>SNS 가입</h4><div class="jd">가지고 계신 SNS 아이디로 산본글로벌 회원으로 가입합니다.</div><div class="jn-sns">'
  +'<a href="#" onclick="alert(\'네이버 간편가입은 11월에 엽니다.\\n등록·상담은 전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원으로 해주세요.\');return false;" style="background:#03C75A;color:#fff;border-color:#03C75A">NAVER로 회원가입</a>'
- +'<a href="#" onclick="alert(\'카카오 간편가입은 11월에 엽니다.\\n등록·상담은 전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원으로 해주세요.\');return false;" style="background:#FEE500;color:#3A1D1D;border-color:#FEE500">kakaotalk으로 회원가입</a>'
+ +'<a href="#" onclick="sgaLoginKakao();return false;" style="background:#FEE500;color:#3A1D1D;border-color:#FEE500">kakaotalk으로 회원가입</a>'
  +'<a href="#" onclick="alert(\'구글 간편가입은 11월에 엽니다.\\n등록·상담은 전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원으로 해주세요.\');return false;" style="background:#DB4437;color:#fff;border-color:#DB4437">Google로 회원가입</a></div>'
  +'<div class="jn-note" style="text-align:left;margin-top:14px">· SNS 계정이 없는 경우 각 SNS별 제공사 회원가입이 필요합니다.<br>· SNS로 가입 시 휴대폰/아이핀 인증을 통해 사용자 인증을 하셔야 합니다.</div></div></div>'
  +'<ul class="jn-cautions"><li>입력하신 인증 정보는 본인인증에만 사용되며 이외의 용도로 사용 또는 저장되지 않습니다.</li><li>인증이 정상적으로 작동하지 않으면 브라우저의 팝업 차단 기능을 해제하신 후 이용해 주세요.</li><li>기존 오프라인 수강 등록생은 회원가입 시 학원 방문 혹은 유선으로 수강등록 내역 통합을 요청해 주세요.</li><li>통합이 되지 않을 경우, 사이트 내에서 기존 수강등록 내역 조회가 되지 않습니다.</li><div class="jn-tip">빠른 실명확인을 위한 TIP!</div><li>본인인증이 어려우시면 전화 031-466-6969 또는 카카오톡 채널 @산본글로벌어학원으로 도와드립니다.</li></ul>'
  +'<div class="mb-join"><a class="child" href="#" onclick="alert(\'만 14세 미만은 보호자와 함께 가입해 주세요. (준비 중)\');return false;">만 14세 미만<br>어린이 회원가입</a><a class="adult" href="#" onclick="openPage(\'회원가입폼\');return false;">만 14세 이상<br>일반 회원가입</a></div>'+CTA();}
 /* ===== 약관·동의 (개인정보보호법 / 정보통신망법 / 전자상거래법) ===== */
 var SGA_BIZ={name:'산본글로벌어학원',tel:'031-466-6969',mgr:'개인정보 보호책임자 · 원장'};
+
+/* ===== 회원 로그인 (2026-09-04) =====
+   카카오 로그인 → 구글 Apps Script(SGA 로그인 서버) → 구글시트 「SGA 웹사이트 회원」에 기록
+   · 카카오 앱: 산본 더 글로벌 어학원 (앱 ID 1567375)
+   · 로그인 서버: Apps Script 웹앱 (실행 계정 대표님, 접근 모든 사용자)
+   · 돌아올 때 주소에 ?sga_login=토큰&sga_name=닉네임 이 붙습니다 */
+var SGA_AUTH='https://script.google.com/macros/s/AKfycbwyPUwCY8YpK7NPqwdRLzuJj7yNLf0Q4yLxdzYpX338IU8tbCqRhYJ9raVP82iuq6ye/exec';
+var SGA_KAKAO_KEY='4dd3e275be6c3af1a595b10d88726677';
+function sgaLoginKakao(){
+ try{ localStorage.setItem('sga_back', location.hash||''); }catch(e){}
+ location.href='https://kauth.kakao.com/oauth/authorize?client_id='+SGA_KAKAO_KEY
+  +'&redirect_uri='+encodeURIComponent(SGA_AUTH)+'&response_type=code';
+}
+function sgaUser(){
+ try{ var t=localStorage.getItem('sga_token'); if(!t) return null;
+  return {token:t, name:localStorage.getItem('sga_name')||'회원'}; }catch(e){ return null; }
+}
+function sgaLogout(){
+ try{ localStorage.removeItem('sga_token'); localStorage.removeItem('sga_name'); }catch(e){}
+ sgToast('<b>로그아웃되었습니다</b>');
+ setTimeout(function(){ location.reload(); },700);
+}
+/* 로그인하고 돌아왔을 때 주소에서 토큰을 받아 저장하고, 주소는 깨끗하게 정리합니다 */
+(function(){
+ try{
+  var q=new URLSearchParams(location.search);
+  var t=q.get('sga_login');
+  if(t){
+   localStorage.setItem('sga_token',t);
+   localStorage.setItem('sga_name', q.get('sga_name')||'회원');
+   var back=''; try{ back=localStorage.getItem('sga_back')||''; }catch(e){}
+   history.replaceState(null,'',location.pathname+back);
+   setTimeout(function(){
+    try{ sgToast('<b>'+(localStorage.getItem('sga_name')||'회원')+'님 환영합니다</b><br>로그인되었습니다'); }catch(e){}
+   },600);
+  }
+ }catch(e){}
+})();
 
 /* ===== 적립금 · 상품권 잔액 (데모: 로컬 저장) ===== */
 /* 2026-08-30 · 적립금 12,000원은 화면 확인용 데모 값이었습니다.
@@ -4834,7 +4872,19 @@ function joinFormPage(){return memberTabs()
  +'<button class="jf-submit" id="jfSubmit" type="button" disabled onclick="joinSubmit()">가입 완료하기</button>'
  +'<div class="pgnote">※ 아이디·비밀번호 등 입력 정보는 이 화면에서 외부로 전송되지 않습니다. 현재는 접수용 폼이며, 정식 회원 시스템은 <b>11월에 엽니다.</b></div>'
  +'</div>'+CTA();}
-function loginPage(){return '<div class="plog">'+'<div class="plog-top"><img src="img/intro_logo.png" alt="산본글로벌어학원"><span>산본글로벌어학원</span></div>'+'<div class="plog-body"><div class="plog-l">'+'<input class="plog-f" type="text" placeholder="아이디" autocomplete="off">'+'<input class="plog-f" type="password" placeholder="비밀번호" autocomplete="off">'+'<label class="plog-save"><input type="checkbox"> 아이디저장</label>'+'<button class="plog-btn" type="button" onclick="alert(\'로그인 기능은 준비 중입니다.\\n전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원으로 상담해 주세요.\')">로그인</button>'+'<div class="plog-sns-t">다른 계정으로 로그인</div>'+'<div class="plog-sns">'+'<a href="#" class="psi psi-n" title="네이버로 로그인" onclick="alert(\'네이버 간편로그인은 준비 중입니다.\');return false;"><b>N</b></a>'+'<a href="#" class="psi psi-k" title="카카오로 로그인" onclick="alert(\'카카오 간편로그인은 준비 중입니다.\');return false;"><b>TALK</b></a>'+'<a href="#" class="psi psi-g" title="구글로 로그인" onclick="alert(\'구글 간편로그인은 준비 중입니다.\');return false;"><b>G+</b></a>'+'</div></div>'+'<div class="plog-r"><div class="plog-promo"><div class="plog-pr-head">지금은<br><b>10월 수강등록 기간</b>입니다<em>개강일 : 10월 1일</em></div><div class="plog-pr-body"><div class="plog-pr-gw">10월 수강등록 기간</div><div class="plog-pr-big">지금 등록,<br>오픈이벤트 <b>10%</b><span class="plog-ar">↓</span></div><a class="plog-pr-go" href="#" onclick="sgCloseOrBack();openPage(\'수강신청\');return false;">온라인 수강신청 바로가기 <span>GO</span></a></div></div></div>'+'</div>'+'<div class="plog-foot"><a href="#" onclick="openPage(\'회원가입\');return false;">회원가입</a><a href="#" onclick="alert(\'회원 시스템은 11월에 엽니다.\\n등록·상담은 전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원으로 해주세요.\');return false;">아이디/비밀번호찾기</a></div>'+'</div>';}
+function loginPage(){
+ var _u=sgaUser();
+ if(_u){ return '<div class="plog">'
+  +'<div class="plog-top"><img src="img/intro_logo.png" alt="산본글로벌어학원"><span>산본글로벌어학원</span></div>'
+  +'<div class="plog-body"><div class="plog-l" style="justify-content:center;text-align:center">'
+  +'<div style="font-size:22px;font-weight:900;color:var(--navy);margin-bottom:6px">'+_u.name+' 님</div>'
+  +'<div style="color:#5b6478;line-height:1.7;margin-bottom:18px">카카오 계정으로 로그인되어 있습니다.<br>수강신청·상담예약을 바로 이용하실 수 있습니다.</div>'
+  +'<button class="plog-btn" type="button" onclick="sgCloseOrBack();openPage(\'수강신청\');">수강신청 하러 가기</button>'
+  +'<button class="plog-btn" type="button" style="background:#fff;color:var(--navy);border:1.5px solid #c9d0dd;margin-top:8px" onclick="sgaLogout();">로그아웃</button>'
+  +'</div>'
+  +'<div class="plog-r"><div class="plog-promo"><div class="plog-pr-head">지금은<br><b>10월 수강등록 기간</b>입니다<em>개강일 : 10월 1일</em></div><div class="plog-pr-body"><div class="plog-pr-gw">10월 수강등록 기간</div><div class="plog-pr-big">지금 등록,<br>오픈이벤트 <b>10%</b><span class="plog-ar">↓</span></div><a class="plog-pr-go" href="#" onclick="sgCloseOrBack();openPage(\'수강신청\');return false;">온라인 수강신청 바로가기 <span>GO</span></a></div></div></div>'
+  +'</div></div>'; }
+ return '<div class="plog">'+'<div class="plog-top"><img src="img/intro_logo.png" alt="산본글로벌어학원"><span>산본글로벌어학원</span></div>'+'<div class="plog-body"><div class="plog-l">'+'<input class="plog-f" type="text" placeholder="아이디" autocomplete="off">'+'<input class="plog-f" type="password" placeholder="비밀번호" autocomplete="off">'+'<label class="plog-save"><input type="checkbox"> 아이디저장</label>'+'<button class="plog-btn" type="button" onclick="alert(\'아이디·비밀번호 로그인은 준비 중입니다.\\n아래 노란 버튼으로 카카오 로그인해 주세요. 3초면 됩니다.\')">로그인</button>'+'<button class="plog-btn" type="button" style="background:#FEE500;color:#3A1D1D;margin-top:8px" onclick="sgaLoginKakao()">카카오로 3초 만에 로그인</button>'+'<div class="plog-sns-t">다른 계정으로 로그인</div>'+'<div class="plog-sns">'+'<a href="#" class="psi psi-n" title="네이버로 로그인" onclick="alert(\'네이버 간편로그인은 준비 중입니다.\');return false;"><b>N</b></a>'+'<a href="#" class="psi psi-k" title="카카오로 로그인" onclick="sgaLoginKakao();return false;"><b>TALK</b></a>'+'<a href="#" class="psi psi-g" title="구글로 로그인" onclick="alert(\'구글 간편로그인은 준비 중입니다.\');return false;"><b>G+</b></a>'+'</div></div>'+'<div class="plog-r"><div class="plog-promo"><div class="plog-pr-head">지금은<br><b>10월 수강등록 기간</b>입니다<em>개강일 : 10월 1일</em></div><div class="plog-pr-body"><div class="plog-pr-gw">10월 수강등록 기간</div><div class="plog-pr-big">지금 등록,<br>오픈이벤트 <b>10%</b><span class="plog-ar">↓</span></div><a class="plog-pr-go" href="#" onclick="sgCloseOrBack();openPage(\'수강신청\');return false;">온라인 수강신청 바로가기 <span>GO</span></a></div></div></div>'+'</div>'+'<div class="plog-foot"><a href="#" onclick="openPage(\'회원가입\');return false;">회원가입</a><a href="#" onclick="alert(\'회원 시스템은 11월에 엽니다.\\n등록·상담은 전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원으로 해주세요.\');return false;">아이디/비밀번호찾기</a></div>'+'</div>';}
 function bigImg(src){return '<div class="pgimg"><img src="'+src+'" alt="" loading="eager"></div>';}
 function eventHubPage(){
  var openOn=evActive('open');
