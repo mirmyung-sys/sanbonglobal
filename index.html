@@ -1799,6 +1799,8 @@ li:first-child > .pgh{margin-top:2px}
 .at-ctl button{border:1.5px solid var(--line);background:#fff;border-radius:9px;height:36px;
  font-size:13px;font-weight:800;font-family:inherit;color:var(--ink3);cursor:pointer;padding:0 11px;white-space:nowrap}
 .at-ctl button:hover{background:var(--surf)}
+.at-ctl button.x{border-color:#e6c9cc;color:var(--brand);font-weight:900}
+.at-ctl button.x:hover{background:var(--brand);color:#fff;border-color:var(--brand)}
 .at-cnt{margin-left:auto;font-size:12.5px;font-weight:800;color:var(--muted);letter-spacing:.03em}
 .at-tapg{margin-top:9px;font-size:12.5px;color:var(--muted);text-align:center}
 @media(max-width:520px){
@@ -5330,8 +5332,28 @@ function spCalNav(delta){var n=new Date(_spCalD.getFullYear(),_spCalD.getMonth()
   var hi=new Date(_calStart.getFullYear(),_calStart.getMonth()+(_calMon-1),1);
   if(n<lo||n>hi)return;}
  _spCalD=n;spRenderCal();}
-var DCAP=0.10;/* 온라인에서 바로 깎이는 할인은 오픈이벤트 10%가 전부입니다 */
-var SGEV={open:{rate:0.10,start:'2026-10-01',end:'2026-11-30',plabel:'10월 1일 ~ 11월 30일',nm:'오픈이벤트',dsc:'상호 변경 기념 · 10·11월 두 달 · 영어·일본어·중국어·시험대비 전 과목'},early:{rate:0.05,monthly:[19,25],loyal:true,offline:true,nm:'재등록 얼리버드',dsc:'기존 수강생인지 온라인에서는 확인할 수 없습니다. 재등록 확인 신청 후 확정해 드립니다 · 매달 19~25일'}};var EVKEYS=['open','early'];
+var DCAP=0.30;/* 2026-09-04 대표님 지시 — 온라인 즉시할인 상한 30%.
+  12월 환승 15% + 얼리버드 10% + 재등록 5% = 30% 가 최대치입니다. */
+/* ★ 계산 규칙 하나로 통일했습니다 ★
+   모든 할인은 「더해서 상한 30%로 자른 뒤 정가에 한 번만」 뺍니다.
+   예전에는 이벤트를 뺀 금액에 재등록을 또 곱해서(10%+5% → 실제 14.5%)
+   화면에 적힌 %와 실제 깎인 금액이 달랐습니다. 다시 곱셈으로 바꾸지 마세요. */
+function sumRate(d,lo){var r=(d||0)+(lo||0);if(r>DCAP)r=DCAP;if(r<0)r=0;return Math.round(r*1000)/1000;}
+var SGEV={
+ open:{rate:0.10,start:'2026-10-01',end:'2026-11-30',plabel:'10월 1일 ~ 11월 30일',nm:'오픈이벤트',
+  dsc:'상호 변경 기념 · 10·11월 두 달 · 영어·일본어·중국어·시험대비 전 과목'},
+ /* 2026-12 · 대표님 지시 — 환승 15 + 얼리버드 10 + 재등록 5 = 30% 가 최대치입니다.
+    셋 다 정규반·시험대비반만이고 1:1 퍼스널에는 붙지 않습니다. 12월 1일에 자동으로 켜집니다. */
+ transfer:{rate:0.15,start:'2026-12-01',end:'2026-12-31',plabel:'12월 1일 ~ 12월 31일',nm:'환승 이벤트',
+  nopers:true,verify:true,dsc:'다른 학원에서 옮겨 오시는 분 · 정규반·시험대비반만 (1:1 퍼스널 제외)'},
+ ebird:{rate:0.10,start:'2026-12-01',end:'2026-12-31',plabel:'12월 1일 ~ 12월 31일',nm:'얼리버드',
+  nopers:true,dsc:'12월 조기 등록 · 정규반·시험대비반만 (1:1 퍼스널 제외)'},
+ early:{rate:0.05,monthly:[19,25],loyal:true,offline:true,nm:'재등록 얼리버드',
+  dsc:'기존 수강생인지 온라인에서는 확인할 수 없습니다. 재등록 확인 신청 후 확정해 드립니다 · 매달 19~25일'},
+ /* 새벽반 조조할인 — 목록에서 고르는 게 아니라 새벽반을 선택하시면 자동으로 붙습니다 */
+ dawn:{rate:0.30,auto:true,nm:'새벽반 조조할인',dsc:'새벽반에만 적용 · 다른 할인과 합쳐 최대 30%'}
+};
+var EVKEYS=['open','transfer','ebird','early'];   /* dawn 은 자동 적용이라 선택 목록에 넣지 않습니다 */
 var _exList=0;var _exSubj='토익',_exVerified=false,_spVerified=false,_vfCtx='',_vfWant='';
 function _today(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
 /* ===== 9월 사전예약 배너 =====
@@ -5377,7 +5399,20 @@ function evActive(k){var e=SGEV[k];if(!e)return false;
  if(!e.start)return true;var t=_today();return t>=e.start&&t<=e.end;}
 function evParts(v){return (!v||v==='0')?[]:String(v).split('+');}
 function evPeriod(k){var e=SGEV[k]||{};if(e.plabel)return e.plabel;if(e.monthly)return '매달 '+e.monthly[0]+'일 ~ '+e.monthly[1]+'일';return e.start?(e.start.slice(5).replace('-','.')+' ~ '+e.end.slice(5).replace('-','.')):'상시';}
-function evRate(subj,v){var r=0;evParts(v).forEach(function(k){var e=SGEV[k];if(e&&evActive(k)&&!e.loyal&&!e.offline)r+=e.rate;});if(r>DCAP)r=DCAP;return Math.round(r*1000)/1000;}
+/* 1:1 퍼스널·시간권에는 붙지 않는 이벤트인지 */
+function _persSubj(subj){return /퍼스널|일대일|1:1|1대1/.test(String(subj||''));}
+/* 새벽반을 고르셨으면 조조 30%가 자동으로 붙습니다 */
+function dawnRate(subj){
+ if(_persSubj(subj))return 0;
+ try{ if(!evActive('dawn'))return 0; }catch(e){return 0;}
+ return _isDawn()?SGEV.dawn.rate:0;}
+function evRate(subj,v){var r=0;var pers=_persSubj(subj);
+ evParts(v).forEach(function(k){var e=SGEV[k];
+  if(!e||!evActive(k)||e.loyal||e.offline)return;
+  if(pers&&e.nopers)return;
+  r+=e.rate;});
+ r+=dawnRate(subj);
+ if(r>DCAP)r=DCAP;return Math.round(r*1000)/1000;}
 /* 재등록 할인 — 2개월 결제 할인가에도 추가로 붙습니다 */
 function loyalRate(v){var r=0;evParts(v).forEach(function(k){var e=SGEV[k];if(e&&evActive(k)&&e.loyal&&!e.offline)r+=e.rate;});return Math.round(r*1000)/1000;}
 function evLabel(v){var ps=evParts(v);if(!ps.length)return '';return ps.map(function(k){return (SGEV[k]||{}).nm||k;}).join(' + ');}
@@ -5694,7 +5729,7 @@ function evComboList(){var on=EVKEYS.filter(function(k){return evActive(k)&&!SGE
   if(_evOK(ps))out.push(ps.join('+'));}
  out.sort(function(a,b){return _evPct('',a)-_evPct('',b);});return out;}
 function _termPct(){try{if(!document.getElementById('txTerm'))return 0;var e=TEXAM[_txK];if(!e)return 0;var t=e.tabs[_txTab];var ti=document.getElementById('txTerm');var ix=ti?parseInt(ti.value):0;var term=(t.terms||[])[ix];if(!term||!term[2]||!term[1])return 0;return (term[2]-term[1])/term[2];}catch(err){return 0;}}
-function _maxPct(subj){var all=evAllOn();var ev=evRate(subj,all),lo=loyalRate(all);var tp=(typeof TEXAM!=='undefined'&&TEXAM[subj]&&_txK===subj)?_termPct():0;var bestBase=Math.max(tp,ev);var r=1-(1-bestBase)*(1-lo);if(r>DCAP)r=DCAP;return Math.round(r*1000)/10;}
+function _maxPct(subj){var all=evAllOn();var ev=evRate(subj,all),lo=loyalRate(all);var tp=(typeof TEXAM!=='undefined'&&TEXAM[subj]&&_txK===subj)?_termPct():0;var bestBase=Math.max(tp,ev);var r=sumRate(bestBase,lo);return Math.round(r*1000)/10;}
 /* 지금 고르신 반이 새벽반인지 — 새벽반만 조조할인이 붙습니다 */
 function _isDawn(){
  try{var t=(typeof _txCur==='function')?_txCur():null;
@@ -5712,7 +5747,7 @@ function discHint(subj){var pct=_maxPct(subj);
  else { t='<u>10월 1일부터 오픈이벤트 10%</u>'; cls=' soon';
    d='10·11월 두 달 · 전 과목'+(pct>0?(' · 기간 묶음가로 지금도 최대 '+pct+'% 낮은 금액'):'')+' · 결제창 자동 적용'; }
  var dawnRow=_isDawn()?('<div class="dc-dawn"><span class="pc">30%</span>'
-   +'<span class="tx"><b>새벽반 조조할인</b><em>새벽반에만 드립니다 · 상담에서 적용해 드립니다</em></span></div>'):'';
+   +'<span class="tx"><b>새벽반 조조할인 적용 중</b><em>새벽반에만 드립니다 · 결제창에서 자동으로 빠집니다</em></span></div>'):'';
  return '<div class="dc-hint'+cls+'" onclick="discInfo(\''+subj+'\')"><span class="dc-ic">&#127881;</span>'
   +'<span class="dc-tx"><b>'+t+'</b><em>'+d+'</em></span>'
   +'<span class="dc-more">자세히 &rsaquo;</span></div>'+dawnRow;}
@@ -5803,17 +5838,56 @@ function discInfo(subj){
    재등록 얼리버드 5%는 <b>상한 밖</b>입니다. 오픈이벤트 10%와 관계없이 무조건 더 드립니다.
    즉 즉시할인은 10%가 상한이고, 재등록 5%는 그 위에 얹힙니다 (최대 14.5%).
    전에는 둘을 합쳐 10%로 잘라서 재등록 5%를 약속만 하고 안 주고 있었습니다. */
-function _evCap(d,lo){return [d>DCAP?DCAP:d, lo||0];}
-function _dfloor(base,list){var f=Math.round(list*(1-DCAP)*(1-LOYALMAX)/1000)*1000;return Math.min(base,f);}
+function _evCap(d,lo){return [sumRate(d,lo), 0];}  /* 합쳐서 첫 값에, 두 번째는 0 (곱하기 방지) */
+function _dfloor(base,list){var f=Math.round(list*(1-DCAP)/1000)*1000;return Math.min(base,f);}
 var LOYALMAX=0.05;
 /* 2개월·4개월·10개월 묶음가는 '할인'이 아니라 산본이지어학원 때부터 쓰던 기본가입니다.
    오픈이벤트 10%는 그 기본가 위에 추가로 붙습니다. */
 function evCalc(base,list,d,lo){list=list||base;lo=lo||0;
- var c=_evCap(d,lo);d=c[0];lo=c[1];
- var pick=base,note='';
- if(d){pick=Math.round(base*(1-d)/1000)*1000;note='ev';}
- if(lo){pick=Math.round(pick*(1-lo)/1000)*1000;note=note?(note+'+loyal'):'loyal';}
- return {fin:pick,strike:(base>pick?base:0),note:note};}
+ var note=(d?'ev':'')+((d&&lo)?'+loyal':(lo?'loyal':''));
+ var r=sumRate(d,lo);
+ var pick=r?Math.round(base*(1-r)/1000)*1000:base;
+ return {fin:pick,strike:(base>pick?base:0),note:note,rate:r};}
+
+/* ═══ 할인 계산 자가 점검 ═══════════════════════════════════
+   대표님 지시(2026-09-04): 계산이 틀릴 수 있으니 확인할 방법을 둘 것.
+   화면에 적힌 %와 실제 깎이는 금액이 같은지, 상한 30%를 넘지 않는지
+   모든 조합을 돌려 봅니다. 콘솔에서 sgAudit() 을 치시면 표로 나옵니다.
+   페이지가 열릴 때 자동으로 한 번 돌고, 문제가 있으면 콘솔에 빨간 경고가 뜹니다. */
+function sgAudit(verbose){
+ var bad=[],rows=[],KEYS=Object.keys(SGEV);
+ function chk(label,base,d,lo,subj){
+  var want=sumRate(d,lo);
+  var R=evCalc(base,base,d,lo);
+  var got=(base-R.fin)/base;
+  var okCap=(want<=DCAP+1e-9);
+  var okNum=isFinite(R.fin)&&R.fin>=0&&R.fin<=base;
+  /* 천원 단위 반올림 때문에 0.5% 안쪽 차이는 정상입니다 */
+  var okSame=Math.abs(got-want)<=0.005;
+  rows.push([label,(want*100).toFixed(1)+'%',(got*100).toFixed(1)+'%',base.toLocaleString(),R.fin.toLocaleString(),
+             (okCap&&okNum&&okSame)?'OK':'✗']);
+  if(!(okCap&&okNum&&okSame))bad.push(label+' — 표시 '+(want*100).toFixed(1)+'% / 실제 '+(got*100).toFixed(1)+'%'
+    +(okCap?'':' · 상한 초과')+(okNum?'':' · 금액 이상'));
+ }
+ /* 모든 이벤트 조합 (기간 무시하고 전부) */
+ var bases=[180000,360000,740000,990000,1190000];
+ for(var m=1;m<(1<<KEYS.length);m++){
+  var ps=[],d=0,lo=0,nm=[];
+  for(var i=0;i<KEYS.length;i++)if(m&(1<<i))ps.push(KEYS[i]);
+  ps.forEach(function(k){var e=SGEV[k];nm.push(e.nm);(e.loyal?(lo+=e.rate):(d+=e.rate));});
+  chk(nm.join('+'),bases[m%bases.length],d,lo);
+ }
+ /* 상한 자체 확인 */
+ chk('상한 초과 시도 (50%+20%)',740000,0.50,0.20);
+ chk('할인 없음',740000,0,0);
+ var head=['조합','표시','실제','정가','결제가','판정'];
+ if(verbose||bad.length){ try{console.table?console.table(rows.map(function(r){
+   var o={};head.forEach(function(h,i){o[h]=r[i];});return o;})):console.log(rows);}catch(e){console.log(rows);} }
+ if(bad.length){console.error('[산글 할인점검] 어긋난 조합 '+bad.length+'건\n'+bad.join('\n'));}
+ else{console.log('%c[산글 할인점검] 이상 없음 — '+rows.length+'개 조합, 상한 '+(DCAP*100)+'%','color:#0e8a5a;font-weight:700');}
+ return {ok:!bad.length,checked:rows.length,bad:bad};
+}
+try{setTimeout(function(){sgAudit(false);},1200);}catch(e){}
 function discOpts(){var h='<option value="0">할인 없음 (기본가)</option>';
  var list=evComboList();
  list.forEach(function(v){var pct=Math.round(_evPct('',v)*1000)/10;var best=(v===evAllOn()&&list.length>1);
@@ -8520,6 +8594,7 @@ function aiTeach(n){
    +'<p>제가 한 마디씩 말씀드립니다. 화면 아무 곳이나 누르시면 넘어갑니다.</p>'
    +'<button class="at-start-b" onclick="atBegin()">산글이랑 시작하기 ›</button>'
    +'<button class="at-start-s" onclick="aiLesson('+n+',1)">교재로 한번에 보기</button>'
+   +'<button class="at-start-s" onclick="aiLsClose()">✕ 닫기</button>'
   +'</div>'
   /* ── 진행 화면 ── */
   +'<div class="at-run" id="atRun" hidden>'
@@ -8533,6 +8608,7 @@ function aiTeach(n){
     +'<button onclick="atBack()">이전</button>'
     +'<button id="atSnd" onclick="atSnd()">소리 켬</button>'
     +'<button id="atSpd" onclick="atSpd()" title="속도">1.0×</button>'
+    +'<button class="x" onclick="aiLsClose()">닫기 ✕</button>'
     +'<span class="at-cnt" id="atCnt"></span>'
    +'</div>'
    +'<div class="at-tapg" id="atTapg">화면을 누르시면 다음으로 넘어갑니다</div>'
@@ -8672,9 +8748,12 @@ function atReplay(){var s=_at.S[_at.i];if(s&&s.say){try{lsSay(s.say);}catch(e){}
 function atNext(){_atStop();atGo();}
 function atPrev(){atBack();}
 
+/* 2026-09-04 대표님 지시 — 대화형 진행은 회화 과목에서만 씁니다.
+   시험대비(토익 tc_*)는 기존 교재형 화면을 그대로 둡니다. */
+function _atUse(k){return !/^tc_/.test(k||'');}
 function aiLesson(n,plain){
  var k=aiTxtKey(), arr=AITXT[k];
- if(!plain&&arr&&arr[n-1]&&(n===1||n===aiFreeN())){var e=document.getElementById('lsModal');if(e&&e.parentNode)e.parentNode.removeChild(e);return aiTeach(n);}
+ if(!plain&&_atUse(k)&&arr&&arr[n-1]&&(n===1||n===aiFreeN())){var e=document.getElementById('lsModal');if(e&&e.parentNode)e.parentNode.removeChild(e);return aiTeach(n);}
  if(plain){var e2=document.getElementById('lsModal');if(e2&&e2.parentNode)e2.parentNode.removeChild(e2);}
  if(!arr||!arr[n-1]){sgToast('<b>'+n+'과는 준비 중입니다</b><br>영어 베이직부터 순서대로 열어 드리고 있습니다.');return;}
  if(n!==1&&n!==aiFreeN()){aiLockShow(n);return;}
