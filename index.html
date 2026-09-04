@@ -8423,6 +8423,8 @@ function lsQDraw(){
   _aiDG={subj:(G?G.k:''),step:(B?B.s:''),n:n,tot:tot,right:right,q:L.q.length,
          wrongs:wrongs,band:_aiBand(right,L.q.length,(B?B.s:'')),weak:_aiWeak(L,wrongs)};
   box.innerHTML=_aiDiagHTML(last);
+  /* 2026-09-04 진단서에 이미 「창닫기 / 다음 과」가 있어 아래 원래 버튼 줄은 감춥니다 */
+  try{var _dup=document.querySelector('#lsModal .ls-sheet > .lr-b'); if(_dup)_dup.style.display='none';}catch(e){}
   return;}
  var Q=_lsQof(L,_lsQ), opts=Q[1].split('|');
  box.innerHTML='<div class="ls-qn">'+(_lsQ+1)+' / '+L.q.length+(_lsUseAlt[_lsQ]?' <em class="ls-retag">🔁 같은 유형</em>':'')+'</div>'
