@@ -1,4 +1,4 @@
+# 2026-09-04 ~ 2026-09-30 : 이지교육 가맹계약 종료 전이라 새 상호가 검색에 노출되면 안 됩니다.
+# 10월 1일 정식오픈 시 아래를 지우고 "Allow: /" + Sitemap 줄을 되살리세요.
 User-agent: *
-Allow: /
-
-Sitemap: https://sanbonglobal.com/sitemap.xml
+Disallow: /
