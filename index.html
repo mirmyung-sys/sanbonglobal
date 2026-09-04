@@ -3755,7 +3755,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-04 (v95)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-04 (v97)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -3768,28 +3768,27 @@ html,body{overflow-x:hidden;max-width:100%}
 <!-- 전체강의 보기 모달 -->
 <div class="amodal" id="allModal">
   <div class="abox">
-    <span class="aclose" onclick="closeAll()">×</span>
     <h3>산본글로벌 전체 강의 안내</h3>
     <div class="asub">과목별 담당 강사와 개강 시간표를 한눈에 확인하세요. (일부 시간표는 준비중입니다)</div>
     <div class="abody"></div>
   </div>
+  <span class="aclose" onclick="closeAll()">×</span>
 </div>
 
 <!-- 강의시간표 모달 -->
 <div class="amodal" id="ttModal">
   <div class="abox">
-    <span class="aclose" onclick="closeTT()">×</span>
     <div class="ttbar"><div class="ttm">2026년 <b>10</b>월</div><div class="ttt">강의시간표</div></div>
     <div class="tttabs" id="tttabs"></div>
     <div class="ttsub">10월 수업일정</div>
     <table class="cal" id="cal"></table>
     <div class="ttnote">※ 10월 개강반 수강등록을 받고 있습니다.<span>※ 주5일반은 월~금 수업 / 월수반·화목반은 주 2회 수업입니다.</span><span>※ 토요반은 토요일 집중 수업으로 진행합니다. · 문의 031-466-6969</span></div>
   </div>
+  <span class="aclose" onclick="closeTT()">×</span>
 </div>
 <!-- 레벨테스트 모달 -->
 <div class="amodal" id="lvModal">
   <div class="abox">
-    <span class="aclose" onclick="closeLv()">×</span>
     <div class="pgimg" style="margin-top:-76px"><img src="img/lv_consult.jpg" alt="레벨테스트"></div>
     <h3 style="margin-top:28px;font-size:30px">무료 레벨테스트</h3>
     <div class="asub" style="font-size:18px">산본글로벌의 온·오프라인 레벨테스트로 지금 내 실력을 정확히 확인하세요.</div>
@@ -3816,15 +3815,19 @@ html,body{overflow-x:hidden;max-width:100%}
     <div class="pgnote">지금 예약하면 가장 빠른 길을 찾을 수 있어요. 문의 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>
     <a class="pgcta" href="#" onclick="closeLv();openPage('수강신청');return false;">진단 후 수강신청 바로가기 ›</a>
   </div>
+  <span class="aclose" onclick="closeLv()">×</span>
 </div>
 <div class="lvrun" id="lvRun"><div class="lvrun-box"><span class="lvrun-x" onclick="lvCloseRun()">×</span><div id="lvRunBody"></div></div></div>
 
 <!-- 콘텐츠 페이지 모달 -->
 <div class="amodal" id="pgModal">
   <div class="abox">
-    <span class="aclose" onclick="sgCloseOrBack()">×</span>
     <div id="pgbody"></div>
   </div>
+  <!-- 2026-09-04 닫기 버튼을 .abox 밖으로 뺐습니다.
+       .abox 에 transform 이 걸려 있어서 그 안에 있으면 position:fixed 가 .abox 기준이 되고,
+       AI 학습관처럼 긴 페이지에서는 버튼이 화면 밖 맨 아래로 밀려 안 보였습니다. -->
+  <span class="aclose" onclick="sgCloseOrBack()">×</span>
 </div>
 
 <script>
@@ -3832,7 +3835,8 @@ const COURSES={
  '토익':[
   {n:'송윤정 (스파르타반)',img:'eng_13',rows:[['중급','월·화·수·목·금','10:00~12:00'],['초급','월·화·수·목·금','12:10~14:10'],['실전반 (ETS 1000제)','토요일','10:00~13:00']]},
   {n:'엘리 킴',img:'elly',rows:[['초급반','월·수','19:30~21:30'],['중급반','화·목','19:30~21:30']]},
-  {n:'Deborah (원어민)',img:'_none',rows:[['토익 왕기초','토요일','10:00~13:00']]}
+  {n:'최자운 (Deborah)',img:'eng_6',rows:[['토익 왕기초','토요일','10:00~13:00']]},
+  {n:'김현정 (Vivienne)',img:'eng_15',rows:[['신규 개설','상담 후 안내','모집중']]}
  ],
  '토스':[
   {n:'최자운',img:'eng_6',rows:[['정규반','월·수','20:00~21:30'],['실전반','토요일','10:00~13:00']]}
@@ -3858,8 +3862,7 @@ const COURSES={
  ],
  '중국어':[
   {n:'오금한',img:'chn_5',rows:[['입문','화·목','18:20~19:50'],['중급','월·수','20:00~21:30'],['중급','화·목','20:00~21:30']]},
-  {n:'하홍금 (원어민)',img:'chn_1',rows:[['입문','월·수','20:30~22:00'],['초급','월·수','18:50~20:20'],['고급','토요일','10:00~13:00']]},
-  {n:'데보라 (Deborah)',img:'eng_15',rows:[['토익스피킹·회화','토요일','10:00~13:00']]}
+  {n:'하홍금 (원어민)',img:'chn_1',rows:[['입문','월·수','20:30~22:00'],['초급','월·수','18:50~20:20'],['고급','토요일','10:00~13:00']]}
  ]
 };
 const SPECIAL={
@@ -6307,7 +6310,7 @@ var EXAM={
  '토플':{eye:'TOEFL · 모집중',title:'토플 — 모집중',photo:'eng_15',rows:[
    {n:'토플 토요반 (모집중)',tc:'김현정',day:'토요일',time:'13:30~16:30',price:'1개월 21만 / 2개월 42만→39만(3만 할인)',pay:'390,000원'}]}
 };
-var TIMG={'KELLY':'kelly','켈리':'kelly','Deborah':'','데보라':'eng_6','미정':'','송윤정':'eng_13','엘리 킴':'elly','엘리킴':'elly','최자운':'eng_6','김현정':'eng_15','유미용':'eng_14','케이티':'eng_9','Kate':'eng_9','제롤린':'eng_11','Jerollyn':'eng_11','권미화':'eng_1','May':'eng_1','공미영':'eng_3','Olive':'eng_3','애플':'eng_5','Amy':'eng_4','구지영':'director','김지현':'eng_7','박호임':'eng_2','황보준':'eng_12','히토시':'jpn_6','서정아':'jpn_7','모모코':'jpn_4','김연주':'jpn_3','김은영':'jpn_9','권은정':'jpn_1','김민정':'jpn_2','이형림':'jpn_11','조미히로':'jpn_5','하홍금':'chn_1','오금한':'chn_5','현지인':'chn_7','노정아':'chn_3'};
+var TIMG={'KELLY':'kelly','켈리':'kelly','Deborah':'eng_6','데보라':'eng_6','미정':'','송윤정':'eng_13','엘리 킴':'elly','엘리킴':'elly','최자운':'eng_6','김현정':'eng_15','유미용':'eng_14','케이티':'eng_9','Kate':'eng_9','제롤린':'eng_11','Jerollyn':'eng_11','권미화':'eng_1','May':'eng_1','공미영':'eng_3','Olive':'eng_3','애플':'eng_5','Amy':'eng_4','구지영':'director','김지현':'eng_7','박호임':'eng_2','황보준':'eng_12','히토시':'jpn_6','서정아':'jpn_7','모모코':'jpn_4','김연주':'jpn_3','김은영':'jpn_9','권은정':'jpn_1','김민정':'jpn_2','이형림':'jpn_11','조미히로':'jpn_5','하홍금':'chn_1','오금한':'chn_5','현지인':'chn_7','노정아':'chn_3'};
 var TPH="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20360'%3E%3Crect%20width='300'%20height='360'%20fill='%23eef1f6'/%3E%3Ccircle%20cx='150'%20cy='140'%20r='52'%20fill='%23c9d2e0'/%3E%3Cpath%20d='M60%20320c0-52%2040-88%2090-88s90%2036%2090%2088z'%20fill='%23c9d2e0'/%3E%3Ctext%20x='150'%20y='348'%20font-size='19'%20font-family='sans-serif'%20font-weight='700'%20fill='%238a90a0'%20text-anchor='middle'%3E%EA%B0%95%EC%82%AC%20%EC%82%AC%EC%A7%84%20%EC%A4%80%EB%B9%84%EC%A4%91%3C/text%3E%3C/svg%3E";
 function tface(name,fb){var k=(name||'').split(/[\u00b7\/]/)[0].trim();var im=TIMG[k];if(im)return 'img/teachers/'+im+'.png';if(im==='')return TPH;return fb?'img/teachers/'+fb+'.png':TPH;}
 function timg(name){var k=(name||'').split(/[\u00b7\/]/)[0].trim();var im=TIMG[k];return im?'<img class="ex-face" src="img/teachers/'+im+'.png" alt="">':'';}
