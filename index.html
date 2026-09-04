@@ -3451,6 +3451,7 @@ html,body{overflow-x:hidden;max-width:100%}
   <div class="hicons">
     <a href="#" onclick="closePage();window.scrollTo(0,0);return false;"><span class="gi">🏠</span>홈</a>
     <a href="#" onclick="agOpen();return false;"><span class="gi">👤</span>회원가입</a>
+    <a href="#" id="hcLogin" onclick="openPage('로그인');return false;"><span class="gi">🔑</span>로그인</a>
   </div>
   <div class="htoplinks">
     <a href="#" onclick="closePage();window.scrollTo(0,0);return false;">HOME</a><span class="sep">|</span>
@@ -3715,7 +3716,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-04 (v90)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-04 (v91)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -4320,6 +4321,16 @@ function sgaUser(){
  try{ var t=localStorage.getItem('sga_token'); if(!t) return null;
   return {token:t, name:localStorage.getItem('sga_name')||'회원'}; }catch(e){ return null; }
 }
+function sgaPaintHeader(){
+ var u=sgaUser();
+ var a=document.getElementById('hcLogin');
+ if(a){ a.innerHTML = u ? '<span class="gi">\u2705</span>'+u.name : '<span class="gi">🔑</span>로그인'; }
+ var links=document.querySelectorAll('.htoplinks a');
+ for(var i=0;i<links.length;i++){
+  if(links[i].textContent.trim()==='로그인'&&u){ links[i].textContent=u.name+'님'; }
+ }
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',sgaPaintHeader);}else{setTimeout(sgaPaintHeader,0);}
 function sgaLogout(){
  try{ localStorage.removeItem('sga_token'); localStorage.removeItem('sga_name'); }catch(e){}
  sgToast('<b>로그아웃되었습니다</b>');
