@@ -3932,7 +3932,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v120)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v120c)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -11126,11 +11126,16 @@ function voPlay(k,onDone){
    if(onDone)onDone(); };
   a.onended=fin;
   a.onerror=function(){ fin(); };          /* 파일이 없어도 조용히 넘어갑니다 */
+  /* 길이를 알면 그 길이 + 0.4초 뒤에 넘어갑니다 (소리가 멈춰도 수업이 멈추지 않게) */
+  var arm=function(ms){ if(_voT)clearTimeout(_voT); _voT=setTimeout(fin,ms); };
+  a.onloadedmetadata=function(){
+   var d=(a.duration&&isFinite(a.duration))?a.duration:0;
+   if(d>0) arm((d*1000)/(a.playbackRate||1)+400);
+  };
   a.play().then(function(){
    try{_atMood('talking');}catch(e){}
   }).catch(function(){ fin(); });
-  /* 만약을 위한 안전장치 — 20초 지나면 무조건 다음으로 */
-  _voT=setTimeout(fin,20000);
+  arm(6000);   /* 길이를 알기 전까지의 임시 상한 */
   return true;
  }catch(e){ if(onDone)onDone(); return false; }
 }
