@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#1D2D4F">
 <link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="img/app_icon.png">
 <link rel="apple-touch-icon" href="img/app_icon.png">
 <meta name="apple-mobile-web-app-title" content="SGA">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -3895,7 +3897,7 @@ html,body{overflow-x:hidden;max-width:100%}
 </div></section>
 
 <!-- 수강후기 -->
-<section class="review"><div class="wrap">
+<section class="review" id="review"><div class="wrap">
   <div class="tabs2"><button class="on">토익</button><button>토스/오픽</button><button>토플/지텔프</button><button>일본어</button><button>중국어</button></div>
   <div class="rvtop">수강생이 직접 남긴 후기</div>
   <div class="rv3">
@@ -3932,7 +3934,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v124)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v125)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -8408,7 +8410,7 @@ function aiBookHTML(){
  +'<div class="ai-meta">'
   +'<h3>AI 학습관 · '+G.k+' '+B.s+'</h3><p class="ai-d">'+B.d+'</p>'
   +sample
-  +'<div class="ai-spec"><span><b>'+B.u+'</b>과</span><span>'+G.k+' · '+B.s+'</span><span><b>AI</b> 회화·채점 포함</span></div>'
+  +'<div class="ai-spec"><span><b>'+B.u+'</b>과'+((AITXT[B.img]&&AITXT[B.img].length>=B.u)?'':' <em style="font-style:normal;opacity:.72">예정</em>')+'</span><span>'+G.k+' · '+B.s+'</span><span><b>AI</b> 회화·채점 포함</span></div>'
   +'<ul class="ai-li">'+B.li.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>'
  +'</div></div>'
  +toc
