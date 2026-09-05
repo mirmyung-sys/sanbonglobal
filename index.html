@@ -2625,6 +2625,13 @@ li:first-child > .pgh{margin-top:2px}
    기존 글자판과 같은 크기의 가운데 패널로 띄우고, 뒤에는 수업 영상이 그대로 보입니다.
    글자·버튼이 이미지 안에 박혀 있으므로 잘리면 안 됨. 슬라이드 전체가 클릭됩니다. */
 .hs-imgs{cursor:pointer;padding-bottom:0!important;align-items:center!important;justify-content:center}
+/* 폰 우선 (2026-09-05) — 좁은 화면에서는 배너 이미지 대신 HTML 글씨를 씁니다 */
+.hs-imgs .hsi-txt{display:none}
+@media(max-width:820px){
+  .hs-imgs{padding-bottom:inherit!important;align-items:stretch!important;justify-content:flex-start}
+  .hs-imgs .hsi-fg{display:none!important}
+  .hs-imgs .hsi-txt{display:block;width:100%}
+}
 .hs-imgs .hsi-fg{display:block;max-width:min(96%,1000px);max-height:94%;width:auto;height:auto;border-radius:18px;box-shadow:0 30px 70px -16px rgba(5,8,16,.6);transition:box-shadow .3s}
 /* 마우스를 올리면(=넘김 멈춤) 이미지판이 살짝 꿈틀거립니다 — 옛 '자세히 보기' 버튼 깜빡임의 이미지판 버전 */
 .hero.paused .hs-imgs .hsi-fg{animation:heroImgPulse 1.15s ease-in-out infinite;box-shadow:0 34px 80px -14px rgba(5,8,16,.75),0 0 0 3px rgba(255,217,77,.55)}
@@ -3483,7 +3490,48 @@ html,body{overflow-x:hidden;max-width:100%}
 .lvq-tag.t1{background:#2ca66a}.lvq-tag.t2{background:#e59a2a}.lvq-tag.t3{background:#c81f2b}
 .lvnote-top{background:#fff7ef;border:1px solid #f0e2cf;border-radius:12px;padding:12px 16px;font-size:13px;color:#6a5a3f;text-align:center;margin:6px auto 14px;max-width:900px;line-height:1.6}
 </style>
-<style>.plog{max-width:920px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 12px 44px rgba(0,0,0,.14)}.plog-top{background:#c81f2b;padding:20px;display:flex;align-items:center;justify-content:center;gap:12px}.plog-top img{height:52px;width:auto}.plog-top span{color:#fff;font-size:22px;font-weight:900;letter-spacing:-.5px}.plog-body{display:grid;grid-template-columns:1fr 1fr;gap:26px;padding:30px}.plog-f{width:100%;border:1.5px solid #d9dde5;border-radius:8px;padding:15px 14px;font-size:15px;margin-bottom:12px;font-family:inherit;box-sizing:border-box}.plog-save{display:flex;align-items:center;gap:7px;font-size:14px;color:#5b6472;margin:2px 0 14px}.plog-btn{width:100%;background:#c81f2b;color:#fff;border:0;border-radius:8px;padding:16px;font-size:16px;font-weight:800;cursor:pointer}.plog-sns-t{font-size:14px;font-weight:800;color:#2b3340;margin:22px 0 13px}.plog-sns{display:flex;gap:20px;align-items:center}.psi{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;text-decoration:none}.psi-n{background:#03C75A;color:#fff;font-size:22px}.psi-k{background:#FEE500;color:#3A1D1D;font-size:12px}.psi-g{background:#fff;border:1.5px solid #e3e6ec;color:#DB4437;font-size:20px}.plog-r{display:flex}.plog-promo{background:#f4f5f7;border-radius:10px;width:100%;overflow:hidden;text-align:center;display:flex;flex-direction:column}.plog-pr-head{background:#c81f2b;color:#fff;padding:22px 12px 18px;font-size:20px;font-weight:800;line-height:1.4}.plog-pr-head b{color:#ffe14d}.plog-pr-head em{display:block;font-style:normal;font-size:14px;font-weight:700;margin-top:8px;opacity:.95}.plog-pr-body{padding:18px 12px 20px}.plog-pr-gw{font-size:15px;font-weight:800;color:#2b3340}.plog-pr-big{font-size:26px;font-weight:900;color:#1a1a1a;line-height:1.3;margin:8px 0 16px}.plog-pr-big b{color:#c81f2b}.plog-ar{color:#c81f2b}.plog-pr-go{display:inline-flex;align-items:center;gap:8px;background:#1a1a1a;color:#fff;border-radius:24px;padding:11px 18px;font-size:14px;font-weight:800;text-decoration:none}.plog-pr-go span{background:#7ee06b;color:#0a3d0a;border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:900}.plog-foot{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #e3e6ee;background:#f6f7fa}.plog-foot a{padding:20px;text-align:center;font-size:15px;color:#4b5563;text-decoration:none;font-weight:600}.plog-foot a+a{border-left:1px solid #e3e6ee}@media(max-width:640px){.plog-body{grid-template-columns:1fr;gap:20px}}</style><style>.vf-up{display:block;text-align:center;background:#f0f3fa;border:1.5px dashed #b9c4dd;border-radius:12px;padding:20px;font-weight:800;color:#3a4a66;cursor:pointer;margin:12px 0}</style></head>
+<style>.plog{max-width:920px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 12px 44px rgba(0,0,0,.14)}.plog-top{background:#c81f2b;padding:20px;display:flex;align-items:center;justify-content:center;gap:12px}.plog-top img{height:52px;width:auto}.plog-top span{color:#fff;font-size:22px;font-weight:900;letter-spacing:-.5px}.plog-body{display:grid;grid-template-columns:1fr 1fr;gap:26px;padding:30px}.plog-f{width:100%;border:1.5px solid #d9dde5;border-radius:8px;padding:15px 14px;font-size:15px;margin-bottom:12px;font-family:inherit;box-sizing:border-box}.plog-save{display:flex;align-items:center;gap:7px;font-size:14px;color:#5b6472;margin:2px 0 14px}.plog-btn{width:100%;background:#c81f2b;color:#fff;border:0;border-radius:8px;padding:16px;font-size:16px;font-weight:800;cursor:pointer}.plog-sns-t{font-size:14px;font-weight:800;color:#2b3340;margin:22px 0 13px}.plog-sns{display:flex;gap:20px;align-items:center}.psi{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;text-decoration:none}.psi-n{background:#03C75A;color:#fff;font-size:22px}.psi-k{background:#FEE500;color:#3A1D1D;font-size:12px}.psi-g{background:#fff;border:1.5px solid #e3e6ec;color:#DB4437;font-size:20px}.plog-r{display:flex}.plog-promo{background:#f4f5f7;border-radius:10px;width:100%;overflow:hidden;text-align:center;display:flex;flex-direction:column}.plog-pr-head{background:#c81f2b;color:#fff;padding:22px 12px 18px;font-size:20px;font-weight:800;line-height:1.4}.plog-pr-head b{color:#ffe14d}.plog-pr-head em{display:block;font-style:normal;font-size:14px;font-weight:700;margin-top:8px;opacity:.95}.plog-pr-body{padding:18px 12px 20px}.plog-pr-gw{font-size:15px;font-weight:800;color:#2b3340}.plog-pr-big{font-size:26px;font-weight:900;color:#1a1a1a;line-height:1.3;margin:8px 0 16px}.plog-pr-big b{color:#c81f2b}.plog-ar{color:#c81f2b}.plog-pr-go{display:inline-flex;align-items:center;gap:8px;background:#1a1a1a;color:#fff;border-radius:24px;padding:11px 18px;font-size:14px;font-weight:800;text-decoration:none}.plog-pr-go span{background:#7ee06b;color:#0a3d0a;border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:900}.plog-foot{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #e3e6ee;background:#f6f7fa}.plog-foot a{padding:20px;text-align:center;font-size:15px;color:#4b5563;text-decoration:none;font-weight:600}.plog-foot a+a{border-left:1px solid #e3e6ee}@media(max-width:640px){.plog-body{grid-template-columns:1fr;gap:20px}}</style><style>
+/* ═══ 폰 우선 가독성 (2026-09-05 대표님 지시: 폰이 우선, PC도 깨지면 안 됨) ═══
+   폰과 PC 글자 크기를 따로 잡습니다. 폰은 손에 들고 보는 거리라 더 커야 합니다. */
+@media(max-width:820px){
+  body{font-size:16px}
+  /* 히어로 — 광고판 */
+  .hero{height:auto!important;min-height:600px}
+  .hslide{align-items:stretch}
+  .hs-panel{width:100%;max-width:100%!important;padding:26px 20px 24px!important;border-radius:18px}
+  .hs-panel .hs-eyebrow{font-size:13.5px!important;margin-bottom:10px!important}
+  .hs-panel .hs-title,.hs-title{font-size:33px!important;line-height:1.24!important;letter-spacing:-.02em}
+  .hs-panel .hs-sub,.hs-sub{font-size:16px!important;line-height:1.72!important;margin-top:12px!important}
+  .hs-btn{font-size:16px!important;padding:15px 22px!important;border-radius:12px}
+  .hs-faces img{width:44px!important;height:44px!important}
+  .hs-faces i{font-size:11.5px!important}
+  /* 본문 카드 */
+  .tb-k b{font-size:18px}
+  .tb-k span{font-size:16px;line-height:1.8}
+  .tb-li{font-size:16px;padding:15px 14px}
+  .tb-lh{font-size:17px}
+  .lead{font-size:16.5px;line-height:1.8}
+  .pgnote{font-size:14.5px;line-height:1.8}
+  .ctable td,.ctable th{font-size:14.5px;padding:11px 10px}
+  .op-h{font-size:22px}
+  .op-hs{font-size:15px;line-height:1.75}
+  .gl-c em{font-size:14px}
+  /* 누르기 쉬운 크기 */
+  .one-cta,.pgcta{font-size:17px;padding:17px 18px}
+  .yt-btns a{font-size:16px;padding:16px 12px}
+}
+@media(max-width:420px){
+  .hs-panel .hs-title,.hs-title{font-size:29px!important}
+  .hs-panel .hs-sub,.hs-sub{font-size:15.5px!important}
+  .op-h{font-size:20px}
+}
+/* PC — 폰보다 촘촘하되 읽기 편하게 */
+@media(min-width:821px){
+  .tb-k span{font-size:15.5px}
+  .tb-li{font-size:15.5px}
+}
+</style>
+<style>.vf-up{display:block;text-align:center;background:#f0f3fa;border:1.5px dashed #b9c4dd;border-radius:12px;padding:20px;font-weight:800;color:#3a4a66;cursor:pointer;margin:12px 0}</style></head>
 <body>
 <!-- 입장코드 게이트 (2026-09-02) — 10월 1일 0시에 자동으로 풀립니다. GATE_ON을 false로 바꾸면 즉시 해제 -->
 <div id="sgGate" style="position:fixed;inset:0;z-index:2147483647;background:linear-gradient(160deg,#101830,#1D2D4F);display:flex;align-items:center;justify-content:center;padding:24px">
@@ -3828,7 +3876,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v106)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v107)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -4182,7 +4230,18 @@ const SLIDES=[
  var hs=document.getElementById('heroslides');
  hs.innerHTML=SLIDES.map(function(s,i){
   /* img가 있는 슬라이드는 이미지 자체가 광고판 — 글자판 없이 통짜 이미지 + 전체 클릭 (2026-09-02) */
-  if(s.img){return '<div class="hslide hs-imgs'+(i===0?' on':'')+'" onclick="'+s.act+'" role="button" tabindex="0" aria-label="'+s.e.replace(/<[^>]*>/g,'')+'"><img class="hsi-fg" src="'+s.img+'" alt="" loading="lazy"></div>';}
+  /* 2026-09-05 대표님 지시 — 폰이 우선입니다.
+     배너 이미지는 글씨가 통째로 구워져 있어 폰에서 23%까지 줄어들면 못 읽습니다.
+     그래서 폰에서는 이미지를 감추고 같은 내용을 HTML 글씨로 크게 그립니다. PC는 배너 그대로. */
+  if(s.img){return '<div class="hslide hs-imgs'+(i===0?' on':'')+(s.cls?(' '+s.cls):'')+'" onclick="'+s.act+'" role="button" tabindex="0" aria-label="'+s.e.replace(/<[^>]*>/g,'')+'">'
+   +'<img class="hsi-fg" src="'+s.img+'" alt="" loading="lazy">'
+   +'<div class="hs-wrap hsi-txt"><div class="hs-panel" style="color:'+s.tc+'"><div class="hs-fill" style="background:'+s.pbg+'"></div><div class="hs-inner">'
+    +'<div class="hs-eyebrow" style="color:'+s.ac+'">'+s.e+'</div>'
+    +'<div class="hs-title" style="color:'+s.tc+'">'+s.t+'</div>'
+    +'<div class="hs-sub" style="color:'+(s.tc2||s.tc)+'">'+s.s+'</div>'
+    +(s.faces?('<div class="hs-faces">'+s.faces.map(function(f,k){return '<span><img src="img/teachers/'+f+'.png" alt=""><i>'+(s.fnames?s.fnames[k]:'')+'</i></span>';}).join('')+'</div>'):'')
+    +'<button class="hs-btn" style="background:'+s.bbg+';color:'+s.btc+';border-color:'+s.bbg+'" onclick="'+s.act+'">자세히 보기 →</button>'
+   +'</div></div></div></div>';}
   return '<div class="hslide'+(i===0?' on':'')+(s.cls?(' '+s.cls):'')+'"'+(s.bg?' style="background-image:linear-gradient(rgba(9,13,26,.35),rgba(9,13,26,.35)),url('+s.bg+');background-size:cover;background-position:center"':'')+'><div class="hs-wrap"><div class="hs-panel" style="color:'+s.tc+'"><div class="hs-fill" style="background:'+s.pbg+'"></div><div class="hs-inner"><div class="hs-eyebrow" style="color:'+s.ac+'">'+s.e+'</div><div class="hs-title" style="color:'+s.tc+'">'+s.t+'</div><div class="hs-sub" style="color:'+(s.tc2||s.tc)+'">'+s.s+'</div>'+(s.faces?('<div class="hs-faces">'+s.faces.map(function(f,k){return '<span><img src="img/teachers/'+f+'.png" alt=""><i>'+(s.fnames?s.fnames[k]:'')+'</i></span>';}).join('')+'</div>'):'')+'<button class="hs-btn" style="background:'+s.bbg+';color:'+s.btc+';border-color:'+s.bbg+'" onclick="'+s.act+'">자세히 보기 →</button></div></div></div></div>';}).join('');
  document.getElementById('hdots').innerHTML=SLIDES.map(function(s,i){return '<i data-i="'+i+'"'+(i===0?' class="on"':'')+'></i>';}).join('');
  var si=0, slides=hs.querySelectorAll('.hslide'), dots=document.querySelectorAll('#hdots i'), N=SLIDES.length;
