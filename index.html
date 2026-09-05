@@ -3932,7 +3932,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v119)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v120)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -11097,6 +11097,43 @@ function _atFreeScore(said,ans){
  if(aw.length>=Math.max(2,fr.length)) return 0.7;
  return frameSim;
 }
+/* ══ 산글이 목소리 (2026-09-05) ══════════════════════════════
+   릴스에 쓰는 마스코트 목소리로 미리 녹음한 한국어 대사입니다.
+   파일이 없거나 못 읽으면 아무 소리도 안 나고 넘어갑니다(전과 동일). */
+var SGVO={
+ hello:'01', guide:'02', goalintro:'03', keyintro:'04', okhere:'05',
+ talkstart:'06', whatsay:'07', pass:'08', again:'09', nothear:'10',
+ dlgend:'11', laststep:'12', myturn:'13', freepass:'14', freeagain:'15',
+ realtalk:'16', warn:'17', understand:'18', gotit:'19', finish:'20',
+ dlgintro:'21', okgo:'22'
+};
+var _voAu=null, _voT=null;
+function voStop(){
+ if(_voT){clearTimeout(_voT);_voT=null;}
+ if(_voAu){ try{_voAu.pause();_voAu.currentTime=0;}catch(e){} _voAu=null; }
+}
+/* 대사 하나를 산글이 목소리로 재생합니다. 끝나면 onDone을 부릅니다. */
+function voPlay(k,onDone){
+ voStop();
+ var f=SGVO[k];
+ if(!f||!_atCfg.sound){ if(onDone)onDone(); return false; }
+ try{
+  var a=new Audio('media/'+f+'.mp3');
+  a.playbackRate=Math.min(2,Math.max(0.6,_atCfg.speed||1));
+  _voAu=a;
+  var done=false, fin=function(){ if(done)return; done=true;
+   try{_atMood('idle');}catch(e){}
+   if(onDone)onDone(); };
+  a.onended=fin;
+  a.onerror=function(){ fin(); };          /* 파일이 없어도 조용히 넘어갑니다 */
+  a.play().then(function(){
+   try{_atMood('talking');}catch(e){}
+  }).catch(function(){ fin(); });
+  /* 만약을 위한 안전장치 — 20초 지나면 무조건 다음으로 */
+  _voT=setTimeout(fin,20000);
+  return true;
+ }catch(e){ if(onDone)onDone(); return false; }
+}
 function atMicStop(){
  _atMicOn=false;
  if(_atRec){ try{_atRec.stop();}catch(e){} _atRec=null; }
@@ -11173,19 +11210,19 @@ function atMicJudge(s, said){
  var msg;
  if(s.free && sc>=0.62){
   _atMood('celebrate');
-  msg={who:'ai',t:'<b>지금 대표님 이야기를 직접 하셨습니다.</b><br>이게 회화입니다. 외운 문장이 아니라 <b>본인 말</b>이니까요.'
+  msg={vo:'freepass',who:'ai',t:'<b>지금 대표님 이야기를 직접 하셨습니다.</b><br>이게 회화입니다. 외운 문장이 아니라 <b>본인 말</b>이니까요.'
    +'<br><span style="color:#5c6472">참고 표현 · '+s.answer+'</span>'};
  } else if(s.free){
-  msg={who:'ai',t:'틀만 잡으시면 됩니다. 뒤는 대표님 이야기를 넣으시면 돼요.<br><b>'+s.answer+'</b>'
+  msg={vo:'freeagain',who:'ai',t:'틀만 잡으시면 됩니다. 뒤는 대표님 이야기를 넣으시면 돼요.<br><b>'+s.answer+'</b>'
    +'<br><span style="color:#5c6472">이 틀 그대로, 뒷부분만 바꿔서 한 번 더 해 보실까요?</span>', say:s.answer};
  } else if(sc>=0.62){
   _atMood('celebrate');
-  msg={who:'ai',t:'<b>좋습니다. 그대로 통했어요.</b>'+(s.ansKo?'<br><em style="color:#5c6472">'+s.ansKo+'</em>':'')};
+  msg={vo:'pass',who:'ai',t:'<b>좋습니다. 그대로 통했어요.</b>'+(s.ansKo?'<br><em style="color:#5c6472">'+s.ansKo+'</em>':'')};
  } else if(sc>=0.32){
-  msg={who:'ai',t:'거의 다 왔습니다. 한 번만 더 또박또박 해 볼까요?<br><b>'+s.answer+'</b>'
+  msg={vo:'again',who:'ai',t:'거의 다 왔습니다. 한 번만 더 또박또박 해 볼까요?<br><b>'+s.answer+'</b>'
    +(s.ansKo?'<br><em style="color:#5c6472">'+s.ansKo+'</em>':''), say:s.answer};
  } else {
-  msg={who:'ai',t:'제가 잘 못 들었어요. 제가 먼저 읽어 드릴게요.<br><b>'+s.answer+'</b>'
+  msg={vo:'nothear',who:'ai',t:'제가 잘 못 들었어요. 제가 먼저 읽어 드릴게요.<br><b>'+s.answer+'</b>'
    +(s.ansKo?'<br><em style="color:#5c6472">'+s.ansKo+'</em>':''), say:s.answer};
  }
  _at.S.splice(_at.i+1,0,msg);
@@ -11219,8 +11256,8 @@ function _aiChoices(L,ans){
 }
 function _aiScript(L,n,T){
  var S=[],i,kAt=0;
- S.push({who:'ai',t:'안녕하세요, <b>산글이</b>예요.<br>오늘은 <b>'+L.t+'</b> 딱 하나만 같이 보겠습니다.'});
- S.push({who:'ai',t:'제가 계속 말씀드릴게요. 급하시면 <b>화면을 누르시면</b> 바로 다음으로 넘어갑니다.',
+ S.push({vo:'hello',who:'ai',t:'안녕하세요, <b>산글이</b>예요.<br>오늘은 <b>'+L.t+'</b> 딱 하나만 같이 보겠습니다.'});
+ S.push({vo:'guide',who:'ai',t:'제가 계속 말씀드릴게요. 급하시면 <b>화면을 누르시면</b> 바로 다음으로 넘어갑니다.',
    ask:[{t:'좋아요, 시작할게요'},{t:'이걸 왜 배워요?',r:'토익이든 회화든 <b>이 자리 하나</b>가 매번 나옵니다. 여기서 막히면 뒤가 다 느려져요. 그래서 제일 먼저 봅니다.'}]});
  S.push({who:'ai',t:'오늘 내용은 <b>'+T.n+'</b> 선생님이 맡아 주십니다.'});
  S.push({who:'t',t:T.hi});
@@ -11230,14 +11267,14 @@ function _aiScript(L,n,T){
     학습자가 10분을 쓸지 말지 여기서 정하기 때문입니다. */
  if(L.key&&L.key.length){
   var pv=L.key.slice(0,3).map(function(r){return '<li><b>'+r[1]+'</b><span>'+r[0]+'</span></li>';}).join('');
-  S.push({who:'ai',t:'<div class="at-goal"><em>오늘 끝나면 이 말을 하실 수 있습니다</em><ul>'+pv+'</ul></div>'});
+  S.push({vo:'goalintro',who:'ai',t:'<div class="at-goal"><em>오늘 끝나면 이 말을 하실 수 있습니다</em><ul>'+pv+'</ul></div>'});
  }
  if(L.key&&L.key.length){
-  S.push({who:'t',t:'먼저 <b>이것만</b> 가져가시면 됩니다. 하나씩 소리로 들려 드릴게요.'});
+  S.push({vo:'keyintro',who:'t',t:'먼저 <b>이것만</b> 가져가시면 됩니다. 하나씩 소리로 들려 드릴게요.'});
   kAt=S.length;
   for(i=0;i<L.key.length;i++)
    S.push({who:'t',t:'<span class="at-ko">'+L.key[i][0]+'</span><span class="at-en">'+L.key[i][1]+'</span><span class="at-tip">'+L.key[i][2]+'</span>',say:L.key[i][1]});
-  S.push({who:'ai',t:'여기까지 괜찮으셨어요?',
+  S.push({vo:'okhere',who:'ai',t:'여기까지 괜찮으셨어요?',
    ask:[{t:'네, 넘어갈게요'},{t:'한 번 더 볼게요',back:kAt}]});
  }
  if(L.dlg&&L.dlg.length){
@@ -11246,7 +11283,7 @@ function _aiScript(L,n,T){
      시험대비반(토익·토스·오픽·토플·JLPT·HSK)은 해설 강의라 지금처럼 읽어 드립니다. */
   var talk=_aiIsTalk();
   if(talk){
-   S.push({who:'t',t:'이제 <b>직접 해 보시겠습니다.</b> 제가 말을 걸면, 대표님이 답해 주세요.'});
+   S.push({vo:'talkstart',who:'t',t:'이제 <b>직접 해 보시겠습니다.</b> 제가 말을 걸면, 대표님이 답해 주세요.'});
    var pairs=[];
    for(i=0;i<L.dlg.length;i++){
     var role=L.dlg[i][0], line=L.dlg[i][1], ko=L.dlg[i][2];
@@ -11254,7 +11291,7 @@ function _aiScript(L,n,T){
      S.push({who:'a',t:'<b>'+line+'</b><em>'+ko+'</em>',say:line});
      var nx=L.dlg[i+1];
      if(nx&&nx[0]==='B'){
-      S.push({who:'ai',t:'<b>이럴 때 뭐라고 하시겠어요?</b>',
+      S.push({vo:'whatsay',who:'ai',t:'<b>이럴 때 뭐라고 하시겠어요?</b>',
         answer:nx[1], ansKo:nx[2],
         ask:_aiChoices(L,nx[1])});
       pairs.push([line,ko,nx[1],nx[2]]);
@@ -11264,53 +11301,53 @@ function _aiScript(L,n,T){
      S.push({who:'b',t:'<b>'+line+'</b><em>'+ko+'</em>',say:line});
     }
    }
-   S.push({who:'ai',t:'끝까지 주고받으셨습니다. 이게 실제 대화 속도예요.'});
+   S.push({vo:'dlgend',who:'ai',t:'끝까지 주고받으셨습니다. 이게 실제 대화 속도예요.'});
    /* ── 2026-09-05 대표님 지시 '양방대화' — 여기부터는 대본이 아니라 본인 이야기입니다 ──
       같은 질문을 다시 던지되, 정답을 맞히는 게 아니라 틀만 지키면 통과입니다. */
    if(pairs.length){
-    S.push({who:'t',t:'<div class="at-goal"><em>마지막 한 걸음</em>'
+    S.push({vo:'laststep',who:'t',t:'<div class="at-goal"><em>마지막 한 걸음</em>'
      +'<p>지금까지는 <b>정해진 답</b>이었습니다. 이번엔 <b>대표님 이야기</b>로 답해 보세요.<br>'
      +'이름도, 사는 곳도, 기분도 <b>사실대로</b> 말씀하시면 됩니다. 틀만 맞으면 다 맞는 겁니다.</p></div>'});
     var fp=pairs.slice(0,3);
     for(var pi=0;pi<fp.length;pi++){
      S.push({who:'a',t:'<b>'+fp[pi][0]+'</b><em>'+fp[pi][1]+'</em>',say:fp[pi][0]});
-     S.push({who:'ai',t:'<b>이번엔 대표님 이야기로 답해 주세요.</b><br>'
+     S.push({vo:'myturn',who:'ai',t:'<b>이번엔 대표님 이야기로 답해 주세요.</b><br>'
        +'<span style="color:#5c6472">틀 · '+fp[pi][2]+'</span>',
        free:1, answer:fp[pi][2], ansKo:fp[pi][3], ask:_aiChoices(L,fp[pi][2])});
     }
-    S.push({who:'ai',t:'<b>방금 하신 게 진짜 회화입니다.</b><br>외운 문장이 아니라, 대표님 이야기를 그 틀에 담으신 거예요.'});
+    S.push({vo:'realtalk',who:'ai',t:'<b>방금 하신 게 진짜 회화입니다.</b><br>외운 문장이 아니라, 대표님 이야기를 그 틀에 담으신 거예요.'});
    }
   } else {
-   S.push({who:'t',t:'이제 <b>실제 문장</b>에서 어떻게 쓰이는지 보겠습니다.'});
+   S.push({vo:'dlgintro',who:'t',t:'이제 <b>실제 문장</b>에서 어떻게 쓰이는지 보겠습니다.'});
    for(i=0;i<L.dlg.length;i++)
     S.push({who:L.dlg[i][0]==='A'?'a':'b',t:'<b>'+L.dlg[i][1]+'</b><em>'+L.dlg[i][2]+'</em>',say:L.dlg[i][1]});
   }
  }
  if(L.gram){
   var gAt=S.length;
-  S.push({who:'t',t:'<b class="at-warn">한국인이 여기서 틀립니다</b><br>'+L.gram.t});
+  S.push({vo:'warn',who:'t',t:'<b class="at-warn">한국인이 여기서 틀립니다</b><br>'+L.gram.t});
   S.push({who:'t',t:L.gram.d});
-  S.push({who:'ai',t:'이 부분, 이해되셨어요?',
+  S.push({vo:'understand',who:'ai',t:'이 부분, 이해되셨어요?',
    ask:[{t:'이해했어요'},{t:'다시 설명해 주세요',back:gAt}]});
  }
  /* 끝은 시험이 아니라 '오늘 뭘 얻었는지'로 닫습니다 — 성취를 눈으로 회수시킵니다 */
  if(L.key&&L.key.length){
   var got=L.key.slice(0,5).map(function(r){return '<li><b>'+r[1]+'</b><span>'+r[0]+'</span></li>';}).join('');
-  S.push({who:'ai',t:'<div class="at-goal done"><em>오늘 대표님이 말할 수 있게 된 문장</em><ul>'+got+'</ul></div>'});
+  S.push({vo:'gotit',who:'ai',t:'<div class="at-goal done"><em>오늘 대표님이 말할 수 있게 된 문장</em><ul>'+got+'</ul></div>'});
  }
  /* 다음 과를 미리 보여 줍니다 — 여기서 끊기면 아깝게 */
  try{
   var _arr=AITXT[aiTxtKey()], _nx=_arr&&_arr[n];
   if(_nx) S.push({who:'ai',t:'다음 <b>'+(n+1)+'과</b>는 <b>'+_nx.t+'</b>입니다.<br><span style="color:#5c6472">'+(_nx.goal||'')+'</span>'});
  }catch(e){}
- S.push({who:'ai',t:'여기까지 오셨으면 다 하신 겁니다.<br>이제 <b>문제 4개</b>로 확인만 하면 끝이에요.',last:true});
+ S.push({vo:'finish',who:'ai',t:'여기까지 오셨으면 다 하신 겁니다.<br>이제 <b>문제 4개</b>로 확인만 하면 끝이에요.',last:true});
  return S;
 }
 var _at={i:0,S:[],T:null,n:1,auto:true};
 var _atT=null, _atTypeT=null, _atTalkT=null, _atCfg={auto:1,speed:1,sound:1,mic:1};
 try{var _c=localStorage.getItem('sga_at_cfg'); if(_c)_atCfg=JSON.parse(_c);}catch(e){}
 function _atSave(){try{localStorage.setItem('sga_at_cfg',JSON.stringify(_atCfg));}catch(e){}}
-function _atStop(){if(_atT){clearTimeout(_atT);_atT=null;}if(_atTypeT){clearInterval(_atTypeT);_atTypeT=null;}try{atMicStop();}catch(e){}}
+function _atStop(){if(_atT){clearTimeout(_atT);_atT=null;}if(_atTypeT){clearInterval(_atTypeT);_atTypeT=null;}try{atMicStop();}catch(e){}try{voStop();}catch(e){}}
 function _atFlush(){if(_at&&_at.pend)_atRender();}
 
 /* 산글이 표정 — idle / talking / listening / celebrate */
@@ -11429,6 +11466,22 @@ function _atRender(){
   _atTalkT=setTimeout(function(){ if(_at&&!_at.paused)_atMood('idle'); },
     Math.min(9000,Math.max(1200,String(s.say).replace(/<[^>]+>/g,'').length*95))/(_atCfg.speed||1));
  }
+ /* ── 산글이 목소리 (2026-09-05) ──
+    한국어 해설에 미리 녹음한 마스코트 목소리를 입힙니다.
+    목소리가 있으면 다 말할 때까지 기다렸다가 다음으로 넘어갑니다. */
+ var _vo = (!s.say && s.vo) ? s.vo : null;
+ if(_vo && _atCfg.sound){
+  var _went=false;
+  var _next=function(){
+   if(_went)return; _went=true;
+   if(s.ask){ atAsk(s); return; }
+   if(s.last){ atEndTeach(); return; }
+   _atMood('idle');
+   if(_atCfg.auto&&!_at.paused) _atT=setTimeout(atGo,260/(_atCfg.speed||1));
+  };
+  if(voPlay(_vo,_next)) return;   /* 재생 시작 — 끝나면 _next가 이어 갑니다 */
+  _went=false;                     /* 파일이 없으면 아래 기본 흐름으로 */
+ }
  if(s.ask){ atAsk(s); return; }           /* 판단이 필요한 곳 — 여기서 멈춥니다 */
  if(s.last){ atEndTeach(); return; }
  _atMood('idle');
@@ -11457,7 +11510,7 @@ function atPick(i){
  if(o.ok===true){
   if(_atCfg.sound){try{lsSay(o.t);}catch(e){}}
   _atMood('celebrate');
-  _at.S.splice(_at.i+1,0,{who:'ai',t:'좋습니다. 그렇게 말하시면 됩니다.'+(s.ansKo?'<br><em style="color:#5c6472">'+s.ansKo+'</em>':'')});
+  _at.S.splice(_at.i+1,0,{vo:'okgo',who:'ai',t:'좋습니다. 그렇게 말하시면 됩니다.'+(s.ansKo?'<br><em style="color:#5c6472">'+s.ansKo+'</em>':'')});
  } else if(o.ok===false){
   _at.S.splice(_at.i+1,0,{who:'ai',
    t:'그 표현도 쓰이지만 여기서는 이렇게 답합니다.<br><b>'+s.answer+'</b>'+(s.ansKo?'<br><em style="color:#5c6472">'+s.ansKo+'</em>':''),
