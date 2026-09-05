@@ -3553,6 +3553,13 @@ html,body{overflow-x:hidden;max-width:100%}
 @keyframes atMicPulse{0%,100%{box-shadow:0 10px 26px rgba(14,158,90,.35)}50%{box-shadow:0 10px 26px rgba(14,158,90,.35),0 0 0 14px rgba(14,158,90,.12)}}
 @media(prefers-reduced-motion:reduce){.at-micb.rec{animation:none}}
 .at-heard{text-align:center;font-size:16px;font-weight:800;color:#3f4757;min-height:24px;line-height:1.6}
+.ai-toc-go.free{color:#0a7d4f!important;font-weight:900}
+.toc-b.free{background:#e6f7ef;color:#0a7d4f;border:1px solid #b7e6ce}
+.toc-b.soon{background:#f2f4f7;color:#98a1b0;border:1px solid #e3e7ee}
+.ai-toc li.off{color:#a8b0bd}
+.ai-free-line.free{background:#e6f7ef;border:1.5px solid #b7e6ce;color:#0a5c3b;border-radius:12px;padding:13px 15px;font-size:15.5px;line-height:1.7}
+.ai-pr.free .ai-pr-r.hi b{font-size:28px}
+.ai-buy.free{background:#0a7d4f}
 .at-mic .at-hint{display:block;margin-top:7px;font-size:13px;color:#8a93a3;text-decoration:none;font-weight:600}
 .at-mic.free .at-micb i u{background:#fff3c4;border-bottom:2px solid #e0a800;padding:0 6px;border-radius:3px}
 .at-skip{border:1.5px solid var(--line);background:#f4f6f9;color:#5c6472;font-weight:700;border-radius:12px;padding:13px;
@@ -3925,7 +3932,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v113)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v114)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -8336,23 +8343,37 @@ function aiBookHTML(){
  var stab=G.steps.map(function(x,i){
   return '<button class="ai-st'+(i===_aiS?' on':'')+'" onclick="aiStep('+i+')">'
    +'<em>'+x.no+'</em><b>'+x.s+'</b><small>'+x.en+'</small></button>';}).join('');
+ var _wasT=_aiT,_wasG=_aiG,_wasS=_aiS;
+ var FREE=aiIsFreeBook(B.img);
  var fN=AITXT[B.img]?aiFreeN():0;
  var toc=(B.toc&&B.toc.length)
   ? ('<div class="ai-toc"><div class="ai-toc-h">목차 <span>'+B.toc.length+'과</span>'
-     +(AITXT[B.img]?'<em class="ai-toc-go">1과와 오늘의 무료 과는 그냥 열립니다</em>':'<em class="ai-toc-soon">본문 준비 중</em>')+'</div><ol>'
+     +(!AITXT[B.img]?'<em class="ai-toc-soon">본문 준비 중</em>'
+       :(FREE?'<em class="ai-toc-go free">전 과 무료 · 잠금 없음</em>':'<em class="ai-toc-go">1과와 오늘의 무료 과는 그냥 열립니다</em>'))+'</div><ol>'
      +B.toc.map(function(t,i){
-        var on=!!(AITXT[B.img]&&AITXT[B.img][i]);   /* 본문이 있으면 열립니다 (마스터는 잠금도 통과) */
-        var tag=!on?'':(i===0?' <span class="toc-b free">무료 맛보기</span>'
-          :(i+1===fN?' <span class="toc-b today">오늘 무료</span>':' <span class="toc-b lock">🔒</span>'));
-        return '<li'+(on?' class="go" onclick="aiLesson('+(i+1)+')"':'')+'>'+t+tag+'</li>';}).join('')
+        var on=!!(AITXT[B.img]&&AITXT[B.img][i]);
+        var tag=!on?' <span class="toc-b soon">준비 중</span>'
+          :(FREE?' <span class="toc-b free">무료</span>'
+            :(i===0?' <span class="toc-b free">무료 맛보기</span>'
+              :(i+1===fN?' <span class="toc-b today">오늘 무료</span>':' <span class="toc-b lock">🔒</span>')));
+        return '<li'+(on?' class="go" onclick="aiLesson('+(i+1)+')"':' class="off"')+'>'+t+tag+'</li>';}).join('')
      +'</ol></div>')
   : '';
  /* 2026-09-03 대표님 지시: 샘플(무료 맛보기)이 제일 잘 보이게 위로, 전자책 신청은 맨 밑으로 */
  var sample=AITXT[B.img]
-  ? ('<button class="ai-sample-btn" onclick="aiLesson(1)">🎁 1과 무료 맛보기 열어보기 <small>— 회원가입 없이 바로</small></button>'
-     +'<div class="ai-free-line">누구나 <b>1과는 무료</b>'+(B.toc&&B.toc.length?(', 그리고 <b>매일 한 과가 무료</b>로 열립니다 — 오늘은 <b>'+fN+'과</b>'):'')+'. 한 과 3분이면 이 책이 어떤 책인지 아시게 됩니다.</div>')
+  ? (FREE
+     ? ('<button class="ai-sample-btn" onclick="aiLesson(1)">▶ 1과부터 바로 시작하기 <small>— 회원가입 없이, 전 과 무료</small></button>'
+        +'<div class="ai-free-line free"><b>이 과정은 전부 무료입니다.</b> 맛보기가 아니라 <b>전 과 그대로</b> 열려 있습니다. 결제도, 회원가입도 없습니다.</div>')
+     : ('<button class="ai-sample-btn" onclick="aiLesson(1)">🎁 1과 무료 맛보기 열어보기 <small>— 회원가입 없이 바로</small></button>'
+        +'<div class="ai-free-line">누구나 <b>1과는 무료</b>'+(B.toc&&B.toc.length?(', 그리고 <b>매일 한 과가 무료</b>로 열립니다 — 오늘은 <b>'+fN+'과</b>'):'')+'. 한 과 3분이면 이 책이 어떤 책인지 아시게 됩니다.</div>'))
   : '';
- var price=(B.soon
+ var price=(FREE
+    ? ('<div class="ai-pr free"><div class="ai-pr-r hi"><span>수강료</span><b>0원 <em>전 과 무료</em></b></div></div>'
+       +'<button class="ai-buy free" onclick="aiLesson(1)">지금 1과 열기</button>'
+       +'<p class="ai-n">※ 이 과정은 <b>누구에게나 끝까지 무료</b>입니다. 결제창이 없습니다.<br>'
+       +'※ 산본글로벌어학원이 <b>사람이 하는 것</b>만 유료로 받습니다 — 강사가 직접 보는 발음 첨삭, 원장 상담, 교실 수업.<br>'
+       +'※ 무료라서 대충 만든 것이 아니라, <b>대충 만들면 사람이 안 옵니다.</b> 그래서 여기에 가장 공을 들였습니다.</p>')
+    : (B.soon
     ? '<div class="ai-soon">전권은 지금 만들고 있습니다. <b>10월에 순서대로 열립니다.</b> 학원 수강생부터 먼저 드립니다.</div>'
     : (B.ev
     ? ('<div class="ai-pr"><div class="ai-pr-r"><span>11월부터</span><b>'+_won(B.price)+' <small>/ 4개월</small></b></div>'
@@ -8365,7 +8386,7 @@ function aiBookHTML(){
     : ('<div class="ai-pr"><div class="ai-pr-r"><span>온라인 회원</span><b>'+_won(B.price)+'</b></div>'
        +'<div class="ai-pr-r hi"><span>🏫 학원 수강생</span><b>무료 <em>전권 열림</em></b></div></div>'
        +'<button class="ai-buy" onclick="aiBuy()">전자책 신청하기</button>'
-       +'<p class="ai-n">※ 학원 수강 중이신 분은 <b>무료</b>입니다 — 데스크에서 확인 후 전권을 열어 드립니다. 수강 기간 내내, 앱으로도 그대로 쓰실 수 있습니다.</p>')));
+       +'<p class="ai-n">※ 학원 수강 중이신 분은 <b>무료</b>입니다 — 데스크에서 확인 후 전권을 열어 드립니다. 수강 기간 내내, 앱으로도 그대로 쓰실 수 있습니다.</p>'))));
  return '<div class="ai-lb">② 언어·과목을 고르세요</div>'
  +'<div class="ai-subs">'+gtab+'</div>'
  +'<div class="ai-lb">③ 단계를 고르세요</div>'
@@ -9267,6 +9288,14 @@ function aiHasTxt(n){var a=AITXT[aiTxtKey()];return !!(a&&a[n-1]);}
    1과는 언제나 무료, 그리고 매일 한 과가 돌아가며 무료로 열립니다 (한국 시간 자정에 바뀜).
    나머지 과를 누르면 잠금 화면이 뜨고, 오늘의 무료 과와 구매로 이어집니다.
    전에는 16과 전부가 공짜로 열려 있어 전자책이 팔릴 이유가 없었습니다. */
+/* ── 2026-09-05 대표님 확정 ──────────────────────────────
+   무료 : 회화반 전부(영어·일본어·중국어) + 토익 기초문법 40강(tc_basic)
+   유료 : 나머지 시험대비반(LC·실전모의·토스·오픽·토플·JLPT·HSK) — 인강 매출
+   회화는 미끼가 아니라 완제품으로 전부 열어 드립니다. */
+function aiIsFreeBook(k){
+ k=k||''; return /^(eng|jpn|chn)_/.test(k) || k==='tc_basic';
+}
+function aiFreeNow(){ try{ return aiIsFreeBook(aiTxtKey()); }catch(e){ return false; } }
 function aiFreeN(){var a=AITXT[aiTxtKey()];if(!a||a.length<2)return 1;
  var d=Math.floor((Date.now()+9*3600*1000)/86400000);return 2+(d%(a.length-1));}
 function aiLockShow(n){
@@ -9637,7 +9666,7 @@ function _atMood(m){var f=document.getElementById('atFace'); if(!f)return;
 function aiTeach(n){
  var k=aiTxtKey(), arr=AITXT[k];
  if(!arr||!arr[n-1]){sgToast('<b>'+n+'과는 준비 중입니다</b>');return;}
- if(n!==1&&n!==aiFreeN()&&!sgaIsMaster()){aiLockShow(n);return;}
+ if(n!==1&&n!==aiFreeN()&&!aiFreeNow()&&!sgaIsMaster()){aiLockShow(n);return;}
  _lsQ=0;_lsPick=[];_lsN=n;_lsUseAlt={};_lsTickStop();_atStop();
  var L=arr[n-1], T=_aiTeacher(k);
  _at={i:-1,S:_aiScript(L,n,T),T:T,n:n,paused:false,started:false};
@@ -9840,10 +9869,10 @@ function atPrev(){atBack();}
 function _atUse(k){return !/^tc_/.test(k||'');}
 function aiLesson(n,plain){
  var k=aiTxtKey(), arr=AITXT[k];
- if(!plain&&_atUse(k)&&arr&&arr[n-1]&&(n===1||n===aiFreeN())){var e=document.getElementById('lsModal');if(e&&e.parentNode)e.parentNode.removeChild(e);return aiTeach(n);}
+ if(!plain&&_atUse(k)&&arr&&arr[n-1]&&(n===1||n===aiFreeN()||aiFreeNow())){var e=document.getElementById('lsModal');if(e&&e.parentNode)e.parentNode.removeChild(e);return aiTeach(n);}
  if(plain){var e2=document.getElementById('lsModal');if(e2&&e2.parentNode)e2.parentNode.removeChild(e2);}
  if(!arr||!arr[n-1]){sgToast('<b>'+n+'과는 준비 중입니다</b><br>영어 베이직부터 순서대로 열어 드리고 있습니다.');return;}
- if(n!==1&&n!==aiFreeN()&&!sgaIsMaster()){aiLockShow(n);return;}
+ if(n!==1&&n!==aiFreeN()&&!aiFreeNow()&&!sgaIsMaster()){aiLockShow(n);return;}
  _lsQ=0;_lsPick=[];_lsN=n;_lsUseAlt={};_lsTickStop(); /* 지금 몇 과인지 — 결과 화면의 「다음 과」가 이 값을 씁니다 */
  var L=arr[n-1], T=AIB[_aiT], G=(T.subs&&T.subs[_aiG])||T, B=G.steps[_aiS];
  var h='<div class="ls-hd"><span class="ls-no">'+n+'과</span><h3>'+L.t+'</h3>'
