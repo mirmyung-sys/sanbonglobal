@@ -3932,7 +3932,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v122)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v123)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -11896,21 +11896,42 @@ function _atBlank(ans){
  if(/[A-Za-z].*[ ].*[A-Za-z]/.test(t)){
   var m=t.match(/^([\s\S]*?[.!?])([\s\S]*)$/);
   var head=m?m[1]:t, tail=m?m[2]:'';
-  /* 마지막 낱말이 '사람마다 다른 자리'일 때만 뚫습니다 —
-     문장 첫 낱말이 아닌 대문자로 시작하는 말(이름·지명)이나 숫자. thank you 같은 굳은 표현은 그대로 둡니다 */
   var r=head.replace(/(?!^)\b([A-Z][A-Za-z''’\-]*|[0-9][0-9A-Za-z\-]*)([^A-Za-z0-9]*)$/, B+'$2');
   return (r===head? t : r+tail);
  }
- /* 일본어·중국어는 아는 틀만 정확히 뚫습니다. 모르면 그대로 둡니다 */
+ /* 일본어·중국어 — 아는 틀만 정확히 뚫습니다. 모르면 그대로 둡니다.
+    C = 사람마다 달라지는 자리(구두점·조사 경계 안쪽, 1~20자) */
+ var C='([^。、！？，；「」]{1,20})';
  var PAT=[
-  [/私は(.+?)です/, '私は'+B+'です'],
-  [/わたしは(.+?)です/, 'わたしは'+B+'です'],
-  [/(.+?)から来ました/, B+'から来ました'],
-  [/(.+?)から来(き)ました/, B+'から来ました'],
-  [/我叫(.+?)([。！？]|$)/, '我叫'+B+'$2'],
-  [/我是(.+?)人/, '我是'+B+'人'],
-  [/我是(.+?)([。！？]|$)/, '我是'+B+'$2'],
-  [/我来自(.+?)([。！？]|$)/, '我来自'+B+'$2']
+  /* ── 일본어 ── */
+  [new RegExp('私は'+C+'です'),                    '私は'+B+'です'],
+  [new RegExp('わたしは'+C+'です'),                'わたしは'+B+'です'],
+  [new RegExp(C+'から来ました'),                   B+'から来ました'],
+  [new RegExp(C+'と申します'),                     B+'と申します'],
+  [new RegExp(C+'に貢献したいと考えております'),   B+'に貢献したいと考えております'],
+  [new RegExp(C+'に貢献したい'),                   B+'に貢献したい'],
+  [new RegExp('私の強みは'+C+'です'),              '私の強みは'+B+'です'],
+  [new RegExp('強みは'+C+'です'),                  '強みは'+B+'です'],
+  [new RegExp(C+'に力を入れてまいりました'),       B+'に力を入れてまいりました'],
+  [new RegExp(C+'に力を入れて'),                   B+'に力を入れて'],
+  [new RegExp(C+'を担当しております'),             B+'を担当しております'],
+  [new RegExp(C+'に興味があります'),               B+'に興味があります'],
+  [new RegExp(C+'に住んでいます'),                 B+'に住んでいます'],
+  [new RegExp(C+'を勉強しています'),               B+'を勉強しています'],
+  [new RegExp(C+'が好きです'),                     B+'が好きです'],
+  /* 「○○は △△ です」 — 마지막 △△가 사람마다 다른 자리 */
+  [new RegExp('^([^。、]{1,20}は)'+C+'です。?$'),   '$1'+B+'です。'],
+  /* ── 중국어 ── */
+  [new RegExp('我叫'+C+'([。！？，]|$)'),             '我叫'+B+'$2'],
+  [new RegExp('我是'+C+'人'),                       '我是'+B+'人'],
+  [new RegExp('我来自'+C+'([。！？，]|$)'),           '我来自'+B+'$2'],
+  [new RegExp('我的优势是'+C+'([。！？，]|$)'),       '我的优势是'+B+'$2'],
+  [new RegExp('应聘'+C+'这个职位'),                 '应聘'+B+'这个职位'],
+  [new RegExp('希望能为'+C+'做贡献'),               '希望能为'+B+'做贡献'],
+  [new RegExp('我做了'+C+'年的'+C),                 '我做了'+B+'年的'+B],
+  [new RegExp('我在'+C+'工作'),                     '我在'+B+'工作'],
+  [new RegExp('我喜欢'+C+'([。！？，]|$)'),           '我喜欢'+B+'$2'],
+  [new RegExp('我是'+C+'([。！？，]|$)'),             '我是'+B+'$2']
  ];
  for(var i=0;i<PAT.length;i++){ if(PAT[i][0].test(t)) return t.replace(PAT[i][0],PAT[i][1]); }
  return t;
@@ -11994,8 +12015,8 @@ function atMicAsk(s){
  a.innerHTML='<div class="at-mic'+(_fr?' free':'')+'">'
   +'<button class="at-micb" id="atMicB" onclick="atMicGo()"><span class="ic">🎤</span>'
    +'<b>'+(_fr?'눌러서 <u>대표님 이야기</u> 말하기':'눌러서 말하기')+'</b>'
-   +'<i>'+(_fr? _atBlank(s.answer) : (s.answer||''))+'</i>'
-   +(_fr?'<u class="at-hint">밑줄 자리에 대표님 이야기를 넣으시면 됩니다</u>':'')+'</button>'
+   +'<i>'+(_fr? (function(){var b=_atBlank(s.answer);return b.indexOf('____')>=0?b:('<span style="opacity:.75">'+(s.ansKo||'')+'</span>');})() : (s.answer||''))+'</i>'
+   +(_fr?'<u class="at-hint">'+((_atBlank(s.answer)||'').indexOf('____')>=0?'밑줄 자리에 대표님 이야기를 넣으시면 됩니다':'뜻만 맞으면 됩니다. 대표님 문장으로 말씀해 보세요')+'</u>':'')+'</button>'
   +'<div class="at-heard" id="atHeard">'+(_fr?'외우지 마시고, 사실대로 말씀하시면 됩니다':'버튼을 누르고 위 문장을 말씀해 보세요')+'</div>'
   +'<button class="at-skip" onclick="_atCfg.mic=0;_atSave();atMicLbl();atMicFallback(_at.S[_at.i],\'\')">말고 고를래요</button>'
  +'</div>';
@@ -12156,8 +12177,14 @@ function _aiScript(L,n,T){
     var fp=pairs.slice(0,3);
     for(var pi=0;pi<fp.length;pi++){
      S.push({who:'a',t:'<b>'+fp[pi][0]+'</b><em>'+fp[pi][1]+'</em>',say:fp[pi][0]});
+     /* 2026-09-05 검수 — 정답 문장을 그대로 보여 주면 베껴 읽게 됩니다.
+        빈칸을 뚫을 수 있으면 틀을, 못 뚫으면 뜻만 보여 줍니다. */
+     var _fr=_atBlank(fp[pi][2]);
+     var _hint=(_fr.indexOf('____')>=0)
+       ? ('틀 · '+_fr)
+       : ('이런 뜻으로 · '+fp[pi][3]);
      S.push({vo:'myturn',who:'ai',t:'<b>이번엔 대표님 이야기로 답해 주세요.</b><br>'
-       +'<span style="color:#5c6472">틀 · '+fp[pi][2]+'</span>',
+       +'<span style="color:#5c6472">'+_hint+'</span>',
        free:1, answer:fp[pi][2], ansKo:fp[pi][3], ask:_aiChoices(L,fp[pi][2])});
     }
     S.push({vo:'realtalk',who:'ai',t:'<b>방금 하신 게 진짜 회화입니다.</b><br>외운 문장이 아니라, 대표님 이야기를 그 틀에 담으신 거예요.'});
