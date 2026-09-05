@@ -2625,7 +2625,7 @@ li:first-child > .pgh{margin-top:2px}
    기존 글자판과 같은 크기의 가운데 패널로 띄우고, 뒤에는 수업 영상이 그대로 보입니다.
    글자·버튼이 이미지 안에 박혀 있으므로 잘리면 안 됨. 슬라이드 전체가 클릭됩니다. */
 .hs-imgs{cursor:pointer;padding-bottom:0!important;align-items:center!important;justify-content:center}
-.hs-imgs .hsi-fg{display:block;max-width:min(92%,880px);max-height:88%;width:auto;height:auto;border-radius:18px;box-shadow:0 30px 70px -16px rgba(5,8,16,.6);transition:box-shadow .3s}
+.hs-imgs .hsi-fg{display:block;max-width:min(96%,1000px);max-height:94%;width:auto;height:auto;border-radius:18px;box-shadow:0 30px 70px -16px rgba(5,8,16,.6);transition:box-shadow .3s}
 /* 마우스를 올리면(=넘김 멈춤) 이미지판이 살짝 꿈틀거립니다 — 옛 '자세히 보기' 버튼 깜빡임의 이미지판 버전 */
 .hero.paused .hs-imgs .hsi-fg{animation:heroImgPulse 1.15s ease-in-out infinite;box-shadow:0 34px 80px -14px rgba(5,8,16,.75),0 0 0 3px rgba(255,217,77,.55)}
 @keyframes heroImgPulse{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-6px) scale(1.008)}}
@@ -3828,7 +3828,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v103)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v105)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -4165,9 +4165,9 @@ function noticePage(){
 const SLIDES=[
  {img:'img/sbg_hall.jpg', e:'원장 인사말 · 산본글로벌어학원', t:'산본<span style="color:#8fa3c9;font-weight:700">이지어학원</span>이<br>산본<span style="color:#ffd94d">글로벌</span>어학원이 됩니다', s:'강사진 그대로 · 수강료 그대로 · 교실도 수강권도 전부 그대로 — 바뀌는 건 이름과 혜택뿐입니다', act:"openPage('오픈이벤트')", pbg:'linear-gradient(135deg,#1D2D4F,#33507f)', tc:'#f5f1e4', tc2:'#cdd8ec', ac:'#ffd94d', bbg:'#ffd94d', btc:'#1a1205', bg:'', cls:'hsty-line'},
  {img:'img/sl_dir.jpg', e:'DIRECTOR · 원장 직접 상담', t:'토익·유학·시험대비,<br>원장이 직접 봐 드립니다', s:'Georgetown TESOL · 토익과 토플을 가르치던 강사 출신 원장 — 무료 상담과 청강 1회 무료로 등록 전에 먼저 진단해 드립니다', act:"openPage('원장상담')", pbg:'linear-gradient(135deg,#0c1b33,#27508a)', tc:'#f3e7cd', tc2:'#b9c6dd', ac:'#C6A15B', bbg:'#C6A15B', btc:'#14213d', bg:'', cls:'hsty-soft'},
- {e:'MID-TERM · 중도입학', t:'배움의 시작이<br>어디 있습니까', s:'"학원은 꼭 월초에 들어가야 하나요?" — 상담에서 제일 많이 듣는 질문입니다. 저희 대답은 늘 같습니다. <b>아니요.</b> 등록하신 그날이 그분의 1일차입니다. 반이 3주차든 5주차든 1과부터 끝까지 전 과정을 이수하고 나가십니다. 빠진 진도는 보충으로 채우고, 못 들은 회차는 다음 사이클에서 다시 듣습니다. 끝까지 가는 건 저희가 책임집니다', act:"rsvOpen()", pbg:'linear-gradient(135deg,#2A2520,#7A5628)', tc:'#FFE9B8', tc2:'#E9DCC6', ac:'#F0C05A', bbg:'#F0C05A', btc:'#2A2520', bg:'', cls:'hsty-impact'},
+ {e:'MID-TERM · 중도입학', t:'배움의 시작이<br>어디 있습니까', s:'"학원은 꼭 월초에 들어가야 하나요?" — 상담에서 제일 많이 듣는 질문입니다. 저희 대답은 늘 같습니다. <b>아니요.</b> 등록하신 그날이 그분의 1일차입니다. 반이 3주차든 5주차든 1과부터 끝까지 전 과정을 이수하고 나가십니다. 빠진 진도는 보충으로 채우고, 못 들은 회차는 다음 사이클에서 다시 듣습니다. 끝까지 가는 건 저희가 책임집니다', act:"openPage('중도입학')", pbg:'linear-gradient(135deg,#2A2520,#7A5628)', tc:'#FFE9B8', tc2:'#E9DCC6', ac:'#F0C05A', bbg:'#F0C05A', btc:'#2A2520', bg:'', cls:'hsty-impact'},
  {img:'img/sl_new.jpg', e:'2026 · 10월 신규 모집', t:'10월 신규 개강,<br>지금이 시작하기 제일 좋습니다', s:'새벽반 · 주말반 영어부터 토익 · 토스 · 오픽 · 토플까지 — 새로 여는 반만 모았습니다', act:"openPage('신규모집')", pbg:'linear-gradient(135deg,#155e9e,#2f8fd8)', tc:'#ffe98a', tc2:'#ddefff', ac:'#ffd98a', bbg:'#ffd94d', btc:'#1a1205', bg:''},
- {img:'img/sl_moohan.jpg', e:'무한 현장강의 이벤트', t:'무한수강권 —<br>같은 반을 한 번 더', s:'한 번 들어서 안 붙으면 같은 반을 통째로 다시 듣는 수강권입니다. 앞 단계 재수강 + AI 산글 40강이 함께 열립니다. 정규 넉 달 · 스파르타 두 달, 740,000원', act:"openExam('토익')", pbg:'linear-gradient(135deg,#c81f2b,#e0453e)', tc:'#ffd94d', tc2:'#ffe3e0', ac:'#ffe0dd', bbg:'#ffffff', btc:'#c81f2b', bg:'', cls:'hsty-impact', faces:['eng_13','elly','eng_6','eng_15','eng_14'], fnames:['송윤정','엘리 킴','최자운','김현정','유미용']},
+ {e:'무한 현장강의 이벤트', t:'무한수강권 —<br>같은 반을 한 번 더', s:'한 번 들어서 안 붙으면 같은 반을 통째로 다시 듣는 수강권입니다. 앞 단계 재수강 + AI 산글 40강이 함께 열립니다. 정규 넉 달 · 스파르타 두 달, 740,000원', act:"openExam('토익')", pbg:'linear-gradient(135deg,#c81f2b,#e0453e)', tc:'#ffd94d', tc2:'#ffe3e0', ac:'#ffe0dd', bbg:'#ffffff', btc:'#c81f2b', bg:'img/hall_04.jpg', cls:'hsty-impact', faces:['eng_13','elly','eng_6','eng_15','eng_14'], fnames:['송윤정','엘리 킴','최자운','김현정','유미용']},
  {img:'img/sl_ai.jpg', e:'산본글로벌어학원', t:'AI 학습관이<br>열렸습니다', s:'영어·일본어·중국어 회화부터 토익·토스·오픽·토플·JLPT·HSK까지 — 한 과 3분, 듣기와 채점은 AI가 합니다. 학원 수강생은 무료. 산글 현강 수강생은 무료', act:"openPage('AI산글')", pbg:'linear-gradient(135deg,rgba(10,13,20,.86),rgba(14,138,90,.86))', tc:'#8df5c3', tc2:'#d6f5e7', ac:'#3ED598', bbg:'#3ED598', btc:'#0A0D14', bg:'img/ai_cafe1.jpg', cls:'hsty-impact'},
  {img:'img/sl_gift.jpg', e:'GIFT CHARGE · SGA 어학상품권', t:'넣은 금액에<br>절반을 더', s:'50만원 넣으면 75만원, 100만원 넣으면 150만원. 손자에게, 자녀에게. 모바일과 실물 각인 카드를 둘 다 드립니다', act:"openPage('상품권충전')", pbg:'linear-gradient(135deg,#0b0d12,#3a1013)', tc:'#ffd94d', tc2:'#e6d9d9', ac:'#ffd94d', bbg:'#c81f2b', btc:'#ffffff', bg:'', cls:'hsty-line'},
  {img:'img/sl_open.jpg', e:'OPEN EVENT · 10~11월', t:'새 이름 기념,<br>두 달 전 과목 10%', s:'10월 1일부터 11월 30일까지 — 신규 등록 10%, 재등록은 얼리버드 5%가 더 붙습니다', act:"openPage('오픈이벤트')", pbg:'linear-gradient(135deg,#e8b02c,#d08e00)', tc:'#231603', ac:'#7a4d00', bbg:'#1a1205', btc:'#ffd94d', bg:'', cls:'hsty-impact hsty-dark'},
@@ -5464,6 +5464,7 @@ const PAGES={
     다시 쓰실 때 이 줄을 살리시면 됩니다: '산글패스':passPage, */
  '강사소개':staffPage,
  '오시는길':mapPage,
+ '중도입학':midTermPage,
  '유튜브':ytPage,
  'SGA채널':ytPage,
  '갤러리':galleryPage,
@@ -9698,6 +9699,14 @@ function aiPage(){
    +'<p class="aiv-sub">회화부터 시험까지, <b>집에서 이어서</b> 공부합니다.<br>한 과에 <b>3분</b> — 읽고, 듣고, 문제 네 개면 끝납니다.</p>'
    +'<div class="aiv-whale"><span class="wh"><img src="img/whale.png" alt=""></span>'
     +'<span class="tx"><b>산글이</b>가 하루 한 과씩 들고 옵니다</span></div>'
+   /* 2026-09-05 대표님 지시 — 토익 기초문법 40강을 학습관 안에서도 바로 보이게 */
+   +'<a href="#" onclick="openPage(\'토익기초문법\');return false;" '
+    +'style="display:flex;align-items:center;gap:12px;margin-top:16px;text-decoration:none;'
+    +'background:#C81F2B;border-radius:14px;padding:15px 18px;box-shadow:0 8px 22px rgba(200,31,43,.35)">'
+    +'<span style="font-size:26px;line-height:1">📘</span>'
+    +'<span style="flex:1"><b style="display:block;color:#fff;font-size:16.5px;font-weight:900">토익 기초문법 40강</b>'
+    +'<span style="color:#FFD9DC;font-size:13.5px;font-weight:700">자리 판정 8초 훈련 · 1강 무료 · RC 40강 + LC 20강</span></span>'
+    +'<span style="color:#fff;font-size:20px;font-weight:900">›</span></a>'
    +'<div class="aiv-st">'
     +'<div><b>9</b><span>개 과목</span></div>'
     +'<div><b>3</b><span>분이면 한 과</span></div>'
@@ -10039,56 +10048,62 @@ function glClose(){ var d=document.getElementById('glLb'); if(d&&d.parentNode)d.
 
 /* ===== 토익 기초문법 40강 — 단독 강좌 페이지 (2026-09-04 대표님 지시) =====
    AI 학습관 안에만 있던 것을 밖으로 꺼내 따로 보이게 합니다. */
-var TB40=[
- ['1관 · 자리를 보는 눈','1~10강','빈칸 앞뒤만 보고 명사·동사·형용사·부사를 5초 안에 가릅니다. <b>Part 5의 절반이 여기서 끝납니다.</b>',[
-  '문장의 네 자리 — 주어·동사·목적어·보어','명사 자리 — 관사와 전치사가 알려 줍니다','명사의 두 얼굴 — 셀 수 있는가 없는가',
-  '사람명사 vs 사물명사','동사 자리 — 문장에 동사가 없으면 거기입니다','형용사 자리 — 명사 앞, be동사 뒤',
-  '부사 자리 — 빼도 문장이 되는 곳','대명사 — 격만 맞으면 끝납니다','한정사와 소유격','1관 총정리 — 자리 판정 20문제']],
- ['2관 · 동사의 규칙','11~18강','자리를 찾았으면 형태를 정합니다. 수·태·시제 <b>세 가지뿐</b>입니다.',[
-  '수일치 — 주어의 진짜 머리를 찾습니다','시제 기본 — 시간 표현이 답을 줍니다','완료시제 — since·for·already',
-  '수동태 — 목적어가 없으면 수동입니다','수동태 심화 — by 없는 수동, 감정동사','조동사와 가정법 기초',
-  '자주 나오는 동사 어법 20','2관 총정리 — 동사 20문제']],
- ['3관 · 준동사','19~24강','to부정사·동명사·분사 — 동사에서 나왔지만 <b>동사 자리에 못 앉는 것들</b>입니다.',[
-  'to부정사 — 목적·명사·형용사 세 쓰임','동명사 — 전치사 뒤는 무조건 -ing','to V만 / -ing만 받는 동사',
-  '현재분사 vs 과거분사','분사구문 — 앞뒤 주어가 같을 때','3관 총정리 — 준동사 20문제']],
- ['4관 · 연결의 문법','25~32강','전치사냐 접속사냐. <b>뒤에 무엇이 오는지</b>만 보면 됩니다.',[
-  '전치사 뒤엔 명사, 접속사 뒤엔 문장','시간·장소 전치사 in·on·at','자주 나오는 전치사 25개',
-  '등위·상관접속사','명사절 — that·whether·what','부사절 — 시간·조건·양보',
-  'Part 6 문장 넣기 — 연결어가 답입니다','4관 총정리 — 연결 20문제']],
- ['5관 · 관계와 비교','33~40강','마지막 관문입니다. 여기까지 오면 <b>Part 5에서 틀릴 자리가 거의 없습니다.</b>',[
-  '관계대명사 who·which·that','관계대명사 계속 — whose·목적격 생략','관계부사 where·when·why',
-  '비교급 — than이 보이면 -er/more','최상급과 원급','도치와 강조','실전 혼합 30문제','최종 점검 — 40강 압축 정리']]
+/* ===== 토익 기초문법 40강 — 목차는 AI 학습관 실제 데이터에서 읽어옵니다 =====
+   2026-09-05 — 전에는 목차를 따로 적어 둬서 학습관 실제 내용과 어긋났습니다.
+   이제 AITXT['tc_basic'] 을 그대로 읽으므로 두 번 다시 어긋나지 않습니다. */
+var TB40G=[
+ ['1관 · 자리를 보는 눈',1,8,'빈칸 앞뒤만 보고 명사·동사·형용사·부사를 5초 안에 가릅니다. <b>Part 5의 절반이 여기서 끝납니다.</b>'],
+ ['2관 · 동사의 규칙',9,16,'자리를 찾았으면 형태를 정합니다. 수·시제·태, 그리고 준동사입니다.'],
+ ['3관 · 연결의 문법',17,27,'전치사냐 접속사냐. <b>뒤에 무엇이 오는지</b>만 보면 됩니다. 관계사와 비교까지.'],
+ ['4관 · 어휘',28,30,'토익은 아는 단어가 아니라 <b>짝으로 나오는 단어</b>를 묻습니다.'],
+ ['5관 · Part 6',31,35,'빈칸 하나가 아니라 <b>앞뒤 문장</b>을 봐야 풀립니다.'],
+ ['6관 · Part 7 독해',36,40,'지문을 다 읽지 않습니다. <b>바꿔 쓴 표현</b>만 찾습니다.']
 ];
+function tb40Open(n){
+ try{ _aiT=1; _aiG=0; _aiS=0; }catch(e){}
+ try{ openPage('AI산글'); }catch(e){}
+ setTimeout(function(){ try{ aiLesson(n); }catch(e){} },260);
+}
 function tb40Page(){
- var n=0;
- var lists=TB40.map(function(g){
-  var items=g[3].map(function(t){ n++; var free=(n===1)?'<em>무료</em>':''; 
-   return '<div class="tb-li"><u>'+n+'강</u><s>'+t+'</s>'+free+'</div>'; }).join('');
-  return '<div class="tb-l"><div class="tb-lh"><span>'+g[0]+'</span><i>'+g[1]+'</i></div>'
-   +'<div style="padding:12px 16px;font-size:13.5px;line-height:1.7;color:#5c6472">'+g[2]+'</div>'+items+'</div>';
+ var B=(typeof AITXT!=='undefined'&&AITXT['tc_basic'])?AITXT['tc_basic']:[];
+ var free=1; try{ _aiT=1;_aiG=0;_aiS=0; free=aiFreeN(); }catch(e){}
+ var master=false; try{ master=sgaIsMaster(); }catch(e){}
+ var lists=TB40G.map(function(g){
+  var items='';
+  for(var n=g[1];n<=g[2];n++){
+   var L=B[n-1]; if(!L) continue;
+   var open=(n===1||n===free||master);
+   items+='<div class="tb-li" style="cursor:pointer" onclick="tb40Open('+n+')">'
+     +'<u>'+n+'강</u><s>'+L.t+'</s>'
+     +(open?'<em>'+(n===1?'무료':(master?'열림':'오늘 무료'))+'</em>':'<em style="color:#a9b0bd">🔒</em>')+'</div>';
+  }
+  return '<div class="tb-l"><div class="tb-lh"><span>'+g[0]+'</span><i>'+g[1]+'~'+g[2]+'강</i></div>'
+   +'<div style="padding:14px 16px;font-size:15px;line-height:1.75;color:#3f4757;font-weight:600">'+g[3]+'</div>'+items+'</div>';
  }).join('');
+ var nQ=0; B.forEach(function(L){ nQ+=((L.q&&L.q.length)||0)+((L.key&&L.key.length)||0); });
  return '<div class="tb-hero"><em>SGA TOEIC · BASIC GRAMMAR 40</em>'
   +'<h2>토익은 문법을 아는 시험이<br>아니라 <span style="color:#F0C05A">자리를 아는 시험</span>입니다</h2>'
   +'<p>해석해서 푸는 사람은 한 문제에 40초를 씁니다. 자리를 보는 사람은 8초를 씁니다.<br>이 40강은 그 8초를 만드는 훈련만 합니다.</p>'
-  +'<div class="tb-stat"><div><b>40강</b><span>전 과정</span></div><div><b>10분</b><span>한 강 분량</span></div>'
-  +'<div><b>216문항</b><span>ETS 형식 문제</span></div><div><b>1강</b><span>무료 체험</span></div></div></div>'
+  +'<div class="tb-stat"><div><b>'+B.length+'강</b><span>RC 전 과정</span></div><div><b>10분</b><span>한 강 분량</span></div>'
+  +'<div><b>+20강</b><span>LC 듣기 별도</span></div><div><b>1강</b><span>무료 체험</span></div></div></div>'
  +'<div class="tb-g">'
-  +'<div class="tb-k"><b>왜 자리부터입니까</b><span>Part 5·6은 어형 문제가 절반입니다. 뜻을 몰라도 빈칸 앞뒤 구조만 보면 답이 나옵니다. 이 책은 40강 내내 그 하나만 훈련합니다.</span></div>'
-  +'<div class="tb-k"><b>하루 한 강, 10분</b><span>출근 전이나 점심시간에 한 강이 끝나는 분량입니다. 산글이가 하루에 한 강씩만 열어 드립니다.</span></div>'
+  +'<div class="tb-k"><b>왜 자리부터입니까</b><span>Part 5·6은 어형 문제가 절반입니다. 뜻을 몰라도 빈칸 앞뒤 구조만 보면 답이 나옵니다. 이 40강은 그 하나만 훈련합니다.</span></div>'
+  +'<div class="tb-k"><b>하루 한 강, 10분</b><span>출근 전이나 점심시간에 한 강이 끝나는 분량입니다. 산글이가 하루에 한 강씩 열어 드립니다.</span></div>'
   +'<div class="tb-k"><b>틀린 자리를 기억합니다</b><span>오답이 쌓이면 계속 틀리는 유형만 다시 뽑아 복습 문제를 만들어 드립니다.</span></div>'
   +'<div class="tb-k"><b>혼자 하다 막히면</b><span>산본으로 오시면 됩니다. 같은 커리큘럼을 현장 강의로 이어서 들으실 수 있습니다.</span></div>'
  +'</div>'
  +'<div class="op-h">40강 전체 목차</div>'
- +'<div class="op-hs">1강과 매일 바뀌는 오늘의 무료 강은 그냥 열립니다. 나머지는 아래 이용권으로 열립니다.</div>'
+ +'<div class="op-hs">강 제목을 누르시면 <b>AI 학습관에서 바로 그 강이 열립니다.</b> 1강과 매일 바뀌는 오늘의 무료 강은 그냥 열립니다.</div>'
  +lists
  +'<div class="op-h">어떻게 여십니까</div>'
  +CT(['방법','내용','금액'],[
    ['현강 수강생','정규반·스파르타반 수강 중이면 <b>전 강 무료</b>','0원'],
-   ['산글 무한수강권','재수강 무제한 + 이 40강 전 과정','740,000원'],
-   ['AI 산글 단독','이 40강만 여는 이용권 <span style="color:#8a90a0">(정가 120,000원)</span>','오픈 30,000원']])
+   ['산글 무한수강권','재수강 무제한 + 이 40강 + LC 20강','740,000원'],
+   ['AI 산글 단독','40강만 여는 이용권 <span style="color:#8a90a0">(정가 120,000원)</span>','오픈 30,000원']])
  +'<div class="pgnote">※ 이 교재의 지문·문항·해설은 전부 산본글로벌어학원이 새로 집필했습니다. 시중 교재의 문장을 옮기지 않았습니다.</div>'
- +'<div class="one-cta" style="cursor:pointer" onclick="openPage(\'AI산글\')">1강 무료로 들어보기 ›</div>'
+ +'<div class="one-cta" style="cursor:pointer" onclick="tb40Open(1)">1강 무료로 들어보기 ›</div>'
  +SGCTA('한 강만 들어 보시고 결정하셔도 됩니다. 1강은 언제나 무료입니다.');}
+
 
 /* ===== 유튜브 연동 (2026-09-05 대표님 지시) =====
    채널 UCq-ZKysRamLPT14Xc80cexA 의 '업로드' 재생목록(UU...)을 그대로 박아 둡니다.
@@ -10116,6 +10131,54 @@ function ytPage(){
    ['회화 한 문장','오늘의 한 문장 — 영어·일본어·중국어'],
    ['학원 이야기','강사 소개, 강의실 풍경, 수강생 후기']]))
  +SGCTA('영상으로 먼저 보시고, 맞으면 산본으로 오시면 됩니다.');}
+
+/* ===== 중도입학 — 배움의 시작이 어디 있습니까 (2026-09-05 대표님 지시) =====
+   광고판 「자세히 보기」가 여기로 옵니다. 세 장(段) 구성 + 마지막에 구지영 원장. */
+function midTermPage(){
+ return _pgHero('img/hall_03.jpg','MID-TERM · 중도입학','배움의 시작이<br>어디 있습니까',
+  '"학원은 꼭 월초에 들어가야 하나요?" — 상담에서 제일 많이 듣는 질문입니다.<br>저희 대답은 늘 같습니다. <b>아니요.</b>',
+  'linear-gradient(135deg,#2A2520,#7A5628)')
+
+ /* ── 1장 ── */
+ +'<div class="op-h">등록하신 그날이 1일차입니다</div>'
+ +'<div class="lead">달력의 1일이 아니라, <b>마음먹은 날</b>이 시작입니다. 저희는 반의 진도가 3주차든 5주차든 상관하지 않습니다. '
+  +'들어오신 분은 <b>1과부터 끝까지</b> 전 과정을 이수하고 나가십니다. 중간에 들어왔다고 중간부터 배우는 일은 저희 학원에 없습니다.</div>'
+ +'<div class="tb-g">'
+  +'<div class="tb-k"><b>빠진 진도는 보충으로</b><span>이미 지나간 회차는 데스크에서 보충 일정을 잡아 드립니다. 강사가 따로 시간을 내서 채웁니다.</span></div>'
+  +'<div class="tb-k"><b>못 들은 회차는 다음 사이클에</b><span>그래도 남는 부분은 같은 반이 한 바퀴 더 돌 때 다시 들으시면 됩니다. 추가 비용 없습니다.</span></div>'
+  +'<div class="tb-k"><b>AI 산글이 그 사이를 메웁니다</b><span>보충 날짜를 기다리는 동안 학습관에서 해당 과를 먼저 보실 수 있습니다. 진도가 끊기지 않습니다.</span></div>'
+  +'<div class="tb-k"><b>수강료는 날짜로 계산합니다</b><span>남은 회차만큼만 내십니다. 늦게 들어왔다고 한 달치를 다 받지 않습니다.</span></div>'
+ +'</div>'
+
+ /* ── 2장 ── */
+ +_pgBand('img/hall_04.jpg','왜 이렇게까지 합니까',
+  '<p class="oh-p">중도입학을 막는 학원이 많습니다. 관리가 번거롭기 때문입니다. '
+  +'그런데 저희가 만나 본 분들은 대부분 <b>"지금 시작하지 않으면 또 미룰 것 같아서"</b> 오신 분들이었습니다. '
+  +'그분들께 "다음 달 1일에 오세요"라고 말하는 순간, 열에 일곱은 다시 오지 않습니다.</p>'
+  +'<ul class="oh-ck">'
+   +'<li><b>배우겠다고 마음먹은 날</b>이 가장 확률이 높은 날입니다</li>'
+   +'<li>그 날짜를 미루게 하는 건 <b>학원 사정이지 학생 사정이 아닙니다</b></li>'
+   +'<li>번거로운 관리는 <b>저희가 하면 되는 일</b>입니다</li>'
+  +'</ul>')
+ +'<div class="op-h">들어오시는 날, 이렇게 진행됩니다</div>'
+ +CT(['순서','하는 일','걸리는 시간'],[
+   ['① 상담','목표와 일정, 지금 수준을 확인합니다','15분'],
+   ['② 레벨 확인','간단한 진단으로 반을 정합니다. 원하시면 실제 수업을 <b>1회 청강</b>하셔도 됩니다','20분 또는 수업 1회'],
+   ['③ 보충 일정','이미 지나간 회차를 언제 채울지 그 자리에서 잡습니다','5분'],
+   ['④ 학습관 열기','AI 산글에서 앞 진도를 먼저 보실 수 있게 열어 드립니다','바로'],
+   ['⑤ 첫 수업','그날 저녁 수업부터 바로 들어가셔도 됩니다','—']])
+
+ /* ── 3장 ── */
+ +'<div class="op-h">자주 듣는 질문</div>'
+ +CT(['질문','답'],[
+   ['반이 벌써 절반 지났는데 따라갈 수 있나요?','따라가시는 게 아니라, <b>1과부터</b> 하십니다. 지나간 부분은 보충과 다음 사이클로 채웁니다.'],
+   ['수강료를 한 달치 다 내야 하나요?','아니요. <b>남은 회차만큼</b>만 계산합니다.'],
+   ['보충은 정말 해 주나요?','데스크에서 일정을 잡아 드립니다. 잡히지 않으면 원장에게 바로 말씀해 주십시오.'],
+   ['수준이 안 맞으면 어떻게 하나요?','<b>개강 후 2주 안에는 반을 바꾸실 수 있습니다.</b> 차액은 정산해 드립니다.'],
+   ['일단 한 번 보고 결정하고 싶습니다','<b>실제 수업 1회 무료 청강</b>이 됩니다. 데스크에 말씀만 해 주세요.']])
+ +'<div class="pgnote">📞 지금이 애매한 시기인지 아닌지, 전화 한 통이면 확인됩니다. <b>031-466-6969</b></div>'
+ +'<div class="one-cta" style="cursor:pointer" onclick="rsvOpen()">무료 상담 · 1회 청강 신청하기 ›</div>'
+ +SGCTA('오늘 등록하셔도 1과부터 시작하십니다. 늦은 날은 없습니다.');}
 
 /* ===== 오시는 길 ===== */
 function mapPage(){return _pgHero('img/hall_01.jpg','LOCATION · 오시는 길','산본역 3번 출구<br>도보 1분',
