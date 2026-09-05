@@ -1741,6 +1741,8 @@ li:first-child > .pgh{margin-top:2px}
 .at-face.talk{box-shadow:0 0 0 6px rgba(198,161,91,.28),0 12px 32px -12px rgba(29,45,79,.55);animation:atBob 1.4s ease-in-out}
 /* 2026-09-04 산글이를 전신 캐릭터 이미지로 교체 — 강사 사진은 cover 그대로, 산글이만 contain */
 .at-face img[src*='whale']{object-fit:contain;padding:7px;box-sizing:border-box}
+/* 2026-09-05 — 얼굴 클로즈업 이미지는 원을 꽉 채웁니다 */
+.at-face img[src*='whale_face']{object-fit:cover!important;padding:0!important}
 
 @keyframes atBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 @media(prefers-reduced-motion:reduce){.at-face.talk{animation:none}}
@@ -1801,12 +1803,13 @@ li:first-child > .pgh{margin-top:2px}
  box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--gold)}
 .at-face img{width:100%;height:100%;object-fit:cover;display:block}
 .at-face.idle img{animation:atFloat 3.4s ease-in-out infinite}
-.at-face.talking img{animation:atTalk .5s ease-in-out infinite}
+.at-face.talking img{animation:atTalk .34s ease-in-out infinite;transform-origin:50% 78%}
+.at-face.talking{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--gold),0 0 0 11px rgba(198,161,91,.22)}
 .at-face.listening{box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--navy)}
 .at-face.listening img{transform:rotate(-5deg)}
 .at-face.celebrate img{animation:atJump .6s ease-out 2}
 @keyframes atFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
-@keyframes atTalk{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+@keyframes atTalk{0%,100%{transform:scale(1,1) translateY(0)}25%{transform:scale(1.02,.965) translateY(1.5px)}50%{transform:scale(1.045,1.04) translateY(-1px)}75%{transform:scale(1.015,.975) translateY(1px)}}
 @keyframes atJump{0%{transform:translateY(0)}35%{transform:translateY(-11px)}100%{transform:translateY(0)}}
 .at-log{max-height:46vh;overflow-y:auto;padding:2px 2px 4px;cursor:pointer;-webkit-overflow-scrolling:touch}
 .at-log::-webkit-scrollbar{width:4px}.at-log::-webkit-scrollbar-thumb{background:var(--line2);border-radius:9px}
@@ -3876,7 +3879,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v107)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v108)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -9281,7 +9284,7 @@ function _aiScript(L,n,T){
  return S;
 }
 var _at={i:0,S:[],T:null,n:1,auto:true};
-var _atT=null, _atTypeT=null, _atCfg={auto:1,speed:1,sound:1};
+var _atT=null, _atTypeT=null, _atTalkT=null, _atCfg={auto:1,speed:1,sound:1};
 try{var _c=localStorage.getItem('sga_at_cfg'); if(_c)_atCfg=JSON.parse(_c);}catch(e){}
 function _atSave(){try{localStorage.setItem('sga_at_cfg',JSON.stringify(_atCfg));}catch(e){}}
 function _atStop(){if(_atT){clearTimeout(_atT);_atT=null;}if(_atTypeT){clearInterval(_atTypeT);_atTypeT=null;}}
@@ -9293,7 +9296,7 @@ function _atMood(m){var f=document.getElementById('atFace'); if(!f)return;
  /* 2026-09-04 — 칭찬할 때는 웃는 산글이로 바뀝니다 (강사 사진일 때는 건드리지 않습니다) */
  try{var im=document.getElementById('atFaceImg');
   if(im&&im.getAttribute('data-w')==='1'){
-   var want=(m==='celebrate')?'img/whale_smile.png':'img/whale.png';
+   var want='img/whale_face.png';
    if(im.getAttribute('src')!==want)im.src=want;
   }}catch(e){}}
 
@@ -9310,7 +9313,7 @@ function aiTeach(n){
   +'<div class="sp-x" onclick="aiLsClose()">✕</div>'
   /* ── 시작 화면 : 이 버튼 한 번이 소리 잠금까지 풀어 줍니다 ── */
   +'<div class="at-start" id="atStart">'
-   +'<div class="at-face idle" id="atFace0"><img src="img/whale_smile.png" alt="산글이"></div>'
+   +'<div class="at-face idle" id="atFace0"><img src="img/whale_face.png" alt="산글이"></div>'
    +'<h3>산글이가 진행하는<br><b>'+n+'과 · '+L.t+'</b></h3>'
    +'<p>제가 한 마디씩 말씀드립니다. 화면 아무 곳이나 누르시면 넘어갑니다.</p>'
    +'<button class="at-start-b" onclick="atBegin()">산글이랑 시작하기 ›</button>'
@@ -9319,7 +9322,7 @@ function aiTeach(n){
   +'</div>'
   /* ── 진행 화면 ── */
   +'<div class="at-run" id="atRun" hidden>'
-   +'<div class="at-hd"><div class="at-face idle" id="atFace"><img id="atFaceImg" src="img/whale.png" alt="산글이"></div>'
+   +'<div class="at-hd"><div class="at-face idle" id="atFace"><img id="atFaceImg" src="img/whale_face.png" alt="산글이"></div>'
     +'<div class="at-nm" id="atNm">산글이<span>AI 진행</span></div>'
     +'<div class="at-pb"><i id="atPb"></i></div></div>'
    +'<div class="at-log" id="atLog" onclick="atTap(event)"></div>'
@@ -9366,7 +9369,7 @@ function atGo(){
  /* 말하는 사람이 바뀌면 이름표도 바뀝니다 */
  var im=document.getElementById('atFaceImg'), nm=document.getElementById('atNm'), T=_at.T;
  if(im&&nm){
-  if(s.who==='ai'){ if(im.getAttribute('data-w')!=='1'){im.src='img/whale.png';im.setAttribute('data-w','1');}
+  if(s.who==='ai'){ if(im.getAttribute('data-w')!=='1'){im.src='img/whale_face.png';im.setAttribute('data-w','1');}
    nm.innerHTML='산글이<span>AI 진행</span>'; }
   else { if(im.getAttribute('data-w')!=='0'){im.onerror=function(){this.src='img/whale.png';};
     im.src='img/teachers/'+T.img+'.png';im.setAttribute('data-w','0');}
@@ -9394,7 +9397,13 @@ function _atRender(){
  var b=pd.b, s=pd.s, log=pd.log;
  b.innerHTML=(s.who==='a'?'<span class="at-sp">A</span>':(s.who==='b'?'<span class="at-sp">B</span>':''))+s.t;
  log.scrollTop=log.scrollHeight;
- if(s.say&&_atCfg.sound)try{lsSay(s.say);}catch(e){}
+ if(s.say&&_atCfg.sound){try{lsSay(s.say);}catch(e){}
+  /* 말하는 동안 입이 계속 움직이게 — 글자 수로 길이를 잡습니다 */
+  _atMood('talking');
+  if(_atTalkT)clearTimeout(_atTalkT);
+  _atTalkT=setTimeout(function(){ if(_at&&!_at.paused)_atMood('idle'); },
+    Math.min(9000,Math.max(1200,String(s.say).replace(/<[^>]+>/g,'').length*95))/(_atCfg.speed||1));
+ }
  if(s.ask){ atAsk(s); return; }           /* 판단이 필요한 곳 — 여기서 멈춥니다 */
  if(s.last){ atEndTeach(); return; }
  _atMood('idle');
