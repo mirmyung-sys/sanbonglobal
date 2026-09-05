@@ -3553,7 +3553,9 @@ html,body{overflow-x:hidden;max-width:100%}
 @keyframes atMicPulse{0%,100%{box-shadow:0 10px 26px rgba(14,158,90,.35)}50%{box-shadow:0 10px 26px rgba(14,158,90,.35),0 0 0 14px rgba(14,158,90,.12)}}
 @media(prefers-reduced-motion:reduce){.at-micb.rec{animation:none}}
 .at-heard{text-align:center;font-size:16px;font-weight:800;color:#3f4757;min-height:24px;line-height:1.6}
-.at-skip{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:13px;
+.at-mic .at-hint{display:block;margin-top:7px;font-size:13px;color:#8a93a3;text-decoration:none;font-weight:600}
+.at-mic.free .at-micb i u{background:#fff3c4;border-bottom:2px solid #e0a800;padding:0 6px;border-radius:3px}
+.at-skip{border:1.5px solid var(--line);background:#f4f6f9;color:#5c6472;font-weight:700;border-radius:12px;padding:13px;
  font-size:15px;font-weight:800;color:#5c6472;cursor:pointer;font-family:inherit}
 .at-micwhy{background:#fff7ef;border:1px solid #f0e2cf;border-radius:10px;padding:11px 13px;
  font-size:14px;color:#7a6320;line-height:1.65;margin-bottom:10px}
@@ -3923,7 +3925,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v112)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v113)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -9357,6 +9359,33 @@ function _atLcs(a,b){
  }
  return best;
 }
+/* 틀만 보여 주기 — 사람마다 달라지는 마지막 부분을 밑줄로 바꿉니다 */
+function _atBlank(ans){
+ if(!ans) return '';
+ var t=String(ans), B='<u>____</u>';
+ /* 영어처럼 띄어쓰기가 있으면 첫 문장의 마지막 낱말을 밑줄로 */
+ if(/[A-Za-z].*[ ].*[A-Za-z]/.test(t)){
+  var m=t.match(/^([\s\S]*?[.!?])([\s\S]*)$/);
+  var head=m?m[1]:t, tail=m?m[2]:'';
+  /* 마지막 낱말이 '사람마다 다른 자리'일 때만 뚫습니다 —
+     문장 첫 낱말이 아닌 대문자로 시작하는 말(이름·지명)이나 숫자. thank you 같은 굳은 표현은 그대로 둡니다 */
+  var r=head.replace(/(?!^)\b([A-Z][A-Za-z''’\-]*|[0-9][0-9A-Za-z\-]*)([^A-Za-z0-9]*)$/, B+'$2');
+  return (r===head? t : r+tail);
+ }
+ /* 일본어·중국어는 아는 틀만 정확히 뚫습니다. 모르면 그대로 둡니다 */
+ var PAT=[
+  [/私は(.+?)です/, '私は'+B+'です'],
+  [/わたしは(.+?)です/, 'わたしは'+B+'です'],
+  [/(.+?)から来ました/, B+'から来ました'],
+  [/(.+?)から来(き)ました/, B+'から来ました'],
+  [/我叫(.+?)([。！？]|$)/, '我叫'+B+'$2'],
+  [/我是(.+?)人/, '我是'+B+'人'],
+  [/我是(.+?)([。！？]|$)/, '我是'+B+'$2'],
+  [/我来自(.+?)([。！？]|$)/, '我来自'+B+'$2']
+ ];
+ for(var i=0;i<PAT.length;i++){ if(PAT[i][0].test(t)) return t.replace(PAT[i][0],PAT[i][1]); }
+ return t;
+}
 function _atFreeScore(said,ans){
  var a=_atNorm(said); if(!a) return 0;
  var aw=a.split(' ').filter(Boolean);
@@ -9390,10 +9419,13 @@ function atMicAsk(s){
  var a=document.getElementById('atAsk'); if(!a)return;
  var SR=_SR();
  if(!SR){ _atCfg.mic=0; _atSave(); atMicLbl(); atMicFallback(s,'이 브라우저는 말하기가 안 되어 고르기로 진행합니다'); return; }
- a.innerHTML='<div class="at-mic">'
+ var _fr = s.free;
+ a.innerHTML='<div class="at-mic'+(_fr?' free':'')+'">'
   +'<button class="at-micb" id="atMicB" onclick="atMicGo()"><span class="ic">🎤</span>'
-   +'<b>눌러서 말하기</b><i>'+(s.answer||'')+'</i></button>'
-  +'<div class="at-heard" id="atHeard">버튼을 누르고 위 문장을 말씀해 보세요</div>'
+   +'<b>'+(_fr?'눌러서 <u>대표님 이야기</u> 말하기':'눌러서 말하기')+'</b>'
+   +'<i>'+(_fr? _atBlank(s.answer) : (s.answer||''))+'</i>'
+   +(_fr?'<u class="at-hint">밑줄 자리에 대표님 이야기를 넣으시면 됩니다</u>':'')+'</button>'
+  +'<div class="at-heard" id="atHeard">'+(_fr?'외우지 마시고, 사실대로 말씀하시면 됩니다':'버튼을 누르고 위 문장을 말씀해 보세요')+'</div>'
   +'<button class="at-skip" onclick="_atCfg.mic=0;_atSave();atMicLbl();atMicFallback(_at.S[_at.i],\'\')">말고 고를래요</button>'
  +'</div>';
  a.classList.add('on');
