@@ -3707,7 +3707,7 @@ html,body{overflow-x:hidden;max-width:100%}
 <!-- Header -->
 <header>
   <div class="wrap htop">
-  <a class="logo" href="#" onclick="closePage();window.scrollTo(0,0);return false;">
+  <a class="logo" href="/" title="처음 화면으로 (새로고침)" onclick="try{sessionStorage.setItem('sgIntro','1');}catch(e){} location.href=location.pathname+'?r='+Date.now(); return false;">
     <img src="img/sga_emblem.png" alt="산본글로벌아카데미" class="lg-em">
     <span class="lg-wm"><b>SGA</b><em>산본글로벌어학원</em><i>SANBON GLOBAL ACADEMY</i></span>
   </a>
@@ -7662,17 +7662,21 @@ var AIB=[
  ]},
  {k:'시험대비반',en:'TEST PREP',subs:[
   {k:'토익',en:'TOEIC',steps:[
-     {s:'RC 독해·문법',en:'READING · PART 5-7',no:'01',img:'tc_basic',u:40,ev:true,price:120000,off:30000,
+     {s:'문법',en:'GRAMMAR · PART 5-6',no:'01',img:'tc_basic',u:40,ev:true,price:120000,off:30000,
       lv:'RC 495점',
       toc:['Part 5 · 품사 자리 — 해석 없이 10초','Part 5 · 시제 — 시간 부사가 답을 정합니다','Part 5 · 수 일치 — 주어만 찾으면 끝','Part 5 · 능동태 vs 수동태','Part 5 · 대명사 — 격만 보면 됩니다','Part 5 · 전치사 by·until·within·during','Part 5 · 접속사 vs 전치사 (because vs because of)','Part 5 · 관계대명사 who·which·whose','Part 5 · to부정사와 동명사','Part 5 · 비교급·최상급','Part 5 · 가정법 — should 도치까지','Part 5 · 부사 어휘 — 자리별 단골','Part 5 · 동사 어휘 콜로케이션','Part 5 · 명사 어휘 콜로케이션','Part 5 · 형용사 어휘 콜로케이션','Part 5 · 헷갈리는 짝 (rise/raise·lend/borrow)','Part 6 · 문맥 시제 고르기','Part 6 · 접속부사 (however·therefore)','Part 6 · 어휘 — 앞뒤 문장이 답','Part 6 · 문장 넣기 — 대명사·연결어 단서','Part 7 · 문제 먼저, 지문은 나중에','Part 7 · 주제·목적 — 첫 두 줄','Part 7 · 세부사항 — 키워드 스캔','Part 7 · 패러프레이징 사전 1','Part 7 · 패러프레이징 사전 2','Part 7 · NOT 문제 — 소거법','Part 7 · 추론 — 근거 없는 상상 금지','Part 7 · 동의어 문제','Part 7 · 화자 의도 문제','Part 7 · 문장 삽입 위치','Part 7 · 이메일·공지 유형','Part 7 · 기사·광고 유형','Part 7 · 문자 대화·채팅 유형','Part 7 · 이중 지문 — 연계 문제','Part 7 · 삼중 지문 — 표와 본문 연결','실전 세트 1 — Part 5 15문항','실전 세트 2 — Part 6 한 지문','실전 세트 3 — Part 7 단일 지문','실전 세트 4 — Part 7 이중 지문','파이널 — 시험 전날 체크리스트'],
       d:'Part 5·6·7을 시험 순서 그대로. 문법 20과 + 어휘·독해 20과, <b>해석하지 않고 푸는 법</b>부터 잡습니다.',
       li:['실제 시험 형식 (A)(B)(C)(D) 그대로','문항마다 함정까지 해설','틀린 유형만 다시 뽑아 줍니다','학원 수강생은 무료']},
-     {s:'LC 듣기',en:'LISTENING · PART 1-4',no:'02',img:'tc_lc',u:20,ev:true,price:120000,off:30000,
+     {s:'초급',en:'BASIC · LC PART 1-4',no:'02',img:'tc_lc',u:20,ev:true,price:120000,off:30000,
       lv:'LC 495점',
       toc:['Part 1 — 사람 사진은 is ~ing','Part 1 — 사물 사진은 has been p.p.','Part 1 — 유사 발음·연상 함정','Part 2 — 첫 단어가 반','Part 2 — Where·When·Who','Part 2 — What·Which·How','Part 2 — Why','Part 2 — Yes/No 의문문과 대체 표현','Part 2 — 제안·부탁','Part 2 — 선택 의문문','Part 2 — 평서문과 부가의문문','Part 2 — 간접 응답·되묻기','Part 3 — 문제 먼저 읽기','Part 3 — 주제·장소·직업','Part 3 — 세부사항·요청','Part 3 — 패러프레이징','Part 3 — 의도 파악','Part 4 — 담화 종류별 첫 문장','Part 4 — 숫자·시간·순서','Part 4 — 시각 자료 연계'],
       d:'원어민 음성으로 듣고 바로 풉니다. Part 2 의문사 훈련부터 Part 3·4 패러프레이징까지 — <b>0.75배속으로 늦춰 듣고, 1.2배속으로 귀를 키웁니다.</b>',
       li:['모든 문제 원어민 음성 재생','0.75 · 1.2배속 훈련','유사 발음 함정 집중 훈련','학원 수강생은 무료']},
-     {s:'실전 모의',en:'MOCK TEST',no:'03',img:'tc_real',u:12,price:49000,off:24500,soon:true,
+     {s:'중급',en:'MIDDLE · RC PART 7',no:'03',img:'tc_mid',u:20,price:49000,off:24500,soon:true,
+      lv:'RC 독해 700~800',
+      d:'Part 7 독해. 지문을 다 읽지 않고 바꿔 쓴 표현만 찾는 훈련입니다. 준비 중입니다.',
+      li:['하루 한 과 · 3분이면 끝','문항마다 왜 틀렸는지 설명','틀린 유형만 다시 뽑아 줍니다','학원 수강생은 무료']},
+     {s:'실전',en:'MOCK TEST',no:'04',img:'tc_real',u:12,price:49000,off:24500,soon:true,
       lv:'토익 대비',
       d:'LC+RC 하프 모의고사. 준비 중입니다.',
       li:['하루 한 과 · 3분이면 끝','문항마다 왜 틀렸는지 설명','틀린 유형만 다시 뽑아 줍니다','학원 수강생은 무료']}
@@ -8439,15 +8443,15 @@ function aiBookHTML(){
  /* 2026-09-03 대표님 지시: 샘플(무료 맛보기)이 제일 잘 보이게 위로, 전자책 신청은 맨 밑으로 */
  var sample=AITXT[B.img]
   ? (FREE
-     ? ('<button class="ai-sample-btn" onclick="aiLesson(1)">▶ 1과부터 바로 시작하기 <small>— 회원가입 없이, 전 과 무료</small></button>'
-        +'<div class="ai-free-line free"><b>이 과정은 전부 무료입니다.</b> 맛보기가 아니라 <b>전 과 그대로</b> 열려 있습니다. 결제도, 회원가입도 없습니다.</div>')
+     ? ('<button class="ai-sample-btn" onclick="aiLesson(1)">▶ 1과부터 바로 시작하기 <small>— 회원가입하시면 전 과 무료</small></button>'
+        +'<div class="ai-free-line free"><b>회원이 되시면 전 과 무료입니다.</b> 1과는 그냥 보시고, <b>2과부터는 회원가입만</b> 하시면 끝까지 열립니다. 결제창은 없습니다.</div>')
      : ('<button class="ai-sample-btn" onclick="aiLesson(1)">🎁 1과 무료 맛보기 열어보기 <small>— 회원가입 없이 바로</small></button>'
         +'<div class="ai-free-line">누구나 <b>1과는 무료</b>'+(B.toc&&B.toc.length?(', 그리고 <b>매일 한 과가 무료</b>로 열립니다 — 오늘은 <b>'+fN+'과</b>'):'')+'. 한 과 3분이면 이 책이 어떤 책인지 아시게 됩니다.</div>'))
   : '';
  var price=(FREE
-    ? ('<div class="ai-pr free"><div class="ai-pr-r hi"><span>수강료</span><b>0원 <em>전 과 무료</em></b></div></div>'
+    ? ('<div class="ai-pr free"><div class="ai-pr-r hi"><span>수강료</span><b>0원 <em>회원 전 과 무료</em></b></div></div>'
        +'<button class="ai-buy free" onclick="aiLesson(1)">지금 1과 열기</button>'
-       +'<p class="ai-n">※ 이 과정은 <b>누구에게나 끝까지 무료</b>입니다. 결제창이 없습니다.<br>'
+       +'<p class="ai-n">※ <b>회원가입만 하시면 끝까지 무료</b>입니다. 결제창이 없습니다.<br>'
        +'※ 산본글로벌어학원이 <b>사람이 하는 것</b>만 유료로 받습니다 — 강사가 직접 보는 발음 첨삭, 원장 상담, 교실 수업.<br>'
        +'※ 무료라서 대충 만든 것이 아니라, <b>대충 만들면 사람이 안 옵니다.</b> 그래서 여기에 가장 공을 들였습니다.</p>')
     : (B.soon
@@ -11779,7 +11783,26 @@ var SGVOX={
  'tc_basic|1|key|0':'tc1_01','tc_basic|1|key|1':'tc1_02','tc_basic|1|key|2':'tc1_03',
  'tc_basic|1|key|3':'tc1_04','tc_basic|1|key|4':'tc1_05','tc_basic|1|key|5':'tc1_06',
  'tc_basic|1|dlg|1':'tc1_07','tc_basic|1|dlg|3':'tc1_08','tc_basic|1|dlg|5':'tc1_09',
- 'tc_basic|1|q|0':'tc1_10','tc_basic|1|q|1':'tc1_11','tc_basic|1|q|2':'tc1_12','tc_basic|1|q|3':'tc1_13'
+ 'tc_basic|1|q|0':'tc1_10','tc_basic|1|q|1':'tc1_11','tc_basic|1|q|2':'tc1_12','tc_basic|1|q|3':'tc1_13',
+ 'tc_basic|2|intro':'tc2_00','tc_basic|2|dlg|1':'tc2_01','tc_basic|2|dlg|3':'tc2_02',
+ 'tc_basic|2|dlg|5':'tc2_03','tc_basic|2|q|0':'tc2_04','tc_basic|2|q|1':'tc2_05',
+ 'tc_basic|2|q|2':'tc2_06','tc_basic|2|q|3':'tc2_07','tc_basic|3|intro':'tc3_00',
+ 'tc_basic|3|dlg|1':'tc3_01','tc_basic|3|dlg|3':'tc3_02','tc_basic|3|dlg|5':'tc3_03',
+ 'tc_basic|3|q|0':'tc3_04','tc_basic|3|q|1':'tc3_05','tc_basic|3|q|2':'tc3_06',
+ 'tc_basic|3|q|3':'tc3_07','tc_basic|4|intro':'tc4_00','tc_basic|4|dlg|1':'tc4_01',
+ 'tc_basic|4|dlg|3':'tc4_02','tc_basic|4|dlg|5':'tc4_03','tc_basic|4|q|0':'tc4_04',
+ 'tc_basic|4|q|1':'tc4_05','tc_basic|4|q|2':'tc4_06','tc_basic|4|q|3':'tc4_07',
+ 'tc_basic|5|intro':'tc5_00','tc_basic|5|dlg|1':'tc5_01','tc_basic|5|dlg|3':'tc5_02',
+ 'tc_basic|5|dlg|5':'tc5_03','tc_basic|5|q|0':'tc5_04','tc_basic|5|q|1':'tc5_05',
+ 'tc_basic|5|q|2':'tc5_06','tc_basic|5|q|3':'tc5_07','tc_basic|6|intro':'tc6_00',
+ 'tc_basic|6|dlg|1':'tc6_01','tc_basic|6|dlg|3':'tc6_02','tc_basic|6|dlg|5':'tc6_03',
+ 'tc_basic|6|q|0':'tc6_04','tc_basic|6|q|1':'tc6_05','tc_basic|6|q|2':'tc6_06',
+ 'tc_basic|6|q|3':'tc6_07','tc_basic|7|intro':'tc7_00','tc_basic|7|dlg|1':'tc7_01',
+ 'tc_basic|7|dlg|3':'tc7_02','tc_basic|7|dlg|5':'tc7_03','tc_basic|7|q|0':'tc7_04',
+ 'tc_basic|7|q|1':'tc7_05','tc_basic|7|q|2':'tc7_06','tc_basic|7|q|3':'tc7_07',
+ 'tc_basic|8|intro':'tc8_00','tc_basic|8|dlg|1':'tc8_01','tc_basic|8|dlg|3':'tc8_02',
+ 'tc_basic|8|dlg|5':'tc8_03','tc_basic|8|q|0':'tc8_04','tc_basic|8|q|1':'tc8_05',
+ 'tc_basic|8|q|2':'tc8_06','tc_basic|8|q|3':'tc8_07'
 };
 function sgVox(zone,idx){
  try{ return SGVOX[aiTxtKey()+'|'+_lsCur()+'|'+zone+(idx===undefined?'':'|'+idx)]||''; }catch(e){ return ''; }
@@ -12015,13 +12038,32 @@ function aiHasTxt(n){var a=AITXT[aiTxtKey()];return !!(a&&a[n-1]);}
    유료 : 나머지 시험대비반(LC·실전모의·토스·오픽·토플·JLPT·HSK) — 인강 매출
    회화는 미끼가 아니라 완제품으로 전부 열어 드립니다. */
 function aiIsFreeBook(k){
+ /* 2026-09-06 대표님 지시 — 무료는 「토익 문법 40강」과 회화반뿐이고,
+    그마저도 회원(로그인)에게만 엽니다. 비회원은 1과 맛보기까지만. */
  k=k||''; return /^(eng|jpn|chn)_/.test(k) || k==='tc_basic';
 }
-function aiFreeNow(){ try{ return aiIsFreeBook(aiTxtKey()); }catch(e){ return false; } }
+function sgaIsMember(){ try{ return !!(sgaUser()&&sgaUser().token); }catch(e){ return false; } }
+function aiFreeNow(){ try{ return aiIsFreeBook(aiTxtKey()) && (sgaIsMember()||sgaIsMaster()); }catch(e){ return false; } }
 function aiFreeN(){var a=AITXT[aiTxtKey()];if(!a||a.length<2)return 1;
  var d=Math.floor((Date.now()+9*3600*1000)/86400000);return 2+(d%(a.length-1));}
 function aiLockShow(n){
  var T=AIB[_aiT],G=(T.subs&&T.subs[_aiG])||T,B=G.steps[_aiS];
+ /* 2026-09-06 대표님 지시 — 무료 과정은 회원에게만 엽니다.
+    비회원이 2과 이상을 누르면 결제가 아니라 「회원가입」으로 안내합니다. */
+ if(aiIsFreeBook(aiTxtKey()) && !sgaIsMember() && !sgaIsMaster()){
+  var m0=document.createElement('div'); m0.className='sp-modal on'; m0.id='lsModal';
+  m0.innerHTML='<div class="sp-sheet ls-sheet ai-lock"><div class="sp-x" onclick="aiLsClose()">&#10005;</div>'
+   +'<div class="ls-book">AI 학습관 · '+G.k+' '+B.s+'</div>'
+   +'<div class="lk-ic">&#128100;</div><h3 class="lk-t">회원이 되시면 '+B.u+'강 전부 무료입니다</h3>'
+   +'<p class="lk-d">1과는 누구나 그냥 보실 수 있습니다.<br><b>2과부터는 회원가입만 하시면 끝까지 무료</b>입니다.'
+   +'<br><span class="lk-sm">결제창은 없습니다. 이름과 번호만 남기시면 바로 열립니다.</span></p>'
+   +'<button class="lk-free" onclick="aiLsClose();agOpen()">회원가입하고 전부 열기 &#8250;</button>'
+   +'<div class="lk-pr" style="margin-top:12px">이미 회원이시라면<span>로그인하시면 그대로 이어집니다</span></div>'
+   +'<button class="lk-buy" onclick="aiLsClose();openPage(\'로그인\')">로그인</button></div>';
+  document.body.appendChild(m0); document.body.style.overflow='hidden';
+  m0.onclick=function(ev){if(ev.target===m0)aiLsClose();};
+  return;
+ }
  var arr=AITXT[aiTxtKey()],f=aiFreeN(),ft=(arr&&arr[f-1])?arr[f-1].t:'';
  var m=document.createElement('div');m.className='sp-modal on';m.id='lsModal';
  m.innerHTML='<div class="sp-sheet ls-sheet ai-lock"><div class="sp-x" onclick="aiLsClose()">✕</div>'
@@ -13015,7 +13057,7 @@ function aiPage(){
     +'background:#C81F2B;border-radius:14px;padding:15px 18px;box-shadow:0 8px 22px rgba(200,31,43,.35)">'
     +'<span style="font-size:26px;line-height:1">📘</span>'
     +'<span style="flex:1"><b style="display:block;color:#fff;font-size:16.5px;font-weight:900">토익 기초문법 40강 — 여기서 바로</b>'
-    +'<span style="color:#FFD9DC;font-size:13.5px;font-weight:700">자리 판정 8초 훈련 · <b style="color:#fff">40강 전부 무료</b> · 학습관 안에서 열립니다</span></span>'
+    +'<span style="color:#FFD9DC;font-size:13.5px;font-weight:700">자리 판정 8초 훈련 · <b style="color:#fff">회원가입하면 40강 무료</b> · 학습관 안에서 열립니다</span></span>'
     +'<span style="color:#fff;font-size:20px;font-weight:900">›</span></a>'
    +'<div style="margin-top:8px"><a href="#" onclick="openPage(\'토익기초문법\');return false;" style="color:#C6A15B;font-size:13px;font-weight:800;text-decoration:none">40강 전체 소개·커리큘럼 보기 ›</a></div>'
    +'<div class="aiv-st">'
@@ -13078,7 +13120,7 @@ function aiPage(){
   /* 2026-09-06 — 토익 기초문법 40강은 전 과 무료로 확정돼 있어(코드상 이미 전부 열림)
       같은 화면에서 파는 것은 표시광고 문제가 됩니다. 무료 안내로 바로잡았습니다. */
   +'<div class="ps solo"><div class="ps-tp">학원에 안 다니셔도</div><b>0원</b>'
-   +'<p>토익 기초문법 <b>40강 전부</b>와 회화반 전 과정이 <b>그냥 열립니다.</b> 결제도, 회원가입도 없습니다.</p>'
+   +'<p><b>회원가입만</b> 하시면 토익 <b>문법 40강</b>과 회화반 전 과정이 열립니다. 초급·중급·실전은 유료입니다.</p>'
    +'<div class="ps-n">사람이 하는 것만 유료로 받습니다 — 발음 첨삭 · 원장 상담 · 교실 수업</div>'
    +'<button class="ps-b" onclick="aiOpenToeic()">40강 바로 열기 ›</button></div>'
  +'</div>'
@@ -13396,7 +13438,7 @@ function tb40Page(){
   +'<h2>토익은 문법을 아는 시험이<br>아니라 <span style="color:#F0C05A">자리를 아는 시험</span>입니다</h2>'
   +'<p>해석해서 푸는 사람은 한 문제에 40초를 씁니다. 자리를 보는 사람은 8초를 씁니다.<br>이 40강은 그 8초를 만드는 훈련만 합니다.</p>'
   +'<div class="tb-stat"><div><b>'+B.length+'강</b><span>RC 전 과정</span></div><div><b>10분</b><span>한 강 분량</span></div>'
-  +'<div><b>+20강</b><span>LC 듣기 별도</span></div><div><b>0원</b><span>40강 전부 무료</span></div></div></div>'
+  +'<div><b>+20강</b><span>초급 LC 별도</span></div><div><b>0원</b><span>회원 40강 무료</span></div></div></div>'
  +'<div class="tb-g">'
   +'<div class="tb-k"><b>왜 자리부터입니까</b><span>Part 5·6은 어형 문제가 절반입니다. 뜻을 몰라도 빈칸 앞뒤 구조만 보면 답이 나옵니다. 이 40강은 그 하나만 훈련합니다.</span></div>'
   +'<div class="tb-k"><b>하루 한 강, 10분</b><span>출근 전이나 점심시간에 한 강이 끝나는 분량입니다. 산글이가 하루에 한 강씩 열어 드립니다.</span></div>'
@@ -13404,16 +13446,17 @@ function tb40Page(){
   +'<div class="tb-k"><b>혼자 하다 막히면</b><span>산본으로 오시면 됩니다. 같은 커리큘럼을 현장 강의로 이어서 들으실 수 있습니다.</span></div>'
  +'</div>'
  +'<div class="op-h">40강 전체 목차</div>'
- +'<div class="op-hs">강 제목을 누르시면 <b>AI 학습관에서 바로 그 강이 열립니다.</b> 40강 전부 무료입니다 — 결제도, 회원가입도 없습니다.</div>'
+ +'<div class="op-hs">강 제목을 누르시면 <b>AI 학습관에서 바로 그 강이 열립니다.</b> 1강은 누구나, <b>2강부터는 회원가입만</b> 하시면 40강 전부 무료입니다.</div>'
  +lists
  +'<div class="op-h">어떻게 여십니까</div>'
  +CT(['방법','내용','금액'],[
    ['현강 수강생','정규반·스파르타반 수강 중이면 <b>전 강 무료</b>','0원'],
    ['산글 무한수강권','재수강 무제한 + 이 40강 + LC 20강','740,000원'],
-   ['누구나','<b>이 40강은 전부 무료</b>입니다 — 회원가입도 결제도 없습니다','0원']])
+   ['회원','회원가입만 하시면 <b>문법 40강 전부 무료</b> — 결제창 없습니다','0원'],
+   ['비회원','1강 맛보기까지','0원']])
  +'<div class="pgnote">※ 이 교재의 지문·문항·해설은 전부 산본글로벌어학원이 새로 집필했습니다. 시중 교재의 문장을 옮기지 않았습니다.</div>'
- +'<div class="one-cta" style="cursor:pointer" onclick="tb40Open(1)">1강부터 바로 시작하기 — 40강 전부 무료 ›</div>'
- +SGCTA('40강 전부 무료입니다. 혼자 하다 막히시면 그때 산본으로 오시면 됩니다.');}
+ +'<div class="one-cta" style="cursor:pointer" onclick="tb40Open(1)">1강 먼저 들어보기 — 회원가입하면 40강 전부 무료 ›</div>'
+ +SGCTA('회원가입만 하시면 문법 40강이 전부 열립니다. 혼자 하다 막히시면 그때 산본으로 오시면 됩니다.');}
 
 
 /* ===== 유튜브 연동 (2026-09-05 대표님 지시) =====
