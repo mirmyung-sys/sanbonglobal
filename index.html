@@ -13776,7 +13776,11 @@ select.txflash{animation:txFlash 1.05s ease-out}
  .logo{order:1;flex:0 0 auto}
  .navbar{order:2;flex:1 1 auto;min-width:0;border-top:none!important;background:transparent}
  .navbar .wrap{max-width:none;width:100%;padding:0!important;justify-content:center}
- .navbar nav{padding:0!important;justify-content:center;gap:2px;flex-wrap:nowrap}
+ /* 2026-09-06 · PC 머리말 겹침 수정 — 메뉴가 한 줄에 안 들어가면 접어서 내려갑니다.
+    (가로 스크롤로 만들면 하위 드롭다운이 잘려서, 줄바꿈 방식으로 갑니다) */
+ .navbar nav{padding:0!important;justify-content:center;gap:2px 1px;flex-wrap:wrap;row-gap:0;flex:1 1 auto!important;min-width:0;max-width:100%}
+ .navbar nav .ni>a{white-space:nowrap}
+ header{padding-top:4px;padding-bottom:4px}
  .hicons{order:3;flex:0 0 auto;gap:18px}
  .htoplinks{display:none!important}
  .lg-em{height:46px}
@@ -13795,9 +13799,13 @@ select.txflash{animation:txFlash 1.05s ease-out}
  .hdots{bottom:19px}
  .hero-vtag{font-size:12px}
 }
+@media(min-width:861px) and (max-width:1460px){
+ .navbar nav .ni>a{font-size:13px;padding:5px 6px}
+}
 @media(min-width:861px) and (max-width:1180px){
  .lg-wm i{display:none}
  .lg-em{height:40px}
+ .navbar nav .ni>a{font-size:12.5px!important;padding:5px 5px!important}
  .lg-wm b{font-size:20px}
  .navbar nav a{font-size:13px;padding-left:7px;padding-right:7px}
  .hicons{gap:13px}
