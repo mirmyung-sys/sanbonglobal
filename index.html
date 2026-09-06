@@ -3934,7 +3934,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-05 (v125)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-06 (v126)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -13809,6 +13809,80 @@ select.txflash{animation:txFlash 1.05s ease-out}
 .ftver{display:inline-block;margin-top:10px;padding:6px 14px;border-radius:999px;
  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
  font-size:13px;font-weight:800;letter-spacing:.04em;color:#fff;opacity:1}
+
+/* ===== 2026-09-06 대표님 지시 — 그리드 카드 적색 테두리 + 커튼 =====
+   PC : 커서를 올리면 테두리가 번쩍이고 위에서 커튼이 내려옵니다
+   폰 : 커서가 없으므로, 화면에 카드가 들어올 때 테두리가 한 번 번쩍입니다 */
+.sg-rg{
+  position:relative; isolation:isolate;
+  border:1.6px solid #C81F2B !important;
+  border-radius:14px;
+  transition:border-color .18s, box-shadow .28s, transform .28s cubic-bezier(.22,.8,.24,1);
+}
+.sg-rg > .sg-cur{
+  position:absolute; inset:-1px; z-index:9; pointer-events:none;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+  border-radius:inherit; overflow:hidden;
+  background:linear-gradient(178deg,#C81F2B 0%,#A6161F 62%,#8E1119 100%);
+  transform:scaleY(0); transform-origin:top center;
+  transition:transform .40s cubic-bezier(.22,.85,.24,1);
+  will-change:transform;
+}
+/* 커튼 아래끝 술 장식 — 진짜 커튼처럼 */
+.sg-rg > .sg-cur::after{
+  content:''; position:absolute; left:0; right:0; bottom:0; height:7px;
+  background:
+    radial-gradient(circle at 6px 0, transparent 5.4px, #8E1119 5.6px) 0 0/12px 7px repeat-x;
+  transform:translateY(6px);
+}
+.sg-rg > .sg-cur{ padding:20px 22px; text-align:center }
+.sg-rg > .sg-cur em{            /* 무엇에 대한 카드인지 */
+  font-style:normal; color:rgba(255,255,255,.80); font-size:12px; font-weight:800;
+  letter-spacing:.06em; line-height:1.4; max-width:100%;
+  display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden;
+  opacity:0; transform:translateY(-10px);
+  transition:opacity .2s .14s, transform .3s .12s cubic-bezier(.22,.85,.24,1);
+}
+.sg-rg > .sg-cur b{             /* 중심 문구 — 주인공 */
+  color:#fff; font-size:clamp(17px,2.1vw,22px); font-weight:900;
+  letter-spacing:-.025em; line-height:1.38; max-width:100%; word-break:keep-all;
+  display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;
+  opacity:0; transform:translateY(-14px);
+  transition:opacity .22s .20s, transform .34s .18s cubic-bezier(.22,.85,.24,1);
+}
+.sg-rg > .sg-cur u{             /* 밑줄 강조선 */
+  display:block; width:34px; height:2.5px; background:rgba(255,255,255,.72); border-radius:2px;
+  opacity:0; transform:scaleX(.2);
+  transition:opacity .2s .26s, transform .34s .24s cubic-bezier(.22,.85,.24,1);
+}
+.sg-rg > .sg-cur i{             /* 행동 유도 */
+  font-style:normal; color:#fff; font-size:12.5px; font-weight:800; letter-spacing:.02em;
+  padding:6px 15px; border:1.4px solid rgba(255,255,255,.62); border-radius:99px;
+  opacity:0; transform:translateY(-8px);
+  transition:opacity .2s .32s, transform .32s .30s cubic-bezier(.22,.85,.24,1);
+}
+@keyframes sgFlash{
+  0%  {border-color:#C81F2B; box-shadow:0 0 0 0 rgba(200,31,43,.50)}
+  28% {border-color:#FF4438; box-shadow:0 0 0 7px rgba(200,31,43,0)}
+  56% {border-color:#C81F2B; box-shadow:0 0 0 0 rgba(200,31,43,.40)}
+  100%{border-color:#C81F2B; box-shadow:0 0 0 6px rgba(200,31,43,0)}
+}
+@media (hover:hover) and (pointer:fine){
+  .sg-rg:hover{ animation:sgFlash .64s ease-out; transform:translateY(-2px);
+                box-shadow:0 12px 26px -14px rgba(200,31,43,.55) }
+  .sg-rg:hover > .sg-cur{ transform:scaleY(1) }
+  .sg-rg:hover > .sg-cur em,
+  .sg-rg:hover > .sg-cur b,
+  .sg-rg:hover > .sg-cur i{ opacity:1; transform:translateY(0) }
+  .sg-rg:hover > .sg-cur u{ opacity:1; transform:scaleX(1) }
+  .sg-rg.sg-go{ cursor:pointer }
+}
+/* 폰 : 화면에 들어올 때 한 번만 번쩍 */
+.sg-rg.sg-blink{ animation:sgFlash .70s ease-out }
+@media (prefers-reduced-motion:reduce){
+  .sg-rg,.sg-rg:hover,.sg-rg.sg-blink{animation:none;transform:none}
+  .sg-rg > .sg-cur{transition:none}
+}
 </style>
 <script>
 /* ===== 크리스탈 · AI 레벨테스트 (30초 프리토킹) ===== */
@@ -14216,6 +14290,93 @@ function crResult(){
   '<button class="cr-btn ghost" onclick="crIntro(\''+_cr.lang+'\')">다시 테스트하기</button></div>');
  _crEnded=false;
 }
+
+/* ===== 2026-09-06 — 그리드 카드 적색 테두리 + 커튼 =====
+   대상 : 화면에 보이는 정보 카드 그리드만. 팝업·갤러리·강사사진은 제외합니다. */
+var SG_RG_SEL = [
+ '.op-c','.oh-card','.icard','.tc-card','.rv-card','.scard',
+ '.encat-grid > *','.jn-grid > *','.lvcards > *','.progcards > *',
+ '.tf-list > *','.pv-grid > *','.pvgrid > *'
+].join(',');
+
+function _sgTxt(n){ return n ? (n.textContent||'').replace(/\s+/g,' ').trim() : ''; }
+function _sgCurParts(el){
+  /* 커튼에 띄울 글 — 카드가 이미 갖고 있는 것을 그대로 씁니다.
+     ① 무엇에 대한 카드인지(작게)  ② 중심 문구(크게)  ③ 행동 유도 */
+  var eyebrow = _sgTxt(el.querySelector(':scope > em, .ai-eye, .tr, .pv-k, .oh-k'));
+  var title   = _sgTxt(el.querySelector(':scope > b, h2, h3, h4, h5, .tn, .op-n, .ic-t'));
+  /* 중심 문구 = 본문에서 대표님이 굵게 써 둔 그 문장 */
+  var key = _sgTxt(el.querySelector('p b, p strong, li b, li strong, .d b, .d strong'));
+  if(!key){
+    var p = el.querySelector('p, .d, .desc, .ic-d');
+    var t = _sgTxt(p);
+    if(t){
+      var m = t.match(/^[\s\S]{8,62}?[.。!?]/);
+      key = m ? m[0].trim() : (t.length>52 ? t.slice(0,52)+'…' : t);
+    }
+  }
+  if(!key) key = title;
+  var top = eyebrow || title;
+  if(top === key) top = '';
+  var cta = _sgTxt(el.querySelector('button, a.tt-b, .tt-b, .pgcta')).replace(/[›>»\s]+$/,'').trim();
+  return { top: top, key: key, cta: (cta || '자세히 보기') + ' ›' };
+}
+function sgRedGrid(root){
+  try{
+    (root||document).querySelectorAll(SG_RG_SEL).forEach(function(el){
+      if(el.dataset.sgrg) return;
+      if(el.closest('.agcard,.lvrun-box,#lsModal,#atRun,.sharebox')) return; /* 시트·학습관 팝업만 제외 */
+      if(el.offsetWidth < 140) return;                                             /* 너무 작은 칩은 제외 */
+      el.dataset.sgrg='1';
+      el.classList.add('sg-rg');
+      var P=_sgCurParts(el);
+      if(!P.key) { el.dataset.sgrg=''; el.classList.remove('sg-rg'); return; }
+      var esc=function(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;};
+      var cur=document.createElement('span');
+      cur.className='sg-cur';
+      cur.innerHTML=(P.top?'<em>'+esc(P.top)+'</em>':'')
+                   +'<b>'+esc(P.key)+'</b><u></u><i>'+esc(P.cta)+'</i>';
+      el.appendChild(cur);
+      /* 커튼이 덮여도 아무 데나 누르면 열리도록 — 안쪽 버튼을 대신 눌러 줍니다 */
+      var go=el.querySelector('button[onclick],a[onclick],a[href]:not([href="#"])');
+      if(go){
+        el.classList.add('sg-go');
+        el.addEventListener('click',function(ev){
+          if(ev.target.closest('button,a')) return;   /* 버튼을 직접 눌렀으면 그대로 */
+          go.click();
+        });
+      }
+    });
+  }catch(e){}
+}
+/* 폰 : 화면에 들어올 때 한 번 번쩍 */
+var _sgIO=null;
+function sgBlinkWatch(){
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  if(!('IntersectionObserver' in window)) return;
+  if(!_sgIO) _sgIO=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting && !e.target.dataset.sgblinked){
+        e.target.dataset.sgblinked='1';
+        e.target.classList.add('sg-blink');
+        setTimeout(function(){e.target.classList.remove('sg-blink');},760);
+        _sgIO.unobserve(e.target);
+      }});
+  },{threshold:.35});
+  document.querySelectorAll('.sg-rg:not([data-sgblinked])').forEach(function(el){_sgIO.observe(el);});
+}
+function sgRgAll(){ sgRedGrid(document); sgBlinkWatch(); }
+/* 페이지가 JS로 다시 그려질 때마다 자동 적용 */
+(function(){
+  var run=function(){ sgRgAll(); };
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run);
+  else run();
+  try{
+    var mo=new MutationObserver(function(){ clearTimeout(window._sgRgT);
+      window._sgRgT=setTimeout(sgRgAll,120); });
+    mo.observe(document.body,{childList:true,subtree:true});
+  }catch(e){}
+})();
 </script>
 
 </body>
