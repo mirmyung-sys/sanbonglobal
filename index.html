@@ -13879,6 +13879,14 @@ select.txflash{animation:txFlash 1.05s ease-out}
 }
 /* 폰 : 화면에 들어올 때 한 번만 번쩍 */
 .sg-rg.sg-blink{ animation:sgFlash .70s ease-out }
+/* 작은 카드 · 이미 앞면에 핵심이 다 보이는 카드 = 적색 테두리 + 번쩍만 (커튼 없음) */
+.sg-rgb{ border:1.4px solid #C81F2B !important; border-radius:12px;
+  transition:border-color .18s, box-shadow .28s, transform .28s cubic-bezier(.22,.8,.24,1); }
+@media (hover:hover) and (pointer:fine){
+  .sg-rgb:hover{ animation:sgFlash .64s ease-out; transform:translateY(-2px) } }
+.sg-rgb.sg-blink{ animation:sgFlash .70s ease-out }
+/* 펼쳐진 과목칩 위에는 커튼을 내리지 않습니다 (시간표를 가리므로) */
+.sg-rg.exp > .sg-cur{ display:none !important }
 @media (prefers-reduced-motion:reduce){
   .sg-rg,.sg-rg:hover,.sg-rg.sg-blink{animation:none;transform:none}
   .sg-rg > .sg-cur{transition:none}
@@ -14328,16 +14336,27 @@ function _sgCurParts(el){
   var cta = _sgTxt(el.querySelector('button, a.tt-b, .tt-b, .pgcta')).replace(/[›>»\s]+$/,'').trim();
   return { top: top, key: key, cta: (cta || '자세히 보기') + ' ›' };
 }
+var SG_RGB_SEL = ['.qcard','.chip','.tsn'].join(',');   /* 테두리만 (앞면에 이미 핵심이 보임) */
+function sgRedBorder(root){
+  try{
+    (root||document).querySelectorAll(SG_RGB_SEL).forEach(function(el){
+      if(el.dataset.sgrgb||el.dataset.sgrg) return;
+      if(el.closest('#lsModal,#atRun,.sharebox')) return;
+      if(el.offsetWidth < 44) return;
+      el.dataset.sgrgb='1'; el.classList.add('sg-rgb');
+    });
+  }catch(e){}
+}
 function sgRedGrid(root){
   try{
     (root||document).querySelectorAll(SG_RG_SEL).forEach(function(el){
       if(el.dataset.sgrg) return;
       if(el.closest('.agcard,.lvrun-box,#lsModal,#atRun,.sharebox')) return; /* 시트·학습관 팝업만 제외 */
-      if(el.offsetWidth < 140) return;                                             /* 너무 작은 칩은 제외 */
+      if(el.offsetWidth < 140){ if(!el.dataset.sgrgb){el.dataset.sgrgb='1'; el.classList.add('sg-rgb');} return; }  /* 작으면 테두리만 */
       el.dataset.sgrg='1';
       el.classList.add('sg-rg');
       var P=_sgCurParts(el);
-      if(!P.key) { el.dataset.sgrg=''; el.classList.remove('sg-rg'); return; }
+      if(!P.key) { el.dataset.sgrg=''; el.classList.remove('sg-rg'); el.dataset.sgrgb='1'; el.classList.add('sg-rgb'); return; }
       var esc=function(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;};
       var cur=document.createElement('span');
       cur.className='sg-cur';
@@ -14370,9 +14389,9 @@ function sgBlinkWatch(){
         _sgIO.unobserve(e.target);
       }});
   },{threshold:.35});
-  document.querySelectorAll('.sg-rg:not([data-sgblinked])').forEach(function(el){_sgIO.observe(el);});
+  document.querySelectorAll('.sg-rg:not([data-sgblinked]),.sg-rgb:not([data-sgblinked])').forEach(function(el){_sgIO.observe(el);});
 }
-function sgRgAll(){ sgRedGrid(document); sgBlinkWatch(); }
+function sgRgAll(){ sgRedGrid(document); sgRedBorder(document); sgBlinkWatch(); }
 /* 페이지가 JS로 다시 그려질 때마다 자동 적용 */
 (function(){
   var run=function(){ sgRgAll(); };
