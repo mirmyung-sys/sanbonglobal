@@ -14303,10 +14303,17 @@ function _sgTxt(n){ return n ? (n.textContent||'').replace(/\s+/g,' ').trim() : 
 function _sgCurParts(el){
   /* 커튼에 띄울 글 — 카드가 이미 갖고 있는 것을 그대로 씁니다.
      ① 무엇에 대한 카드인지(작게)  ② 중심 문구(크게)  ③ 행동 유도 */
-  var eyebrow = _sgTxt(el.querySelector(':scope > em, .ai-eye, .tr, .pv-k, .oh-k'));
+  var eyebrow = _sgTxt(el.querySelector(':scope > em, .ai-eye, .tr, .pv-k, .oh-k, .pvtag, .pgtag, .ctag'));
   var title   = _sgTxt(el.querySelector(':scope > b, h2, h3, h4, h5, .tn, .op-n, .ic-t'));
   /* 중심 문구 = 본문에서 대표님이 굵게 써 둔 그 문장 */
-  var key = _sgTxt(el.querySelector('p b, p strong, li b, li strong, .d b, .d strong'));
+  var kn  = el.querySelector('p b, p strong, li b, li strong, .d b, .d strong');
+  var key = _sgTxt(kn);
+  /* 굵은 조각이 너무 짧으면(예: "1.5배") 그 조각이 들어 있는 문장을 통째로 씁니다 */
+  if(kn && key.replace(/[^가-힣A-Za-z0-9]/g,'').length < 7){
+    var host = kn.closest('li, p, .d');
+    var ht = _sgTxt(host);
+    if(ht && ht.length > key.length) key = (ht.length>54 ? ht.slice(0,54)+'…' : ht);
+  }
   if(!key){
     var p = el.querySelector('p, .d, .desc, .ic-d');
     var t = _sgTxt(p);
