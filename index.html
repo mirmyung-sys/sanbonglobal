@@ -11785,6 +11785,25 @@ function sgVox(zone,idx){
  try{ return SGVOX[aiTxtKey()+'|'+_lsCur()+'|'+zone+(idx===undefined?'':'|'+idx)]||''; }catch(e){ return ''; }
 }
 
+/* 2026-09-06 대표님 지시 — 학습관에서 한국어는 기계음성으로 절대 읽지 않습니다.
+   · 한국어 = 산글이가 녹음한 목소리만
+   · 녹음이 없는 한국어는 아예 읽지 않고, 영어·일본어·중국어 부분만 원어민 음성으로 읽습니다
+   (「The ___ + V → 명사 (주어)」 같은 줄에서 '명사 주어'를 기계음이 읽던 것을 없앱니다) */
+var HAN_RE=/[\uAC00-\uD7A3]/;
+function _sgStripKo(t){
+ var toks=String(t).split(/\s+/), out=[];
+ for(var i=0;i<toks.length;i++){ if(!HAN_RE.test(toks[i])) out.push(toks[i]); }
+ var r=out.join(' ');
+ r=r.replace(/[\s→·—–:,\/\(\)\[\]+]+$/,'').replace(/^[\s→·—–:,\/\)\]]+/,'');
+ return r.trim();
+}
+/* 한국어 '문장'인지 판별 — 한글 낱말이 3개 이상이면 우리말 문장으로 봅니다.
+   (「The ___ + V → 명사 (주어)」는 꼬리표 2개뿐이라 영어만 남기고 읽습니다) */
+function _sgKoSentence(t){
+ var toks=String(t).split(/\s+/), n=0;
+ for(var i=0;i<toks.length;i++) if(HAN_RE.test(toks[i])) n++;
+ return n>=3;
+}
 var SGA_P={items:[],ix:0,segs:[],sx:0,on:false,paused:false,au:null,btn:null,mode:''};
 
 function sgpPaint(){
@@ -11846,7 +11865,23 @@ function sgpToggle(){ if(!SGA_P.on)return false; if(SGA_P.paused)sgpResume(); el
 function sgpPlay(items,btn,mode){
  if(!('speechSynthesis' in window)&&!(items[0]&&items[0].mp3)){ttsNoSupport();return;}
  sgpStop();
- SGA_P.items=items||[]; SGA_P.ix=0; SGA_P.btn=btn||null; SGA_P.mode=mode||'one';
+ /* 녹음 없는 한국어는 빼고, 섞인 줄은 외국어만 남깁니다 */
+ var src=items||[], keep=[], dropped=0;
+ for(var _i=0;_i<src.length;_i++){
+  var it=src[_i];
+  if(!it.mp3 && HAN_RE.test(String(it.t||''))){
+   if(_sgKoSentence(it.t)){ dropped++; continue; }   /* 우리말 문장인데 녹음이 없으면 건너뜁니다 */
+   var st=_sgStripKo(it.t||'');
+   if(!st){ dropped++; continue; }
+   it={t:st,lang:(it.lang==='ko-KR'?_lsLang():it.lang),who:it.who,mp3:'',row:it.row};
+  }
+  keep.push(it);
+ }
+ if(!keep.length){
+  try{sgToast('<b>산글이 목소리를 준비 중입니다</b><br>이 줄은 아직 녹음이 없어 소리를 내지 않습니다.');}catch(e){}
+  sgpPaint(); return;
+ }
+ SGA_P.items=keep; SGA_P.ix=0; SGA_P.btn=btn||null; SGA_P.mode=mode||'one';
  SGA_P.on=true; SGA_P.paused=false;
  sgpPaint(); _sgpItem();
 }
