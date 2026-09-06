@@ -8443,15 +8443,15 @@ function aiBookHTML(){
  /* 2026-09-03 대표님 지시: 샘플(무료 맛보기)이 제일 잘 보이게 위로, 전자책 신청은 맨 밑으로 */
  var sample=AITXT[B.img]
   ? (FREE
-     ? ('<button class="ai-sample-btn" onclick="aiLesson(1)">▶ 1과부터 바로 시작하기 <small>— 회원가입하시면 전 과 무료</small></button>'
-        +'<div class="ai-free-line free"><b>회원이 되시면 전 과 무료입니다.</b> 1과는 그냥 보시고, <b>2과부터는 회원가입만</b> 하시면 끝까지 열립니다. 결제창은 없습니다.</div>')
+     ? ('<button class="ai-sample-btn" onclick="aiLesson(1)">▶ 1과부터 바로 시작하기 <small>— 회원가입＋출석체크하면 전 과 무료</small></button>'
+        +'<div class="ai-free-line free"><b>회원가입하고 출석체크 한 번이면 전 과 무료입니다.</b> 1과는 맛보기로 그냥 보시면 되고, 나머지는 도장 하나 찍으시면 끝까지 열립니다. 결제창은 없습니다.</div>')
      : ('<button class="ai-sample-btn" onclick="aiLesson(1)">🎁 1과 무료 맛보기 열어보기 <small>— 회원가입 없이 바로</small></button>'
         +'<div class="ai-free-line">누구나 <b>1과는 무료</b>'+(B.toc&&B.toc.length?(', 그리고 <b>매일 한 과가 무료</b>로 열립니다 — 오늘은 <b>'+fN+'과</b>'):'')+'. 한 과 3분이면 이 책이 어떤 책인지 아시게 됩니다.</div>'))
   : '';
  var price=(FREE
-    ? ('<div class="ai-pr free"><div class="ai-pr-r hi"><span>수강료</span><b>0원 <em>회원 전 과 무료</em></b></div></div>'
+    ? ('<div class="ai-pr free"><div class="ai-pr-r hi"><span>수강료</span><b>0원 <em>회원·출석 시 전 과</em></b></div></div>'
        +'<button class="ai-buy free" onclick="aiLesson(1)">지금 1과 열기</button>'
-       +'<p class="ai-n">※ <b>회원가입만 하시면 끝까지 무료</b>입니다. 결제창이 없습니다.<br>'
+       +'<p class="ai-n">※ <b>회원가입 + 출석체크 한 번</b>이면 끝까지 무료입니다. 결제창이 없습니다.<br>'
        +'※ 산본글로벌어학원이 <b>사람이 하는 것</b>만 유료로 받습니다 — 강사가 직접 보는 발음 첨삭, 원장 상담, 교실 수업.<br>'
        +'※ 무료라서 대충 만든 것이 아니라, <b>대충 만들면 사람이 안 옵니다.</b> 그래서 여기에 가장 공을 들였습니다.</p>')
     : (B.soon
@@ -12043,21 +12043,43 @@ function aiIsFreeBook(k){
  k=k||''; return /^(eng|jpn|chn)_/.test(k) || k==='tc_basic';
 }
 function sgaIsMember(){ try{ return !!(sgaUser()&&sgaUser().token); }catch(e){ return false; } }
-function aiFreeNow(){ try{ return aiIsFreeBook(aiTxtKey()) && (sgaIsMember()||sgaIsMaster()); }catch(e){ return false; } }
+/* 출석체크(checkin.html)가 남긴 도장이 하나라도 있으면 출석한 것으로 봅니다 */
+function sgaHasCheckin(){
+ try{ var r=localStorage.getItem('sga_checkin_v1'); if(!r) return false;
+  var d=JSON.parse(r); return !!(d&&d.stamps&&Object.keys(d.stamps).length>0); }catch(e){ return false; }
+}
+/* 2026-09-06 대표님 지시 — 1과는 맛보기, 「회원가입 + 출석체크」를 하면 토익 문법 40강이 열립니다 */
+function sgaUnlocked(){ return sgaIsMaster() || (sgaIsMember() && sgaHasCheckin()); }
+function aiFreeNow(){ try{ return aiIsFreeBook(aiTxtKey()) && sgaUnlocked(); }catch(e){ return false; } }
 function aiFreeN(){var a=AITXT[aiTxtKey()];if(!a||a.length<2)return 1;
  var d=Math.floor((Date.now()+9*3600*1000)/86400000);return 2+(d%(a.length-1));}
 function aiLockShow(n){
  var T=AIB[_aiT],G=(T.subs&&T.subs[_aiG])||T,B=G.steps[_aiS];
  /* 2026-09-06 대표님 지시 — 무료 과정은 회원에게만 엽니다.
     비회원이 2과 이상을 누르면 결제가 아니라 「회원가입」으로 안내합니다. */
- if(aiIsFreeBook(aiTxtKey()) && !sgaIsMember() && !sgaIsMaster()){
+ if(aiIsFreeBook(aiTxtKey()) && !sgaUnlocked()){
+  var _mem=sgaIsMember(), _chk=sgaHasCheckin();
+  var _step=function(done,t,d){ return '<div style="display:flex;gap:10px;align-items:flex-start;text-align:left;'
+    +'padding:11px 13px;border-radius:11px;margin-bottom:8px;border:1px solid '+(done?'#BFE3D0':'#E5E8EE')
+    +';background:'+(done?'#F1F9F5':'#fff')+'">'
+    +'<span style="flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;'
+    +'font-size:12px;font-weight:900;color:#fff;background:'+(done?'#0E8A5A':'#C3C9D6')+'">'+(done?'&#10003;':'&#8226;')+'</span>'
+    +'<span><b style="display:block;font-size:14.5px;font-weight:900;color:#1D2D4F">'+t+'</b>'
+    +'<span style="font-size:13px;color:#5c6472">'+d+'</span></span></div>'; };
   var m0=document.createElement('div'); m0.className='sp-modal on'; m0.id='lsModal';
   m0.innerHTML='<div class="sp-sheet ls-sheet ai-lock"><div class="sp-x" onclick="aiLsClose()">&#10005;</div>'
    +'<div class="ls-book">AI 학습관 · '+G.k+' '+B.s+'</div>'
-   +'<div class="lk-ic">&#128100;</div><h3 class="lk-t">회원이 되시면 '+B.u+'강 전부 무료입니다</h3>'
-   +'<p class="lk-d">1과는 누구나 그냥 보실 수 있습니다.<br><b>2과부터는 회원가입만 하시면 끝까지 무료</b>입니다.'
-   +'<br><span class="lk-sm">결제창은 없습니다. 이름과 번호만 남기시면 바로 열립니다.</span></p>'
-   +'<button class="lk-free" onclick="aiLsClose();agOpen()">회원가입하고 전부 열기 &#8250;</button>'
+   +'<div class="lk-ic">&#128075;</div><h3 class="lk-t">두 가지만 하시면 '+B.u+'강이 전부 열립니다</h3>'
+   +'<p class="lk-d">1과는 맛보기라 누구나 그냥 보실 수 있습니다.<br>'
+   +'<b>회원가입하고 출석체크 한 번</b>이면 나머지가 끝까지 열립니다.'
+   +'<br><span class="lk-sm">결제창은 없습니다. 돈 내실 것도 없습니다.</span></p>'
+   +'<div style="margin:14px 0 4px">'
+   + _step(_mem,'① 회원가입','이름과 번호만 남기시면 됩니다')
+   + _step(_chk,'② 출석체크 한 번','오늘 도장 하나만 찍으시면 됩니다')
+   +'</div>'
+   +(!_mem
+     ? '<button class="lk-free" onclick="aiLsClose();agOpen()">회원가입하러 가기 &#8250;</button>'
+     : '<button class="lk-free" onclick="location.href=\'checkin.html\'">출석체크하러 가기 &#8250;</button>')
    +'<div class="lk-pr" style="margin-top:12px">이미 회원이시라면<span>로그인하시면 그대로 이어집니다</span></div>'
    +'<button class="lk-buy" onclick="aiLsClose();openPage(\'로그인\')">로그인</button></div>';
   document.body.appendChild(m0); document.body.style.overflow='hidden';
@@ -13057,7 +13079,7 @@ function aiPage(){
     +'background:#C81F2B;border-radius:14px;padding:15px 18px;box-shadow:0 8px 22px rgba(200,31,43,.35)">'
     +'<span style="font-size:26px;line-height:1">📘</span>'
     +'<span style="flex:1"><b style="display:block;color:#fff;font-size:16.5px;font-weight:900">토익 기초문법 40강 — 여기서 바로</b>'
-    +'<span style="color:#FFD9DC;font-size:13.5px;font-weight:700">자리 판정 8초 훈련 · <b style="color:#fff">회원가입하면 40강 무료</b> · 학습관 안에서 열립니다</span></span>'
+    +'<span style="color:#FFD9DC;font-size:13.5px;font-weight:700">자리 판정 8초 훈련 · <b style="color:#fff">가입＋출석하면 40강 무료</b> · 학습관 안에서 열립니다</span></span>'
     +'<span style="color:#fff;font-size:20px;font-weight:900">›</span></a>'
    +'<div style="margin-top:8px"><a href="#" onclick="openPage(\'토익기초문법\');return false;" style="color:#C6A15B;font-size:13px;font-weight:800;text-decoration:none">40강 전체 소개·커리큘럼 보기 ›</a></div>'
    +'<div class="aiv-st">'
@@ -13120,7 +13142,7 @@ function aiPage(){
   /* 2026-09-06 — 토익 기초문법 40강은 전 과 무료로 확정돼 있어(코드상 이미 전부 열림)
       같은 화면에서 파는 것은 표시광고 문제가 됩니다. 무료 안내로 바로잡았습니다. */
   +'<div class="ps solo"><div class="ps-tp">학원에 안 다니셔도</div><b>0원</b>'
-   +'<p><b>회원가입만</b> 하시면 토익 <b>문법 40강</b>과 회화반 전 과정이 열립니다. 초급·중급·실전은 유료입니다.</p>'
+   +'<p><b>회원가입하고 출석체크 한 번</b>이면 토익 <b>문법 40강</b>과 회화반 전 과정이 열립니다. 초급·중급·실전은 유료입니다.</p>'
    +'<div class="ps-n">사람이 하는 것만 유료로 받습니다 — 발음 첨삭 · 원장 상담 · 교실 수업</div>'
    +'<button class="ps-b" onclick="aiOpenToeic()">40강 바로 열기 ›</button></div>'
  +'</div>'
@@ -13446,17 +13468,17 @@ function tb40Page(){
   +'<div class="tb-k"><b>혼자 하다 막히면</b><span>산본으로 오시면 됩니다. 같은 커리큘럼을 현장 강의로 이어서 들으실 수 있습니다.</span></div>'
  +'</div>'
  +'<div class="op-h">40강 전체 목차</div>'
- +'<div class="op-hs">강 제목을 누르시면 <b>AI 학습관에서 바로 그 강이 열립니다.</b> 1강은 누구나, <b>2강부터는 회원가입만</b> 하시면 40강 전부 무료입니다.</div>'
+ +'<div class="op-hs">강 제목을 누르시면 <b>AI 학습관에서 바로 그 강이 열립니다.</b> 1강은 맛보기로 누구나, <b>회원가입하고 출석체크 한 번</b>이면 40강 전부 무료입니다.</div>'
  +lists
  +'<div class="op-h">어떻게 여십니까</div>'
  +CT(['방법','내용','금액'],[
    ['현강 수강생','정규반·스파르타반 수강 중이면 <b>전 강 무료</b>','0원'],
    ['산글 무한수강권','재수강 무제한 + 이 40강 + LC 20강','740,000원'],
-   ['회원','회원가입만 하시면 <b>문법 40강 전부 무료</b> — 결제창 없습니다','0원'],
-   ['비회원','1강 맛보기까지','0원']])
+   ['회원 + 출석','회원가입하고 <b>출석체크 한 번</b>이면 문법 40강 전부 — 결제창 없습니다','0원'],
+   ['그냥 오신 분','1강 맛보기까지','0원']])
  +'<div class="pgnote">※ 이 교재의 지문·문항·해설은 전부 산본글로벌어학원이 새로 집필했습니다. 시중 교재의 문장을 옮기지 않았습니다.</div>'
- +'<div class="one-cta" style="cursor:pointer" onclick="tb40Open(1)">1강 먼저 들어보기 — 회원가입하면 40강 전부 무료 ›</div>'
- +SGCTA('회원가입만 하시면 문법 40강이 전부 열립니다. 혼자 하다 막히시면 그때 산본으로 오시면 됩니다.');}
+ +'<div class="one-cta" style="cursor:pointer" onclick="tb40Open(1)">1강 맛보기 먼저 — 가입＋출석하면 40강 전부 무료 ›</div>'
+ +SGCTA('회원가입하고 출석체크 한 번이면 문법 40강이 전부 열립니다. 혼자 하다 막히시면 그때 산본으로 오시면 됩니다.');}
 
 
 /* ===== 유튜브 연동 (2026-09-05 대표님 지시) =====
