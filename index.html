@@ -2737,7 +2737,28 @@ li:first-child > .pgh{margin-top:2px}
 .lk-pr{font-size:14px;color:var(--ink2);margin:16px 0 8px}
 .lk-pr b{font-size:17px;color:var(--brand)}
 .lk-pr span{display:block;font-size:12.5px;color:var(--muted);margin-top:3px}
-.lk-buy{display:block;width:100%;max-width:420px;margin:0 auto 10px;padding:15px;border:0;border-radius:12px;background:var(--brand);color:#fff;font-size:16px;font-weight:900;cursor:pointer}.one-cta:hover{filter:brightness(1.05)}@media(max-width:520px){.oh-t{font-size:22px}.one-cta{font-size:22px;padding:19px 16px}}
+.lk-buy{display:block;width:100%;max-width:420px;margin:0 auto 10px;padding:15px;border:0;border-radius:12px;background:var(--brand);color:#fff;font-size:16px;font-weight:900;cursor:pointer}.one-cta:hover{filter:brightness(1.05)}
+/* ── 2026-09-08 대표님 지시: 「1강 맛보기」가 눈에 안 띔 → 번쩍이는 CTA ── */
+.one-cta.pop{position:relative;overflow:hidden;isolation:isolate;
+ background:linear-gradient(115deg,#E11D2E 0%,#C81F2B 42%,#8E1520 100%);
+ box-shadow:0 14px 34px -10px rgba(225,29,46,.62),0 0 0 0 rgba(225,29,46,.55);
+ animation:ctaPulse 2.1s cubic-bezier(.4,0,.6,1) infinite}
+.one-cta.pop:before{content:'';position:absolute;top:0;left:-130%;width:70%;height:100%;z-index:1;
+ background:linear-gradient(100deg,transparent,rgba(255,255,255,.46),transparent);
+ animation:ctaShine 2.6s ease-in-out infinite}
+.one-cta.pop>span{position:relative;z-index:2}
+.one-cta.pop .fb{display:inline-block;background:#FFD34D;color:#7A1218;font-size:13px;font-weight:900;
+ letter-spacing:.02em;padding:3px 10px;border-radius:999px;margin-right:9px;vertical-align:2px;
+ animation:ctaBadge 1.15s ease-in-out infinite}
+.one-cta.pop small{display:block;font-size:14px;font-weight:800;opacity:.94;margin-top:7px;letter-spacing:-.01em}
+@keyframes ctaPulse{
+ 0%,100%{transform:scale(1);box-shadow:0 14px 34px -10px rgba(225,29,46,.62),0 0 0 0 rgba(225,29,46,.5)}
+ 50%{transform:scale(1.022);box-shadow:0 18px 40px -10px rgba(225,29,46,.72),0 0 0 13px rgba(225,29,46,0)}}
+@keyframes ctaShine{0%{left:-130%}55%,100%{left:130%}}
+@keyframes ctaBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5px)}}
+@media(prefers-reduced-motion:reduce){
+ .one-cta.pop,.one-cta.pop:before,.one-cta.pop .fb{animation:none}
+ .one-cta.pop{box-shadow:0 14px 34px -10px rgba(225,29,46,.62)}}@media(max-width:520px){.oh-t{font-size:22px}.one-cta{font-size:22px;padding:19px 16px}}
 .sc-p{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:6px;font-size:13px;line-height:1.5}.sc-p b{background:#FDF3CE;color:#6b5600;font-weight:800;padding:2px 8px;border-radius:6px}.sc-p em{font-style:normal;background:#FDF3CE;color:#6b5600;border:1px solid #EBD9A0;border-radius:99px;padding:2px 9px;font-weight:900;font-size:12.5px;white-space:nowrap}.sc-p i{font-style:normal;color:#b6bcc9}
 .sp-disc-note{font-size:13px;color:#c81f2b;font-weight:700;margin-top:8px;line-height:1.5}
 .ex-sel{border-top:1px solid #eef1f6;padding-top:14px;margin-top:4px}
@@ -13478,7 +13499,7 @@ function tb40Page(){
    ['회원 + 출석','회원가입하고 <b>출석체크 한 번</b>이면 문법 40강 전부 — 결제창 없습니다','0원'],
    ['그냥 오신 분','1강 맛보기까지','0원']])
  +'<div class="pgnote">※ 이 교재의 지문·문항·해설은 전부 산본글로벌어학원이 새로 집필했습니다. 시중 교재의 문장을 옮기지 않았습니다.</div>'
- +'<div class="one-cta" style="cursor:pointer" onclick="tb40Open(1)">1강 맛보기 먼저 — 가입＋출석하면 40강 전부 무료 ›</div>'
+ +'<div class="one-cta pop" style="cursor:pointer" onclick="tb40Open(1)"><span><b class="fb">🎁 무료</b>1강 맛보기 지금 바로 열기 ›<small>가입 없이 그냥 보셔도 됩니다 · 가입＋출석 한 번이면 40강 전부 무료</small></span></div>'
  +SGCTA('회원가입하고 출석체크 한 번이면 문법 40강이 전부 열립니다. 혼자 하다 막히시면 그때 산본으로 오시면 됩니다.');}
 
 
