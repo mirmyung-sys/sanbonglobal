@@ -4468,9 +4468,9 @@ var LVLIMIT={'토익':9,'토플':12,'JLPT':9,'오픽':7,'토스':7};
 var _lvRemain=0;
 function lvFmt(s){var m=Math.floor(s/60),x=s%60;return m+':'+(x<10?'0':'')+x;}
 var _lvT=null,_lvSec=0;
-function lvChoose(){lvOpenRun('<h3 class="lvr-t">무료 레벨테스트</h3><p class="lvr-d">어떤 레벨을 확인해 볼까요?<br>둘 다 <b>무료</b>이고 회화 테스트는 30초, 자가진단은 10분 안에 끝납니다.</p>'+
+function lvChoose(){lvOpenRun('<h3 class="lvr-t">무료 레벨테스트</h3><p class="lvr-d">어떤 레벨을 확인해 볼까요?<br>둘 다 <b>무료</b>이고 회화 테스트는 1~2분, 자가진단은 10분 안에 끝납니다.</p>'+
  '<div class="lvpick2">'+
- '<button class="lvp2 talk" onclick="lvPickTalk()"><span class="ic">&#128483;</span><b>회화 레벨테스트</b><em>AI 크리스탈과 30초 프리토킹 · 영어 / 일본어 / 중국어<br>BASIC · STEP 1~4 자동 판정</em></button>'+
+ '<button class="lvp2 talk" onclick="lvPickTalk()"><span class="ic">&#128483;</span><b>회화 레벨테스트</b><em>AI 크리스탈과 네 마디 대화 · 영어 / 일본어 / 중국어<br>BASIC · STEP 1~4 자동 판정</em></button>'+
  '<button class="lvp2 quiz" onclick="lvPickQuiz()"><span class="ic">&#128221;</span><b>시험대비 레벨테스트</b><em>문제 풀이 · 토익 / 토스 / 오픽 / 토플 / JLPT<br>바로 예상 점수 확인</em></button>'+
  '</div><div class="lvr-note" style="margin-top:14px">※ 결과는 참고용이며, 무료 수업 후 레벨 조정이 가능합니다.</div>'+
  '<button class="lvr-go" style="border:0;cursor:pointer;width:100%;background:#fff;color:#5c6472;border:1.5px solid #e3e6ee" onclick="lvCloseRun();openLvPage()">레벨테스트 안내 자세히 보기</button>');}
@@ -14134,8 +14134,8 @@ function lcPick(i){
 .cr-stage.talking{box-shadow:0 0 0 6px rgba(198,161,91,.22),0 14px 34px -18px rgba(29,45,79,.55),inset 0 0 0 2px #fff}
 .cr-stage.hearing{box-shadow:0 0 0 6px rgba(14,138,90,.18),0 14px 34px -18px rgba(29,45,79,.55),inset 0 0 0 2px #fff}
 .cr-stage svg{position:absolute;inset:0;width:100%;height:100%}
-.cr-bob{transform-origin:100px 120px;animation:crBob 4.2s ease-in-out infinite}
-@keyframes crBob{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-2.5px) rotate(-.7deg)}}
+.cr-stage>svg{display:none!important}   /* 만화 얼굴은 쓰지 않습니다 */
+
 .cr-eyeL,.cr-eyeR{transform-origin:center;animation:crBlink 5.4s infinite}
 @keyframes crBlink{0%,94%,100%{transform:scaleY(1)}96%,98%{transform:scaleY(.08)}}
 .cr-name{font-weight:900;font-size:20px;color:#1D2D4F;margin:2px 0 2px}
@@ -14146,6 +14146,7 @@ function lcPick(i){
 .cr-sub{font-size:13px;color:#98a0b2;margin-top:8px;line-height:1.6}
 .cr-ring{position:relative;width:78px;height:78px;margin:14px auto 4px}
 .cr-ring svg{transform:rotate(-90deg)}
+.cr-ring.talk i{font-size:26px;opacity:.55}
 .cr-ring i{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
  font-style:normal;font-weight:900;font-size:22px;color:#1D2D4F}
 .cr-live{background:#f4f6fb;border-radius:12px;padding:11px 13px;font-size:14px;color:#3a4560;
@@ -14352,11 +14353,11 @@ select.txflash{animation:txFlash 1.05s ease-out}
 }
 </style>
 <script>
-/* ===== 크리스탈 · AI 레벨테스트 (30초 프리토킹) ===== */
+/* ===== 크리스탈 · AI 레벨테스트 (네 마디 턴제 대화) ===== */
 var CRY={
  '영어':{code:'en-US',me:'크리스탈',en:'Crystal',
-  intro:'안녕하세요, 산본글로벌 SGA에서 영어 레벨을 맡고 있는 <b>크리스탈</b>입니다. 저와 <b>30초 동안</b> 자유롭게 이야기해 주세요. 부담 갖지 마시고 편하게 말씀하시면 됩니다. 준비되시면 <b>스타트</b>를 눌러 주세요.',
-  introSay:'안녕하세요, 산본글로벌 에스지에이에서 영어 레벨을 맡고 있는 크리스탈입니다. 저와 삼십 초 동안 자유롭게 이야기해 주세요. 부담 갖지 마시고 편하게 말씀하시면 됩니다. 준비되시면 스타트를 눌러 주세요.',
+  intro:'안녕하세요, 산본글로벌 SGA에서 영어 레벨을 맡고 있는 <b>크리스탈</b>입니다. 저와 <b>네 마디만</b> 주고받으면 됩니다. 부담 갖지 마시고 편하게 말씀하시면 됩니다. 준비되시면 <b>스타트</b>를 눌러 주세요.',
+  introSay:'안녕하세요, 산본글로벌 에스지에이에서 영어 레벨을 맡고 있는 크리스탈입니다. 제가 네 가지를 여쭤볼게요. 편하게 대답해 주시면 됩니다. 부담 갖지 마시고 편하게 말씀하시면 됩니다. 준비되시면 스타트를 눌러 주세요.',
   open:"Hi! Nice to meet you. I'm Crystal. Tell me a little about yourself.",
   probe:["That's interesting. What do you usually do on weekends?",
          "Nice. Can you tell me why you want to study English?",
@@ -14364,10 +14365,10 @@ var CRY={
          "Great. If you had a free month, where would you like to travel, and why?",
          "I see. What is the hardest part of English for you?"],
   push:["Could you say a little more about that?","Go on, I'm listening.","And why do you think so?"],
-  bye:"Great job! That's thirty seconds. Let me check your level now."},
+  bye:"Great job. That's all my questions. Let me check your level now."},
  '일본어':{code:'ja-JP',me:'아야카',en:'Ayaka 綾香',
-  intro:'안녕하세요, 산본글로벌 SGA에서 일본어 레벨을 맡고 있는 <b>아야카</b>입니다. 저와 <b>30초 동안</b> 일본어로 자유롭게 이야기해 주세요. 틀리셔도 괜찮습니다. 준비되시면 <b>스타트</b>를 눌러 주세요.',
-  introSay:'안녕하세요, 산본글로벌 에스지에이에서 일본어 레벨을 맡고 있는 아야카입니다. 저와 삼십 초 동안 일본어로 자유롭게 이야기해 주세요. 틀리셔도 괜찮습니다. 준비되시면 스타트를 눌러 주세요.',
+  intro:'안녕하세요, 산본글로벌 SGA에서 일본어 레벨을 맡고 있는 <b>아야카</b>입니다. 저와 <b>네 마디만</b> 일본어로 주고받으면 됩니다. 틀리셔도 괜찮습니다. 준비되시면 <b>스타트</b>를 눌러 주세요.',
+  introSay:'안녕하세요, 산본글로벌 에스지에이에서 일본어 레벨을 맡고 있는 아야카입니다. 제가 네 가지를 일본어로 여쭤볼게요. 편하게 대답해 주시면 됩니다. 틀리셔도 괜찮습니다. 준비되시면 스타트를 눌러 주세요.',
   open:'こんにちは。はじめまして、綾香（あやか）です。まず、自己紹介をしてください。',
   probe:['いいですね。週末はふだん何をしていますか。',
          'どうして日本語を勉強したいと思いましたか。',
@@ -14375,10 +14376,10 @@ var CRY={
          'もし一か月休みがあったら、どこへ行きたいですか。理由も教えてください。',
          '日本語で一番むずかしいのは何ですか。'],
   push:['もう少し話してもらえますか。','はい、聞いています。どうぞ。','どうしてそう思いますか。'],
-  bye:'おつかれさまでした。三十秒たちました。では、レベルを見てみましょう。'},
+  bye:'おつかれさまでした。質問は以上です。では、レベルを見てみましょう。'},
  '중국어':{code:'zh-CN',me:'린신',en:'Lin Xin 林欣',
-  intro:'안녕하세요, 산본글로벌 SGA에서 중국어 레벨을 맡고 있는 <b>린신</b>입니다. 저와 <b>30초 동안</b> 중국어로 편하게 이야기해 주세요. 준비되시면 <b>스타트</b>를 눌러 주세요.',
-  introSay:'안녕하세요, 산본글로벌 에스지에이에서 중국어 레벨을 맡고 있는 린신입니다. 저와 삼십 초 동안 중국어로 편하게 이야기해 주세요. 준비되시면 스타트를 눌러 주세요.',
+  intro:'안녕하세요, 산본글로벌 SGA에서 중국어 레벨을 맡고 있는 <b>린신</b>입니다. 저와 <b>네 마디만</b> 중국어로 주고받으면 됩니다. 준비되시면 <b>스타트</b>를 눌러 주세요.',
+  introSay:'안녕하세요, 산본글로벌 에스지에이에서 중국어 레벨을 맡고 있는 린신입니다. 제가 네 가지를 중국어로 여쭤볼게요. 편하게 대답해 주시면 됩니다. 준비되시면 스타트를 눌러 주세요.',
   open:'你好！很高兴认识你，我是林欣。请先简单地介绍一下你自己。',
   probe:['很好。你周末一般做什么？',
          '你为什么想学中文呢？',
@@ -14386,7 +14387,7 @@ var CRY={
          '如果你有一个月的假期，你想去哪儿？为什么？',
          '学中文的时候，你觉得最难的是什么？'],
   push:['可以再多说一点吗？','嗯，我在听，请继续。','你为什么这么想呢？'],
-  bye:'很好！三十秒到了。我们来看看你的水平吧。'}
+  bye:'很好！问题就到这里。我们来看看你的水平吧。'}
 };
 
 /* ---- 레벨 기준: Cambridge Interchange / みんなの日本語 / HSK标准教程 ---- */
@@ -14461,41 +14462,16 @@ function crHairFront(s,g){
 }
 function crAvatar(lang){
  lang=lang||((typeof _cr!=='undefined'&&_cr&&_cr.lang)||'영어');
- var f=CRAV[lang]||CRAV['영어'],u=(lang==='일본어'?'j':lang==='중국어'?'c':'e');
- var _fb=f.photoFb?'this.src=\''+f.photoFb+'\';this.onerror=null;':'this.style.display=\'none\';';
- return '<img class="cr-ph" src="'+f.photo+'" alt="" onerror="'+_fb+'">'+
-  '<img class="cr-ph jaw" src="'+f.photo+'" alt="" onerror="'+_fb+'">'+
-  '<svg viewBox="0 0 200 200" aria-hidden="true"><defs>'+
-  '<linearGradient id="crH'+u+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+f.hair[0]+'"/><stop offset="1" stop-color="'+f.hair[1]+'"/></linearGradient>'+
-  '<linearGradient id="crS'+u+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+f.skin[0]+'"/><stop offset="1" stop-color="'+f.skin[1]+'"/></linearGradient>'+
-  '<linearGradient id="crB'+u+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+f.top[0]+'"/><stop offset="1" stop-color="'+f.top[1]+'"/></linearGradient>'+
-  '</defs><g class="cr-bob">'+
-  crHairBack(f.style,'crH'+u)+
-  '<path d="M88,132 h24 v22 h-24Z" fill="'+f.ear+'"/>'+
-  '<path d="M52,200 C52,170 74,154 100,154 C126,154 148,170 148,200Z" fill="url(#crB'+u+')"/>'+
-  '<path d="M100,154 l-9,12 9,10 9,-10Z" fill="#ffffff" opacity=".9"/>'+
-  '<ellipse cx="67" cy="108" rx="7" ry="10" fill="'+f.ear+'"/><ellipse cx="133" cy="108" rx="7" ry="10" fill="'+f.ear+'"/>'+
-  '<circle cx="67" cy="120" r="3" fill="#C6A15B"/><circle cx="133" cy="120" r="3" fill="#C6A15B"/>'+
-  '<path d="M69,96 C69,64 82,52 100,52 C118,52 131,64 131,96 C131,124 118,146 100,146 C82,146 69,124 69,96Z" fill="url(#crS'+u+')"/>'+
-  crHairFront(f.style,'crH'+u)+
-  '<path d="M79,92 Q87,86 95,91" stroke="'+f.hair[1]+'" stroke-width="2.6" fill="none" stroke-linecap="round"/>'+
-  '<path d="M105,91 Q113,86 121,92" stroke="'+f.hair[1]+'" stroke-width="2.6" fill="none" stroke-linecap="round"/>'+
-  '<g class="cr-eyeL">'+
-   '<path d="M79,104 Q87,96 95,104 Q87,110 79,104Z" fill="#ffffff"/>'+
-   '<circle cx="87" cy="103.5" r="4.2" fill="'+f.eye+'"/><circle cx="87" cy="103.5" r="1.9" fill="#1b120a"/>'+
-   '<circle cx="88.6" cy="101.8" r="1.4" fill="#fff"/>'+
-   '<path d="M78.6,103.6 Q87,95 95.4,103.6" stroke="#2a1c11" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>'+
-  '<g class="cr-eyeR">'+
-   '<path d="M105,104 Q113,96 121,104 Q113,110 105,104Z" fill="#ffffff"/>'+
-   '<circle cx="113" cy="103.5" r="4.2" fill="'+f.eye+'"/><circle cx="113" cy="103.5" r="1.9" fill="#1b120a"/>'+
-   '<circle cx="114.6" cy="101.8" r="1.4" fill="#fff"/>'+
-   '<path d="M104.6,103.6 Q113,95 121.4,103.6" stroke="#2a1c11" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>'+
-  '<circle cx="96" cy="118" r="1.8" fill="'+f.ear+'" opacity=".55"/><circle cx="104" cy="118" r="1.8" fill="'+f.ear+'" opacity=".55"/>'+
-  '<ellipse cx="79" cy="120" rx="7.5" ry="4.2" fill="#f6a89b" opacity=".42"/>'+
-  '<ellipse cx="121" cy="120" rx="7.5" ry="4.2" fill="#f6a89b" opacity=".42"/>'+
-  '<path id="crMouth" d="'+CR_MOUTH.rest+'" fill="'+f.lip+'"/>'+
-  '<path d="M85,128 Q92,123 100,127 Q108,123 115,128" stroke="'+f.lip+'" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".75"/>'+
-  '</g></svg>';
+ var f=(CRAV[lang]||CRAV['영어']);
+ var nm=((typeof CRY!=='undefined'&&CRY[lang])?CRY[lang].me:'선생님');
+ var fb="this.style.display='none';this.parentNode.classList.add('noimg');";
+ /* 2026-09-08 대표님 지적 —
+    ① 사진 위에 만화 얼굴 SVG 가 겹쳐 그려져 "이모지가 아래에 붙은" 것처럼 보였습니다 → SVG 전면 삭제
+    ② .cr-bob 이 그림 전체를 회전시켜 "원형 액자가 계속 움직인다" 했습니다 → 회전 삭제
+    ③ 입이 아니라 테두리가 움직였습니다 → 말할 때 사진의 턱 아래쪽만 미세하게 늘였다 줄입니다 */
+ return '<img class="cr-ph base" src="'+f.photo+'" alt="'+nm+'" onerror="'+fb+'">'
+      + '<img class="cr-ph jaw" src="'+f.photo+'" alt="" aria-hidden="true" onerror="this.style.display=\'none\';">'
+      + '<span class="cr-ini">'+String(nm).slice(0,1)+'</span>';
 }
 function crStageCls(c){var s=document.getElementById('crStage');if(s)s.className='cr-stage'+(c?' '+c:'');}
 function crMouthSet(k){var m=document.getElementById('crMouth');if(m)m.setAttribute('d',CR_MOUTH[k]||CR_MOUTH.rest);}
@@ -14534,7 +14510,7 @@ function crSay(text,code,cb){
  try{speechSynthesis.cancel();}catch(e){}
  var u=new SpeechSynthesisUtterance(text);
  u.lang=code;var v=_pickVoice(code);if(v)u.voice=v;
- u.rate=0.94;u.pitch=1.12;
+ u.rate=0.95;u.pitch=1;   /* 2026-09-08 — 피치를 올리면 기계음이 됩니다 */
  var done=false;
  function fin(){if(done)return;done=true;crLipStop();if(cb)cb();}
  u.onstart=function(){crLipStart(text);};
@@ -14548,14 +14524,15 @@ function crSay(text,code,cb){
 /* ---------- 화면 ---------- */
 function crPick(){
  lvOpenRun('<div class="cr-wrap"><h3 class="lvr-t">AI 회화 레벨테스트</h3>'+
-  '<p class="lvr-d" style="margin-bottom:2px">선생님을 고르면 <b>30초 프리토킹</b>이 시작됩니다.</p>'+
+  '<p class="lvr-d" style="margin-bottom:2px">선생님을 고르면 <b>네 마디 대화</b>가 시작됩니다.</p>'+
   '<div class="cr-team">'+['영어','일본어','중국어'].map(function(l){var c=CRY[l];return '<button onclick="crIntro(\''+l+'\')"><div class="m">'+crAvatar(l)+'</div><b>'+c.me+'</b><span>'+l+'</span></button>';}).join('')+'</div>'+
-  '<div class="cr-sub">30초 대화로 BASIC · STEP 1 ~ 4 중<br>맞는 반과 교재를 찾아드립니다.</div>'+
+  '<div class="cr-sub">네 마디 대화로 BASIC · STEP 1 ~ 4 중<br>맞는 반과 교재를 찾아드립니다.</div>'+
   '<button class="cr-btn ghost" onclick="lvChoose()">← 다른 테스트 고르기</button></div>');
 }
 function crIntro(lang){
  _cr={lang:lang,code:CRY[lang].code,log:[],rec:null,secs:30,left:30,timer:null,stop:false,
-      heard:'',turns:0,pi:0,ui:0,fallback:!_SR(),started:false};
+      heard:'',turns:0,pi:0,ui:0,fallback:!_SR(),started:false,
+      turn:0,silent:0,got:false,phase:'',wt:null};
  var c=CRY[lang];
  var warn=_cr.fallback?'<div class="cr-warn">이 브라우저는 <b>음성 인식</b>을 지원하지 않아 타이핑으로 답하게 됩니다.<br>안드로이드 <b>크롬</b> 또는 아이폰 <b>사파리</b>를 권장합니다.</div>':'';
  lvOpenRun('<div class="cr-wrap"><h3 class="lvr-t">'+lang+' AI 레벨테스트</h3>'+
@@ -14564,7 +14541,7 @@ function crIntro(lang){
   '<div class="cr-say" id="crSay">'+c.intro+'</div>'+
   warn+
   '<div class="cr-sub">🎧 소리를 켜주세요 · 🎙️ 마이크 권한을 허용해 주세요</div>'+
-  '<button class="cr-btn" onclick="crGo()">▶ 스타트 · 30초 대화 시작</button>'+
+  '<button class="cr-btn" onclick="crGo()">▶ 스타트 · 대화 시작하기</button>'+
   '<button class="cr-btn ghost" onclick="crRepeat()">🔊 다시 듣기</button>'+
   '<button class="cr-btn ghost" onclick="crPick()">← 언어 다시 고르기</button></div>');
  setTimeout(function(){crSay(c.introSay,'ko-KR',null);},350);
@@ -14572,7 +14549,15 @@ function crIntro(lang){
 function crRepeat(){crSay(CRY[_cr.lang].introSay,'ko-KR',null);}
 
 function crRing(){
- var p=Math.max(0,_cr.left)/_cr.secs, off=214*(1-p);
+ var W=(typeof CR_WAIT!=='undefined'?CR_WAIT:15);
+ /* 2026-09-08 — 크리스탈이 말하는 중에는 초침을 돌리지 않습니다.
+    말이 끝나고 「이제 대답하실 차례」가 됐을 때만 초가 흐릅니다. */
+ if(_cr&&_cr.phase==='talk'){
+  return '<div class="cr-ring talk"><svg width="78" height="78">'+
+   '<circle cx="39" cy="39" r="34" stroke="#e7eaf2" stroke-width="7" fill="none"/>'+
+   '</svg><i>🔊</i></div>';
+ }
+ var p=Math.max(0,_cr.left)/W, off=214*(1-p);
  return '<div class="cr-ring"><svg width="78" height="78">'+
   '<circle cx="39" cy="39" r="34" stroke="#e7eaf2" stroke-width="7" fill="none"/>'+
   '<circle id="crArc" cx="39" cy="39" r="34" stroke="#0E8A5A" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="214" stroke-dashoffset="'+off+'"/>'+
@@ -14580,7 +14565,7 @@ function crRing(){
 }
 function crScreen(state,extra){
  var log=_cr.log.map(function(x){return '<div class="r '+(x.me?'me':'ai')+'"><div class="b">'+x.t+'</div></div>';}).join('');
- lvOpenRun('<div class="cr-wrap"><h3 class="lvr-t">'+_cr.lang+' · 30초 프리토킹</h3>'+
+ lvOpenRun('<div class="cr-wrap"><h3 class="lvr-t">'+_cr.lang+' · AI 회화 진단</h3>'+
   '<div class="cr-stage" id="crStage">'+crAvatar(_cr&&_cr.lang)+'</div>'+
   crRing()+
   '<div class="cr-say" id="crSay">'+state+'</div>'+
@@ -14599,26 +14584,87 @@ function crTick(){
    if(_cr.left<=0){clearInterval(_cr.timer);_cr.timer=null;crEnd();}
  },1000);
 }
+/* ═══════════ 2026-09-08 전면 개편 ═══════════
+   대표님 지적: "혼자 삼십초 이야기하다가 끝" / "한 문장 이야기하고 기다려주는 초침이
+   있던가, 좀 대화를 이끌어가야지 크리스털이".
+   이전 구조는 전체 30초 타이머 하나만 돌면서, 마이크가 안 잡히면 크리스탈이 계속
+   말만 하다 끝났습니다. 이제 「질문 → 대답 초침 → 반응 → 다음 질문」 턴제로 갑니다. */
+var CR_TURNS=4;        /* 질문 개수 */
+var CR_WAIT=15;        /* 한 번 대답할 시간(초) */
+
 function crGo(){
  var c=CRY[_cr.lang];
- _cr.started=true;_cr.left=_cr.secs;
- crScreen('🔊 크리스탈이 말하고 있어요…');
- crSay(c.open,_cr.code,function(){
+ _cr.started=true; _cr.turn=0; _cr.pi=0; _cr.ui=0; _cr.silent=0;
+ _cr.log.push({me:false,t:c.open});
+ crAsk(c.open);
+}
+
+/* 크리스탈이 한 문장 말합니다 — 말하는 동안에는 초침을 띄우지 않습니다 */
+function crAsk(line){
+ if(_cr.stop)return;
+ crStopWait();
+ _cr.phase='talk';
+ crScreen('<b>'+CRY[_cr.lang].me+'</b> 님이 말하고 있습니다…');
+ crSay(line,_cr.code,function(){
    if(_cr.stop)return;
-   _cr.log.push({me:false,t:c.open});
-   crTick();crHear();
+   crWait();               /* 말이 끝나면 그때부터 대답 초침이 돕니다 */
  });
 }
+
+/* ── 대답 차례: 초침이 돌고, 그동안 듣습니다 ── */
+function crStopWait(){ if(_cr.wt){clearInterval(_cr.wt);_cr.wt=null;} }
+
+function crWait(){
+ if(_cr.stop)return;
+ if(_cr.turn>=CR_TURNS){ crEnd(); return; }
+ _cr.phase='wait'; _cr.left=CR_WAIT; _cr.got=false;
+ crHear();                       /* 마이크(또는 타이핑) 준비 */
+ crStopWait();
+ _cr.wt=setInterval(function(){
+   _cr.left--;
+   var n=document.getElementById('crNum'); if(n)n.textContent=Math.max(0,_cr.left);
+   var a=document.getElementById('crArc');
+   if(a)a.setAttribute('stroke-dashoffset',214*(1-Math.max(0,_cr.left)/CR_WAIT));
+   if(_cr.left<=0){ crStopWait(); crTimeUp(); }
+ },1000);
+}
+
+/* 시간이 다 됐는데 아무 말도 없을 때 — 크리스탈이 대화를 이어 줍니다 */
+function crTimeUp(){
+ if(_cr.stop||_cr.got)return;
+ if(_cr.rec){try{_cr.rec.stop();}catch(e){}}
+ _cr.silent++;
+ var c=CRY[_cr.lang];
+ if(_cr.silent===1){                       /* 첫 침묵 — 한 번 더 기다려 줍니다 */
+   var u=c.push[_cr.ui%c.push.length]; _cr.ui++;
+   _cr.log.push({me:false,t:u});
+   crAsk(u); return;
+ }
+ _cr.silent=0; _cr.turn++;                  /* 두 번째 침묵 — 다음 질문으로 넘어갑니다 */
+ if(_cr.turn>=CR_TURNS){ crEnd(); return; }
+ crNextQ('괜찮습니다. 다음 질문으로 갈게요.');
+}
+
+function crNextQ(pre){
+ var c=CRY[_cr.lang];
+ var q=c.probe[_cr.pi%c.probe.length]; _cr.pi++;
+ _cr.log.push({me:false,t:q});
+ if(pre){ var l=document.getElementById('crSay'); if(l)l.innerHTML=pre; }
+ crAsk(q);
+}
+
 function crQuit(){
- _cr.stop=true;if(_cr.timer){clearInterval(_cr.timer);_cr.timer=null;}
+ _cr.stop=true; crStopWait();
+ if(_cr.timer){clearInterval(_cr.timer);_cr.timer=null;}
  try{speechSynthesis.cancel();}catch(e){}crLipStop();
  if(_cr.rec){try{_cr.rec.stop();}catch(e){}}
  crPick();
 }
+
 function crHear(){
- if(_cr.stop||_cr.left<=0)return;
+ if(_cr.stop)return;
  if(_cr.fallback){
-   crScreen('⌨️ '+_cr.lang+'로 편하게 적어주세요. 시간은 계속 흐릅니다.',
+   crScreen('⌨️ '+_cr.lang+'로 편하게 적어 주세요.',
      '<div class="tk-type"><input id="crIn" placeholder="여기에 입력…" autocomplete="off"><button onclick="crTyped()">보내기</button></div>');
    var i=document.getElementById('crIn');if(i){i.focus();i.onkeydown=function(e){if(e.key==='Enter')crTyped();};}
    return;
@@ -14629,7 +14675,7 @@ function crHear(){
  rec.lang=_cr.code;rec.interimResults=true;rec.continuous=true;rec.maxAlternatives=1;
  var fin='';
  crStageCls('hearing');
- crScreen('🎙️ 듣고 있어요. 지금 말씀하세요!','<div class="cr-live" id="crLive"></div>');
+ crScreen('🎙️ 지금 말씀하세요 — 듣고 있습니다','<div class="cr-live" id="crLive"></div>');
  rec.onresult=function(e){
    var itr='';
    for(var i=e.resultIndex;i<e.results.length;i++){
@@ -14643,45 +14689,42 @@ function crHear(){
  };
  rec.onend=function(){
    crStageCls('');
-   if(_cr.stop)return;
+   if(_cr.stop||_cr.got)return;
    var t=fin.trim();
    if(t)crGot(t);
-   else if(_cr.left>0)crPushOn();
  };
  try{rec.start();}catch(e){_cr.fallback=true;crHear();return;}
- setTimeout(function(){if(_cr.rec===rec&&!_cr.stop){try{rec.stop();}catch(e){}}},9000);
 }
+
 function crTyped(){
  var i=document.getElementById('crIn');if(!i)return;
  var v=i.value.trim();if(!v)return;
  crGot(v);
 }
+
+/* 대답을 받았습니다 — 짧게 반응하고 바로 다음 질문 */
 function crGot(t){
- _cr.heard+=' '+t;_cr.turns++;
+ if(_cr.stop||_cr.got)return;
+ _cr.got=true; crStopWait();
+ if(_cr.rec){try{_cr.rec.stop();}catch(e){}}
+ _cr.heard+=' '+t; _cr.turns++; _cr.silent=0; _cr.turn++;
  _cr.log.push({me:true,t:t});
- if(_cr.left<=2){crEnd();return;}
- var c=CRY[_cr.lang];
- var q=c.probe[_cr.pi%c.probe.length];_cr.pi++;
- _cr.log.push({me:false,t:q});
- crScreen('🔊 크리스탈이 말하고 있어요…');
- crSay(q,_cr.code,function(){if(!_cr.stop&&_cr.left>0)crHear();});
+ if(_cr.turn>=CR_TURNS){ crEnd(); return; }
+ var REACT=['좋습니다.','네, 잘 들었습니다.','좋아요.','네 —'];
+ crNextQ(REACT[(_cr.turn-1)%REACT.length]);
 }
-function crPushOn(){
- if(_cr.stop||_cr.left<=2){if(_cr.left<=2)crEnd();return;}
- var c=CRY[_cr.lang];
- var u=c.push[_cr.ui%c.push.length];_cr.ui++;
- _cr.log.push({me:false,t:u});
- crScreen('🔊 크리스탈이 말하고 있어요…');
- crSay(u,_cr.code,function(){if(!_cr.stop&&_cr.left>0)crHear();});
-}
+
+function crPushOn(){ crTimeUp(); }   /* 옛 이름 호환 */
+
 var _crEnded=false;
 function crEnd(){
  if(_crEnded)return;_crEnded=true;
  _cr.stop=true;
+ crStopWait();
  if(_cr.timer){clearInterval(_cr.timer);_cr.timer=null;}
  if(_cr.rec){try{_cr.rec.stop();}catch(e){}}
  var c=CRY[_cr.lang];
- crScreen('🔊 '+ '수고하셨어요! 결과를 계산하고 있어요…');
+ crScreen('수고하셨습니다. 결과를 계산하고 있습니다…');
  crSay(c.bye,_cr.code,function(){crResult();});
  setTimeout(function(){crResult();},6500);
 }
@@ -14751,7 +14794,7 @@ function crResult(){
    '<div><b>'+avg+'</b><span>턴당 평균</span></div><div><b>'+mk.n+'</b><span>문법 요소</span></div></div>'+
   (mk.hit.length?'<div class="cr-sub">확인된 표현: <b>'+mk.hit.join(' · ')+'</b></div>':'')+
   '<div class="cr-log" style="max-height:150px">'+log+'</div>'+
-  '<div class="lvr-note" style="margin-top:12px">※ 30초 대화를 자동 분석한 <b>참고 결과</b>입니다. 최종 반 배정은 강사가 직접 확인 후 결정합니다.</div>'+
+  '<div class="lvr-note" style="margin-top:12px">※ 대화 내용을 자동 분석한 <b>참고 결과</b>입니다. 최종 반 배정은 강사가 직접 확인 후 결정합니다.</div>'+
   '<button class="cr-btn gold" onclick="lvCloseRun();closeLv();'+goStep+'">'+B.n+' 반 시간표 보기 ›</button>'+
   '<button class="cr-btn ghost" onclick="lvCloseRun();closeLv();rsvOpen()">강사에게 무료로 재판정 받기</button>'+
   '<button class="cr-btn ghost" onclick="crIntro(\''+_cr.lang+'\')">다시 테스트하기</button></div>');
