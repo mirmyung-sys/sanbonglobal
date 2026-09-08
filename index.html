@@ -3569,6 +3569,15 @@ html,body{overflow-x:hidden;max-width:100%}
 .lvq-tag{display:inline-block;font-size:11px;font-weight:800;padding:2px 7px;border-radius:6px;margin-right:6px;color:#fff;vertical-align:middle}
 .lvq-tag.t1{background:#2ca66a}.lvq-tag.t2{background:#e59a2a}.lvq-tag.t3{background:#c81f2b}
 .lvnote-top{background:#fff7ef;border:1px solid #f0e2cf;border-radius:12px;padding:12px 16px;font-size:13px;color:#6a5a3f;text-align:center;margin:6px auto 14px;max-width:900px;line-height:1.6}
+
+/* 2026-09-08 — 1차 채점 뒤 2차 라운드 안내 */
+.ls-r2{text-align:center;padding:26px 18px 22px}
+.ls-r2 .r2-face img{width:76px;height:76px;border-radius:50%;object-fit:cover;box-shadow:0 8px 22px -10px rgba(0,0,0,.35)}
+.ls-r2 h3{margin:12px 0 6px;font-size:19px;line-height:1.35;color:#1d2430}
+.ls-r2 h3 b{color:#c81f2b}
+.ls-r2 p{margin:0 0 16px;font-size:14.5px;line-height:1.7;color:#525b69}
+.ls-r2 .lr-next{width:100%;margin-bottom:8px}
+.ls-r2 .lr-again{width:100%}
 </style>
 <style>.plog{max-width:920px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 12px 44px rgba(0,0,0,.14)}.plog-top{background:#c81f2b;padding:20px;display:flex;align-items:center;justify-content:center;gap:12px}.plog-top img{height:52px;width:auto}.plog-top span{color:#fff;font-size:22px;font-weight:900;letter-spacing:-.5px}.plog-body{display:grid;grid-template-columns:1fr 1fr;gap:26px;padding:30px}.plog-f{width:100%;border:1.5px solid #d9dde5;border-radius:8px;padding:15px 14px;font-size:15px;margin-bottom:12px;font-family:inherit;box-sizing:border-box}.plog-save{display:flex;align-items:center;gap:7px;font-size:14px;color:#5b6472;margin:2px 0 14px}.plog-btn{width:100%;background:#c81f2b;color:#fff;border:0;border-radius:8px;padding:16px;font-size:16px;font-weight:800;cursor:pointer}.plog-sns-t{font-size:14px;font-weight:800;color:#2b3340;margin:22px 0 13px}.plog-sns{display:flex;gap:20px;align-items:center}.psi{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;text-decoration:none}.psi-n{background:#03C75A;color:#fff;font-size:22px}.psi-k{background:#FEE500;color:#3A1D1D;font-size:12px}.psi-g{background:#fff;border:1.5px solid #e3e6ec;color:#DB4437;font-size:20px}.plog-r{display:flex}.plog-promo{background:#f4f5f7;border-radius:10px;width:100%;overflow:hidden;text-align:center;display:flex;flex-direction:column}.plog-pr-head{background:#c81f2b;color:#fff;padding:22px 12px 18px;font-size:20px;font-weight:800;line-height:1.4}.plog-pr-head b{color:#ffe14d}.plog-pr-head em{display:block;font-style:normal;font-size:14px;font-weight:700;margin-top:8px;opacity:.95}.plog-pr-body{padding:18px 12px 20px}.plog-pr-gw{font-size:15px;font-weight:800;color:#2b3340}.plog-pr-big{font-size:26px;font-weight:900;color:#1a1a1a;line-height:1.3;margin:8px 0 16px}.plog-pr-big b{color:#c81f2b}.plog-ar{color:#c81f2b}.plog-pr-go{display:inline-flex;align-items:center;gap:8px;background:#1a1a1a;color:#fff;border-radius:24px;padding:11px 18px;font-size:14px;font-weight:800;text-decoration:none}.plog-pr-go span{background:#7ee06b;color:#0a3d0a;border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:900}.plog-foot{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #e3e6ee;background:#f6f7fa}.plog-foot a{padding:20px;text-align:center;font-size:15px;color:#4b5563;text-decoration:none;font-weight:600}.plog-foot a+a{border-left:1px solid #e3e6ee}@media(max-width:640px){.plog-body{grid-template-columns:1fr;gap:20px}}</style><style>
 /* ═══ 폰 우선 가독성 (2026-09-05 대표님 지시: 폰이 우선, PC도 깨지면 안 됨) ═══
@@ -7618,66 +7627,66 @@ var AIB=[
       lv:'알파벳과 기본 발음부터',
       toc:['이름 묻고 답하기','물건과 위치 말하기','어디서 왔는지 말하기','옷과 계절 말하기','시간 말하기','교통편과 하루 일과','집과 가구 말하기','직업과 하는 일','음식과 식습관','운동과 할 수 있는 것','계획 말하기','몸 상태와 조언','길 묻고 안내하기','지난 일 말하기','태어난 곳과 학창시절','전화와 초대'],
       d:'단어 위주로 답하는 단계입니다. 문장 틀 여덟 개만 몸에 붙이면 그 자리에서 입이 열립니다.',
-      li:['원어민 음성 · 0.75배속으로 늦춰 듣기','표현·대화문마다 재생 버튼','한국인이 늘 틀리는 자리만 집어 줍니다','한 과 3분 · 문제 4개로 확인']},
+      li:['원어민 음성 · 0.75배속으로 늦춰 듣기','표현·대화문마다 재생 버튼','한국인이 늘 틀리는 자리만 집어 줍니다','한 과 3분 · 문제 10개 + 오답 재도전']},
      {s:'초급',en:'STARTER',no:'02',img:'eng_begin',u:16,price:49000,off:24500,
       lv:'짧은 문장 만들기',
       toc:['주말에 뭐 하세요? — 현재형과 because','어제 뭐 하셨어요? — 단순과거','얼마나 자주 하세요? — 빈도','어느 쪽이 더 좋아요? — 비교급','제일 좋아하는 건요? — 최상급','주말에 뭐 하실 거예요? — be going to와 will','꼭 해야 하는 일 — have to와 should','부탁드려도 될까요 — could와 요청','지금 뭐 하고 계세요? — 진행형과 현재형','얼마나 오래 하셨어요? — 현재완료 for·since','가 본 적 있어요? — 현재완료 경험','그래서요, 그런데요 — because·so·but','만약에요 — 조건문 if','어떤 사람이냐면요 — 관계대명사','같이 하실래요? — 제안하기','전화와 이메일로 — 전화 표현'],
       d:'단어로는 통하는데 문장이 짧게 끊깁니다. 이유를 붙이고 두 문장을 잇습니다.',
-      li:['원어민 음성 · 0.75배속으로 늦춰 듣기','표현·대화문마다 재생 버튼','한국인이 늘 틀리는 자리만 집어 줍니다','한 과 3분 · 문제 4개로 확인']},
+      li:['원어민 음성 · 0.75배속으로 늦춰 듣기','표현·대화문마다 재생 버튼','한국인이 늘 틀리는 자리만 집어 줍니다','한 과 3분 · 문제 10개 + 오답 재도전']},
      {s:'중급',en:'MIDDLE',no:'03',img:'eng_mid',u:16,price:49000,off:24500,
       lv:'생각을 이어 말하기',
       toc:['해본 적 있어요? — 현재완료 경험','예전엔 그랬어요 — used to','그때 뭐 하고 있었어요? — 과거진행','이미 그 전에요 — 과거완료','계속 하고 있어요 — 현재완료진행','만약 제가 그랬다면 — 가정법','~라고 하시더라고요 — 간접화법','어디 있는지 아세요? — 간접의문문','하게 만들다 — 사역동사','~하는 것 — 동명사와 to부정사','~되었어요 — 수동태','차라리 이게 낫겠어요 — 완곡 표현','제 생각에는요 — 의견 말하기','동의와 반대','다시 말하면요 — 바꿔 말하기','정리해서 말씀드리면 — 발표 틀'],
       d:'문장으로 답하고 이유도 덧붙이십니다. 표현의 폭을 넓히는 단계입니다.',
-      li:['원어민 음성 · 0.75배속으로 늦춰 듣기','표현·대화문마다 재생 버튼','한국인이 늘 틀리는 자리만 집어 줍니다','한 과 3분 · 문제 4개로 확인']},
+      li:['원어민 음성 · 0.75배속으로 늦춰 듣기','표현·대화문마다 재생 버튼','한국인이 늘 틀리는 자리만 집어 줍니다','한 과 3분 · 문제 10개 + 오답 재도전']},
      {s:'고급',en:'ADVANCED',no:'04',img:'eng_real',u:16,price:49000,off:24500,
       lv:'의견을 논리적으로',
       toc:['단정하지 않는 기술 — 헤징','안 좋은 소식을 전할 때','협상하고 조율하기','회의에서 끼어들기','사과하되 무너지지 않기','피드백 주고받기','가벼운 대화의 기술','설득하는 법','숫자와 추세 말하기','이메일의 격식','문화의 지뢰밭','실제로 쓰이는 관용구','구동사 제대로 쓰기','강세로 뜻이 바뀝니다','면접에서 답하기 — STAR','어려운 질문 받아내기'],
       d:'막힘 없이 이어 말하지만 늘 쓰던 단어만 씁니다. 같은 말을 다르게 하는 연습입니다.',
-      li:['원어민 음성 · 0.75배속으로 늦춰 듣기','표현·대화문마다 재생 버튼','한국인이 늘 틀리는 자리만 집어 줍니다','한 과 3분 · 문제 4개로 확인']}
+      li:['원어민 음성 · 0.75배속으로 늦춰 듣기','표현·대화문마다 재생 버튼','한국인이 늘 틀리는 자리만 집어 줍니다','한 과 3분 · 문제 10개 + 오답 재도전']}
    ]},
   {k:'일본어',en:'JAPANESE',steps:[
      {s:'베이직',en:'BASIC',no:'01',img:'jpn_basic',u:12,price:49000,off:24500,
       lv:'히라가나·가타카나부터',
       toc:['처음 뵙겠습니다 — です','어디서 오셨어요? — 나라와 직업','이것은 무엇입니까 — 물건과 내 것','지금 몇 시입니까 — 시간 말하기','얼마입니까 — 가게에서 사기','어디에 있습니까 — 위치 묻기','맛있습니다 — い형용사','좋아합니다 — な형용사와 が','어제는 어땠습니까 — 과거 말하기','내일 무엇을 합니까 — 동사 ます','같이 가지 않으실래요 — 권유와 희망','다시 한 번 말해 주세요 — て형'],
       d:'히라가나부터 시작합니다. 「です・ます」 하나만 잡으면 그날 바로 문장이 나옵니다.',
-      li:['원어민 음성 · 한자에 읽는 법 표기','표현·대화문마다 재생 버튼','문형마다 실제 쓰는 대화 예문','한 과 3분 · 문제 4개로 확인']},
+      li:['원어민 음성 · 한자에 읽는 법 표기','표현·대화문마다 재생 버튼','문형마다 실제 쓰는 대화 예문','한 과 3분 · 문제 10개 + 오답 재도전']},
      {s:'초급',en:'STARTER',no:'02',img:'jpn_begin',u:12,price:49000,off:24500,
       lv:'조사와 て형',
       toc:['조사 다시 잡기','친구에게 말할 때 — 보통형','~해서, ~하고 — て형으로 잇기','할 수 있어요 — 가능형','~한 적이 있어요 — 경험과 나열','~하는 게 좋겠어요 — 조언과 의무','~라고 생각해요 — 의견','~할 때 — 시간 관계','~해 두고, ~해 버리고','~라면 — 조건 표현','존댓말을 갖춰서 — 경어 입문','전화와 부탁'],
       d:'문장은 나오는데 딱딱합니다. て형과 보통형을 잡으면 말이 부드러워집니다.',
-      li:['원어민 음성 · 한자에 읽는 법 표기','표현·대화문마다 재생 버튼','문형마다 실제 쓰는 대화 예문','한 과 3분 · 문제 4개로 확인']},
+      li:['원어민 음성 · 한자에 읽는 법 표기','표현·대화문마다 재생 버튼','문형마다 실제 쓰는 대화 예문','한 과 3분 · 문제 10개 + 오답 재도전']},
      {s:'중급',en:'MIDDLE',no:'03',img:'jpn_mid',u:12,price:49000,off:24500,
       lv:'경어와 수동·사역',
       toc:['경어의 문 열기','~하기 쉽다, 어렵다','~해 주다, ~해 받다','~된다고 합니다','~때문에, ~덕분에','~하면서, ~한 채로','~할 예정입니다','~당했어요','~하게 시켰어요','~하는 편이 좋다고 봅니다','보고와 연락','메일과 문서'],
       d:'대화는 이어지는데 존댓말에서 막힙니다. 경어와 긴 문장 연결을 정리합니다.',
-      li:['원어민 음성 · 한자에 읽는 법 표기','표현·대화문마다 재생 버튼','문형마다 실제 쓰는 대화 예문','한 과 3분 · 문제 4개로 확인']},
+      li:['원어민 음성 · 한자에 읽는 법 표기','표현·대화문마다 재생 버튼','문형마다 실제 쓰는 대화 예문','한 과 3분 · 문제 10개 + 오답 재도전']},
      {s:'고급',en:'ADVANCED',no:'04',img:'jpn_real',u:12,price:49000,off:24500,
       lv:'의견 말하기',
       toc:['단정을 피하는 경어의 기술','완곡하게 재촉하기','의견을 세우고 버티기','숫자로 설명하기','사과와 재발 방지','회의를 이끌기','교섭과 조건 조정','프레젠테이션','접대와 자리의 예절','전화 응대의 격','메일의 정형','면접과 자기 PR'],
       d:'자기 의견을 자유롭게 말하는 단계입니다. 비즈니스 회화까지 다룹니다.',
-      li:['원어민 음성 · 한자에 읽는 법 표기','표현·대화문마다 재생 버튼','문형마다 실제 쓰는 대화 예문','한 과 3분 · 문제 4개로 확인']}
+      li:['원어민 음성 · 한자에 읽는 법 표기','표현·대화문마다 재생 버튼','문형마다 실제 쓰는 대화 예문','한 과 3분 · 문제 10개 + 오답 재도전']}
    ]},
   {k:'중국어',en:'CHINESE',steps:[
      {s:'베이직',en:'BASIC',no:'01',img:'chn_basic',u:12,price:49000,off:24500,
       lv:'병음과 4성부터',
       toc:['안녕하세요 — 첫인사와 성조','어느 나라 사람이에요? — 是·不是·吗','이것은 무엇입니까 — 这·那·的','지금 몇 시예요 — 点·从~到','얼마예요 — 가게에서 사기','어디에 있어요 — 在과 有','맛있어요 — 형용사와 很','좋아해요 — 喜欢·会','어제는 어땠어요 — 了와 没','내일 뭐 해요 — 중국어 어순','같이 갈래요 — 想·要·吧','다시 한 번 말해 주세요 — 请·一下'],
       d:'성조가 전부입니다. 성조가 잡히는 순간 말하기 속도가 눈에 띄게 달라집니다.',
-      li:['원어민 음성 · 성조 표시 병음','표현·대화문마다 재생 버튼','성조와 어순부터 잡아 줍니다','한 과 3분 · 문제 4개로 확인']},
+      li:['원어민 음성 · 성조 표시 병음','표현·대화문마다 재생 버튼','성조와 어순부터 잡아 줍니다','한 과 3분 · 문제 10개 + 오답 재도전']},
      {s:'초급',en:'STARTER',no:'02',img:'chn_begin',u:12,price:49000,off:24500,
       lv:'기본 어순과 了',
       toc:['기본 어순과 了 다시 잡기','~하고 나서 — 先~然后~','얼마나 걸려요? — 시간의 길이','할 수 있어요 — 能·会·可以','비교해서 말하기 — 比','~해 봤어요 — 동사 중첩','~하는 중이에요 — 正在와 着','~이기 때문에 — 因为~所以~','~하게 되었어요 — 得와 결과보어','~해 주세요 — 给·帮·请','~인 것 같아요 — 觉得와 好像','전화와 약속'],
       d:'단어는 아는데 문장으로 안 이어집니다. 了와 접속 표현으로 말을 잇습니다.',
-      li:['원어민 음성 · 성조 표시 병음','표현·대화문마다 재생 버튼','성조와 어순부터 잡아 줍니다','한 과 3분 · 문제 4개로 확인']},
+      li:['원어민 음성 · 성조 표시 병음','표현·대화문마다 재생 버튼','성조와 어순부터 잡아 줍니다','한 과 3분 · 문제 10개 + 오답 재도전']},
      {s:'중급',en:'MIDDLE',no:'03',img:'chn_mid',u:12,price:49000,off:24500,
       lv:'把·被 구문',
       toc:['把 — 옮기고 놓고 바꾸기','被 — 당했어요','~하면 ~한다','~뿐만 아니라','경험과 변화','~하는 김에, ~한 김에','정도를 자세히','~라고 생각합니다','전화와 약속 잡기','식사와 접대','메일과 문서','협상과 마무리'],
       d:'대화가 자연스럽게 이어집니다. 把·被 구문과 어휘 확장이 다음 벽입니다.',
-      li:['원어민 음성 · 성조 표시 병음','표현·대화문마다 재생 버튼','성조와 어순부터 잡아 줍니다','한 과 3분 · 문제 4개로 확인']},
+      li:['원어민 음성 · 성조 표시 병음','표현·대화문마다 재생 버튼','성조와 어순부터 잡아 줍니다','한 과 3분 · 문제 10개 + 오답 재도전']},
      {s:'고급',en:'ADVANCED',no:'04',img:'chn_real',u:12,price:49000,off:24500,
       lv:'논리적으로 말하기',
       toc:['협상의 중국어 — 완곡하게 밀고 당기기','완곡하게 거절하기','의견을 세우고 반론하기','숫자와 실적 보고','사과와 대책','회의 진행하기','협상과 조건','프레젠테이션','관계 만들기','전화와 위챗','계약서 읽기','면접과 자기소개'],
       d:'의견을 논리적으로 전개하는 단계입니다. 시사·비즈니스 중국어를 다룹니다.',
-      li:['원어민 음성 · 성조 표시 병음','표현·대화문마다 재생 버튼','성조와 어순부터 잡아 줍니다','한 과 3분 · 문제 4개로 확인']}
+      li:['원어민 음성 · 성조 표시 병음','표현·대화문마다 재생 버튼','성조와 어순부터 잡아 줍니다','한 과 3분 · 문제 10개 + 오답 재도전']}
    ]}
  ]},
  {k:'시험대비반',en:'TEST PREP',subs:[
@@ -11701,23 +11710,32 @@ function _lsUtter(t,lang,who,next){
  var u, done=false;
  function fin(){ if(done)return; done=true; next(); }
  try{ u=new SpeechSynthesisUtterance(t); }catch(e){ fin(); return; }
- u.lang=lang; u.rate=_lsRate;
+ u.lang=lang;
+ /* 2026-09-08 대표님 지시 — 우리말은 1.0배속으로. 빠르게 하면 발음이 뭉개집니다. */
+ u.rate=(String(lang).slice(0,2)==='ko') ? Math.min(1,_lsRate) : _lsRate;
  var v=(who==='b')?_lsVoice2(lang):_lsVoice(lang); if(v)u.voice=v;
  u.pitch=_lsPitch(who,lang);
  u.onend=fin; u.onerror=fin;
  try{ speechSynthesis.speak(u); }catch(e){ fin(); return; }
  /* onend 가 오지 않는 기기 대비 — 실제로 말하고 있는지 300ms 마다 살핍니다.
     한 번도 시작되지 않으면 2초 뒤에, 말하다 멈추면 그 즉시 다음으로 넘어갑니다. */
- var began=false, t0=Date.now();
- var cap=Math.min(20000, Math.max(2600, t.length*220/(_lsRate||1)));
+ /* 2026-09-08 — 마지막 단어가 잘리던 원인:
+    speaking 이 한 번 false 로 보이면 곧바로 다음 문장으로 넘어가 버렸습니다.
+    Chrome 은 단어 사이에서도 순간 false 를 돌려줍니다. 두 번 연속 false 일 때만,
+    그것도 0.35초 여유를 두고 넘어갑니다. */
+ var began=false, t0=Date.now(), quiet=0;
+ var cap=Math.min(30000, Math.max(4000, t.length*300/(_lsRate||1)));
  var iv=setInterval(function(){
    if(done){ clearInterval(iv); return; }
    var sp=false; try{ sp=!!speechSynthesis.speaking; }catch(e){}
-   if(sp){ began=true; }
-   else if(began){ clearInterval(iv); fin(); return; }          /* 말이 끝났습니다 */
-   else if(Date.now()-t0>2000){ clearInterval(iv); fin(); return; } /* 시작조차 안 됨 */
+   if(sp){ began=true; quiet=0; }
+   else if(began){
+     quiet++;
+     if(quiet>=2){ clearInterval(iv); setTimeout(fin,350); return; }   /* 정말로 끝났습니다 */
+   }
+   else if(Date.now()-t0>2500){ clearInterval(iv); fin(); return; }    /* 시작조차 안 됨 */
    if(Date.now()-t0>cap){ clearInterval(iv); fin(); }
- },300);
+ },200);
 }
 function _lsVoice(lang){
  var pre=lang.slice(0,2);
@@ -11838,7 +11856,8 @@ function _lsSpeakSegs(txt,defLang,onDone,btn,who){
  function nx(){
   if(i>=segs.length){ if(btn)btn.classList.remove('on'); if(onDone)onDone(); return; }
   var sg=segs[i++], t=_lsClean(sg.t,sg.lang);
-  if(sg.lang==='ko-KR'){ nx(); return; }   /* 우리말 해설은 읽지 않습니다 */
+  /* 2026-09-08 대표님 지시 — 우리말도 읽습니다.
+     전에는 한국어를 통째로 건너뛰어서 초급 LC 같은 과가 소리 없이 지나갔습니다. */
   _lsUtter(t,sg.lang,who,nx);
  }
  nx();}
@@ -12045,7 +12064,7 @@ function _sgpSeg(){
  var it=SGA_P.items[SGA_P.ix]||{};
  if(SGA_P.sx>=SGA_P.segs.length){ _sgpAdv(); return; }
  var sg=SGA_P.segs[SGA_P.sx++], t=_lsClean(sg.t,sg.lang);
- if(sg.lang==='ko-KR' && !it.mp3){ _sgpSeg(); return; }   /* 우리말은 녹음이 있을 때만 */
+ /* 2026-09-08 — 우리말도 읽습니다. 녹음(mp3)이 있으면 위에서 녹음이 먼저 나갑니다. */
  _lsUtter(t,sg.lang,it.who,function(){ _sgpSeg(); });
 }
 function _sgpAdv(){
@@ -12097,7 +12116,12 @@ function _lsHasTarget(txt,lang){
  try{
   var ss=_lsSegs(txt,lang);
   for(var i=0;i<ss.length;i++){
-   if(ss[i].lang==='ko-KR') continue;
+   /* 2026-09-08 — 우리말만 있는 줄에도 재생 버튼을 붙입니다 */
+   if(ss[i].lang==='ko-KR'){
+    var ck=_lsClean(ss[i].t,'ko-KR');
+    if(ck && ck.replace(/[^\uAC00-\uD7A3]/g,'').length>=2) return true;
+    continue;
+   }
    var c=_lsClean(ss[i].t,ss[i].lang);
    if(c && c.replace(/[^A-Za-z\u3040-\u30ff\u4e00-\u9fff]/g,'').length>=2) return true;
   }
@@ -12194,7 +12218,14 @@ function aiHasTxt(n){var a=AITXT[aiTxtKey()];return !!(a&&a[n-1]);}
    무료 : 회화반 전부(영어·일본어·중국어) + 토익 기초문법 40강(tc_basic)
    유료 : 나머지 시험대비반(LC·실전모의·토스·오픽·토플·JLPT·HSK) — 인강 매출
    회화는 미끼가 아니라 완제품으로 전부 열어 드립니다. */
+/* 2026-09-08 대표님 지시 — 「다 전부 풀어놔 내가 볼 수 있게」.
+   10월 1일 정식 오픈 전까지는 모든 교재·모든 과를 열어 둡니다.
+   오픈 뒤에는 아래 원래 규칙(회화반 + 토익 문법만 무료)으로 자동 복귀합니다. */
+var SGA_ALLOPEN = (function(){ try{
+  return Date.now() < new Date('2026-10-01T00:00:00+09:00').getTime();
+}catch(e){ return false; } })();
 function aiIsFreeBook(k){
+ if(SGA_ALLOPEN) return true;
  /* 2026-09-06 대표님 지시 — 무료는 「토익 문법 40강」과 회화반뿐이고,
     그마저도 회원(로그인)에게만 엽니다. 비회원은 1과 맛보기까지만. */
  k=k||''; return /^(eng|jpn|chn)_/.test(k) || k==='tc_basic';
@@ -12209,7 +12240,8 @@ function sgaHasCheckin(){
    전에는 「회원가입 + 출석체크」 둘 다 해야 열렸습니다. 이제 **로그인만 하면** 2과부터 전부 열립니다.
    출석체크는 리워드로만 남기고 열람 조건에서는 뺍니다. */
 function sgaUnlocked(){ return sgaIsMaster() || sgaIsMember(); }
-function aiFreeNow(){ try{ return aiIsFreeBook(aiTxtKey()) && sgaUnlocked(); }catch(e){ return false; } }
+function aiFreeNow(){ if(SGA_ALLOPEN) return true;
+ try{ return aiIsFreeBook(aiTxtKey()) && sgaUnlocked(); }catch(e){ return false; } }
 function aiFreeN(){var a=AITXT[aiTxtKey()];if(!a||a.length<2)return 1;
  var d=Math.floor((Date.now()+9*3600*1000)/86400000);return 2+(d%(a.length-1));}
 function aiLockShow(n){
@@ -12570,10 +12602,11 @@ function _aiScript(L,n,T){
  var S=[],i,kAt=0;
  /* 2026-09-08 대표님 지적 — "딱 하나만 같이 보겠습니다 하고 끝".
    한 과를 통째로 배우는데 「딱 하나만」이라 해서 이걸로 끝인 줄 아셨습니다. 문구를 바꿉니다. */
- S.push({vo:'hello',who:'ai',t:'안녕하세요, <b>산글이</b>예요.<br>오늘은 <b>'+L.t+'</b> — 이거 하나를 <b>끝까지</b> 끝내겠습니다.<br><em style="color:#5c6472;font-style:normal">표현 익히기 → 대화 연습 → 내 이야기로 말하기 → 문제 4개, 순서대로 갑니다.</em>'});
+ S.push({vo:'hello',who:'ai',t:'안녕하세요, <b>산글이</b>예요.<br>오늘은 <b>'+L.t+'</b> — 이거 하나를 <b>끝까지</b> 끝내겠습니다.<br><em style="color:#5c6472;font-style:normal">표현 익히기 → 대화 연습 → 내 이야기로 말하기 → 문제 10개, 순서대로 갑니다.</em>'});
  S.push({vo:'guide',who:'ai',t:'제가 계속 말씀드릴게요. 급하시면 <b>화면을 누르시면</b> 바로 다음으로 넘어갑니다.',
    ask:[{t:'좋아요, 시작할게요'},{t:'이걸 왜 배워요?',r:'토익이든 회화든 <b>이 자리 하나</b>가 매번 나옵니다. 여기서 막히면 뒤가 다 느려져요. 그래서 제일 먼저 봅니다.'}]});
- S.push({who:'ai',t:'오늘 내용은 <b>'+T.n+'</b> 선생님이 맡아 주십니다.'});
+ /* 2026-09-08 대표님 지적 — 「강사님이 진행합니다」라 해 놓고 얼굴·목소리는 산글이라 어긋났습니다. */
+ S.push({who:'ai',t:'오늘 내용은 <b>'+T.n+'</b> 선생님이 만든 수업입니다. <b>진행은 제가</b> 하겠습니다.'});
  S.push({who:'t',t:T.hi});
  S.push({who:'t',t:L.goal});
  /* ═══ 2026-09-05 — 시중 1위 교재들의 공통 구조를 넣습니다 ═══
@@ -12660,7 +12693,7 @@ function _aiScript(L,n,T){
   var _arr=AITXT[aiTxtKey()], _nx=_arr&&_arr[n];
   if(_nx) S.push({who:'ai',t:'다음 <b>'+(n+1)+'과</b>는 <b>'+_nx.t+'</b>입니다.<br><span style="color:#5c6472">'+(_nx.goal||'')+'</span>'});
  }catch(e){}
- S.push({vo:'finish',who:'ai',t:'여기까지 오셨으면 다 하신 겁니다.<br>이제 <b>문제 4개</b>로 확인만 하면 끝이에요.',last:true});
+ S.push({vo:'finish',who:'ai',t:'여기까지 오셨으면 다 하신 겁니다.<br>이제 <b>문제 10개</b>로 확인만 하면 끝이에요.',last:true});
  return S;
 }
 var _at={i:0,S:[],T:null,n:1,auto:true};
@@ -12678,7 +12711,13 @@ function _atSave(){try{
   var keep={speed:_atCfg.speed,sound:_atCfg.sound,mic:_atCfg.mic};  /* auto 는 저장하지 않습니다 */
   localStorage.setItem('sga_at_cfg',JSON.stringify(keep));
 }catch(e){}}
-function _atStop(){if(_atT){clearTimeout(_atT);_atT=null;}if(_atTypeT){clearInterval(_atTypeT);_atTypeT=null;}try{atMicStop();}catch(e){}try{voStop();}catch(e){}}
+function _atStop(){if(_atT){clearTimeout(_atT);_atT=null;}if(_atTypeT){clearInterval(_atTypeT);_atTypeT=null;}
+ try{atMicStop();}catch(e){}try{voStop();}catch(e){}
+ /* 2026-09-08 대표님 지적 — 「멈춤」을 눌러도 낭독이 계속되던 문제 */
+ try{sgpStop();}catch(e){}
+ try{speechSynthesis.cancel();}catch(e){}
+ if(_atTalkT){clearTimeout(_atTalkT);_atTalkT=null;}
+}
 function _atFlush(){if(_at&&_at.pend)_atRender();}
 
 /* 산글이 표정 — idle / talking / listening / celebrate */
@@ -12698,7 +12737,7 @@ function aiTeach(n){
  var k=aiTxtKey(), arr=AITXT[k];
  if(!arr||!arr[n-1]){sgToast('<b>'+n+'과는 준비 중입니다</b>');return;}
  if(n!==1&&n!==aiFreeN()&&!aiFreeNow()&&!sgaIsMaster()){aiLockShow(n);return;}
- _lsQ=0;_lsPick=[];_lsN=n;_lsUseAlt={};_lsTickStop();_atStop();
+ _lsQ=0;_lsPick=[];_lsN=n;_lsUseAlt={};_lsSet=[];_lsRound=1;_lsWrongQ=[];_lsTickStop();_atStop();
  var L=arr[n-1], T=_aiTeacher(k);
  _at={i:-1,S:_aiScript(L,n,T),T:T,n:n,paused:false,started:false};
  var m=document.createElement('div');
@@ -12791,7 +12830,7 @@ function atGo(){
  _atT=setTimeout(_atRender,lead);
 }
 function _atRender(){
- var pd=_at.pend; if(!pd)return; _at.pend=null; _at._askShown=0;
+ var pd=_at.pend; if(!pd)return; _at.pend=null; _at._askShown=0; _at._endShown=0;
  if(_atT){clearTimeout(_atT);_atT=null;}
  var b=pd.b, s=pd.s, log=pd.log;
  b.innerHTML=(s.who==='a'?'<span class="at-sp">A</span>':(s.who==='b'?'<span class="at-sp">B</span>':''))+s.t;
@@ -12812,7 +12851,7 @@ function _atRender(){
   var _next=function(){
    if(_went)return; _went=true;
    if(s.ask){ if(!_at._askShown){ _at._askShown=1; atAsk(s); } return; }
-   if(s.last){ atEndTeach(); return; }
+   if(s.last){ if(!_at._endShown){ atEndTeach(); } return; }
    _atMood('idle');
    if(_atCfg.auto&&!_at.paused) _atT=setTimeout(atGo,170/(_atCfg.speed||1));
   };
@@ -12821,6 +12860,9 @@ function _atRender(){
    /* 2026-09-08 — 고를 게 있는 차례는 목소리가 끝나기를 기다리지 않고 바로 보여 줍니다.
       전에는 10초 가까이 화면에 아무 변화가 없어 「끝났나?」 싶게 만들었습니다. */
    if(s.ask && !_at._askShown){ _at._askShown=1; atAsk(s); }
+   /* 2026-09-08 대표님 지적 — 「문제」 버튼이 한참 뒤에야 나왔습니다.
+      마지막 마디는 목소리가 끝나기를 기다리지 않고 바로 띄웁니다. */
+   if(s.last && !_at._endShown){ atEndTeach(); }
    return;
   }
   _went=false;                     /* 파일이 없으면 아래 기본 흐름으로 */
@@ -12905,7 +12947,11 @@ function atMicT(){_atCfg.mic=(_atCfg.mic!==0)?0:1; _atSave(); atMicLbl();
 
 /* 설명 끝 → 문제로 */
 function atEndTeach(){
- _atStop(); _atMood('celebrate');
+ /* 두 번째 호출은 소리를 끊지 않습니다 (2026-09-08) */
+ var _again = !!(_at && _at._endShown);
+ if(_at) _at._endShown=1;
+ if(!_again) _atStop();
+ _atMood('celebrate');
  var a=document.getElementById('atAsk');
  if(a){a.innerHTML='<button class="go" onclick="atToQuiz()">문제 풀러 가기 ›</button>';a.classList.add('on');}
  var g=document.getElementById('atTapg'); if(g)g.style.visibility='hidden';
@@ -12929,7 +12975,7 @@ function aiLesson(n,plain){
  if(plain){var e2=document.getElementById('lsModal');if(e2&&e2.parentNode)e2.parentNode.removeChild(e2);}
  if(!arr||!arr[n-1]){sgToast('<b>'+n+'과는 준비 중입니다</b><br>영어 베이직부터 순서대로 열어 드리고 있습니다.');return;}
  if(n!==1&&n!==aiFreeN()&&!aiFreeNow()&&!sgaIsMaster()){aiLockShow(n);return;}
- _lsQ=0;_lsPick=[];_lsN=n;_lsUseAlt={};_lsTickStop(); /* 지금 몇 과인지 — 결과 화면의 「다음 과」가 이 값을 씁니다 */
+ _lsQ=0;_lsPick=[];_lsN=n;_lsUseAlt={};_lsSet=[];_lsRound=1;_lsWrongQ=[];_lsTickStop(); /* 지금 몇 과인지 — 결과 화면의 「다음 과」가 이 값을 씁니다 */
  var L=arr[n-1], T=AIB[_aiT], G=(T.subs&&T.subs[_aiG])||T, B=G.steps[_aiS];
  var h='<div class="ls-hd"><span class="ls-no">'+n+'과</span><h3>'+L.t+'</h3>'
   +(L.gtag?('<div class="ls-unit"><em>'+L.gtag+'</em></div>'):'')
@@ -13001,7 +13047,79 @@ var _lsUseAlt={},_lsTimer=null;
 function _lsIsExam(){ try{ return /^(tc|ts|tf|op|jl|hs)_/.test(aiTxtKey()||''); }catch(e){ return false; } }
 function lsReveal(el){ try{ var r=el.closest('.dl'); if(r)r.classList.add('open'); }catch(e){} }
 var _lsTick=null,_lsLeft=0;
-function _lsQof(L,i){return (_lsUseAlt[i]&&L.qa&&L.qa[i])?L.qa[i]:L.q[i];}
+
+/* ═══════════ 10문제 · 오답 재도전 (2026-09-08 대표님 지시) ═══════════
+   "문제는 열개로 해줘. 틀린 문제 있으면 비슷한 문제 다시 열문제 풀게끔."
+   원래 자료(q 4개 + qa 4개)만으로는 열 문제가 안 됩니다.
+   그래서 그 과의 「핵심표현」에서도 문제를 만들어 풀에 넣습니다.
+   1차 10문제 → 하나라도 틀리면 같은 유형 10문제로 2차. */
+var LSQ_N=10;
+var _lsSet=[], _lsRound=1, _lsWrongQ=[];
+function _lsShuf(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;} return a; }
+function _lsTrim(t){ return String(t||'').replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim(); }
+
+/* 핵심표현 한 줄 → 4지선다 한 문제 */
+function _lsKeyQ(keys,i){
+ var k=keys[i]; if(!Array.isArray(k)||!k[0]||!k[1]) return null;
+ var ans=_lsTrim(k[1]); if(ans.length<2||ans.length>70) return null;
+ var pool=[];
+ for(var j=0;j<keys.length;j++){
+  if(j===i||!Array.isArray(keys[j])) continue;
+  var d=_lsTrim(keys[j][1]);
+  if(d && d!==ans && d.length<=70) pool.push(d);
+ }
+ if(pool.length<3) return null;
+ var opts=[ans].concat(_lsShuf(pool).slice(0,3));
+ opts=_lsShuf(opts);
+ var ai=opts.indexOf(ans);
+ var why=_lsTrim(k[2])||('「'+_lsTrim(k[0])+'」 자리에 쓰는 표현입니다.');
+ return ['<b>'+_lsTrim(k[0])+'</b> — 이럴 때 쓰는 것은?', opts.join('|'), ai, why, 'key'];
+}
+
+/* 그 과에서 낼 수 있는 문제를 전부 모읍니다 */
+function _lsPool(L){
+ var pool=[], seen={};
+ function add(x){
+  if(!Array.isArray(x)||x.length<4) return;
+  var id=_lsTrim(x[0])+'|'+_lsTrim(x[1]);
+  if(seen[id]) return; seen[id]=1; pool.push(x);
+ }
+ (L.q||[]).forEach(add);
+ (L.qa||[]).forEach(add);
+ var keys=(L.key||[]).filter(function(k){return Array.isArray(k);});
+ for(var i=0;i<keys.length;i++){ var q=_lsKeyQ(keys,i); if(q) add(q); }
+ return pool;
+}
+
+/* 1차 세트를 짭니다 — 원래 문제를 앞에, 핵심표현 문제를 뒤에 */
+function _lsMakeSet(L){
+ var pool=_lsPool(L);
+ var main=pool.filter(function(x){return x[4]!=='key';});
+ var keyq=_lsShuf(pool.filter(function(x){return x[4]==='key';}));
+ var set=main.concat(keyq);
+ /* 열 개가 안 되면 있는 만큼, 넘치면 열 개까지 */
+ if(set.length>LSQ_N) set=set.slice(0,LSQ_N);
+ _lsSet=set; _lsRound=1; _lsWrongQ=[];
+ return set;
+}
+/* 2차 — 틀린 문제를 먼저, 나머지는 안 낸 문제로 채웁니다 */
+function _lsMakeSet2(L){
+ var pool=_lsPool(L);
+ var usedId={}; _lsSet.forEach(function(x){ usedId[_lsTrim(x[0])+'|'+_lsTrim(x[1])]=1; });
+ var fresh=pool.filter(function(x){ return !usedId[_lsTrim(x[0])+'|'+_lsTrim(x[1])]; });
+ var set=_lsWrongQ.slice();                    /* 틀린 문제부터 */
+ set=set.concat(_lsShuf(fresh));
+ if(set.length<LSQ_N){                          /* 그래도 모자라면 처음 것들을 섞어 채웁니다 */
+  var rest=_lsShuf(_lsSet.filter(function(x){ return set.indexOf(x)<0; }));
+  set=set.concat(rest);
+ }
+ if(set.length>LSQ_N) set=set.slice(0,LSQ_N);
+ _lsSet=set; _lsRound=2; _lsWrongQ=[]; _lsQ=0; _lsPick=[];
+ return set;
+}
+function _lsSetLen(){ return _lsSet.length||1; }
+
+function _lsQof(L,i){ if(!_lsSet.length)_lsMakeSet(L); return _lsSet[i]||_lsSet[0]; }
 function _lsTickStop(){if(_lsTimer){clearTimeout(_lsTimer);_lsTimer=null;}
  if(_lsTick){clearInterval(_lsTick);_lsTick=null;}}
 /* 진짜 초침 — 남은 초가 줄고 고리가 함께 돕니다 (2026-09-06 대표님 지시) */
@@ -13030,24 +13148,37 @@ function lsQDraw(){
  var arr=AITXT[aiTxtKey()], L=arr[_lsCur()-1]; if(!L)return;
  var box=document.getElementById('lsQ'); if(!box)return;
  _lsTickStop();
- if(_lsQ>=L.q.length){
+ if(!_lsSet.length) _lsMakeSet(L);
+ if(_lsQ>=_lsSetLen()){
   var right=0, wrongs=[];
-  for(var i=0;i<L.q.length;i++){
+  for(var i=0;i<_lsSetLen();i++){
    var Qi=_lsQof(L,i);
    if(_lsPick[i]===Qi[2]) right++;
    else wrongs.push(Qi[1].split('|')[Qi[2]]);
   }
+  /* 2026-09-08 대표님 지시 — 1차에서 하나라도 틀렸으면 같은 유형으로 한 번 더 */
+  if(_lsRound===1 && right<_lsSetLen()){
+   box.innerHTML='<div class="ls-r2">'
+    +'<div class="r2-face"><img src="img/sgi_face.png" alt="산글이" onerror="this.style.display=\'none\'"></div>'
+    +'<h3>'+_lsSetLen()+'문제 중 <b>'+right+'개</b> 맞히셨습니다</h3>'
+    +'<p>틀린 <b>'+(_lsSetLen()-right)+'문제</b>는 그냥 넘기면 다음 과에서 또 막힙니다.<br>'
+    +'<b>같은 유형으로 '+LSQ_N+'문제</b> 더 풀고 확실히 잡고 가시겠어요?</p>'
+    +'<button class="lr-next" onclick="lsRound2()">🔁 같은 유형 '+LSQ_N+'문제 더 풀기 ›</button>'
+    +'<button class="lr-again" onclick="lsSkipR2()">괜찮아요, 결과 볼게요</button>'
+   +'</div>';
+   return;
+  }
   var n=_lsCur(), T=AIB[_aiT], G=(T&&T.subs&&T.subs[_aiG])||T, B=G&&G.steps?G.steps[_aiS]:null;
   var tot=(B&&B.u)?B.u:arr.length;
   var last=(n>=tot);
-  _aiDG={subj:(G?G.k:''),step:(B?B.s:''),n:n,tot:tot,right:right,q:L.q.length,
+  _aiDG={subj:(G?G.k:''),step:(B?B.s:''),n:n,tot:tot,right:right,q:_lsSetLen(),
          wrongs:wrongs,band:_aiBand(right,L.q.length,(B?B.s:'')),weak:_aiWeak(L,wrongs)};
   box.innerHTML=_aiDiagHTML(last);
   /* 2026-09-04 진단서에 이미 「창닫기 / 다음 과」가 있어 아래 원래 버튼 줄은 감춥니다 */
   try{var _dup=document.querySelector('#lsModal .ls-sheet > .lr-b'); if(_dup)_dup.style.display='none';}catch(e){}
   return;}
  var Q=_lsQof(L,_lsQ), opts=Q[1].split('|');
- box.innerHTML='<div class="ls-qn">'+(_lsQ+1)+' / '+L.q.length+(_lsUseAlt[_lsQ]?' <em class="ls-retag">🔁 같은 유형</em>':'')+'</div>'
+ box.innerHTML='<div class="ls-qn">'+(_lsQ+1)+' / '+_lsSetLen()+(_lsRound===2?' <em class="ls-retag">🔁 같은 유형 2차</em>':'')+'</div>'
   +'<div class="ls-qt">'+Q[0]+'</div>'
   +'<div class="sg-clock" id="lsTmr"><div class="dial">'
    +'<svg viewBox="0 0 46 46"><circle class="bg" cx="23" cy="23" r="20"></circle>'
@@ -13145,7 +13276,7 @@ function _aiDiagHTML(last){
     ? '<div class="lr-b" style="margin-top:14px;grid-template-columns:1fr"><button class="lr-next" onclick="aiLsClose()">✕ 창닫기</button></div>'
     : '<div class="lr-b" style="margin-top:14px"><button class="lr-again" onclick="aiLsClose()">✕ 창닫기</button>'
       +'<button class="lr-next" onclick="aiLsNext()">다음 과 열기 ›</button></div>')
-  +'<button type="button" onclick="_lsQ=0;_lsPick=[];_lsUseAlt={};lsQDraw()" class="dg-re">↻ 이 과 다시 풀기</button>'
+  +'<button type="button" onclick="_lsQ=0;_lsPick=[];_lsUseAlt={};_lsSet=[];_lsRound=1;_lsWrongQ=[];lsQDraw()" class="dg-re">↻ 이 과 다시 풀기</button>'
  +'</div>';
 }
 function _lsCur(){return _lsN||1;}
@@ -13156,11 +13287,11 @@ function lsPick(i){
  _lsPick[_lsQ]=i;
  var box=document.getElementById('lsQ');
  var ok=(i===Q[2]), opts=Q[1].split('|');
- var canRetry=(!ok && !_lsUseAlt[_lsQ] && L.qa && L.qa[_lsQ]);
+ if(!ok){ if(_lsWrongQ.indexOf(Q)<0) _lsWrongQ.push(Q); }
  /* 2026-09-06 대표님 지시 — 고른 보기를 지우지 말고, 무엇을 골랐는지 마크로 남깁니다 */
- var vo=(!_lsUseAlt[_lsQ])?sgVox('q',_lsQ):'';
+ var vo=(_lsRound===1 && Q[4]!=='key')?sgVox('q',_lsQ):'';
  var voTxt=String(Q[3]).replace(/<[^>]+>/g,'').replace(/'/g,"\\'");
- box.innerHTML='<div class="ls-qn">'+(_lsQ+1)+' / '+L.q.length+'</div>'
+ box.innerHTML='<div class="ls-qn">'+(_lsQ+1)+' / '+_lsSetLen()+(_lsRound===2?' <em class="ls-retag">🔁 2차</em>':'')+'</div>'
   +'<div class="ls-qt">'+Q[0]+'</div>'
   +'<div class="ls-opt done">'+opts.map(function(o,j){
      var cls=(j===Q[2])?'ok':((j===i)?'no':'dim');
@@ -13173,17 +13304,21 @@ function lsPick(i){
    +'<div class="ls-bub"><em>'+(ok?'맞아요!':'괜찮아요, 여기만 보시면 돼요.')+'</em> '+Q[3]
    +(vo?' <button class="ls-vo" data-ic="&#128011;" style="display:inline-flex;vertical-align:middle;margin-left:4px" title="산글이 설명 듣기" onclick="sgVoSay(\''+vo+'\',\''+voTxt+'\',this)">&#128011;</button>':'')
    +'</div></div>'
-  +(canRetry?'<div class="ls-retry">비슷한 걸로 한 번 더 해보실래요?</div>':'')
-  +(canRetry?'<button class="lr-again" style="margin-right:8px" onclick="lsAlt()">🔁 같은 유형 한 문제 더</button>':'')
   +'<button class="lr-next" onclick="_lsQ++;lsQDraw()">'
-  +(_lsQ+1>=L.q.length?'결과 보기 ›':'다음 문제 ›')+'</button>';
+  +(_lsQ+1>=_lsSetLen()?(_lsRound===1?'채점 결과 보기 ›':'결과 보기 ›'):'다음 문제 ›')+'</button>';
  /* 정답을 누르면 해설이 바로 눈에 들어오게 */
  try{ box.scrollIntoView({block:'center',behavior:'smooth'}); }catch(e){}
  /* 산글이가 해설을 읽어 줍니다 */
  if(vo){ try{ sgpPlay([{mp3:vo,t:voTxt,lang:'ko-KR'}],box.querySelector('.ls-vo'),'one'); }catch(e){} }
 }
-/* 틀린 문제와 같은 유형의 유사 문제를 그 자리에서 다시 냅니다 */
-function lsAlt(){_lsUseAlt[_lsQ]=true;_lsPick[_lsQ]=undefined;lsQDraw();}
+/* 2차 라운드 — 틀린 문제부터 같은 유형으로 열 문제 (2026-09-08) */
+function lsRound2(){
+ var arr=AITXT[aiTxtKey()], L=arr[_lsCur()-1]; if(!L)return;
+ _lsMakeSet2(L); lsQDraw();
+ try{document.getElementById('lsQ').scrollIntoView({block:'center'});}catch(e){}
+}
+function lsSkipR2(){ _lsRound=2; _lsQ=_lsSetLen(); lsQDraw(); }
+function lsAlt(){ lsRound2(); }
 
 
 function aiBuy(){var T=AIB[_aiT], G=T.subs[_aiG]||T.subs[0], B=G.steps[_aiS]||G.steps[0];
