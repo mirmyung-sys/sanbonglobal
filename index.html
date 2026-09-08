@@ -11775,11 +11775,17 @@ function _lsVoice2(lang){
  var first=_lsVoice(lang);
  for(var i=0;i<v.length;i++){ if(v[i]!==first) return v[i]; }
  return first;}
+/* 2026-09-08 대표님 지적 "레벨테스트·토익·토스 소리 이상해" 전수검사 결과:
+   ▶(듣기)가 한국어 해설까지 브라우저 로봇 음성으로 읽고 있었습니다.
+   tc_lc 는 한 과에 한국어 구간 10 : 외국어 3 으로 대부분이 로봇 한국어였습니다.
+   해설은 화면에 글자로 이미 있으니, 듣기는 「배우는 언어」만 읽습니다.
+   산글이 목소리(mp3)가 붙은 자리는 그대로 우리말로 들려 드립니다. */
 function _lsSpeakSegs(txt,defLang,onDone,btn,who){
  var segs=_lsSegs(txt,defLang), i=0;
  function nx(){
   if(i>=segs.length){ if(btn)btn.classList.remove('on'); if(onDone)onDone(); return; }
   var sg=segs[i++], t=_lsClean(sg.t,sg.lang);
+  if(sg.lang==='ko-KR'){ nx(); return; }   /* 우리말 해설은 읽지 않습니다 */
   if(!t){ nx(); return; }
   var u=new SpeechSynthesisUtterance(t);
   u.lang=sg.lang; u.rate=_lsRate;
@@ -12045,6 +12051,18 @@ function _lsKeySay(en, L){
 /* 「S + V + O → 명사」 같은 문법 도식은 영어 문장이 아닙니다.
    영어 음성으로 읽으면 "에스 플러스 브이" 하고 들려 아무 도움이 안 됩니다.
    진짜 영어 문장이 있을 때만 ▶(영어로 듣기)를 답니다. */
+/* 그 줄에 「배우는 언어」가 실제로 들어 있는지 — 없으면 ▶ 버튼을 달지 않습니다 */
+function _lsHasTarget(txt,lang){
+ try{
+  var ss=_lsSegs(txt,lang);
+  for(var i=0;i<ss.length;i++){
+   if(ss[i].lang==='ko-KR') continue;
+   var c=_lsClean(ss[i].t,ss[i].lang);
+   if(c && c.replace(/[^A-Za-z\u3040-\u30ff\u4e00-\u9fff]/g,'').length>=2) return true;
+  }
+ }catch(e){ return true; }
+ return false;
+}
 function _lsIsEnglishLine(t){
  var x=String(t);
  if(/[\uAC00-\uD7A3]/.test(x)) return false;          /* 한글이 섞이면 도식/설명 */
@@ -12908,7 +12926,10 @@ function aiLesson(n,plain){
      +'<div><b>'+r[1]+'</b><em>'+r[2]+'</em>'
      +(hide?'<span class="vcov" onclick="lsReveal(this)">&#128072; 눌러서 정답·해설 보기</span>':'')
      +'</div>'
-     +'<button class="ls-p" data-ic="&#9654;" title="듣기" onclick="lsSay(\''+say+'\',this'+(vo?",'"+vo+"'":'')+')">&#9654;</button></div>';}).join('')+'</div></div>'
+     +((vo||_lsHasTarget(r[1],_lsLang()))
+       ? ('<button class="ls-p" data-ic="&#9654;" title="듣기" onclick="lsSay(\''+say+'\',this'+(vo?",'"+vo+"'":'')+')">&#9654;</button>')
+       : '')   /* 배우는 언어가 없는 우리말 해설 줄에는 듣기 버튼을 달지 않습니다 (2026-09-08) */
+     +'</div>';}).join('')+'</div></div>'
  +'<div class="ls-sec ls-gram"><div class="ls-lab">한국인이 여기서 틀립니다</div>'
   +'<h4>'+L.gram.t+'</h4><p>'+L.gram.d+'</p></div>'
  +'<div class="ls-sec"><div class="ls-lab">문제 풀기</div>'
@@ -13924,21 +13945,33 @@ TALK['중국어'].q[1][0]="请问你叫什么名字？";
 var _tk={lang:'',code:'',qi:0,lv:1,log:[],rec:null,busy:false,stopAll:false,fallback:false};
 
 function _voices(){try{return window.speechSynthesis?speechSynthesis.getVoices():[];}catch(e){return [];}}
+/* 2026-09-08 — 레벨테스트 소리가 학습관보다 나빴던 이유:
+   여기서는 이름에 female 이 들어가는지만 보고 첫 번째를 골랐습니다. 음질을 전혀 안 봤습니다.
+   학습관과 같은 기준(엣지 Natural/Neural → 구글 → 온라인 → 로컬)으로 고르고, 그 안에서 여성을 선호합니다. */
 function _pickVoice(code){
  var vs=_voices();if(!vs.length)return null;
  var base=code.split('-')[0];
  var cand=vs.filter(function(v){return v.lang&&v.lang.replace('_','-').toLowerCase().indexOf(base)===0;});
  if(!cand.length)return null;
- var fem=/female|여성|women|woman|samantha|sarah|zira|google 한국|kyoko|o-ren|ting|mei|xiaoxiao|nanami|siyu|yuna|hyunjun|ava|allison|joanna/i;
- var f=cand.filter(function(v){return fem.test(v.name);});
- return (f[0]||cand[0]);
+ var fem=/female|여성|women|woman|samantha|sarah|zira|kyoko|o-ren|ting|mei|xiaoxiao|nanami|siyu|yuna|ava|allison|joanna|aria|jenny|sunhi|seoyeon|heami/i;
+ function sc(v){
+  var n=String(v.name||''), s=0;
+  if(/natural|neural/i.test(n)) s+=10;
+  if(/google/i.test(n)) s+=6;
+  if(!v.localService) s+=3;
+  if(String(v.lang).replace('_','-').toLowerCase()===code.toLowerCase()) s+=2;
+  if(fem.test(n)) s+=4;
+  return s;
+ }
+ cand.sort(function(a,b){return sc(b)-sc(a);});
+ return cand[0];
 }
 function _say(text,code,cb){
  if(!window.speechSynthesis){if(cb)cb();return;}
  try{speechSynthesis.cancel();}catch(e){}
  var u=new SpeechSynthesisUtterance(text);
  u.lang=code;var v=_pickVoice(code);if(v)u.voice=v;
- u.rate=0.92;u.pitch=1.05;
+ u.rate=0.95;u.pitch=1;   /* 피치를 올리면 기계음이 됩니다 (2026-09-08) */
  u.onend=function(){if(cb)cb();};
  u.onerror=function(){if(cb)cb();};
  setTimeout(function(){try{speechSynthesis.speak(u);}catch(e){if(cb)cb();}},60);
@@ -14366,6 +14399,12 @@ select.txflash{animation:txFlash 1.05s ease-out}
 @media (hover:hover) and (pointer:fine){
   .sg-rgb:hover{ animation:sgFlash .64s ease-out; transform:translateY(-2px) } }
 .sg-rgb.sg-blink{ animation:sgFlash .70s ease-out }
+/* 2026-09-08 — 강의안내처럼 넓은 행은 반응이 더 또렷해야 눈에 띕니다 */
+.gd-row.sg-rgb,.gd-card.sg-rgb{ border-radius:16px; padding:10px }
+@media (hover:hover) and (pointer:fine){
+  .gd-row.sg-rgb:hover,.gd-card.sg-rgb:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 34px -18px rgba(200,31,43,.55), 0 0 0 3px rgba(200,31,43,.14) } }
 /* 펼쳐진 과목칩 위에는 커튼을 내리지 않습니다 (시간표를 가리므로) */
 .sg-rg.exp > .sg-cur{ display:none !important }
 @media (prefers-reduced-motion:reduce){
@@ -14859,12 +14898,15 @@ function _sgCurParts(el){
   var cta = _sgTxt(el.querySelector('button, a.tt-b, .tt-b, .pgcta')).replace(/[›>»\s]+$/,'').trim();
   return { top: top, key: key, cta: (cta || '자세히 보기') + ' ›' };
 }
-var SG_RGB_SEL = ['.qcard','.chip','.tsn'].join(',');   /* 테두리만 (앞면에 이미 핵심이 보임) */
+/* 2026-09-08 대표님 지적 — 「글로벌 시험반」에서 마우스를 갖다 대도 아무 반응이 없었습니다.
+   그 페이지는 .gd-row / .gd-card / .gd-chips 구조라 대상 목록에 아예 빠져 있었습니다. */
+var SG_RGB_SEL = ['.qcard','.chip','.tsn','.gd-row','.gd-card'].join(',');   /* 테두리만 (앞면에 이미 핵심이 보임) */
 function sgRedBorder(root){
   try{
     (root||document).querySelectorAll(SG_RGB_SEL).forEach(function(el){
       if(el.dataset.sgrgb||el.dataset.sgrg) return;
       if(el.closest('#lsModal,#atRun,.sharebox')) return;
+      if(el.closest('.sg-rgb,.sg-rg')) return;   /* 이미 테두리가 걸린 카드 안쪽에는 겹쳐 달지 않습니다 */
       if(el.offsetWidth < 44) return;
       el.dataset.sgrgb='1'; el.classList.add('sg-rgb');
     });
