@@ -13394,13 +13394,13 @@ function galleryPage(){
  var cells=GALLERY.map(function(g,i){
   return '<div class="gl-c" onclick="glOpen('+i+')"><img src="img/'+g[0]+'.jpg" alt="'+g[1]+'" loading="lazy"><em>'+g[1]+'</em></div>';
  }).join('');
- return _pgHero('img/hall_01.jpg','GALLERY · 학원 둘러보기','사진 그대로입니다',
-  '보정하지 않은 <b>실제 학원 사진</b>입니다. 오시기 전에 어떤 곳인지 먼저 보십시오. 강의실 여덟 개, 전부 소수 정예로 씁니다.',
+ return _pgHero('img/hall_01.jpg','GALLERY · 학원 둘러보기','오시면 이 모습 그대로입니다',
+  '<b>정규 강의실 아홉 개</b>, 전부 소수 정예로 씁니다. 로비부터 복도, 강의실까지 — 오시기 전에 어떤 곳인지 먼저 보십시오.',
   'linear-gradient(120deg,#14213D,#2C4574)')
  +'<div class="op-h">강의실과 복도</div>'
  +'<div class="op-hs">사진을 누르시면 크게 보실 수 있습니다.</div>'
  +'<div class="gl-grid">'+cells+'</div>'
- +'<div class="pgnote">📷 모든 사진은 산본로323번길 16-7 롯데프라자 7층 현장에서 찍은 것입니다. 직접 오셔서 보시는 것이 가장 정확합니다.</div>'
+ +'<div class="pgnote">📷 산본로323번길 16-7 롯데프라자 7층, 현장에서 직접 찍은 사진입니다. 직접 오셔서 보시는 것이 가장 정확합니다.</div>'
  +SGCTA('둘러보러 오시는 것도 환영합니다. 미리 연락 주시면 조용한 시간에 안내해 드립니다.');}
 function glOpen(i){
  _glI=i;
