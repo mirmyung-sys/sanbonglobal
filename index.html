@@ -12605,8 +12605,19 @@ function _aiScript(L,n,T){
 }
 var _at={i:0,S:[],T:null,n:1,auto:true};
 var _atT=null, _atTypeT=null, _atTalkT=null, _atCfg={auto:1,speed:1,sound:1,mic:1};
+/* 2026-09-08 대표님이 "1과 눌렀는데 대사 하나 나오고 끝" 이라 하신 것의 진짜 원인:
+   「멈춤」을 한 번 누르면 auto:0 이 localStorage 에 저장되어, 그 뒤로는 학습관에 다시
+   들어와도 영영 자동 진행이 꺼진 채였습니다. 학생 누구에게나 생길 수 있는 함정입니다.
+   멈춤은 그 수업 안에서만 유효한 동작이지 영구 설정이 아닙니다 — 불러올 때 항상 켭니다. */
 try{var _c=localStorage.getItem('sga_at_cfg'); if(_c)_atCfg=JSON.parse(_c);}catch(e){}
-function _atSave(){try{localStorage.setItem('sga_at_cfg',JSON.stringify(_atCfg));}catch(e){}}
+_atCfg.auto=1;
+if(_atCfg.speed===undefined)_atCfg.speed=1;
+if(_atCfg.sound===undefined)_atCfg.sound=1;
+if(_atCfg.mic===undefined)_atCfg.mic=1;
+function _atSave(){try{
+  var keep={speed:_atCfg.speed,sound:_atCfg.sound,mic:_atCfg.mic};  /* auto 는 저장하지 않습니다 */
+  localStorage.setItem('sga_at_cfg',JSON.stringify(keep));
+}catch(e){}}
 function _atStop(){if(_atT){clearTimeout(_atT);_atT=null;}if(_atTypeT){clearInterval(_atTypeT);_atTypeT=null;}try{atMicStop();}catch(e){}try{voStop();}catch(e){}}
 function _atFlush(){if(_at&&_at.pend)_atRender();}
 
