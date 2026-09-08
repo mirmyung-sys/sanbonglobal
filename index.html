@@ -1244,7 +1244,7 @@ span.pay-b.tel{cursor:default;opacity:.85}
  background:radial-gradient(circle at 50% 42%,#FFFFFF,#EAF3EE 72%);
  border:2px solid rgba(62,213,152,.45);display:flex;align-items:center;justify-content:center;
  box-shadow:0 4px 12px rgba(0,0,0,.35)}
-.aiv-whale .wh img{width:50px;height:50px;object-fit:contain;display:block}
+.aiv-whale .wh img{width:60px;height:60px;object-fit:cover;display:block}
 .aiv-whale .tx{font-size:14px;font-weight:700;color:#CFE9DD}
 .aiv-whale .tx b{color:#fff;font-weight:900}
 /* 무엇을 하는 곳인가 */
@@ -1742,9 +1742,9 @@ li:first-child > .pgh{margin-top:2px}
 .at-face img{width:100%;height:100%;object-fit:cover;display:block}
 .at-face.talk{box-shadow:0 0 0 6px rgba(198,161,91,.28),0 12px 32px -12px rgba(29,45,79,.55);animation:atBob 1.4s ease-in-out}
 /* 2026-09-04 산글이를 전신 캐릭터 이미지로 교체 — 강사 사진은 cover 그대로, 산글이만 contain */
-.at-face img[src*='whale']{object-fit:contain;padding:7px;box-sizing:border-box}
+.at-face img[src*='sgi_']{object-fit:cover;padding:0}
 /* 2026-09-05 — 얼굴 클로즈업 이미지는 원을 꽉 채웁니다 */
-.at-face img[src*='whale_face']{object-fit:cover!important;padding:0!important}
+.at-face img[src*='sgi_face']{object-fit:cover!important;padding:0!important}
 
 @keyframes atBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 @media(prefers-reduced-motion:reduce){.at-face.talk{animation:none}}
@@ -3864,7 +3864,7 @@ html,body{overflow-x:hidden;max-width:100%}
   <div class="tqwrap"><div class="tq">
     <div class="tq-l">
       <div class="tq-eye">AI 산글 · 오늘의 한 문제</div>
-      <div class="tq-mas"><img src="img/whale_smile.png" alt="산글이"><span><b>산글이</b>가 매일 한 문제씩 들고 옵니다</span></div>
+      <div class="tq-mas"><img src="img/sgi_smile.png" alt="산글이"><span><b>산글이</b>가 매일 한 문제씩 들고 옵니다</span></div>
       <h3 id="tqDate">매일 아침 한 문제.<br>3초에 풀리는 자리를 익힙니다</h3>
       <p>토익 Part 5는 <b>해석하면 집니다.</b> 빈칸 앞뒤 두 단어만 보고 자리를 잡는 연습을 매일 한 문제씩 드립니다. 회원가입도 로그인도 필요 없습니다.</p>
       <a class="tq-go" href="#" onclick="openPage('AI산글');return false;">AI 학습관 보기 →</a>
@@ -6833,7 +6833,7 @@ function aiFlowCard(t){
  var wk=spa?'월~금 하루 한 강':'월·수 하루 한 강 + 격주 금요일 복습 한 강';
  var mo=spa?'2개월':'4개월';
  return '<div class="aif">'
- +'<div class="aif-h"><img src="img/whale.png" alt="산글이"><div><b>AI 산글은 이렇게 진행됩니다</b>'
+ +'<div class="aif-h"><img src="img/sgi_face.png" alt="산글이"><div><b>AI 산글은 이렇게 진행됩니다</b>'
  +'<em>학원이 아니라 <u>홈페이지</u>에서 합니다 · 24시간 · 추가 요금 없음</em></div>'
  +'<span class="aif-free">무료 포함</span></div>'
  +'<ol class="aif-s">'
@@ -7688,16 +7688,24 @@ var AIB=[
       toc:['Part 5 · 품사 자리 — 해석 없이 10초','Part 5 · 시제 — 시간 부사가 답을 정합니다','Part 5 · 수 일치 — 주어만 찾으면 끝','Part 5 · 능동태 vs 수동태','Part 5 · 대명사 — 격만 보면 됩니다','Part 5 · 전치사 by·until·within·during','Part 5 · 접속사 vs 전치사 (because vs because of)','Part 5 · 관계대명사 who·which·whose','Part 5 · to부정사와 동명사','Part 5 · 비교급·최상급','Part 5 · 가정법 — should 도치까지','Part 5 · 부사 어휘 — 자리별 단골','Part 5 · 동사 어휘 콜로케이션','Part 5 · 명사 어휘 콜로케이션','Part 5 · 형용사 어휘 콜로케이션','Part 5 · 헷갈리는 짝 (rise/raise·lend/borrow)','Part 6 · 문맥 시제 고르기','Part 6 · 접속부사 (however·therefore)','Part 6 · 어휘 — 앞뒤 문장이 답','Part 6 · 문장 넣기 — 대명사·연결어 단서','Part 7 · 문제 먼저, 지문은 나중에','Part 7 · 주제·목적 — 첫 두 줄','Part 7 · 세부사항 — 키워드 스캔','Part 7 · 패러프레이징 사전 1','Part 7 · 패러프레이징 사전 2','Part 7 · NOT 문제 — 소거법','Part 7 · 추론 — 근거 없는 상상 금지','Part 7 · 동의어 문제','Part 7 · 화자 의도 문제','Part 7 · 문장 삽입 위치','Part 7 · 이메일·공지 유형','Part 7 · 기사·광고 유형','Part 7 · 문자 대화·채팅 유형','Part 7 · 이중 지문 — 연계 문제','Part 7 · 삼중 지문 — 표와 본문 연결','실전 세트 1 — Part 5 15문항','실전 세트 2 — Part 6 한 지문','실전 세트 3 — Part 7 단일 지문','실전 세트 4 — Part 7 이중 지문','파이널 — 시험 전날 체크리스트'],
       d:'Part 5·6·7을 시험 순서 그대로. 문법 20과 + 어휘·독해 20과, <b>해석하지 않고 푸는 법</b>부터 잡습니다.',
       li:['실제 시험 형식 (A)(B)(C)(D) 그대로','문항마다 함정까지 해설','틀린 유형만 다시 뽑아 줍니다','학원 수강생은 무료']},
-     {s:'초급',en:'BASIC · LC PART 1-4',no:'02',img:'tc_lc',u:20,ev:true,price:120000,off:30000,
+     {s:'초급 LC',en:'BASIC LC · PART 1-4',no:'02',img:'tc_lc',u:20,ev:true,price:120000,off:30000,
       lv:'LC 495점',
       toc:['Part 1 — 사람 사진은 is ~ing','Part 1 — 사물 사진은 has been p.p.','Part 1 — 유사 발음·연상 함정','Part 2 — 첫 단어가 반','Part 2 — Where·When·Who','Part 2 — What·Which·How','Part 2 — Why','Part 2 — Yes/No 의문문과 대체 표현','Part 2 — 제안·부탁','Part 2 — 선택 의문문','Part 2 — 평서문과 부가의문문','Part 2 — 간접 응답·되묻기','Part 3 — 문제 먼저 읽기','Part 3 — 주제·장소·직업','Part 3 — 세부사항·요청','Part 3 — 패러프레이징','Part 3 — 의도 파악','Part 4 — 담화 종류별 첫 문장','Part 4 — 숫자·시간·순서','Part 4 — 시각 자료 연계'],
       d:'원어민 음성으로 듣고 바로 풉니다. Part 2 의문사 훈련부터 Part 3·4 패러프레이징까지 — <b>0.75배속으로 늦춰 듣고, 1.2배속으로 귀를 키웁니다.</b>',
       li:['모든 문제 원어민 음성 재생','0.75 · 1.2배속 훈련','유사 발음 함정 집중 훈련','학원 수강생은 무료']},
-     {s:'중급',en:'MIDDLE · RC PART 7',no:'03',img:'tc_mid',u:20,price:49000,off:24500,soon:true,
+     {s:'초급 RC',en:'BASIC RC · PART 5-7',no:'03',img:'tc_rc',u:20,price:49000,off:24500,soon:true,
+      lv:'RC 400~495',
+      d:'문법을 끝낸 뒤 <b>실제 지문에 적용</b>하는 단계입니다. Part 5 어휘, Part 6 문맥, Part 7 짧은 지문까지. 준비 중입니다.',
+      li:['하루 한 과 · 3분이면 끝','문항마다 왜 틀렸는지 설명','틀린 유형만 다시 뽑아 줍니다','학원 수강생은 무료']},
+     {s:'중급 LC',en:'MIDDLE LC · PART 3-4',no:'04',img:'tc_mlc',u:20,price:49000,off:24500,soon:true,
+      lv:'LC 400~495',
+      d:'Part 3·4 긴 대화와 담화. <b>문제를 먼저 읽고 들으면서 답을 고르는</b> 속도를 만듭니다. 준비 중입니다.',
+      li:['모든 문제 원어민 음성 재생','0.75 · 1.2배속 훈련','패러프레이징 집중 훈련','학원 수강생은 무료']},
+     {s:'중급 RC',en:'MIDDLE RC · PART 7',no:'05',img:'tc_mid',u:20,price:49000,off:24500,soon:true,
       lv:'RC 독해 700~800',
       d:'Part 7 독해. 지문을 다 읽지 않고 바꿔 쓴 표현만 찾는 훈련입니다. 준비 중입니다.',
       li:['하루 한 과 · 3분이면 끝','문항마다 왜 틀렸는지 설명','틀린 유형만 다시 뽑아 줍니다','학원 수강생은 무료']},
-     {s:'실전',en:'MOCK TEST',no:'04',img:'tc_real',u:12,price:49000,off:24500,soon:true,
+     {s:'실전',en:'MOCK TEST · LC+RC',no:'06',img:'tc_real',u:12,price:49000,off:24500,soon:true,
       lv:'토익 대비',
       d:'LC+RC 하프 모의고사. 준비 중입니다.',
       li:['하루 한 과 · 3분이면 끝','문항마다 왜 틀렸는지 설명','틀린 유형만 다시 뽑아 줍니다','학원 수강생은 무료']}
@@ -8356,7 +8364,7 @@ function aiCalHTML(){
   +'<span><i class="now"></i>오늘</span><span><i class="soon"></i>예정</span></div>'
  +'<div class="aic-t"><em>'+(done?'다음 강의 · ':'첫 강의 · ')+(cur.rv?'복습':(cur.no+'강'))+' · '+_md(cur.d)+'</em><b>'+cur.unit+'</b>'
   +'<span>5문항 · 3분'+(miss?(' · 결석 '+miss+'강은 언제든 보충하실 수 있습니다'):'')+'</span></div>'
- +'<div class="ai-say" style="margin:16px 0 0"><img src="img/whale.png" alt="산글이"><div class="ai-bub">'
+ +'<div class="ai-say" style="margin:16px 0 0"><img src="img/sgi_face.png" alt="산글이"><div class="ai-bub">'
  +'한 번에 다 열어드리면 사흘이면 다 푸시고 안 오세요. 그래서 <b>현강 나오는 날에 한 강씩</b>만 엽니다.<br>'
  +'못 하고 넘어간 날은 <b class="ms">결석</b>으로 남지만 사라지지는 않아요. <b>언제든 보충</b>하실 수 있습니다.</div></div></div>';}
 
@@ -11643,7 +11651,7 @@ function aiTxtKey(){var T=AIB[_aiT],G=(T.subs&&T.subs[_aiG])||T,B=G.steps[_aiS]|
    2026-09-01 · 대표님 요청. 브라우저에 들어 있는 음성으로 읽습니다.
    서버도 API 요금도 들지 않고, 인터넷이 끊겨도 됩니다.
    보통 속도와 0.75배속 두 가지를 둡니다 — 전자책 소개에 적어 둔 그대로입니다. */
-var _lsRate=1, _lsSeq=null, _lsVoices=[];
+var _lsRate=0.95, _lsSeq=null, _lsVoices=[];   /* 2026-09-08 — 1.0 은 학습용으로 빨라 0.95 를 기본으로 */
 function _lsLoadVoices(){try{_lsVoices=speechSynthesis.getVoices()||[];}catch(e){_lsVoices=[];}}
 try{_lsLoadVoices(); if(speechSynthesis.onvoiceschanged!==undefined)speechSynthesis.onvoiceschanged=_lsLoadVoices;}catch(e){}
 /* 2026-09-03 버그 수정: 전에는 탭 이름('회화반'/'시험대비반')만 보고 언어를 골라서
@@ -11683,6 +11691,17 @@ function _lsClean(t,lang){
     .replace(/\s*·\s*/g,', ')
     .replace(/\s*\/\s*/g,', ')
     .replace(/\s*\+\s*/g, ko?' 다음에 ':' plus ');
+ /* 2026-09-08 대표님 지적 — "물결 표시 이런걸 왜 말해".
+    ~ 는 '물결표'/'tilde' 로 읽히고, 따옴표·별표·괄호기호도 그대로 읽는 기기가 있습니다.
+    소리로 옮길 이유가 없는 기호는 전부 지우거나 짧은 쉼으로 바꿉니다. */
+ t=t.replace(/(\d)\s*~\s*(\d)/g, ko?'$1 에서 $2':'$1 to $2')   /* 3~4 → 3 에서 4 */
+    .replace(/[~〜～]/g,' ')                                        /* 나머지 물결표는 삭제 */
+    .replace(/[*#^|<>{}\[\]]/g,' ')
+    .replace(/[「」『』《》〈〉【】]/g,' ')
+    .replace(/[""''"']/g,' ')
+    .replace(/\.{2,}|…/g, ', ')
+    .replace(/\s*[:;]\s*/g,', ')
+    .replace(/\s*[,]\s*[,]+/g,', ');
  if(ko) t=t.replace(/\(([A-D])\)/g,' 보기 $1, ');
  t=t.replace(/\s{2,}/g,' ');
  return t.trim();}
@@ -11733,6 +11752,19 @@ function _lsSegs(t,defLang){
 
 /* 2026-09-04 대표님 지시 — 대화는 A와 B가 서로 다른 목소리로 읽습니다.
    전에는 한 목소리가 혼자 다 읽어서 대화로 안 들렸습니다. */
+/* 2026-09-08 대표님 지적 — "영어 목소리가 완전 AI 같다".
+   원인: 두 사람을 구분하려고 pitch 를 0.88 / 1.08 로 강제 변조하고 있었습니다.
+   TTS 는 피치를 건드리는 순간 기계음이 됩니다. 이제 목소리 자체를 두 개 쓰고,
+   기기에 음성이 하나뿐일 때만 아주 살짝(0.97/1.03) 차이를 둡니다. */
+function _lsTwoVoices(lang){
+ var pre=lang.slice(0,2);
+ var v=_lsVoices.filter(function(x){return x.lang&&String(x.lang).replace('_','-').toLowerCase().indexOf(pre)===0;});
+ return v.length>=2;}
+function _lsPitch(who,lang){
+ if(_lsTwoVoices(lang)) return 1;           /* 음성이 둘이면 피치는 손대지 않습니다 */
+ if(who==='b') return 0.97;
+ if(who==='a') return 1.03;
+ return 1;}
 function _lsVoice2(lang){
  var pre=lang.slice(0,2);
  var v=_lsVoices.filter(function(x){return x.lang&&String(x.lang).replace('_','-').toLowerCase().indexOf(pre)===0;});
@@ -11749,8 +11781,7 @@ function _lsSpeakSegs(txt,defLang,onDone,btn,who){
   var u=new SpeechSynthesisUtterance(t);
   u.lang=sg.lang; u.rate=_lsRate;
   var v=(who==='b')?_lsVoice2(sg.lang):_lsVoice(sg.lang); if(v)u.voice=v;
-  if(who==='b')u.pitch=0.88;      /* 목소리가 하나뿐인 기기에서도 두 사람으로 들리게 */
-  else if(who==='a')u.pitch=1.08;
+  u.pitch=_lsPitch(who,sg.lang);
   u.onend=nx; u.onerror=nx;
   try{speechSynthesis.speak(u);}catch(e){nx();}
  }
@@ -11962,7 +11993,7 @@ function _sgpSeg(){
  var u=new SpeechSynthesisUtterance(t);
  u.lang=sg.lang; u.rate=_lsRate;
  var v=(it.who==='b')?_lsVoice2(sg.lang):_lsVoice(sg.lang); if(v)u.voice=v;
- if(it.who==='b')u.pitch=0.88; else if(it.who==='a')u.pitch=1.08;
+ u.pitch=_lsPitch(it.who,sg.lang);
  u.onend=function(){_sgpSeg();};
  u.onerror=function(){_sgpSeg();};
  try{speechSynthesis.speak(u);}catch(e){_sgpSeg();}
@@ -12530,14 +12561,17 @@ function _atStop(){if(_atT){clearTimeout(_atT);_atT=null;}if(_atTypeT){clearInte
 function _atFlush(){if(_at&&_at.pend)_atRender();}
 
 /* 산글이 표정 — idle / talking / listening / celebrate */
+/* 2026-09-08 대표님 지시 — 학습관 진행자를 고래에서 「AI 학습관 인사 영상 속 여자」로 교체.
+   얼굴과 목소리(산글이 보이스)가 같은 사람이 되어 드디어 맞아떨어집니다.
+   말할 때는 입을 벌린 컷, 칭찬할 때는 활짝 웃는 컷, 그 외에는 미소 컷. */
 function _atMood(m){var f=document.getElementById('atFace'); if(!f)return;
  f.className='at-face '+m;
- /* 2026-09-04 — 칭찬할 때는 웃는 산글이로 바뀝니다 (강사 사진일 때는 건드리지 않습니다) */
- try{var im=document.getElementById('atFaceImg');
-  if(im&&im.getAttribute('data-w')==='1'){
-   var want='img/whale_face.png';
-   if(im.getAttribute('src')!==want)im.src=want;
-  }}catch(e){}}
+ try{var im=document.getElementById('atFaceImg'); if(!im)return;
+  var want = (m==='celebrate') ? 'img/sgi_smile.png'
+           : (m==='talking')   ? 'img/sgi_talk.png'
+           :                     'img/sgi_face.png';
+  if(im.getAttribute('src')!==want) im.src=want;
+ }catch(e){}}
 
 function aiTeach(n){
  var k=aiTxtKey(), arr=AITXT[k];
@@ -12552,7 +12586,7 @@ function aiTeach(n){
   +'<div class="sp-x" onclick="aiLsClose()">✕</div>'
   /* ── 시작 화면 : 이 버튼 한 번이 소리 잠금까지 풀어 줍니다 ── */
   +'<div class="at-start" id="atStart">'
-   +'<div class="at-face idle" id="atFace0"><img src="img/whale_face.png" alt="산글이"></div>'
+   +'<div class="at-face idle" id="atFace0"><img src="img/sgi_face.png" alt="산글이"></div>'
    +'<h3>산글이가 진행하는<br><b>'+n+'과 · '+L.t+'</b></h3>'
    +'<p>제가 한 마디씩 말씀드립니다. 화면 아무 곳이나 누르시면 넘어갑니다.</p>'
    +'<button class="at-start-b" onclick="atBegin()">산글이랑 시작하기 ›</button>'
@@ -12561,7 +12595,7 @@ function aiTeach(n){
   +'</div>'
   /* ── 진행 화면 ── */
   +'<div class="at-run" id="atRun" hidden>'
-   +'<div class="at-hd"><div class="at-face idle" id="atFace"><img id="atFaceImg" src="img/whale_face.png" alt="산글이"></div>'
+   +'<div class="at-hd"><div class="at-face idle" id="atFace"><img id="atFaceImg" src="img/sgi_face.png" alt="산글이"></div>'
     +'<div class="at-nm" id="atNm">산글이<span>AI 진행</span></div>'
     +'<div class="at-pb"><i id="atPb"></i></div></div>'
    +'<div class="at-log" id="atLog" onclick="atTap(event)"></div>'
@@ -12609,12 +12643,15 @@ function atGo(){
 
  /* 말하는 사람이 바뀌면 이름표도 바뀝니다 */
  var im=document.getElementById('atFaceImg'), nm=document.getElementById('atNm'), T=_at.T;
+ /* 2026-09-08 대표님 지적 — "산글이가 고래 말고 여자 AI 이미지로 바뀐다. 더 이상해졌다".
+    강사 차례일 때 얼굴을 실제 강사 사진으로 갈아끼우고 있었습니다.
+    학습관 진행자는 처음부터 끝까지 산글이 하나입니다. 얼굴은 절대 바뀌지 않고,
+    누가 말하는지는 이름표로만 알립니다. */
  if(im&&nm){
-  if(s.who==='ai'){ if(im.getAttribute('data-w')!=='1'){im.src='img/whale_face.png';im.setAttribute('data-w','1');}
-   nm.innerHTML='산글이<span>AI 진행</span>'; }
-  else { if(im.getAttribute('data-w')!=='0'){im.onerror=function(){this.src='img/whale.png';};
-    im.src='img/teachers/'+T.img+'.png';im.setAttribute('data-w','0');}
-   nm.innerHTML=T.n+'<span>'+T.subj+' 담당</span>'; }
+  if(im.getAttribute('data-w')!=='1'){ im.src='img/sgi_face.png'; im.setAttribute('data-w','1'); im.onerror=null; }
+  nm.innerHTML = (s.who==='ai')
+    ? '산글이<span>AI 진행</span>'
+    : '산글이<span>'+T.subj+' · '+T.n+' 강사 수업</span>';
  }
  var pb=document.getElementById('atPb');
  if(pb)pb.style.width=Math.round((_at.i+1)/_at.S.length*100)+'%';
@@ -12955,7 +12992,7 @@ function _aiDiagHTML(last){
    +'<dt>남은 길</dt><dd><b>'+(last?'전 과정 완료':(d.tot+'과 중 '+d.n+'과 완료 · 남은 '+left+'과'))+'</b>'
      +'<span>'+(last?'축하드립니다. 다음 단계로 가시면 됩니다.':('주 3회 속도면 약 '+_aiWeeks(left)+' 걸립니다.'))+'</span></dd>'
   +'</dl>'
-  +'<div class="dg-say"><img src="img/whale.png" alt="산글이" onerror="this.style.display=\'none\'">'
+  +'<div class="dg-say"><img src="img/sgi_face.png" alt="산글이" onerror="this.style.display=\'none\'">'
    +'<div class="dg-bub">'+(d.band.lv>=3
       ? '여기까지 오셨으면 혼자서도 하실 수 있어요. 다만 <b>막히는 자리</b>는 사람이 봐야 빨리 뚫립니다.'
       : '괜찮습니다. 이 구간에서 혼자 하시면 대부분 <b>같은 자리에서 계속 막히십니다.</b> 그 자리만 잡아 드릴게요.')
@@ -13000,7 +13037,7 @@ function lsPick(i){
   +'<div class="ls-ans '+(ok?'o':'x')+'">'+(ok?'잘하셨어요':'아쉬워요')
   +' — 정답은 <b>'+opts[Q[2]]+'</b></div>'
   /* 2026-09-03 대표님 지시 — 해설은 산글이가 말해 주는 형태로 (맨 글씨 X) */
-  +'<div class="ls-say"><img src="img/whale.png" alt="산글이" onerror="this.style.display=\'none\'">'
+  +'<div class="ls-say"><img src="img/sgi_face.png" alt="산글이" onerror="this.style.display=\'none\'">'
    +'<div class="ls-bub"><em>'+(ok?'맞아요!':'괜찮아요, 여기만 보시면 돼요.')+'</em> '+Q[3]
    +(vo?' <button class="ls-vo" data-ic="&#128011;" style="display:inline-flex;vertical-align:middle;margin-left:4px" title="산글이 설명 듣기" onclick="sgVoSay(\''+vo+'\',\''+voTxt+'\',this)">&#128011;</button>':'')
    +'</div></div>'
@@ -13047,7 +13084,7 @@ function aiToeicX(){
  /* ── 가르치는 법 ── */
  +'<div class="aiv-h"><span class="k">방식</span><b>산글이는 이렇게 가르칩니다</b>'
   +'<p>토익 문법은 외우는 게 아니라 <b>자리를 보는 것</b>입니다.</p></div>'
- +'<div class="aiv-say"><img src="img/whale.png" alt="산글이">'
+ +'<div class="aiv-say"><img src="img/sgi_face.png" alt="산글이">'
   +'<div class="aiv-bub"><em>안녕하세요, 산글이예요.</em><br>매일 다섯 문제씩 들고 올게요. '
   +'해석부터 하지 마세요. <b>빈칸이 무슨 자리인지</b>만 먼저 보시면 됩니다. 지하철에서 끝나요.</div></div>'
  +'<div class="aiv-steps">'
@@ -13091,7 +13128,7 @@ function aiPage(){
    +'<div class="aiv-eye">산본글로벌어학원</div>'
    +'<h2><b>AI 학습관</b></h2>'
    +'<p class="aiv-sub">회화부터 시험까지, <b>집에서 이어서</b> 공부합니다.<br>한 과에 <b>3분</b> — 읽고, 듣고, 문제 네 개면 끝납니다.</p>'
-   +'<div class="aiv-whale"><span class="wh"><img src="img/whale.png" alt=""></span>'
+   +'<div class="aiv-whale"><span class="wh"><img src="img/sgi_face.png" alt=""></span>'
     +'<span class="tx"><b>산글이</b>가 하루 한 과씩 들고 옵니다</span></div>'
    /* 2026-09-05 대표님 지시 — 토익 기초문법 40강을 학습관 안에서도 바로 보이게 */
    /* 2026-09-06 대표님 지시 — 학습관 안에서 바로 40강을 열 수 있게 */
@@ -13229,13 +13266,13 @@ function tqRender(pick){
      if(done){c=(k===q.a)?' ok':(k===pick?' no':' dim');}
      return '<button class="tq-b'+c+'" '+(done?'disabled':'')+' onclick="tqRender('+k+')">'
       +'<i>'+L[k]+'</i>'+o+'</button>';}).join('')+'</div>'
-  +(done?('<div class="tq-say"><img src="img/whale.png" alt="산글이"><div class="tq-bub">'
+  +(done?('<div class="tq-say"><img src="img/sgi_face.png" alt="산글이"><div class="tq-bub">'
      +'<em>'+(pick===q.a?'잘하셨어요!':'아깝습니다 —')+'</em> '
      +(pick===q.a?'':'정답은 <b>'+L[q.a]+'. '+q.o[q.a]+'</b>이에요.<br>')
      +'<span class="cue">'+q.c+'</span><br>'+q.x
      +'<br><br>이런 문제가 <b>40강</b> 들어 있어요. 하루 다섯 문제씩, 저랑 같이 가시죠.'
      +'</div></div>'):
-     '<div class="tq-say sm"><img src="img/whale.png" alt="산글이"><div class="tq-bub">'
+     '<div class="tq-say sm"><img src="img/sgi_face.png" alt="산글이"><div class="tq-bub">'
      +'<em>산글이예요.</em> 해석하지 마시고 <b>빈칸 앞뒤 두 단어</b>만 보세요.</div></div>');}
 try{tqRender();}catch(e){}
 document.addEventListener('DOMContentLoaded',function(){try{tqRender();}catch(e){}});
