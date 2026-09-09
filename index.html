@@ -3674,6 +3674,7 @@ html,body{overflow-x:hidden;max-width:100%}
 }
 </style>
 <style>.fq-chips{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0 6px}.fq-chip{background:#fff;border:1.5px solid #DDE2E9;color:#0C1A2E;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:800;text-decoration:none}.fq-chip:active{background:#0C1A2E;color:#fff}.fq-wrap{margin:10px 0 4px}.fq-cat{margin:20px 0 0}.fq-ct{font-size:15px;font-weight:900;color:#C9A96A;letter-spacing:.4px;margin:22px 0 10px;padding-bottom:8px;border-bottom:2px solid #0C1A2E}.fq-it{border:1px solid #E3E7ED;border-radius:12px;margin-bottom:9px;background:#fff;overflow:hidden}.fq-it.on{border-color:#0C1A2E;box-shadow:0 6px 20px rgba(12,26,46,.10)}.fq-q{width:100%;display:flex;align-items:flex-start;gap:10px;background:none;border:0;padding:15px 14px;text-align:left;cursor:pointer;font-family:inherit}.fq-n{flex:none;font-size:12px;font-weight:900;color:#C9A96A;line-height:1.6;min-width:20px}.fq-qt{flex:1;font-size:15px;font-weight:800;color:#14213D;line-height:1.55;word-break:keep-all}.fq-ar{flex:none;font-size:16px;font-weight:900;color:#9AA3B0;line-height:1.5}.fq-a{max-height:0;overflow:hidden;transition:max-height .28s ease}.fq-it.on .fq-a{max-height:900px}.fq-ai{padding:0 16px 17px 44px;font-size:14.5px;line-height:1.82;color:#3C4553;word-break:keep-all}.fq-ai b{color:#C81F2B;font-weight:800}@media(max-width:560px){.fq-ai{padding-left:16px}.fq-qt{font-size:14.5px}}</style>
+<style>#admPanel{position:fixed;inset:0;z-index:2147481000;background:rgba(8,12,20,.72);display:flex;align-items:flex-end;justify-content:center}.adm-box{background:#fff;width:100%;max-width:560px;max-height:92vh;border-radius:16px 16px 0 0;display:flex;flex-direction:column;font-family:inherit}.adm-top{display:flex;align-items:center;gap:10px;padding:16px 18px 12px;border-bottom:1px solid #E6EAEF}.adm-eb{font-size:10px;font-weight:900;letter-spacing:2.2px;color:#C9A96A}.adm-top h3{margin:3px 0 0;font-size:19px;font-weight:900;color:#0C1A2E}.adm-x{margin-left:auto;background:none;border:0;font-size:20px;color:#8A93A2;cursor:pointer}.adm-body{overflow:auto;padding:12px 14px 6px;-webkit-overflow-scrolling:touch}.adm-sum{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}.adm-sum div{flex:1;min-width:80px;background:#F5F7FA;border-radius:9px;padding:9px 8px;text-align:center}.adm-sum b{display:block;font-size:19px;font-weight:900;color:#0C1A2E}.adm-sum span{display:block;font-size:10px;color:#6E7887;margin-top:2px}.adm-b{border:1px solid #E3E7ED;border-radius:11px;margin-bottom:9px;overflow:hidden}.adm-h{display:flex;align-items:center;gap:7px;background:#F7F8FA;padding:9px 11px;border-bottom:1px solid #E3E7ED}.adm-t{font-size:13.5px;font-weight:900;color:#14213D}.adm-k{font-size:10.5px;color:#98A1AE;font-family:Menlo,Consolas,monospace}.adm-p{margin-left:auto;font-size:11.5px;font-weight:900;color:#C81F2B;background:#FFF0F1;border-radius:999px;padding:2px 9px}.adm-p.ok{color:#0E8A5A;background:#E8F7F0}.adm-p.no{color:#8A93A2;background:#EEF1F5}.adm-u{padding:2px 0}.adm-r{display:flex;align-items:center;gap:7px;padding:6px 11px;border-top:1px solid #F1F4F7;font-size:12.5px}.adm-r.off{opacity:.45}.adm-r input{width:16px;height:16px;flex:none}.adm-r .n{width:22px;color:#98A1AE;font-weight:900;font-size:11px;flex:none}.adm-r .tt{flex:1;color:#2B3340;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.adm-r .q{font-size:11px;color:#6E7887;flex:none}.adm-r .q.warn{color:#C81F2B;font-weight:900}.adm-r .v{font-size:10.5px;color:#0E8A5A;flex:none;min-width:26px}.adm-r button{flex:none;background:#0C1A2E;color:#fff;border:0;border-radius:7px;padding:5px 10px;font-size:11.5px;font-weight:800;cursor:pointer;font-family:inherit}.adm-r button[disabled]{background:#DDE2E9;color:#98A1AE}.adm-foot{display:flex;align-items:center;gap:10px;padding:11px 16px;border-top:1px solid #E6EAEF}.adm-foot button{background:#F1F4F7;border:0;border-radius:8px;padding:9px 14px;font-size:12.5px;font-weight:800;color:#4A5462;cursor:pointer;font-family:inherit}.adm-foot span{font-size:11px;color:#98A1AE}</style>
 <style>.vf-up{display:block;text-align:center;background:#f0f3fa;border:1.5px dashed #b9c4dd;border-radius:12px;padding:20px;font-weight:800;color:#3a4a66;cursor:pointer;margin:12px 0}</style></head>
 <body>
 <!-- 입장코드 게이트 (2026-09-02) — 10월 1일 0시에 자동으로 풀립니다. GATE_ON을 false로 바꾸면 즉시 해제 -->
@@ -11785,7 +11786,7 @@ function aiTxtKey(){var T=AIB[_aiT],G=(T.subs&&T.subs[_aiG])||T,B=G.steps[_aiS]|
    2026-09-01 · 대표님 요청. 브라우저에 들어 있는 음성으로 읽습니다.
    서버도 API 요금도 들지 않고, 인터넷이 끊겨도 됩니다.
    보통 속도와 0.75배속 두 가지를 둡니다 — 전자책 소개에 적어 둔 그대로입니다. */
-var _lsRate=1.08, _lsSeq=null, _lsVoices=[];   /* 2026-09-08 대표님 지시 — 너무 느려 1.08 로 올림 */
+var _lsRate=1.0, _lsSeq=null, _lsVoices=[];   /* 2026-09-09 대표님 지시 — 「너무 빠르다」 하셔서 1.08 → 1.0 으로 되돌림 */
 function _lsLoadVoices(){try{_lsVoices=speechSynthesis.getVoices()||[];}catch(e){_lsVoices=[];}}
 try{_lsLoadVoices(); if(speechSynthesis.onvoiceschanged!==undefined)speechSynthesis.onvoiceschanged=_lsLoadVoices;}catch(e){}
 /* 2026-09-03 버그 수정: 전에는 탭 이름('회화반'/'시험대비반')만 보고 언어를 골라서
@@ -12349,6 +12350,159 @@ function lsPlayAll(btn){
 }
 function lsStop(){ sgpStop(); }
 
+
+/* ═══════════════════════════════════════════════════════════════
+   관리자 모드 (2026-09-09 대표님 지시)
+   — 로그인하면 전 강의가 열리고, 교재·과별 상태를 한 화면에서 점검합니다.
+   ⚠️ 이건 「보안」이 아니라 「편의」 장치입니다. 정적 사이트라 소스를 열면
+      누구나 코드를 볼 수 있습니다. 돈·개인정보가 걸린 기능은 여기 붙이지 마십시오.
+   ═══════════════════════════════════════════════════════════════ */
+var SGADM_H = 2598407413;                 /* 비밀번호 해시 (평문 아님) */
+function _admH(s){var h=5381;s=String(s);for(var i=0;i<s.length;i++){h=((h*33)^s.charCodeAt(i))>>>0;}return h;}
+function sgaIsAdmin(){try{return localStorage.getItem('sga_admin')==='1';}catch(e){return false;}}
+function sgaAdminSet(on){
+ try{
+  if(on){ localStorage.setItem('sga_admin','1'); localStorage.setItem('sga_master','1'); }
+  else  { localStorage.removeItem('sga_admin'); localStorage.removeItem('sga_master'); }
+ }catch(e){}
+ try{sgaMasterBadge();}catch(e){}
+ sgaAdmBadge();
+}
+/* 로그인 창 */
+function sgaAdminLogin(){
+ if(sgaIsAdmin()){ sgaAdminPanel(); return; }
+ var m=document.createElement('div'); m.id='admLogin';
+ m.style.cssText='position:fixed;inset:0;z-index:2147481000;background:rgba(8,12,20,.72);display:flex;align-items:center;justify-content:center;padding:20px';
+ m.innerHTML='<div style="background:#fff;border-radius:16px;max-width:340px;width:100%;padding:26px 22px;font-family:inherit;box-shadow:0 20px 60px rgba(0,0,0,.4)">'
+  +'<div style="font-size:11px;font-weight:900;letter-spacing:2.4px;color:#C9A96A">SGA · ADMIN</div>'
+  +'<h3 style="margin:8px 0 4px;font-size:21px;font-weight:900;color:#0C1A2E">관리자 로그인</h3>'
+  +'<p style="margin:0 0 16px;font-size:12.5px;line-height:1.7;color:#6E7887">로그인하시면 전 과정이 열리고 점검 패널이 나옵니다.</p>'
+  +'<input id="admPw" type="password" inputmode="text" autocomplete="off" placeholder="비밀번호"'
+  +' style="width:100%;box-sizing:border-box;border:1.5px solid #DDE2E9;border-radius:9px;padding:13px 14px;font-size:16px;font-family:inherit">'
+  +'<div id="admErr" style="display:none;color:#C81F2B;font-size:12.5px;font-weight:800;margin-top:8px">비밀번호가 다릅니다</div>'
+  +'<button onclick="sgaAdminTry()" style="width:100%;margin-top:12px;background:#0C1A2E;color:#fff;border:0;border-radius:9px;padding:14px;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit">로그인</button>'
+  +'<button onclick="(function(){var e=document.getElementById(\'admLogin\');if(e)e.remove();})()" style="width:100%;margin-top:8px;background:none;border:0;color:#8A93A2;font-size:13px;cursor:pointer;font-family:inherit">닫기</button>'
+  +'</div>';
+ document.body.appendChild(m);
+ var i=document.getElementById('admPw');
+ if(i){ i.focus(); i.onkeydown=function(e){ if(e.key==='Enter') sgaAdminTry(); }; }
+}
+function sgaAdminTry(){
+ var i=document.getElementById('admPw'), er=document.getElementById('admErr');
+ if(!i)return;
+ if(_admH(i.value.trim())===SGADM_H){
+  var m=document.getElementById('admLogin'); if(m)m.remove();
+  sgaAdminSet(true); sgaAdminPanel();
+ } else { if(er)er.style.display='block'; i.value=''; i.focus(); }
+}
+/* 화면 왼쪽 아래 배지 */
+function sgaAdmBadge(){
+ var b=document.getElementById('sgaAB');
+ if(sgaIsAdmin()){
+  if(!b){ b=document.createElement('div'); b.id='sgaAB';
+   b.style.cssText='position:fixed;left:12px;bottom:52px;z-index:2147480000;background:#0C1A2E;color:#fff;'
+    +'font-size:12px;font-weight:900;padding:8px 13px;border-radius:999px;cursor:pointer;'
+    +'box-shadow:0 6px 18px rgba(0,0,0,.35);font-family:inherit';
+   b.textContent='🛠 관리자 점검판';
+   b.onclick=function(){ sgaAdminPanel(); };
+   document.body.appendChild(b); }
+ } else if(b&&b.parentNode) b.parentNode.removeChild(b);
+}
+/* 교재 전수 스캔 */
+function sgaAdmScan(){
+ var out=[];
+ try{
+  for(var t=0;t<AIB.length;t++){
+   var T=AIB[t], subs=T.subs||[T];
+   for(var g=0;g<subs.length;g++){
+    var G=subs[g], steps=G.steps||[];
+    for(var s=0;s<steps.length;s++){
+     var B=steps[s], k=B.img, arr=(typeof AITXT!=='undefined'&&AITXT[k])||null;
+     var units=[];
+     for(var n=1;n<=(B.u||0);n++){
+      var L=arr&&arr[n-1];
+      var q=0; if(L){ try{ q=_lsPool(L).length; }catch(e){ q=(L.q?L.q.length:0); } }
+      var vo=0; try{ for(var kk in SGVOX){ if(kk.indexOf(k+'|'+n+'|')===0) vo++; } }catch(e){}
+      units.push({n:n,has:!!L,t:(L&&L.t)||((B.toc&&B.toc[n-1])||''),q:q,vo:vo});
+     }
+     out.push({tab:T.k,grp:G.k,step:B.s,key:k,ti:t,gi:g,si:s,u:B.u||0,units:units,
+               done:units.filter(function(x){return x.has;}).length});
+    }
+   }
+  }
+ }catch(e){ out.push({err:String(e)}); }
+ return out;
+}
+function sgaAdmGo(ti,gi,si,n){
+ try{ var e=document.getElementById('admPanel'); if(e)e.remove(); }catch(x){}
+ try{ _aiT=ti; _aiG=gi; _aiS=si; }catch(x){}
+ try{ aiLesson(n,false); }catch(x){ try{ aiTeach(n); }catch(y){} }
+}
+function sgaAdmChk(id,el){
+ try{ var m=JSON.parse(localStorage.getItem('sga_adm_chk')||'{}');
+  if(el.checked)m[id]=1; else delete m[id];
+  localStorage.setItem('sga_adm_chk',JSON.stringify(m));
+  var c=document.getElementById('admCnt'); if(c)c.textContent=Object.keys(m).length;
+ }catch(e){}
+}
+function sgaAdmPanelHTML(){
+ var d=sgaAdmScan(), chk={};
+ try{ chk=JSON.parse(localStorage.getItem('sga_adm_chk')||'{}'); }catch(e){}
+ var tot=0,has=0,q0=0,vo=0;
+ d.forEach(function(b){ if(!b.units)return; b.units.forEach(function(u){ tot++; if(u.has){has++; if(u.q<10)q0++;} vo+=u.vo; }); });
+ var h='<div class="adm-sum"><div><b>'+d.length+'</b><span>교재</span></div>'
+  +'<div><b>'+has+' / '+tot+'</b><span>본문 있는 과</span></div>'
+  +'<div><b>'+vo+'</b><span>산글이 녹음</span></div>'
+  +'<div><b>'+q0+'</b><span>문제 10개 미만</span></div>'
+  +'<div><b id="admCnt">'+Object.keys(chk).length+'</b><span>점검 완료</span></div></div>';
+ d.forEach(function(b){
+  if(b.err){ h+='<div class="adm-b"><b>오류</b> '+b.err+'</div>'; return; }
+  var pct=b.u?Math.round(b.done/b.u*100):0;
+  h+='<div class="adm-b"><div class="adm-h"><span class="adm-t">'+b.grp+' · '+b.step+'</span>'
+   +'<span class="adm-k">'+b.key+'</span>'
+   +'<span class="adm-p'+(pct===100?' ok':(pct===0?' no':''))+'">'+b.done+'/'+b.u+'</span></div><div class="adm-u">';
+  b.units.forEach(function(u){
+   var id=b.key+'_'+u.n;
+   h+='<div class="adm-r'+(u.has?'':' off')+'">'
+    +'<input type="checkbox" '+(chk[id]?'checked':'')+' onchange="sgaAdmChk(\''+id+'\',this)">'
+    +'<span class="n">'+u.n+'</span>'
+    +'<span class="tt">'+(u.t||'—')+'</span>'
+    +'<span class="q'+(u.has&&u.q<10?' warn':'')+'">'+(u.has?u.q+'문':'준비중')+'</span>'
+    +'<span class="v">'+(u.vo?'🔊'+u.vo:'')+'</span>'
+    +(u.has?'<button onclick="sgaAdmGo('+b.ti+','+b.gi+','+b.si+','+u.n+')">열기</button>':'<button disabled>—</button>')
+    +'</div>';
+  });
+  h+='</div></div>';
+ });
+ return h;
+}
+function sgaAdminPanel(){
+ if(!sgaIsAdmin()){ sgaAdminLogin(); return; }
+ var old=document.getElementById('admPanel'); if(old)old.remove();
+ var m=document.createElement('div'); m.id='admPanel';
+ m.innerHTML='<div class="adm-box"><div class="adm-top">'
+  +'<div><div class="adm-eb">SGA · ADMIN</div><h3>강의 점검판</h3></div>'
+  +'<button class="adm-x" onclick="(function(){var e=document.getElementById(\'admPanel\');if(e)e.remove();})()">✕</button>'
+  +'</div><div class="adm-body">'+sgaAdmPanelHTML()+'</div>'
+  +'<div class="adm-foot"><button onclick="sgaAdminSet(false);var e=document.getElementById(\'admPanel\');if(e)e.remove();">로그아웃</button>'
+  +'<span>체크는 이 기기에 저장됩니다</span></div></div>';
+ document.body.appendChild(m);
+}
+/* 진입 — ?admin 또는 화면 좌하단 로고 5번 탭 */
+(function(){
+ try{
+  if(/[?&]admin(=|&|$)/.test(location.search)) setTimeout(sgaAdminLogin,600);
+  setTimeout(sgaAdmBadge,700);
+  var c=0,t=0;
+  document.addEventListener('click',function(e){
+   var lg=e.target&&e.target.closest&&e.target.closest('.logo,.hd-logo,#sgaLogo,header img');
+   if(!lg)return;
+   var now=Date.now(); if(now-t>1200)c=0; t=now; c++;
+   if(c>=5){ c=0; sgaAdminLogin(); }
+  },true);
+ }catch(e){}
+})();
+
 /* ===== 대표님 마스터 열람 (2026-09-05) =====
    주소창에 ?master=SGA1001 을 붙여 한 번 들어오시면 이 브라우저에서 40강 전부 열립니다.
    해제는 ?master=off . 정식 회원 잠금과는 별개이며, 대표님 점검용입니다. */
@@ -12881,6 +13035,16 @@ var _atT=null, _atTypeT=null, _atTalkT=null, _atCfg={auto:1,speed:1,sound:1,mic:
    멈춤은 그 수업 안에서만 유효한 동작이지 영구 설정이 아닙니다 — 불러올 때 항상 켭니다. */
 try{var _c=localStorage.getItem('sga_at_cfg'); if(_c)_atCfg=JSON.parse(_c);}catch(e){}
 _atCfg.auto=1;
+/* 2026-09-09 — 예전에 「빠르게(1.3)」를 눌러 두면 그 값이 기기에 저장돼
+   산글이 녹음까지 1.3배로 재생됩니다. 한 번만 1.0 으로 되돌립니다. */
+try{ if(!localStorage.getItem('sga_spd_reset_v1')){
+  if((_atCfg.speed||1)>1){
+   _atCfg.speed=1;
+   /* 저장까지 해야 새로고침해도 1.3 으로 되돌아가지 않습니다 */
+   localStorage.setItem('sga_at_cfg',JSON.stringify({speed:1,sound:_atCfg.sound,mic:_atCfg.mic}));
+  }
+  localStorage.setItem('sga_spd_reset_v1','1');
+} }catch(e){}
 if(_atCfg.speed===undefined)_atCfg.speed=1;
 if(_atCfg.sound===undefined)_atCfg.sound=1;
 if(_atCfg.mic===undefined)_atCfg.mic=1;
@@ -12967,8 +13131,8 @@ function atBegin(){
  atGo();
 }
 
-function _atDelay(txt){ /* 2026-09-08 대표님 지시 — 진행이 느려 대기 시간을 줄였습니다 */
- var ms=Math.min(1700,Math.max(620,String(txt).replace(/<[^>]+>/g,'').length*34));
+function _atDelay(txt){ /* 2026-09-09 — 너무 빠르다 하셔서 숨 쉴 틈을 조금 되돌렸습니다 */
+ var ms=Math.min(2000,Math.max(760,String(txt).replace(/<[^>]+>/g,'').length*40));
  return ms/(_atCfg.speed||1);
 }
 
@@ -13111,7 +13275,7 @@ function atBack(){
 function atSnd(){_atCfg.sound=_atCfg.sound?0:1;_atSave();
  var b=document.getElementById('atSnd'); if(b)b.textContent=_atCfg.sound?'소리 켬':'소리 끔';
  if(!_atCfg.sound)try{lsStop();}catch(e){}}
-function atSpd(){var v=[1,1.3,0.8]; var k=v.indexOf(_atCfg.speed); _atCfg.speed=v[(k+1)%v.length]; _atSave();
+function atSpd(){var v=[1,0.85,1.15];  /* 2026-09-09 — 한 번 누르면 느려지게 순서를 바꿨습니다 */ var k=v.indexOf(_atCfg.speed); _atCfg.speed=v[(k+1)%v.length]; _atSave();
  var b=document.getElementById('atSpd'); if(b)b.textContent=_atCfg.speed.toFixed(1)+'×';}
 /* 말하기 켬/끔 — 한 번 끄면 계속 '고르기'로 진행합니다 (2026-09-05) */
 function atMicLbl(){var b=document.getElementById('atMic'); if(!b)return;
@@ -13175,9 +13339,9 @@ function aiLesson(n,plain){
      +'<td class="ko">'+r[0]+'</td><td class="en">'+r[1]+'</td><td class="tip">'+r[2]+'</td></tr>';}).join('')
   +'</table></div>'
  +'<div class="ls-sec"><div class="ls-lab">이렇게 씁니다'
-  +'<span class="ls-rate"><button onclick="lsRate(0.75,this)">천천히</button>'
-  +'<button class="on" onclick="lsRate(1.08,this)">보통</button>'
-  +'<button onclick="lsRate(1.3,this)">빠르게</button></span>'
+  +'<span class="ls-rate"><button onclick="lsRate(0.8,this)">천천히</button>'
+  +'<button class="on" onclick="lsRate(1.0,this)">보통</button>'
+  +'<button onclick="lsRate(1.2,this)">빠르게</button></span>'
   +'<button class="ls-stopb" id="lsStop" style="display:none" onclick="sgpStop()">■ 정지</button>'
   +'<button class="ls-allb" id="lsAll" onclick="lsPlayAll(this)">▶ 대화 전체 듣기</button></div>'
   +'<div class="ls-dlg" id="lsDlg">'+L.dlg.map(function(r,di){
@@ -14328,7 +14492,7 @@ function _say(text,code,cb){
  try{speechSynthesis.cancel();}catch(e){}
  var u=new SpeechSynthesisUtterance(text);
  u.lang=code;var v=_pickVoice(code);if(v)u.voice=v;
- u.rate=1.06;u.pitch=1;   /* 피치를 올리면 기계음이 됩니다 (2026-09-08) */
+ u.rate=1.0;u.pitch=1;   /* 2026-09-09 — 「너무 빠르다」 하셔서 1.06 → 1.0 */
  u.onend=function(){if(cb)cb();};
  u.onerror=function(){if(cb)cb();};
  setTimeout(function(){try{speechSynthesis.speak(u);}catch(e){if(cb)cb();}},60);
@@ -14927,7 +15091,7 @@ function crSay(text,code,cb){
  try{speechSynthesis.cancel();}catch(e){}
  var u=new SpeechSynthesisUtterance(text);
  u.lang=code;var v=_pickVoice(code);if(v)u.voice=v;
- u.rate=1.06;u.pitch=1;   /* 2026-09-08 — 피치를 올리면 기계음이 됩니다 */
+ u.rate=1.0;u.pitch=1;   /* 2026-09-09 — 「너무 빠르다」 하셔서 1.06 → 1.0 */
  var done=false;
  function fin(){if(done)return;done=true;crLipStop();if(cb)cb();}
  u.onstart=function(){crLipStart(text);};
