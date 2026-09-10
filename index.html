@@ -15083,7 +15083,40 @@ function crLipStart(txt){
 }
 function crLipStop(){if(_crAnim){clearInterval(_crAnim);_crAnim=null;}crMouthSet('rest');crStageCls('');}
 
-function crSay(text,code,cb){
+/* ═══════════════════════════════════════════════════════════
+   2026-09-10 대표님 지시 — 「이상한 AI 목소리」
+   브라우저에 딸려오는 기계 음성 대신, 미리 만들어 둔 실제 음성을 씁니다.
+   레벨테스트는 문장이 고정이라 33개 파일이면 전부 덮습니다.
+   파일이 아직 없으면 예전처럼 브라우저 음성으로 자동 폴백합니다. */
+var CRVOX_DIR='media/cr/';
+var CRVOX={};            /* 'cr_en_open' → 1 (있으면 mp3 사용) */
+var CRVOX_KEY={'영어':'en','일본어':'ja','중국어':'zh'};
+function crVoxSrc(id){
+ if(!id)return '';
+ try{ return CRVOX[id]?(CRVOX_DIR+id+'.mp3'):''; }catch(e){ return ''; }
+}
+function crStopAudio(){
+ if(_crAu){ try{_crAu.pause();}catch(e){} try{_crAu.src='';}catch(e){} _crAu=null; }
+}
+function crSay(text,code,cb,voxId){
+ /* ① 실제 녹음이 있으면 그것부터 */
+ var src=crVoxSrc(voxId);
+ if(src){
+  crStopAudio();
+  try{ speechSynthesis.cancel(); }catch(e){}
+  var a=new Audio(src); _crAu=a;
+  var done=false;
+  function fin2(){ if(done)return; done=true; crLipStop(); if(cb)cb(); }
+  a.onended=fin2;
+  a.onerror=function(){ done=true; crLipStop(); crSayTTS(text,code,cb); };  /* 파일이 없으면 음성으로 */
+  crLipStart(text);
+  var pr=a.play();
+  if(pr&&pr.catch) pr.catch(function(){ done=true; crLipStop(); crSayTTS(text,code,cb); });
+  return;
+ }
+ crSayTTS(text,code,cb);
+}
+function crSayTTS(text,code,cb){
  if(!window.speechSynthesis){
   /* 소리 없이 입만 움직이면 고장난 줄 압니다 — 첫 회에 한 번만 안내합니다 (2026-09-03) */
   if(!window._ttsWarned){window._ttsWarned=1;try{ttsNoSupport();}catch(e){}}
@@ -15192,11 +15225,11 @@ function crGo(){
  var c=CRY[_cr.lang];
  _cr.started=true; _cr.turn=0; _cr.pi=0; _cr.ui=0; _cr.silent=0;
  _cr.log.push({me:false,t:c.open});
- crAsk(c.open);
+ crAsk(c.open,'open');
 }
 
 /* 크리스탈이 한 문장 말합니다 — 말하는 동안에는 초침을 띄우지 않습니다 */
-function crAsk(line){
+function crAsk(line,vox){
  if(_cr.stop)return;
  crStopWait();
  _cr.phase='talk';
@@ -15204,7 +15237,7 @@ function crAsk(line){
  crSay(line,_cr.code,function(){
    if(_cr.stop)return;
    crWait();               /* 말이 끝나면 그때부터 대답 초침이 돕니다 */
- });
+ },vox?('cr_'+(CRVOX_KEY[_cr.lang]||'en')+'_'+vox):'');
 }
 
 /* ── 대답 차례: 초침이 돌고, 그동안 듣습니다 ── */
@@ -15232,9 +15265,9 @@ function crTimeUp(){
  _cr.silent++;
  var c=CRY[_cr.lang];
  if(_cr.silent===1){                       /* 첫 침묵 — 한 번 더 기다려 줍니다 */
-   var u=c.push[_cr.ui%c.push.length]; _cr.ui++;
+   var pn=(_cr.ui%c.push.length)+1; var u=c.push[_cr.ui%c.push.length]; _cr.ui++;
    _cr.log.push({me:false,t:u});
-   crAsk(u); return;
+   crAsk(u,'p'+pn); return;
  }
  _cr.silent=0; _cr.turn++;                  /* 두 번째 침묵 — 다음 질문으로 넘어갑니다 */
  if(_cr.turn>=CR_TURNS){ crEnd(); return; }
@@ -15243,14 +15276,14 @@ function crTimeUp(){
 
 function crNextQ(pre){
  var c=CRY[_cr.lang];
- var q=c.probe[_cr.pi%c.probe.length]; _cr.pi++;
+ var qn=(_cr.pi%c.probe.length)+1; var q=c.probe[_cr.pi%c.probe.length]; _cr.pi++;
  _cr.log.push({me:false,t:q});
  if(pre){ var l=document.getElementById('crSay'); if(l)l.innerHTML=pre; }
- crAsk(q);
+ crAsk(q,'q'+qn);
 }
 
 function crQuit(){
- _cr.stop=true; crStopWait();
+ _cr.stop=true; crStopWait(); crStopAudio();
  if(_cr.timer){clearInterval(_cr.timer);_cr.timer=null;}
  try{speechSynthesis.cancel();}catch(e){}crLipStop();
  if(_cr.rec){try{_cr.rec.stop();}catch(e){}}
@@ -15321,7 +15354,7 @@ function crEnd(){
  if(_cr.rec){try{_cr.rec.stop();}catch(e){}}
  var c=CRY[_cr.lang];
  crScreen('수고하셨습니다. 결과를 계산하고 있습니다…');
- crSay(c.bye,_cr.code,function(){crResult();});
+ crSay(c.bye,_cr.code,function(){crResult();},'cr_'+(CRVOX_KEY[_cr.lang]||'en')+'_bye');
  setTimeout(function(){crResult();},6500);
 }
 
