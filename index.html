@@ -12803,7 +12803,11 @@ var SGVO={
  talkstart:'06', whatsay:'07', pass:'08', again:'09', nothear:'10',
  dlgend:'11', laststep:'12', myturn:'13', freepass:'14', freeagain:'15',
  realtalk:'16', warn:'17', understand:'18', gotit:'19', finish:'20',
- dlgintro:'21', okgo:'22'
+ dlgintro:'21', okgo:'22',
+ /* 2026-09-10 — 새 구성 오리엔테이션. 크리스탈(레벨테스트 영어 담당) 목소리로 녹음했습니다.
+    01~22 는 산글이(마스코트) 목소리라 섞으면 얼굴과 어긋납니다. 30번대를 따로 씁니다. */
+ ori_hi:'30', ori_topic:'31', ori_how:'32', ori_go:'33', ori_free:'34',
+ ori_key:'35', ori_again:'36', ori_my:'37', ori_fin:'38'
 };
 var _voAu=null, _voT=null;
 function voStop(){
@@ -13008,6 +13012,9 @@ function atMicJudge(s, said){
   msg={vo:'nothear',who:'ai',t:'제가 잘 못 들었어요. 제가 먼저 읽어 드릴게요.<br><b>'+s.answer+'</b>'
    +(s.ansKo?'<br><em style="color:#5c6472">'+s.ansKo+'</em>':''), say:s.answer};
  }
+ /* 2026-09-10 — 선생님이 진행하는 과에서는 산글이 녹음을 붙이지 않습니다.
+    얼굴은 크리스탈인데 목소리가 산글이면 그게 제일 이상합니다. 글자로만 나갑니다. */
+ if(_atHost&&msg&&msg.vo) delete msg.vo;
  _at.S.splice(_at.i+1,0,msg);
  setTimeout(atGo,520);
 }
@@ -13174,13 +13181,13 @@ function _aiScript2(L,n,T){
  }
 
  /* ── ② 막힌 자리 세 개만 ──────────────────────────────────── */
- S.push({zone:'key',who:'t',t:'<b>방금 막히신 자리만 봅니다. 세 개예요.</b>'
+ S.push({zone:'key',vo:'ori_key',who:'t',t:'<b>방금 막히신 자리만 봅니다. 세 개예요.</b>'
   +'<br><em style="color:#5c6472;font-style:normal">여덟 개를 외우실 필요 없습니다. 이 세 개면 위 대화가 굴러갑니다.</em>'});
  for(i=0;i<keys.length;i++)
   S.push({zone:'key',who:'t',t:'<span class="at-ko">'+keys[i][0]+'</span><span class="at-en">'+keys[i][1]+'</span><span class="at-tip">'+keys[i][2]+'</span>',say:keys[i][1]});
 
  /* ── ③ 같은 상황 다시 : 힌트는 버튼 뒤 ────────────────────── */
- S.push({zone:'again',who:'ai',t:'<b>같은 상황을 다시 하겠습니다.</b><br>아까와 뭐가 달라졌는지 보세요.'
+ S.push({zone:'again',vo:'ori_again',who:'ai',t:'<b>같은 상황을 다시 하겠습니다.</b><br>아까와 뭐가 달라졌는지 보세요.'
   +'<br><em style="color:#5c6472;font-style:normal">막히면 「힌트 보기」를 누르셔도 됩니다. 감점 없습니다.</em>'});
  for(i=0;i<pairs.length;i++){
   S.push({zone:'again',who:'a',t:'<b>'+pairs[i].a+'</b><em>'+pairs[i].ako+'</em>',say:pairs[i].a});
@@ -13189,7 +13196,7 @@ function _aiScript2(L,n,T){
  }
 
  /* ── ④ 내 이야기 : 이름도 사는 곳도 사실대로 ─────────────── */
- S.push({zone:'my',who:'t',t:'<div class="at-goal"><em>마지막 한 걸음</em>'
+ S.push({zone:'my',vo:'ori_my',who:'t',t:'<div class="at-goal"><em>마지막 한 걸음</em>'
   +'<p>지금까지는 <b>민아 씨의 답</b>이었습니다. 이번엔 <b>본인 이름, 본인 이야기</b>로 답해 보세요.<br>'
   +'틀만 지키면 다 맞는 겁니다.</p></div>'});
  S.push({zone:'my',who:'a',t:'<b>'+pairs[0].a+'</b><em>'+pairs[0].ako+'</em>',say:pairs[0].a});
@@ -13207,7 +13214,7 @@ function _aiScript2(L,n,T){
   S.push({zone:'wrap',who:'t',t:'<b class="at-warn">한국인이 여기서 틀립니다</b><br>'+L.gram.t+'<br>'+L.gram.d});
  }
  S.push({zone:'wrap',who:'ai',cta:1,t:''});
- S.push({zone:'wrap',vo:'finish',who:'ai',t:'여기까지 오셨으면 다 하신 겁니다.<br>이제 <b>문제 10개</b>로 확인만 하면 끝이에요.',last:true});
+ S.push({zone:'wrap',vo:'ori_fin',who:'ai',t:'여기까지 오셨으면 다 하신 겁니다.<br>이제 <b>문제 10개</b>로 확인만 하면 끝이에요.',last:true});
  return S;
 }
 
@@ -13620,7 +13627,9 @@ function atAsk(s){
  var g=document.getElementById('atTapg'); if(g)g.style.visibility='hidden';
 }
 function atPick(i){
- var s=_at.S[_at.i], o=s.ask[i];
+ var s=_at.S[_at.i];
+ if(!s||!s.ask||!s.ask[i]) return;      /* 두 번 눌렸거나 이미 넘어간 칸 */
+ var o=s.ask[i];
  var a=document.getElementById('atAsk'); if(a){a.innerHTML='';a.classList.remove('on');}
  var g=document.getElementById('atTapg'); if(g)g.style.visibility='';
  var log=document.getElementById('atLog');
@@ -13631,7 +13640,7 @@ function atPick(i){
  if(o.ok===true){
   _atMood('celebrate');
   var _nd=_atNod();
-  _at.S.splice(_at.i+1,0,{vo:_nd.vo,who:'ai',t:_nd.t+(s.ansKo?'<br><em style="color:#5c6472">'+s.ansKo+'</em>':'')});
+  _at.S.splice(_at.i+1,0,{vo:(_atHost?'':_nd.vo),who:'ai',t:_nd.t+(s.ansKo?'<br><em style="color:#5c6472">'+s.ansKo+'</em>':'')});
   _wait=1;                      /* 영어를 끝까지 들려드린 뒤에 맞장구 (2026-09-10) */
  } else if(o.ok===false){
   _at.S.splice(_at.i+1,0,{who:'ai',
