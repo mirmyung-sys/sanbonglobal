@@ -2710,6 +2710,42 @@ li:first-child > .pgh{margin-top:2px}
 .aiv-st span{color:#FFEBED!important;font-size:13px!important}
 .aiv-eye{color:#FFDE5C!important}
 
+
+/* ═══ 2026-09-11 — AI 학습관 전체 폭 + 입구 카드뉴스화 + 로고 ═══ */
+#pgModal.wide .abox{max-width:none;width:100%;padding-left:24px;padding-right:24px}
+#pgModal.wide .sp-wrap{max-width:1320px}
+#pgModal.wide .aiv-hero,#pgModal.wide .aiv-vh{max-width:1320px;margin-left:auto;margin-right:auto}
+#pgModal.wide .sgd-wrap{max-width:1320px;margin-left:auto;margin-right:auto}
+#pgModal.wide .cn-hd,#pgModal.wide .cn-dots,#pgModal.wide .cn-swipe,
+#pgModal.wide .cn-run,#pgModal.wide .cn-back{max-width:1320px;margin-left:auto;margin-right:auto}
+#pgModal.wide .cn-rail{max-width:1320px;margin-left:auto;margin-right:auto}
+/* 카드에 박는 로고 */
+.cn-lg{position:absolute;top:16px;right:18px;display:flex;align-items:center;gap:6px;opacity:.9}
+.cn-lg img{width:22px;height:22px;object-fit:contain;filter:brightness(0) invert(1)}
+.cn-lg b{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:.14em;color:#fff}
+.cn-c{position:relative}
+.cn-c .no{padding-right:76px}
+/* 인사 카드뉴스 */
+.sgd-hero .cn-c{min-height:330px}
+.sgd-face2{width:74px;height:74px;border-radius:50%;overflow:hidden;background:#fff;
+ border:3px solid rgba(255,255,255,.6);box-shadow:0 8px 20px rgba(0,0,0,.28);margin-bottom:14px}
+.sgd-face2 img{width:100%;height:100%;object-fit:cover;display:block}
+/* 세 개의 문 — 큰 카드 */
+.sgd-doors{display:grid;gap:12px;margin-top:14px;grid-template-columns:1fr}
+.sgd-door{position:relative;display:block;width:100%;text-align:left;border:0;cursor:pointer;
+ border-radius:18px;padding:22px 20px 20px;color:#fff;font:inherit;min-height:190px;
+ box-shadow:0 10px 26px rgba(20,33,61,.22);overflow:hidden}
+.sgd-door .ic{display:block;font-size:38px;line-height:1}
+.sgd-door b{display:block;font-size:24px;font-weight:900;letter-spacing:-.03em;margin-top:12px}
+.sgd-door span.s2{display:block;font-size:14.5px;font-weight:700;margin-top:8px;line-height:1.55;
+ word-break:keep-all;color:#fff;opacity:.95}
+.sgd-door .go2{display:inline-flex;align-items:center;gap:6px;margin-top:14px;
+ background:rgba(255,255,255,.2);border-radius:999px;padding:8px 15px;font-size:13.5px;font-weight:900;color:#fff}
+.sgd-door .wm{position:absolute;bottom:8px;right:14px;font-family:'Montserrat',sans-serif;
+ font-size:34px;font-weight:900;color:rgba(255,255,255,.13);letter-spacing:-.03em;pointer-events:none;line-height:1}
+@media(min-width:760px){ .sgd-doors{grid-template-columns:repeat(3,1fr)} .sgd-door{min-height:230px} }
+@media(min-width:900px){ .cn-c{flex:0 0 32%} .sgd-hero .cn-c{flex:0 0 32%} }
+
 /* ═══ 학습관 입구 — 산글이 인사 → 세 개의 문 → 카드뉴스 → 실행 (2026-09-11) ═══
    대표님 지시: "산글이가 인사하고 클릭 치면 세 개의 문이 나오는 거야.
    일반회화반 · 시험대비반 · 책방. 또 클릭하고 들어가면 인포그래픽으로 카드뉴스.
@@ -2733,21 +2769,12 @@ li:first-child > .pgh{margin-top:2px}
  border-radius:14px;background:linear-gradient(120deg,#A8121D,#C42A26);color:#fff;font:inherit;
  font-size:17px;font-weight:900;padding:16px;box-shadow:0 10px 24px rgba(168,18,29,.35)}
 .sgd-go small{display:block;font-size:12.5px;font-weight:700;color:#FFE0E2;margin-top:3px}
-/* ② 세 개의 문 */
-.sgd-doors{display:grid;gap:12px;margin-top:16px}
-.sgd-door{position:relative;display:flex;align-items:center;gap:14px;width:100%;text-align:left;
- border:0;cursor:pointer;border-radius:16px;padding:18px 18px;color:#fff;font:inherit;
- box-shadow:0 8px 22px rgba(20,33,61,.18)}
-.sgd-door .ic{font-size:32px;line-height:1;flex:0 0 auto}
-.sgd-door .tx{flex:1;min-width:0}
-.sgd-door b{display:block;font-size:19px;font-weight:900;letter-spacing:-.02em}
-.sgd-door span{display:block;font-size:13px;font-weight:700;margin-top:4px;line-height:1.45;word-break:keep-all}
-.sgd-door .ar{font-size:22px;font-weight:900;flex:0 0 auto}
-.sgd-d1{background:linear-gradient(120deg,#0B3F6E,#1E6FB0)}
+/* ② 세 개의 문 — 배치 규칙은 위쪽 「입구 카드뉴스화」 블록에 있음. 여기는 색만 */
+.sgd-d1{background:linear-gradient(140deg,#082C4E,#17578B)}
 .sgd-d1 span{color:#FFFFFF}
-.sgd-d2{background:linear-gradient(120deg,#8E1118,#C42A26)}
+.sgd-d2{background:linear-gradient(140deg,#6E0C12,#A81E1A)}
 .sgd-d2 span{color:#FFFFFF}
-.sgd-d3{background:linear-gradient(120deg,#0A4F3C,#0F7A5D)}
+.sgd-d3{background:linear-gradient(140deg,#07382B,#0B5A44)}
 .sgd-d3 span{color:#FFFFFF}
 .sgd-lb{font-size:12px;font-weight:900;letter-spacing:.16em;color:#8A6A22;margin:22px 0 8px;text-align:center}
 /* ③ 카드뉴스 */
@@ -14437,6 +14464,15 @@ function aiToeicX(){
 }
 
 /* ═══ 학습관 입구 — 산글이 인사 → 세 개의 문 → 카드뉴스 → 실행 (2026-09-11) ═══ */
+var SGHI=[
+{bg:'linear-gradient(140deg,#0E1426,#1D2D4F)',face:1,no:'01',h:'안녕하세요,<br><em>산글이</em>예요',
+ p:'산본글로벌어학원의 AI 선생님입니다.<br>여기는 <b>혼자 있는 시간</b>을 위해 만든 자리예요.'},
+{bg:'linear-gradient(140deg,#082C4E,#17578B)',no:'02',h:'수업은 일주일에<br><em>두 번</em>입니다',
+ p:'나머지 닷새가 실력을 만듭니다.<br>그 닷새를 혼자 버티라고 두지 않으려고 <b>이 방을 만들었습니다.</b>',
+ big:'5일',bigs:'수업이 없는 날 — 여기서 이어 갑니다'},
+{bg:'linear-gradient(140deg,#6E0C12,#A81E1A)',no:'03',h:'문이 <em>세 개</em>입니다',
+ p:'',li:['💬 <b>일반회화반</b> — 말이 트이는 순서','📝 <b>시험대비반</b> — 점수가 오르는 순서','📖 <b>책방</b> — 소설책 한 권을 끝까지'],
+ big:'하나만 고르세요',bigs:'나머지는 언제든 다시 열립니다'}];
 var SGDOOR=[
 {k:'talk',ico:'💬',t:'일반회화반',s:'말이 안 나오는 그 3초를 없앱니다',cls:'sgd-d1',rc:'r1',
  eye:'CONVERSATION',h:'일반회화반',lead:'단어를 몰라서 말이 안 나오는 게 아닙니다. <b>머릿속에서 번역하느라</b> 3초가 걸리는 겁니다.',
@@ -14502,6 +14538,7 @@ function sgdCard(i){
  var D=SGDOOR[i]; if(!D)return;
  var cards=D.cards.map(function(c,j){
   return '<article class="cn-c" style="background:'+c.bg+'">'
+   +'<div class="cn-lg"><img src="img/sga_emblem.png" alt=""><b>SGA</b></div>'
    +'<div class="no">'+c.no+' / 0'+D.cards.length+'</div>'
    +'<h3>'+c.h+'</h3>'
    +(c.p?'<p>'+c.p+'</p>':'')
@@ -14542,20 +14579,29 @@ function sgdRun(i){
 }
 /* 학습관 맨 위에 들어가는 입구 */
 function sgdHTML(){
+ var hi=SGHI.map(function(c){
+  return '<article class="cn-c" style="background:'+c.bg+'">'
+   +'<div class="cn-lg"><img src="img/sga_emblem.png" alt=""><b>SGA</b></div>'
+   +(c.face?'<div class="sgd-face2"><img src="img/sgi_face.png" alt="산글이" onerror="this.parentNode.style.display=\'none\'"></div>':'')
+   +'<div class="no">'+c.no+' / 03</div>'
+   +'<h3>'+c.h+'</h3>'
+   +(c.p?'<p>'+c.p+'</p>':'')
+   +(c.li?('<div class="li">'+c.li.map(function(x){return '<i>'+x+'</i>';}).join('')+'</div>'):'')
+   +(c.big?('<div class="big">'+c.big+'<small>'+(c.bigs||'')+'</small></div>'):'')
+   +'</article>';}).join('');
+ var WM={0:'TALK',1:'TEST',2:'BOOK'};
  var doors=SGDOOR.map(function(D,i){
   return '<button class="sgd-door '+D.cls+'" onclick="sgdCard('+i+')">'
    +'<span class="ic">'+D.ico+'</span>'
-   +'<span class="tx"><b>'+D.t+'</b><span>'+D.s+'</span></span>'
-   +'<span class="ar">›</span></button>';}).join('');
+   +'<b>'+D.t+'</b>'
+   +'<span class="s2">'+D.s+'</span>'
+   +'<span class="go2">어떻게 하는지 보기 ›</span>'
+   +'<span class="wm">'+WM[i]+'</span></button>';}).join('');
  return '<div class="sgd-wrap">'
- +'<div class="sgd-hi">'
-  +'<div class="sgd-face"><img src="img/sgi_face.png" alt="산글이" onerror="this.style.display=\'none\'"></div>'
-  +'<div class="sgd-bub"><b>안녕하세요, 산글이예요.</b>'
-   +'<p>여기는 <b>혼자서도 계속할 수 있게</b> 만든 자리입니다.<br>세 개의 문이 있어요. 눌러서 하나 골라 주세요.</p></div>'
-  +'<button class="sgd-go" id="sgdGo" onclick="sgdOpen()">문 열어 보기 &rsaquo;<small>회화 · 시험 · 책방 — 셋 중 하나</small></button>'
- +'</div>'
- +'<div id="sgdDoors" hidden><div class="sgd-lb">어느 문으로 가시겠어요</div>'
-  +'<div class="sgd-doors">'+doors+'</div></div>'
+ +'<div class="sgd-hero"><div class="cn-rail" id="hiRail">'+hi+'</div>'
+  +'<div class="cn-swipe">← 옆으로 넘겨서 보세요 →</div></div>'
+ +'<div class="sgd-lb">어느 문으로 가시겠어요</div>'
+ +'<div class="sgd-doors">'+doors+'</div>'
  +'</div>';}
 
 /* ═══ 잉글리쉬 위드유 — 원서 읽기 (2026-09-11 재설계) ═══
@@ -15293,7 +15339,10 @@ function passPage(){return _pgHero('img/gen17.jpg','SGA PASS · 산글 패스','
 function openPage(k){var p=PAGES[k];if(!p)return;if(typeof p==='function')p=p();
  /* 창 맨 아래 제이영 원장 카드 — 이미 있는 창은 중복 삽입 안 함 */
  if(p.indexOf('class="dirc"')<0)p+=dirCard();
- document.getElementById('pgbody').innerHTML=p;document.getElementById('pgModal').classList.add('open');_mTop('pgModal');}
+ document.getElementById('pgbody').innerHTML=p;var _m=document.getElementById('pgModal');
+ /* 2026-09-11 대표님 지시 — AI 학습관은 가운데만 쓰지 말고 화면 전체를 쓸 것 */
+ _m.classList.toggle('wide', k==='AI학습');
+ _m.classList.add('open');_mTop('pgModal');}
 
 /* ===== 카드 그리드 공통 호버 — 빨간 커튼 + 핵심 한 줄 (2026-09-03 대표님 지시: 전체 적용) ===== */
 var SGHOV=[
