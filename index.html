@@ -2621,6 +2621,94 @@ li:first-child > .pgh{margin-top:2px}
 .dg-btn{margin-left:auto;background:linear-gradient(135deg,#c81f2b,#e0453e);color:#fff;border:0;border-radius:12px;padding:14px 26px;font:inherit;font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 10px 24px -10px rgba(200,31,43,.55)}
 .dg-btn:disabled{background:#d7dbe4;box-shadow:none;cursor:default}
 
+
+/* ══════════════════════════════════════════════════════════════
+   2026-09-11 대표님 지시 — "학습관 글씨가 어두워서 안 보인다"
+   화면에 실제로 찍힌 픽셀로 대비를 재서(WCAG) 4.5:1 미만을 전부 올렸습니다.
+   측정기는 대비를 미리 아는 대조군 7종으로 먼저 검증했습니다.
+   ══════════════════════════════════════════════════════════════ */
+:root{
+  --ink3:#4A5263;   /* 5.96:1 → 7.84:1 — 본문 보조설명 */
+  --muted:#6B7285;  /* 3.19:1 → 4.80:1 — 흐린 라벨 (AA 미달이었음) */
+}
+/* 단계 라벨 BASIC·STARTER·MIDDLE·ADVANCED — 11px 회색이라 거의 안 보였음 */
+.ai-steps .ai-st small{font-size:12.5px!important;color:#5A6274!important;font-weight:800!important}
+.ai-steps .ai-st.on small{color:#FFE9EA!important}
+/* 반 고르기 탭 — 선택된 초록 칸의 보조문구가 초록에 묻혔음 (2.1:1) */
+.ai-tab small{color:#4A5263!important}
+.ai-tab.on small,.ai-tab.on b,.ai-tab.on .ic{color:#EAF9F1!important}
+/* 섹션 머리 칩 (시작하세요 / 이런 곳입니다) */
+.aiv-h .k{color:#0A6B46!important;background:#E4F4EC!important;font-size:12px!important;letter-spacing:.14em!important}
+/* 무료 배지 */
+.toc-b.free{color:#07603C!important;background:#E4F5EC!important;border-color:#A9DFC4!important;font-size:12px!important}
+.ai-toc-go.free{color:#07603C!important}
+/* 학원 수강생 무료 안내 — 흰 글씨가 밝은 초록에 묻혔음 (2.8:1) */
+.ai-off{background:linear-gradient(135deg,#0A6040,#0D7A50)!important}
+.ai-off-g span{color:#DFF5EA!important}
+/* 골드 계열 — 크림색 카드 위 금색은 대비가 2.4:1 밖에 안 나왔습니다 */
+.ps.inf{--pc:#8A6A22!important}      /* 무한수강권 카드 금색 전체 */
+.ps>b s,.ps-p s{color:#8A8FA0!important}
+.ps-tp{font-size:12px!important}
+/* 학원 수강생 무료 카드 — 반투명 흰 칸 위 금색/흰색이 묻혔습니다 */
+.ai-off-g>div{background:rgba(0,0,0,.22)!important;border-color:rgba(255,255,255,.42)!important}
+.ai-off-g b{color:#FFE47A!important;font-size:17px!important}
+.ai-off-g span{color:#F0FBF5!important;font-size:13px!important}
+.ai-off-t b{color:#FFE47A!important}
+/* 원장 약력 — 회색·금색 잔글씨 */
+.dirc-sec+*,.dirc-li span{color:#4A5263!important}
+.dirc-gold,.dirc-li b{color:#7A5E22!important}
+.dirc-r b{color:#7A5A18!important}
+/* 빨간 시작 버튼 — 흰 글씨 대비가 3.8:1 이라 빨강을 한 단계 깊게 */
+.ai-sample-btn{background:linear-gradient(120deg,#A8121D,#C42A26)!important}
+.ai-sample-btn small{opacity:1!important;color:#FFEFF0!important;font-size:13.5px!important}
+/* 회화반/시험대비반 탭 — 초록을 살짝 깊게 해서 흰 글씨를 살립니다 */
+.ai-tab.on{background:#0F6B45!important;border-color:#0F6B45!important}
+/* 0원 · 16 · AI 같은 큰 숫자 라벨 */
+.ps.free{--pc:#0A6B46!important}
+.ai-toc-n,.toc-n{color:#4A5263!important}
+.aiv-st b{color:#FFE47A!important}
+/* 밝은 회색 판(#EDEFF3) 위 초록 13px 라벨 — 4.07:1 이었습니다 */
+.ai-spec b{color:#0A6B46!important}
+.ai-spec span{color:#2E3648!important;font-size:13px!important;background:#EDF6F1!important;border-color:#C6E2D4!important}
+.ai-spec em{opacity:1!important;color:#5A6274!important}
+/* 공지 태그 — 연한 배경 위 글자가 3.9~4.3:1 이었습니다 */
+.nt-개강{color:#0A6B46!important}
+.nt-휴무{color:#565D6B!important}
+/* 네이버 블로그 아이콘 — 초록(#03C75A) 위 흰 글씨가 2.2:1 */
+.ic-bl{background:#048A40!important}
+/* 학습관 카드 소제목 — 빨간 호버 커튼(.bn-ov) 안쪽은 흰 글씨 그대로 둡니다 */
+.aiv-what>.wt>div>b{color:#1A1F2B!important;font-size:17.5px!important}
+.bn-ov,.bn-ov *,.bn-ov b{color:#FFFFFF!important}
+/* 목차 머리 — 12px 회색 '16과' 가 4.49:1 이었습니다 */
+.ai-toc-h span{color:#3F4757!important;font-size:13px!important;font-weight:700!important}
+.ai-toc-h{color:#1A1F2B!important}
+/* 0원 카드의 꼬리표 */
+/* 0원 카드 — 초록 알약 위 흰 글씨가 4.4:1 이라 알약을 어둡게 */
+.ai-pr-r.hi em{background:#0A6040!important;color:#FFFFFF!important;font-size:12.5px!important}
+.ai-pr-r.hi b{color:#0A6B46!important}
+.ai-pr-r b small{color:#606878!important}
+/* 초록 선택 탭의 보조문구 한 단계 더 */
+.ai-tab.on small{color:#F2FCF7!important;font-size:14px!important}
+.ai-tab.on b{color:#FFFFFF!important}
+/* 목차 회차 라벨 */
+.ai-toc li span,.ai-toc-n{color:#4A5263!important}
+.toc-b{font-size:12px!important}
+.ps-n{color:#4A5263!important;font-size:12.5px!important}
+.dirc-sec{color:#7A5E22!important}
+/* 학습관 본문 기본 크기 — 폰에서 11~12px는 너무 작습니다 */
+.aiv-what p{font-size:15px!important;color:#4A5263!important}
+.aiv-h p{color:#4A5263!important}
+.aiv-note{color:#4A5263!important}
+.aiv-vcap span{color:#4A5263!important}
+.aiv-steps .aiv-st span{color:#4A5263!important}
+.aiv-cmp .cm span{color:#5A6274!important}
+.aiv-cmp .cm em{color:#333B4B!important}
+/* 히어로 — 어두운 판 위 글씨를 한 단계 더 밝게 */
+.aiv-sub{color:#E6EDF8!important}
+.aiv-whale .tx{color:#DCF1E7!important;font-size:15px!important}
+.aiv-st span{color:#FFEBED!important;font-size:13px!important}
+.aiv-eye{color:#FFDE5C!important}
+
 /* 퀵바 아래 SNS 아이콘 — .quickbar .wrap의 7칸 그리드가 여기까지 먹어서
    아이콘 다섯 개가 왼쪽으로 쏠려 보였습니다 (2026-09-02 대표님 지적).
    같은 특이도(0,2,0)로 뒤에서 flex 가운데 정렬로 되돌립니다. */
@@ -8472,7 +8560,7 @@ function dirCard(){
  +'</div>'
  +'<div class="dirc-b">'
   +'<div class="dirc-e">산본글로벌어학원 원장 · 영어회화</div>'
-  +'<h3 style="line-height:1.18">제이영<span style="display:block;font-size:.44em;font-weight:800;color:#8a90a0;letter-spacing:.04em;margin-top:4px;white-space:nowrap">Goo, Jeyoung</span></h3>'
+  +'<h3 style="line-height:1.18">제이영<span style="display:block;font-size:.44em;font-weight:800;color:#606878;letter-spacing:.04em;margin-top:4px;white-space:nowrap">Goo, Jeyoung</span></h3>'
   +'<p class="dirc-r"><b>Georgetown TESOL</b> · 토익 · 토플 전문 강사 출신 · <b>민병철어학원</b> · 숙명여대 · 중국 대학 출강</p>'
   +'<div class="dirc-sec">학력</div>'
   +'<div class="dirc-bio">'+DIR_EDU.map(function(x){
