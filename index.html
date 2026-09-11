@@ -2808,6 +2808,9 @@ li:first-child > .pgh{margin-top:2px}
 /* ══ 2026-09-06 대표님 지시 ══════════════════════════════
    ① 문제에 진짜 초침이 돌아야 합니다  ② 고른 보기에 마크가 남아야 합니다
    ③ B(정답·해설)는 눌러야 보입니다   ④ 듣기는 일시정지가 됩니다 */
+.sg-clock.wait .fg{stroke:#8A6A22!important;opacity:.55}
+.sg-clock.wait .n{color:#8A6A22!important}
+.sg-clock.wait .t{color:#8A6A22!important;font-weight:800}
 .sg-clock{display:flex;align-items:center;gap:12px;margin:12px 0 14px;padding:10px 13px;
  border:1px solid var(--line);border-radius:12px;background:var(--surf);transition:border-color .2s,background .2s}
 .sg-clock .dial{position:relative;flex:none;width:46px;height:46px}
@@ -14045,6 +14048,20 @@ function _lsSetLen(){ return _lsSet.length||1; }
 function _lsQof(L,i){ if(!_lsSet.length)_lsMakeSet(L); return _lsSet[i]||_lsSet[0]; }
 function _lsTickStop(){if(_lsTimer){clearTimeout(_lsTimer);_lsTimer=null;}
  if(_lsTick){clearInterval(_lsTick);_lsTick=null;}}
+/* 2026-09-11 대표님 지적 — 발음이 흘러가는 중에 「문제 풀이」를 누르면
+   앞 발음이 그대로 들리면서 초침까지 같이 돌았습니다.
+   ① 문제 화면에 들어갈 때 소리를 끊고
+   ② 소리가 나는 동안에는 초침이 아예 안 돌게, 판정을 한 군데로 모읍니다.
+   같은 함수가 반대 방향(문제 중에 ▶를 누른 경우)도 같이 막아 줍니다. */
+function _lsAudioBusy(){
+ try{ if(typeof SGA_P!=='undefined'&&SGA_P&&SGA_P.on&&!SGA_P.paused) return true; }catch(e){}
+ try{ if(window.speechSynthesis&&speechSynthesis.speaking&&!speechSynthesis.paused) return true; }catch(e){}
+ try{ if(typeof _koAu!=='undefined'&&_koAu&&!_koAu.paused&&!_koAu.ended) return true; }catch(e){}
+ return false;
+}
+/* 문제 화면으로 넘어갈 때는 무조건 소리부터 끊습니다 */
+function _lsHush(){ try{lsStop();}catch(e){} try{sgpStop();}catch(e){}
+ try{speechSynthesis.cancel();}catch(e){} try{koStop();}catch(e){} }
 /* 진짜 초침 — 남은 초가 줄고 고리가 함께 돕니다 (2026-09-06 대표님 지시) */
 function _lsTickStart(sec){
  _lsTickStop(); _lsLeft=sec;
@@ -14058,7 +14075,15 @@ function _lsTickStart(sec){
  }
  if(fg){ fg.style.strokeDasharray=C.toFixed(1); }
  paint();
+ var _t0=txt?txt.textContent:'', _WAIT='소리가 나오는 중입니다 · 끝나면 초가 갑니다';
+ if(_lsAudioBusy()){ el.classList.add('wait'); if(txt)txt.textContent=_WAIT; }
  _lsTick=setInterval(function(){
+  /* 소리가 나는 동안에는 초를 세지 않습니다 — 듣다가 시간을 까먹는 일이 없게 */
+  if(_lsAudioBusy()){
+   if(!el.classList.contains('wait')){ el.classList.add('wait'); if(txt)txt.textContent=_WAIT; }
+   return;
+  }
+  if(el.classList.contains('wait')){ el.classList.remove('wait'); if(txt)txt.textContent=_t0; }
   _lsLeft--; paint();
   if(_lsLeft<=0){ clearInterval(_lsTick); _lsTick=null;
    el.classList.remove('hot'); el.classList.add('over');
@@ -14070,7 +14095,7 @@ function _lsTickStart(sec){
 function lsQDraw(){
  var arr=AITXT[aiTxtKey()], L=arr[_lsCur()-1]; if(!L)return;
  var box=document.getElementById('lsQ'); if(!box)return;
- _lsTickStop();
+ _lsTickStop(); _lsHush();   /* 앞 발음이 흘러가던 것을 여기서 끊습니다 (2026-09-11) */
  if(!_lsSet.length) _lsMakeSet(L);
  if(_lsQ>=_lsSetLen()){
   var right=0, wrongs=[];
