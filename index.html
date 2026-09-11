@@ -2758,7 +2758,7 @@ li:first-child > .pgh{margin-top:2px}
 .cn-rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
  -webkit-overflow-scrolling:touch;padding:2px 0 10px;scrollbar-width:none}
 .cn-rail::-webkit-scrollbar{display:none}
-.cn-c{flex:0 0 86%;max-width:420px;scroll-snap-align:center;border-radius:18px;padding:22px 20px 20px;
+.cn-c{flex:0 0 86%;max-width:420px;scroll-snap-align:center;border-radius:18px;padding:22px 20px 24px;
  color:#fff;min-height:300px;display:flex;flex-direction:column;box-shadow:0 10px 26px rgba(20,33,61,.2)}
 .cn-c .no{font-size:12px;font-weight:900;letter-spacing:.2em;color:#F0F3F8}
 .cn-c h3{font-size:24px;font-weight:900;letter-spacing:-.035em;line-height:1.25;margin:12px 0 0;word-break:keep-all;color:#fff}
@@ -2868,6 +2868,7 @@ li:first-child > .pgh{margin-top:2px}
 .wy-card .en{font-size:19px;line-height:1.6;font-weight:700;margin:7px 0 0;color:#14213D;word-break:keep-all}
 .wy-fold{margin-top:11px;font-size:13.5px;font-weight:800;color:#1B5FA8;cursor:pointer}
 .wy-st{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}
+.wy-st[hidden],.wy-card .ex[hidden]{display:none!important}
 .wy-ck{position:relative;border-radius:8px;padding:21px 11px 9px;font-size:16px;font-weight:800;
  line-height:1.35;cursor:pointer;min-width:56px;text-align:left}
 .wy-ck i{position:absolute;top:5px;left:11px;right:6px;font-style:normal;font-size:10px;font-weight:900;
@@ -14448,7 +14449,7 @@ var SGDOOR=[
   p:'우리말 설명이 필요한 단계와, 부딪혀야 하는 단계는 <b>다릅니다.</b>',
   li:['<b>1~2단계</b> 한인 강사 — 문장 만드는 법을 우리말로','<b>3~4단계</b> 원어민 — 이제 부딪히는 시간','섞이면 둘 다 손해라 <b>무료 레벨테스트</b>로 나눕니다']},
  {bg:'linear-gradient(140deg,#07382B,#0B5A44)',no:'03',h:'왕기초반은<br><em>고치지 않습니다</em>',
-  p:'성인이 입을 안 여는 이유는 실력이 아니라 <b>창피함</b>입니다.<br>그래서 왕기초반은 틀린 문장을 그 자리에서 고치지 않습니다. <b>먼저 말이 나오게</b> 하고, 교정은 나중에 합니다.'},
+  p:'성인이 입을 안 여는 이유는 실력이 아니라 <b>창피함</b>입니다.<br>그래서 왕기초반은 틀린 문장을 <b>그 자리에서 고치지 않습니다.</b><br>말이 끊기면 다음에 입을 안 엽니다. 그게 더 큰 손해입니다.',big:'교정은 나중에',bigs:'먼저 입이 열려야 고칠 문장이 생깁니다'},
  {bg:'linear-gradient(140deg,#3E2708,#6B5218)',no:'04',h:'수업만으로는<br>시간이 모자랍니다',
   p:'주 2회 수업은 한 달에 8시간입니다. 그걸로 입이 트이지 않습니다.',
   li:['<b>수업</b> 50분 — 강사에게 배우고','<b>AI 학습관</b> 3분 — 집에서 다시 읽고','<b>동글이</b> — 교재·숙제·첨삭 없는 영어 모임 <b>무료</b>']},
@@ -14461,14 +14462,14 @@ var SGDOOR=[
  run:'시험대비반 열어 보기', runs:'토익 · 토스 · 오픽 · 토플 · JLPT · HSK', act:'sgdRun(1)',
  cards:[
  {bg:'linear-gradient(140deg,#6E0C12,#A81E1A)',no:'01',h:'문제집부터<br><em>사지 마십시오</em>',
-  p:'500점 아래에서 기출을 풀면 모르는 단어에 막혀 <b>채점만 반복</b>하게 됩니다.<br>그건 공부가 아니라 확인입니다.'},
+  p:'500점 아래에서 기출을 풀면 모르는 단어에 막혀 <b>채점만 반복</b>하게 됩니다.<br>단어를 모르는데 문제부터 푸는 건, <b>시험을 보면서 공부하겠다</b>는 말입니다.<br>그건 공부가 아니라 확인입니다.',big:'순서가 먼저',bigs:'문제집은 그다음입니다'},
  {bg:'linear-gradient(140deg,#14213D,#33507F)',no:'02',h:'순서는<br>정해져 있습니다',
   p:'',li:['<b>①</b> 기초 문법 — 문장이 어떻게 만들어지는가','<b>②</b> 빈출 어휘 800개','<b>③</b> 파트별 유형 전략'],
   big:'① 단계 무료',bigs:'토익 기초문법 40강 — 홈페이지에서 전부 공개'},
  {bg:'linear-gradient(140deg,#0E3A4D,#1C6070)',no:'03',h:'먼저<br><em>어디서 막혔는지</em>',
-  p:'저희가 진단할 때 가장 먼저 보는 것은 <b>Part 5를 몇 분에 끝내는가</b>입니다.<br>11분 안에 못 끝내시면 독해력이 아니라 <b>문법 자동화</b> 문제입니다.'},
+  p:'저희가 진단할 때 가장 먼저 보는 것은 <b>Part 5를 몇 분에 끝내는가</b>입니다.<br>여기서 시간을 쓰면 <b>Part 7 마지막 지문</b>을 못 읽고 찍게 됩니다.<br>한 번에 40~60점이 그렇게 날아갑니다.',big:'11분',bigs:'이 안에 못 끝내면 독해가 아니라 문법 자동화 문제입니다'},
  {bg:'linear-gradient(140deg,#382A5E,#5A3F8C)',no:'04',h:'한 과 3분<br>문제 열 개',
-  p:'',li:['읽고 · 듣고 · <b>10문제</b>','틀리면 <b>같은 유형 10문제</b>를 한 번 더','넘어가면 다음 과에서 또 막힙니다']},
+  p:'',li:['읽고 · 듣고 · <b>10문제</b>','틀리면 <b>같은 유형 10문제</b>를 한 번 더','넘어가면 다음 과에서 또 막힙니다'],big:'3분',bigs:'한 과에 드는 시간'},
  {bg:'linear-gradient(140deg,#3E2708,#6B5218)',no:'05',h:'학원 수강생은<br><em>전부 무료</em>',
   p:'전자책·듣기·채점·출석까지 AI 학습관 전체가 열립니다.<br>사람이 하는 것만 유료로 받습니다 — <b>발음 첨삭 · 원장 상담 · 교실 수업.</b>',
   big:'0원',bigs:'학원에 다니시는 동안 계속'}]},
@@ -14481,9 +14482,9 @@ var SGDOOR=[
   p:'하루 한 문장씩 외우는 책은 시중에 널렸습니다.<br>여기는 <b>이야기 한 권</b>을 끝까지 읽습니다. 다 읽으면 끝납니다.',
   big:'한 권',bigs:'The Whale Who Forgot How to Speak'},
  {bg:'linear-gradient(140deg,#14213D,#33507F)',no:'02',h:'남의 책은<br><em>쪼갤 수 없습니다</em>',
-  p:'원서를 빌려주는 곳은 많습니다. 그런데 그 책은 남의 것이라 <b>분해해서 설명할 수 없습니다.</b><br>이 소설은 <b>산본글로벌어학원이 직접 썼습니다.</b> 그래서 문장을 갈라 색을 칠할 수 있습니다.'},
+  p:'원서를 빌려주는 곳은 많습니다. 그런데 그 책은 남의 것이라 <b>분해해서 설명할 수 없습니다.</b><br>이 소설은 <b>산본글로벌어학원이 직접 썼습니다.</b>',big:'그래서 가를 수 있습니다',bigs:'문장을 덩어리로 쪼개 색을 칠하는 건 우리 책이라 가능합니다'},
  {bg:'linear-gradient(140deg,#082C4E,#17578B)',no:'03',h:'막히는 건<br>단어가 아닙니다',
-  p:'<b>어디서 끊어야 할지</b>를 몰라서 막힙니다.<br>영어는 <b>누가 → 한다 → 무엇을</b> 순서로만 가고, 꾸밈은 뒤에 붙습니다. 한국어는 앞에 붙습니다. 그 차이 하나입니다.'},
+  p:'<b>어디서 끊어야 할지</b>를 몰라서 막힙니다.<br>영어는 <b>누가 → 한다 → 무엇을</b> 순서로만 가고, 꾸밈은 <b>뒤에</b> 붙습니다. 한국어는 앞에 붙습니다.',big:'그 차이 하나',bigs:'이것만 눈에 보이면 긴 문장이 풀립니다'},
  {bg:'linear-gradient(140deg,#3E2708,#6B5218)',no:'04',h:'다 보여주지<br><em>않습니다</em>',
   p:'',li:['<b>①</b> 소설 한 단락 — 영어만. 해석 없음','<b>②</b> 읽어 보고 <b>막히는 문장을 표시</b>','<b>③</b> 표시한 문장만 구조를 펼쳐 드립니다','<b>④</b> 해석은 <b>마지막</b>입니다'],},
  {bg:'linear-gradient(140deg,#6E0C12,#A81E1A)',no:'05',h:'끝까지 읽으면<br><em>시험이 없습니다</em>',
