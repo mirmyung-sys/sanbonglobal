@@ -2710,6 +2710,84 @@ li:first-child > .pgh{margin-top:2px}
 .aiv-st span{color:#FFEBED!important;font-size:13px!important}
 .aiv-eye{color:#FFDE5C!important}
 
+/* ═══ 학습관 입구 — 산글이 인사 → 세 개의 문 → 카드뉴스 → 실행 (2026-09-11) ═══
+   대표님 지시: "산글이가 인사하고 클릭 치면 세 개의 문이 나오는 거야.
+   일반회화반 · 시험대비반 · 책방. 또 클릭하고 들어가면 인포그래픽으로 카드뉴스.
+   그리고 카드뉴스 밑에 실행버튼 나오게." */
+.sgd-wrap{margin:0 0 26px}
+/* ① 인사 */
+.sgd-hi{position:relative;background:linear-gradient(135deg,#0E1426,#1D2D4F 58%,#2B4173);
+ border-radius:20px;padding:26px 20px 24px;overflow:hidden;text-align:center}
+.sgd-hi:after{content:"";position:absolute;inset:0;background:
+ radial-gradient(120% 80% at 50% 0%,rgba(198,161,91,.20),transparent 60%);pointer-events:none}
+.sgd-face{width:92px;height:92px;border-radius:50%;margin:0 auto;overflow:hidden;
+ background:#fff;border:3px solid rgba(198,161,91,.55);box-shadow:0 10px 26px rgba(0,0,0,.3)}
+.sgd-face img{width:100%;height:100%;object-fit:cover;display:block}
+.sgd-bub{position:relative;z-index:2;margin:16px auto 0;max-width:440px;background:#fff;border-radius:16px;
+ padding:16px 18px;box-shadow:0 10px 26px rgba(0,0,0,.22)}
+.sgd-bub:before{content:"";position:absolute;top:-9px;left:50%;margin-left:-9px;width:18px;height:18px;
+ background:#fff;transform:rotate(45deg)}
+.sgd-bub b{display:block;font-size:19px;font-weight:900;color:#14213D;letter-spacing:-.02em}
+.sgd-bub p{margin:8px 0 0;font-size:14.5px;line-height:1.7;color:#3F4757;font-weight:600;word-break:keep-all}
+.sgd-go{position:relative;z-index:2;display:block;width:100%;max-width:440px;margin:16px auto 0;border:0;cursor:pointer;
+ border-radius:14px;background:linear-gradient(120deg,#A8121D,#C42A26);color:#fff;font:inherit;
+ font-size:17px;font-weight:900;padding:16px;box-shadow:0 10px 24px rgba(168,18,29,.35)}
+.sgd-go small{display:block;font-size:12.5px;font-weight:700;color:#FFE0E2;margin-top:3px}
+/* ② 세 개의 문 */
+.sgd-doors{display:grid;gap:12px;margin-top:16px}
+.sgd-door{position:relative;display:flex;align-items:center;gap:14px;width:100%;text-align:left;
+ border:0;cursor:pointer;border-radius:16px;padding:18px 18px;color:#fff;font:inherit;
+ box-shadow:0 8px 22px rgba(20,33,61,.18)}
+.sgd-door .ic{font-size:32px;line-height:1;flex:0 0 auto}
+.sgd-door .tx{flex:1;min-width:0}
+.sgd-door b{display:block;font-size:19px;font-weight:900;letter-spacing:-.02em}
+.sgd-door span{display:block;font-size:13px;font-weight:700;margin-top:4px;line-height:1.45;word-break:keep-all}
+.sgd-door .ar{font-size:22px;font-weight:900;flex:0 0 auto}
+.sgd-d1{background:linear-gradient(120deg,#0B3F6E,#1E6FB0)}
+.sgd-d1 span{color:#FFFFFF}
+.sgd-d2{background:linear-gradient(120deg,#8E1118,#C42A26)}
+.sgd-d2 span{color:#FFFFFF}
+.sgd-d3{background:linear-gradient(120deg,#0A4F3C,#0F7A5D)}
+.sgd-d3 span{color:#FFFFFF}
+.sgd-lb{font-size:12px;font-weight:900;letter-spacing:.16em;color:#8A6A22;margin:22px 0 8px;text-align:center}
+/* ③ 카드뉴스 */
+.cn-hd{padding:0 0 14px;border-bottom:2px solid #E6E2D8;margin-bottom:16px}
+.cn-hd .k{font-size:11.5px;font-weight:900;letter-spacing:.2em;color:#8A6A22}
+.cn-hd h2{font-size:27px;font-weight:900;letter-spacing:-.035em;margin:9px 0 0;color:#14213D;line-height:1.2}
+.cn-hd p{font-size:14.5px;line-height:1.7;color:#3F4757;margin:10px 0 0;font-weight:600;word-break:keep-all}
+.cn-rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+ -webkit-overflow-scrolling:touch;padding:2px 0 10px;scrollbar-width:none}
+.cn-rail::-webkit-scrollbar{display:none}
+.cn-c{flex:0 0 86%;max-width:420px;scroll-snap-align:center;border-radius:18px;padding:22px 20px 20px;
+ color:#fff;min-height:300px;display:flex;flex-direction:column;box-shadow:0 10px 26px rgba(20,33,61,.2)}
+.cn-c .no{font-size:12px;font-weight:900;letter-spacing:.2em;color:#F0F3F8}
+.cn-c h3{font-size:24px;font-weight:900;letter-spacing:-.035em;line-height:1.25;margin:12px 0 0;word-break:keep-all;color:#fff}
+.cn-c h3 em{font-style:normal;color:#FFD94D}
+.cn-c p{font-size:15px;line-height:1.8;font-weight:600;margin:13px 0 0;word-break:keep-all;color:#fff}
+.cn-c p b{font-weight:900;color:#FFD94D}
+.cn-c .big{margin-top:auto;padding-top:16px;font-size:28px;font-weight:900;letter-spacing:-.03em;line-height:1.2;color:#fff}
+.cn-c .big small{display:block;font-size:13px;font-weight:700;color:#EDF1F7;margin-top:6px;letter-spacing:0}
+.cn-c .li{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.cn-c .li i{font-style:normal;font-size:14px;font-weight:700;line-height:1.55;color:#fff;
+ background:rgba(255,255,255,.14);border-radius:9px;padding:9px 11px;word-break:keep-all}
+.cn-c .li i b{color:#FFD94D;font-weight:900}
+.cn-dots{display:flex;gap:6px;justify-content:center;margin:2px 0 0}
+.cn-dots span{width:7px;height:7px;border-radius:99px;background:#D6D2C6;transition:.2s}
+.cn-dots span.on{background:#14213D;width:20px}
+.cn-swipe{text-align:center;font-size:12.5px;font-weight:800;color:#6B7285;margin-top:9px}
+.cn-run{display:block;width:100%;margin-top:18px;border:0;border-radius:14px;cursor:pointer;
+ color:#fff;font:inherit;font-size:17.5px;font-weight:900;padding:17px;box-shadow:0 10px 24px rgba(20,33,61,.24)}
+.cn-run small{display:block;font-size:12.5px;font-weight:700;opacity:.9;margin-top:4px}
+.cn-run.r1{background:linear-gradient(120deg,#0B3F6E,#1E6FB0)}
+.cn-run.r2{background:linear-gradient(120deg,#8E1118,#C42A26)}
+.cn-run.r3{background:linear-gradient(120deg,#0A4F3C,#0F7A5D)}
+.cn-back{display:block;width:100%;margin-top:10px;border:1.5px solid #E6E2D8;border-radius:13px;cursor:pointer;
+ background:#fff;color:#3F4757;font:inherit;font-size:14.5px;font-weight:800;padding:13px}
+@media(min-width:720px){ .sgd-doors{grid-template-columns:repeat(3,1fr)}
+ .sgd-door{flex-direction:column;align-items:flex-start;min-height:150px}
+ .sgd-door .ar{align-self:flex-end;margin-top:auto} }
+@media(max-width:480px){ .cn-c{flex:0 0 90%} .cn-hd h2{font-size:23px} .cn-c h3{font-size:21px} }
+
 /* ═══ 잉글리쉬 위드유 — 원서 읽기 (2026-09-11 재설계) ═══
    대표님 지시: "당신이 직접 읽습니다 하면 아무도 안 읽어. 안 읽으면 순서가 안 나가게.
    구조 다 보여줘도 안 되고, 막히게 두고 해보게 하고 안 되면 마지막에 구조분석을 누르게."
@@ -14357,6 +14435,128 @@ function aiToeicX(){
  ;
 }
 
+/* ═══ 학습관 입구 — 산글이 인사 → 세 개의 문 → 카드뉴스 → 실행 (2026-09-11) ═══ */
+var SGDOOR=[
+{k:'talk',ico:'💬',t:'일반회화반',s:'말이 안 나오는 그 3초를 없앱니다',cls:'sgd-d1',rc:'r1',
+ eye:'CONVERSATION',h:'일반회화반',lead:'단어를 몰라서 말이 안 나오는 게 아닙니다. <b>머릿속에서 번역하느라</b> 3초가 걸리는 겁니다.',
+ run:'회화반 열어 보기', runs:'왕기초부터 원어민까지 — 지금 내 단계를 고르세요', act:'sgdRun(0)',
+ cards:[
+ {bg:'linear-gradient(140deg,#082C4E,#17578B)',no:'01',h:'"Hello" 다음이<br><em>안 나옵니다</em>',
+  p:'문법을 몰라서가 아닙니다. 한국어로 문장을 만들고 → 영어로 바꾸고 → 발음합니다.<br>그 <b>3초</b> 동안 상대가 다른 말을 합니다.',
+  big:'3초',bigs:'말이 나오기까지 걸리는 시간'},
+ {bg:'linear-gradient(140deg,#14213D,#33507F)',no:'02',h:'그래서 순서를<br>바꿉니다',
+  p:'우리말 설명이 필요한 단계와, 부딪혀야 하는 단계는 <b>다릅니다.</b>',
+  li:['<b>1~2단계</b> 한인 강사 — 문장 만드는 법을 우리말로','<b>3~4단계</b> 원어민 — 이제 부딪히는 시간','섞이면 둘 다 손해라 <b>무료 레벨테스트</b>로 나눕니다']},
+ {bg:'linear-gradient(140deg,#07382B,#0B5A44)',no:'03',h:'왕기초반은<br><em>고치지 않습니다</em>',
+  p:'성인이 입을 안 여는 이유는 실력이 아니라 <b>창피함</b>입니다.<br>그래서 왕기초반은 틀린 문장을 그 자리에서 고치지 않습니다. <b>먼저 말이 나오게</b> 하고, 교정은 나중에 합니다.'},
+ {bg:'linear-gradient(140deg,#3E2708,#6B5218)',no:'04',h:'수업만으로는<br>시간이 모자랍니다',
+  p:'주 2회 수업은 한 달에 8시간입니다. 그걸로 입이 트이지 않습니다.',
+  li:['<b>수업</b> 50분 — 강사에게 배우고','<b>AI 학습관</b> 3분 — 집에서 다시 읽고','<b>동글이</b> — 교재·숙제·첨삭 없는 영어 모임 <b>무료</b>']},
+ {bg:'linear-gradient(140deg,#6E0C12,#A81E1A)',no:'05',h:'3개월이면<br><em>번역이 줄어듭니다</em>',
+  p:'유창해지는 건 그 뒤입니다. 먼저 <b>머리로 번역하는 시간</b>이 줄어드는 게 느껴집니다.<br>정직하게 말씀드리면 그것이 첫 신호입니다.',
+  big:'주 2회 × 3개월',bigs:'가장 많은 분이 이 지점에서 달라집니다'}]},
+
+{k:'exam',ico:'📝',t:'시험대비반',s:'점수는 공부량이 아니라 순서가 만듭니다',cls:'sgd-d2',rc:'r2',
+ eye:'TEST PREP',h:'시험대비반',lead:'6개월을 해도 안 오르는 건 열심히 안 해서가 아닙니다. <b>순서가 틀렸기 때문</b>입니다.',
+ run:'시험대비반 열어 보기', runs:'토익 · 토스 · 오픽 · 토플 · JLPT · HSK', act:'sgdRun(1)',
+ cards:[
+ {bg:'linear-gradient(140deg,#6E0C12,#A81E1A)',no:'01',h:'문제집부터<br><em>사지 마십시오</em>',
+  p:'500점 아래에서 기출을 풀면 모르는 단어에 막혀 <b>채점만 반복</b>하게 됩니다.<br>그건 공부가 아니라 확인입니다.'},
+ {bg:'linear-gradient(140deg,#14213D,#33507F)',no:'02',h:'순서는<br>정해져 있습니다',
+  p:'',li:['<b>①</b> 기초 문법 — 문장이 어떻게 만들어지는가','<b>②</b> 빈출 어휘 800개','<b>③</b> 파트별 유형 전략'],
+  big:'① 단계 무료',bigs:'토익 기초문법 40강 — 홈페이지에서 전부 공개'},
+ {bg:'linear-gradient(140deg,#0E3A4D,#1C6070)',no:'03',h:'먼저<br><em>어디서 막혔는지</em>',
+  p:'저희가 진단할 때 가장 먼저 보는 것은 <b>Part 5를 몇 분에 끝내는가</b>입니다.<br>11분 안에 못 끝내시면 독해력이 아니라 <b>문법 자동화</b> 문제입니다.'},
+ {bg:'linear-gradient(140deg,#382A5E,#5A3F8C)',no:'04',h:'한 과 3분<br>문제 열 개',
+  p:'',li:['읽고 · 듣고 · <b>10문제</b>','틀리면 <b>같은 유형 10문제</b>를 한 번 더','넘어가면 다음 과에서 또 막힙니다']},
+ {bg:'linear-gradient(140deg,#3E2708,#6B5218)',no:'05',h:'학원 수강생은<br><em>전부 무료</em>',
+  p:'전자책·듣기·채점·출석까지 AI 학습관 전체가 열립니다.<br>사람이 하는 것만 유료로 받습니다 — <b>발음 첨삭 · 원장 상담 · 교실 수업.</b>',
+  big:'0원',bigs:'학원에 다니시는 동안 계속'}]},
+
+{k:'book',ico:'📖',t:'책방',s:'소설책 한 권. 다 읽으면 끝납니다',cls:'sgd-d3',rc:'r3',
+ eye:'READING ROOM',h:'책방',lead:'교재는 언젠가 끝납니다. 그런데 <b>끝나도 영어책은 못 읽습니다.</b> 여기는 처음부터 진짜 책으로 갑니다.',
+ run:'책방 들어가기', runs:'1과 · 말이 사라진 아침 — 회원가입 없이', act:'sgdRun(2)',
+ cards:[
+ {bg:'linear-gradient(140deg,#07382B,#0B5A44)',no:'01',h:'소설책 한 권.<br><em>그게 전부입니다</em>',
+  p:'하루 한 문장씩 외우는 책은 시중에 널렸습니다.<br>여기는 <b>이야기 한 권</b>을 끝까지 읽습니다. 다 읽으면 끝납니다.',
+  big:'한 권',bigs:'The Whale Who Forgot How to Speak'},
+ {bg:'linear-gradient(140deg,#14213D,#33507F)',no:'02',h:'남의 책은<br><em>쪼갤 수 없습니다</em>',
+  p:'원서를 빌려주는 곳은 많습니다. 그런데 그 책은 남의 것이라 <b>분해해서 설명할 수 없습니다.</b><br>이 소설은 <b>산본글로벌어학원이 직접 썼습니다.</b> 그래서 문장을 갈라 색을 칠할 수 있습니다.'},
+ {bg:'linear-gradient(140deg,#082C4E,#17578B)',no:'03',h:'막히는 건<br>단어가 아닙니다',
+  p:'<b>어디서 끊어야 할지</b>를 몰라서 막힙니다.<br>영어는 <b>누가 → 한다 → 무엇을</b> 순서로만 가고, 꾸밈은 뒤에 붙습니다. 한국어는 앞에 붙습니다. 그 차이 하나입니다.'},
+ {bg:'linear-gradient(140deg,#3E2708,#6B5218)',no:'04',h:'다 보여주지<br><em>않습니다</em>',
+  p:'',li:['<b>①</b> 소설 한 단락 — 영어만. 해석 없음','<b>②</b> 읽어 보고 <b>막히는 문장을 표시</b>','<b>③</b> 표시한 문장만 구조를 펼쳐 드립니다','<b>④</b> 해석은 <b>마지막</b>입니다'],},
+ {bg:'linear-gradient(140deg,#6E0C12,#A81E1A)',no:'05',h:'끝까지 읽으면<br><em>시험이 없습니다</em>',
+  p:'한 권을 다 읽으시는 날, 시험 없이 <b>레벨2 회화반 입학 자격</b>이 생깁니다.<br>막히는 쪽이 나오면 그 쪽을 들고 <b>산본으로 오십시오.</b>',
+  big:'레벨2 직행',bigs:'책 한 권이 곧 입학시험입니다'}]}
+];
+
+function _sgdE(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+/* 인사 → 문 열기 */
+function sgdOpen(){var d=document.getElementById('sgdDoors');if(!d)return;
+ d.hidden=false; var b=document.getElementById('sgdGo'); if(b)b.style.display='none';
+ try{d.scrollIntoView({block:'nearest',behavior:'smooth'});}catch(e){}}
+/* 문 → 카드뉴스 */
+function sgdCard(i){
+ var D=SGDOOR[i]; if(!D)return;
+ var cards=D.cards.map(function(c,j){
+  return '<article class="cn-c" style="background:'+c.bg+'">'
+   +'<div class="no">'+c.no+' / 0'+D.cards.length+'</div>'
+   +'<h3>'+c.h+'</h3>'
+   +(c.p?'<p>'+c.p+'</p>':'')
+   +(c.li?('<div class="li">'+c.li.map(function(x){return '<i>'+x+'</i>';}).join('')+'</div>'):'')
+   +(c.big?('<div class="big">'+c.big+'<small>'+(c.bigs||'')+'</small></div>'):'')
+   +'</article>';}).join('');
+ var dots=D.cards.map(function(_,j){return '<span class="'+(j===0?'on':'')+'"></span>';}).join('');
+ _sgSub('<div class="cn-hd"><div class="k">'+D.eye+'</div><h2>'+D.h+'</h2><p>'+D.lead+'</p></div>'
+  +'<div class="cn-rail" id="cnRail" data-i="'+i+'">'+cards+'</div>'
+  +'<div class="cn-dots" id="cnDots">'+dots+'</div>'
+  +'<div class="cn-swipe">← 옆으로 넘겨서 보세요 →</div>'
+  +'<button class="cn-run '+D.rc+'" onclick="'+D.act+'">'+D.run+' &rsaquo;<small>'+D.runs+'</small></button>'
+  +'<button class="cn-back" onclick="sgdBack()">← 다른 문 보기</button>');
+ setTimeout(_sgdBind,60);
+}
+function _sgdBind(){
+ var r=document.getElementById('cnRail'); if(!r)return;
+ r.addEventListener('scroll',function(){
+  var ds=document.querySelectorAll('#cnDots span'); if(!ds.length)return;
+  var w=r.scrollWidth/ds.length, k=Math.round(r.scrollLeft/w);
+  for(var i=0;i<ds.length;i++)ds[i].classList.toggle('on',i===Math.min(k,ds.length-1));
+ },{passive:true});
+}
+function sgdBack(){ _sgCloseAll(); try{openPage('AI학습');}catch(e){}
+ setTimeout(function(){var d=document.getElementById('sgdDoors');
+  if(d){d.hidden=false;var b=document.getElementById('sgdGo');if(b)b.style.display='none';
+   try{d.scrollIntoView({block:'center',behavior:'smooth'});}catch(e){}}},700);}
+/* 실행 버튼 */
+function sgdRun(i){
+ if(i===2){ try{wyOpen();}catch(e){} return; }
+ _sgCloseAll();
+ try{openPage('AI학습');}catch(e){}
+ setTimeout(function(){
+  try{ aiTab(i); }catch(e){}
+  setTimeout(function(){var t=document.getElementById('aiBody');
+   if(t){try{t.scrollIntoView({block:'start',behavior:'smooth'});}catch(e){}}},250);
+ },700);
+}
+/* 학습관 맨 위에 들어가는 입구 */
+function sgdHTML(){
+ var doors=SGDOOR.map(function(D,i){
+  return '<button class="sgd-door '+D.cls+'" onclick="sgdCard('+i+')">'
+   +'<span class="ic">'+D.ico+'</span>'
+   +'<span class="tx"><b>'+D.t+'</b><span>'+D.s+'</span></span>'
+   +'<span class="ar">›</span></button>';}).join('');
+ return '<div class="sgd-wrap">'
+ +'<div class="sgd-hi">'
+  +'<div class="sgd-face"><img src="img/sgi_face.png" alt="산글이" onerror="this.style.display=\'none\'"></div>'
+  +'<div class="sgd-bub"><b>안녕하세요, 산글이예요.</b>'
+   +'<p>여기는 <b>혼자서도 계속할 수 있게</b> 만든 자리입니다.<br>세 개의 문이 있어요. 눌러서 하나 골라 주세요.</p></div>'
+  +'<button class="sgd-go" id="sgdGo" onclick="sgdOpen()">문 열어 보기 &rsaquo;<small>회화 · 시험 · 책방 — 셋 중 하나</small></button>'
+ +'</div>'
+ +'<div id="sgdDoors" hidden><div class="sgd-lb">어느 문으로 가시겠어요</div>'
+  +'<div class="sgd-doors">'+doors+'</div></div>'
+ +'</div>';}
+
 /* ═══ 잉글리쉬 위드유 — 원서 읽기 (2026-09-11 재설계) ═══
    대표님 지시 그대로: 처음엔 소설만 보여 준다. 읽어 보게 둔다.
    막히는 문장을 스스로 표시해야 「구조 보기」가 열리고, 구조를 본 뒤에야 「해석」이 열린다.
@@ -14494,6 +14694,8 @@ function aiPage(){
  var tabs=AIB.map(function(b,i){var x=TABI[b.k]||['📚',''];
   return '<button class="ai-tab'+(i===_aiT?' on':'')+'" onclick="aiTab('+i+')"><span class="ic">'+x[0]+'</span><b>'+b.k+'</b><small>'+x[1]+'</small></button>';}).join('');
  return ''
+ /* 2026-09-11 대표님 지시 — 산글이 인사 → 세 개의 문(회화·시험·책방) → 카드뉴스 → 실행 */
+ +sgdHTML()
  /* ── 첫인상 ── */
  +'<div class="aiv-hero">'
   +'<div class="aiv-grid" aria-hidden="true"></div>'
