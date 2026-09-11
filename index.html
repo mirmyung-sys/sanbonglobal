@@ -189,7 +189,7 @@ nav{gap:4px}
 .star-sec{background:#F5ECD8;padding-bottom:80px}
 .star-card{background:#fff;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,.10);margin-top:34px;position:relative;z-index:5;padding:46px 44px 44px}
 .star-card h2{font-size:30px;font-weight:800;margin-bottom:30px}
-.star-card h2 .r{color:var(--gold)}
+.star-card h2 .r{color:#9A7830}
 .cards{display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px}
 .c{border-radius:10px;background:#fff;border:1px solid #ece4d2;padding:26px 26px;min-height:150px;position:relative;overflow:hidden;transition:.2s;cursor:pointer}
 .c:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.12)}
@@ -251,8 +251,9 @@ nav{gap:4px}
 .morebtn a{font-size:14px;font-weight:700;color:#5c6472;border:1px solid var(--line);border-radius:6px;padding:8px 14px}
 /* ===== 수강후기 ===== */
 .review{background:#eef1f6;padding:64px 0}
+.review .tabs2 button{color:#5A6274}  /* 2026-09-11 대비 보정 — #8a90a0 은 2.82:1 이었음 */
 .tabs2{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:22px}
-.tabs2 button{background:none;border:none;font-size:16px;font-weight:700;color:#8a90a0;cursor:pointer;padding-bottom:6px}
+.tabs2 button{background:none;border:none;font-size:16px;font-weight:700;color:#5A6274;cursor:pointer;padding-bottom:6px}
 .tabs2 button.on{color:var(--red);border-bottom:2px solid var(--red)}
 .rvtop{text-align:right;color:#5c6472;font-weight:600;margin-bottom:14px}
 .rvcard{display:grid;grid-template-columns:360px 1fr;gap:30px}
@@ -301,7 +302,7 @@ header:hover .megamenu{opacity:1;visibility:visible;transform:translateY(0)}
 .tp{height:186px;background:#eef1f6;overflow:hidden}
 .tp img{width:100%;height:100%;object-fit:cover;object-position:top center}
 .ti{padding:11px 12px 14px}
-.ti .tr{font-size:12px;font-weight:700;color:var(--gold-dk)}
+.ti .tr{font-size:12px;font-weight:700;color:#8A6A22}
 .ti .tn{font-size:16px;font-weight:800;margin-top:3px}
 /* ===== 전체시간표 ===== */
 .timetable{background:#f6f7fa;padding:64px 0}
@@ -325,7 +326,7 @@ header:hover .megamenu{opacity:1;visibility:visible;transform:translateY(0)}
 .hcard:hover{background:#fff;color:var(--red);transform:translateY(-2px)}
 .hcard .hi{font-size:20px}
 /* ===== 인터랙티브 강의관 ===== */
-.cguide{color:#8a90a0;font-size:15px;margin:-16px 0 22px}
+.cguide{color:#6B7285;font-size:15px;margin:-16px 0 22px}
 .ctabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
 .ctabs button{background:#f2f0e8;border:1px solid #e6ddc9;color:#5c6472;font-size:16px;font-weight:800;padding:12px 24px;border-radius:30px;cursor:pointer;transition:.15s}
 .ctabs button.on{background:var(--red);color:#fff;border-color:var(--red);box-shadow:0 8px 18px rgba(29,45,79,.25)}
@@ -704,7 +705,7 @@ h1,h2,h3,h4,.hs-sub,.hs-title,.sp-desc,.lead,.oh-p{text-wrap:pretty}
 @media(prefers-reduced-motion:reduce){.aclose{animation:none}}
 @media(max-width:860px){.aclose{top:auto;bottom:calc(86px + env(safe-area-inset-bottom,0px));left:50%;right:auto;transform:translateX(-50%);flex-direction:row;gap:6px;padding:13px 22px;font-size:20px;border-radius:999px;border:2px solid #fff;animation:none;z-index:3000;box-shadow:0 6px 22px rgba(20,33,61,.42)}.aclose::after{font-size:15px}#pgbody,#abox .abody,.sp-wrap{padding-bottom:170px}}
 .aclose:hover{background:linear-gradient(135deg,#14213d,#25396b);color:#F7CF5B;border-color:#F7CF5B}
-.cempty{padding:52px 20px;text-align:center;color:#8a90a0;font-size:15px;background:#f6f7fa;border-radius:16px;font-weight:600}
+.cempty{padding:52px 20px;text-align:center;color:#5A6274;font-size:15px;background:#f6f7fa;border-radius:16px;font-weight:600}
 /* 강사 소개 섹션 노출 (2026-08: display:none 해제) */
 /* 히어로 크게 + 패널 정제 */
 .hero{height:620px}
@@ -809,9 +810,9 @@ header nav a{letter-spacing:-.01em}
 .chapters{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
 .chrow{display:flex;gap:12px}
 .chip{position:relative;flex:1 1 0;min-width:0;height:150px;border-radius:16px;overflow:hidden;cursor:pointer;padding:20px 22px;color:#fff;background:linear-gradient(140deg,#1b2c4e,#31507f);box-shadow:0 8px 22px rgba(20,33,61,.14);transition:flex-grow .45s cubic-bezier(.2,.7,.2,1),box-shadow .3s;display:flex;flex-direction:column;justify-content:flex-end}
-.chip .che{position:absolute;top:16px;right:18px;font-family:'Montserrat',sans-serif;font-weight:900;font-size:14px;letter-spacing:1px;color:rgba(255,255,255,.32)}
+.chip .che{display:none}
 .chip .cht{font-size:22px;font-weight:900;letter-spacing:-.03em;white-space:nowrap}
-.chip .chs{font-size:13px;opacity:.86;margin-top:8px;line-height:1.45}
+.chip .chs{font-size:13px;margin-top:8px;line-height:1.45}
 .chrow .chip:hover{flex-grow:3.4;box-shadow:0 22px 46px rgba(20,33,61,.3)}
 .chip.exp{flex-grow:2.6}
 .chip.exp .chrev{opacity:1}
@@ -821,21 +822,21 @@ header nav a{letter-spacing:-.01em}
 .chip.on{box-shadow:0 14px 34px rgba(20,33,61,.34)}
 .chip .chrev{position:absolute;top:0;right:0;bottom:0;display:flex;align-items:flex-end;justify-content:flex-end;opacity:0;transition:opacity .55s ease;z-index:1;pointer-events:none;max-width:74%}
 .chip .chrev img{height:100%;width:92px;object-fit:cover;object-position:center top;display:block}
-.chip .chgrad{position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(8,10,16,.42),rgba(8,10,16,0) 56%);pointer-events:none}
+.chip .chgrad{position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(8,10,16,.56),rgba(8,10,16,0) 64%);pointer-events:none}
 .chip .chtxt{position:relative;z-index:3;margin-top:auto}
 .chrow .chip:hover .chrev{opacity:1}
 .chip .chgo{margin-top:10px;align-self:flex-start;background:#c81f2b;color:#fff;font-weight:900;font-size:13px;padding:0 0;border-radius:999px;max-height:0;opacity:0;overflow:hidden;transition:max-height .25s,opacity .25s,padding .25s;box-shadow:0 6px 16px rgba(226,33,28,.4)}
 .chrow .chip:hover .chgo{max-height:40px;opacity:1;padding:7px 16px}
 .chrow .chip:hover .cht{font-size:28px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.55)}
 .chrow .chip:hover .chs{color:#ffdf4d;font-weight:800}
-.chrow .chip:hover .che{color:#ff6a6a}
+
 @media(max-width:860px){.chrow{flex-wrap:wrap}.chip{flex:1 1 44%;height:120px}.chrow .chip:hover{flex-grow:0}}
 /* 2026-09-02 대표님 — 폰에서 타일 글자가 겹치고 잘리던 것 정돈 */
 @media(max-width:640px){
  .chip{height:114px;padding:13px 13px}
  .chip .cht{font-size:17px;white-space:normal;line-height:1.25;word-break:keep-all}
  .chip .chs{font-size:11.5px;margin-top:5px;line-height:1.4}
- .chip .che{font-size:10px;top:9px;right:11px;letter-spacing:.5px}
+ /* .che 는 위에서 전부 숨김 (2026-09-11) */
  .chip .chrev{display:none}
  .chip.exp{flex-grow:1}
  .progcards .pc{padding:16px 14px}
@@ -848,7 +849,7 @@ header nav a{letter-spacing:-.01em}
 .findbtn{display:inline-flex;align-items:center;gap:14px;background:linear-gradient(120deg,#c81f2b,#e0453e);color:#fff;padding:18px 38px;border-radius:999px;box-shadow:0 16px 42px rgba(200,31,43,.34);font-size:18px;cursor:pointer;transition:.25s;border:2px solid #ffd94d;position:relative}
 .findbtn:after{content:'';position:absolute;left:26px;right:26px;bottom:-9px;height:5px;border-radius:99px;background:linear-gradient(90deg,#c81f2b 0 16.6%,#1D2D4F 16.6% 33.3%,#a8843f 33.3% 50%,#0e8a5a 50% 66.6%,#7658c8 66.6% 83.3%,#1c6070 83.3% 100%)}
 .findbtn:hover{transform:translateY(-3px);box-shadow:0 24px 56px rgba(200,31,43,.46)}
-.findbtn em{color:#ffe0dd!important}
+.findbtn em{color:#FFF1EF!important}
 .findbtn .fi{font-size:24px}
 .findbtn b{font-weight:900;letter-spacing:-.02em}
 .findbtn em{font-style:normal;font-size:14px;color:var(--gold2);font-weight:700}
@@ -908,7 +909,7 @@ header nav a{letter-spacing:-.01em}
 .pvc.gold .pvbtn{background:#191b22}
 .pvc.gold .pvbtn:hover{background:#c81f2b}
 .pvnote{margin-top:18px;background:#15181f;border:1px solid #2a2f3a;border-radius:8px;padding:16px 18px}
-.pvnote b.h{display:block;font-size:14px;color:#e0453e;font-weight:900;margin-bottom:8px}
+.pvnote b.h{display:block;font-size:14px;color:#FF7A72;font-weight:900;margin-bottom:8px}
 .pvnote ul{margin:0;padding-left:18px}
 .pvnote li{font-size:13px;color:#9aa2b2;line-height:1.65;margin-bottom:3px}
 .pvnote li b{color:#fff}
@@ -925,18 +926,18 @@ header nav a{letter-spacing:-.01em}
 .sharesec{background:linear-gradient(180deg,#f7f9fd,#eef2f8);padding:58px 24px;border-top:1px solid var(--line)}
 .sharebox{max-width:780px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:24px;padding:38px 28px 34px;box-shadow:0 20px 50px rgba(20,33,61,.09);text-align:center}
 .sharehd{font-size:24px;font-weight:900;color:var(--navy);letter-spacing:-.02em}
-.sharesub{font-size:14px;color:#8a90a0;margin:8px 0 26px}
+.sharesub{font-size:14px;color:#6B7285;margin:8px 0 26px}
 .shareico{display:flex;gap:22px;justify-content:center;flex-wrap:wrap}
 .sci{display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none;background:none;border:none;cursor:pointer;padding:0}
 .sci .ic{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:18px;letter-spacing:-.02em;box-shadow:0 10px 22px rgba(0,0,0,.14);transition:transform .2s}
 .sci:hover .ic{transform:translateY(-5px)}
 .sci em{font-size:13px;color:#3f4757;font-style:normal;font-weight:700}
-.ic-bl{background:#03C75A;font-size:14px}
+.ic-bl{background:#04703A;font-size:14px}
 .ic-fb{background:#1877F2;font-size:26px}
 .ic-yt{background:#FF0000;font-size:16px}
 .ic-ig{background:linear-gradient(45deg,#F58529,#DD2A7B 55%,#8134AF)}
 .ic-kk{background:#FEE500;color:#3A1D1D!important;font-size:12px}
-.ic-bl{background:#03C75A;font-size:22px}
+.ic-bl{background:#04703A;font-size:22px}
 .ic-url{background:var(--navy);font-size:22px}
 .sharemini{display:flex;align-items:center;gap:9px;justify-content:center;margin:34px 0 0;padding-top:22px;border-top:1px dashed var(--line);flex-wrap:wrap}
 .sharemini span{font-size:13px;color:#8a90a0;font-weight:800;margin-right:2px}
@@ -1618,7 +1619,7 @@ li:has(> .upsell)::before,li:has(> .upsell)::marker{display:none!important;conte
  padding:13px 16px;font-size:13.5px;line-height:1.8;color:#454C59}
 .tq-bub::before{content:"";position:absolute;left:-7px;top:12px;width:12px;height:12px;
  background:#F2F8F5;border-left:1px solid #CFE7DC;border-bottom:1px solid #CFE7DC;transform:rotate(45deg)}
-.tq-bub em{font-style:normal;font-weight:900;color:#0E8A5A}
+.tq-bub em{font-style:normal;font-weight:900;color:#0A6B46}
 .tq-bub b{color:#15181f}
 .tq-x{margin-top:15px;padding-top:15px;border-top:1px dashed #E2E6ED;font-size:13.5px;line-height:1.8;color:#454C59}
 .tq-x b{color:#15181f}
@@ -2675,7 +2676,7 @@ li:first-child > .pgh{margin-top:2px}
 .nt-개강{color:#0A6B46!important}
 .nt-휴무{color:#565D6B!important}
 /* 네이버 블로그 아이콘 — 초록(#03C75A) 위 흰 글씨가 2.2:1 */
-.ic-bl{background:#048A40!important}
+.ic-bl{background:#04703A!important}
 /* 학습관 카드 소제목 — 빨간 호버 커튼(.bn-ov) 안쪽은 흰 글씨 그대로 둡니다 */
 .aiv-what>.wt>div>b{color:#1A1F2B!important;font-size:17.5px!important}
 .bn-ov,.bn-ov *,.bn-ov b{color:#FFFFFF!important}
@@ -3980,7 +3981,7 @@ html,body{overflow-x:hidden;max-width:100%}
     <a href="#" onclick="openPage('갤러리');return false;">학원갤러리</a><span class="sep">|</span>
     <a href="#" onclick="openPage('유튜브');return false;">유튜브</a><span class="sep">|</span>
     <a href="#" onclick="openPage('통합회원안내');return false;">사이트맵</a><span class="sep">|</span>
-    <a href="checkin.html" style="color:#C6A15B;font-weight:800">🎯 출석체크</a><span class="sep">|</span>
+    <a href="checkin.html" style="color:#8A6A22;font-weight:800">🎯 출석체크</a><span class="sep">|</span>
     <a href="app.html" target="_blank" rel="noopener" style="color:#C6A15B;font-weight:800">📱 AI앱</a>
   </div>
   </div>
@@ -4094,7 +4095,7 @@ html,body{overflow-x:hidden;max-width:100%}
   <div class="subwrap">
     <div style="text-align:center;margin:16px 0 4px">
       <a href="app.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;background:linear-gradient(120deg,#1D2D4F,#2B4173);color:#fff;font-weight:900;font-size:15px;padding:14px 26px;border-radius:999px;text-decoration:none;box-shadow:0 10px 24px -12px rgba(29,45,79,.7)">📱 AI 학습앱 열기<span style="background:#C6A15B;color:#1D2D4F;font-size:11px;font-weight:900;padding:2px 7px;border-radius:999px">수강생 무료</span></a>
-      <div style="font-size:12px;color:#8A94A8;margin-top:7px">영어·일본어·중국어 AI 회화 · 발음채점 · 단어장 · 출석 · 학습리포트</div>
+      <div style="font-size:12px;color:#6B7285;margin-top:7px">영어·일본어·중국어 AI 회화 · 발음채점 · 단어장 · 출석 · 학습리포트</div>
     </div>
   </div>
   <div class="tqwrap"><div class="tq">
@@ -4379,15 +4380,15 @@ const CHAPTERS=[
  {k:'토익',co:'토익',s:'왜 틀리는지 먼저 알아야 점수가 오릅니다',e:'TOEIC',bg:'linear-gradient(135deg,#171d2b,#2b3550)',imgs:['eng_13','elly','eng_14','eng_15'],exp:1},
  {k:'토스',co:'토스',s:'말하기 유형 완전 분석, 목표 등급까지',e:'TOEIC S',bg:'linear-gradient(135deg,#0e3a4d,#1c6070)',imgs:['eng_14','eng_15']},
  {k:'오픽',co:'오픽',s:'실전 발화 훈련으로 IH·AL 달성',e:'OPIc',bg:'linear-gradient(135deg,#382a5e,#5a3f8c)',imgs:['eng_15','eng_14']},
- {k:'JLPT/HSK',co:'JLPT',s:'기출 중심 합격 루트',e:'JLPT·HSK',bg:'linear-gradient(135deg,#0f6b52,#149e79)',imgs:['jpn_2','jpn_1','jpn_4','jpn_5']},
+ {k:'JLPT/HSK',co:'JLPT',s:'기출 중심 합격 루트',e:'JLPT·HSK',bg:'linear-gradient(135deg,#0B5240,#0F7A5D)',imgs:['jpn_2','jpn_1','jpn_4','jpn_5']},
  {k:'영어회화',co:'영어회화',s:'기초부터 원어민까지, 써먹는 회화',e:'SPEAKING',bg:'linear-gradient(135deg,#8a4b1f,#c9772f)',imgs:['eng_5','eng_11','eng_9']},
- {k:'일본어',co:'일본어',s:'일본인이 실제 쓰는 살아있는 일본어',e:'JAPANESE',bg:'linear-gradient(135deg,#5f97cf,#a9cdeb)',imgs:['jpn_2','jpn_1','jpn_7']},
+ {k:'일본어',co:'일본어',s:'일본인이 실제 쓰는 살아있는 일본어',e:'JAPANESE',bg:'linear-gradient(135deg,#1E4E85,#3E7FBE)',imgs:['jpn_2','jpn_1','jpn_7']},
  {k:'중국어',co:'중국어',s:'발음부터 HSK까지 탄탄하게',e:'CHINESE',bg:'linear-gradient(135deg,#9c1f24,#c8353b)',imgs:['chn_3','chn_5']},
  {k:'1:1 PT',pg:'1:1 전문',s:'나만을 위한 완전 맞춤 1:1 수업',e:'PRIVATE',bg:'linear-gradient(135deg,#14213d,#33507f)',imgs:['eng_14','eng_13','eng_6']},
  {k:'과외',pg:'과외',s:'학생별 맞춤 밀착 관리 과외',e:'TUTORING',bg:'linear-gradient(135deg,#3a2c5e,#5b4790)',imgs:['eng_7','eng_3']},
  {k:'외고/유학',pg:'유학상담',s:'외고 내신·유학 준비 무료 상담',e:'ABROAD',bg:'linear-gradient(135deg,#1f8058,#146043)',imgs:['jpn_4','jpn_5']},
  {k:'기업출강',pg:'기업출강',s:'회사로 찾아가는 실무 어학 교육',e:'B2B',bg:'linear-gradient(120deg,#c81f2b,#c81f2b)',imgs:['eng_14','eng_12','jpn_2','chn_3']},
- {k:'임원 1:1 출강',pg:'임원강의',s:'임원 맞춤 1:1 프리미엄 출강',e:'EXECUTIVE',bg:'linear-gradient(135deg,#7a5a1a,#c6a15b)',imgs:[]}
+ {k:'임원 1:1 출강',pg:'임원강의',s:'임원 맞춤 1:1 프리미엄 출강',e:'EXECUTIVE',bg:'linear-gradient(135deg,#4E3A10,#8A6A22)',imgs:[]}
 ];
 function chipHTML(c){var imgs=(c.imgs||[]).map(function(im){return '<img src="img/teachers/'+im+'.png" alt="" loading="lazy">';}).join('');return '<div class="chip'+(c.exp?' exp':'')+'" data-k="'+c.k+'" style="background:'+c.bg+'"><div class="chrev">'+imgs+'</div><div class="chgrad"></div><div class="chtxt"><div class="che">'+c.e+'</div><div class="cht">'+c.k+'</div><div class="chs">'+c.s+'</div><div class="chgo">자세히 보기 ›</div></div></div>';}
 function pickCourse(k){
