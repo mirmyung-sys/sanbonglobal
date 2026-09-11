@@ -14510,11 +14510,11 @@ var SGDOOR=[
   p:'전자책·듣기·채점·출석까지 AI 학습관 전체가 열립니다.<br>사람이 하는 것만 유료로 받습니다 — <b>발음 첨삭 · 원장 상담 · 교실 수업.</b>',
   big:'0원',bigs:'학원에 다니시는 동안 계속'}]},
 
-{k:'book',ico:'📖',t:'책방',s:'소설책 한 권. 다 읽으면 끝납니다',cls:'sgd-d3',rc:'r3',
- eye:'READING ROOM',h:'책방',lead:'교재는 언젠가 끝납니다. 그런데 <b>끝나도 영어책은 못 읽습니다.</b> 여기는 처음부터 진짜 책으로 갑니다.',
- run:'책방 들어가기', runs:'1과 · 말이 사라진 아침 — 회원가입 없이', act:'sgdRun(2)',
+{k:'book',ico:'📖',t:'원서 공부하기',s:'영어원서로 영어 뽀개기 — 소설 한 권이면 끝납니다',cls:'sgd-d3',rc:'r3',
+ eye:'산글이 영어원서',h:'영어원서로 영어 뽀개기',lead:'교재는 언젠가 끝납니다. 그런데 <b>끝나도 영어책은 못 읽습니다.</b> 여기는 처음부터 진짜 책으로 갑니다.',
+ run:'원서 공부 시작하기', runs:'1과 · 말이 사라진 아침 — 회원가입 없이', act:'sgdRun(2)',
  cards:[
- {bg:'linear-gradient(140deg,#07382B,#0B5A44)',no:'01',h:'소설책 한 권.<br><em>그게 전부입니다</em>',
+ {bg:'linear-gradient(140deg,#07382B,#0B5A44)',no:'01',h:'원서 한 권이면<br><em>영어가 뽀개집니다</em>',
   p:'하루 한 문장씩 외우는 책은 시중에 널렸습니다.<br>여기는 <b>이야기 한 권</b>을 끝까지 읽습니다. 다 읽으면 끝납니다.',
   big:'한 권',bigs:'The Whale Who Forgot How to Speak'},
  {bg:'linear-gradient(140deg,#14213D,#33507F)',no:'02',h:'남의 책은<br><em>쪼갤 수 없습니다</em>',
@@ -14695,8 +14695,8 @@ function wyHTML(){
     +(lock?'disabled':'onclick="wyStep('+x[2]+')"')+'>'+x[0]+(lock?' &#128274;':'')+'<small>'+x[1]+'</small></button>';
   }).join('');
  return '<div class="wy-wrap" id="wyWrap">'
- +'<div class="wy-hd"><div class="k">산본글로벌어학원 · AI 산글 학습관</div>'
-  +'<h2>잉글리쉬 <em>위드유</em></h2>'
+ +'<div class="wy-hd"><div class="k">산본글로벌어학원 · 산글이 영어원서</div>'
+  +'<h2>영어원서로 <em>영어 뽀개기</em></h2>'
   +'<div class="bk"><b>'+_wyE(WY1.book)+'</b> — 산본글로벌어학원 창작 원서 · <b>'+WY1.no+'과</b></div>'
   +'<div class="wy-rail">'+rail+'</div></div>'
  +(_wyStep===0?'<div class="wy-fig">'+wyFig()+'</div>':'')
@@ -14726,12 +14726,12 @@ function wyOpen(){_wySt();_sgSub(wyHTML());}
 /* 학습관 안 소개 블록 */
 function wySecHTML(){
  return '<div class="wy-sec">'
- +'<div class="wy-k">ENGLISH WITH YOU</div>'
- +'<h3>잉글리쉬 <em>위드유</em> — 이 단락, 지금 읽히십니까?</h3>'
+ +'<div class="wy-k">산글이 영어원서</div>'
+ +'<h3>영어원서로 <em>영어 뽀개기</em> — 이 단락, 읽히십니까?</h3>'
  +'<p>저희가 직접 쓴 소설을 <b>영어 그대로</b> 펼쳐 드립니다. 해석도 구조도 처음엔 없습니다.<br>'
  +'먼저 읽어 보시고, <b>막히는 문장을 표시</b>하시면 — 그 문장만 덩어리로 갈라서 풀어 드립니다.</p>'
  +'<div class="wy-fig">'+wyFig()+'</div>'
- +'<button class="wy-go" onclick="wyOpen()">📖 1과 — 말이 사라진 아침'
+ +'<button class="wy-go" onclick="wyOpen()">📖 원서 공부 시작하기 — 1과 · 말이 사라진 아침'
   +'<small>회원가입 없이 · 소설 한 단락 · 발음 · 구조 · 해석 순서로 열립니다</small></button>'
  +'</div>';}
 
@@ -14765,7 +14765,7 @@ function aiPage(){
    /* 2026-09-11 — 잉글리쉬 위드유 (원서 읽기 코너) */
    +'<a href="#" class="wy-cta" onclick="wyOpen();return false;">'
     +'<span style="font-size:26px;line-height:1">📖</span>'
-    +'<span style="flex:1"><b>잉글리쉬 위드유 — 이 단락, 읽히십니까?</b>'
+    +'<span style="flex:1"><b>영어원서로 영어 뽀개기 — 이 단락, 읽히십니까?</b>'
     +'<span class="s">소설 한 단락을 영어 그대로 · <em>읽어 보고 막히면</em> 구조를 엽니다</span></span>'
     +'<span style="color:#fff;font-size:20px;font-weight:900">›</span></a>'
    +'<div class="aiv-st">'
