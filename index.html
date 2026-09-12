@@ -4874,8 +4874,24 @@ const SLIDES=[
   return '<div class="hslide'+(i===0?' on':'')+(s.cls?(' '+s.cls):'')+'"'+(s.bg?' style="background-image:linear-gradient(rgba(9,13,26,.35),rgba(9,13,26,.35)),url('+s.bg+');background-size:cover;background-position:center"':'')+'><div class="hs-wrap"><div class="hs-panel" style="color:'+s.tc+'"><div class="hs-fill" style="background:'+s.pbg+'"></div><div class="hs-inner"><div class="hs-eyebrow" style="color:'+s.ac+'">'+s.e+'</div><div class="hs-title" style="color:'+s.tc+'">'+s.t+'</div><div class="hs-sub" style="color:'+(s.tc2||s.tc)+'">'+s.s+'</div>'+(s.faces?('<div class="hs-faces">'+s.faces.map(function(f,k){return '<span><img src="img/teachers/'+f+'.png" alt=""><i>'+(s.fnames?s.fnames[k]:'')+'</i></span>';}).join('')+'</div>'):'')+'<button class="hs-btn" style="background:'+s.bbg+';color:'+s.btc+';border-color:'+s.bbg+'" onclick="'+s.act+'">자세히 보기 →</button></div></div></div></div>';}).join('');
  document.getElementById('hdots').innerHTML=SLIDES.map(function(s,i){return '<i data-i="'+i+'"'+(i===0?' class="on"':'')+'></i>';}).join('');
  var si=0, slides=hs.querySelectorAll('.hslide'), dots=document.querySelectorAll('#hdots i'), N=SLIDES.length;
+ /* 2026-09-12 — 폰에서 히어로가 600px 고정이라 짧은 슬라이드는 아래가 200px 넘게 비었습니다.
+    슬라이드 높이에 맞춰 히어로를 줄입니다. PC는 원래대로 둡니다. */
+ function _heroFit(){
+  try{
+   var h=document.getElementById('hero'); if(!h)return;
+   if(window.innerWidth>820){ h.style.removeProperty('height'); h.style.removeProperty('min-height'); return; }
+   var p=slides[si]&&slides[si].querySelector('.hs-panel'); if(!p)return;
+   var need=Math.round(p.getBoundingClientRect().height)+94;
+   need=Math.max(370,Math.min(need,660));
+   h.style.setProperty('min-height','0','important');
+   h.style.setProperty('height',need+'px','important');
+  }catch(e){}
+ }
+ var _hfT=null;
+ try{ window.addEventListener('resize',function(){clearTimeout(_hfT);_hfT=setTimeout(_heroFit,120);}); }catch(e){}
  function show(){for(var i=0;i<N;i++){slides[i].classList.toggle('on',i===si);dots[i].classList.toggle('on',i===si);}
   var _sn=document.getElementById('slNum');if(_sn)_sn.textContent=(si+1)+' / '+N;
+  _heroFit();
   /* 사진을 깐 슬라이드는 영상이 안 보이니 '송윤정 강사' 캡션도 감춥니다 */
   var vt=document.querySelector('.hero-vtag');if(vt)vt.style.display=SLIDES[si].bg?'none':'';}
  document.getElementById('slPrev').onclick=function(){si=(si+N-1)%N;show();resetT();};
@@ -14666,11 +14682,11 @@ var SGDOOR=[
 
 {k:'book',ico:'📖',t:'원서 공부하기',s:'영어원서로 영어 뽀개기 — 소설 한 권이면 끝납니다',cls:'sgd-d3',rc:'r3',
  eye:'산글이 영어원서',h:'영어원서로 영어 뽀개기',lead:'교재는 언젠가 끝납니다. 그런데 <b>끝나도 영어책은 못 읽습니다.</b> 여기는 처음부터 진짜 책으로 갑니다.',
- run:'원서 공부 시작하기', runs:'1과 · 말이 사라진 아침 — 회원가입 없이', act:'sgdRun(2)',
+ run:'원서 공부 시작하기', runs:'1장 10과 72문장 무료 — 가입 없이 바로', act:'sgdRun(2)',
  cards:[
  {bg:'linear-gradient(140deg,#07382B,#0B5A44)',no:'01',h:'원서 한 권이면<br><em>영어가 뽀개집니다</em>',
   p:'하루 한 문장씩 외우는 책은 시중에 널렸습니다.<br>여기는 <b>이야기 한 권</b>을 끝까지 읽습니다. 다 읽으면 끝납니다.',
-  big:'한 권',bigs:'The Whale Who Forgot How to Speak'},
+  big:'2장 20과',bigs:'141문장 · The Whale Who Forgot How to Speak'},
  {bg:'linear-gradient(140deg,#14213D,#33507F)',no:'02',h:'남의 책은<br><em>쪼갤 수 없습니다</em>',
   p:'원서를 빌려주는 곳은 많습니다. 그런데 그 책은 남의 것이라 <b>분해해서 설명할 수 없습니다.</b><br>이 소설은 <b>산본글로벌어학원이 직접 썼습니다.</b>',big:'그래서 가를 수 있습니다',bigs:'문장을 덩어리로 쪼개 색을 칠하는 건 우리 책이라 가능합니다'},
  {bg:'linear-gradient(140deg,#082C4E,#17578B)',no:'03',h:'막히는 건<br>단어가 아닙니다',
@@ -14678,8 +14694,8 @@ var SGDOOR=[
  {bg:'linear-gradient(140deg,#3E2708,#6B5218)',no:'04',h:'다 보여주지<br><em>않습니다</em>',
   p:'',li:['<b>①</b> 소설 한 단락 — 영어만. 해석 없음','<b>②</b> 읽어 보고 <b>막히는 문장을 표시</b>','<b>③</b> 표시한 문장만 구조를 펼쳐 드립니다','<b>④</b> 해석은 <b>마지막</b>입니다'],},
  {bg:'linear-gradient(140deg,#6E0C12,#A81E1A)',no:'05',h:'끝까지 읽으면<br><em>시험이 없습니다</em>',
-  p:'한 권을 다 읽으시는 날, 시험 없이 <b>레벨2 회화반 입학 자격</b>이 생깁니다.<br>막히는 쪽이 나오면 그 쪽을 들고 <b>산본으로 오십시오.</b>',
-  big:'레벨2 직행',bigs:'책 한 권이 곧 입학시험입니다'}]}
+  p:'<b>1장(10과)</b>을 다 읽으시는 날, 시험 없이 <b>레벨2 회화반 입학 자격</b>이 생기고 <b>2장이 열립니다.</b><br>막히는 과가 나오면 그 과를 들고 <b>산본으로 오십시오.</b>',
+  big:'레벨2 직행',bigs:'1장을 끝내는 것이 곧 입학시험입니다'}]}
 ];
 
 function _sgdE(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
