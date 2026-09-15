@@ -431,6 +431,34 @@ body.wdark .pg{padding:0 0 8px;max-width:none}
 .sgf-more{display:block;margin-top:12px;text-align:center;text-decoration:none;
  background:#F1F4F9;border:1.5px solid #D9E1EC;border-radius:12px;padding:14px 12px;
  font-size:14px;font-weight:900;color:#2A3242}
+/* 2026-09-15 — 블로그에 글이 없을 때도 연결돼 있다는 게 보이는 카드 */
+.sgf-live{background:#fff;border:2px solid #CFEBD9;border-radius:18px;padding:18px 16px 16px;
+ box-shadow:0 4px 0 #E3F2EA}
+.sgf-live .hd{display:flex;align-items:center;gap:10px}
+.sgf-live .bi{flex:none;width:40px;height:40px;border-radius:11px;background:#0AC05F;color:#fff;
+ display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:900}
+.sgf-live .hd>div{min-width:0;flex:1}
+.sgf-live .hd b{display:block;font-size:16px;font-weight:900;color:#1F2430;letter-spacing:-.02em;
+ word-break:keep-all}
+.sgf-live .hd span{display:block;font-size:12px;font-weight:700;color:#8A94A8;margin-top:2px;
+ overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sgf-live .on{flex:none;font-style:normal;font-size:11.5px;font-weight:900;color:#0A7A45;
+ background:#E6F7EE;border:1px solid #BEE6D2;border-radius:999px;padding:5px 10px;white-space:nowrap}
+.sgf-live .ab{margin:13px 0 0;font-size:13.5px;line-height:1.66;font-weight:700;color:#5A6273;
+ word-break:keep-all}
+.sgf-live .wt{display:flex;gap:9px;margin-top:13px;background:#F5FAF7;border:1px solid #DCEFE4;
+ border-radius:13px;padding:12px 13px}
+.sgf-live .wt i{flex:none;width:9px;height:9px;margin-top:5px;border-radius:50%;background:#0AC05F;
+ box-shadow:0 0 0 4px rgba(10,192,95,.18)}
+.sgf-live .wt span{font-size:13.5px;line-height:1.62;font-weight:700;color:#3A4152;word-break:keep-all}
+.sgf-live .wt b{color:#0A6743}
+.sgf-live .bb{display:grid;grid-template-columns:1fr;gap:8px;margin-top:13px}
+@media(min-width:460px){.sgf-live .bb{grid-template-columns:1fr 1fr}}
+.sgf-live .bb a{display:flex;align-items:center;justify-content:center;min-height:50px;
+ border-radius:13px;text-decoration:none;font-size:14.5px;font-weight:900}
+.sgf-live .bb a.g{background:#0AC05F;color:#fff;box-shadow:0 4px 0 #078F47}
+.sgf-live .bb a.o{border:2px solid #CFE3D8;color:#2A3242;background:#fff}
+.sgf-live .bb a:active{transform:translateY(2px)}
 .sgf-empty{background:#F7F9FC;border:2px dashed #D9E1EC;border-radius:16px;padding:24px 18px;text-align:center}
 .sgf-empty b{display:block;font-size:16px;font-weight:900;color:#3A4152;letter-spacing:-.02em}
 .sgf-empty span{display:block;margin-top:7px;font-size:13.5px;line-height:1.6;font-weight:700;color:#6B7280;
@@ -799,11 +827,27 @@ function sgfLoad(kind, boxId){
 function _sgfPaint(kind,box,items){
  var isYT=(kind==='yt');
  if(!items.length){
-  box.innerHTML='<div class="sgf-empty">'
-   +'<b>'+(isYT?'아직 올라온 영상이 없습니다':'아직 올라온 글이 없습니다')+'</b>'
-   +'<span>새로 올리시면 <b>여기에 자동으로</b> 나타납니다.</span>'
-   +'<a href="'+(isYT?('https://www.youtube.com/@sangle_kr'):SGF_BLOG)+'" target="_blank" rel="noopener noreferrer">'
-   +(isYT?'▶ 유튜브 채널 바로가기':'B 블로그 바로가기')+'</a></div>';
+  /* 2026-09-15 — 대표님 「글이 없더라도 블로그 연동」.
+     빈 줄 하나만 띄우지 않고, 실제로 이어져 있다는 게 보이는 카드로 둡니다. */
+  if(isYT){
+   box.innerHTML='<div class="sgf-empty">'
+    +'<b>아직 올라온 영상이 없습니다</b>'
+    +'<span>새로 올리시면 <b>여기에 자동으로</b> 나타납니다.</span>'
+    +'<a href="https://www.youtube.com/@sangle_kr" target="_blank" rel="noopener noreferrer">▶ 유튜브 채널 바로가기</a></div>';
+   return;
+  }
+  box.innerHTML='<div class="sgf-live">'
+   +'<div class="hd"><span class="bi">B</span><div><b>\uc0b0\ubcf8\uae00\ub85c\ubc8c\uc5b4\ud559\uc6d0</b>'
+    +'<span>blog.naver.com/sanbonglobal</span></div>'
+    +'<em class="on">\u2713 \uc5f0\uacb0\ub428</em></div>'
+   +'<p class="ab">\ud604\uac15 + AI \uc0b0\uae00 \ud559\uc2b5\uad00(\uc778\uac15) + \uc720\ud29c\ube0c\uae4c\uc9c0 \uc804\ubd80 \uc788\uc2b5\ub2c8\ub2e4.<br>'
+    +'\uc601\uc5b4\u00b7\uc77c\ubcf8\uc5b4\u00b7\uc911\uad6d\uc5b4 | \uc0b0\ubcf8\uc5ed 3\ubc88 \ucd9c\uad6c \ub3c4\ubcf4 1\ubd84</p>'
+   +'<div class="wt"><i></i><span><b>\uccab \uae00\uc744 \uc900\ube44\ud558\uace0 \uc788\uc2b5\ub2c8\ub2e4.</b> \uc62c\ub77c\uc624\ub294 \uc989\uc2dc '
+    +'\uc774 \uc790\ub9ac\uc5d0 \uce74\ub4dc\ub85c \ub728\uac8c \ud574 \ub450\uc5c8\uc2b5\ub2c8\ub2e4.</span></div>'
+   +'<div class="bb">'
+    +'<a class="g" href="'+SGF_BLOG+'" target="_blank" rel="noopener noreferrer">B \ube14\ub85c\uadf8 \uc5f4\uc5b4\ubcf4\uae30</a>'
+    +'<a class="o" href="https://m.blog.naver.com/sanbonglobal" target="_blank" rel="noopener noreferrer">\ud734\ub300\ud3f0\uc73c\ub85c \ubcf4\uae30</a>'
+   +'</div></div>';
   return;
  }
  var cards=items.slice(0,6).map(function(it){

@@ -2858,6 +2858,46 @@ li:first-child > .pgh{margin-top:2px}
 .sgf-empty a{display:inline-block;margin-top:14px;text-decoration:none;background:#14213D;color:#fff;
  border-radius:12px;padding:13px 20px;font-size:14px;font-weight:900;min-height:48px;line-height:22px}
 
+/* 2026-09-15 — 레벨테스트 「건너뛰고 대답하기」 */
+.cr-skip{margin-top:8px !important;min-height:48px;font-weight:800;
+ border:1.5px solid #C9D3E3 !important;color:#2A3242 !important;background:#F4F7FB !important}
+.cr-skip:active{transform:translateY(2px)}
+/* 2026-09-15 — 원서 설명 둘째 문단.
+   배경이 크림색(#FFFDF7)이라 밝은 글씨는 묻힙니다 — 본문과 같은 어두운 색으로. */
+.sgo-s2{margin:0 auto 22px;max-width:640px;font-size:clamp(15px,2vw,17px);line-height:1.8;
+ font-weight:700;color:#3F4757;word-break:keep-all;text-align:center}
+.sgo-s2 b{color:#1A1A18;font-weight:800}
+.sgo-s2 em{display:block;margin-top:10px;font-style:normal;font-weight:900;
+ color:#B01118;font-size:clamp(16px,2.2vw,18.5px);letter-spacing:-.02em}
+@media(max-width:520px){.sgo-s2{line-height:1.74}}
+/* 2026-09-15 — 블로그에 글이 없을 때도 연결돼 있다는 게 보이는 카드 */
+.sgf-live{background:#fff;border:2px solid #CFEBD9;border-radius:18px;padding:18px 16px 16px;
+ box-shadow:0 4px 0 #E3F2EA}
+.sgf-live .hd{display:flex;align-items:center;gap:10px}
+.sgf-live .bi{flex:none;width:40px;height:40px;border-radius:11px;background:#0AC05F;color:#fff;
+ display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:900}
+.sgf-live .hd>div{min-width:0;flex:1}
+.sgf-live .hd b{display:block;font-size:16px;font-weight:900;color:#1F2430;letter-spacing:-.02em;
+ word-break:keep-all}
+.sgf-live .hd span{display:block;font-size:12px;font-weight:700;color:#8A94A8;margin-top:2px;
+ overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sgf-live .on{flex:none;font-style:normal;font-size:11.5px;font-weight:900;color:#0A7A45;
+ background:#E6F7EE;border:1px solid #BEE6D2;border-radius:999px;padding:5px 10px;white-space:nowrap}
+.sgf-live .ab{margin:13px 0 0;font-size:13.5px;line-height:1.66;font-weight:700;color:#5A6273;
+ word-break:keep-all}
+.sgf-live .wt{display:flex;gap:9px;margin-top:13px;background:#F5FAF7;border:1px solid #DCEFE4;
+ border-radius:13px;padding:12px 13px}
+.sgf-live .wt i{flex:none;width:9px;height:9px;margin-top:5px;border-radius:50%;background:#0AC05F;
+ box-shadow:0 0 0 4px rgba(10,192,95,.18)}
+.sgf-live .wt span{font-size:13.5px;line-height:1.62;font-weight:700;color:#3A4152;word-break:keep-all}
+.sgf-live .wt b{color:#0A6743}
+.sgf-live .bb{display:grid;grid-template-columns:1fr;gap:8px;margin-top:13px}
+@media(min-width:460px){.sgf-live .bb{grid-template-columns:1fr 1fr}}
+.sgf-live .bb a{display:flex;align-items:center;justify-content:center;min-height:50px;
+ border-radius:13px;text-decoration:none;font-size:14.5px;font-weight:900}
+.sgf-live .bb a.g{background:#0AC05F;color:#fff;box-shadow:0 4px 0 #078F47}
+.sgf-live .bb a.o{border:2px solid #CFE3D8;color:#2A3242;background:#fff}
+.sgf-live .bb a:active{transform:translateY(2px)}
 .sge{margin:0 0 30px}
 #pgModal.wide .sge{max-width:1320px;margin-left:auto;margin-right:auto}
 
@@ -3207,7 +3247,7 @@ li:first-child > .pgh{margin-top:2px}
 .sgo-h{margin:0 0 16px;font-size:clamp(27px,5.2vw,44px);line-height:1.28;font-weight:900;
  letter-spacing:-.025em;color:#1A1A18;word-break:keep-all}
 .sgo-h em{font-style:normal;color:#B3161F}
-.sgo-s{margin:0 auto 24px;max-width:640px;font-size:clamp(15px,2vw,17px);line-height:1.8;color:#3F4757;word-break:keep-all}
+.sgo-s{margin:0 auto 10px;max-width:640px;font-size:clamp(15px,2vw,17px);line-height:1.8;color:#3F4757;word-break:keep-all}
 .sgo-s b{color:#1A1A18;font-weight:800}
 .sgo-3{display:flex;justify-content:center;gap:10px;margin:0 auto 26px;max-width:560px;flex-wrap:wrap}
 .sgo-i{flex:1 1 150px;background:#FFFFFF;border:1px solid #E6E2D8;border-radius:13px;padding:14px 10px}
@@ -4622,12 +4662,14 @@ html,body{overflow-x:hidden;max-width:100%}
 <section class="sgo" id="sgOffer"><div class="wrap">
   <p class="sgo-k">산본 · 초등부터 성인까지</p>
   <h2 class="sgo-h">영어 소설책 한 권을,<br><em>끝까지 읽힙니다.</em></h2>
-  <p class="sgo-s">단어를 외우게 하지 않습니다. 한 문장을 <b>덩어리로 쪼개서</b> 읽는 법을 가르칩니다.<br>
-   그 방법이 맞는지, <b>지금 무료로 확인해 보십시오.</b></p>
+  <p class="sgo-s">산본글로벌어학원이 <b>실제로 쓰는 단어와 패턴, 일상회화</b>로만<br>
+   가득 채워 <b>소설 한 권을 직접 만들었습니다.</b></p>
+  <p class="sgo-s2">그 원서를 <b>끝까지 분석하며</b> 공부합니다.<br>
+   <em>이 책 한 권이면 요즘 쓰는 회화 단어는 다 됩니다.</em></p>
   <div class="sgo-3">
-    <div class="sgo-i"><b>12명</b><span>한 반 정원</span></div>
-    <div class="sgo-i"><b>141문장</b><span>산글이가 쓴 원서 20과 · 전부 무료</span></div>
-    <div class="sgo-i"><b>1회</b><span>무료 청강</span></div>
+    <div class="sgo-i"><b>20과</b><span>학원이 직접 쓴 소설 한 권</span></div>
+    <div class="sgo-i"><b>141문장</b><span>실제로 쓰는 문장만 담았습니다</span></div>
+    <div class="sgo-i"><b>0원</b><span>1장은 가입 없이 지금 바로</span></div>
   </div>
   <div class="sgo-cta">
     <a class="sgo-b1" href="#" onclick="openPage('레벨테스트');return false;">무료 레벨테스트 받기
@@ -5280,8 +5322,26 @@ function lvChoose(){lvOpenRun('<h3 class="lvr-t">무료 레벨테스트</h3><p c
  '</div><div class="lvr-note" style="margin-top:14px">※ 결과는 참고용이며, 무료 수업 후 레벨 조정이 가능합니다.</div>'+
  '<button class="lvr-go" style="border:0;cursor:pointer;width:100%;background:#fff;color:#5c6472;border:1.5px solid #e3e6ee" onclick="lvCloseRun();openLvPage()">레벨테스트 안내 자세히 보기</button>');}
 function lvOpenRun(h){document.getElementById('lvRunBody').innerHTML=h;document.getElementById('lvRun').classList.add('on');document.body.style.overflow='hidden';}
+/* ═══ 2026-09-15 — 소리를 끄는 단 하나의 통로 ═══
+   레벨테스트(_crAu) · 산글이 목소리(_voAu) · 학습관 재생(SGA_P.au) · 한국어 낭독(_koAu)이
+   각자 따로 돌아서, 한쪽을 닫아도 다른 쪽이 계속 울리는 일이 있었습니다. */
+function sgHushAll(){
+ try{ speechSynthesis.cancel(); }catch(e){}
+ try{ if(typeof crStopAudio==='function') crStopAudio(); }catch(e){}
+ try{ if(typeof crLipStop==='function') crLipStop(); }catch(e){}
+ try{ if(typeof voStop==='function') voStop(); }catch(e){}
+ try{ if(typeof koStop==='function') koStop(); }catch(e){}
+ try{ if(typeof SGA_P!=='undefined' && SGA_P && SGA_P.au){ SGA_P.au.pause(); SGA_P.au=null; } }catch(e){}
+}
+/* 레벨테스트가 열려 있을 때 ESC 로 닫습니다 */
+document.addEventListener('keydown',function(e){
+ if(e.key!=='Escape') return;
+ var r=document.getElementById('lvRun');
+ if(r && r.classList.contains('on')){ try{ lvCloseRun(); }catch(x){} }
+},true);
 function lvCloseRun(){
- try{speechSynthesis.cancel();}catch(e){}
+ /* 2026-09-15 — 예전엔 창을 닫아도 인사말 mp3 가 계속 울렸습니다 */
+ sgHushAll();
  if(typeof _cr!=='undefined'&&_cr){_cr.stop=true;if(_cr.rec){try{_cr.rec.stop();}catch(e){}}if(_cr.timer){clearInterval(_cr.timer);_cr.timer=null;}}
  if(typeof _tk!=='undefined'){_tk.stopAll=true;if(_tk.rec){try{_tk.rec.stop();}catch(e){}}if(_lvT){clearInterval(_lvT);_lvT=null;}}
  document.getElementById('lvRun').classList.remove('on');document.body.style.overflow='';}
@@ -6571,11 +6631,27 @@ function sgfLoad(kind, boxId){
 function _sgfPaint(kind,box,items){
  var isYT=(kind==='yt');
  if(!items.length){
-  box.innerHTML='<div class="sgf-empty">'
-   +'<b>'+(isYT?'아직 올라온 영상이 없습니다':'아직 올라온 글이 없습니다')+'</b>'
-   +'<span>새로 올리시면 <b>여기에 자동으로</b> 나타납니다.</span>'
-   +'<a href="'+(isYT?('https://www.youtube.com/@sangle_kr'):SGF_BLOG)+'" target="_blank" rel="noopener noreferrer">'
-   +(isYT?'▶ 유튜브 채널 바로가기':'B 블로그 바로가기')+'</a></div>';
+  /* 2026-09-15 — 대표님 「글이 없더라도 블로그 연동」.
+     빈 줄 하나만 띄우지 않고, 실제로 이어져 있다는 게 보이는 카드로 둡니다. */
+  if(isYT){
+   box.innerHTML='<div class="sgf-empty">'
+    +'<b>아직 올라온 영상이 없습니다</b>'
+    +'<span>새로 올리시면 <b>여기에 자동으로</b> 나타납니다.</span>'
+    +'<a href="https://www.youtube.com/@sangle_kr" target="_blank" rel="noopener noreferrer">▶ 유튜브 채널 바로가기</a></div>';
+   return;
+  }
+  box.innerHTML='<div class="sgf-live">'
+   +'<div class="hd"><span class="bi">B</span><div><b>\uc0b0\ubcf8\uae00\ub85c\ubc8c\uc5b4\ud559\uc6d0</b>'
+    +'<span>blog.naver.com/sanbonglobal</span></div>'
+    +'<em class="on">\u2713 \uc5f0\uacb0\ub428</em></div>'
+   +'<p class="ab">\ud604\uac15 + AI \uc0b0\uae00 \ud559\uc2b5\uad00(\uc778\uac15) + \uc720\ud29c\ube0c\uae4c\uc9c0 \uc804\ubd80 \uc788\uc2b5\ub2c8\ub2e4.<br>'
+    +'\uc601\uc5b4\u00b7\uc77c\ubcf8\uc5b4\u00b7\uc911\uad6d\uc5b4 | \uc0b0\ubcf8\uc5ed 3\ubc88 \ucd9c\uad6c \ub3c4\ubcf4 1\ubd84</p>'
+   +'<div class="wt"><i></i><span><b>\uccab \uae00\uc744 \uc900\ube44\ud558\uace0 \uc788\uc2b5\ub2c8\ub2e4.</b> \uc62c\ub77c\uc624\ub294 \uc989\uc2dc '
+    +'\uc774 \uc790\ub9ac\uc5d0 \uce74\ub4dc\ub85c \ub728\uac8c \ud574 \ub450\uc5c8\uc2b5\ub2c8\ub2e4.</span></div>'
+   +'<div class="bb">'
+    +'<a class="g" href="'+SGF_BLOG+'" target="_blank" rel="noopener noreferrer">B \ube14\ub85c\uadf8 \uc5f4\uc5b4\ubcf4\uae30</a>'
+    +'<a class="o" href="https://m.blog.naver.com/sanbonglobal" target="_blank" rel="noopener noreferrer">\ud734\ub300\ud3f0\uc73c\ub85c \ubcf4\uae30</a>'
+   +'</div></div>';
   return;
  }
  var cards=items.slice(0,6).map(function(it){
@@ -15277,13 +15353,13 @@ var SGE_STEP=[
  go:'회화반 단계 보기', gos:'왕기초부터 원어민까지 — 지금 내 자리 고르기', act:'sgdRun(0)'},
 
 {c:'s2',wm:'02',no:'STEP 02 · REAL',h:'원어민이 <em>실제로 쓰는</em> 덩어리',
- what:'산본글로벌어학원이 <b>직접 쓴 소설</b>로, 원어민이 실제 대화에서 쓰는 덩어리 표현만 모아 읽습니다.',
- meta:['산글 영어원서 20과 141문장','산글이가 직접 쓴 소설','전부 무료 · 가입 없이'],
+ what:'산본글로벌어학원이 <b>실제로 쓰는 단어와 패턴, 일상회화</b>로만 가득 채워 <b>소설 한 권을 직접 만들었습니다.</b> 그 원서를 <b>끝까지 분석하며</b> 공부합니다.',
+ meta:['산글 영어원서 20과 141문장','이 책 한 권이면 요즘 회화 단어는 다 됩니다','전부 무료 · 가입 없이'],
  evk:'이렇게 하는 이유',
  ev:['원어민 대화를 컴퓨터로 분석했더니 <b><span class="sge-nw"><span class="sge-num">68.8%</span></span></b>가 이미 정해진 덩어리 표현이었습니다. 단어를 하나씩 조립하는 게 아니라 <b>통째로 꺼내 씁니다.</b>',
      '그리고 말을 <b>98% 알아들으려면 6,000~7,000 단어군</b>이 필요합니다. "2,000단어면 일상회화가 된다"는 말은 근거가 없습니다.'],
  cut:'원서를 빌려주는 곳은 많습니다. 그런데 <b>남의 책은 분해해서 설명할 수 없습니다.</b> 이 소설은 저희가 썼습니다.',
- go:'원서 1과 바로 열기', gos:'20과 141문장 전부 무료 · 가입 없이', act:'wyOpen()'},
+ go:'원서 1장 지금 열기', gos:'가입 없이 · 20과 141문장 전부 무료', act:'wyOpen()'},
 
 {c:'s3',wm:'03',no:'STEP 03 · SPEED',h:'귀와 입을 <em>따라붙게</em>',
  what:'뼈대와 살이 있어도 <b>속도</b>가 안 따라오면 대화가 안 됩니다. 문장을 덩어리로 끊어 보는 훈련과, 여러 사람 목소리로 듣는 훈련입니다.',
@@ -16214,7 +16290,7 @@ function tb40Page(){
 
 
 /* ===== 유튜브 연동 (2026-09-05 대표님 지시) =====
-   채널 UCq-ZKysRamLPT14Xc80cexA 의 '업로드' 재생목록(UU...)을 그대로 박아 둡니다.
+   산글 SANGLE 채널(@sangle_kr)의 '업로드' 재생목록(UU...)을 그대로 박아 둡니다.
    영상을 올리시면 홈페이지를 고치지 않아도 여기에 자동으로 따라 올라옵니다. */
 var SGA_YT_CH='UC1E5DtZ3yEHBbQK2iB2iCHA';   /* 2026-09-15 수정 — 산글 SANGLE 실제 채널. 이전 값은 다른 채널이었음 */
 function ytPage(){
@@ -16380,7 +16456,10 @@ function passPage(){return _pgHero('img/hall_05.jpg','SGA PASS · 산글 패스'
  +'<div class="pgnote">※ 등급 할인은 회화 정규반 기준이며, 이벤트 할인과 중복되지 않습니다. 더 유리한 쪽이 자동 적용됩니다.</div>'
  +SGCTA('첫 달만 결제하시면 됩니다. 나머지는 다니시면서 정하셔도 돼요.');}
 
-function openPage(k){var p=PAGES[k];if(!p)return;if(typeof p==='function')p=p();
+function openPage(k){var p=PAGES[k];if(!p)return;
+ /* 2026-09-15 — 레벨테스트를 열어둔 채 다른 메뉴로 가면 인사말이 계속 울렸습니다 */
+ try{ sgHushAll(); }catch(e){}
+ if(typeof p==='function')p=p();
  /* 창 맨 아래 제이영 원장 카드 — 이미 있는 창은 중복 삽입 안 함 */
  if(p.indexOf('class="dirc"')<0)p+=dirCard();
  document.getElementById('pgbody').innerHTML=p;var _m=document.getElementById('pgModal');
@@ -17278,6 +17357,10 @@ function crSay(text,code,cb,voxId){
  crSayTTS(text,code,cb);
 }
 function crSayTTS(text,code,cb){
+ /* 2026-09-15 — 대표님 「스타트 눌렀는데 인사말이 안 꺼지고 같이 들림」.
+    CRVOX 가 비어 있어 crSay() 가 늘 여기로 오는데, 예전엔 여기서
+    브라우저 음성만 끄고 인사말 mp3(_crAu)는 그대로 뒀습니다. */
+ try{ crStopAudio(); }catch(e){}
  if(!window.speechSynthesis){
   /* 소리 없이 입만 움직이면 고장난 줄 압니다 — 첫 회에 한 번만 안내합니다 (2026-09-03) */
   if(!window._ttsWarned){window._ttsWarned=1;try{ttsNoSupport();}catch(e){}}
@@ -17317,26 +17400,41 @@ function crIntro(lang){
   warn+
   '<div class="cr-sub">🎧 소리를 켜주세요 · 🎙️ 마이크 권한을 허용해 주세요</div>'+
   '<button class="cr-btn" onclick="crGo()">▶ 스타트 · 대화 시작하기</button>'+
-  '<button class="cr-btn ghost" onclick="crRepeat()">🔊 다시 듣기</button>'+
+  '<button class="cr-btn ghost" id="crIntroB" onclick="crRepeat()">🔇 설명 그만 듣기</button>'+
   '<button class="cr-btn ghost" onclick="crPick()">← 언어 다시 고르기</button></div>');
  setTimeout(function(){crIntroSay();},350);
 }
 /* 인트로는 미리 녹음한 산글이 목소리로 — 파일이 없으면 브라우저 낭독으로 넘어갑니다 */
 var CR_VO={'영어':'lv_en','일본어':'lv_jp','중국어':'lv_cn'};
 var _crAu=null;
+var _crIntroOn=false;
+function crIntroBtn(on){
+ _crIntroOn=!!on;
+ var b=document.getElementById('crIntroB');
+ if(b) b.innerHTML = on ? '\ud83d\udd07 \uc124\uba85 \uadf8\ub9cc \ub4e3\uae30' : '\ud83d\udd0a \uc124\uba85 \ub2e4\uc2dc \ub4e3\uae30';
+}
+/* 2026-09-15 — 설명을 끄는 단 하나의 통로. 스타트·건너뛰기·창닫기 전부 여기로 옵니다. */
+function crIntroOff(){
+ try{ crStopAudio(); }catch(e){}
+ try{ speechSynthesis.cancel(); }catch(e){}
+ try{ crLipStop(); }catch(e){}
+ crIntroBtn(false);
+}
 function crIntroSay(){
  var L=(_cr&&_cr.lang)||'영어', f=CR_VO[L], say=CRY[L].introSay;
- try{ if(_crAu){_crAu.pause();_crAu=null;} }catch(e){}
- if(!f){ crSay(say,'ko-KR',null); return; }
+ crIntroOff();
+ if(!f){ crIntroBtn(true); crSay(say,'ko-KR',function(){crIntroBtn(false);}); return; }
  var a=new Audio('media/'+f+'.mp3'); _crAu=a;
  var fell=false;
- var fall=function(){ if(fell)return; fell=true; try{crLipStop();}catch(e){} crSay(say,'ko-KR',null); };
+ var fall=function(){ if(fell)return; fell=true; try{crLipStop();}catch(e){}
+   crIntroBtn(true); crSay(say,'ko-KR',function(){crIntroBtn(false);}); };
  a.onerror=fall;
- a.onplaying=function(){ try{crLipStart(say);}catch(e){} };
- a.onended=function(){ try{crLipStop();}catch(e){} };
+ a.onplaying=function(){ crIntroBtn(true); try{crLipStart(say);}catch(e){} };
+ a.onended=function(){ crIntroBtn(false); try{crLipStop();}catch(e){} };
  a.play().catch(fall);
 }
-function crRepeat(){crIntroSay();}
+/* 같은 버튼 하나로 「그만 듣기 ↔ 다시 듣기」 */
+function crRepeat(){ if(_crIntroOn){ crIntroOff(); } else { crIntroSay(); } }
 
 function crRing(){
  var W=(typeof CR_WAIT!=='undefined'?CR_WAIT:15);
@@ -17359,6 +17457,8 @@ function crScreen(state,extra){
   '<div class="cr-stage" id="crStage">'+crAvatar(_cr&&_cr.lang)+'</div>'+
   crRing()+
   '<div class="cr-say" id="crSay">'+state+'</div>'+
+  /* 2026-09-15 — 말이 끝날 때까지 못 기다리는 분을 위해. 말하는 중에만 나옵니다. */
+  ((_cr&&_cr.phase==='talk')?'<button class="cr-btn ghost cr-skip" onclick="crSkipTalk()">다 들었어요 · 바로 대답할게요 &rsaquo;</button>':'')+
   (extra||'')+
   '<div class="cr-log" id="crLog">'+log+'</div>'+
   '<button class="cr-btn ghost" onclick="crQuit()">테스트 중단</button></div>');
@@ -17386,6 +17486,9 @@ var CR_WAIT=25;        /* 한 번 대답할 시간(초) — 2026-09-10 대표님
 var CR_HOLD=2200;      /* 말이 멎고 이만큼 조용하면 「다 말했다」로 봅니다 */
 
 function crGo(){
+ /* 2026-09-15 — 「매번 오는 사람은 오자마자 바로 스타트를 누른다」.
+    그래서 스타트 자체가 설명 건너뛰기입니다. 먼저 전부 끕니다. */
+ crIntroOff();
  var c=CRY[_cr.lang];
  _cr.started=true; _cr.turn=0; _cr.pi=0; _cr.ui=0; _cr.silent=0;
  _cr.log.push({me:false,t:c.open});
@@ -17400,8 +17503,20 @@ function crAsk(line,vox){
  crScreen('<b>'+CRY[_cr.lang].me+'</b> 님이 말하고 있습니다…');
  crSay(line,_cr.code,function(){
    if(_cr.stop)return;
+   if(_cr.phase!=='talk')return;   /* 2026-09-15 — 이미 건너뛰었으면 두 번 넘어가지 않게 */
    crWait();               /* 말이 끝나면 그때부터 대답 초침이 돕니다 */
  },vox?('cr_'+(CRVOX_KEY[_cr.lang]||'en')+'_'+vox):'');
+}
+
+/* 2026-09-15 — 대표님 「설명도 스킵할 수 있게」. 말을 끊고 곧장 대답 차례로 갑니다. */
+function crSkipTalk(){
+ if(typeof _cr==='undefined'||!_cr)return;
+ if(_cr.stop||_cr.phase!=='talk')return;
+ _cr.phase='skip';                 /* 먼저 바꿔야 늦게 온 콜백이 무시됩니다 */
+ try{ crStopAudio(); }catch(e){}
+ try{ speechSynthesis.cancel(); }catch(e){}
+ try{ crLipStop(); }catch(e){}
+ crWait();
 }
 
 /* ── 대답 차례: 초침이 돌고, 그동안 듣습니다 ── */
