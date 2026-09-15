@@ -17429,12 +17429,27 @@ function crIntroSay(){
  var fall=function(){ if(fell)return; fell=true; try{crLipStop();}catch(e){}
    crIntroBtn(true); crSay(say,'ko-KR',function(){crIntroBtn(false);}); };
  a.onerror=fall;
+ a.onplay=function(){ crIntroBtn(true); };
  a.onplaying=function(){ crIntroBtn(true); try{crLipStart(say);}catch(e){} };
  a.onended=function(){ crIntroBtn(false); try{crLipStop();}catch(e){} };
  a.play().catch(fall);
 }
-/* 같은 버튼 하나로 「그만 듣기 ↔ 다시 듣기」 */
-function crRepeat(){ if(_crIntroOn){ crIntroOff(); } else { crIntroSay(); } }
+/* 같은 버튼 하나로 「그만 듣기 ↔ 다시 듣기」.
+   2026-09-15 — 깃발(_crIntroOn)만 믿었더니 실제 재생 상태와 어긋나,
+   울리는 중에 눌러도 처음부터 다시 재생됐습니다. 이제 실제 소리를 봅니다. */
+function crIntroPlaying(){
+ try{ if(_crAu && !_crAu.paused && !_crAu.ended) return true; }catch(e){}
+ try{ if(window.speechSynthesis && speechSynthesis.speaking) return true; }catch(e){}
+ return false;
+}
+function crRepeat(){ if(crIntroPlaying()){ crIntroOff(); } else { crIntroSay(); } }
+/* 버튼 문구가 실제 소리와 어긋나지 않게 0.4초마다 맞춥니다 */
+setInterval(function(){
+ var b=document.getElementById('crIntroB'); if(!b) return;
+ var on=crIntroPlaying();
+ var want = on ? '\ud83d\udd07 \uc124\uba85 \uadf8\ub9cc \ub4e3\uae30' : '\ud83d\udd0a \uc124\uba85 \ub2e4\uc2dc \ub4e3\uae30';
+ if(b.innerHTML!==want) b.innerHTML=want;
+},400);
 
 function crRing(){
  var W=(typeof CR_WAIT!=='undefined'?CR_WAIT:15);
