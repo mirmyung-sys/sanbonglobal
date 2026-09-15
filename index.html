@@ -2742,6 +2742,190 @@ li:first-child > .pgh{margin-top:2px}
 .aiv-eye{color:#FFDE5C!important}
 
 
+/* ═══════════════════════════════════════════════════════════════
+   영어 뽀개기 — 세 단 (2026-09-15 대표님 지시)
+   "학습관 누르면 세 단락 꽉 차게. 베이직 → 산글원서 → 구조패턴.
+    세 가지를 동시에 하면 원어민과 대화한다."
+   + 대표님 추가 지시: "너가 영어 잘하는 방법 서치해서 최선의 결과물만"
+     → 조사 근거(효과크기)를 각 단에 붙였고, 빠져 있던 두 축
+       (간격 반복 · 말하고 교정받기)을 가로줄로 얹었습니다.
+   색: 밝게 (대표님 "검정색으로만 하지말고 밝은색으로")
+   ═══════════════════════════════════════════════════════════════ */
+.sge{margin:0 0 30px}
+#pgModal.wide .sge{max-width:1320px;margin-left:auto;margin-right:auto}
+
+/* ── 히어로 ── */
+.sge-hero{position:relative;overflow:hidden;border-radius:20px;
+ background:linear-gradient(135deg,#B01118 0%,#D8232A 45%,#E8562B 100%);
+ padding:48px 20px 28px;text-align:center;
+ box-shadow:0 14px 36px rgba(176,17,24,.30)}
+.sge-hero:after{content:"";position:absolute;inset:0;pointer-events:none;
+ background:radial-gradient(130% 90% at 50% -10%,rgba(255,220,150,.28),transparent 62%)}
+.sge-hero>*{position:relative;z-index:1}
+.sge-lg{position:absolute;top:15px;right:17px;z-index:2;display:flex;align-items:center;gap:6px;opacity:.92}
+.sge-lg img{width:22px;height:22px;object-fit:contain;filter:brightness(0) invert(1)}
+.sge-lg b{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;letter-spacing:.14em;color:#fff}
+.sge-eye{font-family:'Montserrat',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.2em;
+ color:#FFD9A8;margin-bottom:12px}
+.sge-hero h2{margin:0;font-size:31px;line-height:1.24;font-weight:900;letter-spacing:-.035em;
+ color:#fff;word-break:keep-all;text-shadow:0 2px 10px rgba(0,0,0,.22)}
+.sge-hero h2 em{font-style:normal;color:#FFE08A}
+.sge-hero .sge-p{margin:14px auto 0;max-width:620px;font-size:16px;line-height:1.7;font-weight:700;
+ color:#FFEDE6;word-break:keep-all}
+.sge-hero .sge-p b{color:#fff}
+.sge-hon{margin:18px auto 0;max-width:640px;background:rgba(0,0,0,.20);
+ border:1px solid rgba(255,255,255,.24);border-radius:14px;padding:14px 16px;text-align:left}
+.sge-hon b.t{display:block;font-size:14px;font-weight:900;color:#FFE08A;margin-bottom:7px}
+.sge-hon p{margin:0;font-size:13.8px;line-height:1.68;font-weight:700;color:#FFEDE6;word-break:keep-all}
+.sge-hon p b{color:#fff}
+
+/* ── 세 단 ── */
+.sge-steps{display:grid;gap:14px;margin-top:16px;grid-template-columns:1fr}
+.sge-step{position:relative;overflow:hidden;border-radius:18px;padding:24px 19px 22px;color:#fff;
+ box-shadow:0 12px 30px rgba(20,33,61,.22);display:flex;flex-direction:column}
+.sge-step.s1{background:linear-gradient(140deg,#17509B,#3A8CD6)}
+.sge-step.s2{background:linear-gradient(140deg,#0B7A50,#14B06E)}
+.sge-step.s3{background:linear-gradient(140deg,#8E3A0C,#D9752A)}
+.sge-step .wm{position:absolute;bottom:-14px;right:10px;font-family:'Montserrat',sans-serif;
+ font-size:88px;font-weight:900;color:rgba(255,255,255,.12);line-height:1;pointer-events:none;letter-spacing:-.05em}
+.sge-step:before{content:"";position:absolute;inset:0;pointer-events:none;
+ background:linear-gradient(140deg,rgba(0,0,0,.06),rgba(0,0,0,.26))}
+.sge-step>*{position:relative;z-index:1}
+.sge-no{display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.26);
+ border-radius:999px;padding:6px 14px;font-size:12px;font-weight:900;letter-spacing:.06em;color:#fff}
+.sge-step h3{margin:14px 0 0;font-size:25px;line-height:1.26;font-weight:900;letter-spacing:-.035em;
+ color:#fff;word-break:keep-all}
+.sge-step h3 em{font-style:normal;color:#FFE9A8}
+.sge-what{margin:11px 0 0;font-size:15px;line-height:1.68;font-weight:700;color:#fff;
+ opacity:.97;word-break:keep-all}
+.sge-what b{color:#FFF3C4}
+/* 교재/기간 줄 */
+.sge-meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+.sge-meta span{background:rgba(0,0,0,.24);border:1px solid rgba(255,255,255,.28);
+ border-radius:9px;padding:6px 11px;font-size:12.5px;font-weight:800;color:#fff;word-break:keep-all}
+/* 근거 박스 */
+.sge-ev{margin-top:14px;background:rgba(255,255,255,.95);border-radius:13px;padding:13px 14px;
+ box-shadow:0 6px 16px rgba(0,0,0,.14)}
+.sge-ev .k{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:900;letter-spacing:.08em;
+ color:#7A4B00;margin-bottom:7px}
+.sge-step.s1 .sge-ev .k{color:#154A8F}
+.sge-step.s2 .sge-ev .k{color:#0A6743}
+.sge-step.s3 .sge-ev .k{color:#8E3A0C}
+.sge-ev p{margin:0 0 8px;font-size:13.6px;line-height:1.66;font-weight:700;color:#2A2F3A;word-break:keep-all}
+.sge-ev p:last-child{margin-bottom:0}
+.sge-ev p b{color:#101420}
+.sge-num{display:inline-block;font-family:'Montserrat',sans-serif;font-weight:900;font-size:15px;
+ letter-spacing:-.02em;padding:1px 5px;margin:0 1px;border-radius:6px;background:#FFF0C2;color:#8A5A00}
+.sge-nw{white-space:nowrap}
+.sge-step.s1 .sge-num{background:#DDEBFA;color:#154A8F}
+.sge-step.s2 .sge-num{background:#D5F3E5;color:#0A6743}
+.sge-step.s3 .sge-num{background:#FDE5D2;color:#8E3A0C}
+/* 솔직한 한 줄 */
+.sge-cut{margin-top:12px;background:rgba(0,0,0,.34);border-left:3px solid rgba(255,255,255,.55);
+ border-radius:0 11px 11px 0;padding:11px 13px;font-size:13.4px;line-height:1.64;font-weight:700;
+ color:#FFF6E8;word-break:keep-all}
+.sge-cut b{color:#FFE9A8}
+.sge-step .sge-cut{margin-bottom:15px}
+.sge-step .sge-go{margin-top:auto;display:block;width:100%;border:0;cursor:pointer;font:inherit;
+ background:#fff;border-radius:12px;padding:13px 14px;text-align:left;
+ font-size:15px;font-weight:900;letter-spacing:-.02em;box-shadow:0 6px 16px rgba(0,0,0,.18)}
+.sge-step.s1 .sge-go{color:#154A8F}
+.sge-step.s2 .sge-go{color:#0A6743}
+.sge-step.s3 .sge-go{color:#8E3A0C}
+.sge-step .sge-go small{display:block;margin-top:4px;font-size:12.5px;font-weight:700;
+ color:#4A5160;letter-spacing:0;word-break:keep-all}
+
+/* ── 세 단을 관통하는 두 줄 ── */
+.sge-rail{margin-top:16px;display:grid;gap:12px;grid-template-columns:1fr}
+.sge-bar{position:relative;overflow:hidden;border-radius:16px;padding:20px 18px;
+ background:#fff;border:2px solid #E4E8F0;box-shadow:0 8px 22px rgba(20,33,61,.09)}
+.sge-bar .bk{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:6px 13px;
+ font-size:11.5px;font-weight:900;letter-spacing:.08em}
+.sge-bar.b1 .bk{background:#EAF1FB;color:#154A8F}
+.sge-bar.b2 .bk{background:#FDE8E6;color:#B01118}
+.sge-bar h4{margin:11px 0 0;font-size:20.5px;line-height:1.32;font-weight:900;letter-spacing:-.035em;
+ color:#141A26;word-break:keep-all}
+.sge-bar h4 em{font-style:normal}
+.sge-bar.b1 h4 em{color:#1E5FA8}
+.sge-bar.b2 h4 em{color:#C81F2B}
+.sge-bar>p{margin:9px 0 0;font-size:14.5px;line-height:1.7;font-weight:700;color:#3A4152;word-break:keep-all}
+.sge-bar>p b{color:#141A26}
+.sge-fact{margin-top:12px;display:grid;gap:8px}
+.sge-fact i{display:block;font-style:normal;background:#F6F8FC;border-radius:11px;padding:11px 13px;
+ font-size:13.5px;line-height:1.64;font-weight:700;color:#3A4152;word-break:keep-all}
+.sge-fact i b{color:#141A26}
+.sge-fact i .sge-num{background:#EAF1FB;color:#154A8F}
+.sge-bar.b2 .sge-fact i .sge-num{background:#FDE8E6;color:#B01118}
+
+/* ── 왜 앱만으로는 안 되는가 ── */
+.sge-why{margin-top:16px;border-radius:18px;overflow:hidden;
+ background:linear-gradient(140deg,#16233D,#243A63);padding:26px 19px 24px;position:relative}
+.sge-why:after{content:"";position:absolute;inset:0;pointer-events:none;
+ background:radial-gradient(120% 80% at 50% 0%,rgba(120,180,255,.16),transparent 62%)}
+.sge-why>*{position:relative;z-index:1}
+.sge-why .k{font-family:'Montserrat',sans-serif;font-size:11.5px;font-weight:900;letter-spacing:.2em;
+ color:#8FC0FF}
+.sge-why h4{margin:11px 0 0;font-size:23px;line-height:1.3;font-weight:900;letter-spacing:-.035em;
+ color:#fff;word-break:keep-all}
+.sge-why h4 em{font-style:normal;color:#FFD98A}
+.sge-why>p{margin:10px 0 0;font-size:14.6px;line-height:1.72;font-weight:700;color:#D6E2F5;word-break:keep-all}
+.sge-why>p b{color:#fff}
+.sge-w3{margin-top:15px;display:grid;gap:10px;grid-template-columns:1fr}
+.sge-w3 article{background:rgba(255,255,255,.96);border-radius:13px;padding:14px 14px 13px}
+.sge-w3 article .t{display:block;font-size:14.5px;font-weight:900;letter-spacing:-.025em;
+ color:#16233D;margin-bottom:7px;word-break:keep-all}
+.sge-w3 article p{margin:0;font-size:13.4px;line-height:1.66;font-weight:700;color:#3A4152;word-break:keep-all}
+.sge-w3 article p b{color:#101420}
+.sge-w3 article .q{display:block;margin-top:8px;font-size:12.6px;line-height:1.58;font-weight:700;
+ color:#6A7285;border-left:3px solid #C9D3E2;padding-left:9px;word-break:keep-all}
+.sge-punch{margin-top:16px;background:linear-gradient(135deg,#C81F2B,#E0453E);border-radius:15px;
+ padding:19px 17px;text-align:center;box-shadow:0 10px 26px rgba(200,31,43,.3)}
+.sge-punch b{display:block;font-size:20px;line-height:1.36;font-weight:900;letter-spacing:-.035em;
+ color:#fff;word-break:keep-all}
+.sge-punch span{display:block;margin-top:9px;font-size:14px;line-height:1.66;font-weight:700;
+ color:#FFE3E0;word-break:keep-all}
+.sge-punch span b{display:inline;font-size:inherit;color:#fff}
+
+/* ── 마무리 실행 ── */
+.sge-end{margin-top:16px;background:#fff;border:2px solid #E4E8F0;border-radius:18px;padding:22px 18px}
+.sge-end h4{margin:0;font-size:21px;line-height:1.32;font-weight:900;letter-spacing:-.035em;
+ color:#141A26;word-break:keep-all;text-align:center}
+.sge-end h4 em{font-style:normal;color:#C81F2B}
+.sge-end>p{margin:9px 0 0;font-size:14.2px;line-height:1.7;font-weight:700;color:#3A4152;
+ word-break:keep-all;text-align:center}
+.sge-end>p b{color:#141A26}
+.sge-btns{margin-top:15px;display:grid;gap:10px;grid-template-columns:1fr}
+.sge-btns button{border:0;cursor:pointer;font:inherit;border-radius:13px;padding:15px 16px;
+ text-align:left;color:#fff;font-size:15.5px;font-weight:900;letter-spacing:-.02em;
+ box-shadow:0 8px 20px rgba(20,33,61,.18)}
+.sge-btns button small{display:block;margin-top:4px;font-size:12.6px;font-weight:700;
+ letter-spacing:0;opacity:.94;word-break:keep-all}
+.sge-btns .g1{background:linear-gradient(135deg,#17509B,#3A8CD6)}
+.sge-btns .g2{background:linear-gradient(135deg,#0B7A50,#14B06E)}
+.sge-btns .g3{background:linear-gradient(135deg,#8E3A0C,#D9752A)}
+.sge-src{margin-top:13px;font-size:11.8px;line-height:1.62;font-weight:700;color:#5F6674;
+ word-break:keep-all;text-align:center}
+
+/* ── 넓은 화면 ── */
+@media(min-width:760px){
+ .sge-hero{padding:38px 26px 34px}
+ .sge-hero h2{font-size:40px}
+ .sge-hero .sge-p{font-size:17px}
+ .sge-steps{grid-template-columns:repeat(3,1fr);gap:16px}
+ .sge-rail{grid-template-columns:repeat(2,1fr)}
+ .sge-w3{grid-template-columns:repeat(3,1fr)}
+ .sge-btns{grid-template-columns:repeat(3,1fr)}
+ .sge-why{padding:32px 26px 30px}
+ .sge-why h4{font-size:27px}
+ .sge-end{padding:28px 24px}
+ .sge-end h4{font-size:24px}
+}
+@media(min-width:1100px){
+ .sge-hero h2{font-size:46px}
+ .sge-step{padding:28px 24px 24px}
+ .sge-step h3{font-size:27px}
+}
+
 /* ═══ 2026-09-11 — AI 학습관 전체 폭 + 입구 카드뉴스화 + 로고 ═══ */
 #pgModal.wide .abox{max-width:none;width:100%;padding-left:24px;padding-right:24px}
 #pgModal.wide .sp-wrap{max-width:1320px}
@@ -14719,6 +14903,143 @@ function sgdRun(i){
    if(t){try{t.scrollIntoView({block:'start',behavior:'smooth'});}catch(e){}}},250);
  },700);
 }
+/* ═══════════════════════════════════════════════════════════════
+   영어 뽀개기 — 세 단 (2026-09-15 대표님 지시)
+   대표님 원문: "학습관 누르면 세 단락 꽉 차게 해서 왼쪽 산글 영어 베이직 초급 ~
+                영어산글원서 ~ 영어구조패턴끝내기. 세 가지를 동시에 하면
+                원어민과 대화할 수 있다. 이 구성을 너가 만들라고"
+   추가 지시: "내 의도가 다 좋은건 아니니깐, 난 영어 몰라. 너가 영어 잘하는 방법
+              서치해서 전세계의 인터넷 조사해서 최선의 결과물만 보여줘"
+   → 대표님 3단 구조는 그대로 두고, 조사로 확인된 효과크기를 각 단에 붙였습니다.
+     그리고 3단에 빠져 있던 두 축(간격 반복 · 말하고 교정받기)을 가로줄로 얹었습니다.
+   ⚠ 금지 표현 확인: "원어민처럼 발음하게 된다"는 쓰지 않았습니다.
+     (Abrahamsson & Hyltenstam 2009 — 성인 시작자 195명 중 통과 0명)
+     대표님 표현 그대로 "원어민과 대화한다"만 씁니다.
+   ═══════════════════════════════════════════════════════════════ */
+var SGE_STEP=[
+{c:'s1',wm:'01',no:'STEP 01 · BASIC',h:'문장을 <em>만드는 법</em>부터',
+ what:'인터체인지와 포코너스로 <b>교실에서</b> 배웁니다. 혼자 영상으로 보는 게 아니라, 말해 보고 그 자리에서 고쳐 받는 자리입니다.',
+ meta:['Interchange Intro~3 · 각 16유닛','Four Corners 1~4 · 각 12유닛 48레슨','주 2회 × 4~6개월'],
+ evk:'이렇게 하는 이유',
+ ev:['문법을 따로 짚어 가르친 수업과 그냥 노출만 시킨 수업을 비교한 연구 <b>54편</b>을 모아 보니, 짚어 가르친 쪽의 효과 크기가 <span class="sge-nw"><span class="sge-num">1.06</span>이었습니다.</span> 외국어 교육에서 이 숫자는 아주 큽니다.',
+     '그런데 같은 연구가 이렇게도 말합니다 — <b>이것만으로는 말이 나오지 않습니다.</b> 시험지에서는 잘하는데 입은 안 열립니다.'],
+ cut:'그래서 1단만 하고 끝내면 안 됩니다. <b>2단이 있는 이유</b>입니다.',
+ go:'회화반 단계 보기', gos:'왕기초부터 원어민까지 — 지금 내 자리 고르기', act:'sgdRun(0)'},
+
+{c:'s2',wm:'02',no:'STEP 02 · REAL',h:'원어민이 <em>실제로 쓰는</em> 덩어리',
+ what:'산본글로벌어학원이 <b>직접 쓴 소설</b>로, 원어민이 실제 대화에서 쓰는 덩어리 표현만 모아 읽습니다.',
+ meta:['산글 영어원서 1장 10과 72문장','2장 20과 141문장','가입 없이 무료'],
+ evk:'이렇게 하는 이유',
+ ev:['원어민 대화를 컴퓨터로 분석했더니 <b><span class="sge-nw"><span class="sge-num">68.8%</span></span></b>가 이미 정해진 덩어리 표현이었습니다. 단어를 하나씩 조립하는 게 아니라 <b>통째로 꺼내 씁니다.</b>',
+     '그리고 말을 <b>98% 알아들으려면 6,000~7,000 단어군</b>이 필요합니다. "2,000단어면 일상회화가 된다"는 말은 근거가 없습니다.'],
+ cut:'원서를 빌려주는 곳은 많습니다. 그런데 <b>남의 책은 분해해서 설명할 수 없습니다.</b> 이 소설은 저희가 썼습니다.',
+ go:'원서 1과 바로 열기', gos:'회원가입 없이 · 소설 한 단락부터', act:'wyOpen()'},
+
+{c:'s3',wm:'03',no:'STEP 03 · SPEED',h:'귀와 입을 <em>따라붙게</em>',
+ what:'뼈대와 살이 있어도 <b>속도</b>가 안 따라오면 대화가 안 됩니다. 문장을 덩어리로 끊어 보는 훈련과, 여러 사람 목소리로 듣는 훈련입니다.',
+ meta:['문장 구조 끊어 읽기','여러 화자 듣기','따라 말하기'],
+ evk:'이렇게 하는 이유',
+ ev:['자막을 켜고 본 쪽이 안 켠 쪽보다 듣기 효과 크기 <span class="sge-nw"><span class="sge-num">0.99</span>,</span> 어휘 <span class="sge-nw"><span class="sge-num">0.87</span>이었습니다.</span>',
+     '그리고 <b>한 사람 목소리만</b> 듣지 마십시오. 같은 소리를 <b>5~8명</b>의 다른 목소리로 들은 쪽이 <span class="sge-nw"><span class="sge-num">0.77</span>,</span> 2~4명은 <span class="sge-nw"><span class="sge-num">0.55</span>였습니다.</span> 단어만 따로 말고 <b>문장 안에서</b> 들으면 <span class="sge-nw"><span class="sge-num">0.88</span>입니다.</span>'],
+ cut:'다만 <b>흘려듣기만으로는 안 됩니다.</b> 같은 양을 소리로만 들려준 실험에서 학습량은 <b>0</b>이었습니다. 사람이 앞에 있어야 했습니다.',
+ go:'원서에서 구조·듣기 먼저', gos:'유튜브에서 모은 패턴집은 10월에 함께 엽니다', act:'wyOpen()'}
+];
+
+var SGE_BAR=[
+{c:'b1',k:'세 단을 관통하는 것 ①',h:'매일 <em>3분</em> — 잊을 때쯤 다시',
+ p:'몰아서 하지 마십시오. <b>같은 시간을 나눠 쓰는 것만으로</b> 결과가 달라집니다.',
+ f:['317개 실험을 모은 연구 — 몰아서 한 쪽 <span class="sge-nw"><span class="sge-num">36.7%</span>,</span> 나눠서 한 쪽 <span class="sge-nw"><span class="sge-num">47.3%</span>.</span> 271개 비교 중 <b>259개</b>에서 나눠 한 쪽이 이겼습니다.',
+    '가장 좋은 간격은 <b>기억해 두고 싶은 기간의 20%</b>쯤입니다. 한 달 뒤에 쓸 거면 <b>6일마다</b>.',
+    '그리고 <b>완벽하게 외우려 할수록 총량은 줄어듭니다.</b> 목표 정답률을 90%에서 70%로 낮추면 같은 시간에 <b>1.7배</b>를 외웁니다.']},
+{c:'b2',k:'세 단을 관통하는 것 ②',h:'말해 보고 <em>그 자리에서</em> 고치기',
+ p:'이것이 앱은 못 하고 교실이 하는 일입니다. 그리고 <b>효과가 가장 오래 남는 축</b>입니다.',
+ f:['교실 연구 15편 <b>827명</b> — 교정의 효과는 <b>정답을 알려줄 때가 아니라, 스스로 고치게 할 때</b> 더 컸습니다.',
+    '그리고 <b>자유롭게 말하게 해 놓고 재 볼 때</b> 효과가 가장 크게 나왔습니다. 정해진 문장을 따라 읽는 걸로는 나오지 않습니다.',
+    '시간이 지날수록 커집니다 — 바로 쟀을 때 <span class="sge-nw"><span class="sge-num">0.71</span>,</span> 나중에 다시 쟀을 때 <span class="sge-nw"><span class="sge-num">1.09</span>.</span>']}
+];
+
+var SGE_WHY=[
+{t:'듀오링고가 자기 돈으로 한 연구',
+ p:'112시간을 공부한 학습자를 평가했습니다. 그런데 <b>말하기를 아예 측정하지 않았습니다.</b>',
+ q:'논문 원문 — "We did not assess learners in speaking or writing."'},
+{t:'하루 종일 영어로 수업받아도',
+ p:'몰입 교육 학생들은 듣기·읽기가 <b>원어민 수준</b>까지 갑니다. 그런데 <b>말하기와 쓰기는 뒤처집니다.</b> 듣는 양이 말을 만들어 주지는 않습니다.',
+ q:'미네소타대 CARLA — "이해 가능한 입력만으로는 불충분하다"'},
+{t:'AI 챗봇 연구 57편 · 4,062명',
+ p:'가장 많이 지적된 한계는 <b>음성 인식 오류</b>(15편), <b>부자연스러운 대화</b>(9편), <b>명시적 교정의 부재</b>(5편)였습니다. 학습자는 사람보다 챗봇과 말할 동기가 <b>더 낮았습니다.</b>',
+ q:'케임브리지 ReCALL — 결론은 "대체가 아니라 보완"'}
+];
+
+function sgeHTML(){
+ var steps=SGE_STEP.map(function(s){
+  return '<article class="sge-step '+s.c+'">'
+   +'<span class="wm" aria-hidden="true">'+s.wm+'</span>'
+   +'<span class="sge-no">'+s.no+'</span>'
+   +'<h3>'+s.h+'</h3>'
+   +'<p class="sge-what">'+s.what+'</p>'
+   +'<div class="sge-meta">'+s.meta.map(function(m){return '<span>'+m+'</span>';}).join('')+'</div>'
+   +'<div class="sge-ev"><div class="k">◆ '+s.evk+'</div>'
+     +s.ev.map(function(e){return '<p>'+e+'</p>';}).join('')+'</div>'
+   +'<div class="sge-cut">'+s.cut+'</div>'
+   +'<button class="sge-go" onclick="'+s.act+'">'+s.go+' &rsaquo;<small>'+s.gos+'</small></button>'
+   +'</article>';}).join('');
+
+ var bars=SGE_BAR.map(function(b){
+  return '<section class="sge-bar '+b.c+'">'
+   +'<span class="bk">'+b.k+'</span>'
+   +'<h4>'+b.h+'</h4><p>'+b.p+'</p>'
+   +'<div class="sge-fact">'+b.f.map(function(x){return '<i>'+x+'</i>';}).join('')+'</div>'
+   +'</section>';}).join('');
+
+ var why=SGE_WHY.map(function(w){
+  return '<article><span class="t">'+w.t+'</span><p>'+w.p+'</p><span class="q">'+w.q+'</span></article>';
+ }).join('');
+
+ return '<div class="sge">'
+
+ /* ── 히어로 ── */
+ +'<div class="sge-hero">'
+  +'<div class="sge-lg"><img src="img/sga_emblem.png" alt=""><b>SGA</b></div>'
+  +'<div class="sge-eye">산본글로벌어학원 · 영어 뽀개기 학습법</div>'
+  +'<h2>진짜 <em>이렇게만</em><br>따라오세요</h2>'
+  +'<p class="sge-p">안 되는 게 아니라 <b>안 한 겁니다.</b><br>이 순서 그대로 하시면 <b>원어민과 대화하십니다.</b></p>'
+  +'<div class="sge-hon"><b class="t">먼저 정직하게 한 가지</b>'
+   +'<p>"원어민<b>처럼 발음</b>하게 된다"는 말은 하지 않겠습니다. 성인이 되어 영어를 시작한 <b>195명</b>을 조사한 연구에서 원어민 판정을 통과한 사람은 <b>0명</b>이었습니다. '
+   +'저희가 약속하는 건 발음이 아니라 <b>대화</b>입니다. 그건 됩니다.</p></div>'
+ +'</div>'
+
+ /* ── 세 단 ── */
+ +'<div class="sge-steps">'+steps+'</div>'
+
+ /* ── 관통하는 두 줄 ── */
+ +'<div class="sge-rail">'+bars+'</div>'
+
+ /* ── 왜 앱만으로는 안 되는가 ── */
+ +'<section class="sge-why">'
+  +'<div class="k">WHY NOT ALONE</div>'
+  +'<h4>앱과 유튜브만으로 되면<br><em>학원은 필요 없습니다</em></h4>'
+  +'<p>그런데 저희가 조사해 본 결과는 이랬습니다. <b>숨기지 않고 그대로 적습니다.</b></p>'
+  +'<div class="sge-w3">'+why+'</div>'
+  +'<div class="sge-punch"><b>그래서 분량은 AI가, 교정은 사람이 합니다</b>'
+   +'<span>AI 학습관을 무료로 여는 이유입니다. 전자책·듣기·채점·출석까지 전부 0원. '
+   +'<b>사람이 하는 것만 받습니다 — 발음 첨삭 · 원장 상담 · 교실 수업.</b></span></div>'
+ +'</section>'
+
+ /* ── 마무리 ── */
+ +'<section class="sge-end">'
+  +'<h4>세 단을 <em>동시에</em> 가십시오</h4>'
+  +'<p>하나씩 끝내고 다음으로 넘어가는 게 아닙니다. 오늘 <b>교실에서 뼈대</b>를 세우고, 밤에 <b>원서로 살</b>을 붙이고, 자투리 시간에 <b>귀를 뚫습니다.</b><br>이게 전부입니다.</p>'
+  +'<div class="sge-btns">'
+   +'<button class="g1" onclick="sgdRun(0)">① 뼈대 — 회화반 보기<small>인터체인지 · 포코너스 · 교실 수업</small></button>'
+   +'<button class="g2" onclick="wyOpen()">② 살 — 산글 원서 열기<small>1장 10과 72문장 · 무료</small></button>'
+   +'<button class="g3" onclick="aiOpenToeic()">③ 속도 — 토익 기초문법 40강<small>자리 판정 8초 훈련 · 로그인하면 무료</small></button>'
+  +'</div>'
+  +'<div class="sge-src">인용한 연구 — Kang·Sok·Han(2019, 54편) · Cepeda 외(2006, 317개 실험) · Lyster &amp; Saito(2010, 15편 827명) · Mackey &amp; Goo(2007) · Vilkaitė(2016) · Adolphs &amp; Schmitt(2003) · Jiang 외(2021, <i>Foreign Language Annals</i>) · CARLA, University of Minnesota · Cambridge <i>ReCALL</i>(2025, 57편) · Abrahamsson &amp; Hyltenstam(2009)</div>'
+ +'</section>'
+
+ +'</div>';
+}
+
 /* 학습관 맨 위에 들어가는 입구 */
 function sgdHTML(){
  var hi=SGHI.map(function(c){
@@ -15111,6 +15432,8 @@ function aiPage(){
  var tabs=AIB.map(function(b,i){var x=TABI[b.k]||['📚',''];
   return '<button class="ai-tab'+(i===_aiT?' on':'')+'" onclick="aiTab('+i+')"><span class="ic">'+x[0]+'</span><b>'+b.k+'</b><small>'+x[1]+'</small></button>';}).join('');
  return ''
+ /* 2026-09-15 대표님 지시 — 학습관 누르면 세 단락 꽉 차게 (영어 뽀개기) */
+ +sgeHTML()
  /* 2026-09-11 대표님 지시 — 산글이 인사 → 세 개의 문(회화·시험·책방) → 카드뉴스 → 실행 */
  +sgdHTML()
  /* ── 첫인상 ── */
