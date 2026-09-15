@@ -400,6 +400,45 @@ body.wdark .pg{padding:0 0 8px;max-width:none}
 .aiw-f.k1 .tag{color:#17509B} .aiw-f.k2 .tag{color:#0A6743} .aiw-f.k3 .tag{color:#B01118}
 .aiw-f.k4 .tag{color:#8E3A0C} .aiw-f.k5 .tag{color:#5B3FA8} .aiw-f.k6 .tag{color:#8A6A22}
 
+/* ═══ 유튜브·블로그 자동 연동 (2026-09-15) ═══ */
+.sgf{margin:20px 0 6px}
+.sgf-h{margin:0 2px 12px}
+.sgf-h .k{display:inline-block;border-radius:8px;padding:5px 11px;font-size:11.5px;font-weight:900;
+ letter-spacing:.04em;color:#fff}
+.sgf-h .k.yt{background:#D6262B}
+.sgf-h .k.bl{background:#0AC05F}
+.sgf-h b{display:block;margin-top:8px;font-size:20px;font-weight:900;letter-spacing:-.03em;
+ color:#141A26;word-break:keep-all}
+.sgf-h em{display:block;font-style:normal;font-size:13.5px;color:#6B7280;margin-top:3px;word-break:keep-all}
+.sgf-wait{padding:26px 10px;text-align:center;font-size:14px;font-weight:700;color:#8A94A8}
+.sgf-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+@media(min-width:720px){.sgf-grid{grid-template-columns:repeat(3,1fr);gap:14px}}
+.sgf-c{display:block;text-decoration:none;background:#fff;border:2px solid #E5E7EB;border-radius:16px;
+ overflow:hidden;box-shadow:0 4px 0 #E5E7EB;transition:transform .12s}
+.sgf-c:active{transform:translateY(3px);box-shadow:0 1px 0 #E5E7EB}
+.sgf-c .th{position:relative;display:block;aspect-ratio:16/9;background:#EEF1F6;overflow:hidden}
+.sgf-c .th img{width:100%;height:100%;object-fit:cover;display:block}
+.sgf-c .th.no{background:linear-gradient(140deg,#E7EDF6,#D3DEEC)}
+.sgf-c .th.no img{display:none}
+.sgf-c .th .pl{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+ width:44px;height:44px;border-radius:50%;background:rgba(214,38,43,.94);color:#fff;
+ display:flex;align-items:center;justify-content:center;font-style:normal;font-size:16px;
+ box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.sgf-c .bd{display:block;padding:11px 12px 13px}
+.sgf-c .bd b{display:block;font-size:14px;line-height:1.44;font-weight:800;color:#1F2430;
+ word-break:keep-all;max-height:3.1em;overflow:hidden}
+.sgf-c .bd .dt{display:block;margin-top:7px;font-size:12px;font-weight:700;color:#8A94A8}
+.sgf-more{display:block;margin-top:12px;text-align:center;text-decoration:none;
+ background:#F1F4F9;border:1.5px solid #D9E1EC;border-radius:12px;padding:14px 12px;
+ font-size:14px;font-weight:900;color:#2A3242}
+.sgf-empty{background:#F7F9FC;border:2px dashed #D9E1EC;border-radius:16px;padding:24px 18px;text-align:center}
+.sgf-empty b{display:block;font-size:16px;font-weight:900;color:#3A4152;letter-spacing:-.02em}
+.sgf-empty span{display:block;margin-top:7px;font-size:13.5px;line-height:1.6;font-weight:700;color:#6B7280;
+ word-break:keep-all}
+.sgf-empty span b{display:inline;font-size:inherit;color:#C81F2B}
+.sgf-empty a{display:inline-block;margin-top:14px;text-decoration:none;background:#14213D;color:#fff;
+ border-radius:12px;padding:13px 20px;font-size:14px;font-weight:900;min-height:48px;line-height:22px}
+
 /* ── 산글 원서 배너 (2026-09-15 대표님 지시) ── */
 .aiw-bk{position:relative;overflow:hidden;background:linear-gradient(140deg,#0B7A50,#14B06E);
  border-radius:20px;padding:26px 20px 22px;margin-top:6px;
@@ -711,6 +750,89 @@ function simil(a,b){a=norm(a);b=norm(b);if(!a||!b)return 0;
  var hit=0,used={};A.forEach(function(w){for(var j=0;j<B.length;j++){if(!used[j]&&B[j]===w){used[j]=1;hit++;return;}}});
  return Math.round(hit/Math.max(A.length,B.length)*100);}
 
+/* ═══════════════════════════════════════════════════════════════
+   유튜브 · 네이버 블로그 자동 연동 (2026-09-15 대표님 지시: "블로그 연동해줘 / 유튜브도")
+   · 유튜브 RSS  https://www.youtube.com/feeds/videos.xml?channel_id=UC1E5DtZ3yEHBbQK2iB2iCHA
+   · 블로그 RSS  https://rss.blog.naver.com/sanbonglobal.xml
+   · 둘 다 브라우저에서 바로 못 읽습니다(CORS). 무료 변환 서비스 rss2json 경유 — 일 1만 건 무료
+   · 2026-09-15 실측: 유튜브 6편 정상 수신 / 블로그는 아직 글 0건
+   · 실패하거나 0건이면 카드 대신 「바로가기」 버튼만 보입니다 (빈 칸 방지)
+   ═══════════════════════════════════════════════════════════════ */
+var SGF_YT_CH='UC1E5DtZ3yEHBbQK2iB2iCHA';           /* 산글 SANGLE */
+var SGF_BLOG='https://blog.naver.com/sanbonglobal';
+var SGF_CACHE={};
+
+function _sgfEsc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function _sgfDate(d){ if(!d) return ''; var t=String(d).slice(0,10).split('-'); return t.length===3?(t[0].slice(2)+'.'+t[1]+'.'+t[2]):''; }
+function _sgfThumb(it){
+ if(it.thumbnail) return it.thumbnail;
+ var m=/<img[^>]+src=["']([^"']+)/i.exec(it.description||it.content||'');
+ return m?m[1]:'';
+}
+/* 유튜브 영상 ID → 고화질 썸네일 */
+function _sgfYtImg(link){
+ var m=/(?:shorts\/|v=|youtu\.be\/)([A-Za-z0-9_-]{6,})/.exec(link||'');
+ return m?('https://i.ytimg.com/vi/'+m[1]+'/hqdefault.jpg'):'';
+}
+
+function sgfLoad(kind, boxId){
+ var box=document.getElementById(boxId); if(!box) return;
+ var rss = (kind==='yt')
+   ? 'https://www.youtube.com/feeds/videos.xml?channel_id='+SGF_YT_CH
+   : 'https://rss.blog.naver.com/sanbonglobal.xml';
+
+ if(SGF_CACHE[kind]){ _sgfPaint(kind,box,SGF_CACHE[kind]); return; }
+ box.innerHTML='<div class="sgf-wait">불러오는 중입니다…</div>';
+
+ var url='https://api.rss2json.com/v1/api.json?count=8&rss_url='+encodeURIComponent(rss);
+ var done=false;
+ var kill=setTimeout(function(){ if(!done){ done=true; _sgfPaint(kind,box,[]); } }, 9000);
+
+ fetch(url,{cache:'no-store'}).then(function(r){return r.json();}).then(function(j){
+  if(done) return; done=true; clearTimeout(kill);
+  var items=(j&&j.status==='ok'&&j.items)?j.items:[];
+  SGF_CACHE[kind]=items;
+  _sgfPaint(kind,box,items);
+ }).catch(function(){ if(done)return; done=true; clearTimeout(kill); _sgfPaint(kind,box,[]); });
+}
+
+function _sgfPaint(kind,box,items){
+ var isYT=(kind==='yt');
+ if(!items.length){
+  box.innerHTML='<div class="sgf-empty">'
+   +'<b>'+(isYT?'아직 올라온 영상이 없습니다':'아직 올라온 글이 없습니다')+'</b>'
+   +'<span>새로 올리시면 <b>여기에 자동으로</b> 나타납니다.</span>'
+   +'<a href="'+(isYT?('https://www.youtube.com/@sangle_kr'):SGF_BLOG)+'" target="_blank" rel="noopener noreferrer">'
+   +(isYT?'▶ 유튜브 채널 바로가기':'B 블로그 바로가기')+'</a></div>';
+  return;
+ }
+ var cards=items.slice(0,6).map(function(it){
+  var img = isYT ? (_sgfYtImg(it.link)||_sgfThumb(it)) : _sgfThumb(it);
+  var t=_sgfEsc(it.title).replace(/#\S+/g,'').trim();
+  return '<a class="sgf-c" href="'+_sgfEsc(it.link)+'" target="_blank" rel="noopener noreferrer">'
+   +'<span class="th">'+(img
+      ? '<img src="'+_sgfEsc(img)+'" alt="" loading="lazy" onerror="this.parentNode.classList.add(\'no\')">'
+      : '')+(isYT?'<i class="pl">▶</i>':'')+'</span>'
+   +'<span class="bd"><b>'+t+'</b><span class="dt">'+_sgfDate(it.pubDate)+'</span></span></a>';
+ }).join('');
+ box.innerHTML='<div class="sgf-grid">'+cards+'</div>'
+  +'<a class="sgf-more" href="'+(isYT?'https://www.youtube.com/@sangle_kr':SGF_BLOG)+'" target="_blank" rel="noopener noreferrer">'
+  +(isYT?'채널에서 전체 보기':'블로그에서 전체 보기')+' ↗</a>';
+}
+
+/* 홈페이지·앱 공통 — 두 피드를 한 덩어리로 */
+function sgFeedHTML(){
+ setTimeout(function(){ sgfLoad('yt','sgfYT'); sgfLoad('blog','sgfBL'); }, 120);
+ return '<div class="sgf">'
+  +'<div class="sgf-h"><span class="k yt">▶ 유튜브</span><b>산글 SANGLE</b>'
+   +'<em>새 영상은 올리는 즉시 여기에 뜹니다</em></div>'
+  +'<div id="sgfYT"></div>'
+  +'<div class="sgf-h" style="margin-top:26px"><span class="k bl">B 네이버 블로그</span><b>산본글로벌어학원</b>'
+   +'<em>공부법·개강·후기 — 새 글은 올리는 즉시 여기에 뜹니다</em></div>'
+  +'<div id="sgfBL"></div>'
+ +'</div>';
+}
+
 /* 전체화면 (2026-09-15 대표님 지시) — 브라우저 주소창까지 숨깁니다 */
 function appFS(){
  var el=document.documentElement, b=document.getElementById('fsBtn');
@@ -852,6 +974,8 @@ function vWelcome(){
   +'<a class="s-bl" href="https://blog.naver.com/sanbonglobal" target="_blank" rel="noopener noreferrer">'
    +'<span>B</span>블로그<small>네이버</small></a>'
  +'</div>'
+
+ +sgFeedHTML()
 
  /* --- 시작 --- */
  +'<div class="aiw-go" style="margin-top:24px">'
