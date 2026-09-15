@@ -28,11 +28,18 @@ a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
 /* ---------- shell ---------- */
-#app{max-width:520px;margin:0 auto;min-height:100vh;background:var(--bg);padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom,0px) + 12px)}
+#app{max-width:none;margin:0 auto;min-height:100vh;background:var(--bg);padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom,0px) + 12px)}
+/* 2026-09-15 대표님 지시 — "다른 것처럼 전체화면으로" · 520px 고정을 풀고 화면 폭을 씁니다 */
+.top,.pg{max-width:1180px;margin-left:auto;margin-right:auto;width:100%}
+@media(min-width:760px){.pg{padding:20px 24px 12px}}
+.nav>.in{max-width:1180px;margin:0 auto;width:100%;display:flex}
 .top{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line2);padding:calc(env(safe-area-inset-top,0px) + 10px) 16px 10px;display:flex;align-items:center;gap:10px;min-height:54px}
 .top .logo{height:26px;width:auto}
 .top h1{font-size:16px;font-weight:900;margin:0;letter-spacing:-.02em;flex:1}
-.top .act{background:none;border:0;font-size:20px;cursor:pointer;color:var(--ink2);padding:4px}
+.top .act{background:none;border:0;font-size:20px;cursor:pointer;color:var(--ink2);
+ min-width:48px;min-height:48px;display:flex;align-items:center;justify-content:center;border-radius:12px}
+.top .act:active{background:var(--line2)}
+#fsBtn.on{color:var(--red)}
 .pg{padding:16px 16px 8px;animation:fade .28s ease}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.pg{animation:none}}
@@ -303,78 +310,180 @@ a{color:inherit;text-decoration:none}
 
 /* ===== 가입 전 첫 화면 v3 — "진짜 AI가 온 것처럼" (2026-09-02 대표님 지시) =====
    어두운 바탕 + 브랜드 적색 그리드. 로고는 app_emblem.png(흰 테두리 제거판)만 씁니다. */
-body.wdark{background:#0A0E19}
-body.wdark #app{max-width:none;background:#0A0E19}
-body.wdark .top{background:rgba(10,14,25,.92);border-bottom-color:#1A2233}
-body.wdark .top h1{color:#fff}
-body.wdark .top .act{color:#8A94A8}
+/* ═══════════════════════════════════════════════════════════════
+   앱 첫 화면(로그인 전) — 라이트 전환 + 카드 그리드 (2026-09-15)
+   대표님 지적: "톤이 너무 어두워서 글씨가 안 보임 / 신문처럼 글만 있어서
+                보기만 해도 지친다 / 다른 사이트는 어떻게 했나 확인해봐"
+   조사 근거:
+   · 듀오링고 기본 배경 #ffffff · 본문 #3C3C3C  (Duolingo design system)
+   · Anki 기본 카드 = 흰 바탕·검은 글씨 20px    (Anki Manual, Styling)
+   · Quizlet 다크모드는 사용자가 켜는 '옵션'     (Quizlet Help Center)
+   · NN/g: 정상 시력에는 밝은 배경이 대부분 더 낫다 (동공 수축 → 초점↑·피로↓)
+   · Material: 순수 검정 금지, 다크는 #121212     (Google Codelab / MDC Dark.md)
+   · 터치 타깃 Apple 44pt / Google 48dp          (design/tips, Android 접근성)
+   · 본문 iOS 17pt / M3 Body Large 16sp
+   · 듀오링고: 스킬트리 → 선형 경로. 이유 "따라갈 수 있는 명확한 길"
+   · 클래스101·케이크: 홈은 글이 아니라 썸네일 카드
+   ⚠ body.wdark(#0A0E19)는 폐기. 로그인 여부와 무관하게 라이트.
+   ═══════════════════════════════════════════════════════════════ */
+body.wdark{background:#FFFFFF}
+body.wdark #app{max-width:none;background:#FFFFFF}
+body.wdark .top{background:rgba(255,255,255,.94);border-bottom-color:var(--line)}
 body.wdark .pg{padding:0 0 8px;max-width:none}
-.aiw{color:#E8ECF5}
-.aiw .in{max-width:820px;margin:0 auto;padding:0 16px}
-/* 영상 히어로 — 화면 꽉 차게 */
+.aiw{color:#3C3C3C;background:#FFFFFF}
+.aiw .in{max-width:1180px;margin:0 auto;padding:0 16px}
+@media(min-width:760px){.aiw .in{padding:0 24px}}
+
+/* ── 영상 히어로 (유지 — 여기만 어둡습니다. 영상이라서) ── */
 .aiw-vh{position:relative;background:#070A12;overflow:hidden}
-.aiw-vwrap{position:relative;max-width:820px;margin:0 auto}
-.aiw-v{display:block;width:100%;aspect-ratio:1/1;max-height:76vh;object-fit:cover;background:radial-gradient(circle at 50% 38%,#22345C,#070A12 75%)}
-@media(min-width:720px){.aiw-v{aspect-ratio:16/10}}
-.aiw-vh:after{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(180deg,transparent,rgba(7,10,18,.94));pointer-events:none}
-.aiw-cap{position:absolute;left:0;right:0;bottom:0;z-index:3;text-align:center;padding:0 18px 20px}
-.aiw-eye{font-size:11px;font-weight:900;letter-spacing:.24em;color:#FF8D96}
-.aiw-cap h2{margin:6px 0 6px;font-size:clamp(24px,6vw,34px);font-weight:900;letter-spacing:-.02em;line-height:1.3;color:#fff;word-break:keep-all;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.aiw-vwrap{position:relative;max-width:none;margin:0 auto}
+.aiw-v{display:block;width:100%;aspect-ratio:4/3;max-height:52vh;object-fit:cover;
+ background:radial-gradient(circle at 50% 38%,#22345C,#070A12 75%)}
+@media(min-width:720px){.aiw-v{aspect-ratio:16/9;max-height:56vh}}
+.aiw-vh:after{content:"";position:absolute;left:0;right:0;bottom:0;height:52%;
+ background:linear-gradient(180deg,transparent,rgba(7,10,18,.96));pointer-events:none}
+.aiw-cap{position:absolute;left:0;right:0;bottom:0;z-index:3;text-align:center;padding:0 18px 18px}
+.aiw-eye{font-size:11px;font-weight:900;letter-spacing:.24em;color:#FFB3B9}
+.aiw-cap h2{margin:6px 0 4px;font-size:clamp(23px,5.6vw,32px);font-weight:900;letter-spacing:-.02em;
+ line-height:1.28;color:#fff;word-break:keep-all;text-shadow:0 2px 14px rgba(0,0,0,.7)}
 .aiw-cap h2 b{color:#FFD94D}
-.aiw-cap p{margin:0;font-size:13.5px;line-height:1.7;color:#C7D2E6;word-break:keep-all;text-shadow:0 1px 8px rgba(0,0,0,.6)}
-.aiw-snd{position:absolute;right:14px;top:14px;z-index:4;display:flex;align-items:center;gap:7px;border:1.5px solid rgba(255,255,255,.45);background:rgba(7,10,18,.55);backdrop-filter:blur(6px);color:#fff;border-radius:999px;padding:9px 14px;font-size:12.5px;font-weight:900;cursor:pointer}
+.aiw-cap p{margin:0;font-size:14px;line-height:1.6;color:#E3E9F5;word-break:keep-all;
+ text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.aiw-snd{position:absolute;right:14px;top:14px;z-index:4;display:flex;align-items:center;gap:7px;
+ min-height:48px;border:1.5px solid rgba(255,255,255,.5);background:rgba(7,10,18,.6);
+ backdrop-filter:blur(6px);color:#fff;border-radius:999px;padding:0 16px;font-size:13.5px;
+ font-weight:900;cursor:pointer}
 .aiw-snd.on{background:var(--red);border-color:var(--red)}
 .aiw-em{position:absolute;left:14px;top:12px;z-index:4;display:flex;align-items:center;gap:8px}
 .aiw-em img{width:40px;height:40px;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
-.aiw-em b{font-size:12.5px;font-weight:900;color:#fff;letter-spacing:.02em;text-shadow:0 1px 8px rgba(0,0,0,.7)}
-.aiw-em i{display:block;font-style:normal;font-size:10px;color:#C7D2E6;font-weight:700;letter-spacing:.12em}
-/* 섹션 제목 */
-.aiw-h{margin:26px 2px 12px;text-align:center}
-.aiw-h b{display:block;font-size:19px;font-weight:900;letter-spacing:-.02em;color:#fff}
-.aiw-h b u{text-decoration:none;color:#FF6B75}
-.aiw-h em{display:block;font-style:normal;font-size:12.5px;color:#8A94A8;margin-top:3px}
-/* 적색 그리드 — 강의관풍 타일 */
-.aiw-fx{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-@media(min-width:720px){.aiw-fx{grid-template-columns:repeat(3,1fr)}}
-.aiw-f{position:relative;background:linear-gradient(165deg,#171E30,#101523);border:1.5px solid rgba(200,31,43,.55);border-radius:14px;padding:14px 13px;overflow:hidden}
-.aiw-f:before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),#FF6B75)}
-.aiw-f .fi{font-size:22px;line-height:1;display:block;margin-bottom:7px}
-.aiw-f b{display:block;font-size:14px;font-weight:900;letter-spacing:-.02em;color:#fff}
-.aiw-f p{margin:4px 0 0;font-size:12px;line-height:1.65;color:#A9B4C8;word-break:keep-all}
-/* 무료 체험관 */
-.aiw-try{background:linear-gradient(150deg,#3A0E13,#C81F2B 130%);border:1.5px solid rgba(255,120,130,.5);border-radius:18px;padding:20px 16px;text-align:center;margin-top:6px}
-.aiw-try .tt{font-size:11px;font-weight:900;letter-spacing:.22em;color:#FFB3B9}
-.aiw-try h3{margin:7px 0 8px;font-size:22px;font-weight:900;color:#fff;letter-spacing:-.02em;word-break:keep-all}
-.aiw-try h3 b{color:#FFD94D}
-.aiw-try p{margin:0 0 4px;font-size:13px;line-height:1.75;color:#FFE0E3;word-break:keep-all}
-.aiw-try .rr{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:12px 0 14px}
-.aiw-try .rr span{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 12px;font-size:11.5px;font-weight:800;color:#fff}
-.aiw-try .bb{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.aiw-try .bb a{display:flex;align-items:center;justify-content:center;gap:6px;border-radius:12px;padding:13px 8px;font-size:13.5px;font-weight:900;text-decoration:none}
-.aiw-try .bb a.w{background:#fff;color:var(--red)}
-.aiw-try .bb a.o{border:1.5px solid rgba(255,255,255,.55);color:#fff}
-/* 가입 = 무료 */
-.aiw-free{background:linear-gradient(160deg,#171E30,#101523);border:1.5px solid rgba(198,161,91,.55);border-radius:18px;padding:20px 16px;text-align:center}
-.aiw-free .zt{font-size:11px;font-weight:900;letter-spacing:.2em;color:var(--gold2)}
-.aiw-free .zp{font-size:44px;font-weight:900;color:#fff;line-height:1.1;margin:6px 0 2px}
-.aiw-free .zp span{font-size:17px;color:var(--gold2)}
-.aiw-free p{margin:4px 0 0;font-size:13px;line-height:1.75;color:#A9B4C8;word-break:keep-all}
-.aiw-free p b{color:#fff}
-/* 다크판 위 기존 요소 손질 */
-body.wdark .sgtalk{background:#121828;border:1px solid #232D42}
-body.wdark .sgt-hd{border-bottom-color:#232D42}
-body.wdark .sgt-hd b{color:#fff}
-body.wdark .sgt-b{background:#1B2436;color:#C7D2E6}
-body.wdark .sgt-b b{color:#FFD94D}
-body.wdark .sgt-again{background:#121828;border-color:#2C3852;color:#C7D2E6}
-body.wdark .wc-shot>span{color:#A9B4C8}
-body.wdark .wc-swipe{color:#6E7A90}
-body.wdark .muted{color:#6E7A90}
+.aiw-em b{font-size:12.5px;font-weight:900;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+.aiw-em i{display:block;font-style:normal;font-size:10px;color:#D6DEEC;font-weight:700;letter-spacing:.12em}
+
+/* ── 바로 시작 (듀오링고: 가입은 뒤로, 먼저 해보게) ── */
+.aiw-start{margin:18px 0 6px;display:grid;gap:10px}
+.aiw-start .big{display:flex;align-items:center;justify-content:center;gap:9px;min-height:60px;
+ border:0;cursor:pointer;font:inherit;border-radius:16px;
+ background:linear-gradient(135deg,#C81F2B,#E0453E);color:#fff;
+ font-size:18px;font-weight:900;letter-spacing:-.02em;
+ box-shadow:0 5px 0 #8E1119,0 12px 26px rgba(200,31,43,.28)}
+.aiw-start .big:active{transform:translateY(3px);box-shadow:0 2px 0 #8E1119}
+.aiw-start .sub{text-align:center;font-size:13.5px;font-weight:700;color:#6B7280;word-break:keep-all}
+.aiw-start .sub b{color:#C81F2B}
+
+/* ── 섹션 제목 ── */
+.aiw-h{margin:28px 2px 13px;text-align:center}
+.aiw-h b{display:block;font-size:20px;font-weight:900;letter-spacing:-.03em;color:#1F2430;word-break:keep-all}
+.aiw-h b u{text-decoration:none;color:#C81F2B}
+.aiw-h em{display:block;font-style:normal;font-size:13.5px;color:#6B7280;margin-top:4px;word-break:keep-all}
+
+/* ── 할 수 있는 것 — 큰 카드 그리드 (글 대신 카드) ── */
+.aiw-fx{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+@media(min-width:720px){.aiw-fx{grid-template-columns:repeat(3,1fr);gap:14px}}
+@media(min-width:1100px){.aiw-fx{grid-template-columns:repeat(6,1fr)}}
+.aiw-f{position:relative;display:flex;flex-direction:column;text-align:left;border:0;cursor:pointer;
+ font:inherit;background:#fff;border:2px solid #E5E7EB;border-radius:18px;padding:0;overflow:hidden;
+ box-shadow:0 4px 0 #E5E7EB;min-height:168px;transition:transform .12s}
+.aiw-f:active{transform:translateY(3px);box-shadow:0 1px 0 #E5E7EB}
+.aiw-f .th{display:flex;align-items:center;justify-content:center;height:78px;font-size:38px;line-height:1}
+.aiw-f.k1 .th{background:linear-gradient(140deg,#E7F0FB,#CFE2F7)}
+.aiw-f.k2 .th{background:linear-gradient(140deg,#DCF3E8,#BFEAD6)}
+.aiw-f.k3 .th{background:linear-gradient(140deg,#FDE8E6,#FBD2CE)}
+.aiw-f.k4 .th{background:linear-gradient(140deg,#FCEADB,#F9D7B9)}
+.aiw-f.k5 .th{background:linear-gradient(140deg,#EDE7FA,#DCD0F5)}
+.aiw-f.k6 .th{background:linear-gradient(140deg,#FFF3D6,#FFE7AE)}
+.aiw-f .bd{padding:13px 13px 14px;display:flex;flex-direction:column;flex:1}
+.aiw-f b{display:block;font-size:16px;font-weight:900;letter-spacing:-.03em;color:#1F2430;
+ line-height:1.34;word-break:keep-all}
+.aiw-f p{margin:6px 0 0;font-size:13.5px;line-height:1.56;color:#6B7280;word-break:keep-all}
+.aiw-f .tag{margin-top:auto;padding-top:10px;display:flex;align-items:center;gap:5px;
+ font-size:12.5px;font-weight:900}
+.aiw-f.k1 .tag{color:#17509B} .aiw-f.k2 .tag{color:#0A6743} .aiw-f.k3 .tag{color:#B01118}
+.aiw-f.k4 .tag{color:#8E3A0C} .aiw-f.k5 .tag{color:#5B3FA8} .aiw-f.k6 .tag{color:#8A6A22}
+
+/* ── 산글 원서 배너 (2026-09-15 대표님 지시) ── */
+.aiw-bk{position:relative;overflow:hidden;background:linear-gradient(140deg,#0B7A50,#14B06E);
+ border-radius:20px;padding:26px 20px 22px;margin-top:6px;
+ box-shadow:0 12px 30px rgba(11,122,80,.28)}
+.aiw-bk:before{content:"";position:absolute;inset:0;pointer-events:none;
+ background:linear-gradient(140deg,rgba(0,0,0,.05),rgba(0,0,0,.24))}
+.aiw-bk>*{position:relative;z-index:1}
+.aiw-bk .kk{font-size:11.5px;font-weight:900;letter-spacing:.2em;color:#BFF0D9}
+.aiw-bk h3{margin:9px 0 0;font-size:25px;font-weight:900;color:#fff;letter-spacing:-.035em;
+ line-height:1.3;word-break:keep-all}
+.aiw-bk h3 b{color:#FFE08A}
+.aiw-bk .kp{margin:11px 0 0;font-size:15px;line-height:1.7;font-weight:700;color:#E4F7EE;word-break:keep-all}
+.aiw-bk .kp b{color:#fff}
+.aiw-bk .kn{margin-top:15px;background:#fff;border-radius:14px;padding:14px 15px}
+.aiw-bk .kn .t{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:900;
+ letter-spacing:.08em;color:#0A6743;margin-bottom:7px}
+.aiw-bk .kn p{margin:0;font-size:14px;line-height:1.68;font-weight:700;color:#2A2F3A;word-break:keep-all}
+.aiw-bk .kn p b{color:#0A6743}
+.aiw-bk .kfig{display:flex;gap:9px;margin-top:14px}
+.aiw-bk .kfig div{flex:1;min-width:0;background:rgba(0,0,0,.24);border:1px solid rgba(255,255,255,.26);
+ border-radius:13px;padding:12px 6px;text-align:center}
+.aiw-bk .kfig b{display:block;font-size:21px;font-weight:900;color:#fff;letter-spacing:-.04em;line-height:1.16;white-space:nowrap}
+.aiw-bk .kfig span{display:block;margin-top:4px;font-size:12px;font-weight:700;color:#CFF0E2}
+.aiw-bk .kgo{display:block;width:100%;margin-top:16px;text-align:center;
+ border:0;cursor:pointer;font:inherit;background:#fff;color:#0A6743;border-radius:15px;
+ padding:14px 14px 15px;font-size:16.5px;font-weight:900;letter-spacing:-.02em;
+ box-shadow:0 5px 0 rgba(0,0,0,.2)}
+.aiw-bk .kgo:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.2)}
+.aiw-bk .kgo small{display:block;font-size:12.5px;font-weight:700;color:#4A5468;margin-top:5px;line-height:1.5;word-break:keep-all}
+
+/* ── SNS 연동 ── */
+.aiw-sns{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.aiw-sns a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;
+ min-height:96px;border-radius:16px;text-decoration:none;color:#fff;font-size:14px;font-weight:900;
+ box-shadow:0 4px 0 rgba(0,0,0,.14)}
+.aiw-sns a span{font-size:26px;line-height:1}
+.aiw-sns a small{font-size:11.5px;font-weight:700;opacity:.9;letter-spacing:.01em}
+.aiw-sns .s-ig{background:linear-gradient(45deg,#F09433,#DC2743,#BC1888)}
+.aiw-sns .s-yt{background:#D6262B}
+.aiw-sns .s-bl{background:#0AC05F}
+@media(min-width:760px){.aiw-sns{grid-template-columns:repeat(3,1fr);gap:14px}
+ .aiw-sns a{min-height:110px;font-size:15px}}
+
+/* ── 무료 배너 (한 줄로 압축) ── */
+.aiw-try{background:linear-gradient(135deg,#C81F2B,#E0453E);border-radius:18px;padding:22px 18px;
+ text-align:center;box-shadow:0 10px 26px rgba(200,31,43,.26);margin-top:6px}
+.aiw-try .tt{font-size:11.5px;font-weight:900;letter-spacing:.2em;color:#FFD1D5}
+.aiw-try h3{margin:8px 0 6px;font-size:23px;font-weight:900;color:#fff;letter-spacing:-.03em;
+ word-break:keep-all;line-height:1.3}
+.aiw-try h3 b{color:#FFE08A}
+.aiw-try p{margin:0;font-size:14px;line-height:1.66;color:#FFEDE6;word-break:keep-all}
+.aiw-try p b{color:#fff}
+.aiw-try .rr{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:13px 0 15px}
+.aiw-try .rr span{background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.3);border-radius:999px;
+ padding:7px 13px;font-size:12.5px;font-weight:800;color:#fff;white-space:nowrap}
+.aiw-try .bb{display:grid;grid-template-columns:1fr;gap:9px}
+@media(min-width:520px){.aiw-try .bb{grid-template-columns:1fr 1fr}}
+.aiw-try .bb a{display:flex;align-items:center;justify-content:center;gap:7px;border-radius:14px;
+ min-height:54px;padding:0 10px;font-size:15.5px;font-weight:900;text-decoration:none}
+.aiw-try .bb a.w{background:#fff;color:#B01118;box-shadow:0 4px 0 rgba(0,0,0,.18)}
+.aiw-try .bb a.o{border:2px solid rgba(255,255,255,.7);color:#fff}
+
+/* ── 0원 ── */
+.aiw-free{background:#FFFBF2;border:2px solid #EBD9AE;border-radius:18px;padding:20px 16px;text-align:center}
+.aiw-free .zt{font-size:11.5px;font-weight:900;letter-spacing:.2em;color:#8A6A22}
+.aiw-free .zp{font-size:46px;font-weight:900;color:#1F2430;line-height:1.1;margin:6px 0 2px;
+ letter-spacing:-.04em}
+.aiw-free .zp span{font-size:18px;color:#8A6A22}
+.aiw-free p{margin:6px 0 0;font-size:14px;line-height:1.7;color:#5A6273;word-break:keep-all}
+.aiw-free p b{color:#1F2430}
+
+/* ── 기존 요소 라이트 보정 ── */
+body.wdark .sgtalk{background:#fff;border:2px solid #E5E7EB}
+body.wdark .sgt-b{background:#F3F5F9;color:#3C3C3C}
+body.wdark .sgt-b b{color:#B01118}
+body.wdark .wc-shot>span{color:#4A5468}
+body.wdark .wc-swipe{color:#8A94A8}
+body.wdark .muted{color:#6B7280}
+body.wdark .nav{background:rgba(255,255,255,.97);border-top-color:var(--line)}
+body.wdark .nav button{color:#8A94A8}
+body.wdark .nav button.on{color:#C81F2B}
+body.wdark .nav button.on svg{stroke:#C81F2B}
 .aiw-go{max-width:520px;margin:0 auto}
-body.wdark .nav{background:rgba(10,14,25,.96);border-top-color:#1A2233}
-body.wdark .nav button{color:#6E7A90}
-body.wdark .nav button.on{color:#fff}
-body.wdark .nav button.on svg{stroke:#fff}
+.aiw-go .btn{min-height:54px;font-size:16px}
 </style>
 </head>
 <body>
@@ -416,6 +525,7 @@ body.wdark .nav button.on svg{stroke:#fff}
   <div class="top">
     <img class="logo" src="img/app_emblem.png" alt="SGA" onerror="this.style.display='none'">
     <h1 id="ttl">홈</h1>
+    <button class="act" id="fsBtn" onclick="appFS()" aria-label="전체화면" title="전체화면">⛶</button>
     <button class="act" onclick="openSheet('set')" aria-label="설정">⚙️</button>
   </div>
   <div class="pg" id="pg"></div>
@@ -601,6 +711,25 @@ function simil(a,b){a=norm(a);b=norm(b);if(!a||!b)return 0;
  var hit=0,used={};A.forEach(function(w){for(var j=0;j<B.length;j++){if(!used[j]&&B[j]===w){used[j]=1;hit++;return;}}});
  return Math.round(hit/Math.max(A.length,B.length)*100);}
 
+/* 전체화면 (2026-09-15 대표님 지시) — 브라우저 주소창까지 숨깁니다 */
+function appFS(){
+ var el=document.documentElement, b=document.getElementById('fsBtn');
+ var on=!!(document.fullscreenElement||document.webkitFullscreenElement);
+ try{
+  if(on){ (document.exitFullscreen||document.webkitExitFullscreen).call(document); }
+  else { (el.requestFullscreen||el.webkitRequestFullscreen).call(el); }
+ }catch(e){}
+ setTimeout(function(){
+  var now=!!(document.fullscreenElement||document.webkitFullscreenElement);
+  if(b){ b.classList.toggle('on',now); b.textContent = now?'⛶':'⛶'; b.title = now?'전체화면 끄기':'전체화면'; }
+ },260);
+}
+document.addEventListener('fullscreenchange',function(){
+ var b=document.getElementById('fsBtn'); if(!b)return;
+ var now=!!document.fullscreenElement; b.classList.toggle('on',now);
+ b.title = now?'전체화면 끄기':'전체화면';
+});
+
 /* ================= 라우터 ================= */
 var TAB='home';
 var TITLES={home:'홈',learn:'학습',memo:'100일 통암기',shop:'산글 포인트',talk:'AI 회화',rep:'리포트',me:'내 정보'};
@@ -615,12 +744,36 @@ function render(){var d=DB.init();var p=document.getElementById('pg');
  p.innerHTML=({home:vHome,learn:vLearn,memo:vMemo,shop:vShop,talk:vTalk,rep:vRep,me:vMe}[TAB]||vHome)(d);
  if(TAB==='home')drawRing(d);}
 
-/* ---------- 온보딩 (v3 · 2026-09-02) ---------- */
+/* ---------- 첫 화면 (v4 · 2026-09-15) — 라이트 + 카드 그리드 ----------
+   바뀐 점: ① 검정 → 흰 배경 ② 긴 설명 문단 삭제 ③ 카드 6장으로 압축
+            ④ 본문 13.5~16px, 모든 버튼 48px 이상 ⑤ 시작 버튼을 맨 위로  */
+var AIW_CARDS=[
+ {k:'k1',i:'🎧',t:'회화 한 과 3분',p:'영어·일본어·중국어. 읽고 듣고 문제 몇 개면 끝.',
+  g:'한 과 3분',a:"location.href='index.html#ai-free'"},
+ {k:'k2',i:'📖',t:'산글 영어원서',p:'원어민이 제일 많이 쓰는 덩어리만 골라 쓴 소설.',
+  g:'20과 141문장 무료',a:"location.href='index.html#ai'"},
+ {k:'k3',i:'🔥',t:'영어 뽀개기 3단',p:'뼈대 → 살 → 속도. 순서대로만 가면 됩니다.',
+  g:'학습법 보기',a:"location.href='index.html#ai'"},
+ {k:'k4',i:'📘',t:'토익 기초문법 40강',p:'자리 판정 8초 훈련. 1강은 누구나.',
+  g:'로그인하면 무료',a:"location.href='index.html#ai'"},
+ {k:'k5',i:'🎙️',t:'발음 채점',p:'말하면 점수가 나옵니다. 어디서 새는지 짚어 줍니다.',
+  g:'바로 해보기',a:"openPron()"},
+ {k:'k6',i:'📅',t:'출석부',p:'도장을 찍으면 그날의 무료 과가 열립니다.',
+  g:'오늘 도장',a:"location.href='checkin.html'"}
+];
+
 function vWelcome(){
- setTimeout(sgTalkPlay,320);setTimeout(sgiInit,60);
+ setTimeout(sgiInit,60);
+ var cards=AIW_CARDS.map(function(c){
+  return '<button class="aiw-f '+c.k+'" onclick="'+c.a+'">'
+   +'<span class="th">'+c.i+'</span>'
+   +'<span class="bd"><b>'+c.t+'</b><p>'+c.p+'</p>'
+   +'<span class="tag">'+c.g+' &rsaquo;</span></span>'
+   +'</button>';}).join('');
+
  return '<div class="aiw">'
 
- /* --- AI 산글이 인사 영상 · 화면 꽉 차게 --- */
+ /* --- 산글이 인사 영상 --- */
  +'<div class="aiw-vh">'
   +'<div class="aiw-vwrap">'
    +'<video class="aiw-v" id="sgiV" autoplay muted loop playsinline preload="metadata" poster="img/sgi_poster.jpg">'
@@ -632,68 +785,84 @@ function vWelcome(){
   +'<div class="aiw-cap">'
    +'<div class="aiw-eye">SANGEUL AI · 인공지능 선생님</div>'
    +'<h2>안녕하세요,<br>저는 <b>AI 산글이</b>입니다</h2>'
-   +'<p>산본글로벌어학원의 AI 선생님 — 24시간, 여러분 곁에 있습니다.<br>소리 켜기를 누르면 제 목소리로 인사드릴게요.</p>'
+   +'<p>24시간 곁에 있습니다. 소리를 켜면 인사드릴게요.</p>'
   +'</div>'
  +'</div>'
 
  +'<div class="in">'
 
+ /* --- 바로 시작 --- */
+ +'<div class="aiw-start">'
+  +'<button class="big" onclick="location.href=\'index.html#ai-free\'">🎁 지금 바로 한 과 들어보기</button>'
+  +'<div class="sub">가입도, 결제창도 없습니다. <b>3분</b>이면 끝납니다.</div>'
+ +'</div>'
+
+ /* --- 카드 그리드 --- */
+ +'<div class="aiw-h"><b>무엇부터 하시겠습니까</b><em>하나만 고르세요. 나머지는 언제든 열립니다</em></div>'
+ +'<div class="aiw-fx">'+cards+'</div>'
+
+ /* --- 산글 원서 (2026-09-15 대표님 지시) --- */
+ +'<div class="aiw-h" style="margin-top:30px"><b>이건 <u>우리가 쓴 책</u>입니다</b>'
+  +'<em>빌려온 원서가 아니라, 산글이가 처음부터 만든 소설</em></div>'
+ +'<div class="aiw-bk">'
+  +'<div class="kk">SANGEUL ORIGINAL · 산글 영어원서</div>'
+  +'<h3>이 책 한 권만 다 외워도<br><b>원어민 대화의 절반</b>을 갖게 됩니다</h3>'
+  +'<p class="kp">산글이가 <b>원어민이 실제로 가장 많이 쓰는 단어·패턴·문구만</b> 골라 이야기로 엮었습니다. '
+   +'문법책에는 안 나오고, 원어민은 매일 쓰는 말들입니다.</p>'
+  +'<div class="kfig">'
+   +'<div><b>20과</b><span>1과 3분</span></div>'
+   +'<div><b>141문장</b><span>전부 무료</span></div>'
+   +'<div><b>0원</b><span>가입 없이</span></div>'
+  +'</div>'
+  +'<div class="kn"><div class="t">◆ 왜 절반이라고 하는가</div>'
+   +'<p>원어민 대화를 컴퓨터로 분석했더니 <b>68.8%</b>가 이미 정해진 덩어리 표현이었습니다. '
+   +'단어를 하나씩 조립하는 게 아니라 통째로 꺼내 씁니다. <b>이 책은 그 덩어리만 모았습니다.</b></p></div>'
+  +'<button class="kgo" onclick="location.href=\'index.html#ai\'">'
+   +'📖 이 방법 그대로 해보기<small>AI 산글 학습관에서 1과부터 바로 열립니다</small></button>'
+ +'</div>'
+
  /* --- 무료 체험관 --- */
- +'<div class="aiw-h" style="margin-top:22px"><b><u>무료 체험관</u>이 열려 있습니다</b><em>가입 없이 지금 바로 들어가 보세요</em></div>'
+ +'<div class="aiw-h" style="margin-top:30px"><b><u>매일 한 과</u>가 새로 열립니다</b><em>출석 도장을 찍으면 그날의 과가 열립니다</em></div>'
  +'<div class="aiw-try">'
-  +'<div class="tt">FREE · 매일 새로 열립니다</div>'
-  +'<h3>출석부만 찍으면<br>매일 <b>한 과씩</b> 열립니다</h3>'
-  +'<p>1과는 늘 무료, 오늘의 무료 과는 매일 바뀝니다.<br>출석 도장을 찍으면 그날의 과가 열리고, <b>카카오톡으로도 보내드립니다.</b></p>'
-  +'<div class="rr"><span>🇺🇸🇯🇵🇨🇳 회화</span><span>토익 · 토스 · 오픽</span><span>토플 · JLPT · HSK</span><span>한 과 3분</span></div>'
+  +'<div class="tt">FREE · 매일 새로</div>'
+  +'<h3>1과는 늘 무료<br>오늘의 과는 <b>매일 바뀝니다</b></h3>'
+  +'<p>도장을 찍으면 <b>카카오톡으로도</b> 보내드립니다.</p>'
+  +'<div class="rr"><span>🇺🇸🇯🇵🇨🇳 회화</span><span>토익·토스·오픽</span><span>JLPT·HSK</span></div>'
   +'<div class="bb">'
    +'<a class="w" href="index.html#ai-free">🎁 무료 체험관 입장</a>'
-   +'<a class="o" href="checkin.html">📅 출석부 찍으러 가기</a>'
+   +'<a class="o" href="checkin.html">📅 출석부 찍기</a>'
   +'</div>'
  +'</div>'
 
- /* --- 가입하면 전부 무료 --- */
- +'<div class="aiw-h"><b>회원가입하면 <u>전부 무료</u></b><em>홈페이지에서도, 이 앱에서도 — 온라인 학습관 전 과정</em></div>'
+ /* --- 0원 --- */
+ +'<div class="aiw-h"><b>회원가입하면 <u>전부 무료</u></b><em>홈페이지에서도, 이 앱에서도</em></div>'
  +'<div class="aiw-free">'
   +'<div class="zt">MEMBERS · 온라인 전 과정</div>'
   +'<div class="zp">0<span>원</span></div>'
-  +'<p><b>회원가입만 하면</b> 영어·일본어·중국어 회화부터 시험대비까지<br>온라인 AI 학습관 전 과정이 무료입니다.<br>학원 수강생은 담임 선생님과 리포트까지 이어집니다.</p>'
+  +'<p>영어·일본어·중국어 회화부터 시험대비까지 전부.<br><b>학원 수강생</b>은 담임 선생님 리포트까지 이어집니다.</p>'
  +'</div>'
 
- /* --- 적색 그리드 · 하는 것 --- */
- +'<div class="aiw-h"><b>산글이와 하는 여섯 가지</b><em>따로 앱 여러 개 깔 필요가 없습니다</em></div>'
- +'<div class="aiw-fx">'+[
-   ['🎙','AI 원어민과 대화','카페 주문, 면접, 출장 — 상황을 고르면 AI가 그 역할을 맡습니다. 틀려도 아무도 안 봅니다.'],
-   ['🎯','발음 채점','말하면 점수가 나옵니다. 어느 소리에서 새는지 짚어 줍니다.'],
-   ['📚','매일 표현 3개','오늘 배운 반 진도에 맞춰 골라 드립니다. 1분이면 끝납니다.'],
-   ['🗂','나만의 단어장','모르는 말은 눌러 담고, 다음 날 그 단어로 문제가 나옵니다.'],
-   ['📊','학습 리포트','한 달 뒤 뭐가 늘었는지 그래프로 보입니다. 상담 때 같이 봅니다.'],
-   ['🔥','출석·포인트','연속 학습일이 쌓이면 포인트가 되고, 교재·수강료로 바꿉니다.']
-  ].map(function(f){return '<div class="aiw-f"><span class="fi">'+f[0]+'</span><b>'+f[1]+'</b><p>'+f[2]+'</p></div>';}).join('')+'</div>'
-
- /* --- 산글이 채팅 --- */
- +'<div class="aiw-h"><b>산글이가 직접 설명해 드릴게요</b><em>AI 튜터 · 이 앱의 선생님</em></div>'
- +'<div class="card sgtalk" id="sgTalk">'
-  +'<div class="sgt-hd"><span class="sgt-av">🐋</span><div><b>산글이</b><i>AI 튜터 · 지금 입력 중…</i></div></div>'
-  +'<div class="sgt-body" id="sgTalkBody"></div>'
-  +'<button class="sgt-again" id="sgTalkAgain" onclick="sgTalkPlay()" hidden>↻ 다시 듣기</button>'
+ /* --- SNS (2026-09-15 대표님 지시) --- */
+ +'<div class="aiw-h"><b>산글이는 여기에도 있습니다</b><em>매일 짧게 올립니다</em></div>'
+ +'<div class="aiw-sns">'
+  +'<a class="s-ig" href="https://www.instagram.com/sanbonglobal" target="_blank" rel="noopener noreferrer">'
+   +'<span>◎</span>인스타 릴스<small>@sanbonglobal</small></a>'
+  +'<a class="s-yt" href="https://www.youtube.com/@sangle_kr" target="_blank" rel="noopener noreferrer">'
+   +'<span>▶</span>유튜브<small>@sangle_kr</small></a>'
+  +'<a class="s-bl" href="https://blog.naver.com/sanbonglobal" target="_blank" rel="noopener noreferrer">'
+   +'<span>B</span>블로그<small>네이버</small></a>'
  +'</div>'
-
- /* --- 화면으로 보기 --- */
- +'<div class="aiw-h"><b>이런 화면입니다</b><em>가입하면 바로 이 화면이 열립니다</em></div>'
- +'<div class="wc-shots">'+wcShots()+'</div>'
- +'<p class="wc-swipe">← 옆으로 밀어 보세요 →</p>'
 
  /* --- 시작 --- */
- +'<div class="aiw-go">'
+ +'<div class="aiw-go" style="margin-top:24px">'
  +'<button class="btn r wc-go" onclick="openSheet(\'join\')">30초 만에 무료로 시작하기</button>'
- +'<button class="btn o" style="background:transparent;color:#C7D2E6;border-color:#2C3852" onclick="openSheet(\'login\')">이미 계정이 있어요</button>'
- +'<p class="muted" style="text-align:center;margin-top:14px">가입하실 때 넣으신 정보는 <b>이 기기에만</b> 저장됩니다.<br>031-466-6969 · 산본역 3번 출구 도보 1분</p>'
- +'<p class="muted" style="text-align:center;margin-top:6px;font-size:11px;opacity:.75">최종 수정 2026-09-02 (앱 v3)</p>'
+ +'<button class="btn o" style="margin-top:9px" onclick="openSheet(\'login\')">이미 계정이 있어요</button>'
+ +'<p class="muted" style="text-align:center;margin-top:14px">가입 정보는 <b>이 기기에만</b> 저장됩니다.<br>031-466-6969 · 산본역 3번 출구 도보 1분</p>'
  +'</div>'
 
  +'</div></div>';
 }
-/* 영상 파일이 아직 없거나 로드 실패하면 영상만 감추고 글자 인사로 대신합니다 */
+
 function sgiInit(){
  var v=document.getElementById('sgiV');if(!v)return;
  var s=v.querySelector('source');
