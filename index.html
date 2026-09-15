@@ -14963,7 +14963,7 @@ function _wyRead(){
  var g1=_wyHeard?'ok':'', g2=(_wyN()>=S.length)?'ok':'';
  return '<p class="wy-setup">'+_wyE(WYB[_wyL].d)+'</p>'
  +'<button class="wy-play" id="wyPlay" onclick="wyPlay()">'
-  +'<span class="ic">&#128266;</span><span style="flex:1">이 과 발음 듣기'
+  +'<span class="ic">&#128266;</span><span class="wy-play-t" style="flex:1">이 과 발음 듣기'
   +'<small>소리만 나옵니다 · 눈으로 따라 읽어 보세요</small></span></button>'
  +'<div class="wy-novel"><div class="wy-ch">'+(_wyL+1)+'과 · '+_wyE(WYB[_wyL].t)+'</div>'
   +'<p class="wy-para">'+para+'</p></div>'
@@ -15041,8 +15041,8 @@ function wyHTML(){
  +'</div>';}
 
 function wyDraw(){var pb=document.getElementById('pgbody');
- if(pb){pb.innerHTML=wyHTML();try{_mTop('pgModal');}catch(e){}}}
-function wyLesson(i){ if(!_wyChOpen(_wyCh(i)))return; _wyL=i;_wyPick(i);_wyStep=0;_wyPut();
+ if(pb){pb.innerHTML=wyHTML();try{_mTop('pgModal');}catch(e){}try{_wyBtnSync();}catch(e){}}}
+function wyLesson(i){ if(!_wyChOpen(_wyCh(i)))return; try{wyStop();}catch(e){} _wyL=i;_wyPick(i);_wyStep=0;_wyPut();
  var pb=document.getElementById('pgbody');
  if(pb&&document.getElementById('pgModal').classList.contains('open')){pb.innerHTML=wyHTML();try{_mTop('pgModal');}catch(e){}}
  else _sgSub(wyHTML());}
@@ -15051,14 +15051,39 @@ function wyMark(i){ var m=_wyMark[i]||0; _wyMark[i]=(m===0?1:(m===1?2:0)); _wyPu
 function wyCk(el,e){if(e)e.stopPropagation();el.classList.toggle('open');}
 function wyOpenOne(el){var c=el.parentElement;el.style.display='none';
  var ns=c.querySelectorAll('.wy-st,.ex');for(var i=0;i<ns.length;i++)ns[i].hidden=false;}
+var _wyPT=null;
+function _wySpeaking(){
+ try{ if(SGA_P&&SGA_P.on) return true; }catch(e){}
+ try{ if(window.speechSynthesis&&speechSynthesis.speaking) return true; }catch(e){}
+ return false;
+}
+/* 2026-09-15 대표님 — 원서 듣기에 멈춤이 없어 나가야 멈췄음. 같은 버튼이 듣기↔멈춤으로 바뀝니다 */
+function _wyBtnSync(){
+ var b=document.getElementById('wyPlay'); if(!b) return;
+ var on=_wySpeaking();
+ b.classList.toggle('on', on);
+ var ic=b.querySelector('.ic');
+ var tx=b.querySelector('.wy-play-t');
+ if(ic) ic.innerHTML = on ? '&#9724;' : '&#128266;';
+ if(tx) tx.innerHTML = on
+   ? '\uba48\ucda4<small>\ub4e3\ub294 \uc911\uc785\ub2c8\ub2e4 \u00b7 \ub204\ub974\uba74 \ubc14\ub85c \uba48\ucda5\ub2c8\ub2e4</small>'
+   : '\uc774 \uacfc \ubc1c\uc74c \ub4e3\uae30<small>\uc18c\ub9ac\ub9cc \ub098\uc635\ub2c8\ub2e4 \u00b7 \ub208\uc73c\ub85c \ub530\ub77c \uc77d\uc5b4 \ubcf4\uc138\uc694</small>';
+ if(on){ if(!_wyPT) _wyPT=setInterval(function(){ if(!_wySpeaking()){ clearInterval(_wyPT); _wyPT=null; _wyBtnSync(); } }, 400); }
+ else if(_wyPT){ clearInterval(_wyPT); _wyPT=null; }
+}
+function wyStop(){
+ try{ sgpStop(); }catch(e){}
+ try{ if(window.speechSynthesis) speechSynthesis.cancel(); }catch(e){}
+ _wyBtnSync();
+}
 function wyPlay(){
- try{ if(SGA_P&&SGA_P.on){ sgpStop(); var b0=document.getElementById('wyPlay'); if(b0)b0.classList.remove('on'); return; } }catch(e){}
+ if(_wySpeaking()){ wyStop(); return; }
  var txt=_wySen().map(function(r){return r[0];}).join(' ');
  _wyHeard=1;_wyPut();_wyTouch();
- var b=document.getElementById('wyPlay'); if(b)b.classList.add('on');
  try{ sgpPlay([{t:txt,lang:'en-US',who:null,mp3:''}],null,'one'); }
  catch(e){ try{var u=new SpeechSynthesisUtterance(txt);u.lang='en-US';u.rate=.9;speechSynthesis.speak(u);}catch(e2){} }
- setTimeout(wyDraw,60);
+ _wyBtnSync();
+ setTimeout(wyDraw,60); setTimeout(_wyBtnSync,120);
 }
 function wyOpen(){ _wyLoadAll(); var pb=document.getElementById('pgbody');
  if(pb&&document.getElementById('pgModal').classList.contains('open')){pb.innerHTML=wyToc();try{_mTop('pgModal');}catch(e){}}
