@@ -207,14 +207,14 @@ p,li,td,dd{word-break:keep-all; overflow-wrap:break-word; letter-spacing:-.01em;
 
 /* ===== AI 산글 학습관 배너 (v200) ===== */
 .sgai-bn{max-width:1180px;margin:26px auto;padding:0 20px;cursor:pointer}
-.sgai-in{background:#1A1A18;border-radius:14px;padding:34px 30px;position:relative;overflow:hidden;
+.sgai-in{background:linear-gradient(135deg,#c81f2b,#e0453e);border-radius:14px;padding:34px 30px;position:relative;overflow:hidden;
   transition:.18s ease}
 .sgai-bn:hover .sgai-in{transform:translateY(-3px);box-shadow:0 16px 38px rgba(26,26,24,.24)}
-.sgai-lb{font-size:11px;letter-spacing:.18em;color:#C08059;font-weight:700;margin-bottom:12px}
-.sgai-in h3{font-size:30px;line-height:1.25;letter-spacing:-.03em;color:#F2EDE1;margin-bottom:10px;
+.sgai-lb{font-size:11px;letter-spacing:.18em;color:#ffe0dd;font-weight:700;margin-bottom:12px}
+.sgai-in h3{font-size:30px;line-height:1.25;letter-spacing:-.03em;color:#ffffff;margin-bottom:10px;
   word-break:keep-all;font-weight:800}
-.sgai-in p{font-size:15px;line-height:1.75;letter-spacing:-.01em;color:#C9C2B4;word-break:keep-all;margin-bottom:18px}
-.sgai-go{display:inline-block;font-size:14px;font-weight:700;color:#1A1A18;background:#C08059;
+.sgai-in p{font-size:15px;line-height:1.75;letter-spacing:-.01em;color:#ffe3e0;word-break:keep-all;margin-bottom:18px}
+.sgai-go{display:inline-block;font-size:14px;font-weight:700;color:#c81f2b;background:#ffffff;
   padding:11px 22px;border-radius:999px;letter-spacing:-.01em}
 @media(max-width:820px){.sgai-in{padding:26px 20px}.sgai-in h3{font-size:24px}}
 
@@ -4617,18 +4617,18 @@ function renderCourse(c){
   document.querySelectorAll('#ctabs button').forEach(b=>b.classList.toggle('on', b.dataset.c===c));
 }
 const CHAPTERS=[
- {k:'토익',co:'토익',s:'왜 틀리는지 먼저 알아야 점수가 오릅니다',e:'TOEIC',bg:'linear-gradient(135deg,#1A1A18,#2A2622)',imgs:['eng_13','elly','eng_14','eng_15'],exp:1},
- {k:'토스',co:'토스',s:'말하기 유형 완전 분석, 목표 등급까지',e:'TOEIC S',bg:'linear-gradient(135deg,#23201C,#35302A)',imgs:['eng_14','eng_15']},
- {k:'오픽',co:'오픽',s:'실전 발화 훈련으로 IH·AL 달성',e:'OPIc',bg:'linear-gradient(135deg,#1A1A18,#2A2622)',imgs:['eng_15','eng_14']},
- {k:'JLPT/HSK',co:'JLPT',s:'기출 중심 합격 루트',e:'JLPT·HSK',bg:'linear-gradient(135deg,#23201C,#35302A)',imgs:['jpn_2','jpn_1','jpn_4','jpn_5']},
- {k:'영어회화',co:'영어회화',s:'기초부터 원어민까지, 써먹는 회화',e:'SPEAKING',bg:'linear-gradient(135deg,#1A1A18,#2A2622)',imgs:['eng_5','eng_11','eng_9']},
- {k:'일본어',co:'일본어',s:'일본인이 실제 쓰는 살아있는 일본어',e:'JAPANESE',bg:'linear-gradient(135deg,#23201C,#35302A)',imgs:['jpn_2','jpn_1','jpn_7']},
- {k:'중국어',co:'중국어',s:'발음부터 HSK까지 탄탄하게',e:'CHINESE',bg:'linear-gradient(135deg,#1A1A18,#2A2622)',imgs:['chn_3','chn_5']},
- {k:'1:1 PT',pg:'1:1 전문',s:'나만을 위한 완전 맞춤 1:1 수업',e:'PRIVATE',bg:'linear-gradient(135deg,#23201C,#35302A)',imgs:['eng_14','eng_13','eng_6']},
- {k:'과외',pg:'과외',s:'학생별 맞춤 밀착 관리 과외',e:'TUTORING',bg:'linear-gradient(135deg,#1A1A18,#2A2622)',imgs:['eng_7','eng_3']},
- {k:'외고/유학',pg:'유학상담',s:'외고 내신·유학 준비 무료 상담',e:'ABROAD',bg:'linear-gradient(135deg,#23201C,#35302A)',imgs:['jpn_4','jpn_5']},
- {k:'기업출강',pg:'기업출강',s:'회사로 찾아가는 실무 어학 교육',e:'B2B',bg:'linear-gradient(135deg,#23201C,#35302A)',imgs:['eng_14','eng_12','jpn_2','chn_3']},
- {k:'임원 1:1 출강',pg:'임원강의',s:'임원 맞춤 1:1 프리미엄 출강',e:'EXECUTIVE',bg:'linear-gradient(135deg,#1A1A18,#2A2622)',imgs:[]}
+ {k:'토익',co:'토익',s:'왜 틀리는지 먼저 알아야 점수가 오릅니다',e:'TOEIC',bg:'linear-gradient(135deg,#171d2b,#2b3550)',imgs:['eng_13','elly','eng_14','eng_15'],exp:1},
+ {k:'토스',co:'토스',s:'말하기 유형 완전 분석, 목표 등급까지',e:'TOEIC S',bg:'linear-gradient(135deg,#0e3a4d,#1c6070)',imgs:['eng_14','eng_15']},
+ {k:'오픽',co:'오픽',s:'실전 발화 훈련으로 IH·AL 달성',e:'OPIc',bg:'linear-gradient(135deg,#382a5e,#5a3f8c)',imgs:['eng_15','eng_14']},
+ {k:'JLPT/HSK',co:'JLPT',s:'기출 중심 합격 루트',e:'JLPT·HSK',bg:'linear-gradient(135deg,#0B5240,#0F7A5D)',imgs:['jpn_2','jpn_1','jpn_4','jpn_5']},
+ {k:'영어회화',co:'영어회화',s:'기초부터 원어민까지, 써먹는 회화',e:'SPEAKING',bg:'linear-gradient(135deg,#8a4b1f,#c9772f)',imgs:['eng_5','eng_11','eng_9']},
+ {k:'일본어',co:'일본어',s:'일본인이 실제 쓰는 살아있는 일본어',e:'JAPANESE',bg:'linear-gradient(135deg,#1E4E85,#3E7FBE)',imgs:['jpn_2','jpn_1','jpn_7']},
+ {k:'중국어',co:'중국어',s:'발음부터 HSK까지 탄탄하게',e:'CHINESE',bg:'linear-gradient(135deg,#9c1f24,#c8353b)',imgs:['chn_3','chn_5']},
+ {k:'1:1 PT',pg:'1:1 전문',s:'나만을 위한 완전 맞춤 1:1 수업',e:'PRIVATE',bg:'linear-gradient(135deg,#14213d,#33507f)',imgs:['eng_14','eng_13','eng_6']},
+ {k:'과외',pg:'과외',s:'학생별 맞춤 밀착 관리 과외',e:'TUTORING',bg:'linear-gradient(135deg,#3a2c5e,#5b4790)',imgs:['eng_7','eng_3']},
+ {k:'외고/유학',pg:'유학상담',s:'외고 내신·유학 준비 무료 상담',e:'ABROAD',bg:'linear-gradient(135deg,#1f8058,#146043)',imgs:['jpn_4','jpn_5']},
+ {k:'기업출강',pg:'기업출강',s:'회사로 찾아가는 실무 어학 교육',e:'B2B',bg:'linear-gradient(120deg,#c81f2b,#c81f2b)',imgs:['eng_14','eng_12','jpn_2','chn_3']},
+ {k:'임원 1:1 출강',pg:'임원강의',s:'임원 맞춤 1:1 프리미엄 출강',e:'EXECUTIVE',bg:'linear-gradient(135deg,#4E3A10,#8A6A22)',imgs:[]}
 ];
 function chipHTML(c){var imgs=(c.imgs||[]).map(function(im){return '<img src="img/teachers/'+im+'.png" alt="" loading="lazy">';}).join('');return '<div class="chip'+(c.exp?' exp':'')+'" data-k="'+c.k+'" style="background:'+c.bg+'"><div class="chrev">'+imgs+'</div><div class="chgrad"></div><div class="chtxt"><div class="che">'+c.e+'</div><div class="cht">'+c.k+'</div><div class="chs">'+c.s+'</div><div class="chgo">자세히 보기 ›</div></div></div>';}
 function pickCourse(k){
