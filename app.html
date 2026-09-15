@@ -784,7 +784,7 @@ function sgfLoad(kind, boxId){
  if(SGF_CACHE[kind]){ _sgfPaint(kind,box,SGF_CACHE[kind]); return; }
  box.innerHTML='<div class="sgf-wait">불러오는 중입니다…</div>';
 
- var url='https://api.rss2json.com/v1/api.json?count=8&rss_url='+encodeURIComponent(rss);
+ var url='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(rss);
  var done=false;
  var kill=setTimeout(function(){ if(!done){ done=true; _sgfPaint(kind,box,[]); } }, 9000);
 
