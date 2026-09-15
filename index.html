@@ -17336,7 +17336,13 @@ function crVoxSrc(id){
  try{ return CRVOX[id]?(CRVOX_DIR+id+'.mp3'):''; }catch(e){ return ''; }
 }
 function crStopAudio(){
- if(_crAu){ try{_crAu.pause();}catch(e){} try{_crAu.src='';}catch(e){} _crAu=null; }
+ /* 2026-09-15 — src='' 로 끄면 브라우저가 error 를 띄우고, 그 error 가
+    「파일이 없나 보다」 하고 기계 음성 낭독을 불러냈습니다.
+    끄기 전에 손잡이를 먼저 떼어 둡니다. */
+ if(_crAu){
+  try{ _crAu.onerror=null; _crAu.onended=null; _crAu.onplaying=null; _crAu.onplay=null; }catch(e){}
+  try{_crAu.pause();}catch(e){} try{_crAu.src='';}catch(e){} _crAu=null;
+ }
 }
 function crSay(text,code,cb,voxId){
  /* ① 실제 녹음이 있으면 그것부터 */
