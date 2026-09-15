@@ -17414,6 +17414,11 @@ function crIntro(lang){
 var CR_VO={'영어':'lv_en','일본어':'lv_jp','중국어':'lv_cn'};
 var _crAu=null;
 var _crIntroOn=false;
+/* 2026-09-15 — 「몇 번째 인사말인가」 번호.
+   끄면 번호가 올라가고, 이전 번호의 뒷처리 코드는 전부 무시됩니다.
+   (소리를 멈추면 play() 약속이 취소되는데, 그 취소를 「파일이 없다」로 보고
+    기계 음성을 다시 틀던 문제를 막습니다) */
+var _crIntroGen=0;
 function crIntroBtn(on){
  _crIntroOn=!!on;
  var b=document.getElementById('crIntroB');
@@ -17421,6 +17426,7 @@ function crIntroBtn(on){
 }
 /* 2026-09-15 — 설명을 끄는 단 하나의 통로. 스타트·건너뛰기·창닫기 전부 여기로 옵니다. */
 function crIntroOff(){
+ _crIntroGen++;
  try{ crStopAudio(); }catch(e){}
  try{ speechSynthesis.cancel(); }catch(e){}
  try{ crLipStop(); }catch(e){}
@@ -17429,15 +17435,17 @@ function crIntroOff(){
 function crIntroSay(){
  var L=(_cr&&_cr.lang)||'영어', f=CR_VO[L], say=CRY[L].introSay;
  crIntroOff();
- if(!f){ crIntroBtn(true); crSay(say,'ko-KR',function(){crIntroBtn(false);}); return; }
+ var g=_crIntroGen;                       /* 이번 인사말의 번호 */
+ var live=function(){ return g===_crIntroGen; };
+ if(!f){ crIntroBtn(true); crSay(say,'ko-KR',function(){ if(live())crIntroBtn(false); }); return; }
  var a=new Audio('media/'+f+'.mp3'); _crAu=a;
  var fell=false;
- var fall=function(){ if(fell)return; fell=true; try{crLipStop();}catch(e){}
-   crIntroBtn(true); crSay(say,'ko-KR',function(){crIntroBtn(false);}); };
+ var fall=function(){ if(fell||!live())return; fell=true; try{crLipStop();}catch(e){}
+   crIntroBtn(true); crSay(say,'ko-KR',function(){ if(live())crIntroBtn(false); }); };
  a.onerror=fall;
- a.onplay=function(){ crIntroBtn(true); };
- a.onplaying=function(){ crIntroBtn(true); try{crLipStart(say);}catch(e){} };
- a.onended=function(){ crIntroBtn(false); try{crLipStop();}catch(e){} };
+ a.onplay=function(){ if(live())crIntroBtn(true); };
+ a.onplaying=function(){ if(!live())return; crIntroBtn(true); try{crLipStart(say);}catch(e){} };
+ a.onended=function(){ if(!live())return; crIntroBtn(false); try{crLipStop();}catch(e){} };
  a.play().catch(fall);
 }
 /* 같은 버튼 하나로 「그만 듣기 ↔ 다시 듣기」.
