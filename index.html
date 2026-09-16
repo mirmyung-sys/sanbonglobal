@@ -166,8 +166,11 @@
   --sh-3:0 22px 54px rgba(26,31,43,.16);
 
   /* 예전 이름 — 기존 코드가 깨지지 않게 남겨 둡니다.
-     주의: --red 는 원래 남색이 들어 있었습니다. 새 코드에서는 쓰지 마세요. */
-  --red:#1A1A18; --red-dk:#1A1A18; --gray:#f6f7fa; --gray2:#e3e6ee; --dark:#1A1A18; --line2:#eef1f6;
+     2026-09-17 대표님 「검정색 바탕화면으로 쓰지마 전부 고쳐 / 커서 갖다대면 적색으로 바뀌는건 좋은데」
+     --red 라고 이름 붙여 놓고 값은 먹색(#1A1A18)이 들어 있었습니다. 그래서 「적색 버튼」으로
+     만든 자리가 전부 검정으로 나왔습니다 (수강후기 버튼·프로그램 탭·전체 강의 보기 등).
+     이름대로 브랜드 적색을 넣습니다. 글자색으로 쓰던 자리도 원래 의도대로 적색이 됩니다. */
+  --red:#C81F2B; --red-dk:#a5121d; --gray:#f6f7fa; --gray2:#e3e6ee; --dark:#1A1A18; --line2:#eef1f6;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:#fff}
@@ -286,7 +289,7 @@ p,li,td,dd{word-break:keep-all; overflow-wrap:break-word; letter-spacing:-.01em;
 .c.big.e .imgtag{color:#a9adc7;border-color:#c3c7e0}
 .btnrow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
 .bbtn{height:62px;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:18px;font-weight:700;color:#fff;transition:.2s}
-.bbtn.k{background:#1A1A18}.bbtn.k:hover{background:#000}
+.bbtn.k{background:var(--brand)}.bbtn.k:hover{background:var(--brand-dk)}
 .bbtn.r{background:#8C4A2F;color:#1A1A18}.bbtn.r:hover{background:var(--gold-dk);color:#fff}
 
 /* ===== Right floating quick panel ===== */
@@ -1017,7 +1020,7 @@ header nav a{letter-spacing:-.01em}
 .ic-ig{background:linear-gradient(45deg,#F58529,#DD2A7B 55%,#8134AF)}
 .ic-kk{background:#FEE500;color:#3A1D1D!important;font-size:12px}
 .ic-bl{background:#04703A;font-size:22px}
-.ic-url{background:var(--navy);font-size:22px}
+.ic-url{background:var(--gold);font-size:22px}  /* 2026-09-17 — 아이콘 줄에서 이것만 검정이라 금색으로 */
 .sharemini{display:flex;align-items:center;gap:9px;justify-content:center;margin:34px 0 0;padding-top:22px;border-top:1px dashed var(--line);flex-wrap:wrap}
 .sharemini span{font-size:13px;color:#8a90a0;font-weight:800;margin-right:2px}
 .scm{width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:12px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 5px 12px rgba(0,0,0,.14)}
@@ -4934,7 +4937,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v132)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v138)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -5938,7 +5941,7 @@ var AGFULL={
   +'<tr><th>1/2 경과 후</th><td>반환하지 않습니다</td></tr></table>'
   +'<p>무료 개월이 포함된 상품은 <b>실제 납부한 금액</b>을 기준으로, 이미 수강한 개월 수의 정가 상당액을 공제하고 정산합니다.</p>'
   +'<h4>제8조 (청약철회)</h4><p>「전자상거래 등에서의 소비자보호에 관한 법률」에 따라 결제일로부터 7일 이내 청약철회가 가능합니다. 다만 이미 수강이 개시된 경우에는 제7조의 반환 기준에 따라 정산합니다.</p>'
-  +'<h4>제9조 (이벤트 할인)</h4><p>이벤트 할인은 각 이벤트에 정해진 기간과 조건에서만 적용되며, 온라인에서 즉시 적용되는 할인은 어떤 조합으로도 <b>정가 대비 15%</b>(1:1·퍼스널 10%)를 넘지 않습니다. 무료 개월이 포함된 상품과는 중복되지 않고 더 유리한 쪽이 자동 적용됩니다. 재등록 얼리버드는 학생 명부에서 확인된 뒤 환급 방식으로 지급합니다.</p>'
+  +'<h4>제9조 (이벤트 할인)</h4><p>이벤트 할인은 각 이벤트에 정해진 기간과 조건에서만 적용되며, 온라인에서 즉시 적용되는 할인은 어떤 조합으로도 <b>정가 대비 20%</b>(1:1·퍼스널 10%)를 넘지 않습니다. 무료 개월이 포함된 상품과는 중복되지 않고 더 유리한 쪽이 자동 적용됩니다. 재등록 얼리버드는 학생 명부에서 확인된 뒤 환급 방식으로 지급합니다.</p>'
   +'<h4>제4장 기타</h4>'
   +'<h4>제10조 (회원의 의무)</h4><ul><li>수업 중 녹음·녹화 및 교재의 무단 복제·배포를 하지 않습니다.</li><li>계정을 타인에게 대여·양도하지 않습니다.</li><li>다른 수강생의 학습을 방해하지 않습니다.</li></ul>'
   +'<h4>제11조 (탈퇴)</h4><p>회원은 언제든지 데스크 또는 '+SGA_BIZ.tel+'로 탈퇴를 요청할 수 있으며, 학원은 지체 없이 처리합니다. 다만 관계 법령상 보존 의무가 있는 기록은 해당 기간 동안 보관합니다.</p>'
@@ -6944,7 +6947,7 @@ const PAGES={
  '중국어수강':tGrid('linear-gradient(120deg,#8f1f24,#e05a4f)','중국어','발음부터 HSK까지 탄탄하게',T_CHN),
  '빠른추격':function(){return oneHubPage(6);},
  '시험일맞춤':function(){return oneHubPage(6);},
- '상품권충전':chargePage,
+ /* 2026-09-17 폐지 */ '상품권충전':function(){return '<div class="sp-wrap"><p class="oh-p">이 안내는 종료되었습니다.</p></div>';},
  '회원가입':joinPage(),
  '회원가입폼':joinFormPage(),
  '로그인':loginPage(),
@@ -7261,23 +7264,36 @@ var DCAP=0.30;/* 2026-09-04 대표님 지시 — 온라인 즉시할인 상한 3
    모든 할인은 「더해서 상한 30%로 자른 뒤 정가에 한 번만」 뺍니다.
    예전에는 이벤트를 뺀 금액에 재등록을 또 곱해서(10%+5% → 실제 14.5%)
    화면에 적힌 %와 실제 깎인 금액이 달랐습니다. 다시 곱셈으로 바꾸지 마세요. */
-function sumRate(d,lo){var r=(d||0)+(lo||0);if(r>DCAP)r=DCAP;if(r<0)r=0;return Math.round(r*1000)/1000;}
+function sumRate(d,lo,subj){
+ /* 2026-09-17 대표님 확정 — 나올 수 있는 할인은 네 가지뿐입니다.
+      오픈+환승 20 · 오픈+재등록 15 · 1:1 은 전부 10 · 새벽반만 30
+    재등록 5% 도 20% 상한 안에 들어갑니다(예전엔 상한 밖이라 25%가 나왔습니다).
+    새벽반 30% 는 반을 고르면 자동으로 붙는 것이라 그때만 상한이 30% 입니다. */
+ var r=(d||0)+(lo||0);
+ var dawnR=(typeof SGEV!=='undefined'&&SGEV.dawn)?SGEV.dawn.rate:0.30;
+ var cap=((d||0)>=dawnR)?DCAP:EVCAP;
+ try{ if(subj&&_persSubj(subj))cap=PERSCAP; }catch(e){}
+ if(r>cap)r=cap; if(r<0)r=0; return Math.round(r*1000)/1000;}
 var SGEV={
- /* 2026-09-08 대표님 지시 — 오픈이벤트 15% → 15%. 1:1·퍼스널은 10%(persRate). */
- open:{rate:0.15,persRate:0.10,start:'2026-10-01',end:'2026-11-30',plabel:'10월 1일 ~ 11월 30일',nm:'오픈이벤트',
+ /* 2026-09-17 대표님 확정 — 오픈이벤트 10%. 1:1·퍼스널도 같은 10%가 붙습니다.
+    (9/08 에 15% 로 적혀 있던 것을 대표님이 직접 10% 로 정정하셨습니다) */
+ open:{rate:0.10,persRate:0.10,start:'2026-10-01',end:'2026-11-30',plabel:'10월 1일 ~ 11월 30일',nm:'오픈이벤트',
   dsc:'상호 변경 기념 · 10·11월 두 달 · 영어·일본어·중국어·시험대비 전 과목'},
  /* 2026-12 · 대표님 지시 — 환승 15 + 얼리버드 10 + 재등록 5 = 30% 가 최대치입니다.
     셋 다 정규반·시험대비반만이고 1:1 퍼스널에는 붙지 않습니다. 12월 1일에 자동으로 켜집니다. */
- transfer:{rate:0.15,start:'2026-12-01',end:'2026-12-31',plabel:'12월 1일 ~ 12월 31일',nm:'환승 이벤트',
-  nopers:true,verify:true,dsc:'다른 학원에서 옮겨 오시는 분 · 정규반·시험대비반만 (1:1 퍼스널 제외)'},
- ebird:{rate:0.10,start:'2026-12-01',end:'2026-12-31',plabel:'12월 1일 ~ 12월 31일',nm:'얼리버드',
-  nopers:true,dsc:'12월 조기 등록 · 정규반·시험대비반만 (1:1 퍼스널 제외)'},
+ /* 2026-09-17 대표님 확정 — 환승은 「항시」입니다. 기간을 없앴습니다.
+    두 달(오픈이벤트 기간) 안에 환승하시면 오픈 10 + 환승 10 = 20%,
+    두 달이 지나 환승하시면 환승 10% 만 붙습니다. 기간을 지운 것만으로 그대로 됩니다. */
+ transfer:{rate:0.10,plabel:'상시',nm:'환승 이벤트',
+  nopers:true,verify:true,dsc:'다른 학원에서 옮겨 오시는 분 · 상시 · 정규반·시험대비반만 (1:1 퍼스널 제외)'},
+ /* 2026-09-17 — 얼리버드(12월 10%)는 뺐습니다.
+    대표님 「할인률이 많은게 좋은것만은 아닌것같다」. 오픈·환승·재등록 셋으로 단순하게 갑니다. */
  early:{rate:0.05,monthly:[19,25],loyal:true,offline:true,nm:'재등록 얼리버드',
   dsc:'기존 수강생인지 온라인에서는 확인할 수 없습니다. 재등록 확인 신청 후 확정해 드립니다 · 매달 19~25일'},
  /* 새벽반 조조할인 — 목록에서 고르는 게 아니라 새벽반을 선택하시면 자동으로 붙습니다 */
  dawn:{rate:0.30,auto:true,nm:'새벽반 조조할인',dsc:'새벽반에만 적용 · 다른 할인과 합쳐 최대 30%'}
 };
-var EVKEYS=['open','transfer','ebird','early'];   /* dawn 은 자동 적용이라 선택 목록에 넣지 않습니다 */
+var EVKEYS=['open','transfer','early'];   /* 2026-09-17 얼리버드 제외 */   /* dawn 은 자동 적용이라 선택 목록에 넣지 않습니다 */
 var _exList=0;var _exSubj='토익',_exVerified=false,_spVerified=false,_vfCtx='',_vfWant='';
 function _today(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
 /* ===== 9월 사전예약 배너 =====
@@ -7330,13 +7346,22 @@ function dawnRate(subj){
  if(_persSubj(subj))return 0;
  try{ if(!evActive('dawn'))return 0; }catch(e){return 0;}
  return _isDawn()?SGEV.dawn.rate:0;}
+/* 2026-09-17 — 고르는 이벤트(오픈·환승)의 합은 20% 까지.
+   새벽반 조조 30% 는 반을 고르면 자동으로 붙는 것이라 이 상한 밖에 둡니다.
+   (상한을 하나로 묶으면 새벽반 30% 가 20% 로 잘려 버립니다) */
+var EVCAP=0.20;
+/* 2026-09-17 대표님 「일대일은 최대가 10프로임」 — 1:1·퍼스널은 어떤 조합으로도 10% 를 넘지 않습니다.
+   재등록 5% 를 얹어도, 다른 이벤트를 겹쳐도 10% 에서 멈춥니다. */
+var PERSCAP=0.10;
 function evRate(subj,v){var r=0;var pers=_persSubj(subj);
  evParts(v).forEach(function(k){var e=SGEV[k];
   if(!e||!evActive(k)||e.loyal||e.offline)return;
   if(pers&&e.nopers)return;
-  /* 1:1·퍼스널은 별도 요율(10%) — 2026-09-08 대표님 지시 */
+  /* 1:1·퍼스널은 별도 요율(10%) */
   r+=(pers&&e.persRate!=null)?e.persRate:e.rate;});
- r+=dawnRate(subj);
+ if(r>EVCAP)r=EVCAP;
+ if(pers&&r>PERSCAP)r=PERSCAP;          /* 1:1·퍼스널은 10% 에서 멈춤 */
+ r+=dawnRate(subj);                      /* 새벽반 조조는 1:1 에 붙지 않습니다(dawnRate 가 0) */
  if(r>DCAP)r=DCAP;return Math.round(r*1000)/1000;}
 /* 재등록 할인 — 2개월 결제 할인가에도 추가로 붙습니다 */
 function loyalRate(v){var r=0;evParts(v).forEach(function(k){var e=SGEV[k];if(e&&evActive(k)&&e.loyal&&!e.offline)r+=e.rate;});return Math.round(r*1000)/1000;}
@@ -7470,7 +7495,6 @@ function payAgreeHTML(){var b='agPay';
   +'<label class="ag-all"><input type="checkbox" class="agall" onchange="agAll(\''+b+'\',this)"> 아래 내용에 모두 동의합니다</label>'
   +agItem(b,'order',1,'주문 내용 확인 및 결제 진행 동의',AGDOC.pay)
   +agItem(b,'pg',1,'결제대행 서비스 이용 및 개인정보 제3자 제공 동의',AGDOC.pg)
-  +agItem(b,'gift',1,'SGA 어학상품권·충전금 이용약관 (유효기간·환불기준) 동의',AGDOC.gift)
   +agItem(b,'refund',1,'교습비 반환 기준 확인','수강 개시 후 환불은 「학원의 설립·운영 및 과외교습에 관한 법률 시행령」 별표4 <b>교습비등 반환 기준</b>에 따릅니다.<br>· 교습 개시 전: <b>전액 반환</b><br>· 총 교습시간의 1/3 경과 전: 납입액의 <b>2/3</b> 반환<br>· 1/2 경과 전: 납입액의 <b>1/2</b> 반환<br>· 1/2 경과 후: 반환하지 않음<br>충전 이벤트로 <b>추가 지급된 보너스 금액은 반환 대상에서 제외</b>되며, 실제 납입액 기준으로 정산합니다.')
   +'</div>';}
 
@@ -7492,6 +7516,7 @@ function _evNowRate(){try{var de=_discSel();var v=de?de.value:'0';
 function spGiftMode(on){_payGift=!!on;spRenderGift();spRecalc();}
 function spRenderGift(){
  var el=document.getElementById('spGiftPick');if(!el)return;
+ el.innerHTML=''; return;   /* 2026-09-17 폐지 */
  if(!SGPT.gift){el.innerHTML='';return;}
  if(_noGift){el.innerHTML='<div class="gf-no">🎁 충전금 잔액 '+_won(SGPT.gift)+'이 있지만, <b>1:1 수업·왕기초 패키지·무한수강권·상품권 구매는 충전금으로 결제되지 않습니다.</b> 계좌이체나 카드로만 등록하실 수 있습니다.</div>';return;}
  var save=_payList-_payBase;
@@ -7519,6 +7544,8 @@ function spRecalc(){
    상시 할인이 아니라 오픈 기간 프로모션이라, 고정 할인율처럼 보이면 안 됩니다.
    금액도 '3,000,000원'처럼 길게 쓰면 좁은 결제창 그리드를 넘어가서 만원 단위로 줄였습니다. */
 function spChgShopHTML(){
+ return '';   /* 2026-09-17 대표님 지시로 폐지 — 아래 예전 코드는 되살릴 때를 위해 남겨 둡니다 */
+ /* eslint-disable no-unreachable */
  return '<div class="gf-sh">SGA 어학상품권 · 넣은 금액에 <b>절반을 더</b></div>'
  +'<div class="gf-g">'+CHGTIER.map(function(t){
    return '<button type="button" class="gf-t" onclick="spChgPick('+t.pay+','+t.get+')">'
@@ -7627,9 +7654,8 @@ function spModalHTML(){return '<div class="sp-modal" id="spModal"><div class="sp
  +'<div class="sp-welcome">결제 내용을 확인해 주세요.</div>'
  +'<div class="sp-camt">결제 예정 <b id="spCamt">-</b></div>'
  +'<div class="sp-citem" id="spCitem"></div>'
- +'<div class="pt-row"><span class="lb">🎁 SGA 어학상품권 잔액</span><span class="vl" id="spGiftVal">'+_won(SGPT.gift)+'</span></div>'
- +'<div class="gf-shop" id="spChgShop"></div>'
- +'<div class="gf-pick" id="spGiftPick"></div>'
+ /* 2026-09-17 대표님 「어학상품권 결제창에도 나옴 다 지워」 — 결제창에서 상품권 줄·충전샵·사용선택을 뺐습니다.
+    계산 코드는 그대로 두되(다른 금액이 틀어지지 않게) 화면에는 아무것도 나오지 않습니다. */
  +'<div class="pt-row" style="flex-wrap:wrap"><span class="lb">💰 보유 적립금</span><span class="vl">'+_won(SGPT.pt)+'</span>'
  +(SGPT.pt>0
    ? '<div class="pt-use" style="width:100%"><input id="spPtUse" inputmode="numeric" placeholder="사용할 적립금" oninput="ptApply()"><button type="button" onclick="ptMax()">전액사용</button></div>'
@@ -7643,7 +7669,7 @@ function spModalHTML(){return '<div class="sp-modal" id="spModal"><div class="sp
  +'<div id="spDone" style="display:none"></div>'
  +'<div class="sp-mfoot"><span onclick="spClose()">닫기</span></div>'
  +'</div></div></div>';}
-function _evPct(subj,v){var r=0;evParts(v).forEach(function(k){var e=SGEV[k];if(e)r+=e.rate;});if(r>DCAP)r=DCAP;return Math.round(r*1000)/1000;}
+function _evPct(subj,v){var r=0;evParts(v).forEach(function(k){var e=SGEV[k];if(e)r+=e.rate;});if(r>EVCAP)r=EVCAP;return Math.round(r*1000)/1000;}
 /* 지금 켜져 있는 이벤트를 전부 합친 값 */
 function evAllOn(){var l=evComboList();return l.length?l[l.length-1]:'';}
 function _evOK(ps){for(var i=0;i<ps.length;i++){var e=SGEV[ps[i]];if(!e)continue;
@@ -7654,7 +7680,9 @@ function evComboList(){var on=EVKEYS.filter(function(k){return evActive(k)&&!SGE
   if(_evOK(ps))out.push(ps.join('+'));}
  out.sort(function(a,b){return _evPct('',a)-_evPct('',b);});return out;}
 function _termPct(){try{if(!document.getElementById('txTerm'))return 0;var e=TEXAM[_txK];if(!e)return 0;var t=e.tabs[_txTab];var ti=document.getElementById('txTerm');var ix=ti?parseInt(ti.value):0;var term=(t.terms||[])[ix];if(!term||!term[2]||!term[1])return 0;return (term[2]-term[1])/term[2];}catch(err){return 0;}}
-function _maxPct(subj){var all=evAllOn();var ev=evRate(subj,all),lo=loyalRate(all);var tp=(typeof TEXAM!=='undefined'&&TEXAM[subj]&&_txK===subj)?_termPct():0;var bestBase=Math.max(tp,ev);var r=sumRate(bestBase,lo);return Math.round(r*1000)/10;}
+function _maxPct(subj){var all=evAllOn();var ev=evRate(subj,all),lo=loyalRate(all);var tp=(typeof TEXAM!=='undefined'&&TEXAM[subj]&&_txK===subj)?_termPct():0;var bestBase=Math.max(tp,ev);var r=sumRate(bestBase,lo);
+ if(_persSubj(subj)&&r>PERSCAP)r=PERSCAP;   /* 2026-09-17 — 재등록 5% 를 얹어도 1:1 은 10% 까지 */
+ return Math.round(r*1000)/10;}
 /* 지금 고르신 반이 새벽반인지 — 새벽반만 조조할인이 붙습니다 */
 function _isDawn(){
  try{
@@ -7765,7 +7793,7 @@ function discInfo(subj){
    재등록 얼리버드 5%는 <b>상한 밖</b>입니다. 오픈이벤트 15%와 관계없이 무조건 더 드립니다.
    즉 즉시할인은 10%가 상한이고, 재등록 5%는 그 위에 얹힙니다 (최대 14.5%).
    전에는 둘을 합쳐 10%로 잘라서 재등록 5%를 약속만 하고 안 주고 있었습니다. */
-function _evCap(d,lo){return [sumRate(d,lo), 0];}  /* 합쳐서 첫 값에, 두 번째는 0 (곱하기 방지) */
+function _evCap(d,lo,subj){return [sumRate(d,lo,subj), 0];}  /* 합쳐서 첫 값에, 두 번째는 0 (곱하기 방지) */
 function _dfloor(base,list){var f=Math.round(list*(1-DCAP)/1000)*1000;return Math.min(base,f);}
 var LOYALMAX=0.05;
 /* 2개월·4개월·10개월 묶음가는 '할인'이 아니라 산본이지어학원 때부터 쓰던 기본가입니다.
@@ -7815,9 +7843,17 @@ function sgAudit(verbose){
  return {ok:!bad.length,checked:rows.length,bad:bad};
 }
 try{setTimeout(function(){sgAudit(false);},1200);}catch(e){}
-function discOpts(){var h='<option value="0">할인 없음 (기본가)</option>';
- var list=evComboList();
- list.forEach(function(v){var pct=Math.round(_evPct('',v)*1000)/10;var best=(v===evAllOn()&&list.length>1);
+/* 2026-09-17 — 과목을 주면 그 과목에 실제로 붙는 비율로 적습니다.
+   1:1·퍼스널 화면에 「오픈+환승 −20%」가 떠 있었는데, 1:1 은 어떤 조합으로도 10% 입니다.
+   손님이 20% 인 줄 알고 골랐다가 금액이 안 깎이면 그게 제일 나쁩니다. */
+function discOpts(subj){var h='<option value="0">할인 없음 (기본가)</option>';
+ var list=evComboList(), seen={};
+ list.forEach(function(v){
+  var r = subj ? evRate(subj,v) : _evPct('',v);
+  if(subj && !r) return;                      /* 이 과목에 안 붙는 조합은 아예 안 보여줍니다 */
+  var pct=Math.round(r*1000)/10;
+  if(subj){ if(seen[pct])return; seen[pct]=1; }   /* 같은 %가 되는 조합은 하나만 */
+  var best=(!subj&&v===evAllOn()&&list.length>1);
   h+='<option value="'+v+'">'+(best?'\u2B50 ':'')+evLabel(v)+' \u2212'+pct+'%</option>';});
  EVKEYS.forEach(function(k){
   if(SGEV[k].offline){h+='<option value="'+k+'" disabled>'+SGEV[k].nm+' \u2212'+Math.round(SGEV[k].rate*100)+'% (즉시할인 불가 · 확인 후 지급)</option>';return;}
@@ -7850,7 +7886,8 @@ function _curAmt(){var a=document.getElementById('spAmt');return a?a.innerHTML:'
 function evApply(v){var de=_discSel();if(de)de.value=v;_reprice();evClose();spOpenPay(_curAmt());}
 function evSkip(){evClose();spOpenPay(_curAmt());}
 function evPrompt(v){var e=SGEV[v]||{};var early=(v==='early');
- var rate='전 과목 15%';
+ /* 2026-09-17 — 15% 로 박혀 있던 것을 실제 설정값에서 읽게 바꿨습니다 */
+ var rate='전 과목 '+Math.round((SGEV.open&&SGEV.open.rate||0.10)*100)+'%';
  var title=early?'글로벌 위크 얼리버드 기간입니다':'회원 오픈이벤트 적용 회원입니다';
  var badge=early?'GLOBAL WEEK · EARLY BIRD':'OPEN EVENT · 회원 할인';
  var period=e.start?('행사기간 '+e.start.slice(5).replace('-','.')+' ~ '+e.end.slice(5).replace('-','.')):'';
@@ -8296,7 +8333,7 @@ var _oneSel=0,_oneHr=10;
 function _oneRate(){var de=document.getElementById('exDisc');var v=de?de.value:'0';
  return {ev:evRate('퍼스널',v),lo:loyalRate(v),v:v};}
 /* 정가에서 이벤트·재등록 할인을 적용합니다 (상한 DCAP) */
-function _oneCut(base){var r=_oneRate();var c=_evCap(r.ev,r.lo);
+function _oneCut(base){var r=_oneRate();var c=_evCap(r.ev,r.lo,'퍼스널');
  var f=Math.round(base*(1-c[0])/1000)*1000; f=Math.round(f*(1-c[1])/1000)*1000;
  var fl=Math.round(base*(1-DCAP)/1000)*1000; return f<fl?fl:f;}
 function oneBase(i,hr){var row=ONEPER[i];if(!row)return 0;return (hr===20)?row[2]:row[1];}
@@ -8353,7 +8390,7 @@ var PERS=[
  {n:'B과정 · 80분 × 주 1회',d:'시험대비 · 원어민 회화 · 월 4회',rows:[['2개월 · 총 8회 (최소 등록 단위)',480000]],ic:'\uD83C\uDFAF'}
 ];
 function _persAmt(base){var de=document.getElementById('exDisc');var v=de?de.value:'0';
- var c=_evCap(evRate('퍼스널',v),loyalRate(v));
+ var c=_evCap(evRate('퍼스널',v),loyalRate(v),'퍼스널');
  var f=Math.round(base*(1-c[0])/1000)*1000;
  f=Math.round(f*(1-c[1])/1000)*1000;
  var fl=Math.round(base*(1-DCAP)/1000)*1000;return f<fl?fl:f;}
@@ -8509,7 +8546,7 @@ function oneTabHTML(i){
     +'<div class="oh-ts"><span class="ic">📝</span><b>시험대비 강사</b><p>토익 · 토스 · 오픽<br>JLPT · HSK</p></div>'
     +'</div>')
   +_oneSec('수강료','<div class="tblwrap"><table class="ex-tt"><tr><th>구분</th><th>수강료</th><th>시간당</th></tr>'+er+'</table></div>'
-    +'<div class="sp-form" style="margin:12px 0 4px"><label>이벤트 할인<select id="exDisc" onchange="oneDiscChange()">'+discOpts()+'</select></label>'+discHintBox('퍼스널')+'</div>'
+    +'<div class="sp-form" style="margin:12px 0 4px"><label>이벤트 할인<select id="exDisc" onchange="oneDiscChange()">'+discOpts('퍼스널')+'</select></label>'+discHintBox('퍼스널')+'</div>'
     +'<div class="sp-disc-note" id="oneDiscNote"></div>')
   +_oneSec('신청하기','<div class="ov-lb">① 어떤 수업을 들으시겠습니까</div>'
     +'<div class="ov-g">'+ONEPER.map(function(r,k){
@@ -8548,7 +8585,7 @@ function oneTabHTML(i){
     +'<tr><td class="b">덤</td><td>20시간 → 정규반 1개월 무료<br><small>(원어민 회화~시험대비 중 · 18~21만원 상당)</small></td><td class="hi">4개월 등록 시 정규반 1개월 무료<br>6개월 등록 시 2개월 무료</td></tr>'
     +'<tr><td class="b">추천</td><td>일정이 불규칙한 분</td><td class="hi">일정이 일정한 분</td></tr></table></div>')
   +_oneSec('과정과 수강료','<div class="pv-grid">'+cards+'</div>'
-    +'<div class="sp-form" style="margin:12px 0 4px"><label>이벤트 할인<select id="exDisc" onchange="persDiscChange()">'+discOpts()+'</select></label>'+discHintBox('퍼스널')+'</div>'
+    +'<div class="sp-form" style="margin:12px 0 4px"><label>이벤트 할인<select id="exDisc" onchange="persDiscChange()">'+discOpts('퍼스널')+'</select></label>'+discHintBox('퍼스널')+'</div>'
     +'<div class="sp-disc-note" id="persNote"></div>')
   +_oneSec('요일 · 시간 — 원하는 칸을 고르시면 됩니다','<div class="tblwrap"><table class="oh-cmp">'
     +'<tr><th>구분</th><th>A과정 (월 8회 · 50분)</th><th>B과정 (월 4회 · 80분)</th></tr>'
