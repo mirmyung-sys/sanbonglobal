@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 2026-09-16 — 실제로 주소가 있는 페이지만 넣습니다.
+     홈페이지 안의 45개 메뉴는 주소가 따로 없어(모달 방식) 사이트맵에 넣을 수 없습니다. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://sanbonglobal.com/</loc><lastmod>2026-09-03</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://sanbonglobal.com/app.html</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://sanbonglobal.com/checkin.html</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://sanbonglobal.com/attendance.html</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://sanbonglobal.com/</loc><lastmod>2026-09-16</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://sanbonglobal.com/faq.html</loc><lastmod>2026-09-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sanbonglobal.com/app.html</loc><lastmod>2026-09-16</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sanbonglobal.com/checkin.html</loc><lastmod>2026-09-16</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://sanbonglobal.com/attendance.html</loc><lastmod>2026-09-16</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://sanbonglobal.com/privacy.html</loc><lastmod>2026-09-16</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>
