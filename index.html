@@ -4934,7 +4934,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-16 (v129)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-16 (v131)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -13936,24 +13936,73 @@ var _atRec=null, _atMicOn=false;
 
 /* 채점 — 완벽하지 않아도 통과시킵니다. 어르신·아이가 겁먹으면 안 되니까요. */
 function _atNorm(t){
+ /* 2026-09-16 — 대표님 「발음 평가 이상함」
+    예전엔 영어 문장부호만 지워서, 「はじめまして」와 「はじめまして。」가
+    서로 다른 말로 잡혔습니다. 한중일 부호도 같이 지우고,
+    아포스트로피는 띄어쓰지 말고 붙입니다 (I'd → id). */
  return String(t||'').toLowerCase()
-  .replace(/[.,!?;:'"()\-—–]/g,' ')
+  .replace(/[’'`´]/g,'')
+  .replace(/[.,!?;:"()\[\]{}\-—–~…]/g,' ')
+  .replace(/[。、，．！？；：「」『』（）〈〉《》〔〕・～＝‘“”]/g,' ')
   .replace(/\s+/g,' ').trim();
 }
+/* 순서를 지키면서 곹치는 개수 (띄어서 있어도 됩니다) */
+function _atSub(a,b){
+ if(!a.length||!b.length) return 0;
+ var prev=new Array(b.length+1).fill(0);
+ for(var i=1;i<=a.length;i++){
+  var cur=new Array(b.length+1).fill(0);
+  for(var j=1;j<=b.length;j++){
+   cur[j] = (a[i-1]===b[j-1]) ? prev[j-1]+1 : Math.max(prev[j],cur[j-1]);
+  }
+  prev=cur;
+ }
+ return prev[b.length];
+}
+/* 뜻을 지는 낱말만 남깁니다 — 이것이 빠지면 통과시키지 않습니다 */
+var _AT_STOP=('a an the this that these those is am are was were be been being do does did done '
+ +'have has had will would can could shall should may might must to of in on at for from with by '
+ +'and or but if so as not no yes very just really well ok okay please i you he she it we they me '
+ +'him her us them my your his its our their mine yours id ill im ive youre hes shes theyre dont '
+ +'cant wont isnt arent wasnt werent there here about into over under up down out off again too').split(' ');
+function _atContent(ws){
+ return ws.filter(function(w){ return w.length>1 && _AT_STOP.indexOf(w)<0; });
+}
 function _atScore(said,want){
+ /* 2026-09-16 전면 교체 — 의도:
+      · 똑같이 말하면 무조건 통과 (예전엔 일본어·중국어가 이걸 못 했습니다)
+      · 앞뒤에 「음」 같은 게 붙어도 통과
+      · 뜻을 지는 낱말을 틀리거나 빼먹으면 통과 안 됨
+      · 정답 뒤에 엉뚱한 말을 잘땡 붙이면 깎임 */
  var a=_atNorm(said), b=_atNorm(want);
- if(!a) return 0;
+ if(!a||!b) return 0;
  if(a===b) return 1;
- var aw=a.split(' '), bw=b.split(' ');
- var hit=0, pool=bw.slice();
- aw.forEach(function(w){ var i=pool.indexOf(w); if(i>=0){hit++; pool.splice(i,1);} });
- var recall = bw.length? hit/bw.length : 0;
- /* 글자 단위도 봅니다 — 단어를 조금 틀려도 비슷하면 인정 */
- var la=a.replace(/ /g,''), lb=b.replace(/ /g,'');
- var same=0, m=Math.min(la.length,lb.length);
- for(var i=0;i<m;i++) if(la[i]===lb[i]) same++;
- var charSim = lb.length? same/lb.length : 0;
- return Math.max(recall, (recall*0.7+charSim*0.3));
+
+ var isCJK = /[\u3040-\u30ff\u4e00-\u9fff]/.test(b) && b.indexOf(' ')<0;
+ if(isCJK){
+  /* 띄어쓰기가 없는 말 — 글자 순서로 봅니다 */
+  var ca=a.replace(/\s/g,'').split(''), cb=b.replace(/\s/g,'').split('');
+  var n=_atSub(ca,cb);
+  if(!n) return 0;
+  var f=(2*n)/(ca.length+cb.length);         /* 짧게 말해도, 길게 말해도 깎입니다 */
+  /* 2026-09-16 2차 — 한 글자가 곧 한 낱말입니다.
+     「学生」을 「先生」, 「咖啡」를 「茶」로 말하면 통과시키면 안 됩니다.
+     문장이 길면 조사 하나쯤(12%)은 봐줍니다. */
+  var miss=cb.length-n;
+  if(miss > Math.floor(cb.length*0.12)) f=Math.min(f,0.58);
+  return f;
+ }
+
+ var aw=a.split(' ').filter(Boolean), bw=b.split(' ').filter(Boolean);
+ var n2=_atSub(aw,bw);                        /* 순서를 지킨 공통 낱말 */
+ if(!n2) return 0;
+ var f1=(2*n2)/(aw.length+bw.length);
+
+ /* 뜻을 지는 낱말이 하나라도 빠지면 「한 번 더」로 내립니다 */
+ var need=_atContent(bw), got=_atContent(aw);
+ var miss=0; need.forEach(function(w){ if(got.indexOf(w)<0) miss++; });
+ if(need.length && miss>0) f1=Math.min(f1,0.58);
+ return f1;
 }
 
 /* 자유 응답 — 대본이 아니라 '본인 이야기'로 답하는 차례입니다.
@@ -17523,7 +17572,42 @@ function sglWrongPage(){
    레벨테스트는 문장이 고정이라 33개 파일이면 전부 덮습니다.
    파일이 아직 없으면 예전처럼 브라우저 음성으로 자동 폴백합니다. */
 var CRVOX_DIR='media/cr/';
-var CRVOX={};            /* 'cr_en_open' → 1 (있으면 mp3 사용) */
+/* 2026-09-16 — 실제 녹음 30개를 올렸습니다 (힙스필드 seed_audio).
+   영어 크리스탈 Ainsley · 일본어 아야카 Juno · 중국어 린신 Vera
+   여기 적힌 이름이 media/cr/<이름>.mp3 입니다.
+   파일이 없거나 못 받으면 crSay() 가 예전처럼 브라우저 음성으로 돌아갑니다. */
+var CRVOX={
+ 'cr_en_open':1,
+ 'cr_en_q1':1,
+ 'cr_en_q2':1,
+ 'cr_en_q3':1,
+ 'cr_en_q4':1,
+ 'cr_en_q5':1,
+ 'cr_en_p1':1,
+ 'cr_en_p2':1,
+ 'cr_en_p3':1,
+ 'cr_en_bye':1,
+ 'cr_ja_open':1,
+ 'cr_ja_q1':1,
+ 'cr_ja_q2':1,
+ 'cr_ja_q3':1,
+ 'cr_ja_q4':1,
+ 'cr_ja_q5':1,
+ 'cr_ja_p1':1,
+ 'cr_ja_p2':1,
+ 'cr_ja_p3':1,
+ 'cr_ja_bye':1,
+ 'cr_zh_open':1,
+ 'cr_zh_q1':1,
+ 'cr_zh_q2':1,
+ 'cr_zh_q3':1,
+ 'cr_zh_q4':1,
+ 'cr_zh_q5':1,
+ 'cr_zh_p1':1,
+ 'cr_zh_p2':1,
+ 'cr_zh_p3':1,
+ 'cr_zh_bye':1
+};
 var CRVOX_KEY={'영어':'en','일본어':'ja','중국어':'zh'};
 function crVoxSrc(id){
  if(!id)return '';
