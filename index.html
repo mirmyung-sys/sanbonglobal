@@ -4934,7 +4934,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-16 (v131)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v132)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -17629,13 +17629,24 @@ function crSay(text,code,cb,voxId){
   crStopAudio();
   try{ speechSynthesis.cancel(); }catch(e){}
   var a=new Audio(src); _crAu=a;
-  var done=false;
-  function fin2(){ if(done)return; done=true; crLipStop(); if(cb)cb(); }
+  var done=false, wd=null, wd2=null;
+  function clearWD(){ if(wd){clearTimeout(wd);wd=null;} if(wd2){clearTimeout(wd2);wd2=null;} }
+  function fin2(){ if(done)return; done=true; clearWD(); crLipStop(); if(cb)cb(); }
+  /* 2026-09-17 — 대표단 컴퓨터에서 소리 파일이 받아지다 말고(stalled) 멈춰,
+     「크리스탈 님이 말하고 있습니다…」에서 영원히 멈추는 것을 봤습니다.
+     말이 없으면 손님은 고장으로 알고 나갑니다. 모든 버팅은 타이머로 막습니다. */
+  function bail(){ if(done)return; done=true; clearWD();
+    try{ a.onended=null; a.onerror=null; a.pause(); }catch(e){}
+    crLipStop(); crSayTTS(text,code,cb); }
   a.onended=fin2;
-  a.onerror=function(){ done=true; crLipStop(); crSayTTS(text,code,cb); };  /* 파일이 없으면 음성으로 */
+  a.onerror=bail;                                  /* 파일이 없거나 깨졌으면 음성으로 */
+  a.onplaying=function(){ if(wd){clearTimeout(wd);wd=null;}
+    var d=(isFinite(a.duration)&&a.duration>0)?a.duration:12;
+    wd2=setTimeout(bail,(d*1000)+5000); };        /* 끝날 때가 지나도 안 끝나면 */
+  wd=setTimeout(bail,4000);                        /* 4초 안에 시작 안 되면 */
   crLipStart(text);
   var pr=a.play();
-  if(pr&&pr.catch) pr.catch(function(){ done=true; crLipStop(); crSayTTS(text,code,cb); });
+  if(pr&&pr.catch) pr.catch(bail);
   return;
  }
  crSayTTS(text,code,cb);
