@@ -4808,7 +4808,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v153)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v154)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -17913,7 +17913,24 @@ function sgRgAll(){ sgRedGrid(document); sgRedBorder(document); sgBlinkWatch(); 
 /* 어학뉴스 필터 「전체」 */
 .ln-filter span.on{background:#C81F2B!important;color:#fff!important;border-color:#C81F2B!important}
 
-/* ── 13. 그 밖에 인라인으로 박힌 먹색 바탕 ── */
+/* ══ 홈 화면 (2026-09-17 라이브 재검사에서 발견) ══
+   검사 범위를 모달 안으로만 잡아 홈 첫 화면을 놓쳤습니다. 손님이 제일 먼저 보는 곳입니다. */
+/* 히어로 영상 자리 */
+.hero-vid{background:#C81F2B!important}
+/* 홈 슬라이드 채움 — 사진이 없는 자리 */
+.hslide .hs-fill{background:linear-gradient(135deg,#C81F2B,#8E1119)!important}
+/* 슬라이드 버튼 — 먹색이었습니다 */
+.hs-btn{background:#fff!important;color:#B3131F!important;border:1px solid #F2C4C0!important}
+.hs-btn:hover{background:#FFF0F0!important;color:#8E1119!important;border-color:#E9A9A4!important}
+/* 과목 칩 — 사진 위 흰 글씨가 얹히므로 적색 계열로 */
+.chip{background:linear-gradient(140deg,#C81F2B,#8E1119)!important}
+.chip .chgrad{background:linear-gradient(90deg,rgba(142,17,25,.62),rgba(142,17,25,0) 64%)!important}
+/* AI 학습앱 열기 버튼 */
+a[href="app.html"]{background:linear-gradient(120deg,#C81F2B,#8E1119)!important}
+/* 관리자 점검판 (내부용) */
+[class*="admin"],#sgAdminBar,.sg-admin{background:#F1ECE1!important;color:#2A2621!important}
+
+/* ── 14. 그 밖에 인라인으로 박힌 먹색 바탕 ── */
 [style*="background:#1A1A18"],[style*="background:#1a1a18"],
 [style*="background:#0b0d12"],[style*="background:#0B0D12"],
 [style*="background:#000"]{background:var(--panel)!important;color:var(--panel-ink)!important}
