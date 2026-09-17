@@ -4846,7 +4846,7 @@ html,body{overflow-x:hidden;max-width:100%}
         학원 종류 평생직업교육학원 / 교습과정 성인대상어학 · 일시수용능력 <b>138명</b> · 전용면적 266.38㎡<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v169)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v170)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -18020,8 +18020,9 @@ function sgRgAll(){ sgRedGrid(document); sgRedBorder(document); sgBlinkWatch(); 
 .sgf-empty a{background:#C81F2B!important;color:#fff!important}
 
 /* ── 11. 3차 전수검사에서 남은 자리 ── */
-/* 홈 첫 화면 슬라이더 바탕 — 사진이 덮지만 로딩 중 검게 보입니다 */
-.hero{background:linear-gradient(135deg,#C81F2B,#8E1119)!important}
+/* 홈 첫 화면 슬라이더 바탕 — 영상이 뜨기 전 잠깐 보이는 자리.
+   2026-09-17: 빨강이 영상·슬라이드 12색을 다 삼켜서 중립 먹빛 회색으로 낮췄습니다(검정 아님). */
+.hero{background:linear-gradient(135deg,#4A453E,#2E2A25)!important}
 /* 후기 필터 · 시간표 요일 칩 「전체」 */
 .rv-filter span,.rv-filter span.on,.bg-dy em{background:#F1ECE1!important;color:#2A2621!important;
  border:1px solid #E6DFD0!important}
@@ -18033,10 +18034,11 @@ function sgRgAll(){ sgRedGrid(document); sgRedBorder(document); sgBlinkWatch(); 
 
 /* ══ 홈 화면 (2026-09-17 라이브 재검사에서 발견) ══
    검사 범위를 모달 안으로만 잡아 홈 첫 화면을 놓쳤습니다. 손님이 제일 먼저 보는 곳입니다. */
-/* 히어로 영상 자리 */
-.hero-vid{background:#C81F2B!important}
-/* 홈 슬라이드 채움 — 사진이 없는 자리 */
-.hslide .hs-fill{background:linear-gradient(135deg,#C81F2B,#8E1119)!important}
+/* 히어로 영상 자리 — 2026-09-17: 영상이 뜨기 전 빨강이 번쩍여서 중립으로 */
+.hero-vid{background:#3A362F!important}
+/* 2026-09-17 — 아래 한 줄을 걷어냈습니다. 슬라이드 12장의 고유색(pbg)을
+   !important 로 전부 빨강으로 덮고 있었습니다. 대표님: "아직도 빨가잖아"
+   .hslide .hs-fill{background:linear-gradient(135deg,#C81F2B,#8E1119)!important} */
 /* 슬라이드 버튼 — 먹색이었습니다 */
 .hs-btn{background:#fff!important;color:#B3131F!important;border:1px solid #F2C4C0!important}
 .hs-btn:hover{background:#FFF0F0!important;color:#8E1119!important;border-color:#E9A9A4!important}
