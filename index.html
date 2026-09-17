@@ -2895,6 +2895,14 @@ li:first-child > .pgh{margin-top:2px}
 /* ═══ 2026-09-17 · AI 학습관 첫 화면 다시 짜기 ═══
    대표님 「몇 초 만에 확 잡아당겨야 하는데」
    듀오링고·야나두 첫 화면을 보고: 그림 + 한 줄 + 큰 숫자 + 버튼 하나. */
+/* 히어로 밑 숫자 카드 (2026-09-17) */
+.pg-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:-10px 0 20px}
+.pg-kpi>div{background:#fff;border:1.5px solid #EDE6D8;border-radius:16px;
+ padding:16px 6px 13px;text-align:center;box-shadow:0 6px 18px rgba(40,34,26,.07)}
+.pg-kpi b{display:block;font-family:'Montserrat',sans-serif;font-weight:900;
+ font-size:28px;line-height:1;letter-spacing:-.04em;color:#B3131F}
+.pg-kpi span{display:block;margin-top:6px;font-size:12.5px;font-weight:800;color:#6E6659}
+@media(max-width:400px){.pg-kpi b{font-size:23px}.pg-kpi span{font-size:11.5px}}
 .sge-face{width:104px;height:104px;margin:14px auto 4px;border-radius:50%;overflow:hidden;
  background:#FFF3E2;border:3px solid rgba(255,255,255,.85);box-shadow:0 10px 26px rgba(0,0,0,.22)}
 .sge-face video{width:100%;height:100%;object-fit:cover;display:block}
@@ -4808,7 +4816,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v155)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v158)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -6179,7 +6187,9 @@ var REV=[
    {tag:'',ti:'일자무식이었던 처음보다 정말 훨씬 늘었어요',b:'일본어 1:1 · 김민정 선생님',p:'독학을 시도해 보다가도 금방 포기하기 일쑤였던 직장인입니다. 선생님과 1:1로 하니 빠지지 않고 이어 갈 수 있었어요.'}
  ];
  var revs=REV.map(function(r){return '<div class="rv-item">'+(r.tag?'<span class="rv-badge">'+r.tag+'</span>':'')+'<h4>'+r.ti+'</h4><div class="rv-meta">'+r.b+'</div><p>'+r.p+'</p></div>';}).join('');
- return bigImg('img/hall_12.jpg')+'<div class="pghero big rv-hero"><div class="pgeyebrow">REAL REVIEWS · 수강후기</div><h2>수강생이<br>직접 남긴 후기</h2><p>산본글로벌 수강생들이 직접 남긴 후기를 확인하세요. 점수·레벨 향상부터 회화 자신감까지, 결과가 증명합니다.</p></div>'
+ /* 2026-09-17 — 후기 페이지에 빈 교실 사진이 걸려 있었습니다. 실제 수업 사진으로 바꿉니다. */
+ return bigImg('img/hall_04.jpg')+'<div class="pghero big rv-hero"><div class="pgeyebrow">REAL REVIEWS · 수강후기</div><h2>수강생이<br>직접 남긴 후기</h2><p><b>지어낸 후기는 없습니다.</b> 게시판에 실제로 올라온 것만 옮겼습니다.</p></div>'
+ +KPI([['930','토익 (620→930)'],['IH','오픽 (두 달)'],['N2','JLPT (6개월)']])
   +'<div class="rv-filter"><span>전체</span><span>토익·토스·오픽</span><span>영어회화</span><span>일본어</span><span>중국어</span><span>기업·임원</span></div>'
   +'<div class="rv-block"><h3 class="rv-bh"><b>BEST</b> 수강 후기</h3><div class="rv-list">'+revs+'</div></div>'
   +reviewExtra()
@@ -6305,10 +6315,15 @@ function langNewsPage(){
    +'</div>'
    +'</article>';}).join('');
 
- return bigImg('img/hall_12.jpg')
+ /* 2026-09-17 — 수강후기와 같은 사진(hall_12)을 쓰고 있었습니다. 기사·숫자에 맞는 사진으로. */
+ return bigImg('img/biz_main.jpg')
  +'<div class="pghero big ln-hero"><div class="pgeyebrow">LANGUAGE NEWS · 어학 뉴스</div>'
   +'<h2>숫자로 읽는<br>어학 뉴스</h2>'
-  +'<p>수능·취업·유학에서 어학이 실제로 어떻게 움직이고 있는지, <b>보도된 기사와 숫자 그대로</b> 정리했습니다. 각 기사 아래에는 저희가 보는 관점을 한 줄로 덧붙였습니다.</p></div>'
+  +'<p><b>보도된 기사와 숫자 그대로</b>입니다.</p></div>'
+ /* 기사에 실려 있는 진짜 숫자를 그대로 올립니다 (지어내지 않습니다) */
+ +KPI((function(){var a=LNEWS[0]&&LNEWS[0].n||[];
+   var r=a.slice(0,2).map(function(x){return [x[0],x[1]];});
+   r.push([String(LNEWS.length)+'건','지금 실린 기사']);return r;})())
  +'<div class="ln-bar"><div class="ln-filter" id="lnFilter">'+chips+'</div>'
   +'<div class="ln-cnt">현재 <b id="lnCount">'+LNEWS.length+'건</b></div></div>'
  +'<div class="ln-list" id="lnList">'+cards+'</div>'
@@ -6505,8 +6520,9 @@ function faqPage(){
  return '<div class="pghero big" style="background:linear-gradient(135deg,#0C1A2E,#16283F)">'
   +'<div class="pgeyebrow">FAQ · 자주 묻는 질문 30</div>'
   +'<h2>궁금한 건<br>다 적어 두었습니다</h2>'
-  +'<p>토익 기간, 회화 시작 시점, 수강료와 환불까지 — 상담 전화로 가장 많이 받는 질문 30개에 산본글로벌어학원이 직접 답했습니다. 답이 없으면 031-466-6969로 물어보세요.</p>'
+  +'<p>전화로 가장 많이 받은 질문입니다. <b>눌러서 답을 보세요.</b></p>'
   +'<div class="pgemoji">💬</div></div>'
+  +KPI([[String(n),'질문'],[String(FAQ_DATA.length),'분야'],['0원','상담']])
   +'<div class="fq-chips">'+nav+'</div>'
   +'<div class="fq-wrap">'+body+'</div>'
   +'<div class="pgnote">※ 기간·점수는 실제 수강생 평균이며 개인차가 있습니다. 정확한 진단은 무료 상담에서 받으실 수 있습니다.<br>📍 산본역 3번 출구 도보 1분 · 롯데프라자 7층 · ☎ 031-466-6969</div>'
@@ -8050,7 +8066,7 @@ var ONETABS=['일대일 (시간권)','퍼스널 (고정)','왕기초 회화 1:1 
    회화는 영어·일본어·중국어 세 과목(각 99만원), 토익은 전용 과정(119만원)입니다.
    토익 화면에 회화(99만원) 내용을 섞지 마세요 — 대표님이 직접 잡아내셨습니다. */
 var BASE1={
- 'a':{hero:'img/hall_09.jpg',grad:'linear-gradient(120deg,#c81f2b,#e0453e)',
+ 'a':{hero:'img/gen1.jpg',grad:'linear-gradient(120deg,#c81f2b,#e0453e)',
   eyeL:'왕기초 일대일 PACKAGE · 영어 회화',heroT:'영어의 벽 앞에서<br>번번이 돌아섰다면',
   freeT:'정규반 <b>2개월</b>',freeW:'360,000원',bookT:'Basic 교재 1권 증정',
   tchT:'박호임 (Grace) · 처음 시작하는 분 전담',tn:'박호임 (Grace)',tr:'왕기초 전담 · 처음 시작하는 분 전담',
@@ -8060,7 +8076,7 @@ var BASE1={
   who:['학원 정규반의 가장 낮은 레벨도 따라가기 어려우신 분','영어를 처음 시작하거나 다시 시작하시는 분','그룹 수업에서 못 따라갈까 봐 망설이시는 분'],
   why:'첫 영어는 <b>남들 앞에서 틀리는 게 제일 무섭습니다.</b> 그래서 1:1로 20시간을 먼저 채워 기본기를 만들고, 자신이 붙었을 때 그룹반으로 넘어가시게 합니다. <b>그 그룹반 두 달이 무료</b>입니다.',
   cur:[['1~5시간','알파벳 · 발음 · 인사 표현'],['6~12시간','be동사 · 일반동사 · 현재/과거'],['13~20시간','짧은 문장 만들기 · 자기소개 · 여행 회화']]},
- 'j':{hero:'img/hall_08.jpg',grad:'linear-gradient(120deg,#b83277,#d64f97)',
+ 'j':{hero:'img/one_jpn.jpg',grad:'linear-gradient(120deg,#b83277,#d64f97)',
   eyeL:'왕기초 일대일 PACKAGE · 일본어 회화',heroT:'히라가나 앞에서<br>번번이 멈추셨다면',
   freeT:'정규반 <b>2개월</b>',freeW:'360,000원',bookT:'기초 교재 1권 증정',
   tchT:'한인 · 원어민 강사 중 상담 후 매칭',tn:'일본어 담당 강사',tr:'상담 후 매칭',
@@ -8070,7 +8086,7 @@ var BASE1={
   who:['히라가나 앞에서 시작을 미뤄 오신 분','일본어를 처음 시작하거나 다시 시작하시는 분','그룹 수업에서 못 따라갈까 봐 망설이시는 분'],
   why:'첫 외국어는 <b>남들 앞에서 틀리는 게 제일 무섭습니다.</b> 그래서 1:1로 20시간을 먼저 채워 글자와 기본 문형을 만들고, 자신이 붙었을 때 그룹반으로 넘어가시게 합니다. <b>그 그룹반 두 달이 무료</b>입니다.',
   cur:[['1~5시간','히라가나 · 가타카나 · 발음'],['6~12시간','です · ます 기본 문형 · 조사'],['13~20시간','자기소개 · 쇼핑 · 여행 회화']]},
- 'c':{hero:'img/hall_07.jpg',grad:'linear-gradient(120deg,#b8322a,#d6564a)',
+ 'c':{hero:'img/one_chn.jpg',grad:'linear-gradient(120deg,#b8322a,#d6564a)',
   eyeL:'왕기초 일대일 PACKAGE · 중국어 회화',heroT:'성조 앞에서<br>번번이 멈추셨다면',
   freeT:'정규반 <b>2개월</b>',freeW:'360,000원',bookT:'기초 교재 1권 증정',
   tchT:'한인 · 원어민 강사 중 상담 후 매칭',tn:'중국어 담당 강사',tr:'상담 후 매칭',
@@ -8080,7 +8096,7 @@ var BASE1={
   who:['성조와 발음이 어려워 시작을 미뤄 오신 분','중국어를 처음 시작하거나 다시 시작하시는 분','그룹 수업에서 못 따라갈까 봐 망설이시는 분'],
   why:'첫 외국어는 <b>남들 앞에서 틀리는 게 제일 무섭습니다.</b> 그래서 1:1로 20시간을 먼저 채워 발음과 기본 어순을 만들고, 자신이 붙었을 때 그룹반으로 넘어가시게 합니다. <b>그 그룹반 두 달이 무료</b>입니다.',
   cur:[['1~5시간','병음 · 성조 · 발음'],['6~12시간','기본 어순 · 필수 문형'],['13~20시간','자기소개 · 숫자와 가격 · 여행 회화']]},
- 'b':{hero:'img/hall_01.jpg',grad:'linear-gradient(120deg,#1A1A18,#35302A)',
+ 'b':{hero:'img/gen9.jpg',grad:'linear-gradient(120deg,#C81F2B,#8E1119)',
   eyeL:'왕기초 일대일 PACKAGE · 토익',heroT:'인강도 학원도<br>효과를 못 보셨다면',
   freeT:'정규반 <b>2개월</b> 또는 스파르타 <b>1개월</b>',freeW:'420,000원',bookT:'초급 토익 교재 2권 증정',
   tchT:'송윤정 · 최자운 (Deborah)',tn:'송윤정 · 최자운',tr:'토익 왕기초 전담',
@@ -8353,9 +8369,11 @@ function cartGo(){
    순서: ① 송윤정 강사 ② 1대1 글로벌 강의관 ③ 제이영 원장
    ③은 openPage() 가 창 맨 아래에 자동으로 붙입니다. 여기서 부르지 마세요. */
 function oneProPage(){
- return bigImg('img/hall_09.jpg')
+ /* 2026-09-17 — 1:1 인데 빈 교실이었습니다. 마주 앉은 사진으로. */
+ return bigImg('img/gen_pt.jpg')
  +H('1:1 PROFESSIONAL','완전 1:1,<br>목표까지 최단거리',
-   '그룹 수업의 속도가 아쉬웠다면, 오직 나에게 맞춘 1:1 전문관을 추천합니다. 시험 단기 완성, 회화 집중, 취약 영역 보강 등 목적별로 최적화합니다.','🎯')
+   '그룹 수업의 속도가 아쉬웠다면, <b>선생님 앞에 나 한 명</b>입니다.','🎯')
+ +KPI([['1:1','나 한 명'],['20','시간권'],['5만','시간당']])
  /* ① 송윤정 강사 */
  +'<div class="opt-t"><div class="opt-ph"><img src="img/teachers/eng_13.png" alt="송윤정 강사" loading="lazy"></div>'
   +'<div class="opt-b"><div class="opt-e">1:1 전문 · 토익 · 토스 · 오픽</div>'
@@ -8514,6 +8532,16 @@ function basePage(k){
  }
  return '<div class="sp-wrap"><button class="sp-back" onclick="openPage(\'맞춤수업\')">‹ 1대1 안내로</button>'
  +_pgHero(d.hero,d.eyeL,d.heroT,d.why,d.grad)
+ /* 2026-09-17 — 왕기초 4종에도 숫자 카드. 값은 BASE1 에 이미 있는 것만 씁니다 */
+ +KPI((function(){
+    /* d.f 는 '990,000' 문자열입니다. 990만이 아니라 99만입니다 — 한 번 틀렸던 자리입니다. */
+    var won=parseInt(String(d.f||'0').replace(/[^0-9]/g,''),10)||0;
+    /* freeT 는 '정규반 <b>2개월</b> 또는 스파르타 <b>1개월</b>' 처럼 길 수 있습니다.
+       숫자 카드에는 첫 번째 기간만 씁니다. */
+    var mm=String(d.freeT||'').match(/<b>([^<]+)<\/b>/);
+    var mon=mm?mm[1].trim():String(d.freeT||'').replace(/<[^>]*>/g,'').replace('정규반','').trim();
+    return [['20','1:1 시간'],[mon||'2개월','정규반 무료'],
+            [Math.round(won/10000)+'만','최종가']];})())
  +langs
  +'<div class="bt-price"><div class="o">정가 '+d.o+'원</div>'
   +'<div class="f">'+d.f+'<em>원</em></div>'
@@ -15937,6 +15965,13 @@ function SGCTA_OLD(sub){return '<div class="sgc">'
  +'<button class="sgc-btn" onclick="openPage(\'수강신청\')">수강신청 하러가기 ›</button>'
  +'<div class="sgc-n">문의 031-466-6969 · 카카오톡 채널 @산본글로벌어학원</div></div>';}
 
+/* 2026-09-17 — 히어로 밑에 붙는 숫자 카드.
+   대표님 「오? 하면서 클릭하게」 — 글을 읽히기 전에 숫자로 눈을 멈춥니다.
+   쓰는 법: +KPI([['30','질문'],['6','분야'],['0원','상담']]) */
+function KPI(rows){
+ if(!rows||!rows.length)return '';
+ return '<div class="pg-kpi">'+rows.map(function(r){
+  return '<div><b>'+r[0]+'</b><span>'+r[1]+'</span></div>';}).join('')+'</div>';}
 function _pgHero(img,eye,title,desc,grad){return '<div class="pgimg"><img src="'+img+'" alt="" loading="eager"></div>'
  +'<div class="pghero big" style="background:'+grad+'"><div class="pgeyebrow">'+eye+'</div><h2>'+title+'</h2><p>'+desc+'</p></div>';}
 function _pgBand(img,t,h){return '<div class="pgband"><div class="pgband-im"><img src="'+img+'" alt="" loading="lazy"></div>'
@@ -16310,9 +16345,11 @@ function ttPage(){
    return '<div class="ttg-r"><div class="ttg-tp"><b>'+r[1]+'</b><span class="d">'+r[2]+'</span></div>'
     +'<div class="ttg-bt"><span class="t">🕐 '+r[3]+'</span><span class="tc">'+r[4]+'</span></div></div>';}).join('');
   return '<div class="ttg-c"><div class="ttg-h" style="background:'+c+'" onclick="'+go+'">'+k+'<span>'+TTG[k].length+'개 반 · 자세히 ›</span></div>'+rws+'</div>';}).join('');
- return _pgHero('img/hall_01.jpg','TIMETABLE · 전체 시간표','열려 있는 반을<br>한 장에 담았습니다',
-  '지금 개강해 있거나 곧 여는 반 <b>전부</b>입니다. 요일과 시간으로 훑어보시고 마음에 드는 반을 고르세요.',
-  'linear-gradient(120deg,#1A1A18,#35302A)')
+ return _pgHero('img/hall_06.jpg','TIMETABLE · 전체 시간표','열려 있는 반을<br>한 장에 담았습니다',
+  '지금 열려 있는 반 <b>전부</b>입니다.',
+  'linear-gradient(120deg,#C81F2B,#8E1119)')
+ +KPI([[String(Object.keys(TTG).reduce(function(a,k){return a+TTG[k].length;},0)),'개 반'],
+       [String(Object.keys(TTG).length),'과목'],['06:30','첫 수업']])
  +SEC('시간대별로 고르기','<div class="tt-q">'
   +'<button class="tt-b" onclick="openStep(\'영어회화\',\'새벽반\')">🌅 새벽 06:30~08:35</button>'
   +'<button class="tt-b" onclick="openStep(\'영어회화\',\'STEP1\')">☀️ 오전 10:00~13:10</button>'
