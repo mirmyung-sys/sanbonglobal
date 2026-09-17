@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 2026-09-16 — 실제로 주소가 있는 페이지만 넣습니다.
-     홈페이지 안의 45개 메뉴는 주소가 따로 없어(모달 방식) 사이트맵에 넣을 수 없습니다. -->
+<!-- 2026-09-17 ~ 2026-09-30 : 이지교육 가맹계약 종료 전이라 새 상호 주소를 검색엔진에 알리지 않습니다.
+     10월 1일 정식오픈 때 아래 주석 안의 목록을 되살리세요. robots.txt 도 같이 Allow: / 로 바꾸세요. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://sanbonglobal.com/</loc><lastmod>2026-09-16</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://sanbonglobal.com/faq.html</loc><lastmod>2026-09-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sanbonglobal.com/app.html</loc><lastmod>2026-09-16</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://sanbonglobal.com/checkin.html</loc><lastmod>2026-09-16</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://sanbonglobal.com/attendance.html</loc><lastmod>2026-09-16</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://sanbonglobal.com/privacy.html</loc><lastmod>2026-09-16</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+<!--
+  <url><loc>https://sanbonglobal.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://sanbonglobal.com/faq.html</loc><priority>0.8</priority></url>
+  <url><loc>https://sanbonglobal.com/app.html</loc><priority>0.6</priority></url>
+  <url><loc>https://sanbonglobal.com/checkin.html</loc><priority>0.5</priority></url>
+  <url><loc>https://sanbonglobal.com/attendance.html</loc><priority>0.5</priority></url>
+  <url><loc>https://sanbonglobal.com/privacy.html</loc><priority>0.3</priority></url>
+-->
 </urlset>
