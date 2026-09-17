@@ -4776,7 +4776,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v144)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v145)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -6963,7 +6963,7 @@ function evGate(v,ctx){var ps=evParts(v);
  return true;}
 function exDiscChange(){var de=document.getElementById('exDisc');if(!evGate(de.value,'ex')){de.value='0';}exPrice();}
 function spDiscChange(){var de=document.getElementById('spDisc');if(!evGate(de.value,'sp')){de.value='0';}spPrice();}
-/* ===== 확인 후 지급 혜택 신청 =====
+/* ===== 데스크에서 진행하는 혜택 안내 =====
    온라인 결제로는 '두 사람이 같은 날 등록했는지'를 확인할 방법이 없습니다.
    그래서 즉시 할인으로 두지 않고, 두 분 결제가 확인된 뒤에 혜택을 드리는 구조로 갑니다. */
 var CLAIMS={
@@ -7324,7 +7324,7 @@ function discInfo(subj){
  discClose();
  var rows=EVKEYS.map(function(k){
    var e=SGEV[k]||{};var on=evActive(k)&&!e.offline;var pct=Math.round(_evPct(subj,k)*100);
-   var tag=e.offline?'<span class="di-badge di-off">확인 후 지급</span>':(on?'<span class="di-badge di-on">진행중</span>':'<span class="di-badge di-off">기간 아님</span>');
+   var tag=e.offline?'<span class="di-badge di-off">데스크에서 진행</span>':(on?'<span class="di-badge di-on">진행중</span>':'<span class="di-badge di-off">기간 아님</span>');
    return '<div class="di-row'+(on?'':' off')+'"><div class="di-rate">'+pct+'%</div>'
     +'<div><div class="di-t">'+e.nm+tag+'</div><div class="di-d">'+evPeriod(k)+'</div></div></div>';}).join('');
  var mx=_maxPct(subj);
