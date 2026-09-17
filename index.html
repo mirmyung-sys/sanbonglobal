@@ -502,7 +502,11 @@ header:hover .megamenu{opacity:1;visibility:visible;transform:translateY(0)}
 .pghero.big{min-height:290px;display:flex;flex-direction:column;justify-content:center;padding:54px 44px}
 .pghero.big h2{font-size:44px;line-height:1.16}
 .pghero.big p{font-size:16px;max-width:520px}
-.pghero .pgart{position:absolute;right:26px;top:0;bottom:0;height:100%;width:auto;opacity:.96;pointer-events:none}
+/* 2026-09-17 — 장식 그림이 DOM 에서 글자 뒤에 있어 제목 끝글자를 덮고 있었습니다.
+   (「지금 받으실 수 있는 할인 전부입니다」의 '니다' 가 선물상자에 묻혔습니다)
+   그림은 z-index:0, 글자는 z-index:1 로 올려 겹치지 않게 했습니다. */
+.pghero .pgart{position:absolute;right:26px;top:0;bottom:0;height:100%;width:auto;opacity:.96;pointer-events:none;z-index:0}
+.pghero .pgeyebrow,.pghero h2,.pghero p{position:relative;z-index:1}
 @media(max-width:680px){.pghero.big{padding:40px 26px;min-height:auto}.pghero.big h2{font-size:29px}.pghero .pgart{opacity:.22;right:-16px}
 .dongle-bn{width:100vw;position:relative;left:50%;transform:translateX(-50%);margin-top:-76px;line-height:0;overflow:hidden;background:#3F5D4A}.dongle-bn svg{display:block;width:100%;height:auto}
 .encat.hot{box-shadow:0 10px 30px -14px rgba(200,31,43,.45)}.encat-d{font-size:16px;line-height:1.75;color:#3f4757;margin:14px 0 4px}.encat-d b{color:#c81f2b}.encat-pts{list-style:none;margin:12px 0 4px;padding:0;display:flex;flex-direction:column;gap:9px}.encat-pts li{font-size:15px;line-height:1.65;color:#3f4757;padding-left:16px;position:relative}.encat-pts li:before{content:'';position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:#c81f2b}.encat-pts li b{color:#1A1A18;font-weight:800}.encat-go{display:block;width:100%;margin-top:14px;padding:15px 18px;border:0;border-radius:12px;cursor:pointer;background:linear-gradient(120deg,#c81f2b,#e0453e);color:#fff;font-size:16px;font-weight:800;letter-spacing:-.01em;box-shadow:0 8px 20px -8px rgba(200,31,43,.6)}.encat-go:hover{filter:brightness(1.06)}
@@ -4570,7 +4574,7 @@ html,body{overflow-x:hidden;max-width:100%}
       <div class="ddown">
         <a href="#" onclick="openPage('이벤트혜택');return false;">10~11월 오픈이벤트</a>
         <a href="#" onclick="openPage('AI산글');return false;">🐋 AI 학습관</a>
-        <a href="#" onclick="openPage('가을학기 할인');return false;">글로벌 위크</a>
+        <a href="#" onclick="openPage('가을학기 할인');return false;">지금 받는 할인</a>
         <a href="#" onclick="openPage('네이버 리뷰 이벤트');return false;">네이버 리뷰 이벤트</a>
         <a href="#" onclick="openPage('동글이');return false;">동글이</a>
       </div>
@@ -4772,7 +4776,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v141)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v144)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -5019,7 +5023,7 @@ var NOTICES=[
  {id:'n14', tag:'이벤트', t:'오픈이벤트 — 10~11월 전 과목 10% 할인', d:'2026.09.01', pin:1,
   b:'<p>새 이름을 기념해 <b>10월 1일부터 11월 30일까지</b> 전 과목 10% 할인을 진행합니다.</p>'
     +'<ul><li>신규 등록 <b>10%</b> — 결제창에서 자동 적용됩니다 (1:1·퍼스널 포함)</li>'
-    +'<li>재등록은 <b>얼리버드 5%</b>가 더 붙습니다 (매달 19~25일, 명부 확인 후 환급)</li>'
+    +'<li>재등록은 <b>5%</b>가 더 붙습니다 (매달 19~25일 · 사무처 확인 후 데스크에서 진행)</li>'
     +'<li>12월부터는 정가입니다 — 두 달뿐인 가격입니다</li></ul>',
   act:"openPage('오픈이벤트')", actLabel:'오픈이벤트 자세히 보기'},
 
@@ -5046,10 +5050,17 @@ var NOTICES=[
     +'<li>정규 넉 달 · 스파르타 두 달 — <b>740,000원</b></li></ul>',
   act:"openExam('토익')", actLabel:'토익 과정 보기'},
 
- {id:'n08', tag:'이벤트', t:'글로벌 위크 얼리버드 — 11/19~11/25', d:'2026.08.25',
-  b:'<p>글로벌 위크 기간에 등록하시면 <b>얼리버드 20%</b>(토익 25%)가 적용됩니다.</p>'
-    +'<p>기간은 <b>11월 19일 ~ 11월 25일</b>이며, 오픈이벤트와 중복되지 않고 더 큰 쪽 하나만 적용됩니다.</p>',
-  act:"openPage('가을학기 할인')", actLabel:'글로벌 위크 보기'},
+ /* 2026-09-17 — 예전에 이 자리에 「글로벌 위크 얼리버드 20%(토익 25%)」가 걸려 있었습니다.
+    대표님 확정 할인(오픈10 / 환승10 / 재등록5 / 새벽30)에 없는 숫자라 내렸습니다.
+    대신 실제로 진행 중인데 안내가 없던 환승 이벤트를 올립니다. */
+ {id:'n08', tag:'이벤트', t:'환승 이벤트 — 다른 학원에서 옮겨 오시는 분 10%', d:'2026.09.17',
+  b:'<p>다른 학원에 다니시다 산본글로벌어학원으로 옮겨 오시면 <b>10%</b>를 깎아 드립니다. '
+    +'<b>기간 없이 상시</b>로 진행합니다.</p>'
+    +'<ul><li>정규반 · 시험대비반에 적용됩니다 (1:1 · 퍼스널 제외)</li>'
+    +'<li><b>10월 1일 ~ 11월 30일</b>에는 오픈이벤트 10%와 함께 받으셔서 <b>20%</b>입니다</li>'
+    +'<li>수강신청 화면에서 다니시던 학원만 적어 주시면 바로 할인가로 결제하십니다</li>'
+    +'<li>첫 수업 오실 때 수강증 · 결제내역 · 학원 앱 화면 가운데 하나만 보여 주시면 됩니다</li></ul>',
+  act:"openPage('수강신청')", actLabel:'수강신청 바로가기'},
 
  {id:'n07', tag:'공지', t:'원장 직접 상담 — 등록 전에 먼저 진단받으세요', d:'2026.08.24',
   b:'<p>Georgetown TESOL 출신 원장이 <b>직접</b> 상담해 드립니다.</p>'
@@ -5134,7 +5145,7 @@ const SLIDES=[
  {bg:'img/hall_12.jpg', e:'2026 · 10월 신규 모집', t:'10월 신규 개강,<br>지금이 시작하기 제일 좋습니다', s:'새벽반 · 주말반 영어부터 토익 · 토스 · 오픽 · 토플까지 — 새로 여는 반만 모았습니다', act:"openPage('신규모집')", pbg:'linear-gradient(135deg,#155e9e,#2f8fd8)', tc:'#ffe98a', tc2:'#ddefff', ac:'#ffd98a', bbg:'#ffd94d', btc:'#1a1205'},
  {e:'무한 현장강의 이벤트', t:'무한수강권 —<br>같은 반을 한 번 더', s:'한 번 들어서 안 붙으면 같은 반을 통째로 다시 듣는 수강권입니다. 앞 단계 재수강 + AI 산글 40강이 함께 열립니다. 정규 넉 달 · 스파르타 두 달, 740,000원', act:"openExam('토익')", pbg:'linear-gradient(135deg,#c81f2b,#e0453e)', tc:'#ffd94d', tc2:'#ffe3e0', ac:'#ffe0dd', bbg:'#ffffff', btc:'#c81f2b', bg:'img/hall_05.jpg', cls:'hsty-impact', faces:['eng_13','elly','eng_6','eng_15','eng_14'], fnames:['송윤정','엘리 킴','최자운','김현정','유미용']},
  {bg:'img/hall_10.jpg', e:'산본글로벌어학원', t:'AI 학습관이<br>열렸습니다', s:'영어·일본어·중국어 회화부터 토익·토스·오픽·토플·JLPT·HSK까지 — 한 과 3분, 듣기와 채점은 AI가 합니다. 학원 수강생은 무료. 산글 현강 수강생은 무료', act:"openPage('AI산글')", pbg:'linear-gradient(135deg,rgba(10,13,20,.86),rgba(14,138,90,.86))', tc:'#8df5c3', tc2:'#d6f5e7', ac:'#3ED598', bbg:'#3ED598', btc:'#0A0D14', cls:'hsty-impact'},
- {bg:'img/hall_01.jpg', e:'OPEN EVENT · 10~11월', t:'새 이름 기념,<br>두 달 전 과목 10%', s:'10월 1일부터 11월 30일까지 — 신규 등록 10%, 재등록은 얼리버드 5%가 더 붙습니다', act:"openPage('오픈이벤트')", pbg:'linear-gradient(135deg,#e8b02c,#d08e00)', tc:'#231603', ac:'#7a4d00', bbg:'#1a1205', btc:'#ffd94d', cls:'hsty-impact hsty-dark'},
+ {bg:'img/hall_01.jpg', e:'OPEN EVENT · 10~11월', t:'새 이름 기념,<br>두 달 전 과목 10%', s:'10월 1일부터 11월 30일까지 — 신규 등록 10%, 재등록은 5%가 더 붙습니다 (데스크에서 진행)', act:"openPage('오픈이벤트')", pbg:'linear-gradient(135deg,#e8b02c,#d08e00)', tc:'#231603', ac:'#7a4d00', bbg:'#1a1205', btc:'#ffd94d', cls:'hsty-impact hsty-dark'},
  {bg:'img/hall_08.jpg', e:'무료 레벨 진단', t:'내 실력, 무료로<br>정확하게 진단', s:'문법·어휘·듣기 자가진단 + 원어민 회화 레벨테스트 · 결과 리포트를 바로 드립니다', act:"openPage('레벨테스트')", pbg:'linear-gradient(135deg,#0e8f88,#12a89f)', tc:'#fff3b0', tc2:'#ccf5f1', ac:'#ccf5f1', bbg:'#ffffff', btc:'#0e8f88'},
  {bg:'img/hall_07.jpg', e:'1:1 GLOBAL', t:'나만을 위한<br>완전 맞춤 수업', s:'목표와 일정에 맞는 1대1 수업을 골라 드립니다', act:"openPage('맞춤수업')", pbg:'linear-gradient(135deg,#7658c8,#9a7ee0)', tc:'#f1eaff', tc2:'#dccffa', ac:'#efe6ff', bbg:'#ffffff', btc:'#5a3f92', cls:'hsty-soft'},
  {bg:'img/hall_09.jpg', e:'FREE · 무료 상담 + 무료 청강', t:'듣고 나서<br>판단하세요', s:'산본글로벌어학원은 회원님께 무료 청강 혜택을 드립니다 — 유학 · 토익 · 영어 · 시험대비 전 과목 무료 상담과 실제 수업 청강 1회', act:"openPage('무료청강')", pbg:'linear-gradient(135deg,#0E8A5A,#14B06E)', tc:'#eaffd6', tc2:'#d6f5e7', ac:'#D6F5E7', bbg:'#ffffff', btc:'#0E8A5A'},
@@ -5772,7 +5783,7 @@ var AGFULL={
   +'<tr><th>1/2 경과 후</th><td>반환하지 않습니다</td></tr></table>'
   +'<p>무료 개월이 포함된 상품은 <b>실제 납부한 금액</b>을 기준으로, 이미 수강한 개월 수의 정가 상당액을 공제하고 정산합니다.</p>'
   +'<h4>제8조 (청약철회)</h4><p>「전자상거래 등에서의 소비자보호에 관한 법률」에 따라 결제일로부터 7일 이내 청약철회가 가능합니다. 다만 이미 수강이 개시된 경우에는 제7조의 반환 기준에 따라 정산합니다.</p>'
-  +'<h4>제9조 (이벤트 할인)</h4><p>이벤트 할인은 각 이벤트에 정해진 기간과 조건에서만 적용되며, 온라인에서 즉시 적용되는 할인은 어떤 조합으로도 <b>정가 대비 20%</b>(1:1·퍼스널 포함)를 넘지 않습니다. 무료 개월이 포함된 상품과는 중복되지 않고 더 유리한 쪽이 자동 적용됩니다. 재등록 얼리버드는 학생 명부에서 확인된 뒤 환급 방식으로 지급합니다.</p>'
+  +'<h4>제9조 (이벤트 할인)</h4><p>이벤트 할인은 각 이벤트에 정해진 기간과 조건에서만 적용되며, 온라인에서 즉시 적용되는 할인은 어떤 조합으로도 <b>정가 대비 20%</b>(1:1·퍼스널 포함)를 넘지 않습니다. 무료 개월이 포함된 상품과는 중복되지 않고 더 유리한 쪽이 자동 적용됩니다. 재등록 이벤트는 학생 명부에서 확인된 뒤 환급 방식으로 지급합니다.</p>'
   +'<h4>제4장 기타</h4>'
   +'<h4>제10조 (회원의 의무)</h4><ul><li>수업 중 녹음·녹화 및 교재의 무단 복제·배포를 하지 않습니다.</li><li>계정을 타인에게 대여·양도하지 않습니다.</li><li>다른 수강생의 학습을 방해하지 않습니다.</li></ul>'
   +'<h4>제11조 (탈퇴)</h4><p>회원은 언제든지 데스크 또는 '+SGA_BIZ.tel+'로 탈퇴를 요청할 수 있으며, 학원은 지체 없이 처리합니다. 다만 관계 법령상 보존 의무가 있는 기록은 해당 기간 동안 보관합니다.</p>'
@@ -5935,15 +5946,16 @@ function eventHubPage(){
     ['기간','<b>10월 1일 ~ 11월 30일</b> 두 달'+(openOn?' <b style="color:#0e8a5a">(진행중)</b>':' <span style="color:#8a90a0">(아직 시작 전)</span>')],
     ['대상','신규 · 재등록 모두'],
     ['적용','결제창에서 <b>자동으로 적용</b>됩니다. 따로 신청하지 않으셔도 됩니다.']])
-  +'<div class="lead">상호를 바꾸는 김에 하는 행사라 <b>두 달만</b> 합니다. 12월부터는 재등록 5%만 남습니다.</div>')
+  +'<div class="lead">상호를 바꾸는 김에 하는 행사라 <b>두 달만</b> 합니다. 12월부터는 환승 이벤트 10%와 재등록 5%만 남습니다.</div>')
  +(pre?('<div class="fq"><b>지금은 9월입니다 — 미리 잡아 두실 수 있습니다</b><span>오픈이벤트는 10월 1일부터입니다. 9월에 <b>사전예약</b>을 남겨 두시면 인기 시간대를 먼저 배정받으시고, 결제는 10월 1일에 10% 적용가로 하십니다. 홈 화면 위쪽 파란 띠에서 신청하실 수 있습니다.</span></div>'):'')
 
  +SEC('② 저희가 드리는 할인은 이게 전부입니다',
   CT(['이벤트','할인','받는 방법'],
    [['오픈이벤트','<b>10%</b>','결제창에서 자동 적용 · 1:1·퍼스널 포함'],
-    ['재등록 얼리버드','<b>5%</b>','매달 19~25일 · 학생 명부 확인 후 환급']])
+    ['환승 이벤트','<b>10%</b>','다른 학원에서 옮겨 오시는 분 · 상시 · 1:1·퍼스널 제외'],
+    ['재등록 이벤트','<b>5%</b>','매달 19~25일 · 사무처 확인 후 데스크에서 진행']])
   +'<div class="lead">할인 종류를 늘리지 않았습니다. <b>깎아서 데려오는 게 아니라 수업으로 남게 하는 쪽</b>을 택했기 때문입니다. 대신 아래의 <b>무료수강</b>은 할인과 별개로 그대로 드립니다.</div>'
-  +'<div class="pgnote">※ 재등록 얼리버드는 온라인에서 재원생인지 확인할 방법이 없어 <b>즉시 할인 대신 확인 후 환급</b>으로 드립니다. 받으시는 총액은 같습니다.</div>')
+  +'<div class="pgnote">※ <b>재등록 이벤트 5% 할인은 사무처에서 확인 후 진행됩니다. 데스크에서 진행해 주시기 바랍니다.</b> 받으시는 총액은 같습니다.</div>')
 
  /* --- 2장 --- */
  +_pgBand('img/hall_08.jpg','③ 할인이 아니라 무료수강 — 1대1 등록 시',
@@ -5982,7 +5994,7 @@ function eventHubPage(){
  +SEC('⑦ 12월부터는 이렇게 됩니다',
   CT(['시점','받으실 수 있는 것'],
    [['<b>10월 ~ 11월</b>','오픈이벤트 <b>10%</b> (1:1·퍼스널 포함)'],
-    ['<b>12월부터</b>','재등록 얼리버드 <b>5%</b> (매달 19~25일)'],
+    ['<b>12월부터</b>','환승 이벤트 <b>10%</b> (상시) · 재등록 이벤트 <b>5%</b> (매달 19~25일 · 데스크)'],
     ['상시','1대1 등록 시 <b>무료수강</b> · 무료 청강 · 무료 레벨테스트']])
   +'<div class="lead">오픈이벤트는 <b>11월 30일에 끝납니다.</b> 두 달짜리 행사라 연장 계획이 없습니다. 12월에 등록하셔도 손해는 아니지만, 같은 반을 10% 싸게 시작하실 수 있는 건 11월까지입니다.</div>')
 
@@ -6504,9 +6516,9 @@ const PAGES={
   +SEC('기초·회화','<div class="lead">성조와 병음부터 시작해 일상 회화까지, 원어민 발음으로 정확하게 익힙니다.</div>')
   +SEC('HSK','<div class="lead">급수별 필수 어휘·유형을 집중 학습하고 기출로 마무리해 목표 급수 합격을 돕습니다.</div><div class="chips"><span>HSK 4급</span><span>HSK 5급</span><span>HSK 6급</span></div>')
   +'<div class="pgnote">담당: 오금한·하홍금 외 원어민 강사 · 시간표는 강의관에서 확인</div>'+GO('중국어')+CTA(),
- '가을학기 할인':bigImg('img/hall_11.jpg')+HV('GLOBAL WEEK · 얼리버드 할인','글로벌 위크,<br>오직 7일간 할인주간','10월 19일(월)부터 25일(일)까지 일주일. 오픈이벤트 10%가 적용된 값으로 미리 자리를 잡아 두세요.','linear-gradient(120deg,#12203d,#caa23a)',ART_GIFT)
-  +'<div class="evtimeline"><div class="evt on"><div class="evt-d">NOW</div><div class="evt-b"><b>오픈이벤트 10%</b><p>10월 1일 ~ 11월 30일 · 전 과목 자동 적용</p></div></div><div class="evt"><div class="evt-d">재등록</div><div class="evt-b"><b>얼리버드 5%</b><p>기존 수강생 · 매달 19~25일 · 명부 확인 후 환급</p></div></div><div class="evt"><div class="evt-d">상시</div><div class="evt-b"><b>무료수강</b><p>1대1 등록 시 그룹반을 무료로 더 다니십니다</p></div></div></div>'
-  +SEC('이런 혜택도 있어요',CT(['이벤트','내용'],[['오픈이벤트','<b>전 과목 10%</b> · 1:1 포함 · 10월 1일 ~ 11월 30일'],['재등록 얼리버드','학생 명부 확인 후 <b>5% 환급</b> 또는 교재비 지원 · 매달 19~25일'],['산글 패스','오래 다니실수록 무료 개월이 붙습니다'],['다과목 수강','교재 지원 · 상담 후 안내'],['국비지원','내일배움카드 과정 별도 안내'],['<b>상한</b>','<b>오픈이벤트 10% (1:1 포함)</b>']]))
+ '가을학기 할인':bigImg('img/hall_11.jpg')+HV('DISCOUNT · 지금 받는 할인','지금 받으실 수 있는<br>할인 전부입니다','오픈 10% · 환승 10% · 재등록 5% — 이게 전부입니다.','linear-gradient(120deg,#12203d,#caa23a)',ART_GIFT)
+  +'<div class="evtimeline"><div class="evt on"><div class="evt-d">NOW</div><div class="evt-b"><b>오픈이벤트 10%</b><p>10월 1일 ~ 11월 30일 · 전 과목 자동 적용</p></div></div><div class="evt on"><div class="evt-d">상시</div><div class="evt-b"><b>환승 이벤트 10%</b><p>다른 학원에서 옮겨 오시는 분 · 기간 없음 · 1:1·퍼스널 제외</p></div></div><div class="evt"><div class="evt-d">재등록</div><div class="evt-b"><b>재등록 이벤트 5%</b><p>기존 수강생 · 매달 19~25일 · 사무처 확인 후 데스크에서 진행</p></div></div><div class="evt"><div class="evt-d">상시</div><div class="evt-b"><b>무료수강</b><p>1대1 등록 시 그룹반을 무료로 더 다니십니다</p></div></div></div>'
+  +SEC('이런 혜택도 있어요',CT(['이벤트','내용'],[['오픈이벤트','<b>전 과목 10%</b> · 1:1 포함 · 10월 1일 ~ 11월 30일'],['환승 이벤트','<b>10%</b> · 상시 · 정규반·시험대비반 (1:1·퍼스널 제외)'],['재등록 이벤트','<b>5%</b> · 매달 19~25일 · 사무처 확인 후 <b>데스크에서 진행</b>'],['산글 패스','오래 다니실수록 무료 개월이 붙습니다'],['다과목 수강','교재 지원 · 상담 후 안내'],['국비지원','내일배움카드 과정 별도 안내'],['<b>상한</b>','어떤 조합으로도 <b>정가 대비 20%</b> · <b>1:1·퍼스널은 10%</b> · 새벽반만 30%']]))
   +'<div class="pgnote">※ 할인 폭·대상은 등록 시점·과정에 따라 달라질 수 있어요. 정확한 금액은 상담 시 안내드립니다. · 031-466-6969</div><a class="pgcta" href="#" onclick="closePage();openTT();return false;">개강 일정 보기 ›</a>'+CTA(),
  '수강신청':enrollPage(),
  '수강후기':reviewPage(),
@@ -6862,8 +6874,10 @@ var SGEV={
   nopers:true,verify:true,dsc:'다른 학원에서 옮겨 오시는 분 · 상시 · 정규반·시험대비반만 (1:1 퍼스널 제외)'},
  /* 2026-09-17 — 얼리버드(12월 10%)는 뺐습니다.
     대표님 「할인률이 많은게 좋은것만은 아닌것같다」. 오픈·환승·재등록 셋으로 단순하게 갑니다. */
- early:{rate:0.05,monthly:[19,25],loyal:true,offline:true,nm:'재등록 얼리버드',
-  dsc:'기존 수강생인지 온라인에서는 확인할 수 없습니다. 재등록 확인 신청 후 확정해 드립니다 · 매달 19~25일'},
+ /* 2026-09-17 대표님 지시 — 「재등록 이벤트 5% 할인은 사무처에서 확인 후 진행됩니다.
+    데스크에서 진행해 주시기 바랍니다.」 온라인 신청 폼을 없애고 데스크 안내로 바꿨습니다. */
+ early:{rate:0.05,monthly:[19,25],loyal:true,offline:true,nm:'재등록 이벤트',
+  dsc:'사무처에서 확인 후 진행됩니다 · 데스크에서 진행해 주시기 바랍니다 · 매달 19~25일'},
  /* 새벽반 조조할인 — 목록에서 고르는 게 아니라 새벽반을 선택하시면 자동으로 붙습니다 */
  dawn:{rate:0.30,auto:true,nm:'새벽반 조조할인',dsc:'새벽반에만 적용 · 다른 할인과 합쳐 최대 30%'}
 };
@@ -6953,42 +6967,30 @@ function spDiscChange(){var de=document.getElementById('spDisc');if(!evGate(de.v
    온라인 결제로는 '두 사람이 같은 날 등록했는지'를 확인할 방법이 없습니다.
    그래서 즉시 할인으로 두지 않고, 두 분 결제가 확인된 뒤에 혜택을 드리는 구조로 갑니다. */
 var CLAIMS={
- early:{nm:'재등록 얼리버드',ic:'\u2B50',
-  why:'재등록 할인은 <b>기존 수강생</b> 전용입니다. 온라인에서는 누가 재원생인지 확인할 방법이 없어 즉시 할인으로는 넣지 않았습니다.',
-  how:['결제는 <b>오픈이벤트 10%</b>로 먼저 진행하십니다.','아래에 재원 정보를 남기십니다.','학생 명부에서 확인되면 <b>5% 상당</b>을 돌려드립니다.'],
-  give:'\u00b7 <b>5% 환급</b> &nbsp;또는&nbsp; \u00b7 <b>교재비 지원</b>',
-  f2:'직전에 들으신 반 (기억나는 대로)',f2p:'예: 엘리 킴 토익 정규 중급',
-  bn:['5% 환급','교재비 지원','상담 후 결정'],
-  foot:'\u203B 매달 <b>19일 ~ 25일</b> 사이 신청분에 한합니다.<br>\u203B 학생 명부에서 확인되지 않으면 적용되지 않습니다.'}};
-function claimOpen(k){var C=CLAIMS[k]||CLAIMS.early;_claimK=k;lvOpenRun(
- '<h3 class="lvr-t">'+C.ic+' '+C.nm+' 신청</h3>'
- +'<div class="lvr-note" style="text-align:left">'+C.why+'<br><br>'
- +'<b>진행 방식</b><br>'+C.how.map(function(x,i){return (i+1)+'. '+x;}).join('<br>')+'<br>&nbsp;&nbsp;'+C.give+'</div>'
- +'<form id="famF" onsubmit="return famSubmit(this)">'
- +'<div class="rsv-f"><label>신청하시는 분 성함<input name="n1" required placeholder="홍길동"></label>'
- +'<label>연락처<input name="p1" required placeholder="010-0000-0000"></label>'
- +'<label>'+C.f2+'<input name="n2" required placeholder="'+C.f2p+'"></label>'
- +'<input type="hidden" name="p2" value="-">'
- +'<label>수강 과목<input name="sj" placeholder="예: 영어회화 / 토익"></label>'
- +'<label>받으실 혜택<select name="bn">'+C.bn.map(function(x){return '<option>'+x+'</option>';}).join('')+'</select></label></div>'
- +'<button class="lvr-go" type="submit" style="border:0;cursor:pointer;width:100%">신청 접수하기 \u203A</button></form>'
- +'<div id="famDone"></div>'
- +'<div class="lvr-note" style="font-size:12px">'+C.foot+'</div>');}
+ early:{nm:'재등록 이벤트',ic:'\u2B50'}};
+/* 2026-09-17 — 온라인 신청 폼을 없앴습니다.
+   대표님 「사무처에서 확인 후 진행됩니다. 데스크에서 진행해 주시기 바랍니다.」
+   성함·연락처를 받아 두고 처리는 데스크에서 하면 손님이 두 번 말해야 합니다.
+   그래서 화면에서는 안내만 하고, 처리는 데스크 한 곳으로 모읍니다. */
+function claimOpen(k){var C=CLAIMS[k]||CLAIMS.early;_claimK=k;
+ var pct=Math.round(((SGEV[k]&&SGEV[k].rate)||0.05)*100);
+ lvOpenRun(
+ '<h3 class="lvr-t">'+C.ic+' '+C.nm+' '+pct+'% 안내</h3>'
+ +'<div class="lvr-note" style="text-align:left;font-size:15.5px;line-height:1.95">'
+ +'<b>재등록 이벤트 '+pct+'% 할인은 사무처에서 확인 후 진행됩니다.</b><br>'
+ +'<b>데스크에서 진행해 주시기 바랍니다.</b><br><br>'
+ +'\u00b7 결제는 <b>오픈이벤트</b> 적용가로 먼저 하셔도 됩니다.<br>'
+ +'\u00b7 재원 여부가 확인되면 데스크에서 <b>'+pct+'%</b>를 처리해 드립니다.<br>'
+ +'\u00b7 신청 기간 — 매달 <b>19일 ~ 25일</b></div>'
+ +'<a class="lvr-go" href="tel:0314666969">전화로 문의 031-466-6969</a>'
+ +'<button class="lvr-go tk-ghost" type="button" style="border:0;cursor:pointer;width:100%;margin-top:8px" onclick="lvCloseRun()">닫기</button>'
+ +'<div class="lvr-note" style="font-size:12px">\u203B 학생 명부에서 확인되지 않으면 적용되지 않습니다.</div>');}
 var _claimK='early';
-function famSubmit(f){
- var C=CLAIMS[_claimK]||CLAIMS.early;
- var t='['+C.nm+' 신청]\n신청자: '+f.n1.value+' ('+f.p1.value+')\n'+('직전 수강: '+f.n2.value)+'\n과목: '+(f.sj.value||'-')+'\n희망 혜택: '+f.bn.value;
- var d=document.getElementById('famDone');
- d.innerHTML='<div class="lvr-res" style="font-size:15px;line-height:1.7">\u2705 접수되었습니다, '+f.n1.value+'님.<br>두 분 결제가 확인되면 <b>'+f.bn.value+'</b>으로 처리해 드립니다.</div>'
-  +'<a class="lvr-go" href="sms:0314666969?body='+encodeURIComponent(t)+'">문자로 보내기</a>'
-  +'<button class="lvr-go tk-ghost" style="border:0;cursor:pointer;width:100%;margin-top:8px" onclick="famCopy(this)" data-t="'+t.replace(/"/g,'&quot;').replace(/\n/g,'\\n')+'">카카오톡용 내용 복사</button>'
-  +'<a class="lvr-go tk-ghost" href="tel:0314666969" style="margin-top:8px">전화로 바로 확인 031-466-6969</a>';
- d.scrollIntoView({block:'center'});return false;}
 function famCopy(b){var t=(b.getAttribute('data-t')||'').replace(/\\n/g,'\n');
  if(sgCopy(t))sgToast('<b>복사했습니다.</b><br>카카오톡 채널 @산본글로벌어학원 또는 문자 031-466-6969 로 붙여넣어 보내 주세요.');
  else alert(t);}
 /* ═══ 환승 이벤트 확인 (2026-09-17) ═══
-   여기는 원래 비어 있었습니다. openVerify 가 재등록 얼리버드 창을 띄우고
+   여기는 원래 비어 있었습니다. openVerify 가 재등록 이벤트 창을 띄우고
    vfSubmit 이 아무것도 하지 않아서, 환승 10%를 고르면 할인이 0으로
    되돌아갔습니다. 대표님 확정 — 환승은 상시 10%, 정규반·시험대비반만,
    1:1·퍼스널에는 붙지 않습니다. */
@@ -7278,7 +7280,7 @@ function discPick(subj){discClose();_dpSel={};
   +'<h3>\uD83C\uDF89 할인 선택</h3><p>'+subj+' 기준 \u00b7 여러 개 함께 고르실 수 있어요</p></div>'
   +'<div class="di-body"><div class="dp-list" id="dpList"></div>'
   +'<div class="dp-sum" id="dpSum"></div>'
-  +'<div class="di-warn">\u2705 2개월·4개월·10개월 <b>묶음가는 기본 가격</b>입니다. 오픈이벤트 10%는 <b>그 금액에서 추가로</b> 빠집니다.</div>'+'<div class="di-warn" style="background:#f4f7fb;border-color:#cdd8ea"><b>온라인에서 바로 깎이는 것 / 확인 후 드리는 것</b><br>\u2705 <b>오픈이벤트 10%</b> — 전원 자동 적용<br>\u2B50 <b>재등록 얼리버드 5%</b> — 학생 명부에서 확인된 뒤 환급<br><span style="color:#8a90a0">재등록 얼리버드는 온라인에서 확인할 방법이 없어, 즉시 할인 대신 <b>확인 후 지급</b>으로 드립니다. 받으시는 총액은 같습니다.</span></div>'
+  +'<div class="di-warn">\u2705 2개월·4개월·10개월 <b>묶음가는 기본 가격</b>입니다. 오픈이벤트 10%는 <b>그 금액에서 추가로</b> 빠집니다.</div>'+'<div class="di-warn" style="background:#f4f7fb;border-color:#cdd8ea"><b>온라인에서 바로 깎이는 것 / 확인 후 드리는 것</b><br>\u2705 <b>오픈이벤트 10%</b> — 전원 자동 적용<br>\u2B50 <b>재등록 이벤트 5%</b> — 사무처 확인 후 데스크에서 진행<br><span style="color:#8a90a0">재등록 이벤트 5% 할인은 사무처에서 확인 후 진행됩니다. 데스크에서 진행해 주시기 바랍니다.</span></div>'
   +'<div class="rsv-btns"><button class="rsv-back" onclick="discClose()">닫기</button>'
   +'<button class="rsv-go" onclick="dpApply()">이 할인으로 적용 &rsaquo;</button></div>'
   +'<div class="di-note">\u203B 표시 금액은 반 편성에 따라 달라질 수 있으며 최종 수강료는 상담 시 안내드립니다.</div></div></div>';
@@ -7339,7 +7341,7 @@ function discInfo(subj){
     +'<div class="di-warn" style="background:#f4f7fb;border-color:#cdd8ea"><b>바로 깎이는 것 / 확인 후 드리는 것</b><br>'
      +'✅ <b>오픈이벤트 10%</b> — 전원 자동 적용<br>'
      
-     +'⭐ <b>재등록 얼리버드 5%</b> — 학생 명부에서 확인된 뒤 환급</div>'
+     +'⭐ <b>재등록 이벤트 5%</b> — 사무처 확인 후 데스크에서 진행</div>'
     +'<div class="di-note">※ 표시 금액은 반 편성에 따라 달라질 수 있으며 최종 수강료는 상담 시 안내드립니다.</div>'
    +'</div>'
   +'</div>'
@@ -7349,11 +7351,10 @@ function discInfo(subj){
  d.addEventListener('click',function(e){if(e.target===d)discClose();});
 }
 /* 이벤트 할인과 2개월 결제 할인은 중복 불가 — 손님에게 유리한 쪽 자동 적용 */
-/* 즉시할인(이벤트)은 10%가 상한이고, 재등록 5%는 그 위에 따로 붙습니다 */
-/* 2026-08-30 · 대표님 방침 정정
-   재등록 얼리버드 5%는 <b>상한 밖</b>입니다. 오픈이벤트 10%와 관계없이 무조건 더 드립니다.
-   즉 즉시할인은 10%가 상한이고, 재등록 5%는 그 위에 얹힙니다 (최대 14.5%).
-   전에는 둘을 합쳐 10%로 잘라서 재등록 5%를 약속만 하고 안 주고 있었습니다. */
+/* 2026-09-17 대표님 확정으로 위 2026-08-30 방침은 폐기되었습니다.
+   지금은 오픈 10 + 환승 10 + 재등록 5 를 전부 더한 뒤 20% 에서 자릅니다
+   (sumRate). 1:1·퍼스널은 10%, 새벽반만 30% 입니다.
+   재등록 5% 는 sumRate 안에서 계산되고, 실제 지급은 데스크에서 합니다. */
 function _evCap(d,lo,subj){return [sumRate(d,lo,subj), 0];}  /* 합쳐서 첫 값에, 두 번째는 0 (곱하기 방지) */
 function _dfloor(base,list){var f=Math.round(list*(1-DCAP)/1000)*1000;return Math.min(base,f);}
 var LOYALMAX=0.05;
@@ -7418,11 +7419,11 @@ function discOpts(subj){var h='<option value="0">할인 없음 (기본가)</opti
   h+='<option value="'+v+'">'+(best?'\u2B50 ':'')+evLabel(v)+' \u2212'+pct+'%</option>';});
  EVKEYS.forEach(function(k){
   /* 2026-09-17 대표님 「일대일은 최대가 10프로임」 —
-     1:1·퍼스널 목록에는 재등록 얼리버드(확인 후 지급)를 아예 띄우지 않습니다.
+     1:1·퍼스널 목록에는 재등록 이벤트(확인 후 지급)를 아예 띄우지 않습니다.
      띄워 두면 10%에 5%가 더 붙는 줄로 보입니다. */
   if(SGEV[k].offline){
    try{ if(subj&&_persSubj(subj))return; }catch(e){}
-   h+='<option value="'+k+'" disabled>'+SGEV[k].nm+' \u2212'+Math.round(SGEV[k].rate*100)+'% (즉시할인 불가 · 확인 후 지급)</option>';return;}
+   h+='<option value="'+k+'" disabled>'+SGEV[k].nm+' \u2212'+Math.round(SGEV[k].rate*100)+'% (사무처 확인 후 · 데스크에서 진행)</option>';return;}
   if(evActive(k))return;
   h+='<option value="'+k+'" disabled>'+SGEV[k].nm+' \u2212'+Math.round(SGEV[k].rate*100)+'% (기간 아님 · '+evPeriod(k)+')</option>';});
  return h;}
@@ -7925,7 +7926,7 @@ function onePrice(){
  if(go)go.innerHTML='일대일 시간권 신청<small>'+fin.toLocaleString()+'원 · 신청 후 일정 조율 연락</small>';
  var nt=document.getElementById('oneDiscNote');
  if(nt){var m=[];if(r.ev>0)m.push('※ '+evLabel(r.v)+' '+Math.round(r.ev*100)+'% 적용');
-  if(r.lo>0)m.push('※ 재등록 얼리버드 '+Math.round(r.lo*100)+'% 추가 적용');
+  if(r.lo>0)m.push('※ 재등록 이벤트 '+Math.round(r.lo*100)+'% 추가 적용');
   m.push('※ 최종 금액은 강사 배정 후 상담에서 확정 안내드립니다.');nt.innerHTML=m.join('<br>');}
  try{discRefresh('퍼스널');}catch(e){}}
 /* 시간권 신청 — 요일·시간표는 왕기초와 같은 표를 씁니다 */
@@ -7962,7 +7963,7 @@ function persPrice(){PERS.forEach(function(c,ci){c.rows.forEach(function(r,ri){
   el.innerHTML=(f<r[1])?('<b>'+f.toLocaleString()+'원</b> <em class="ev-tag">이벤트 적용가</em>'):('<b>'+r[1].toLocaleString()+'원</b>');});});
  var de=document.getElementById('exDisc');var v=de?de.value:'0';var ev=evRate('퍼스널',v),lo=loyalRate(v);
  var nt=document.getElementById('persNote');
- if(nt){var m=[];if(ev>0)m.push('※ '+evLabel(v)+' '+Math.round(ev*100)+'% 적용');if(lo>0)m.push('※ 재등록 얼리버드 '+Math.round(lo*100)+'% 추가 적용');
+ if(nt){var m=[];if(ev>0)m.push('※ '+evLabel(v)+' '+Math.round(ev*100)+'% 적용');if(lo>0)m.push('※ 재등록 이벤트 '+Math.round(lo*100)+'% 추가 적용');
   m.push('※ 강사·과목·시간대에 따라 금액이 조정될 수 있으며 최종 수강료는 상담 시 확정 안내드립니다.');nt.innerHTML=m.join('<br>');}
  try{discRefresh('퍼스널');}catch(e){}}
 function persDiscChange(){var de=document.getElementById('exDisc');if(!evGate(de.value,'ex')){de.value='0';}persPrice();}
@@ -9339,7 +9340,7 @@ function benAllHTML(){
   ['🎉','오픈이벤트 10%','10~11월 전 과목 10% 할인, 결제창에서 자동 적용 (1:1 포함)',"openPage('오픈이벤트')",'12월부터는 정가입니다 — 두 달뿐인 가격'],
   /* 2026-09-17 대표님 확정 — 환승은 기간 없이 상시입니다. 지금까지 홈페이지 어디에도 안내가 없었습니다. */
   ['🔁','환승 이벤트 10%','다른 학원에서 옮겨 오시는 분 · 상시 · 정규반·시험대비반 (1:1·퍼스널 제외)',"openPage('수강신청')",'오픈이벤트와 함께 받으시면 두 달 동안 20%'],
-  ['🔁','재등록 얼리버드 5%','재원생은 명부 확인 후 5% 환급 (매달 19~25일)',"openPage('오픈이벤트')",'다니던 분이 제일 큽니다 — 10%에 5%를 더, 매달 19~25일'],
+  ['🔁','재등록 이벤트 5%','사무처 확인 후 데스크에서 진행 (매달 19~25일)',"openPage('오픈이벤트')",'다니던 분이 제일 큽니다 — 10%에 5%를 더, 매달 19~25일'],
   ['🐋','AI 학습관','영·일·중 회화부터 토익·JLPT·HSK까지, 수강생은 무료',"openPage('AI산글')",'수강생은 전자책 12권이 전부 공짜 — 오늘의 무료 과부터'],
   ['♾️','무한수강권','같은 반을 한 번 더 — 재수강 무제한 + AI 산글 40강',"openExam('토익')",'한 번 듣고 다 남는 사람은 없습니다 — 같은 반을 무료로 한 번 더'],
   ['📊','무료 레벨 진단','5분 자가진단과 결과 리포트, 등록 안 하셔도 드립니다',"openPage('레벨테스트')",'5분 진단이 두 달 시행착오를 줄입니다'],
