@@ -2885,13 +2885,44 @@ li:first-child > .pgh{margin-top:2px}
 .sge-hero .sge-p{margin:14px auto 0;max-width:620px;font-size:16px;line-height:1.7;font-weight:700;
  color:#FFEDE6;word-break:keep-all}
 .sge-hero .sge-p b{color:#fff}
-.sge-hon{margin:18px auto 0;max-width:640px;background:rgba(0,0,0,.20);
+.sge-hon{margin:18px auto 0;max-width:640px;background:rgba(255,255,255,.18);
  border:1px solid rgba(255,255,255,.24);border-radius:14px;padding:14px 16px;text-align:left}
 .sge-hon b.t{display:block;font-size:14px;font-weight:900;color:#FFE08A;margin-bottom:7px}
 .sge-hon p{margin:0;font-size:13.8px;line-height:1.68;font-weight:700;color:#FFEDE6;word-break:keep-all}
 .sge-hon p b{color:#fff}
 
 /* ── 세 단 ── */
+/* ═══ 2026-09-17 · AI 학습관 첫 화면 다시 짜기 ═══
+   대표님 「몇 초 만에 확 잡아당겨야 하는데」
+   듀오링고·야나두 첫 화면을 보고: 그림 + 한 줄 + 큰 숫자 + 버튼 하나. */
+.sge-face{width:104px;height:104px;margin:14px auto 4px;border-radius:50%;overflow:hidden;
+ background:#FFF3E2;border:3px solid rgba(255,255,255,.85);box-shadow:0 10px 26px rgba(0,0,0,.22)}
+.sge-face video{width:100%;height:100%;object-fit:cover;display:block}
+.sge-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:420px;margin:20px auto 0}
+.sge-kpi>div{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);
+ border-radius:14px;padding:13px 6px 11px;text-align:center}
+.sge-kpi b{display:block;font-family:'Montserrat',sans-serif;font-weight:900;
+ font-size:30px;line-height:1;letter-spacing:-.04em;color:#fff}
+.sge-kpi span{display:block;margin-top:5px;font-size:12.5px;font-weight:800;color:#FFE9C9}
+@media(max-width:400px){.sge-kpi b{font-size:25px}}
+.sge-cta{display:block;width:min(360px,92%);margin:22px auto 0;border:0;cursor:pointer;font:inherit;
+ background:#fff;color:#B3131F;border-radius:14px;padding:17px;font-size:18px;font-weight:900;
+ letter-spacing:-.02em;box-shadow:0 12px 28px rgba(0,0,0,.24)}
+.sge-cta:hover{background:#FFF0F0}
+.sge-sub{margin-top:9px;font-size:13px;font-weight:800;color:#FFE9C9}
+/* 접기 — 근거는 눌러야 펼쳐집니다 */
+.sge-dt{margin-top:13px}
+.sge-dt>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:7px;
+ background:rgba(255,255,255,.94);color:#2A2F3A;border-radius:11px;padding:11px 14px;
+ font-size:13.5px;font-weight:900;letter-spacing:-.02em}
+.sge-dt>summary::-webkit-details-marker{display:none}
+.sge-dt>summary:after{content:'▾';margin-left:auto;font-size:13px;opacity:.6;transition:.18s}
+.sge-dt[open]>summary:after{transform:rotate(180deg)}
+.sge-dt.light>summary{background:#F5F1E8;border:1px solid #E4DCCB;color:#3A3730}
+.sge-dt>summary:hover{background:#fff}
+.sge-dt.light>summary:hover{background:#FDFBF6}
+.sge-hon2{max-width:760px;margin:22px auto 0}
+.sge-cutin{margin:10px 0 0!important;padding-top:10px;border-top:1px dashed #DCD5C6;font-weight:800}
 .sge-steps{display:grid;gap:14px;margin-top:16px;grid-template-columns:1fr}
 .sge-step{position:relative;overflow:hidden;border-radius:18px;padding:24px 19px 22px;color:#fff;
  box-shadow:0 12px 30px rgba(20,33,61,.22);display:flex;flex-direction:column}
@@ -2913,7 +2944,7 @@ li:first-child > .pgh{margin-top:2px}
 .sge-what b{color:#FFF3C4}
 /* 교재/기간 줄 */
 .sge-meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
-.sge-meta span{background:rgba(0,0,0,.24);border:1px solid rgba(255,255,255,.28);
+.sge-meta span{background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.5);
  border-radius:9px;padding:6px 11px;font-size:12.5px;font-weight:800;color:#fff;word-break:keep-all}
 /* 근거 박스 */
 .sge-ev{margin-top:14px;background:rgba(255,255,255,.95);border-radius:13px;padding:13px 14px;
@@ -2933,7 +2964,7 @@ li:first-child > .pgh{margin-top:2px}
 .sge-step.s2 .sge-num{background:#D5F3E5;color:#0A6743}
 .sge-step.s3 .sge-num{background:#FDE5D2;color:#8E3A0C}
 /* 솔직한 한 줄 */
-.sge-cut{margin-top:12px;background:rgba(0,0,0,.34);border-left:3px solid rgba(255,255,255,.55);
+.sge-cut{margin-top:12px;background:rgba(255,255,255,.2);border-left:3px solid rgba(255,255,255,.7);
  border-radius:0 11px 11px 0;padding:11px 13px;font-size:13.4px;line-height:1.64;font-weight:700;
  color:#FFF6E8;word-break:keep-all}
 .sge-cut b{color:#FFE9A8}
@@ -4455,6 +4486,7 @@ html,body{overflow-x:hidden;max-width:100%}
 </style>
 <style>.fq-chips{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0 6px}.fq-chip{background:#fff;border:1.5px solid #DDE2E9;color:#0C1A2E;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:800;text-decoration:none}.fq-chip:active{background:#0C1A2E;color:#fff}.fq-wrap{margin:10px 0 4px}.fq-cat{margin:20px 0 0}.fq-ct{font-size:15px;font-weight:900;color:#C9A96A;letter-spacing:.4px;margin:22px 0 10px;padding-bottom:8px;border-bottom:2px solid #0C1A2E}.fq-it{border:1px solid #E3E7ED;border-radius:12px;margin-bottom:9px;background:#fff;overflow:hidden}.fq-it.on{border-color:#0C1A2E;box-shadow:0 6px 20px rgba(12,26,46,.10)}.fq-q{width:100%;display:flex;align-items:flex-start;gap:10px;background:none;border:0;padding:15px 14px;text-align:left;cursor:pointer;font-family:inherit}.fq-n{flex:none;font-size:12px;font-weight:900;color:#C9A96A;line-height:1.6;min-width:20px}.fq-qt{flex:1;font-size:15px;font-weight:800;color:#1A1A18;line-height:1.55;word-break:keep-all}.fq-ar{flex:none;font-size:16px;font-weight:900;color:#9AA3B0;line-height:1.5}.fq-a{max-height:0;overflow:hidden;transition:max-height .28s ease}.fq-it.on .fq-a{max-height:900px}.fq-ai{padding:0 16px 17px 44px;font-size:14.5px;line-height:1.82;color:#3C4553;word-break:keep-all}.fq-ai b{color:#C81F2B;font-weight:800}@media(max-width:560px){.fq-ai{padding-left:16px}.fq-qt{font-size:14.5px}}</style>
 <style>#admPanel{position:fixed;inset:0;z-index:2147481000;background:rgba(8,12,20,.72);display:flex;align-items:flex-end;justify-content:center}.adm-box{background:#fff;width:100%;max-width:560px;max-height:92vh;border-radius:16px 16px 0 0;display:flex;flex-direction:column;font-family:inherit}.adm-top{display:flex;align-items:center;gap:10px;padding:16px 18px 12px;border-bottom:1px solid #E6EAEF}.adm-eb{font-size:10px;font-weight:900;letter-spacing:2.2px;color:#C9A96A}.adm-top h3{margin:3px 0 0;font-size:19px;font-weight:900;color:#0C1A2E}.adm-x{margin-left:auto;background:none;border:0;font-size:20px;color:#8A93A2;cursor:pointer}.adm-body{overflow:auto;padding:12px 14px 6px;-webkit-overflow-scrolling:touch}.adm-sum{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}.adm-sum div{flex:1;min-width:80px;background:#F5F7FA;border-radius:9px;padding:9px 8px;text-align:center}.adm-sum b{display:block;font-size:19px;font-weight:900;color:#0C1A2E}.adm-sum span{display:block;font-size:10px;color:#6E7887;margin-top:2px}.adm-b{border:1px solid #E3E7ED;border-radius:11px;margin-bottom:9px;overflow:hidden}.adm-h{display:flex;align-items:center;gap:7px;background:#F7F8FA;padding:9px 11px;border-bottom:1px solid #E3E7ED}.adm-t{font-size:13.5px;font-weight:900;color:#1A1A18}.adm-k{font-size:10.5px;color:#98A1AE;font-family:Menlo,Consolas,monospace}.adm-p{margin-left:auto;font-size:11.5px;font-weight:900;color:#C81F2B;background:#FFF0F1;border-radius:999px;padding:2px 9px}.adm-p.ok{color:#0E8A5A;background:#E8F7F0}.adm-p.no{color:#8A93A2;background:#EEF1F5}.adm-u{padding:2px 0}.adm-r{display:flex;align-items:center;gap:7px;padding:6px 11px;border-top:1px solid #F1F4F7;font-size:12.5px}.adm-r.off{opacity:.45}.adm-r input{width:16px;height:16px;flex:none}.adm-r .n{width:22px;color:#98A1AE;font-weight:900;font-size:11px;flex:none}.adm-r .tt{flex:1;color:#2B3340;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.adm-r .q{font-size:11px;color:#6E7887;flex:none}.adm-r .q.warn{color:#C81F2B;font-weight:900}.adm-r .v{font-size:10.5px;color:#0E8A5A;flex:none;min-width:26px}.adm-r button{flex:none;background:#0C1A2E;color:#fff;border:0;border-radius:7px;padding:5px 10px;font-size:11.5px;font-weight:800;cursor:pointer;font-family:inherit}.adm-r button[disabled]{background:#DDE2E9;color:#98A1AE}.adm-foot{display:flex;align-items:center;gap:10px;padding:11px 16px;border-top:1px solid #E6EAEF}.adm-foot button{background:#F1F4F7;border:0;border-radius:8px;padding:9px 14px;font-size:12.5px;font-weight:800;color:#4A5462;cursor:pointer;font-family:inherit}.adm-foot span{font-size:11px;color:#98A1AE}</style>
+
 <style>.vf-up{display:block;text-align:center;background:#f0f3fa;border:1.5px dashed #b9c4dd;border-radius:12px;padding:20px;font-weight:800;color:#3a4a66;cursor:pointer;margin:12px 0}</style></head>
 <body>
 <!-- 입장코드 게이트 (2026-09-02) — 10월 1일 0시에 자동으로 풀립니다. GATE_ON을 false로 바꾸면 즉시 해제 -->
@@ -4776,7 +4808,7 @@ html,body{overflow-x:hidden;max-width:100%}
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청) · 개업일 2024.10.01<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v145)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v153)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -15248,9 +15280,10 @@ function sgeHTML(){
    +'<h3>'+s.h+'</h3>'
    +'<p class="sge-what">'+s.what+'</p>'
    +'<div class="sge-meta">'+s.meta.map(function(m){return '<span>'+m+'</span>';}).join('')+'</div>'
-   +'<div class="sge-ev"><div class="k">◆ '+s.evk+'</div>'
-     +s.ev.map(function(e){return '<p>'+e+'</p>';}).join('')+'</div>'
-   +'<div class="sge-cut">'+s.cut+'</div>'
+   /* 2026-09-17 — 근거 문단은 접어 둡니다. 첫눈에는 한 줄만 보입니다. */
+   +'<details class="sge-dt"><summary>'+s.evk+' 보기</summary>'
+     +'<div class="sge-ev">'+s.ev.map(function(e){return '<p>'+e+'</p>';}).join('')
+     +'<p class="sge-cutin">'+s.cut+'</p></div></details>'
    +'<button class="sge-go" onclick="'+s.act+'">'+s.go+' &rsaquo;<small>'+s.gos+'</small></button>'
    +'</article>';}).join('');
 
@@ -15258,7 +15291,8 @@ function sgeHTML(){
   return '<section class="sge-bar '+b.c+'">'
    +'<span class="bk">'+b.k+'</span>'
    +'<h4>'+b.h+'</h4><p>'+b.p+'</p>'
-   +'<div class="sge-fact">'+b.f.map(function(x){return '<i>'+x+'</i>';}).join('')+'</div>'
+   +'<details class="sge-dt light"><summary>근거 보기</summary>'
+    +'<div class="sge-fact">'+b.f.map(function(x){return '<i>'+x+'</i>';}).join('')+'</div></details>'
    +'</section>';}).join('');
 
  var why=SGE_WHY.map(function(w){
@@ -15270,12 +15304,20 @@ function sgeHTML(){
  /* ── 히어로 ── */
  +'<div class="sge-hero">'
   +'<div class="sge-lg"><img src="img/sga_emblem.png" alt=""><b>SGA</b></div>'
-  +'<div class="sge-eye">산본글로벌어학원 · 영어 뽀개기 학습법</div>'
-  +'<h2>진짜 <em>이렇게만</em><br>따라오세요</h2>'
-  +'<p class="sge-p">안 되는 게 아니라 <b>안 한 겁니다.</b><br>이 순서 그대로 하시면 <b>원어민과 대화하십니다.</b></p>'
-  +'<div class="sge-hon"><b class="t">먼저 정직하게 한 가지</b>'
-   +'<p>"원어민<b>처럼 발음</b>하게 된다"는 말은 하지 않겠습니다. 성인이 되어 영어를 시작한 <b>195명</b>을 조사한 연구에서 원어민 판정을 통과한 사람은 <b>0명</b>이었습니다. '
-   +'저희가 약속하는 건 발음이 아니라 <b>대화</b>입니다. 그건 됩니다.</p></div>'
+  +'<div class="sge-eye">AI 산글 학습관</div>'
+  /* 2026-09-17 — 첫 화면은 읽는 자리가 아니라 붙잡는 자리입니다.
+     듀오링고(캐릭터+한 문장+버튼) · 야나두(거대한 숫자 하나)를 보고 다시 짰습니다. */
+  +'<div class="sge-face">'
+   +'<video src="media/sgi_hello.mp4" poster="img/sgi_face.jpg" muted autoplay loop playsinline preload="metadata" aria-hidden="true"></video>'
+  +'</div>'
+  +'<h2>하루 <em>3분</em>이면<br>입이 열립니다</h2>'
+  +'<div class="sge-kpi">'
+   +'<div><b>3분</b><span>한 과</span></div>'
+   +'<div><b>141</b><span>문장</span></div>'
+   +'<div><b>0원</b><span>수강생</span></div>'
+  +'</div>'
+  +'<button class="sge-cta" onclick="wyOpen()">오늘 1과 열기 &rsaquo;</button>'
+  +'<div class="sge-sub">가입 없이 · 지금 바로</div>'
  +'</div>'
 
  /* ── 세 단 ── */
@@ -15289,11 +15331,19 @@ function sgeHTML(){
   +'<div class="k">WHY NOT ALONE</div>'
   +'<h4>앱과 유튜브만으로 되면<br><em>학원은 필요 없습니다</em></h4>'
   +'<p>그런데 저희가 조사해 본 결과는 이랬습니다. <b>숨기지 않고 그대로 적습니다.</b></p>'
-  +'<div class="sge-w3">'+why+'</div>'
+  +'<details class="sge-dt light"><summary>조사한 것 세 가지 보기</summary>'
+   +'<div class="sge-w3">'+why+'</div></details>'
   +'<div class="sge-punch"><b>그래서 분량은 AI가, 교정은 사람이 합니다</b>'
    +'<span>AI 학습관을 무료로 여는 이유입니다. 전자책·듣기·채점·출석까지 전부 0원. '
    +'<b>사람이 하는 것만 받습니다 — 발음 첨삭 · 원장 상담 · 교실 수업.</b></span></div>'
  +'</section>'
+
+ /* 2026-09-17 — 히어로에 있던 「먼저 정직하게 한 가지」를 여기로 내렸습니다.
+    지우지 않았습니다. 처음 보는 분께 먼저 할 말이 아닐 뿐입니다. */
+ +'<details class="sge-dt light sge-hon2"><summary>솔직히 말씀드립니다 — 발음은 원어민처럼 안 됩니다</summary>'
+  +'<div class="sge-fact"><i>"원어민<b>처럼 발음</b>하게 된다"는 말은 하지 않겠습니다. '
+  +'성인이 되어 영어를 시작한 <b>195명</b>을 조사한 연구에서 원어민 판정을 통과한 사람은 <b>0명</b>이었습니다.</i>'
+  +'<i>저희가 약속하는 건 발음이 아니라 <b>대화</b>입니다. 그건 됩니다.</i></div></details>'
 
  /* ── 마무리 ── */
  +'<section class="sge-end">'
@@ -17770,5 +17820,159 @@ function sgRgAll(){ sgRedGrid(document); sgRedBorder(document); sgBlinkWatch(); 
 })();
 </script>
 
+<style>
+/* ══════════════════════════════════════════════════════════════
+   2026-09-17 · 검정 바탕 전수 제거  (대표님 「검정색은 한 개도 쓰지마」)
+   브라우저로 61개 페이지를 전부 열어 '검게 보이는' 블록 41종을 찾아
+   바탕과 글자색을 짝으로 바꿉니다. 이 블록이 마지막이라 우선합니다.
+   ══════════════════════════════════════════════════════════════ */
+:root{
+ --panel:#F7F4EE;        /* 아이보리 패널 — 예전 검정 카드 자리 */
+ --panel2:#FFFFFF;
+ --panel-line:#E6DFD0;
+ --panel-ink:#2A2621;    /* 패널 위 글자 (순검정 아님) */
+ --panel-dim:#6E6659;
+}
+
+/* ── 1. 버튼·작은 칩 : 검정 → 브랜드 적색 ── */
+.ps-b,.cart-add,.jf-certbtn,.qsubmit,.sp-back,.nt-tb.on,.evstep .evn,
+.dc-more,.plog-pr-go,.qsubmit.rsvred{
+ background:#C81F2B!important;color:#fff!important;border-color:#C81F2B!important}
+.ps-b:hover,.cart-add:hover,.qsubmit:hover,.sp-back:hover,.plog-pr-go:hover,
+.jf-certbtn:hover,.dc-more:hover{background:#A5121D!important}
+.jf-certbtn.done{background:#0E8A5A!important;border-color:#0E8A5A!important}
+
+/* ── 2. 원장 카드 — 대표님이 콕 집으신 자리 ── */
+.dirc-yr{background:var(--panel)!important;border:1.5px solid #C6A15B!important;
+ color:var(--panel-ink)!important;box-shadow:none!important}
+.dirc-yr *{color:var(--panel-ink)!important}
+.dirc-yr b,.dirc-yr strong{color:#B3131F!important}
+.dirc-e{background:var(--panel)!important;border:1px solid var(--panel-line)!important;
+ color:var(--panel-ink)!important}
+.dirc-e *{color:var(--panel-ink)!important}
+
+/* ── 3. 큰 패널·띠 : 검정 → 아이보리 + 먹글씨 ── */
+.bt-price,.tb-hero,.rh-h,.rt-map,.sgl-bar,.yt-head,.bt-hl,.cn-c,
+.sge-why,.wy-cta,.sgd-door,.oh-tag,.ttg-h,.upsell,.gf-shop{
+ background:var(--panel)!important;color:var(--panel-ink)!important;
+ border:1px solid var(--panel-line)!important}
+.bt-price *,.tb-hero *,.rh-h *,.rt-map *,.sgl-bar *,.yt-head *,.bt-hl *,.cn-c *,
+.sge-why *,.wy-cta *,.sgd-door *,.oh-tag *,.ttg-h *,.upsell *{
+ color:var(--panel-ink)!important;text-shadow:none!important}
+/* 패널 안의 강조는 적색·금색으로 살립니다 */
+.bt-price b,.tb-hero b,.rh-h b,.rt-map b,.sgl-bar b,.bt-hl b,.cn-c b,
+.sge-why b,.wy-cta b,.sgd-door b,.upsell b,.ttg-h span{color:#B3131F!important}
+.bt-price em,.tb-hero em,.sge-why em,.wy-cta em,.sgd-door em{color:#8A6A22!important}
+/* 패널 안의 흰 카드는 한 톤 더 밝게 */
+.upsell .rc-r span,.upsell .up-l em,.upsell .up-r em{color:var(--panel-dim)!important}
+.upsell .rc-r b,.upsell .rc-fin b,.upsell .rc-fin i,.upsell .rc-fin em{color:#B3131F!important}
+.upsell .rc-r{border-bottom-color:var(--panel-line)!important}
+.upsell .rc-fin{background:#FFF7E4!important;border-color:#EBD9AC!important}
+
+/* ── 4. 사진·영상이 덮는 자리 (로딩 중 검게 보입니다) ── */
+.pgimg,.oh-bn,.ai-cov,.aiv-vbox,.yt-wrap,.dirc-p{background:var(--panel)!important}
+
+/* ── 5. 히어로 띠 : 남색·먹색 → 적색 그라데이션 ── */
+.pghero{background:linear-gradient(125deg,#C81F2B,#8E1119)!important}
+.pghero .pgeyebrow{color:#FFE0A8!important}
+
+/* ── 6. 푸터 ── */
+.ft{background:var(--panel)!important;color:var(--panel-dim)!important;
+ border-top:3px solid #C6A15B!important}
+.ft *{color:var(--panel-dim)!important}
+.ft a,.ft b,.ft strong{color:var(--panel-ink)!important}
+
+/* ── 7. 표 머리 ── */
+.gu-t th,.oh-cmp th,.nt-tbl thead th,table th{background:#F1ECE1!important;color:var(--panel-ink)!important}
+
+/* ── 8. 모달·시트 안에 남은 검정 반투명 ── */
+.sge-hon,.sge-cut,.sge-meta span{background:rgba(255,255,255,.2)!important}
+
+/* ── 9. 남은 자리 (2차 전수검사에서 찾은 것) ── */
+/* 사진 위 캡션 — 검정 그라데이션이면 안 읽혀서 어둡게 깔았던 자리입니다.
+   아이보리 반투명 + 먹글씨로 바꿔도 사진 위에서 읽힙니다. */
+.gl-c em{background:linear-gradient(to top,rgba(255,250,242,.93),rgba(255,250,242,0))!important;
+ color:#2A2621!important;text-shadow:0 1px 2px rgba(255,255,255,.9)!important}
+/* 사진 크게 보기 바탕 */
+.gl-lb{background:rgba(247,244,238,.97)!important}
+.gl-lb .gl-x,.gl-lb .gl-nav,.gl-lb button{color:#2A2621!important}
+/* 전자책 표지 배지 */
+.ai-badge{background:#FFF3E2!important;color:#8A5A12!important;border:1px solid #E7D7B4!important}
+/* 유튜브 자리 비었을 때 버튼 */
+.sgf-empty a{background:#C81F2B!important;color:#fff!important}
+
+/* ── 11. 3차 전수검사에서 남은 자리 ── */
+/* 홈 첫 화면 슬라이더 바탕 — 사진이 덮지만 로딩 중 검게 보입니다 */
+.hero{background:linear-gradient(135deg,#C81F2B,#8E1119)!important}
+/* 후기 필터 · 시간표 요일 칩 「전체」 */
+.rv-filter span,.rv-filter span.on,.bg-dy em{background:#F1ECE1!important;color:#2A2621!important;
+ border:1px solid #E6DFD0!important}
+.rv-filter span.on,.rv-filter span:first-child{background:#C81F2B!important;color:#fff!important;
+ border-color:#C81F2B!important}
+
+/* 어학뉴스 필터 「전체」 */
+.ln-filter span.on{background:#C81F2B!important;color:#fff!important;border-color:#C81F2B!important}
+
+/* ── 13. 그 밖에 인라인으로 박힌 먹색 바탕 ── */
+[style*="background:#1A1A18"],[style*="background:#1a1a18"],
+[style*="background:#0b0d12"],[style*="background:#0B0D12"],
+[style*="background:#000"]{background:var(--panel)!important;color:var(--panel-ink)!important}
+
+/* ══ 2차 보강 (2026-09-17) ══
+   1) 이 블록이 뒤에 오는 <style> 에 밀려 일부만 먹고 있었습니다 → 문서 맨 끝으로 옮겼습니다.
+   2) 글자가 얹힌 배너를 아이보리로 바꿨더니 흰 글씨가 사라졌습니다 → 적색으로 되돌립니다.
+      검정은 없애되, 글씨는 읽혀야 합니다. */
+
+/* 사진 위에 글자가 얹히는 배너 — 아이보리 대신 적색 (흰 글씨 유지) */
+.oh-bn{background:linear-gradient(135deg,#C81F2B,#8E1119)!important}
+.oh-bn .oh-t,.oh-bn .oh-t em,.oh-bn .oh-eye,.oh-bn .oh-d{color:#fff!important}
+.oh-bn .oh-t em{color:#FFE08A!important}
+.oh-bn .oh-eye{color:#FFD9D5!important}
+
+/* 아이보리 패널 안의 금색·흰색 글자를 확실히 어둡게 */
+.bt-price em,.tb-hero em,.rh-h em,.rt-map em,.sgl-bar em,.yt-head em,.bt-hl em,
+.cn-c em,.sge-why em,.wy-cta em,.sgd-door em,.upsell em,.ttg-h em,
+.bt-price u,.rh-h u,.cn-c u,.upsell u{color:#8A6A22!important}
+.bt-price h3,.tb-hero h3,.cn-c h3,.sgd-door h3,.wy-cta h3,.sge-why h4,
+.bt-price h2,.tb-hero h2,.cn-c h2{color:#2A2621!important}
+.cn-c span,.cn-c p,.cn-c i,.sgd-door span,.sgd-door p,.wy-cta span,.wy-cta p,
+.sgl-bar span,.sgl-bar p,.rt-map span,.rt-map p,.yt-head span,.yt-head p,
+.tb-hero span,.tb-hero p,.bt-price span,.bt-price p{color:#3A342C!important}
+
+/* 시간표 요일 버튼 안 「전체」 */
+.bg-dy em,.bg-hd span em{color:#B3131F!important;background:#FFF1E6!important;
+ border:1px solid #F0DCC8!important}
+/* 갤러리 사진 캡션 */
+.gl-c em{color:#2A2621!important}
+.gl-c em b,.gl-c em strong{color:#B3131F!important}
+/* 오늘의 반 표시 */
+.op-c .sg-cur em,.oh-card .sg-cur em{color:#B3131F!important}
+/* 학습관 단계 버튼 */
+.ai-steps .ai-st.on em,.ai-pr-r.hi b em{color:#8A6A22!important}
+/* AI 비교표 */
+.aiv-cmp .cm em{color:#3A342C!important}
+.aiv-cmp .cm.on em{color:#B3131F!important}
+/* 회원 프로모션 */
+.plog-pr-head em{color:#B3131F!important}
+/* 기본형 할인 힌트도 같이 (적색 바탕 위 적색 글씨가 남아 있었습니다) */
+.dc-hint{background:#FFF6E2!important;border:1px solid #EFDFB4!important}
+.dc-hint *{color:#7A5A12!important}
+.dc-hint u,.dc-hint b{color:#B3131F!important}
+
+/* ── 가독성 : 흐리던 보조 글씨를 한 단계 진하게 ──
+   대표님 「아주 가독성이 별루야」. 회색 #8a90a0 은 흰 바탕에서 대비 3.2 로
+   본문 기준(4.5)에 못 미쳤습니다. 같은 회색 계열로 한 단계만 내립니다. */
+.tf-n,.tk-eye,.rp-m,.sp-note,.jd,.jn-note,.evt-d,.op,.rv-meta,
+.ph-empty,.tk-ph,.one-note,.tf-sub{color:#5C6472!important}
+.rv-meta{color:#8A6A22!important}
+.tf-sub,.one-note{color:#0A6B46!important}
+
+/* 할인 힌트 띠 — 적색 바탕 위 갈색 글씨였습니다 */
+.dc-hint.soon,.dc-hint.live{background:#FFF6E2!important;border:1px solid #EFDFB4!important}
+.dc-hint.soon *,.dc-hint.live *{color:#7A5A12!important}
+.dc-hint.soon u,.dc-hint.live u,.dc-hint.soon b,.dc-hint.live b{color:#B3131F!important}
+.dc-hint .dc-more{background:#C81F2B!important;color:#fff!important}
+
+</style>
 </body>
 </html>
