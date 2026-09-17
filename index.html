@@ -4371,8 +4371,21 @@ html,body{overflow-x:hidden;max-width:100%}
 .lvr-t{font-size:20px;font-weight:900;color:#1A1A18;margin-bottom:8px;text-align:center}
 .lvr-d{font-size:14px;color:#5c6b60;text-align:center;margin-bottom:16px;line-height:1.5}
 .lvr-pick{display:flex;flex-direction:column;gap:10px}
-.lvr-pick button{background:#1A1A18;color:#fff;border:0;font-weight:800;font-size:15px;padding:14px;border-radius:10px;cursor:pointer}
-.lvr-pick button:hover{background:#c81f2b}
+/* 2026-09-17 — 검정(#1A1A18) 다섯 개를 과목색으로 바꿨습니다. 색은 강의관 12색에서 가져왔습니다. */
+.lvr-pick button{background:#fff;color:#2b3550;border:1.5px solid #d8dce6;font-weight:800;font-size:15px;
+ padding:15px 14px;border-radius:12px;cursor:pointer;font-family:inherit;transition:.16s;
+ box-shadow:0 2px 8px rgba(26,26,24,.05);min-height:52px;text-align:center}
+.lvr-pick button:nth-child(1){border-color:#2b3550;color:#2b3550}   /* TOEIC */
+.lvr-pick button:nth-child(2){border-color:#8a4b1f;color:#8a4b1f}   /* TOEFL */
+.lvr-pick button:nth-child(3){border-color:#0F7A5D;color:#0B5240}   /* JLPT  */
+.lvr-pick button:nth-child(4){border-color:#5a3f8c;color:#5a3f8c}   /* OPIc  */
+.lvr-pick button:nth-child(5){border-color:#1c6070;color:#0e3a4d}   /* 토스  */
+.lvr-pick button:hover{color:#fff;transform:translateY(-1px);box-shadow:0 8px 20px rgba(26,26,24,.16)}
+.lvr-pick button:nth-child(1):hover{background:linear-gradient(135deg,#171d2b,#2b3550)}
+.lvr-pick button:nth-child(2):hover{background:linear-gradient(135deg,#8a4b1f,#c9772f)}
+.lvr-pick button:nth-child(3):hover{background:linear-gradient(135deg,#0B5240,#0F7A5D)}
+.lvr-pick button:nth-child(4):hover{background:linear-gradient(135deg,#382a5e,#5a3f8c)}
+.lvr-pick button:nth-child(5):hover{background:linear-gradient(135deg,#0e3a4d,#1c6070)}
 .lvr-mic{font-size:50px;text-align:center}
 @keyframes lvpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
 .lvr-timer{font-size:44px;font-weight:900;color:#c81f2b;text-align:center;margin:8px 0 0;font-variant-numeric:tabular-nums}
@@ -4833,7 +4846,7 @@ html,body{overflow-x:hidden;max-width:100%}
         학원 종류 평생직업교육학원 / 교습과정 성인대상어학 · 일시수용능력 <b>138명</b> · 전용면적 266.38㎡<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v168)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v169)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -4966,7 +4979,7 @@ function renderCourse(c){
   document.querySelectorAll('#ctabs button').forEach(b=>b.classList.toggle('on', b.dataset.c===c));
 }
 const CHAPTERS=[
- {k:'토익',co:'토익',s:'왜 틀리는지 먼저 알아야 점수가 오릅니다',e:'TOEIC',bg:'linear-gradient(135deg,#171d2b,#2b3550)',imgs:['eng_13','elly','eng_14','eng_15'],exp:1},
+ {k:'토익',co:'토익',s:'왜 틀리는지 먼저 알아야 점수가 오릅니다',e:'TOEIC',bg:'linear-gradient(135deg,#171d2b,#2b3550)',imgs:['eng_13','elly','eng_14','eng_15']},   /* 2026-09-17 exp:1 제거 — 얼굴 상시 노출 해제 */
  {k:'토스',co:'토스',s:'말하기 유형 완전 분석, 목표 등급까지',e:'TOEIC S',bg:'linear-gradient(135deg,#0e3a4d,#1c6070)',imgs:['eng_14','eng_15']},
  {k:'오픽',co:'오픽',s:'실전 발화 훈련으로 IH·AL 달성',e:'OPIc',bg:'linear-gradient(135deg,#382a5e,#5a3f8c)',imgs:['eng_15','eng_14']},
  {k:'JLPT/HSK',co:'JLPT',s:'기출 중심 합격 루트',e:'JLPT·HSK',bg:'linear-gradient(135deg,#0B5240,#0F7A5D)',imgs:['jpn_2','jpn_1','jpn_4','jpn_5']},
@@ -18027,9 +18040,11 @@ function sgRgAll(){ sgRedGrid(document); sgRedBorder(document); sgBlinkWatch(); 
 /* 슬라이드 버튼 — 먹색이었습니다 */
 .hs-btn{background:#fff!important;color:#B3131F!important;border:1px solid #F2C4C0!important}
 .hs-btn:hover{background:#FFF0F0!important;color:#8E1119!important;border-color:#E9A9A4!important}
-/* 과목 칩 — 사진 위 흰 글씨가 얹히므로 적색 계열로 */
-.chip{background:linear-gradient(140deg,#C81F2B,#8E1119)!important}
-.chip .chgrad{background:linear-gradient(90deg,rgba(142,17,25,.62),rgba(142,17,25,0) 64%)!important}
+/* 2026-09-17 — 아래 두 줄을 걷어냈습니다.
+   9/15에 넣은 것인데 CHAPTERS 12색을 !important 로 전부 빨강으로 덮고 있었습니다.
+   대표님: "이거 원래대로 바꿔" — 강의관 12색은 픽스 항목입니다. 다시 덮지 마십시오.
+   .chip{background:linear-gradient(140deg,#C81F2B,#8E1119)!important}
+   .chip .chgrad{background:linear-gradient(90deg,rgba(142,17,25,.62),rgba(142,17,25,0) 64%)!important} */
 /* AI 학습앱 열기 버튼 */
 a[href="app.html"]{background:linear-gradient(120deg,#C81F2B,#8E1119)!important}
 /* 관리자 점검판 (내부용) */
