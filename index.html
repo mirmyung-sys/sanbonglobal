@@ -4453,6 +4453,114 @@ html,body{overflow-x:hidden;max-width:100%}
  font-size:17px;font-weight:900;color:#C6A15B}
 .dirc-fold[open]>summary::after{content:'－'}
 .dirc-fold>div{padding-bottom:10px}
+
+/* ════ 2026-09-18 책장 넘김 (대표님 지시: 「책 페이지 넘기듯, 밀리의 서재처럼」) ════
+   CSS 3D만 씁니다 — turn.js·turn-ts·zinejs 전부 비상업용 라이선스라 학원 사이트에 못 씁니다.
+   지원률 97.27%, 추가 용량 0KB. 넘김 300ms(모바일 기준, 1000ms는 폰에서 답답합니다). */
+.wy-book{position:relative;perspective:1600px;min-height:200px}
+.wy-leaf{transform-style:preserve-3d;backface-visibility:hidden;
+ transition:transform .3s cubic-bezier(.33,.0,.2,1), opacity .3s ease}
+.wy-leaf.turn-next{transform:rotateY(-14deg) translateX(-7%);opacity:0}
+.wy-leaf.turn-prev{transform:rotateY(14deg) translateX(7%);opacity:0}
+.wy-leaf.in-next{animation:wyInNext .3s cubic-bezier(.2,.8,.25,1) both}
+.wy-leaf.in-prev{animation:wyInPrev .3s cubic-bezier(.2,.8,.25,1) both}
+@keyframes wyInNext{from{transform:rotateY(16deg) translateX(9%);opacity:0}to{transform:none;opacity:1}}
+@keyframes wyInPrev{from{transform:rotateY(-16deg) translateX(-9%);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){
+ .wy-leaf,.wy-leaf.in-next,.wy-leaf.in-prev{transition:none;animation:none}
+ .wy-leaf.turn-next,.wy-leaf.turn-prev{transform:none;opacity:.35}
+}
+/* 넘기는 자리 — 본문 버튼(읽었다·듣기)과 겹치지 않게 좌우 가장자리 띠만 잡습니다 */
+.wy-tap{position:absolute;top:0;bottom:0;border:0;background:transparent;cursor:pointer;
+ z-index:3;display:flex;align-items:center;justify-content:center;padding:0;
+ -webkit-tap-highlight-color:transparent}
+.wy-tap.prev{left:-2px;width:40px}
+.wy-tap.next{right:-2px;width:56px}
+.wy-tap span{font-size:26px;font-weight:900;color:rgba(26,26,24,.16);transition:color .15s}
+.wy-tap:active span{color:rgba(200,31,43,.6)}
+.wy-tap.next span{color:rgba(26,26,24,.26)}
+/* 아래 큰 페이저 — 실제로 제일 많이 눌리는 자리입니다 */
+/* 2026-09-18 검수 — 페이저가 본문 아래로 밀려 화면에서 안 보였습니다. 하단에 붙입니다.
+   #sgTab(홈·수강신청·AI학습관·상담) 높이 56px + safe-area 위에 얹습니다. */
+/* 2026-09-18 검수 2차 — sticky로는 스크롤을 끝까지 내려야 보였습니다.
+   책을 넘기는 버튼은 언제나 손가락 닿는 데 있어야 하므로 화면에 고정합니다.
+   #sgTab(하단 탭바 56px + safe-area) 바로 위에 얹습니다. */
+.wy-pager{position:fixed;left:12px;right:12px;
+ bottom:calc(env(safe-area-inset-bottom,0px) + 64px);z-index:1450;
+ display:flex;align-items:center;gap:10px;margin:0;
+ padding:9px 11px;border-radius:15px;
+ background:rgba(250,248,244,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+ border:1px solid rgba(0,0,0,.10);box-shadow:0 8px 24px rgba(40,34,26,.20)}
+@media (min-width:620px){.wy-pager{left:50%;right:auto;transform:translateX(-50%);width:560px}}
+/* 고정 페이저가 마지막 글줄을 덮지 않게 책장 아래 여백을 줍니다 */
+.wy-wrap{padding-bottom:96px}
+.wy-pager .pg{flex:1;text-align:center;font-size:12.5px;font-weight:700;color:#8A8377}
+.wy-pager .pg b{color:#2A2622}
+.wy-pager .pb{border:0;border-radius:11px;padding:11px 15px;min-height:44px;
+ font-size:14px;font-weight:900;cursor:pointer;background:#2A2622;color:#fff}
+.wy-pager .pb:last-child{background:linear-gradient(135deg,#8E1119,#C81F2B)}
+.wy-pager .pb.off{background:#E3DFD7;color:#A8A29A;pointer-events:none}
+.wy-rail.four button{flex:1;min-width:0;padding-left:4px;padding-right:4px}
+.wy-rail.four button small{font-size:10.5px;letter-spacing:-.3px}
+.wy-rail.nudge{animation:wyShake .4s}
+@keyframes wyShake{0%,100%{transform:none}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.wy-nudge{position:fixed;left:14px;right:14px;bottom:calc(env(safe-area-inset-bottom,0px) + 74px);
+ z-index:2147483000;background:rgba(26,26,24,.94);color:#fff;border-radius:14px;padding:13px 15px;
+ font-size:13.5px;font-weight:700;line-height:1.5;opacity:0;transform:translateY(10px);
+ transition:opacity .2s,transform .2s;pointer-events:none;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+.wy-nudge.on{opacity:1;transform:none}
+.wy-nudge b{color:#FFD9DC}
+
+/* ── 확인 한 문제 (읽기와 구조 사이) ── */
+.wy-q{padding:2px 0 4px}
+.wy-q-k{font-size:11.5px;font-weight:900;color:#8A6A22;letter-spacing:1.4px;margin-bottom:8px}
+.wy-q-t{font-size:17.5px;font-weight:900;color:#1A1A18;margin:0 0 12px;letter-spacing:-.3px}
+.wy-q-en{margin:0 0 15px;padding:15px 16px;border-radius:13px;background:#FBFAF7;
+ border-left:4px solid #C6A15B;font-size:16.5px;font-weight:600;color:#2A2622;line-height:1.6}
+.wy-q-os{display:flex;flex-direction:column;gap:8px}
+.wy-qo{display:flex;align-items:flex-start;gap:10px;text-align:left;width:100%;
+ padding:13px 14px;border-radius:12px;border:1.5px solid #E0DCD3;background:#fff;
+ font-size:14.5px;font-weight:700;color:#2A2622;line-height:1.5;cursor:pointer;min-height:48px}
+.wy-qo:active{transform:translateY(1px)}
+.wy-qo .ci{font-size:15px;font-weight:900;color:#A8A29A;flex:0 0 auto;line-height:1.5}
+.wy-qo.ok{border-color:#0F7A5D;background:#E9F6F1;color:#08402F}
+.wy-qo.ok .ci{color:#0F7A5D}
+.wy-qo.no{border-color:#C81F2B;background:#FCECEC;color:#7A1016}
+.wy-qo.no .ci{color:#C81F2B}
+.wy-qo:disabled{cursor:default;opacity:1}
+.wy-q-h{margin:12px 0 0;font-size:12.5px;font-weight:700;color:#8A8377;line-height:1.55}
+.wy-q-r{margin-top:14px;padding:14px 15px;border-radius:13px}
+.wy-q-r.ok{background:#E9F6F1;border:1px solid #BFE3D6}
+.wy-q-r.no{background:#FFF6E9;border:1px solid #F0DCBC}
+.wy-q-r b{display:block;font-size:15px;font-weight:900;margin-bottom:5px}
+.wy-q-r.ok b{color:#08402F}
+.wy-q-r.no b{color:#8A4B1F}
+.wy-q-r p{margin:0;font-size:13.5px;font-weight:600;color:#4A453E;line-height:1.6}
+.wy-q-no{font-size:14px;font-weight:700;color:#8A8377;padding:24px 0;text-align:center}
+
+/* ── 책장 첫 화면 표지 ── */
+.wy-cover{display:flex;gap:16px;align-items:flex-start;margin:4px 0 16px}
+.wy-cover-bk{flex:0 0 118px;position:relative;perspective:900px}
+.wy-cover-bk img{display:block;width:100%;height:auto;border-radius:3px 7px 7px 3px;
+ box-shadow:0 12px 26px rgba(0,0,0,.28), -1px 0 0 rgba(255,255,255,.22) inset;
+ transform:rotateY(-9deg);transform-origin:left center}
+.wy-cover-bk::before{content:'';position:absolute;left:0;top:0;bottom:0;width:7px;
+ border-radius:3px 0 0 3px;background:linear-gradient(90deg,rgba(0,0,0,.42),rgba(0,0,0,0));
+ transform:rotateY(-9deg);transform-origin:left center;pointer-events:none;z-index:2}
+.wy-cover-tx{flex:1;min-width:0}
+.wy-cover-tx .ti{font-size:19px;font-weight:900;color:#1A1A18;letter-spacing:-.4px;line-height:1.3}
+.wy-cover-tx .su{margin:6px 0 0;font-size:13px;font-weight:700;color:#6B6459;line-height:1.55}
+.wy-cover-tx .me{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.wy-cover-tx .me span{font-size:11.5px;font-weight:800;padding:5px 9px;border-radius:999px;
+ background:#F2EFE8;color:#6B6459}
+@media (max-width:359px){.wy-cover-bk{flex-basis:96px}}
+
+/* 과 끝 오늘 집계 */
+.wy-tally{display:flex;gap:8px;margin:14px 0 2px}
+.wy-tally div{flex:1;text-align:center;padding:13px 8px;border-radius:13px;
+ background:linear-gradient(140deg,#1F2A22,#0F7A5D)}
+.wy-tally b{display:block;font-size:22px;font-weight:900;color:#fff;line-height:1.1}
+.wy-tally span{display:block;margin-top:3px;font-size:11.5px;font-weight:800;color:#CDE9DF}
 </style>
 <style>.plog{max-width:920px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 12px 44px rgba(0,0,0,.14)}.plog-top{background:#c81f2b;padding:20px;display:flex;align-items:center;justify-content:center;gap:12px}.plog-top img{height:52px;width:auto}.plog-top span{color:#fff;font-size:22px;font-weight:900;letter-spacing:-.5px}.plog-body{display:grid;grid-template-columns:1fr 1fr;gap:26px;padding:30px}.plog-f{width:100%;border:1.5px solid #d9dde5;border-radius:8px;padding:15px 14px;font-size:15px;margin-bottom:12px;font-family:inherit;box-sizing:border-box}.plog-save{display:flex;align-items:center;gap:7px;font-size:14px;color:#5b6472;margin:2px 0 14px}.plog-btn{width:100%;background:#c81f2b;color:#fff;border:0;border-radius:8px;padding:16px;font-size:16px;font-weight:800;cursor:pointer}.plog-sns-t{font-size:14px;font-weight:800;color:#2b3340;margin:22px 0 13px}.plog-sns{display:flex;gap:20px;align-items:center}.psi{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;text-decoration:none}.psi-n{background:#03C75A;color:#fff;font-size:22px}.psi-k{background:#FEE500;color:#3A1D1D;font-size:12px}.psi-g{background:#fff;border:1.5px solid #e3e6ec;color:#DB4437;font-size:20px}.plog-r{display:flex}.plog-promo{background:#f4f5f7;border-radius:10px;width:100%;overflow:hidden;text-align:center;display:flex;flex-direction:column}.plog-pr-head{background:#c81f2b;color:#fff;padding:22px 12px 18px;font-size:20px;font-weight:800;line-height:1.4}.plog-pr-head b{color:#ffe14d}.plog-pr-head em{display:block;font-style:normal;font-size:14px;font-weight:700;margin-top:8px;opacity:.95}.plog-pr-body{padding:18px 12px 20px}.plog-pr-gw{font-size:15px;font-weight:800;color:#2b3340}.plog-pr-big{font-size:26px;font-weight:900;color:#1a1a1a;line-height:1.3;margin:8px 0 16px}.plog-pr-big b{color:#c81f2b}.plog-ar{color:#c81f2b}.plog-pr-go{display:inline-flex;align-items:center;gap:8px;background:#1a1a1a;color:#fff;border-radius:24px;padding:11px 18px;font-size:14px;font-weight:800;text-decoration:none}.plog-pr-go span{background:#7ee06b;color:#0a3d0a;border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:900}.plog-foot{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #e3e6ee;background:#f6f7fa}.plog-foot a{padding:20px;text-align:center;font-size:15px;color:#4b5563;text-decoration:none;font-weight:600}.plog-foot a+a{border-left:1px solid #e3e6ee}@media(max-width:640px){.plog-body{grid-template-columns:1fr;gap:20px}}</style><style>
 /* ═══ 폰 우선 가독성 (2026-09-05 대표님 지시: 폰이 우선, PC도 깨지면 안 됨) ═══
@@ -4888,7 +4996,7 @@ html,body{overflow-x:hidden;max-width:100%}
         학원 종류 평생직업교육학원 / 교습과정 성인대상어학 · 일시수용능력 <b>138명</b> · 전용면적 266.38㎡<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v173)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v174)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -15523,6 +15631,14 @@ var WYCH=[{"t":"1장","n":"말이 사라진 아침","d":"산글이가 말을 잃
 var WYROLE={S:['누가','r-s'],V:['한다','r-v'],O:['무엇을','r-o'],M:['꾸밈','r-m'],C:['잇는말','r-c']};
 var WYTITLE='The Whale Who Forgot How to Speak';
 var _wyL=0,_wyStep=0,_wyHeard=0,_wyMark={},_wyAll={};
+/* 2026-09-18 대표님 지시 — 「책 페이지 넘기듯」(밀리의 서재처럼). 우측을 누르면 한 장 넘어갑니다.
+   중간에 객관식 한 문제를 끼운 근거: Yanagisawa·Webb·Uchihara(2020) 42편 N=3,802 메타분석에서
+   객관식으로 뜻을 한 번 고르게 하면 단어 기억이 +25.2%[18.5,31.8]. 그냥 숨기는 방식은 근거가 없었습니다. */
+var _wyQon=0;        /* 1이면 객관식 화면(읽기와 구조 사이) */
+var _wyQ=0;          /* 0=아직 / 1=풀고 있음 / 2=끝 */
+var _wyQPick=-1;     /* 고른 보기 */
+var _wyQi=0;         /* 몇 번째 문장으로 묻는지 */
+var _wyFlip=0;       /* 넘김 중 잠금 */
 function _wyE(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function _wyMd(s){return _wyE(s).replace(/&lt;b&gt;(.+?)&lt;\/b&gt;/g,'<b>$1</b>').replace(/&lt;em&gt;(.+?)&lt;\/em&gt;/g,'<em>$1</em>');}
 function _wyLoadAll(){try{_wyAll=JSON.parse(localStorage.getItem('sgl_wyb')||'{}')||{};}catch(e){_wyAll={};}return _wyAll;}
@@ -15708,8 +15824,16 @@ function wyToc(){
  return '<div class="wy-wrap wy-toc" id="wyWrap">'
  +'<div class="wy-hd"><div class="k">산본글로벌어학원 · 산글이 영어원서</div>'
   +'<h2>영어원서로 <em>영어 뽀개기</em></h2>'
-  +'<div class="bk"><b>'+WYTITLE+'</b> — 산본글로벌어학원 창작 원서<br>'
-  +WYCH.length+'장 · '+WYB.length+'과 · '+totAll+'문장 — 우리가 직접 쓴 책이라 문장을 덩어리로 뜯어 드릴 수 있습니다</div></div>'
+  /* 2026-09-18 대표님 지시 — 「글자만 있는 거 보기 싫다. 책 모양으로」. 표지를 책등까지 세워 놓았습니다. */
+  +'<div class="wy-cover">'
+   +'<div class="wy-cover-bk"><img src="img/books/bw_cover.jpg" alt="블루웨일즈 — 산본글로벌어학원 창작 영어원서 표지" loading="eager"></div>'
+   +'<div class="wy-cover-tx">'
+    +'<div class="ti">블루웨일즈</div>'
+    +'<p class="su" style="margin-top:3px;font-size:11.5px;letter-spacing:.4px;color:#8A8377">'+_wyE(WYTITLE)+'</p>'
+    +'<p class="su">산본글로벌어학원이 직접 쓴 창작 원서입니다.<br>우리 책이라 문장을 <b>덩어리로 뜯어</b> 드릴 수 있습니다.</p>'
+    +'<div class="me"><span>'+WYCH.length+'장</span><span>'+WYB.length+'과</span><span>'+totAll+'문장</span><span>소리 있음</span></div>'
+   +'</div>'
+  +'</div></div>'
  +_wyStBar()
  +'<button class="wy-rep" onclick="wyRepOpen()"><span class="ic">&#128202;</span>'
   +'<span>내 레벨 리포트 보기<small>읽은 기록으로 어디서 막히는지 무료로 알려드립니다</small></span>'
@@ -15783,6 +15907,14 @@ function _wyKo(){
  var chEnd=(_wyL+1<WYB.length) && _wyCh(_wyL+1)!==_wyCh(_wyL);
  return '<p class="wy-tip">내가 읽은 것과 얼마나 같았는지 맞춰 보십시오. <b>틀린 곳이 내 약한 자리</b>입니다.</p>'
  +cards
+ +(function(){
+    var S=_wySen(), wc=0;
+    for(var i=0;i<S.length;i++) wc += S[i][0].split(/\s+/).filter(Boolean).length;
+    return '<div class="wy-tally">'
+     +'<div><b>'+S.length+'</b><span>오늘 읽은 문장</span></div>'
+     +'<div><b>'+wc+'</b><span>오늘 지나간 단어</span></div>'
+     +'<div><b>'+(_wyQPick>=0?'1':'0')+'</b><span>확인 문제</span></div>'
+    +'</div>';})()
  +'<div class="wy-end"><b class="t">'
    +(nx?(chEnd?(WYCH[_wyCh(_wyL)].t+'을 끝내셨습니다 — '+WYCH[_wyCh(_wyL+1)].t+'이 열렸습니다'):(_wyNo(_wyL+1)+'과로 넘어가시겠어요?'))
        :(WYCH[_wyCh(_wyL)].t+'을 끝내셨습니다'))+'</b>'
@@ -15794,20 +15926,146 @@ function _wyKo(){
      :('<button class="wy-next" onclick="wyRepOpen()">내 레벨 리포트 보기 &rsaquo;<small>어디서 막히셨는지 정리해 드립니다</small></button>'))
  +'<button class="wy-back2" onclick="wyOpen()">← 목차로 돌아가기</button>';}
 
+
+/* ── 책 중간에 끼우는 객관식 한 문제 ── */
+function _wyQBuild(){
+ var S=_wySen();
+ if(!S||S.length<2) return null;
+ // 가장 긴 문장으로 묻습니다 — 그 과에서 제일 막히는 자리입니다
+ var bi=0,bl=0;
+ for(var i=0;i<S.length;i++){ if(S[i][0].length>bl){bl=S[i][0].length;bi=i;} }
+ _wyQi=bi;
+ var pool=[];
+ for(var j=0;j<S.length;j++) if(j!==bi) pool.push(S[j][1]);
+ // 섞기 — 과 번호를 씨앗으로 써서 같은 과는 매번 같은 순서(다시 풀 때 헷갈리지 않게)
+ var seed=_wyL*37+bi*11;
+ function rnd(){ seed=(seed*1103515245+12345)&0x7fffffff; return seed/0x7fffffff; }
+ pool.sort(function(){return rnd()-0.5;});
+ var opts=[S[bi][1]].concat(pool.slice(0,3));
+ opts.sort(function(){return rnd()-0.5;});
+ return {en:S[bi][0], ans:opts.indexOf(S[bi][1]), opts:opts};
+}
+function _wyQuiz(){
+ var Q=_wyQBuild();
+ if(!Q) return '<div class="wy-q"><p class="wy-q-no">이 과는 문장이 적어 확인 문제가 없습니다. 넘기시면 구조가 나옵니다.</p></div>';
+ var picked=_wyQPick>=0;
+ var right=picked && _wyQPick===Q.ans;
+ var opts=Q.opts.map(function(t,i){
+   var cls='';
+   if(picked){ if(i===Q.ans) cls=' ok'; else if(i===_wyQPick) cls=' no'; }
+   return '<button class="wy-qo'+cls+'"'+(picked?' disabled':'')+' onclick="wyQPick('+i+');return false;">'
+    +'<span class="ci">'+String.fromCharCode(9312+i)+'</span><span class="tx">'+_wyE(t)+'</span></button>';
+ }).join('');
+ return '<div class="wy-q">'
+  +'<div class="wy-q-k">읽으신 것 확인 — 한 문제만</div>'
+  +'<p class="wy-q-t">이 문장, 무슨 뜻이었습니까?</p>'
+  +'<blockquote class="wy-q-en">'+_wyE(Q.en)+'</blockquote>'
+  +'<div class="wy-q-os">'+opts+'</div>'
+  +(picked
+    ? ('<div class="wy-q-r'+(right?' ok':' no')+'">'
+       +'<b>'+(right?'맞으셨습니다':'여기가 막히는 자리입니다')+'</b>'
+       +'<p>'+(right
+          ?'한 번 골라 보신 문장은 그냥 읽고 지나간 문장보다 <b>훨씬 오래</b> 남습니다. 이제 구조를 보시면 왜 그 뜻이 되는지 보입니다.'
+          :'틀린 게 손해가 아닙니다. <b>틀린 자리가 내 약한 자리</b>이고, 바로 다음 장에서 이 문장을 덩어리로 갈라 드립니다.')
+       +'</p></div>')
+    : '<p class="wy-q-h">모르시면 아무거나 눌러 보십시오. 틀려도 바로 답과 이유가 나옵니다.</p>')
+  +'</div>';
+}
+function wyQPick(i){ _wyQPick=i; _wyQ=2; _wyPut&&_wyPut(); wyDraw(); }
+
 function wyHTML(){
- var rail=[['①','읽어 보기',0],['②','구조 보기',1],['③','해석',2]].map(function(x){
-   var lock=(x[2]>0 && !_wyCanStruct() && _wyStep<x[2]);
-   return '<button class="'+(_wyStep===x[2]?'on':(_wyStep>x[2]?'done':''))+(lock?' lock':'')+'" '
-    +(lock?'disabled':'onclick="wyStep('+x[2]+')"')+'>'+x[0]+(lock?' &#128274;':'')+'<small>'+x[1]+'</small></button>';
+ /* 2026-09-18 대표님 지시 — 「책 페이지 넘기듯」. 화면 우측을 누르면 다음 장, 좌측을 누르면 이전 장.
+    리디북스 실측에서 다음 넘김이 이전의 24배라 우측을 70%로 넓게 잡았습니다.
+    넘김 시간은 모바일 기준 300ms — StPageFlip 기본값 1000ms은 폰에서 답답합니다. */
+ var ST=_wyView();                 /* 0 읽기 · 1 확인문제 · 2 구조 · 3 해석 */
+ var rail=[['①','읽어 보기',0],['②','확인 한 문제',1],['③','구조 보기',2],['④','해석',3]].map(function(x){
+   var lock=(x[2]>=2 && !_wyCanStruct() && ST<x[2]);
+   return '<button class="'+(ST===x[2]?'on':(ST>x[2]?'done':''))+(lock?' lock':'')+'" '
+    +(lock?'disabled':'onclick="wyGo('+x[2]+')"')+'>'+x[0]+(lock?' &#128274;':'')+'<small>'+x[1]+'</small></button>';
   }).join('');
+ var body = (ST===0? ('<div class="wy-fig">'+wyFig()+'</div>'+_wyRead())
+           : ST===1? _wyQuiz()
+           : ST===2? _wyStruct()
+           : _wyKo());
+ var LBL=['읽어 보기','확인 한 문제','구조 보기','해석'];
  return '<div class="wy-wrap" id="wyWrap">'
- +'<div class="wy-hd"><button class="wy-toc-b" onclick="wyOpen()">← 목차</button>'
+ +'<div class="wy-hd"><button class="wy-toc-b" onclick="wyOpen()">← 책장</button>'
   +'<div class="k">산글이 영어원서 · '+WYCH[_wyCh(_wyL)].t+' '+_wyE(WYCH[_wyCh(_wyL)].n)+'</div>'
   +'<h2>'+_wyNo(_wyL)+'과 <em>'+_wyE(WYB[_wyL].t)+'</em></h2>'
-  +'<div class="wy-rail">'+rail+'</div></div>'
- +(_wyStep===0?'<div class="wy-fig">'+wyFig()+'</div>':'')
- +(_wyStep===0?_wyRead():(_wyStep===1?_wyStruct():_wyKo()))
+  +'<div class="wy-rail four">'+rail+'</div></div>'
+ /* ── 책장 ── */
+ +'<div class="wy-book" id="wyBook">'
+  +'<div class="wy-leaf" id="wyLeaf">'+body+'</div>'
+  +'<div class="wy-shadow" aria-hidden="true"></div>'
+  /* 넘기는 자리 — 좌 30% 이전 / 우 70% 다음 */
+  +'<button class="wy-tap prev" aria-label="이전 장" onclick="wyTurn(-1)"><span>‹</span></button>'
+  +'<button class="wy-tap next" aria-label="다음 장" onclick="wyTurn(1)"><span>›</span></button>'
+ +'</div>'
+ +'<div class="wy-pager">'
+  +'<button class="pb'+(ST===0?' off':'')+'" onclick="wyTurn(-1)">‹ 이전</button>'
+  +'<span class="pg">'+(ST+1)+' / 4 · <b>'+LBL[ST]+'</b></span>'
+  +'<button class="pb" onclick="wyTurn(1)">'+(ST===3?'다음 과 ›':'다음 ›')+'</button>'
+ +'</div>'
  +'</div>';}
+
+/* 지금 몇 번째 장인지 — 기존 _wyStep(0·1·2)에 객관식을 끼워 0~3으로 봅니다 */
+function _wyView(){ if(_wyStep===0) return _wyQon?1:0; return _wyStep+1; }
+
+/* rail을 눌러 바로 가기 */
+function wyGo(v){
+ if(v>=2 && !_wyCanStruct()) return;
+ if(v===0){_wyStep=0;_wyQon=0;}
+ else if(v===1){_wyStep=0;_wyQon=1;}
+ else {_wyStep=v-1;_wyQon=0;}
+ _wyPut(); _wyFlipTo();
+}
+
+/* 한 장 넘기기 */
+function wyTurn(d){
+ if(_wyFlip) return;
+ var v=_wyView()+d;
+ if(v<0) return;
+ if(v>3){ /* 해석에서 더 넘기면 다음 과 */
+   if(_wyL+1<WYB.length && _wyChOpen(_wyCh(_wyL+1))){ _wyFlipRun(1,function(){ _wyQon=0; wyLesson(_wyL+1); }); }
+   return;
+ }
+ if(v>=2 && !_wyCanStruct()){ _wyNudge(); return; }
+ var dir=d>0?1:-1;
+ _wyFlipRun(dir,function(){
+   if(v===0){_wyStep=0;_wyQon=0;}
+   else if(v===1){_wyStep=0;_wyQon=1;}
+   else {_wyStep=v-1;_wyQon=0;}
+   _wyPut(); wyDraw();
+ });
+}
+/* 넘김 애니메이션 — CSS 3D만 씁니다(라이브러리 0KB). turn.js 계열은 비상업용 라이선스라 못 씁니다 */
+function _wyFlipRun(dir,after){
+ var lf=document.getElementById('wyLeaf');
+ if(!lf){ after(); return; }
+ _wyFlip=1;
+ lf.style.transformOrigin = dir>0 ? 'left center' : 'right center';
+ lf.classList.add(dir>0?'turn-next':'turn-prev');
+ setTimeout(function(){
+   after();
+   var l2=document.getElementById('wyLeaf');
+   if(l2){
+     l2.style.transformOrigin = dir>0 ? 'left center' : 'right center';
+     l2.classList.add(dir>0?'in-next':'in-prev');
+     setTimeout(function(){ l2.classList.remove('in-next','in-prev'); _wyFlip=0; },300);
+   } else _wyFlip=0;
+ },300);
+}
+function _wyFlipTo(){ wyDraw(); }
+/* 아직 안 읽고 구조부터 보려 할 때 — 막기만 하지 말고 왜 막혔는지 알려 줍니다 */
+function _wyNudge(){
+ var r=document.querySelector('.wy-rail');
+ if(!r) return;
+ r.classList.remove('nudge'); void r.offsetWidth; r.classList.add('nudge');
+ var t=document.getElementById('wyNudge');
+ if(!t){ t=document.createElement('div'); t.id='wyNudge'; t.className='wy-nudge'; document.body.appendChild(t); }
+ t.innerHTML='먼저 <b>발음을 한 번 듣고</b>, 문장마다 「읽었다」를 눌러 주십시오. 그 다음에 구조가 열립니다.';
+ t.classList.add('on'); setTimeout(function(){ t.classList.remove('on'); },2600);
+}
 
 function wyDraw(){var pb=document.getElementById('pgbody');
  if(pb){pb.innerHTML=wyHTML();try{_mTop('pgModal');}catch(e){}try{_wyBtnSync();}catch(e){}}}
@@ -15815,7 +16073,7 @@ function wyLesson(i){ if(!_wyChOpen(_wyCh(i)))return; try{wyStop();}catch(e){} _
  var pb=document.getElementById('pgbody');
  if(pb&&document.getElementById('pgModal').classList.contains('open')){pb.innerHTML=wyHTML();try{_mTop('pgModal');}catch(e){}}
  else _sgSub(wyHTML());}
-function wyStep(n){ if(n>0&&!_wyCanStruct())return; _wyStep=n;_wyPut();wyDraw(); }
+function wyStep(n){ if(n>0&&!_wyCanStruct())return; _wyStep=n;_wyQon=0;_wyPut();wyDraw(); }
 function wyMark(i){ var m=_wyMark[i]||0; _wyMark[i]=(m===0?1:(m===1?2:0)); _wyPut(); _wyTouch(); wyDraw(); }
 function wyCk(el,e){if(e)e.stopPropagation();el.classList.toggle('open');}
 function wyOpenOne(el){var c=el.parentElement;el.style.display='none';
