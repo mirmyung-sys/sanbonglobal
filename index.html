@@ -4411,6 +4411,48 @@ html,body{overflow-x:hidden;max-width:100%}
 .ls-r2 p{margin:0 0 16px;font-size:14.5px;line-height:1.7;color:#525b69}
 .ls-r2 .lr-next{width:100%;margin-bottom:8px}
 .ls-r2 .lr-again{width:100%}
+
+/* ════ 2026-09-18 대표님 지시 — 학습관 순서 재설계 ════
+   폰에서 10.6화면(8,906px)을 스크롤해야 공부 자리에 닿던 것을 고칩니다.
+   안내문은 지우지 않고 서랍에 넣었습니다. */
+.sge-fold,.ai-fold{margin:18px 0 6px;border-radius:16px;overflow:hidden;
+ border:1px solid rgba(0,0,0,.10);background:#FBFAF8}
+.sge-fold>summary,.ai-fold>summary{list-style:none;cursor:pointer;display:flex;flex-direction:column;
+ gap:3px;padding:15px 44px 15px 17px;position:relative;min-height:56px;justify-content:center}
+.sge-fold>summary::-webkit-details-marker,.ai-fold>summary::-webkit-details-marker{display:none}
+.sge-fold>summary b,.ai-fold>summary b{font-size:15px;font-weight:900;color:#2A2622;letter-spacing:-.2px}
+.sge-fold>summary span,.ai-fold>summary span{font-size:12.5px;font-weight:700;color:#8A8377;line-height:1.45}
+.sge-fold>summary::after,.ai-fold>summary::after{content:'＋';position:absolute;right:16px;top:50%;
+ transform:translateY(-50%);font-size:19px;font-weight:900;color:#C6A15B}
+.sge-fold[open]>summary::after,.ai-fold[open]>summary::after{content:'－'}
+.sge-fold[open]>summary,.ai-fold[open]>summary{border-bottom:1px solid rgba(0,0,0,.08)}
+.sge-foldin,.ai-foldin{padding:4px 14px 16px}
+.sge-foldin>*:first-child,.ai-foldin>*:first-child{margin-top:12px}
+
+/* 닫기 버튼 — 화면 아래 중앙을 덮고 있어 본문을 가렸습니다. 우상단으로 올립니다. */
+#pgModal .aclose{position:fixed!important;top:calc(env(safe-area-inset-top,0px) + 10px)!important;
+ right:12px!important;left:auto!important;bottom:auto!important;transform:none!important;
+ margin:0!important;z-index:60;width:40px;height:40px;padding:0!important;border-radius:50%;
+ display:flex;align-items:center;justify-content:center;font-size:0;
+ background:rgba(26,26,24,.62);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.22);
+ box-shadow:0 4px 14px rgba(0,0,0,.28)}
+#pgModal .aclose::before{content:'✕';font-size:17px;font-weight:900;color:#fff;line-height:1}
+
+/* 2026-09-18 — 목차·원장경력 접기 */
+.ai-toc-d{border-radius:14px;overflow:hidden;background:#F7F5F1;border:1px solid rgba(0,0,0,.07);margin:14px 0}
+.ai-toc-d>summary{list-style:none;cursor:pointer;position:relative;padding-right:40px!important}
+.ai-toc-d>summary::-webkit-details-marker{display:none}
+.ai-toc-d>summary::after{content:'＋';position:absolute;right:14px;top:50%;transform:translateY(-50%);
+ font-size:18px;font-weight:900;color:#C6A15B}
+.ai-toc-d[open]>summary::after{content:'－'}
+.dirc-fold{margin:12px 0 4px;border-top:1px solid rgba(0,0,0,.08);border-bottom:1px solid rgba(0,0,0,.08)}
+.dirc-fold>summary{list-style:none;cursor:pointer;position:relative;padding:13px 40px 13px 2px;
+ font-size:13.5px;font-weight:800;color:#6B6459}
+.dirc-fold>summary::-webkit-details-marker{display:none}
+.dirc-fold>summary::after{content:'＋';position:absolute;right:6px;top:50%;transform:translateY(-50%);
+ font-size:17px;font-weight:900;color:#C6A15B}
+.dirc-fold[open]>summary::after{content:'－'}
+.dirc-fold>div{padding-bottom:10px}
 </style>
 <style>.plog{max-width:920px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 12px 44px rgba(0,0,0,.14)}.plog-top{background:#c81f2b;padding:20px;display:flex;align-items:center;justify-content:center;gap:12px}.plog-top img{height:52px;width:auto}.plog-top span{color:#fff;font-size:22px;font-weight:900;letter-spacing:-.5px}.plog-body{display:grid;grid-template-columns:1fr 1fr;gap:26px;padding:30px}.plog-f{width:100%;border:1.5px solid #d9dde5;border-radius:8px;padding:15px 14px;font-size:15px;margin-bottom:12px;font-family:inherit;box-sizing:border-box}.plog-save{display:flex;align-items:center;gap:7px;font-size:14px;color:#5b6472;margin:2px 0 14px}.plog-btn{width:100%;background:#c81f2b;color:#fff;border:0;border-radius:8px;padding:16px;font-size:16px;font-weight:800;cursor:pointer}.plog-sns-t{font-size:14px;font-weight:800;color:#2b3340;margin:22px 0 13px}.plog-sns{display:flex;gap:20px;align-items:center}.psi{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;text-decoration:none}.psi-n{background:#03C75A;color:#fff;font-size:22px}.psi-k{background:#FEE500;color:#3A1D1D;font-size:12px}.psi-g{background:#fff;border:1.5px solid #e3e6ec;color:#DB4437;font-size:20px}.plog-r{display:flex}.plog-promo{background:#f4f5f7;border-radius:10px;width:100%;overflow:hidden;text-align:center;display:flex;flex-direction:column}.plog-pr-head{background:#c81f2b;color:#fff;padding:22px 12px 18px;font-size:20px;font-weight:800;line-height:1.4}.plog-pr-head b{color:#ffe14d}.plog-pr-head em{display:block;font-style:normal;font-size:14px;font-weight:700;margin-top:8px;opacity:.95}.plog-pr-body{padding:18px 12px 20px}.plog-pr-gw{font-size:15px;font-weight:800;color:#2b3340}.plog-pr-big{font-size:26px;font-weight:900;color:#1a1a1a;line-height:1.3;margin:8px 0 16px}.plog-pr-big b{color:#c81f2b}.plog-ar{color:#c81f2b}.plog-pr-go{display:inline-flex;align-items:center;gap:8px;background:#1a1a1a;color:#fff;border-radius:24px;padding:11px 18px;font-size:14px;font-weight:800;text-decoration:none}.plog-pr-go span{background:#7ee06b;color:#0a3d0a;border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:900}.plog-foot{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #e3e6ee;background:#f6f7fa}.plog-foot a{padding:20px;text-align:center;font-size:15px;color:#4b5563;text-decoration:none;font-weight:600}.plog-foot a+a{border-left:1px solid #e3e6ee}@media(max-width:640px){.plog-body{grid-template-columns:1fr;gap:20px}}</style><style>
 /* ═══ 폰 우선 가독성 (2026-09-05 대표님 지시: 폰이 우선, PC도 깨지면 안 됨) ═══
@@ -4846,7 +4888,7 @@ html,body{overflow-x:hidden;max-width:100%}
         학원 종류 평생직업교육학원 / 교습과정 성인대상어학 · 일시수용능력 <b>138명</b> · 전용면적 266.38㎡<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v172)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v173)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -7241,7 +7283,9 @@ function spRecalc(){
  var t=document.getElementById('spPtTot');if(t)t.innerHTML=_won(Math.max(0,due-v));}
 
 
-var SG_BANK='NH농협 301-1942-0327-11 산본이지어학원 명충건';
+/* 2026-09-18 통장 실물 대조 — 계좌번호 앞자리가 301로 잘못 적혀 있었고 상호도 구 상호였습니다.
+   NH농협 통장(2026-09-18 재발행, 군포시지부) 기준: 302-1942-0327-11 / 산본글로벌어학원 / 명충건 */
+var SG_BANK='NH농협 302-1942-0327-11 산본글로벌어학원 명충건';
 function _orderText(kind,amt){
  var plain=(_payItemKeep||'').replace(/<br\s*\/?>/g,'\n').replace(/<[^>]*>/g,'').replace(/\n{2,}/g,'\n').trim();
  return '[수강신청]\n'+plain
@@ -9429,12 +9473,15 @@ function dirCard(){
   +'<div class="dirc-e">산본글로벌어학원 원장 · 영어회화</div>'
   +'<h3 style="line-height:1.18">제이영<span style="display:block;font-size:.44em;font-weight:800;color:#606878;letter-spacing:.04em;margin-top:4px;white-space:nowrap">Goo, Jeyoung</span></h3>'
   +'<p class="dirc-r"><b>Georgetown TESOL</b> · 토익 · 토플 전문 강사 출신 · <b>민병철어학원</b> · 숙명여대 · 중국 대학 출강</p>'
+  /* 2026-09-18 — 학력·경력 카드가 폰에서 한 화면 반을 먹어 접었습니다. 내용은 그대로입니다. */
+  +'<details class="dirc-fold"><summary>학력 · 강의 경력 30년 전부 보기</summary><div>'
   +'<div class="dirc-sec">학력</div>'
   +'<div class="dirc-bio">'+DIR_EDU.map(function(x){
      return '<div class="bi"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>';}).join('')+'</div>'
   +'<div class="dirc-sec">강의 경력</div>'
   +'<div class="dirc-bio">'+DIR_CAR.map(function(x){
      return '<div class="bi"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>';}).join('')+'</div>'
+  +'</div></details>'
   +'<p class="dirc-t">"저는 <b>어디서 막혔는지 찾아 드립니다.</b> '
   +'점수가 왜 안 오르는지, 유학은 어떻게 준비하는지 — <b>토익 · 토플 · 유학 · 과외 · 기업 출강</b> 상담은 모두 제가 직접 받습니다."</p>'
   +'<div class="dirc-g">'
@@ -9498,9 +9545,9 @@ function aiBookHTML(){
  var FREE=aiIsFreeBook(B.img);
  var fN=AITXT[B.img]?aiFreeN():0;
  var toc=(B.toc&&B.toc.length)
-  ? ('<div class="ai-toc"><div class="ai-toc-h">목차 <span>'+B.toc.length+'과</span>'
+  ? ('<details class="ai-toc-d"><summary class="ai-toc-h">목차 <span>'+B.toc.length+'과</span>'
      +(!AITXT[B.img]?'<em class="ai-toc-soon">본문 준비 중</em>'
-       :(FREE?'<em class="ai-toc-go free">전 과 무료 · 잠금 없음</em>':'<em class="ai-toc-go">1과와 오늘의 무료 과는 그냥 열립니다</em>'))+'</div><ol>'
+       :(FREE?'<em class="ai-toc-go free">전 과 무료 · 잠금 없음</em>':'<em class="ai-toc-go">1과와 오늘의 무료 과는 그냥 열립니다</em>'))+'</summary><ol>'
      +B.toc.map(function(t,i){
         var on=!!(AITXT[B.img]&&AITXT[B.img][i]);
         var tag=!on?' <span class="toc-b soon">준비 중</span>'
@@ -9508,7 +9555,7 @@ function aiBookHTML(){
             :(i===0?' <span class="toc-b free">무료 맛보기</span>'
               :(i+1===fN?' <span class="toc-b today">오늘 무료</span>':' <span class="toc-b lock">🔒</span>')));
         return '<li'+(on?' class="go" onclick="aiLesson('+(i+1)+')"':' class="off"')+'>'+t+tag+'</li>';}).join('')
-     +'</ol></div>')
+     +'</ol></details>')
   : '';
  /* 2026-09-03 대표님 지시: 샘플(무료 맛보기)이 제일 잘 보이게 위로, 전자책 신청은 맨 밑으로 */
  var sample=AITXT[B.img]
@@ -15400,6 +15447,9 @@ function sgeHTML(){
  /* ── 세 단 ── */
  +'<div class="sge-steps">'+steps+'</div>'
 
+ /* 2026-09-18 대표님 지시 — 「학습관 순서가 이상하다, 폰으로 네비해보고 다시 짜라」
+    근거·조사·값 설명은 지우지 않고 한 서랍에 넣었습니다. 첫 화면은 「고르고 시작하는 자리」만 둡니다. */
+ +'<details class="sge-fold"><summary><b>왜 무료로 여는지 · 조사한 것 전부 보기</b><span>앱만으로 안 되는 이유 · 인용한 연구 10편 · 발음에 대한 솔직한 말</span></summary><div class="sge-foldin">'
  /* ── 관통하는 두 줄 ── */
  +'<div class="sge-rail">'+bars+'</div>'
 
@@ -15433,6 +15483,7 @@ function sgeHTML(){
   +'</div>'
   +'<div class="sge-src">인용한 연구 — Kang·Sok·Han(2019, 54편) · Cepeda 외(2006, 317개 실험) · Lyster &amp; Saito(2010, 15편 827명) · Mackey &amp; Goo(2007) · Vilkaitė(2016) · Adolphs &amp; Schmitt(2003) · Jiang 외(2021, <i>Foreign Language Annals</i>) · CARLA, University of Minnesota · Cambridge <i>ReCALL</i>(2025, 57편) · Abrahamsson &amp; Hyltenstam(2009)</div>'
  +'</section>'
+ +'</div></details>'
 
  +'</div>';
 }
@@ -15833,54 +15884,8 @@ function aiPage(){
  +sgeHTML()
  /* 2026-09-11 대표님 지시 — 산글이 인사 → 세 개의 문(회화·시험·책방) → 카드뉴스 → 실행 */
  +sgdHTML()
- /* ── 첫인상 ── */
- +'<div class="aiv-hero">'
-  +'<div class="aiv-grid" aria-hidden="true"></div>'
-  +'<div class="aiv-in">'
-   +'<div class="aiv-eye">산본글로벌어학원</div>'
-   +'<h2><b>AI 학습관</b></h2>'
-   +'<p class="aiv-sub">회화부터 시험까지, <b>집에서 이어서</b> 공부합니다.<br>한 과에 <b>3분</b> — 읽고, 듣고, 문제 네 개면 끝납니다.</p>'
-   +'<div class="aiv-whale"><span class="wh"><img src="img/sgi_face.png" alt=""></span>'
-    +'<span class="tx"><b>산글이</b>가 하루 한 과씩 들고 옵니다</span></div>'
-   /* 2026-09-05 대표님 지시 — 토익 기초문법 40강을 학습관 안에서도 바로 보이게 */
-   /* 2026-09-06 대표님 지시 — 학습관 안에서 바로 40강을 열 수 있게 */
-   +'<a href="#" onclick="aiOpenToeic();return false;" '
-    +'style="display:flex;align-items:center;gap:12px;margin-top:16px;text-decoration:none;'
-    +'background:#C81F2B;border-radius:14px;padding:15px 18px;box-shadow:0 8px 22px rgba(200,31,43,.35)">'
-    +'<span style="font-size:26px;line-height:1">📘</span>'
-    +'<span style="flex:1"><b style="display:block;color:#fff;font-size:16.5px;font-weight:900">토익 기초문법 40강 — 여기서 바로</b>'
-    +'<span style="color:#FFD9DC;font-size:13.5px;font-weight:700">자리 판정 8초 훈련 · <b style="color:#fff">로그인하면 40강 무료</b> · 학습관 안에서 열립니다</span></span>'
-    +'<span style="color:#fff;font-size:20px;font-weight:900">›</span></a>'
-   +'<div style="margin-top:8px"><a href="#" onclick="openPage(\'토익기초문법\');return false;" style="color:#C6A15B;font-size:13px;font-weight:800;text-decoration:none">40강 전체 소개·커리큘럼 보기 ›</a></div>'
-   /* 2026-09-11 — 잉글리쉬 위드유 (원서 읽기 코너) */
-   +'<a href="#" class="wy-cta" onclick="wyOpen();return false;">'
-    +'<span style="font-size:26px;line-height:1">📖</span>'
-    +'<span style="flex:1"><b>영어원서로 영어 뽀개기 — 이 단락, 읽히십니까?</b>'
-    +'<span class="s">소설 한 단락을 영어 그대로 · <em>읽어 보고 막히면</em> 구조를 엽니다</span></span>'
-    +'<span style="color:#fff;font-size:20px;font-weight:900">›</span></a>'
-   +'<div class="aiv-st">'
-    +'<div><b>9</b><span>개 과목</span></div>'
-    +'<div><b>3</b><span>분이면 한 과</span></div>'
-    +'<div><b>AI</b><span>듣기·채점</span></div>'
-    +'<div><b>무료</b><span>학원 수강생</span></div>'
-   +'</div>'
-  +'</div>'
- +'</div>'
-
- /* ── AI 산글이 인사 영상 (2026-09-02) — 학습관에 들어오면 산글이가 인사합니다 ── */
- +'<div class="aiv-vh">'
-  +'<div class="aiv-vbox">'
-   +'<video class="aiv-v" id="sgiV2" autoplay muted loop playsinline preload="metadata" poster="img/sgi_poster.jpg">'
-    +'<source src="media/sgi_hello.mp4" type="video/mp4">'
-   +'</video>'
-   +'<button class="aiv-snd" id="sgiSnd2" type="button" onclick="aivSnd()">🔇 소리 켜기</button>'
-  +'</div>'
-  +'<div class="aiv-vcap"><b>안녕하세요, 저는 AI 산글이입니다</b><span>산본글로벌어학원의 AI 선생님 — 24시간 여러분 곁에 있습니다. 소리 켜기를 누르면 제 목소리로 인사드릴게요.</span></div>'
- +'</div>'
-
  +'<div class="sp-wrap">'
  /* ── 2026-09-03 대표님 지시: 산글이 인사 → 「하루 한 과 3분 · 바로 반 고르기」 → 전자책 → 구지영 원장 순서 ── */
- +'<div class="aiv-h"><span class="k">시작하세요</span><b>하루 한 과, 3분이면 됩니다</b><p>바로 배우실 반을 고르세요 — 1과는 누구나 무료 맛보기입니다.</p></div>'
  /* 2026-09-10 — 어제 어디까지 했는지, 뭘 틀렸는지가 맨 위에 보여야 다시 옵니다 */
  +sglBanner()
  +'<div class="ai-lb">① 배우실 반을 고르세요</div>'
@@ -15888,6 +15893,9 @@ function aiPage(){
 
 
  +wySecHTML()
+ /* 2026-09-18 — 안내문 네 덩이(학원생 무료·이런 곳입니다·값·시중 앱과 차이)를 한 서랍에 넣었습니다.
+    지우지 않았습니다. 고르고 시작한 다음에 읽을 것들입니다. */
+ +'<details class="ai-fold"><summary><b>학습관을 더 알아보기</b><span>왜 수강생은 0원인지 · 값 · 시중 AI 앱과 무엇이 다른지</span></summary><div class="ai-foldin">'
  +'<div class="ai-off">'
  +'<div class="ai-off-t">🏫 학원 수강생은 <b>전부 무료</b></div>'
  +'<p>산본글로벌어학원에 등록해 수업을 듣고 계시면 AI 학습관 전체가 무료입니다 — 전자책 12권, 듣기, 채점, 출석체크까지. '
@@ -15936,6 +15944,7 @@ function aiPage(){
   +'<div class="cm on"><span>AI 산글 학습관</span><em>막힌 자리가 <b>학원으로 이어집니다.</b> 산본에 오시면 그 부분부터 사람이 다시 잡아 드립니다.</em></div>'
  +'</div>'
  +'<p class="aiv-note">산글이는 선생님을 대신하지 않습니다. <b>수업과 수업 사이를 메웁니다.</b></p>'
+ +'</div></details>'
 
  
 +spModalHTML()+'</div>'+CTA()+dirCard();}
