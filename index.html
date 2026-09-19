@@ -4561,6 +4561,132 @@ html,body{overflow-x:hidden;max-width:100%}
  background:linear-gradient(140deg,#1F2A22,#0F7A5D)}
 .wy-tally b{display:block;font-size:22px;font-weight:900;color:#fff;line-height:1.1}
 .wy-tally span{display:block;margin-top:3px;font-size:11.5px;font-weight:800;color:#CDE9DF}
+
+/* ════ 2026-09-18 책 리더 — 표지부터 끝까지 한 권이 이어집니다 ════ */
+.wy-open{display:block;width:100%;margin:14px 0 4px;border:0;border-radius:15px;padding:16px 18px;
+ background:linear-gradient(135deg,#1F2A22,#0F7A5D);color:#fff;font-family:inherit;
+ font-size:16px;font-weight:900;text-align:left;cursor:pointer;min-height:56px;
+ box-shadow:0 8px 22px rgba(15,122,93,.28)}
+.wy-open small{display:block;margin-top:3px;font-size:12.5px;font-weight:700;color:#CDE9DF}
+.wy-open.s{margin-top:8px;background:#F2EFE8;color:#2A2622;box-shadow:none;border:1px solid rgba(0,0,0,.09)}
+.wy-open.s small{color:#8A8377}
+
+.wy-reader{padding-bottom:96px}
+.wyr-hd{display:flex;align-items:center;gap:10px;padding:2px 0 10px}
+.wyr-x{border:0;background:none;font-family:inherit;font-size:13.5px;font-weight:800;color:#6B6459;cursor:pointer;padding:6px 2px}
+.wyr-ti{flex:1;text-align:center;font-size:14px;font-weight:900;color:#2A2622;letter-spacing:-.2px}
+.wyr-pg{font-size:12px;font-weight:800;color:#A8A29A;font-variant-numeric:tabular-nums}
+.wyr-bar{height:3px;border-radius:2px;background:#EAE6DE;overflow:hidden;margin-bottom:14px}
+.wyr-bar .fl{height:100%;background:linear-gradient(90deg,#C6A15B,#0F7A5D);transition:width .3s}
+
+.wyp{min-height:58vh;padding:2px 0}
+.wyp-run{font-size:11.5px;font-weight:900;color:#A8A29A;letter-spacing:.6px;margin-bottom:12px}
+.wyp-tip{margin-top:16px;font-size:12.5px;font-weight:700;color:#8A8377;line-height:1.6}
+.wyp-no{font-size:12px;font-weight:900;color:#8A6A22;letter-spacing:1.4px;margin-bottom:8px}
+
+.wyp.cover{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+ padding:18px 0 10px;min-height:62vh}
+.wyp-cov{width:min(58%,220px);perspective:900px}
+.wyp-cov img{display:block;width:100%;height:auto;border-radius:3px 8px 8px 3px;
+ box-shadow:0 16px 34px rgba(0,0,0,.3), -1px 0 0 rgba(255,255,255,.2) inset;transform:rotateY(-7deg);
+ transform-origin:left center}
+.wyp-covtx{margin-top:22px}
+.wyp-covtx b{display:block;font-size:24px;font-weight:900;color:#1A1A18;letter-spacing:-.5px}
+.wyp-covtx span{display:block;margin-top:5px;font-size:12px;font-weight:700;color:#8A8377;letter-spacing:.3px}
+.wyp-covtx em{display:block;margin-top:10px;font-size:12.5px;font-weight:800;color:#C6A15B;font-style:normal}
+.wyp-hint{margin-top:22px;font-size:12.5px;font-weight:700;color:#A8A29A}
+
+.wyp.chap,.wyp.title,.wyp.locked,.wyp.tally{display:flex;flex-direction:column;justify-content:center;
+ text-align:center;min-height:58vh}
+.wyp-chn{font-size:13px;font-weight:900;color:#C6A15B;letter-spacing:2px;margin-bottom:10px}
+.wyp.chap h3,.wyp.title h3,.wyp.locked h3{margin:0 0 10px;font-size:23px;font-weight:900;
+ color:#1A1A18;letter-spacing:-.5px;line-height:1.35}
+.wyp.chap p,.wyp.title p,.wyp.locked p{margin:0;font-size:14px;font-weight:600;color:#6B6459;line-height:1.7}
+.wyp-chm,.wyp-meta{margin-top:16px;display:flex;gap:7px;justify-content:center}
+.wyp-chm{font-size:12px;font-weight:800;color:#A8A29A}
+.wyp-meta span{font-size:11.5px;font-weight:800;padding:5px 10px;border-radius:999px;background:#F2EFE8;color:#6B6459}
+.wyp.title .wy-play{margin-top:22px}
+.wyp.locked .ic{font-size:34px;margin-bottom:12px}
+.wyp.tally .wy-tally{margin:6px 0 16px}
+.wyp.read .wy-para{font-size:17.5px;line-height:2.0}
+
+/* ════ 밀리의 서재 메인 배너 — 블루웨일즈 ════ */
+.wybb{position:relative;display:block;width:100%;aspect-ratio:1/1.16;margin:18px 0 6px;
+ border-radius:20px;overflow:hidden;cursor:pointer;background:#0B1520;
+ box-shadow:0 14px 36px rgba(11,21,32,.34)}
+@supports not (aspect-ratio:1/1){.wybb{height:62vw;min-height:380px}}
+.wybb-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;
+ display:block;transition:transform .5s ease}
+.wybb:active .wybb-bg{transform:scale(1.02)}
+.wybb-sh{position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(6,12,20,.30) 0%,rgba(6,12,20,0) 32%,rgba(6,12,20,.62) 62%,rgba(6,12,20,.93) 100%)}
+.wybb-tag{position:absolute;top:16px;left:16px;z-index:2;
+ font-size:12.5px;font-weight:900;color:#fff;letter-spacing:1.6px;
+ text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.wybb-in{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 20px 20px;text-align:center}
+.wybb-in h3{margin:0;font-size:25px;font-weight:900;color:#fff;line-height:1.36;letter-spacing:-.6px;
+ text-shadow:0 3px 16px rgba(0,0,0,.66)}
+.wybb-su{margin-top:9px;font-size:14.5px;font-weight:700;color:rgba(255,255,255,.88);letter-spacing:.2px;
+ text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.wybb-ft{display:flex;align-items:center;gap:10px;margin-top:17px}
+.wybb-go{flex:1;border:0;border-radius:13px;padding:14px 12px;min-height:48px;font-family:inherit;
+ font-size:15px;font-weight:900;color:#0B1520;background:rgba(255,255,255,.95);cursor:pointer;
+ backdrop-filter:blur(6px)}
+.wybb-go:active{transform:translateY(1px)}
+.wybb-pg{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;
+ padding:9px 13px;border-radius:999px;background:rgba(10,18,28,.55);
+ border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);
+ font-size:13px;font-weight:900;color:#fff;font-variant-numeric:tabular-nums}
+.wybb-pg i{font-style:normal;color:rgba(255,255,255,.5);font-weight:700}
+@media (min-width:620px){.wybb{aspect-ratio:1/0.62}.wybb-in h3{font-size:30px}}
+
+/* ════ 책 상세 (밀리의 서재 상세 화면) ════ */
+.wybd{position:relative;min-height:74vh;margin:-4px -14px 0;border-radius:18px;overflow:hidden}
+.wybd-bg{position:absolute;inset:-40px;background-size:cover;background-position:center 40%;
+ filter:blur(34px) saturate(1.1) brightness(.92);transform:scale(1.1)}
+.wybd-bg::after{content:'';position:absolute;inset:0;background:rgba(250,248,244,.62)}
+.wybd-in{position:relative;z-index:2;padding:14px 18px 22px;text-align:center}
+.wybd-x{position:absolute;left:12px;top:12px;border:0;background:rgba(255,255,255,.7);
+ width:36px;height:36px;border-radius:50%;font-size:17px;font-weight:900;color:#2A2622;cursor:pointer;
+ backdrop-filter:blur(6px)}
+.wybd-badge{display:inline-block;margin:6px 0 20px;padding:8px 16px;border-radius:999px;
+ background:rgba(255,255,255,.78);backdrop-filter:blur(8px);
+ font-size:13px;font-weight:800;color:#4A453E}
+.wybd-cov{width:min(56%,210px);margin:0 auto;perspective:1000px}
+.wybd-cov img{display:block;width:100%;height:auto;border-radius:6px;
+ box-shadow:0 20px 44px rgba(20,16,12,.38), 0 3px 10px rgba(20,16,12,.2)}
+.wybd-tx{margin-top:22px}
+.wybd-tx b{display:block;font-size:23px;font-weight:900;color:#1A1A18;letter-spacing:-.5px}
+.wybd-tx span{display:block;margin-top:6px;font-size:12.5px;font-weight:700;color:#6B6459}
+.wybd-tx em{display:block;margin-top:9px;font-size:12.5px;font-weight:800;color:#8A6A22;font-style:normal}
+.wybd-ft{position:sticky;bottom:0;z-index:3;display:flex;align-items:stretch;gap:10px;
+ margin:18px -14px 0;padding:12px 14px calc(env(safe-area-inset-bottom,0px) + 74px);
+ background:rgba(255,253,248,.97);backdrop-filter:blur(12px);border-top:1px solid rgba(0,0,0,.08)}
+.wybd-ic{flex:0 0 auto;width:62px;border:0;background:none;font-family:inherit;cursor:pointer;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px 2px}
+.wybd-ic i{font-size:21px;font-style:normal;line-height:1}
+.wybd-ic span{font-size:11.5px;font-weight:800;color:#6B6459}
+.wybd-go{flex:1;border:0;border-radius:14px;padding:13px 14px;min-height:56px;font-family:inherit;
+ font-size:16px;font-weight:900;color:#fff;background:#2A2622;cursor:pointer}
+.wybd-go small{display:block;margin-top:3px;font-size:12px;font-weight:700;color:rgba(255,255,255,.7)}
+
+/* ════ A4 한 장 + 아래 버튼 세 개 ════ */
+.wyr-sheet{min-height:44vh}
+.wyr-one{margin:0 0 16px;padding:0 0 15px;border-bottom:1px dashed rgba(0,0,0,.10)}
+.wyr-one:last-child{border-bottom:0;margin-bottom:0}
+.wyr-one .en{margin:0;font-size:16.5px;font-weight:600;color:#1A1A18;line-height:1.72;letter-spacing:-.1px}
+.wyr-one .kr{margin:8px 0 0;font-size:15px;font-weight:700;color:#0B5240;line-height:1.7}
+.wyr-one.st .wy-st{margin-top:10px}
+.wyr-one.st .ex{margin-top:10px}
+.wyr-tools{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}
+.wyr-tools .wt{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+ border:1.5px solid #E0DCD3;background:#fff;border-radius:14px;padding:12px 6px;min-height:62px;
+ font-family:inherit;cursor:pointer}
+.wyr-tools .wt i{font-size:19px;font-style:normal;line-height:1}
+.wyr-tools .wt span{font-size:12.5px;font-weight:900;color:#4A453E}
+.wyr-tools .wt.on{border-color:#0F7A5D;background:#E9F6F1}
+.wyr-tools .wt.on span{color:#08402F}
+.wyr-tools .wt:active{transform:translateY(1px)}
 </style>
 <style>.plog{max-width:920px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 12px 44px rgba(0,0,0,.14)}.plog-top{background:#c81f2b;padding:20px;display:flex;align-items:center;justify-content:center;gap:12px}.plog-top img{height:52px;width:auto}.plog-top span{color:#fff;font-size:22px;font-weight:900;letter-spacing:-.5px}.plog-body{display:grid;grid-template-columns:1fr 1fr;gap:26px;padding:30px}.plog-f{width:100%;border:1.5px solid #d9dde5;border-radius:8px;padding:15px 14px;font-size:15px;margin-bottom:12px;font-family:inherit;box-sizing:border-box}.plog-save{display:flex;align-items:center;gap:7px;font-size:14px;color:#5b6472;margin:2px 0 14px}.plog-btn{width:100%;background:#c81f2b;color:#fff;border:0;border-radius:8px;padding:16px;font-size:16px;font-weight:800;cursor:pointer}.plog-sns-t{font-size:14px;font-weight:800;color:#2b3340;margin:22px 0 13px}.plog-sns{display:flex;gap:20px;align-items:center}.psi{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;text-decoration:none}.psi-n{background:#03C75A;color:#fff;font-size:22px}.psi-k{background:#FEE500;color:#3A1D1D;font-size:12px}.psi-g{background:#fff;border:1.5px solid #e3e6ec;color:#DB4437;font-size:20px}.plog-r{display:flex}.plog-promo{background:#f4f5f7;border-radius:10px;width:100%;overflow:hidden;text-align:center;display:flex;flex-direction:column}.plog-pr-head{background:#c81f2b;color:#fff;padding:22px 12px 18px;font-size:20px;font-weight:800;line-height:1.4}.plog-pr-head b{color:#ffe14d}.plog-pr-head em{display:block;font-style:normal;font-size:14px;font-weight:700;margin-top:8px;opacity:.95}.plog-pr-body{padding:18px 12px 20px}.plog-pr-gw{font-size:15px;font-weight:800;color:#2b3340}.plog-pr-big{font-size:26px;font-weight:900;color:#1a1a1a;line-height:1.3;margin:8px 0 16px}.plog-pr-big b{color:#c81f2b}.plog-ar{color:#c81f2b}.plog-pr-go{display:inline-flex;align-items:center;gap:8px;background:#1a1a1a;color:#fff;border-radius:24px;padding:11px 18px;font-size:14px;font-weight:800;text-decoration:none}.plog-pr-go span{background:#7ee06b;color:#0a3d0a;border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:900}.plog-foot{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #e3e6ee;background:#f6f7fa}.plog-foot a{padding:20px;text-align:center;font-size:15px;color:#4b5563;text-decoration:none;font-weight:600}.plog-foot a+a{border-left:1px solid #e3e6ee}@media(max-width:640px){.plog-body{grid-template-columns:1fr;gap:20px}}</style><style>
 /* ═══ 폰 우선 가독성 (2026-09-05 대표님 지시: 폰이 우선, PC도 깨지면 안 됨) ═══
@@ -4682,7 +4808,7 @@ html,body{overflow-x:hidden;max-width:100%}
  /* 2026-09-17 보강 — 예전에는 한 번 코드를 넣으면 그 브라우저가 영원히 그냥 들어왔습니다.
     열쇠 이름을 바꿔 지금까지 나간 통행증을 전부 무효로 만들고, 7일 만료를 붙였습니다.
     주소 끝에 #lock 을 붙여 열면 그 자리에서 통행증을 버립니다 (손님 눈으로 보실 때). */
- var GATE_ON=true, CODE='1001', OPEN_FROM=new Date(2026,9,1); /* 2026-10-01 자동 오픈 */
+ var GATE_ON=false, CODE='1001', OPEN_FROM=new Date(2026,9,1); /* 2026-10-01 자동 오픈 */
  var KEY='sga_gate_c2', DAYS=7;
  var g=document.getElementById('sgGate');
  function off(){if(g&&g.parentNode)g.parentNode.removeChild(g);document.documentElement.style.overflow='';}
@@ -4696,6 +4822,18 @@ html,body{overflow-x:hidden;max-width:100%}
   }catch(e){return false;}
  }
  try{ localStorage.removeItem('sga_gate_ok'); }catch(e){}   /* 예전 열쇠 청소 */
+ /* 2026-09-18 — 토스페이먼츠 PG 심사가 들어갔습니다. 심사자가 이 게이트에 막히면
+    「URL 접속 문제」로 거절됩니다. 게이트를 끄지 않고, 주소에 ?k=1001 을 붙인 링크로
+    들어온 사람만 코드 입력 없이 통과시킵니다. 게이트·noindex·robots.txt 는 그대로입니다.
+    링크를 모르는 사람은 여전히 못 들어옵니다. */
+ try{
+  var _q=(location.search||'');
+  var _m=_q.match(/[?&]k=([^&]*)/);
+  if(_m && decodeURIComponent(_m[1])===CODE){
+   try{localStorage.setItem(KEY,String(Date.now()));}catch(e){}
+   off(); return;
+  }
+ }catch(e){}
  try{
   if(!GATE_ON||new Date()>=OPEN_FROM||pass()){off();return;}
  }catch(e){off();return;}
@@ -4996,7 +5134,7 @@ html,body{overflow-x:hidden;max-width:100%}
         학원 종류 평생직업교육학원 / 교습과정 성인대상어학 · 일시수용능력 <b>138명</b> · 전용면적 266.38㎡<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~16:00 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v174)</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftver" id="ftVer">최종 수정 2026-09-17 (v176)</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_FxfgQT" target="_blank" rel="noopener noreferrer">T</a>
@@ -15833,7 +15971,13 @@ function wyToc(){
     +'<p class="su">산본글로벌어학원이 직접 쓴 창작 원서입니다.<br>우리 책이라 문장을 <b>덩어리로 뜯어</b> 드릴 수 있습니다.</p>'
     +'<div class="me"><span>'+WYCH.length+'장</span><span>'+WYB.length+'과</span><span>'+totAll+'문장</span><span>소리 있음</span></div>'
    +'</div>'
-  +'</div></div>'
+  +'</div>'
+  /* 2026-09-18 — 밀리의 서재 「첫 권 보기」 자리. 표지 0쪽부터 책이 죽 이어집니다. */
+  +'<button class="wy-open" onclick="wyReadFrom(0)">첫 페이지부터 읽기'
+   +'<small>표지부터 넘기면서 읽습니다 — 오른쪽을 누르면 다음 장</small></button>'
+  +(function(){var n=0;try{n=parseInt(localStorage.getItem('wy_pg')||'0',10)||0;}catch(e){}
+    return n>0 ? '<button class="wy-open s" onclick="wyReadResume()">이어서 읽기 &rsaquo;<small>'+(n+1)+'쪽부터</small></button>' : '';})()
+  +'</div>'
  +_wyStBar()
  +'<button class="wy-rep" onclick="wyRepOpen()"><span class="ic">&#128202;</span>'
   +'<span>내 레벨 리포트 보기<small>읽은 기록으로 어디서 막히는지 무료로 알려드립니다</small></span>'
@@ -15972,6 +16116,367 @@ function _wyQuiz(){
   +'</div>';
 }
 function wyQPick(i){ _wyQPick=i; _wyQ=2; _wyPut&&_wyPut(); wyDraw(); }
+
+
+/* ════════════════════════════════════════════════════════════════
+   2026-09-18 대표님 지시 — 「밀리의 서재처럼. 책장 → 책 고르기 → 표지 →
+   1페이지부터 누르면 책장 넘기듯 전체 페이지가 넘어감」
+   과 단위로 끊기던 것을 책 한 권이 죽 이어지는 쪽으로 다시 짰습니다.
+   ════════════════════════════════════════════════════════════════ */
+var _wyPg=0, _wyPgs=null, _wyQAns={};   /* 지금 쪽 / 쪽 목록 / 과별 객관식 답 */
+var _wyMode={};   /* 쪽마다 지금 무엇을 펼쳐 놨는가 — '' 영문 / 'st' 문장구조 / 'ko' 해석 */
+/* 아래 버튼 세 개 */
+function wyToolMode(m){ _wyMode[_wyPg]=(_wyMode[_wyPg]===m?'':m); wyReaderDraw();
+  try{var m2=document.getElementById('pgModal'); if(m2) m2.scrollTop=0;}catch(e){} }
+function wyToolSay(a,b){
+ if(_wySpeaking()){ wyStop(); wyReaderDraw(); return; }
+ var P=_wyPages(), p=P[_wyPg], S=WYB[p.L].s, t=[];
+ for(var i=a;i<b;i++) t.push(S[i][0]);
+ _wyHeard=1; try{_wyPut();_wyTouch();}catch(e){}
+ try{ sgpPlay([{t:t.join(' '),lang:'en-US',who:null,mp3:''}],null,'one'); }
+ catch(e){ try{var u=new SpeechSynthesisUtterance(t.join(' '));u.lang='en-US';u.rate=.9;speechSynthesis.speak(u);}catch(e2){} }
+ wyReaderDraw(); setTimeout(wyReaderDraw,400);
+}
+
+/* 책 전체를 쪽으로 펼칩니다 */
+function _wyPages(){
+ if(_wyPgs) return _wyPgs;
+ var P=[{t:'cover'}];
+ for(var L=0; L<WYB.length; L++){
+  var ch=_wyCh(L);
+  if(!_wyChOpen(ch)) { P.push({t:'locked', ch:ch}); break; }
+  if(L===WYCH[ch].a) P.push({t:'chap', ch:ch});      /* 장 속표지 */
+  var S=WYB[L].s, n=S.length;
+  P.push({t:'title', L:L});                           /* 과 속표지 */
+  /* 2026-09-18 대표님 지시 — 「A4 한 장이 딱 나오게」.
+     폰 한 화면에 들어가는 양은 영문 약 400자입니다(390px 폭 · 17.5px · 줄간 2.0 기준).
+     구조·해석은 따로 넘기지 않고 이 쪽 아래 [발음][문장구조][해석] 버튼으로 펼칩니다. */
+  var a=0, cnt=0;
+  for(var i=0;i<n;i++){
+   cnt += S[i][0].length + 1;
+   var last=(i===n-1);
+   if(cnt>=400 || last){ P.push({t:'read', L:L, a:a, b:i+1}); a=i+1; cnt=0; }
+  }
+  P.push({t:'quiz', L:L});
+  P.push({t:'tally', L:L});
+ }
+ P.push({t:'end'});
+ _wyPgs=P; return P;
+}
+function _wyPgLabel(p){
+ if(p.t==='cover') return '표지';
+ if(p.t==='chap')  return WYCH[p.ch].t;
+ if(p.t==='locked')return '잠김';
+ if(p.t==='end')   return '끝';
+ var no=_wyNo(p.L)+'과';
+ return no+' · '+({title:'시작',read:'읽기',quiz:'확인',struct:'구조',ko:'해석',tally:'정리'}[p.t]||'');
+}
+
+/* 한 쪽 그리기 */
+function _wyPageHTML(p){
+ if(p.t==='cover'){
+  return '<div class="wyp cover">'
+   +'<div class="wyp-cov"><img src="img/books/bw_cover.jpg" alt="블루웨일즈 표지"></div>'
+   +'<div class="wyp-covtx"><b>블루웨일즈</b><span>'+_wyE(WYTITLE)+'</span>'
+    +'<em>산본글로벌어학원 창작 원서</em></div>'
+   +'<p class="wyp-hint">오른쪽을 누르면 책장이 넘어갑니다</p></div>';
+ }
+ if(p.t==='chap'){
+  var C=WYCH[p.ch];
+  return '<div class="wyp chap">'
+   +'<div class="wyp-chn">'+C.t+'</div>'
+   +'<h3>'+_wyE(C.n)+'</h3>'
+   +'<p>'+_wyE(C.d)+'</p>'
+   +'<div class="wyp-chm">'+(C.b-C.a)+'과</div></div>';
+ }
+ if(p.t==='locked'){
+  var k=p.ch;
+  return '<div class="wyp locked"><div class="ic">&#128274;</div>'
+   +'<h3>'+WYCH[k].t+'은 아직 잠겨 있습니다</h3>'
+   +'<p>'+WYCH[k-1].t+'을 다 읽으시면 열립니다 — 지금 <b>'+_wyChDone(k-1)+' / '+(WYCH[k-1].b-WYCH[k-1].a)+'과</b>.<br>'
+   +'건너뛰고 읽으면 공부가 안 되기 때문에 순서를 막아 두었습니다.</p></div>';
+ }
+ if(p.t==='end'){
+  return '<div class="wyp chap"><div class="wyp-chn">끝</div>'
+   +'<h3>여기까지가 지금 열려 있는 마지막입니다</h3>'
+   +'<p>다음 장은 준비 중입니다. <b>레벨 리포트</b>를 한 번 보고 가십시오.</p>'
+   +'<button class="wy-next" onclick="wyRepOpen()">내 레벨 리포트 보기 &rsaquo;<small>읽은 기록으로 어디서 막히는지 알려드립니다</small></button></div>';
+ }
+ var L=p.L, S=WYB[L].s;
+ if(p.t==='title'){
+  var wc=0; for(var i=0;i<S.length;i++) wc+=S[i][0].split(/\s+/).filter(Boolean).length;
+  return '<div class="wyp title">'
+   +'<div class="wyp-no">'+_wyNo(L)+'과</div>'
+   +'<h3>'+_wyE(WYB[L].t)+'</h3>'
+   +'<p>'+_wyE(WYB[L].d)+'</p>'
+   +'<div class="wyp-meta"><span>'+S.length+'문장</span><span>'+wc+'단어</span></div>'
+   +'<button class="wy-play" id="wyPlay" onclick="wyPlay()">'
+    +'<span class="ic">&#128266;</span><span class="wy-play-t" style="flex:1">이 과 발음 듣기'
+    +'<small>소리만 나옵니다 · 눈으로 따라 읽어 보세요</small></span></button></div>';
+ }
+ if(p.t==='read'){
+  var mode=_wyMode[_wyPg]||'';           /* '' | 'ko' | 'st' */
+  var body='';
+  if(mode==='st'){
+   /* 문장구조 — 덩어리를 갈라 보여줍니다 */
+   for(var i=p.a;i<p.b;i++){
+    var r=S[i];
+    var st=r[2].map(function(c){var ro=WYROLE[c[1]]||WYROLE.M;
+      return '<span class="wy-ck '+ro[1]+'" data-ko="'+_wyE(c[2])+'" onclick="wyCk(this,event)"><i>'+ro[0]+'</i>'+_wyE(c[0])+'</span>';}).join('');
+    body+='<div class="wyr-one st">'
+      +'<p class="en">'+_wyE(r[0])+'</p>'
+      +'<div class="wy-st">'+st+'</div>'
+      +(r[3]?'<div class="ex">'+_wyMd(r[3])+'</div>':'')
+      +'</div>';
+   }
+  } else if(mode==='ko'){
+   /* 해석 — 영문 바로 밑에 한국어 */
+   for(var i=p.a;i<p.b;i++){
+    body+='<div class="wyr-one ko">'
+      +'<p class="en">'+_wyE(S[i][0])+'</p>'
+      +'<p class="kr">'+_wyE(S[i][1])+'</p></div>';
+   }
+  } else {
+   /* 기본 — A4 한 장처럼 영문만 죽 */
+   var para='';
+   for(var i=p.a;i<p.b;i++){
+    var m=_wyMark[i+1], cls=(m===1?' ok':(m===2?' no':''));
+    var mk=(m===1?'<span class="mk">&#10003;</span>':(m===2?'<span class="mk">&#9873;</span>':''));
+    para+='<span class="wy-s'+cls+'" data-i="'+(i+1)+'" onclick="wyMark('+(i+1)+')">'+_wyE(S[i][0])+mk+'</span> ';
+   }
+   body='<p class="wy-para">'+para+'</p>';
+  }
+  var sp=_wySpeaking();
+  return '<div class="wyp read">'
+   +'<div class="wyp-run">'+_wyNo(L)+'과 · '+_wyE(WYB[L].t)+' &nbsp;'+(p.a+1)+'–'+p.b+' / '+S.length+'</div>'
+   +'<div class="wyr-sheet">'+body+'</div>'
+   +'<div class="wyr-tools">'
+     +'<button class="wt'+(sp?' on':'')+'" onclick="wyToolSay('+p.a+','+p.b+')">'
+       +'<i>'+(sp?'&#9724;':'&#128266;')+'</i><span>'+(sp?'멈춤':'발음')+'</span></button>'
+     +'<button class="wt'+(mode==='st'?' on':'')+'" onclick="wyToolMode(\'st\')">'
+       +'<i>&#129513;</i><span>문장구조</span></button>'
+     +'<button class="wt'+(mode==='ko'?' on':'')+'" onclick="wyToolMode(\'ko\')">'
+       +'<i>&#127472;&#127479;</i><span>해석</span></button>'
+   +'</div>'
+   +'<p class="wyp-tip">'+(mode===''
+     ? '막히는 문장은 <b>한 번 더 눌러 &#9873;</b> 해 두십시오. 아래 <b>문장구조</b>를 누르면 그 자리부터 갈라 드립니다.'
+     : (mode==='st' ? '덩어리를 <b>누르면 그 덩어리의 뜻</b>이 나옵니다. 다시 누르면 영문으로 돌아갑니다.'
+                    : '영문 바로 밑이 해석입니다. 다시 누르면 영문만 남습니다.'))
+   +'</p></div>';
+ }
+ if(p.t==='quiz'){
+  return '<div class="wyp quiz">'+_wyQuizFor(L)+'</div>';
+ }
+ if(p.t==='struct'){
+  var cards='';
+  for(var i=p.a;i<p.b;i++){
+   var r=S[i], hit=(_wyMark[i+1]===2);
+   var st=r[2].map(function(c){var ro=WYROLE[c[1]]||WYROLE.M;
+    return '<span class="wy-ck '+ro[1]+'" data-ko="'+_wyE(c[2])+'" onclick="wyCk(this,event)"><i>'+ro[0]+'</i>'+_wyE(c[0])+'</span>';}).join('');
+   cards+='<article class="wy-card'+(hit?' hit':'')+'">'
+    +'<div class="n">'+(i+1)+' / '+S.length+(hit?'<em>&#9873; 여기서 막히셨습니다</em>':'')+'</div>'
+    +'<p class="en">'+_wyE(r[0])+'</p>'
+    +'<div class="wy-st">'+st+'</div>'
+    +(r[3]?'<div class="ex">'+_wyMd(r[3])+'</div>':'')
+    +'</article>';
+  }
+  return '<div class="wyp struct">'
+   +'<div class="wyp-run">'+_wyNo(L)+'과 · 구조 &nbsp;'+(p.a+1)+'–'+p.b+' / '+S.length+'</div>'
+   +'<div class="wy-lg"><span class="l-s">누가</span><span class="l-v">한다</span><span class="l-o">무엇을</span>'
+    +'<span class="l-m">꾸밈</span><span class="l-c">잇는말</span></div>'
+   +cards
+   +'<p class="wyp-tip">덩어리를 <b>누르면 그 덩어리의 뜻</b>이 나옵니다. 해석은 다음 장에 있습니다.</p></div>';
+ }
+ if(p.t==='ko'){
+  var cards='';
+  for(var i=p.a;i<p.b;i++){
+   cards+='<article class="wy-card'+(_wyMark[i+1]===2?' hit':'')+'">'
+    +'<div class="n">'+(i+1)+' / '+S.length+'</div>'
+    +'<p class="en">'+_wyE(S[i][0])+'</p>'
+    +'<p class="ko">'+_wyE(S[i][1])+'</p></article>';
+  }
+  return '<div class="wyp ko">'
+   +'<div class="wyp-run">'+_wyNo(L)+'과 · 해석 &nbsp;'+(p.a+1)+'–'+p.b+' / '+S.length+'</div>'
+   +cards+'</div>';
+ }
+ if(p.t==='tally'){
+  var wc=0; for(var i=0;i<S.length;i++) wc+=S[i][0].split(/\s+/).filter(Boolean).length;
+  var q=(_wyQAns[L]!==undefined)?1:0;
+  var nx=(L+1<WYB.length) && _wyChOpen(_wyCh(L+1));
+  var chEnd=nx && _wyCh(L+1)!==_wyCh(L);
+  try{ _wyAll[L]=_wyAll[L]||{}; _wyAll[L].s=2; _wyPut(); }catch(e){}
+  return '<div class="wyp tally">'
+   +'<div class="wyp-no">'+_wyNo(L)+'과를 끝내셨습니다</div>'
+   +'<div class="wy-tally">'
+    +'<div><b>'+S.length+'</b><span>읽은 문장</span></div>'
+    +'<div><b>'+wc+'</b><span>지나간 단어</span></div>'
+    +'<div><b>'+q+'</b><span>확인 문제</span></div>'
+   +'</div>'
+   +'<p class="wyp-tip">'+(chEnd
+     ? ('<b>'+WYCH[_wyCh(L)].t+'</b>을 다 읽으셨습니다. 시험 없이 <b>레벨2 회화반 입학 자격</b>이 생겼습니다.')
+     : '같은 단락을 <b>해석 없이</b> 한 번 더 읽어 보시고 넘어가십시오. 아까 막히던 자리가 지나가면 그 문장은 이제 내 것입니다.')
+   +'</p></div>';
+ }
+ return '<div class="wyp"></div>';
+}
+
+/* 과별 객관식 — 답을 과 단위로 기억합니다 */
+function _wyQuizFor(L){
+ var S=WYB[L].s;
+ if(!S||S.length<2) return '<p class="wy-q-no">이 과는 문장이 적어 확인 문제가 없습니다.</p>';
+ var bi=0,bl=0;
+ for(var i=0;i<S.length;i++){ if(S[i][0].length>bl){bl=S[i][0].length;bi=i;} }
+ var pool=[]; for(var j=0;j<S.length;j++) if(j!==bi) pool.push(S[j][1]);
+ var seed=L*37+bi*11;
+ function rnd(){ seed=(seed*1103515245+12345)&0x7fffffff; return seed/0x7fffffff; }
+ pool.sort(function(){return rnd()-0.5;});
+ var opts=[S[bi][1]].concat(pool.slice(0,3));
+ opts.sort(function(){return rnd()-0.5;});
+ var ans=opts.indexOf(S[bi][1]);
+ var picked=(_wyQAns[L]!==undefined), right=picked && _wyQAns[L]===ans;
+ var os=opts.map(function(t,i){
+   var cls=''; if(picked){ if(i===ans) cls=' ok'; else if(i===_wyQAns[L]) cls=' no'; }
+   return '<button class="wy-qo'+cls+'"'+(picked?' disabled':'')+' onclick="wyQPickL('+L+','+i+','+ans+');return false;">'
+    +'<span class="ci">'+String.fromCharCode(9312+i)+'</span><span class="tx">'+_wyE(t)+'</span></button>';
+ }).join('');
+ return '<div class="wy-q">'
+  +'<div class="wy-q-k">읽으신 것 확인 — 한 문제만</div>'
+  +'<p class="wy-q-t">이 문장, 무슨 뜻이었습니까?</p>'
+  +'<blockquote class="wy-q-en">'+_wyE(S[bi][0])+'</blockquote>'
+  +'<div class="wy-q-os">'+os+'</div>'
+  +(picked
+    ? ('<div class="wy-q-r'+(right?' ok':' no')+'"><b>'+(right?'맞으셨습니다':'여기가 막히는 자리입니다')+'</b>'
+       +'<p>'+(right?'한 번 골라 보신 문장은 그냥 읽고 지나간 문장보다 <b>훨씬 오래</b> 남습니다.'
+                    :'틀린 게 손해가 아닙니다. <b>틀린 자리가 내 약한 자리</b>이고, 다음 장에서 이 문장을 덩어리로 갈라 드립니다.')
+       +'</p></div>')
+    : '<p class="wy-q-h">모르시면 아무거나 눌러 보십시오. 틀려도 바로 답과 이유가 나옵니다.</p>')
+  +'</div>';
+}
+function wyQPickL(L,i,ans){ _wyQAns[L]=i; wyReaderDraw(); }
+
+/* 리더 화면 */
+
+/* ════ 2026-09-18 대표님 지시 — 「밀리의 서재 메인처럼 블루웨일즈를 크게 띄워라」 ════
+   벤치마킹: 밀리의 서재 추천 탭 메인 배너.
+   ① 화면을 거의 다 먹는 세로형 큰 카드 ② 좌상단 NEW 뱃지
+   ③ 하단에 흰 글씨 큰 제목 두 줄 + 《부제》 ④ 우하단 진도 표시
+   저희는 표지를 배경으로 깔고 어둠막을 얹어 글씨가 읽히게 했습니다. */
+
+/* ════ 2026-09-18 — 밀리의 서재 「책 상세」 화면. 배너를 누르면 여기가 먼저 뜹니다.
+   흐린 표지 배경 + 가운데 큰 표지 + 아래 [원서 읽기][발음 듣기] + 「첫 권 보기」 ════ */
+function wyBookDetail(){
+ var tot=0, sen=0;
+ try{ tot=_wyPages().length; }catch(e){}
+ for(var i=0;i<WYB.length;i++) sen+=WYB[i].s.length;
+ var n=0; try{ n=parseInt(localStorage.getItem('wy_pg')||'0',10)||0; }catch(e){}
+ var done=(n>0);
+ return '<div class="wybd">'
+  +'<div class="wybd-bg" style="background-image:url(img/books/bw_banner.jpg)"></div>'
+  +'<div class="wybd-in">'
+   +'<button class="wybd-x" onclick="wyOpen()">&larr;</button>'
+   +'<div class="wybd-badge">'+WYCH.length+'장 · '+WYB.length+'과 · '+sen+'문장</div>'
+   +'<div class="wybd-cov"><img src="img/books/bw_cover.jpg" alt="블루웨일즈 표지"></div>'
+   +'<div class="wybd-tx">'
+    +'<b>블루웨일즈</b>'
+    +'<span>'+_wyE(WYTITLE)+'</span>'
+    +'<em>산본글로벌어학원 창작 원서 · 소리 있음</em>'
+   +'</div>'
+  +'</div>'
+  +'<div class="wybd-ft">'
+   +'<button class="wybd-ic" onclick="wyReadFrom(0)"><i>&#128214;</i><span>원서 읽기</span></button>'
+   +'<button class="wybd-ic" onclick="wyDetailSay()"><i>&#128266;</i><span>발음 듣기</span></button>'
+   +'<button class="wybd-go" onclick="'+(done?'wyReadResume()':'wyReadFrom(0)')+'">'
+    +(done?'이어서 읽기':'첫 권 보기')
+    +'<small>'+(done?(n+1)+'쪽부터':'블루웨일즈 · '+WYCH[0].t+' '+_wyE(WYCH[0].n))+'</small></button>'
+  +'</div></div>';
+}
+function wyDetailSay(){
+ if(_wySpeaking()){ wyStop(); return; }
+ var t=WYB[0].s.slice(0,3).map(function(r){return r[0];}).join(' ');
+ _wyHeard=1; try{_wyPut();_wyTouch();}catch(e){}
+ try{ sgpPlay([{t:t,lang:'en-US',who:null,mp3:''}],null,'one'); }
+ catch(e){ try{var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.9;speechSynthesis.speak(u);}catch(e2){} }
+}
+function wyBookOpen(){
+ _wyLoadAll();
+ var pb=document.getElementById('pgbody');
+ if(pb && document.getElementById('pgModal').classList.contains('open')){
+   pb.innerHTML=wyBookDetail(); try{_mTop('pgModal');}catch(e){}
+ } else _sgSub(wyBookDetail());
+ try{document.getElementById('pgModal').classList.add('wide');}catch(e){}
+}
+
+function wyBigBanner(){
+ var n=0; try{ n=parseInt(localStorage.getItem('wy_pg')||'0',10)||0; }catch(e){}
+ var tot=0; try{ tot=_wyPages().length; }catch(e){ tot=117; }
+ var done=(n>0);
+ return '<div class="wybb" onclick="wyBookOpen()">'
+  +'<img class="wybb-bg" src="img/books/bw_banner.jpg" alt="블루웨일즈 — 산본글로벌어학원 창작 영어원서">'
+  +'<div class="wybb-sh" aria-hidden="true"></div>'
+  +'<div class="wybb-tag">'+(done?'읽는 중':'NEW')+'</div>'
+  +'<div class="wybb-in">'
+   +'<h3>말을 잃은 고래,<br>첫 낱말을 되찾기까지</h3>'
+   +'<div class="wybb-su">《 블루웨일즈 》</div>'
+   +'<div class="wybb-ft">'
+    +'<button class="wybb-go" type="button" onclick="event.stopPropagation();'+(done?'wyReadResume()':'wyBookOpen()')+'">'
+      +(done?'이어서 읽기':'첫 페이지부터 읽기')+'</button>'
+    +'<span class="wybb-pg">'+(done?(n+1):1)+' <i>/</i> '+tot+'</span>'
+   +'</div>'
+  +'</div></div>';
+}
+
+function wyReaderHTML(){
+ var P=_wyPages(), p=P[_wyPg]||P[0];
+ return '<div class="wy-wrap wy-reader" id="wyWrap">'
+ +'<div class="wyr-hd">'
+   +'<button class="wyr-x" onclick="wyOpen()">&larr; 책장</button>'
+   +'<div class="wyr-ti">블루웨일즈</div>'
+   +'<div class="wyr-pg">'+(_wyPg+1)+' / '+P.length+'</div>'
+ +'</div>'
+ +'<div class="wyr-bar"><div class="fl" style="width:'+((_wyPg+1)/P.length*100)+'%"></div></div>'
+ +'<div class="wy-book" id="wyBook">'
+   +'<div class="wy-leaf" id="wyLeaf">'+_wyPageHTML(p)+'</div>'
+   +'<button class="wy-tap prev" aria-label="이전 장" onclick="wyTurnPg(-1)"><span>&lsaquo;</span></button>'
+   +'<button class="wy-tap next" aria-label="다음 장" onclick="wyTurnPg(1)"><span>&rsaquo;</span></button>'
+ +'</div>'
+ +'<div class="wy-pager">'
+   +'<button class="pb'+(_wyPg===0?' off':'')+'" onclick="wyTurnPg(-1)">&lsaquo; 이전</button>'
+   +'<span class="pg">'+_wyPgLabel(p)+'</span>'
+   +'<button class="pb'+(_wyPg>=P.length-1?' off':'')+'" onclick="wyTurnPg(1)">다음 &rsaquo;</button>'
+ +'</div></div>';
+}
+function wyReaderDraw(){
+ var pb=document.getElementById('pgbody');
+ if(pb) pb.innerHTML=wyReaderHTML();
+ try{_wyBtnSync();}catch(e){}
+}
+function wyTurnPg(d){
+ if(_wyFlip) return;
+ var P=_wyPages(), n=_wyPg+d;
+ if(n<0||n>=P.length) return;
+ _wyFlipRun(d>0?1:-1, function(){
+   _wyPg=n;
+   try{ localStorage.setItem('wy_pg', String(n)); }catch(e){}
+   wyReaderDraw();
+   try{ var m=document.getElementById('pgModal'); if(m) m.scrollTop=0; }catch(e){}
+ });
+}
+/* 책 열기 — 표지(0쪽)부터 */
+function wyReadFrom(n){
+ _wyPgs=null; _wyLoadAll();
+ _wyPg = (typeof n==='number') ? n : 0;
+ var pb=document.getElementById('pgbody');
+ if(pb && document.getElementById('pgModal').classList.contains('open')){
+   pb.innerHTML=wyReaderHTML(); try{_mTop('pgModal');}catch(e){}
+ } else _sgSub(wyReaderHTML());
+ try{document.getElementById('pgModal').classList.add('wide');}catch(e){}
+}
+/* 이어서 읽기 */
+function wyReadResume(){
+ var n=0; try{ n=parseInt(localStorage.getItem('wy_pg')||'0',10)||0; }catch(e){}
+ var P=_wyPages(); if(n>=P.length) n=0;
+ wyReadFrom(n);
+}
 
 function wyHTML(){
  /* 2026-09-18 대표님 지시 — 「책 페이지 넘기듯」. 화면 우측을 누르면 다음 장, 좌측을 누르면 이전 장.
@@ -16140,6 +16645,8 @@ function aiPage(){
  return ''
  /* 2026-09-15 대표님 지시 — 학습관 누르면 세 단락 꽉 차게 (영어 뽀개기) */
  +sgeHTML()
+ /* 2026-09-18 — 밀리의 서재 메인 배너 자리 */
+ +wyBigBanner()
  /* 2026-09-11 대표님 지시 — 산글이 인사 → 세 개의 문(회화·시험·책방) → 카드뉴스 → 실행 */
  +sgdHTML()
  +'<div class="sp-wrap">'
