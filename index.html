@@ -4967,25 +4967,19 @@ html,body{overflow-x:hidden;max-width:100%}
      최적 본문 363단어, 중3 수준 문장이 어려운 문장보다 최대 2배 전환.
      학부모 1,550명 조사 — 강사 역량 80.9%(1위) / 방문상담 74.2% vs 온라인후기 22.7%.
      그래서 여기서 하는 일은 등록이 아니라 「한 번 와 보게 하는 것」 하나입니다. -->
-<section class="sgo" id="sgOffer"><div class="wrap">
+<!-- ═══ 첫 화면 (2026-09-22 대표님 지시로 전면 교체) ═══
+     대표님 원문: "홈페이지 첫장에서 영어원서를 읽습니다가 아니라 /
+     산글(산본글로벌집필영어원서)이가 영어원서로 영어 시작합니다. (산글AI 강의실) /
+     회원들은 무료입니다. 라고만 적어두고 / 알아서 AI 강의실 누르게 해줘"
+     → 문구 세 줄과 버튼 하나만 남깁니다. 레벨테스트·수강신청은 바로 아래 퀵바에 그대로 있습니다. -->
+<section class="sgo sgo-v2" id="sgOffer"><div class="wrap">
   <p class="sgo-k">산본 · 초등부터 성인까지</p>
-  <h2 class="sgo-h">영어 소설책 한 권을,<br><em>끝까지 읽힙니다.</em></h2>
-  <p class="sgo-s">산본글로벌어학원이 <b>실제로 쓰는 단어와 패턴, 일상회화</b>로만<br>
-   가득 채워 <b>소설 한 권을 직접 만들었습니다.</b></p>
-  <p class="sgo-s2">그 원서를 <b>끝까지 분석하며</b> 공부합니다.<br>
-   <em>이 책 한 권이면 요즘 쓰는 회화 단어는 다 됩니다.</em></p>
-  <div class="sgo-3">
-    <div class="sgo-i"><b>20과</b><span>학원이 직접 쓴 소설 한 권</span></div>
-    <div class="sgo-i"><b>141문장</b><span>실제로 쓰는 문장만 담았습니다</span></div>
-    <div class="sgo-i"><b>0원</b><span>1장은 가입 없이 지금 바로</span></div>
+  <h2 class="sgo-h"><em>산글이</em>가 영어원서로<br>영어 시작합니다.</h2>
+  <p class="sgo-mini">산글 = 산본글로벌어학원이 직접 집필한 영어원서</p>
+  <div class="sgo-one">
+    <button class="sgo-b0" type="button" onclick="sgShop()">산글 AI 강의실
+      <small>회원들은 무료입니다</small></button>
   </div>
-  <div class="sgo-cta">
-    <a class="sgo-b1" href="#" onclick="openPage('레벨테스트');return false;">무료 레벨테스트 받기
-      <small>회화 1~2분 · 자가진단 10분 · 결과를 바로 드립니다</small></a>
-    <a class="sgo-b2" href="#" onclick="sgoBook();return false;">원서 1장 먼저 읽어보기
-      <small>가입 없이 바로 · 「영어원서로 영어 뽀개기」</small></a>
-  </div>
-  <p class="sgo-r"><b>수업 1회는 앉아만 보셔도 됩니다.</b> 강사가 안 맞으면 바꿔 드리고, 레벨테스트 결과는 그 자리에서 손에 쥐여 드립니다.</p>
 </div></section>
 <div class="quickbar"><div class="wrap">
   <a class="qcard" href="#" onclick="openPage('수강신청');return false;"><span class="qi"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M9 13l2 2 4-4"/></svg></span>수강신청</a>
@@ -19289,6 +19283,293 @@ body.has-tab #pgbody,body.has-tab #abox .abody,body.has-tab .sp-wrap{padding-bot
  }
  if(document.readyState==='complete')boot(); else window.addEventListener('load',boot);
 })();
+/* ═══════════════════════════════════════════════════════════════
+   산글 AI 강의실 · 책방 (2026-09-22 대표님 지시)
+   "책방가면 베스트셀러를 조명등 키워서 책면이 잘보이게 두잖아 / 그런식으로"
+   첫 화면 버튼 하나 → 여기로 들어옵니다. 홈과 완전히 다른 구성입니다.
+   책을 누르면 펼쳐지고, 페이지를 넘기면 마지막 장에서 진짜 강의로 들어갑니다.
+   ═══════════════════════════════════════════════════════════════ */
+var SGSHOP=[
+{sh:'회화', ss:'말이 트이는 순서대로 — 산글이가 직접 쓴 회화책', bks:[
+
+{k:'eng',t:'영어회화',sub:'왕초보부터 원어민까지<br>STEP 1 → 4',en:'ENGLISH SPEAKING',
+ c1:'#0B5A44',c2:'#062E23',rk:'책방 1위',
+ pop:'영어회화',pops:'베이직·초급·중급·고급 · 64과',
+ lead:'단어를 몰라서 말이 안 나오는 게 아닙니다. <b>머릿속에서 한국어로 문장을 만들고 영어로 바꾸는 3초</b> 때문입니다. 이 책은 그 3초를 없애는 순서로만 짜여 있습니다.',
+ fact:[['4단계','베이직 → 초급 → 중급 → 고급'],['64과','한 단계 16과'],['3분','한 과에 드는 시간']],
+ toc:[['01','베이직 BASIC — 알파벳과 기본 발음부터 · 16과'],
+      ['02','초급 STARTER — 짧은 문장을 끝까지 말하기 · 16과'],
+      ['03','중급 MIDDLE — 하고 싶은 말을 내 문장으로 · 16과'],
+      ['04','고급 ADVANCED — 원어민 속도로 주고받기 · 16과']],
+ how:[['교실','BASIC(화·목 10시) · STEP1 Kate·May · STEP2~4 Jerollyn · 새벽반 6시 30분'],
+      ['혼자','같은 과를 AI 학습관에서 다시 — 읽고, 듣고, 문제 4개'],
+      ['막히면','그 과를 들고 학원으로 오십시오. 사람이 다시 잡아 드립니다.']],
+ note:'1~2단계는 <b>한인 강사</b>가 우리말로 문장 만드는 법을 잡아 드리고, 3~4단계는 <b>원어민</b>과 부딪힙니다. 섞이면 둘 다 손해라 무료 레벨테스트로 나눕니다.',
+ go:'sgShopGo("conv")',goT:'영어회화 책 펴기',goS:'AI 학습관 회화반 · 수강생은 0원'},
+
+{k:'jpn',t:'일본어회화',sub:'히라가나부터<br>JLPT 직전까지',en:'JAPANESE SPEAKING',
+ c1:'#8C1C2B',c2:'#4A0E17',rk:'',
+ pop:'일본어회화',pops:'베이직·초급·중급·고급 · 48과',
+ lead:'일본어는 <b>어순이 우리말과 같습니다.</b> 그래서 단어만 얹으면 문장이 됩니다. 문제는 그다음 — 조사와 높임이 어긋나면 바로 티가 납니다. 이 책은 거기부터 잡습니다.',
+ fact:[['4단계','베이직 → 초급 → 중급 → 고급'],['48과','한 단계 12과'],['0원','수강생 전부 무료']],
+ toc:[['01','베이직 BASIC — 히라가나·가타카나와 인사 · 12과'],
+      ['02','초급 STARTER — 조사 は·が·を 자리 잡기 · 12과'],
+      ['03','중급 MIDDLE — 존경어·겸양어가 갈리는 자리 · 12과'],
+      ['04','고급 ADVANCED — 회사·여행에서 바로 쓰는 말 · 12과']],
+ how:[['교실','일본어 정규반 · 새벽반 운영'],
+      ['혼자','AI 학습관 일본어 — 표현마다 소리가 붙어 있습니다(0.75배속)'],
+      ['시험','JLPT는 같은 학습관 시험대비반에 N5·N4 / N3·N2로 따로 있습니다']],
+ note:'회화만 하실 분은 이 책까지, <b>자격증까지 가실 분</b>은 시험 매대의 JLPT로 이어집니다.',
+ go:'sgShopGo("conv")',goT:'일본어회화 책 펴기',goS:'AI 학습관 회화반 · 수강생은 0원'},
+
+{k:'chn',t:'중국어회화',sub:'성조부터<br>실전 대화까지',en:'CHINESE SPEAKING',
+ c1:'#B3541E',c2:'#5E2A0C',rk:'',
+ pop:'중국어회화',pops:'베이직·초급·중급·고급 · 48과',
+ lead:'중국어에서 제일 먼저 무너지는 것은 단어가 아니라 <b>성조</b>입니다. 성조가 흔들리면 아무리 많이 외워도 못 알아듣습니다. 그래서 1과부터 소리를 붙였습니다.',
+ fact:[['4단계','베이직 → 초급 → 중급 → 고급'],['48과','한 단계 12과'],['4성','1과부터 소리로']],
+ toc:[['01','베이직 BASIC — 병음과 4성 · 12과'],
+      ['02','초급 STARTER — 어순 주어+동사+목적어 · 12과'],
+      ['03','중급 MIDDLE — 了·过·着 시간 표현 · 12과'],
+      ['04','고급 ADVANCED — 거래·출장에서 쓰는 말 · 12과']],
+ how:[['교실','중국어 정규반 · 새벽반 · 원어민 강사'],
+      ['혼자','AI 학습관 중국어 — 안 들리면 0.75배속으로'],
+      ['시험','HSK는 시험 매대에 1~3급 / 4~6급으로 있습니다']],
+ note:'기업체 출강으로도 나갑니다. 회사에서 단체로 들으실 경우 데스크로 문의 주십시오 — <b>031-466-6969</b>',
+ go:'sgShopGo("conv")',goT:'중국어회화 책 펴기',goS:'AI 학습관 회화반 · 수강생은 0원'}
+]},
+
+{sh:'시험', ss:'점수가 오르는 순서대로 — 나올 것만 남긴 책', bks:[
+
+{k:'toeic',t:'토익',sub:'문법 40강부터<br>실전 모의고사까지',en:'TOEIC',
+ c1:'#12365E',c2:'#081D33',rk:'시험 1위',
+ pop:'토익',pops:'문법40 + LC·RC 5권 · 132과',
+ lead:'500점 아래에서 기출부터 풀면 모르는 단어에 막혀 채점만 반복하게 됩니다. 순서는 <b>① 자리를 보는 눈 → ② 빈출 어휘 → ③ 파트별 유형</b>입니다. ①단계 <b>기초문법 40강은 홈페이지에서 무료로 공개</b>하고 있습니다.',
+ fact:[['132과','문법 40 + LC·RC 92'],['40강','기초문법 · 가입 없이 무료'],['3~4개월','500 → 700 평균']],
+ toc:[['01','문법 GRAMMAR · Part 5-6 — 40강'],
+      ['02','초급 LC · Part 1-4 — 20과'],
+      ['03','초급 RC · Part 5-7 — 20과'],
+      ['04','중급 LC · Part 3-4 — 20과'],
+      ['05','중급 RC · Part 7 — 20과'],
+      ['06','실전 MOCK TEST · LC+RC — 12과']],
+ how:[['정규반','4개월 16주 — 월·수 각 1강 + 격주 금 복습'],
+      ['스파르타','2개월 8주 — 월~금 각 1강, 매일 단어 시험'],
+      ['혼자','틀리면 같은 유형 10문제를 한 번 더 냅니다']],
+ note:'스파르타반은 수업 내용이 아니라 <b>관리 강도</b>가 다릅니다. 혼자 하면 안 하게 되는 분에게 맞고, 시간이 불규칙한 직장인은 정규반이나 1:1이 낫습니다.',
+ go:'sgShopGo("exam")',goT:'토익 책 펴기',goS:'AI 학습관 시험대비반 · 기초문법 40강 무료'},
+
+{k:'opic',t:'오픽',sub:'말이 되는 순서만<br>잡으면 됩니다',en:'OPIc',
+ c1:'#5B2B8A',c2:'#2E1247',rk:'',
+ pop:'오픽',pops:'기초 12과 · 실전 12과',
+ lead:'오픽은 영어 실력 시험이 아니라 <b>말하는 순서</b> 시험입니다. 같은 내용도 순서를 바꾸면 등급이 올라갑니다. 이 책은 그 순서 하나만 반복합니다.',
+ fact:[['24과','기초 12 + 실전 12'],['IH','목표 등급 기준'],['2개월','평균 준비 기간']],
+ toc:[['01','기초 BASIC — 자기소개와 묘사의 틀 · 12과'],
+      ['02','실전 PRACTICE — 돌발·롤플레이 대응 · 12과']],
+ how:[['담당','김현정 강사 — 오픽·토플·토익'],
+      ['혼자','AI 학습관에서 말하고 발음 채점까지'],
+      ['확인','녹음해서 다시 듣는 것이 제일 빠릅니다']],
+ note:'토스와 오픽을 동시에 준비하실 수 있습니다. 두 시험은 <b>쓰는 표현이 상당 부분 겹칩니다.</b>',
+ go:'sgShopGo("exam")',goT:'오픽 책 펴기',goS:'AI 학습관 시험대비반 · 수강생은 0원'},
+
+{k:'toeics',t:'토스',sub:'질문 유형마다<br>답이 정해져 있습니다',en:'TOEIC SPEAKING',
+ c1:'#0F5B63',c2:'#062E33',rk:'',
+ pop:'토스',pops:'기초 12과 · 실전 12과',
+ lead:'토익스피킹은 문제 유형이 고정되어 있습니다. <b>유형마다 답의 뼈대를 외워 두면</b> 그 자리에서 내용만 갈아 끼우면 됩니다. 그 뼈대 24개가 이 책입니다.',
+ fact:[['24과','기초 12 + 실전 12'],['11문항','시험 구성'],['Lv6+','목표 등급 기준']],
+ toc:[['01','기초 BASIC — 읽기·묘사·응답의 뼈대 · 12과'],
+      ['02','실전 PRACTICE — 표 정보·의견 말하기 · 12과']],
+ how:[['담당','유미용 강사 — 토익·토스·오픽'],
+      ['혼자','AI 학습관 발음 채점으로 속도부터'],
+      ['교실','실전은 사람 앞에서 한 번은 해 보셔야 합니다']],
+ note:'시험 날짜가 정해져 있으면 <b>시험일 맞춤반</b>이 있습니다. 날짜에서 거꾸로 계획을 세워 나올 것만 끝냅니다.',
+ go:'sgShopGo("exam")',goT:'토스 책 펴기',goS:'AI 학습관 시험대비반 · 수강생은 0원'}
+]},
+
+{sh:'산글 컬렉션', ss:'산본글로벌어학원이 직접 쓴 책 — 남의 책이 아니라 우리 책입니다', bks:[
+
+{k:'wonseo',t:'산글원서',sub:'영어원서로<br>영어 뽀개기',en:'SANGLE ORIGINAL',
+ c1:'#0A3A5C',c2:'#041C2E',rk:'전체 1위',
+ pop:'산글원서',pops:'소설 한 권 · 20과 141문장',
+ lead:'원서를 빌려주는 곳은 많습니다. 그런데 그 책은 남의 것이라 <b>분해해서 설명할 수 없습니다.</b> 이 소설은 산본글로벌어학원이 <b>직접 썼습니다.</b> 원어민이 실제로 가장 많이 쓰는 단어·패턴만 골라 이야기로 엮었습니다.',
+ fact:[['20과','소설 한 권'],['141문장','제일 많이 쓰는 덩어리만'],['0원','가입 없이 1장부터']],
+ toc:[['01','나는 산글이입니다'],['02','말이 사라진 아침'],['03','목소리는 안에 있었습니다'],
+      ['04','늙은 거북'],['05','묻고 싶은 것이 백 가지'],['06','일곱 바다'],
+      ['07','네 이름부터'],['08','천천히 가라'],['09','고요의 바다'],['10','첫 낱말'],
+      ['11','낱말 하나로 할 수 있는 것'],['12','소리의 바다'],['13','모두가 말하고 있었습니다'],
+      ['14','말이 많은 물고기'],['15','나는 듣고 있지 않았습니다'],['16','조용해지는 법'],
+      ['17','물고기가 말하지 않은 것'],['18','두 번째 낱말'],['19','거북이 남긴 표시'],
+      ['20','세 번째 바다가 보입니다']],
+ how:[['①','소설 한 단락 — 영어만. 해석은 없습니다'],
+      ['②','읽어 보고 막히는 문장을 표시하십시오'],
+      ['③','표시한 문장만 구조를 펼쳐 드립니다 — 누가 → 한다 → 무엇을']],
+ note:'<b>1장(10과)</b>을 다 읽으시는 날, 시험 없이 <b>레벨2 회화반 입학 자격</b>이 생기고 2장이 열립니다. 1장을 끝내는 것이 곧 입학시험입니다.',
+ go:'sgShopGo("wonseo")',goT:'지금 1과 읽기',goS:'가입 없이 바로 · 20과 141문장 전부 무료'},
+
+{k:'dongpyeon',t:'동편마을',sub:'산글원서 2권<br>블루웨일즈 이야기',en:'SANGLE ORIGINAL II',
+ c1:'#2E4A2A',c2:'#141F12',rk:'',soon:'COMING SOON',
+ pop:'동편마을',pops:'원서 2권 · 준비 중',
+ lead:'인덕원 <b>동편마을</b>에서 시작하는 7인 밴드 이야기입니다. 기타를 맡은 한 사람이 다낭으로 떠나면서 밴드가 흔들립니다. 1권 「고래 이야기」를 끝내신 분을 위한 <b>2권</b>입니다.',
+ fact:[['2권','산글원서 시리즈'],['7인','밴드 블루웨일즈'],['준비 중','10월 공개 예정']],
+ toc:[['—','원고 집필 중입니다'],['—','1권 「고래 이야기」를 먼저 끝내 주십시오']],
+ how:[['먼저','산글원서 1권 20과를 끝내시면 됩니다'],
+      ['알림','공개되면 학습관 첫 화면에 올라옵니다']],
+ note:'표지와 1과는 준비되는 대로 여기 이 자리에 먼저 올립니다.',
+ go:'sgShopGo("soon")',goT:'준비 중입니다',goS:'1권 「고래 이야기」부터 읽어 보십시오'},
+
+{k:'pop',t:'산글팝',sub:'노래 한 곡으로<br>표현 열 개',en:'SANGLE POP',
+ c1:'#8A1E52',c2:'#450F28',rk:'',soon:'COMING SOON',
+ pop:'산글팝',pops:'팝송 회화 · 준비 중',
+ lead:'외운 단어는 잊히는데 <b>노래로 들어온 문장은 남습니다.</b> 팝송 한 곡에서 실제로 쓰는 표현만 뽑아 한 과로 만듭니다. 가사를 외우는 것이 아니라 <b>그 표현을 내 말로 바꿔 쓰는</b> 연습입니다.',
+ fact:[['1곡','= 1과'],['10표현','한 과에서 건지는 것'],['준비 중','곡 선정 중']],
+ toc:[['—','수록곡 선정 중입니다'],['—','저작권이 정리된 곡으로만 만듭니다']],
+ how:[['듣고','한 곡을 끝까지'],['뽑고','그 안에서 실제로 쓰는 표현만'],['바꿔 쓰고','내 상황의 문장으로']],
+ note:'가사 전문은 싣지 않습니다. <b>표현 단위로만</b> 다룹니다.',
+ go:'sgShopGo("soon")',goT:'준비 중입니다',goS:'공개되면 이 자리에 올라옵니다'},
+
+{k:'sangle',t:'산글',sub:'산글이가<br>같이 있어 줍니다',en:'SANGLE · AI',
+ c1:'#1A1A18',c2:'#35302A',rk:'',
+ pop:'산글',pops:'AI 학습앱 · 출석·리포트',
+ lead:'수업은 일주일에 두 번입니다. <b>나머지 닷새가 실력을 만듭니다.</b> 그 닷새를 혼자 버티라고 두지 않으려고 만든 것이 산글이입니다. 읽고, 듣고, 말하고, 출석까지 이 앱 하나에 있습니다.',
+ fact:[['5일','수업이 없는 날'],['12권','전자책'],['0원','수강 중에는 전부']],
+ toc:[['01','오늘의 한 과 — 어제 어디까지 했는지부터'],
+      ['02','듣기 — 표현마다 소리, 안 들리면 0.75배속'],
+      ['03','말하기 — 발음 채점'],
+      ['04','단어장 — 틀린 것만 다시'],
+      ['05','출석 — 교실 출석과 같이 쌓입니다'],
+      ['06','학습 리포트 — 막힌 자리를 숫자로']],
+ how:[['앱','휴대폰에서 바로 — 설치 없이 열립니다'],
+      ['연결','교실 수업과 같은 계정으로 이어집니다'],
+      ['사람','AI가 선생님을 대신하지 않습니다. 막히면 학원으로 오십시오.']],
+ note:'산본글로벌어학원에 등록해 수업을 듣고 계시면 <b>학습관 전체가 무료</b>입니다 — 전자책 12권, 듣기, 채점, 출석까지.',
+ go:'sgShopGo("app")',goT:'산글 AI 학습앱 열기',goS:'영어·일본어·중국어 · 발음채점 · 출석 · 리포트'}
+]}];
+
+var _sgsB=null,_sgsP=0;
+
+function _sgsE(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+/* ── 책방 열기 ── */
+function sgShop(){
+ var el=document.getElementById('sgShop');
+ if(!el){el=document.createElement('div');el.id='sgShop';document.body.appendChild(el);}
+ el.innerHTML=''
+ +'<div class="sgs-room">'
+ +'<div class="sgs-bar"><img class="em" src="img/sga_emblem.png" alt="">'
+   +'<b>산글 AI 강의실</b><small>산본글로벌어학원</small>'
+   +'<button class="sgs-x" onclick="sgShopClose()" aria-label="닫기">✕</button></div>'
+ +'<div class="sgs-sign"><span class="k">SANGLE AI LIBRARY</span>'
+   +'<h1>여기는 <em>산글이의 책방</em>입니다</h1>'
+   +'<p>읽고 싶은 책을 한 권 고르세요. 펴 보고 결정하셔도 됩니다.<br><b>회원은 전부 무료입니다.</b></p></div>'
+ +SGSHOP.map(function(S,si){
+   return '<section class="sgs-shelf">'
+    +'<div class="sgs-lamp"></div>'
+    +'<div class="sgs-sh-t"><b>'+_sgsE(S.sh)+'</b><span>'+S.ss+'</span><i></i></div>'
+    +'<div class="sgs-tab">'
+    +S.bks.map(function(B,bi){
+      return '<button class="sgs-bk" type="button" onclick="sgShopBook('+si+','+bi+')" aria-label="'+_sgsE(B.t)+' 펴 보기">'
+       +(B.rk?'<span class="sgs-rk">'+_sgsE(B.rk)+'</span>':'')
+       +'<span class="in"><span class="sgs-cv" style="background:linear-gradient(145deg,'+B.c1+','+B.c2+')">'
+         +'<span class="gl"></span>'
+         +'<span class="en">'+_sgsE(B.en)+'</span>'
+         +'<span class="ti"><b>'+_sgsE(B.t)+'</b><span>'+B.sub+'</span></span>'
+         +'<span class="sg">SANBON GLOBAL</span>'
+         +(B.soon?'<span class="sgs-soon">'+_sgsE(B.soon)+'</span>':'')
+       +'</span></span>'
+       +'<span class="shw"></span>'
+       +'<span class="sgs-pop"><b>'+_sgsE(B.pop)+'</b><span>'+_sgsE(B.pops)+'</span></span>'
+      +'</button>';}).join('')
+    +'</div><div class="sgs-plank"></div></section>';}).join('')
+ +'</div>';
+ el.classList.add('on');
+ document.body.style.overflow='hidden';
+ try{location.hash='';}catch(e){}
+}
+function sgShopClose(){
+ var el=document.getElementById('sgShop'); if(el)el.classList.remove('on');
+ sgSpreadClose(true);
+ document.body.style.overflow='';
+}
+
+/* ── 책 펴기 ── */
+function sgShopBook(si,bi){
+ _sgsB=SGSHOP[si].bks[bi]; _sgsP=0;
+ var sp=document.getElementById('sgSpread');
+ if(!sp){sp=document.createElement('div');sp.id='sgSpread';document.body.appendChild(sp);}
+ sp.innerHTML='<div class="sgsp-w">'
+  +'<div class="sgsp-hd"><b id="sgspT"></b><small id="sgspS"></small>'
+   +'<button class="x" onclick="sgSpreadClose()" aria-label="책 덮기">✕</button></div>'
+  +'<div class="sgsp-bd"><div class="sgsp-pg" id="sgspPg"><div class="sgsp-in" id="sgspIn"></div></div></div>'
+  +'<div class="sgsp-ft">'
+   +'<button class="sgsp-ar" id="sgspPrev" onclick="sgShopTurn(-1)">‹ 앞장</button>'
+   +'<div class="sgsp-dots" id="sgspDots"></div>'
+   +'<button class="sgsp-ar" id="sgspNext" onclick="sgShopTurn(1)">다음장 ›</button>'
+  +'</div></div>';
+ sp.classList.add('on');
+ _sgsPut(false);
+}
+function sgSpreadClose(quiet){
+ var sp=document.getElementById('sgSpread'); if(sp)sp.classList.remove('on');
+ _sgsB=null;
+}
+function sgShopTurn(d){
+ if(!_sgsB)return;
+ var n=_sgsP+d; if(n<0||n>2)return;
+ _sgsP=n; _sgsPut(true);
+}
+function _sgsPut(anim){
+ var B=_sgsB; if(!B)return;
+ var pg=document.getElementById('sgspPg'), bd=document.getElementById('sgspIn');
+ document.getElementById('sgspT').textContent=B.t;
+ document.getElementById('sgspS').textContent=['표제','차례','읽는 법'][_sgsP];
+ var h='';
+ if(_sgsP===0){
+  h='<div class="sgsp-k">'+_sgsE(B.en)+'</div>'
+   +'<h2>'+_sgsE(B.t)+'</h2>'
+   +'<p class="sgsp-lead">'+B.lead+'</p>'
+   +'<div class="sgsp-fact">'+B.fact.map(function(f){
+      return '<div><b>'+_sgsE(f[0])+'</b><span>'+_sgsE(f[1])+'</span></div>';}).join('')+'</div>'
+   +'<div class="sgsp-note">'+B.note+'</div>';
+ }else if(_sgsP===1){
+  h='<div class="sgsp-k">CONTENTS</div><h2>차례</h2>'
+   +'<ul class="sgsp-toc">'+B.toc.map(function(t){
+      return '<li><i>'+_sgsE(t[0])+'</i><span>'+_sgsE(t[1])+'</span></li>';}).join('')+'</ul>';
+ }else{
+  h='<div class="sgsp-k">HOW TO READ</div><h2>이 책 읽는 법</h2>'
+   +B.how.map(function(x){
+      return '<h3>'+_sgsE(x[0])+'</h3><p>'+x[1]+'</p>';}).join('')
+   +'<button class="sgsp-go" onclick="'+B.go+'">'+_sgsE(B.goT)+'<small>'+_sgsE(B.goS)+'</small></button>';
+ }
+ bd.innerHTML=h; bd.scrollTop=0;
+ if(anim&&pg){pg.classList.remove('turn');void pg.offsetWidth;pg.classList.add('turn');}
+ document.getElementById('sgspPrev').disabled=(_sgsP===0);
+ document.getElementById('sgspNext').disabled=(_sgsP===2);
+ document.getElementById('sgspDots').innerHTML=[0,1,2].map(function(i){
+   return '<span class="'+(i===_sgsP?'on':'')+'"></span>';}).join('');
+}
+
+/* ── 책 → 진짜 강의로 ── */
+function sgShopGo(w){
+ if(w==='soon'){ try{sgToast('<b>준비 중입니다</b><br>공개되면 책방 이 자리에 먼저 올라옵니다.');}catch(e){alert('준비 중입니다.');} return; }
+ sgSpreadClose(true); sgShopClose();
+ if(w==='wonseo'){ setTimeout(function(){try{wyOpen();}catch(e){}},80); return; }
+ if(w==='app'){ window.open('app.html','_blank','noopener'); return; }
+ var tab=(w==='exam')?1:0;
+ setTimeout(function(){
+  try{openPage('AI학습');}catch(e){}
+  setTimeout(function(){ try{aiTab(tab);}catch(e){}
+   setTimeout(function(){var t=document.getElementById('aiBody');
+    if(t){try{t.scrollIntoView({block:'start',behavior:'smooth'});}catch(e){}}},260);
+  },650);
+ },80);
+}
+/* ESC로 덮기 */
+document.addEventListener('keydown',function(e){
+ if(e.key!=='Escape')return;
+ var sp=document.getElementById('sgSpread');
+ if(sp&&sp.classList.contains('on')){sgSpreadClose();return;}
+ var el=document.getElementById('sgShop');
+ if(el&&el.classList.contains('on'))sgShopClose();
+});
+
 </script>
 
 <style>
@@ -19351,6 +19632,187 @@ body.has-tab #pgbody,body.has-tab #abox .abody,body.has-tab .sp-wrap{padding-bot
 .dg-c:first-child{background:#E8F7F0;border-color:#B7E4CE}
 .dg-c:first-child b{color:#0E6B45}
 .dg-c:first-child p b{color:#0E6B45}
+/* ═══ 첫 화면 v2 (2026-09-22) — 문구 세 줄 + 버튼 하나 ═══ */
+.sgo-v2{padding:46px 0 42px}
+.sgo-v2 .sgo-h{font-size:34px;line-height:1.26;letter-spacing:-1.6px;margin:12px 0 10px}
+.sgo-v2 .sgo-h em{font-style:normal;color:#C6A15B}
+.sgo-mini{color:#7C8496;font-size:12.5px;letter-spacing:-.2px;margin:0 0 26px}
+.sgo-one{display:flex;justify-content:center}
+.sgo-b0{position:relative;display:block;width:100%;max-width:440px;cursor:pointer;border:0;
+ background:linear-gradient(135deg,#1A1A18,#35302A);color:#F6EEDF;border-radius:18px;
+ padding:22px 22px 19px;font-size:21px;font-weight:900;letter-spacing:-.8px;text-align:center;
+ box-shadow:0 20px 42px -16px rgba(26,26,24,.78),0 0 0 1px rgba(198,161,91,.45) inset;
+ transition:transform .2s,box-shadow .2s}
+.sgo-b0:before{content:'';position:absolute;inset:0;border-radius:18px;pointer-events:none;
+ background:radial-gradient(120% 90% at 50% -20%,rgba(232,199,122,.3),transparent 62%)}
+.sgo-b0 small{display:block;margin-top:8px;font-size:13.5px;font-weight:800;letter-spacing:-.2px;color:#E8C77A}
+.sgo-b0:hover{transform:translateY(-3px);box-shadow:0 26px 52px -18px rgba(26,26,24,.85),0 0 0 1px rgba(198,161,91,.7) inset}
+@media(max-width:560px){.sgo-v2 .sgo-h{font-size:27px}.sgo-b0{font-size:19px;padding:19px 18px 17px}}
+
+/* ═══════════════════════════════════════════════════════════════
+   산글 AI 강의실 · 책방 (2026-09-22 대표님 지시)
+   대표님 원문: "AI 강의실 누르면 우리 책처럼 만들껀데, 페이지 넘기듯 /
+   책방가면 베스트셀러를 조명등 키워서 책면이 잘보이게 두잖아 / 그런식으로"
+   레퍼런스: 교보문고·영풍문고 평대(표지 정면 진열 + 순위 리본),
+            CSS3 Bookshelf(Steve Workman) — 책등 rotateY·선반 그림자,
+            Animated CSS Bookshelf(ekfuhrmann) — 집었을 때 들리는 동작.
+   첫 홈페이지와 완전히 다른 구성 — 어두운 서점 안, 조명 아래 표지만 보입니다.
+   ═══════════════════════════════════════════════════════════════ */
+#sgShop{position:fixed;inset:0;z-index:9600;background:#0E0B08;display:none;overflow-y:auto;-webkit-overflow-scrolling:touch}
+#sgShop.on{display:block}
+#sgShop *{box-sizing:border-box}
+.sgs-room{position:relative;min-height:100%;padding:0 0 70px;
+ background:
+  radial-gradient(120% 60% at 50% -10%,rgba(255,214,150,.14),transparent 62%),
+  linear-gradient(180deg,#120E09 0%,#1A1410 38%,#0C0906 100%)}
+.sgs-room:before{content:'';position:absolute;inset:0;pointer-events:none;
+ background:repeating-linear-gradient(90deg,rgba(255,255,255,.012) 0 2px,transparent 2px 7px)}
+
+/* ── 상단 바 ── */
+.sgs-bar{position:sticky;top:0;z-index:12;display:flex;align-items:center;gap:10px;
+ padding:13px 16px;background:rgba(14,11,8,.86);backdrop-filter:blur(9px);
+ border-bottom:1px solid rgba(198,161,91,.22)}
+.sgs-bar .em{width:26px;height:26px;border-radius:7px;flex:0 0 auto}
+.sgs-bar b{color:#F0E6D2;font-size:15px;font-weight:900;letter-spacing:-.3px}
+.sgs-bar small{color:#9C8B72;font-size:11.5px;margin-left:2px}
+.sgs-x{margin-left:auto;background:none;border:1px solid rgba(198,161,91,.4);color:#C6A15B;
+ width:34px;height:34px;border-radius:9px;font-size:17px;cursor:pointer;line-height:1}
+.sgs-x:hover{background:rgba(198,161,91,.14)}
+
+/* ── 간판 ── */
+.sgs-sign{text-align:center;padding:34px 18px 8px;position:relative;z-index:2}
+.sgs-sign .k{display:inline-block;color:#C6A15B;font-size:11px;font-weight:900;letter-spacing:3.4px;
+ border:1px solid rgba(198,161,91,.45);border-radius:999px;padding:5px 14px}
+.sgs-sign h1{margin:14px 0 8px;color:#F6EEDF;font-size:29px;font-weight:900;letter-spacing:-1px;line-height:1.24}
+.sgs-sign h1 em{font-style:normal;color:#E8C77A}
+.sgs-sign p{color:#A3927A;font-size:14px;line-height:1.7;margin:0}
+.sgs-sign p b{color:#E8C77A;font-weight:800}
+
+/* ── 평대(매대) 한 단 ── */
+.sgs-shelf{position:relative;margin:38px auto 0;max-width:1080px;padding:0 14px}
+.sgs-lamp{position:absolute;left:0;right:0;top:-14px;height:190px;pointer-events:none;z-index:1;
+ background:radial-gradient(56% 100% at 50% 0%,rgba(255,206,132,.28),rgba(255,206,132,.06) 52%,transparent 74%)}
+.sgs-sh-t{position:relative;z-index:3;display:flex;align-items:baseline;gap:9px;margin:0 4px 16px}
+.sgs-sh-t b{color:#F3E9D7;font-size:17px;font-weight:900;letter-spacing:-.5px}
+.sgs-sh-t span{color:#8E7D66;font-size:12px}
+.sgs-sh-t i{flex:1;height:1px;background:linear-gradient(90deg,rgba(198,161,91,.42),transparent)}
+
+/* 책 놓인 판 */
+.sgs-tab{position:relative;z-index:3;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+ padding:26px 16px 0}
+.sgs-plank{position:relative;z-index:2;height:26px;margin:0 6px;border-radius:3px;
+ background:linear-gradient(180deg,#463321 0%,#3A2B1D 22%,#2A1E14 58%,#1A120C 100%);
+ box-shadow:0 16px 34px -14px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,214,150,.16)}
+.sgs-plank:after{content:'';position:absolute;left:6%;right:6%;top:-3px;height:3px;border-radius:2px;
+ background:linear-gradient(90deg,transparent,rgba(255,214,150,.28),transparent)}
+
+/* ── 책 한 권 (표지 정면) ── */
+.sgs-bk{position:relative;width:150px;cursor:pointer;background:none;border:0;padding:0;
+ perspective:900px;-webkit-tap-highlight-color:transparent}
+.sgs-bk .in{position:relative;transform-style:preserve-3d;
+ transform:rotateY(-13deg) translateZ(0);
+ transition:transform .42s cubic-bezier(.22,.9,.28,1),filter .42s}
+.sgs-bk:hover .in,.sgs-bk:focus-visible .in{transform:rotateY(-3deg) translateY(-15px) scale(1.045)}
+.sgs-cv{position:relative;width:150px;height:212px;border-radius:3px 7px 7px 3px;overflow:hidden;
+ box-shadow:0 22px 38px -16px rgba(0,0,0,.95),0 3px 0 -1px rgba(255,255,255,.1) inset;
+ display:flex;flex-direction:column;justify-content:space-between;padding:15px 14px 13px;text-align:left}
+.sgs-cv:before{content:'';position:absolute;left:0;top:0;bottom:0;width:13px;
+ background:linear-gradient(90deg,rgba(0,0,0,.52),rgba(0,0,0,.14) 62%,rgba(255,255,255,.08));}
+.sgs-cv:after{content:'';position:absolute;right:0;top:0;bottom:0;width:5px;
+ background:repeating-linear-gradient(180deg,#F3EDE0 0 2px,#CFC6B4 2px 3px)}
+.sgs-cv .gl{position:absolute;inset:0;pointer-events:none;
+ background:linear-gradient(152deg,rgba(255,255,255,.2) 0%,transparent 34%,transparent 76%,rgba(0,0,0,.22) 100%)}
+.sgs-cv .en{position:relative;color:rgba(255,255,255,.66);font-size:9px;font-weight:900;letter-spacing:2.1px}
+.sgs-cv .ti{position:relative}
+.sgs-cv .ti b{display:block;color:#fff;font-size:21px;font-weight:900;letter-spacing:-1px;line-height:1.16;
+ text-shadow:0 2px 8px rgba(0,0,0,.42)}
+.sgs-cv .ti span{display:block;margin-top:6px;color:rgba(255,255,255,.8);font-size:11px;font-weight:700;line-height:1.45}
+.sgs-cv .sg{position:relative;display:flex;align-items:center;gap:5px;color:rgba(255,255,255,.72);
+ font-size:9.5px;font-weight:800;letter-spacing:.6px;border-top:1px solid rgba(255,255,255,.22);padding-top:8px}
+/* 바닥 그림자 */
+.sgs-bk .shw{position:absolute;left:8%;right:2%;bottom:-9px;height:13px;border-radius:50%;
+ background:radial-gradient(50% 60% at 50% 50%,rgba(0,0,0,.72),transparent 72%);filter:blur(3px);
+ transition:transform .42s,opacity .42s}
+.sgs-bk:hover .shw{transform:translateY(9px) scaleX(.88);opacity:.6}
+/* 순위 리본 */
+.sgs-rk{position:absolute;left:-6px;top:11px;z-index:4;background:linear-gradient(140deg,#D8B26A,#A8843F);
+ color:#231A0C;font-size:10.5px;font-weight:900;padding:4px 9px 4px 8px;border-radius:2px 3px 3px 2px;
+ box-shadow:0 5px 12px -4px rgba(0,0,0,.8);letter-spacing:-.2px}
+.sgs-rk:after{content:'';position:absolute;left:0;bottom:-5px;border-width:5px 3px 0 0;border-style:solid;
+ border-color:#6E5526 transparent transparent transparent}
+.sgs-soon{position:absolute;inset:0;z-index:3;border-radius:3px 7px 7px 3px;
+ background:rgba(8,6,4,.62);display:flex;align-items:center;justify-content:center;
+ color:#E8C77A;font-size:13px;font-weight:900;letter-spacing:1px;backdrop-filter:blur(1.5px)}
+/* 책 이름표(평대 앞 POP) */
+.sgs-pop{margin:13px auto 0;width:150px;text-align:center}
+.sgs-pop b{display:block;color:#EFE4D0;font-size:13.5px;font-weight:900;letter-spacing:-.4px}
+.sgs-pop span{display:block;margin-top:3px;color:#8E7D66;font-size:11px;line-height:1.4}
+
+/* ── 펼친 책(리더) ── */
+#sgSpread{position:fixed;inset:0;z-index:9700;display:none;background:rgba(6,4,3,.95);
+ align-items:center;justify-content:center;padding:16px}
+#sgSpread.on{display:flex}
+.sgsp-w{width:100%;max-width:940px;max-height:92vh;display:flex;flex-direction:column}
+.sgsp-hd{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+.sgsp-hd b{color:#F0E6D2;font-size:15px;font-weight:900}
+.sgsp-hd small{color:#9C8B72;font-size:11.5px}
+.sgsp-hd .x{margin-left:auto;background:none;border:1px solid rgba(198,161,91,.4);color:#C6A15B;
+ width:32px;height:32px;border-radius:8px;font-size:16px;cursor:pointer;line-height:1}
+.sgsp-bd{position:relative;flex:1;min-height:0;perspective:2200px}
+.sgsp-pg{position:relative;height:100%;min-height:400px;border-radius:5px 10px 10px 5px;overflow:hidden;
+ background:linear-gradient(105deg,#EFE7D6 0%,#FBF6EA 7%,#FBF6EA 93%,#E6DCC7 100%);
+ box-shadow:0 30px 70px -26px rgba(0,0,0,.95);
+ transform-origin:left center;backface-visibility:hidden}
+.sgsp-pg.turn{animation:sgspTurn .62s cubic-bezier(.3,.05,.25,1)}
+@keyframes sgspTurn{0%{transform:rotateY(0)}48%{transform:rotateY(-86deg);filter:brightness(.72)}
+ 49%{transform:rotateY(-86deg);filter:brightness(.72)}100%{transform:rotateY(0)}}
+.sgsp-pg:before{content:'';position:absolute;left:0;top:0;bottom:0;width:26px;
+ background:linear-gradient(90deg,rgba(0,0,0,.16),transparent)}
+.sgsp-in{position:relative;height:100%;overflow-y:auto;padding:30px 30px 26px 44px}
+.sgsp-in::-webkit-scrollbar{width:6px}.sgsp-in::-webkit-scrollbar-thumb{background:#CFC2A6;border-radius:3px}
+.sgsp-k{color:#A8843F;font-size:10.5px;font-weight:900;letter-spacing:3px}
+.sgsp-in h2{margin:9px 0 5px;color:#1E1810;font-size:25px;font-weight:900;letter-spacing:-1.1px;line-height:1.25}
+.sgsp-in h3{margin:22px 0 9px;color:#1E1810;font-size:16px;font-weight:900;letter-spacing:-.5px;
+ border-left:3px solid #C6A15B;padding-left:9px}
+.sgsp-in p{margin:0 0 12px;color:#4A4034;font-size:14px;line-height:1.82}
+.sgsp-in p b{color:#8E2A1C;font-weight:800}
+.sgsp-lead{font-size:15px !important;color:#332B22 !important}
+.sgsp-toc{list-style:none;margin:0;padding:0;column-gap:26px}
+@media(min-width:720px){.sgsp-toc{columns:2}}
+.sgsp-toc li{break-inside:avoid;display:flex;gap:9px;align-items:baseline;padding:7px 0;
+ border-bottom:1px dotted rgba(120,104,78,.34);font-size:13.5px;color:#3A3128;line-height:1.5}
+.sgsp-toc li i{flex:0 0 auto;color:#A8843F;font-style:normal;font-weight:900;font-size:11.5px;min-width:22px}
+.sgsp-fact{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 4px}
+.sgsp-fact div{flex:1;min-width:92px;background:rgba(198,161,91,.14);border:1px solid rgba(168,132,63,.3);
+ border-radius:9px;padding:11px 12px;text-align:center}
+.sgsp-fact b{display:block;color:#1E1810;font-size:19px;font-weight:900;letter-spacing:-.6px}
+.sgsp-fact span{display:block;margin-top:3px;color:#6B5E4C;font-size:11px;line-height:1.35}
+.sgsp-note{margin-top:16px;background:rgba(200,31,43,.07);border-left:3px solid #c81f2b;
+ border-radius:0 8px 8px 0;padding:12px 14px;color:#5A3028;font-size:13px;line-height:1.7}
+.sgsp-go{display:block;width:100%;margin-top:20px;background:linear-gradient(135deg,#c81f2b,#a5121d);
+ color:#fff;border:0;border-radius:12px;padding:15px 16px;font-size:15.5px;font-weight:900;cursor:pointer;
+ box-shadow:0 14px 28px -12px rgba(200,31,43,.7);letter-spacing:-.4px}
+.sgsp-go small{display:block;margin-top:4px;font-size:11.5px;font-weight:700;opacity:.9;letter-spacing:0}
+.sgsp-go:hover{filter:brightness(1.07)}
+/* 넘김 조작 */
+.sgsp-ft{display:flex;align-items:center;gap:10px;margin-top:11px}
+.sgsp-ar{background:rgba(198,161,91,.14);border:1px solid rgba(198,161,91,.4);color:#E8C77A;
+ border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:800;cursor:pointer}
+.sgsp-ar:disabled{opacity:.3;cursor:default}
+.sgsp-dots{flex:1;display:flex;gap:6px;justify-content:center}
+.sgsp-dots span{width:7px;height:7px;border-radius:50%;background:rgba(198,161,91,.3)}
+.sgsp-dots span.on{background:#E8C77A;width:20px;border-radius:4px}
+
+@media(max-width:560px){
+ .sgs-sign h1{font-size:24px}
+ .sgs-bk{width:132px}.sgs-cv{width:132px;height:187px;padding:13px 12px 11px}
+ .sgs-cv .ti b{font-size:18.5px}.sgs-pop{width:132px}
+ .sgs-tab{gap:11px;padding:22px 8px 0}
+ .sgsp-in{padding:22px 18px 20px 28px}
+ .sgsp-in h2{font-size:21px}
+ #sgSpread{padding:10px}
+}
+
 </style>
 </body>
 </html>
