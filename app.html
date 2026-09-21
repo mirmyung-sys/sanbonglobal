@@ -577,7 +577,7 @@ body.wdark .nav button.on svg{stroke:#C81F2B}
  /* 2026-09-17 보강 — 예전에는 한 번 코드를 넣으면 그 브라우저가 영원히 그냥 들어왔습니다.
     열쇠 이름을 바꿔 지금까지 나간 통행증을 전부 무효로 만들고, 7일 만료를 붙였습니다.
     주소 끝에 #lock 을 붙여 열면 그 자리에서 통행증을 버립니다 (손님 눈으로 보실 때). */
- var GATE_ON=false, CODE='1001', OPEN_FROM=new Date(2026,9,1); /* 2026-10-01 자동 오픈 */
+ var GATE_ON=true, CODE='1001', OPEN_FROM=new Date(2026,9,1); /* 2026-10-01 자동 오픈 */
  var KEY='sga_gate_c2', DAYS=7;
  var g=document.getElementById('sgGate');
  function off(){if(g&&g.parentNode)g.parentNode.removeChild(g);document.documentElement.style.overflow='';}
