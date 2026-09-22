@@ -339,10 +339,13 @@ body.wdark .pg{padding:0 0 8px;max-width:none}
 /* ── 영상 히어로 (유지 — 여기만 어둡습니다. 영상이라서) ── */
 .aiw-vh{position:relative;background:#070A12;overflow:hidden}
 .aiw-vwrap{position:relative;max-width:none;margin:0 auto}
-.aiw-v{display:block;width:100%;aspect-ratio:4/3;max-height:52vh;object-fit:cover;
+/* 2026-09-22 대표님 지시 — 「산글이 화면이 짤림」.
+   원본 영상이 720x720 정사각인데 4:3 / 16:9 상자에 object-fit:cover 로 넣어
+   위아래가 잘려 나가고 있었습니다. 상자를 정사각으로 바꾸고 contain 으로 바로잡습니다. */
+.aiw-v{display:block;width:100%;aspect-ratio:1/1;max-height:62vh;object-fit:contain;object-position:50% 34%;
  background:radial-gradient(circle at 50% 38%,#22345C,#070A12 75%)}
-@media(min-width:720px){.aiw-v{aspect-ratio:16/9;max-height:56vh}}
-.aiw-vh:after{content:"";position:absolute;left:0;right:0;bottom:0;height:52%;
+@media(min-width:720px){.aiw-v{aspect-ratio:16/9;max-height:62vh;object-fit:contain}}
+.aiw-vh:after{content:"";position:absolute;left:0;right:0;bottom:0;height:38%;
  background:linear-gradient(180deg,transparent,rgba(7,10,18,.96));pointer-events:none}
 .aiw-cap{position:absolute;left:0;right:0;bottom:0;z-index:3;text-align:center;padding:0 18px 18px}
 .aiw-eye{font-size:11px;font-weight:900;letter-spacing:.24em;color:#FFB3B9}
