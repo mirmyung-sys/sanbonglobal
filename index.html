@@ -23104,7 +23104,7 @@ function sgBook(T,G){
   +'<div class="sb-foot" id="sbFoot">'
    +'<div class="sb-pr"><i id="sbPr"></i></div>'
    +'<div class="sb-tools">'
-    +'<button type="button" class="sbt" id="sbtPr" onclick="sbTog(\'pr\')"><b>발음</b><small>어떻게 읽나</small></button>'
+    +'<button type="button" class="sbt" id="sbtPr" onclick="sbTog(\'pr\')"><b>발음</b><small>원어민 음성</small></button>'
     +'<button type="button" class="sbt" id="sbtKo" onclick="sbTog(\'ko\')"><b>번역</b><small>한국어 뜻</small></button>'
     +'<button type="button" class="sbt" id="sbtSt" onclick="sbTog(\'st\')"><b>문장구조</b><small>문법 · 왜 그런가</small></button>'
    +'</div>'
@@ -23116,12 +23116,84 @@ function sgBook(T,G){
  sbPut();
 }
 function sgBookClose(){
+ try{ _sbSayStop(); }catch(e){}
  var el=document.getElementById('sgBook'); if(el)el.classList.remove('on');
  var sh=document.getElementById('sgShop');
  document.body.style.overflow=(sh&&sh.classList.contains('on'))?'hidden':'';
 }
-function sbGo(d){ var n=_sbP+d; if(n<0||n>=_sbPages.length)return; _sbP=n; sbPut(); }
-function sbTog(k){ _sbV[k]=_sbV[k]?0:1; sbPut(true); }
+function sbGo(d){ var n=_sbP+d; if(n<0||n>=_sbPages.length)return; _sbSayStop(); _sbP=n; sbPut(); }
+/* ═══ 2026-09-23 대표님 「일본어도 들어왔는데 발음 누르면 발음이 안 나와, 블루웨일은 됨」
+   책방 리더(영어·일본어·중국어·한국어 책 전부)의 발음 버튼이 소리 없이 읽는 법 글자만 펼치고 있었습니다.
+   이제 발음 = 그 과의 핵심 표현 → 대화문을 원어민 음성으로 차례대로 읽습니다.
+   블루웨일과 똑같이: 한 번 더 누르면 잠깐 멈춤, 또 누르면 멈춘 자리부터 이어 듣기.
+   처음부터 다시 나오는 경우는 끝까지 다 들었을 때와 장을 넘겼을 때뿐입니다.
+   소리는 학습관과 같은 재생기(sgpPlay)를 씁니다 — 언어는 책 키(jpn_/chn_/kor_ …)로 고릅니다. */
+var _sbSayOn=0, _sbSayIv=null;
+function _sbSayLang(){
+ var P=_sbPages&&_sbPages[_sbP], b=_sbBook; if(!b) return 'en-US';
+ try{ _aiT=b.T; _aiG=b.G; _aiS=(P&&P.si!==undefined)?P.si:0; }catch(e){}
+ try{ return _lsLang(); }catch(e){ return 'en-US'; }
+}
+function _sbSayTxt(t,lang){
+ t=String(t||'').replace(/<rt>[\s\S]*?<\/rt>/g,'').replace(/<[^>]+>/g,'');
+ /* 읽는 법을 괄호로 달아 둔 것(言語知識（げんごちしき）)은 소리로 두 번 읽히지 않게 뺍니다 */
+ if(lang==='ja-JP') t=t.replace(/[（(][぀-ヿー・\s]+[）)]/g,'');
+ if(lang==='zh-CN') t=t.replace(/[（(][A-Za-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü\s]+[）)]/g,'');
+ return t.trim();
+}
+function _sbSayLab(){
+ try{
+  var b=document.getElementById('sbtPr'), sm=b&&b.querySelector('small'); if(!sm) return;
+  var mine=SGA_P.on&&_sbSayOn;
+  sm.textContent=mine?(SGA_P.paused?'누르면 이어 듣기':'누르면 잠깐 멈춤'):'원어민 음성';
+  var els=document.querySelectorAll('#sbPg .sb-s, #sbPg .sb-line');
+  var it=mine?SGA_P.items[SGA_P.ix]:null, r=(it&&it.row!==undefined)?it.row:-1;
+  for(var i=0;i<els.length;i++){
+   var on=(i===r);
+   if(on&&!els[i].classList.contains('play')){ try{els[i].scrollIntoView({block:'center',behavior:'smooth'});}catch(e){} }
+   els[i].classList.toggle('play',on);
+  }
+ }catch(e){}
+}
+function _sbSayStop(){
+ if(_sbSayOn){ _sbSayOn=0; try{ sgpStop(); }catch(e){} _sbV.pr=0; }
+ if(_sbSayIv){ clearInterval(_sbSayIv); _sbSayIv=null; }
+ _sbSayLab();
+}
+function _sbSay(){
+ var P=_sbPages[_sbP]; if(!P||P.k!=='u') return;
+ var st=_sbBook.grp.steps[P.si], L=(AITXT[st.img]||[])[P.ui]; if(!L) return;
+ var lang=_sbSayLang(), items=[], row=0;
+ (L.key||[]).forEach(function(r){
+   var t=_sbSayTxt(r[1],lang);
+   try{ if(lang==='en-US') t=_lsKeySay(t,L); else t=_lsFirstAlt(t); }catch(e){}
+   if(t) items.push({t:t,lang:lang,who:'a',mp3:'',row:row}); row++;
+ });
+ (L.dlg||[]).forEach(function(r,i){
+   var t=_sbSayTxt(r[1],lang);
+   if(t) items.push({t:t,lang:lang,who:(i%2?'b':'a'),mp3:'',row:row}); row++;
+ });
+ if(!items.length) return;
+ sgpPlay(items,null,'one');
+ _sbSayOn=1;
+ SGA_P._natEnd=function(){ _sbSayOn=0; _sbV.pr=0; try{sbPut(true);}catch(e){} _sbSayLab(); };
+ if(_sbSayIv) clearInterval(_sbSayIv);
+ _sbSayIv=setInterval(function(){
+   var el=document.getElementById('sgBook');
+   if(!el||!el.classList.contains('on')){ _sbSayStop(); return; }
+   if(_sbSayOn&&!SGA_P.on){ _sbSayOn=0; }
+   _sbSayLab();
+   if(!_sbSayOn){ clearInterval(_sbSayIv); _sbSayIv=null; }
+ },150);
+ _sbSayLab();
+}
+function sbTog(k){
+ if(k==='pr'){
+  if(_sbSayOn&&SGA_P.on){ sgpToggle(); _sbSayLab(); return; }
+  _sbV.pr=1; sbPut(true); _sbSay(); return;
+ }
+ _sbV[k]=_sbV[k]?0:1; sbPut(true); _sbSayLab();
+}
 function _sbSwipe(el){
  var x0=null,y0=null;
  el.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY;},{passive:true});
@@ -23225,6 +23297,7 @@ function sbPut(keep){
  document.getElementById('sbPr').style.width=((_sbP+1)/_sbPages.length*100).toFixed(1)+'%';
 }
 function sbJump(si){
+ try{ _sbSayStop(); }catch(e){}
  for(var i=0;i<_sbPages.length;i++){
   if(_sbPages[i].k==='u'&&_sbPages[i].si===si){ _sbP=i; sbPut(); return; }
  }
@@ -23547,6 +23620,7 @@ document.addEventListener('keydown',function(e){
 .sb-txt .ko{margin:5px 0 0;color:#6E6757;font-size:clamp(12.5px,1.3vw,14.5px);line-height:1.6}
 .sb-dlg{border-left:3px solid rgba(200,31,43,.3);padding-left:14px}
 .sb-line{display:flex;gap:9px;margin-bottom:13px}
+#sbPg .sb-s.play,#sbPg .sb-line.play{background:rgba(255,201,60,.28);box-shadow:0 0 0 6px rgba(255,201,60,.28);border-radius:8px;transition:background .2s}
 .sb-line .w{flex:0 0 auto;min-width:22px;color:#B1451F;font-size:12px;font-weight:900;padding-top:3px}
 .sb-line .en{margin:0;color:#16150F;font-size:clamp(14.5px,1.6vw,18px);font-weight:600;line-height:1.55}
 .sb-line .ko{margin:4px 0 0;color:#6E6757;font-size:clamp(12px,1.25vw,14px);line-height:1.55}
