@@ -22944,8 +22944,16 @@ function bwGo(d){
  _bwP=n; bwPut();
 }
 /* 세 버튼 — 페이지를 떠나지 않고 그 자리에서 켜고 끕니다 */
+function _bwPrLab(t){ try{ var b=document.getElementById('bwtPr'); var sm=b&&b.querySelector('small'); if(sm) sm.textContent=t; }catch(e){} }
 function bwTog(k){
- if(k==='pr'){ if(_bwV.pr){ bwStop(); } else { _bwV.pr=1; bwPut(true); bwPlay(); } return; }
+ /* 2026-09-23 대표님 「잠깐 멈추려고 누르고 다시 누르면 처음부터 다시 시작함」
+    → 발음 버튼 = 재생 / 일시정지 / 이어 듣기. 멈춘 자리에서 그대로 이어집니다.
+    처음부터 다시 시작하는 경우는 두 가지뿐: 끝까지 다 들었을 때, 장을 넘겼을 때 */
+ if(k==='pr'){
+  if(_bwAu && !_bwAu.paused){ _bwAu.pause(); _bwPrLab('누르면 이어 듣기'); return; }
+  if(_bwAu && _bwAu.paused && _bwV.pr){ var q=_bwAu.play(); if(q&&q.catch) q.catch(function(){}); _bwPrLab('누르면 잠깐 멈춤'); return; }
+  _bwV.pr=1; bwPut(true); bwPlay(); _bwPrLab('누르면 잠깐 멈춤'); return;
+ }
  _bwV[k]=_bwV[k]?0:1;
  bwPut(true);
  if(_bwV.pr&&_bwCur>=0) _bwMark(_bwCur,false);
@@ -22964,7 +22972,7 @@ function _bwMark(i,scroll){
 function bwStop(){
  try{ if(_bwIv){clearInterval(_bwIv);_bwIv=null;} if(_bwAu){_bwAu.pause();_bwAu=null;} }catch(e){}
  _bwCur=-1; _bwV.pr=0;
- try{ _bwMark(-1,false); var b=document.getElementById('bwtPr'); if(b)b.classList.remove('on'); }catch(e){}
+ try{ _bwMark(-1,false); var b=document.getElementById('bwtPr'); if(b)b.classList.remove('on'); _bwPrLab('원어민 음성'); }catch(e){}
 }
 function bwPlay(){
  var P=_bwPages&&_bwPages[_bwP]; if(!P||P.k!=='s'){ bwStop(); return; }
