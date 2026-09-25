@@ -5429,7 +5429,7 @@ var NOTICES=[
   act:"openPage('동글이')", actLabel:'동글 자세히 보기'},
 
  {id:'n04', tag:'이벤트', t:'네이버 리뷰 이벤트', d:'2026.08.21',
-  b:'<p>네이버 플레이스에 영수증 리뷰를 남겨 주시면 <b>5,000포인트 + 립밤</b>을 드립니다. 회원가입만 해도 5,000포인트가 먼저 쌓입니다.</p>',
+  b:'<p>네이버 플레이스에 영수증 리뷰를 남겨 주시면 <b>5,000포인트 + 립밤</b>을 드립니다. 회원가입 5,000포인트까지 합치면 <b>최대 10,000포인트</b>입니다.</p>',
   act:"openPage('네이버 리뷰 이벤트')", actLabel:'리뷰 이벤트 보기'},
 
  {id:'n03', tag:'휴무', t:'추석 연휴 휴무 안내 (9/24~9/26)', d:'2026.08.20',
@@ -5936,7 +5936,7 @@ function memberTabs(){return '<div class="mb-tabs">'+
 '<a href="#" onclick="openPage(\'이용약관\');return false;">이용약관</a>'+
 '<a href="#" onclick="openPage(\'개인정보처리방침\');return false;">개인정보처리방침</a></div>';}
 function joinPage(){return memberTabs()
- +'<div class="pghero big" style="background:linear-gradient(120deg,#c81f2b,#c81f2b)"><div class="pgeyebrow">JOIN · 회원가입</div><h2>회원가입</h2><p>지금 가입하면 적립금 <b>5,000포인트</b>를 바로 드려요. 네이버 영수증 리뷰까지 남기면 5,000포인트 + 립밤이 더해집니다.</p></div>'
+ +'<div class="pghero big" style="background:linear-gradient(120deg,#c81f2b,#c81f2b)"><div class="pgeyebrow">JOIN · 회원가입</div><h2>회원가입</h2><p>지금 가입하면 적립금 <b>5,000포인트</b>를 바로 드려요. 네이버 영수증 리뷰까지 남기면 5,000포인트 + 립밤이 더해져 <b>최대 10,000포인트</b>입니다.</p></div>'
  +'<div class="findwrap" style="padding:22px 24px 6px"><a class="findbtn" href="#" onclick="agOpen();return false;"><span class="fi">📱</span><b>휴대폰 번호로 30초 만에 가입</b><em>아이디·비밀번호 없이 번호 하나면 됩니다 →</em></a></div>'+'<div class="jn-steps">'
  +'<div class="jn-st on"><div class="jc">🧑‍💻</div><b>본인인증</b></div><div class="jn-arrow">›</div>'
  +'<div class="jn-st"><div class="jc">✅</div><b>약관동의</b></div><div class="jn-arrow">›</div>'
@@ -6956,7 +6956,7 @@ const PAGES={
  '통합회원안내':memberTabs()+H('MEMBERSHIP · 통합회원','하나의 아이디로<br>모두 이용하세요','산본글로벌 통합회원에 가입하시면 하나의 아이디로 온라인·모바일 서비스를 이용하실 수 있습니다. 자세한 안내는 준비 중이며, 우선 전화·카카오톡으로 등록 상담이 가능합니다.','🪪')+SGCTA('혜택은 결제 화면에서 자동으로 계산됩니다. 직접 고르실 필요 없어요.')+CTA(),
  '이용약관':H('TERMS · 이용약관','산글 서비스 이용약관','회원가입 시 동의하시는 이용약관 전문입니다.','📄')+'<div class="agdoc-b" style="max-width:900px;margin:0 auto;padding:0 4px">'+AGFULL.tos.h+'</div>'+CTA(),
  '개인정보처리방침':H('PRIVACY · 개인정보처리방침','개인정보 수집·이용 안내','휴대폰 번호를 포함해 어떤 정보를 왜 받고 얼마나 갖고 있는지 전부 적었습니다.','🔒')+'<div class="agdoc-b" style="max-width:900px;margin:0 auto;padding:0 4px">'+AGFULL.priv.h+'</div>'+'<div class="agdoc-b" style="max-width:900px;margin:22px auto 0;padding:0 4px"><h4>광고성 정보 수신 동의 (선택)</h4>'+AGFULL.mkt.h+'</div>'+CTA(),
- '네이버 리뷰 이벤트':HV('NAVER PLACE · 영수증 리뷰 이벤트','네이버 영수증 리뷰 쓰고<br>혜택 받아가세요','네이버 플레이스에 방문 후기(영수증 리뷰)를 남겨주시면 적립금 5,000포인트와 립밤을 드립니다. 회원가입만 해도 5,000포인트가 먼저 쌓여요.','linear-gradient(135deg,#03C75A,#029a45)','')
+ '네이버 리뷰 이벤트':HV('NAVER PLACE · 영수증 리뷰 이벤트','네이버 영수증 리뷰 쓰고<br>혜택 받아가세요','네이버 플레이스에 방문 후기(영수증 리뷰)를 남겨주시면 적립금 5,000포인트와 립밤을 드립니다. 회원가입 5,000포인트까지 합치면 최대 10,000포인트예요.','linear-gradient(135deg,#03C75A,#029a45)','')
   +'<div class="nv-coupon"><div class="nv-cp"><span>회원가입하면</span><b>5,000P</b><span>가입 즉시 적립 (1P = 1원)</span></div><div class="nv-cp"><span>리뷰 남기면</span><b>+5,000P</b><span>다음 수강료에서 차감</span></div><div class="nv-cp gift"><span>리뷰 작성자 전원</span><b>립밤 증정 🎁</b><span>방문 시 현장 수령</span></div></div>'
   +SEC('참여 방법','<div class="evsteps"><div class="evstep"><div class="evn">STEP 1</div><div class="evb"><b>네이버에서 학원 찾기</b><p>데스크의 QR을 찍거나, 네이버 앱에서 「산본글로벌어학원」을 검색하세요.</p></div></div><div class="evstep"><div class="evn">STEP 2</div><div class="evb"><b>영수증 리뷰 작성</b><p>네이버 로그인 → 「리뷰 쓰기」 → 「영수증」을 누르고 학원 영수증을 촬영 → 좋았던 점을 고르고 한 줄 남긴 뒤 「등록」. 별점과 관계없이 드립니다.</p></div></div><div class="evstep"><div class="evn">STEP 3</div><div class="evb"><b>혜택 수령</b><p>리뷰 화면을 데스크에 보여주시면 5,000포인트 적립 + 립밤을 드려요. 카카오톡 채널로 캡처를 보내셔도 포인트는 적립되고, 립밤은 다음 방문 때 받아 가세요.</p></div></div></div>')
   +SEC('유의사항','<ul class="evnotice"><li>영수증(방문) 리뷰에 한해 제공되며, 1인 1회 참여 가능합니다.</li><li>포인트는 회원 계정에 적립되며, 전 과목 수강료 결제 때 1P = 1원으로 차감됩니다. 일부 특가 상품은 제외될 수 있습니다.</li><li>포인트 적립은 회원가입 후 가능합니다. 별점과 관계없이 드립니다.</li><li>립밤은 재고 소진 시 동등 이상 사은품으로 대체될 수 있습니다.</li><li>부적절·허위 리뷰 확인 시 혜택이 제한될 수 있습니다.</li></ul>')
