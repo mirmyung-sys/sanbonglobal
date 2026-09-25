@@ -6394,13 +6394,8 @@ function eventHubPage(){
   +'<div style="margin-top:14px"><button class="tt-b" onclick="openPage(\'무료청강\')">무료 청강 신청 ›</button> <button class="tt-b" onclick="openPage(\'레벨테스트\')">레벨테스트 ›</button></div>')
 
  /* --- 3장 --- */
- +_pgBand('img/hall_12.jpg','⑥ 국비지원 — 내일배움카드',
-  '<p class="lead">근로자 환급과정으로 신청하실 수 있습니다. 자격 여부와 환급률은 개인마다 달라서, <b>상담 때 확인해 드립니다.</b></p>'
-  +'<ul class="oh-ck"><li>재직자 · 구직자 모두 대상이 될 수 있습니다</li>'
-  +'<li>이벤트 할인과 중복 여부는 과정에 따라 다릅니다</li>'
-  +'<li>031-466-6969로 문의 주시면 확인해 드립니다</li></ul>')
-
- +SEC('⑦ 12월부터는 이렇게 됩니다',
+ /* 2026-09-25 마홈 — 대표님 9/24 확정 「내일배움카드 과정은 없음」 → ⑥ 국비지원 칸 삭제 */
+ +SEC('⑥ 12월부터는 이렇게 됩니다',
   CT(['시점','받으실 수 있는 것'],
    [['<b>10월 ~ 11월</b>','오픈이벤트 <b>10%</b> (1:1·퍼스널 포함)'],
     ['<b>12월부터</b>','환승 이벤트 <b>10%</b> (상시) · 재등록 이벤트 <b>5%</b> (매달 19~25일 · 데스크)'],
@@ -6935,7 +6930,7 @@ const PAGES={
   +'<div class="pgnote">담당: 오금한·하홍금 외 원어민 강사 · 시간표는 강의관에서 확인</div>'+GO('중국어')+CTA(),
  '가을학기 할인':bigImg('img/hall_11.jpg')+HV('DISCOUNT · 지금 받는 할인','지금 받으실 수 있는<br>할인 전부입니다','오픈 10% · 환승 10% · 재등록 5% — 이게 전부입니다.','linear-gradient(120deg,#12203d,#caa23a)',ART_GIFT)
   +'<div class="evtimeline"><div class="evt on"><div class="evt-d">NOW</div><div class="evt-b"><b>오픈이벤트 10%</b><p>10월 1일 ~ 11월 30일 · 전 과목 자동 적용</p></div></div><div class="evt on"><div class="evt-d">상시</div><div class="evt-b"><b>환승 이벤트 10%</b><p>다른 학원에서 옮겨 오시는 분 · 기간 없음 · 1:1·퍼스널 제외</p></div></div><div class="evt"><div class="evt-d">재등록</div><div class="evt-b"><b>재등록 이벤트 5%</b><p>기존 수강생 · 매달 19~25일 · 사무처 확인 후 데스크에서 진행</p></div></div><div class="evt"><div class="evt-d">상시</div><div class="evt-b"><b>무료수강</b><p>1대1 등록 시 그룹반을 무료로 더 다니십니다</p></div></div></div>'
-  +SEC('이런 혜택도 있어요',CT(['이벤트','내용'],[['오픈이벤트','<b>전 과목 10%</b> · 1:1 포함 · 10월 1일 ~ 11월 30일'],['환승 이벤트','<b>10%</b> · 상시 · 정규반·시험대비반 (1:1·퍼스널 제외)'],['재등록 이벤트','<b>5%</b> · 매달 19~25일 · 사무처 확인 후 <b>데스크에서 진행</b>'],['산글 패스','오래 다니실수록 무료 개월이 붙습니다'],['다과목 수강','교재 지원 · 상담 후 안내'],['국비지원','내일배움카드 과정 별도 안내'],['<b>상한</b>','어떤 조합으로도 <b>정가 대비 20%</b> · <b>1:1·퍼스널은 10%</b> · 새벽반만 30%']]))
+  +SEC('이런 혜택도 있어요',CT(['이벤트','내용'],[['오픈이벤트','<b>전 과목 10%</b> · 1:1 포함 · 10월 1일 ~ 11월 30일'],['환승 이벤트','<b>10%</b> · 상시 · 정규반·시험대비반 (1:1·퍼스널 제외)'],['재등록 이벤트','<b>5%</b> · 매달 19~25일 · 사무처 확인 후 <b>데스크에서 진행</b>'],['산글 패스','오래 다니실수록 무료 개월이 붙습니다'],['다과목 수강','교재 지원 · 상담 후 안내'],['<b>상한</b>','어떤 조합으로도 <b>정가 대비 20%</b> · <b>1:1·퍼스널은 10%</b> · 새벽반만 30%']]))
   +'<div class="pgnote">※ 할인 폭·대상은 등록 시점·과정에 따라 달라질 수 있어요. 정확한 금액은 상담 시 안내드립니다. · 031-466-6969</div><a class="pgcta" href="#" onclick="closePage();openTT();return false;">개강 일정 보기 ›</a>'+CTA(),
  '수강신청':enrollPage(),
  '수강후기':reviewPage(),
@@ -18950,7 +18945,7 @@ function sgeHTML(){
   /* 2026-09-17 — 첫 화면은 읽는 자리가 아니라 붙잡는 자리입니다.
      듀오링고(캐릭터+한 문장+버튼) · 야나두(거대한 숫자 하나)를 보고 다시 짰습니다. */
   +'<div class="sge-face">'
-   +'<video src="media/sgi_hello.mp4" poster="img/sgi_face.jpg" muted autoplay loop playsinline preload="metadata" aria-hidden="true"></video>'
+   +'<video src="media/sgi_hello.mp4" poster="img/sgi_face.png" muted autoplay loop playsinline preload="metadata" aria-hidden="true"></video>'
   +'</div>'
   +'<h2>하루 <em>3분</em>이면<br>입이 열립니다</h2>'
   +'<div class="sge-kpi">'
