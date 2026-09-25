@@ -22651,6 +22651,16 @@ var SGSHOP=[
 ]},
 
 {sh:'시험', ss:'점수가 오르는 순서대로 — 토익 · 오픽 · 토스 · 토플 · JLPT · HSK', bks:[
+{k:'tosmock',t:'토스 실전 모의고사',sub:'11문항 · 20분<br>실제 시험 그대로',en:'MOCK TEST',
+ c1:'#7B1733',c2:'#3D0B19',rk:'NEW',
+ pop:'토스 모의고사',pops:'11문항 · 녹음 · 자동 점검표',
+ lead:'실제 시험과 <b>같은 순서, 같은 준비·답변 시간</b>으로 11문항을 말해 봅니다. 휴대폰 마이크로 녹음되고, 끝나면 말한 시간·멈춤·읽기 정확도를 바로 보여 드립니다.',
+ fact:[['11문항','공식 구성 그대로'],['20분','실제 시험 시간'],['0원','누구나']],
+ toc:[['1–2','문장 읽기 — 준비 45초 · 답변 45초'],['3–4','사진 묘사 — 학원 실제 사진'],['5–7','질문에 답하기 — 원어민 음성'],['8–10','정보 보고 답하기 — 표 읽기 45초'],['11','의견 말하기 — 60초']],
+ how:[['녹음','답변은 이 휴대폰에만 저장됩니다'],['자동','말한 시간 · 멈춤 · 읽기 정확도'],['강사','예상 레벨과 고칠 점 3가지는 강사가 직접']],
+ note:'자동 점검표는 공식 점수가 아닙니다. <b>녹음을 강사가 듣고</b> 예상 레벨을 알려드리는 것이 <b>강사 첨삭 이용권</b>입니다.',
+ go:'sgTOS()',goT:'모의고사 시작하기',goS:'마이크 허용 → 11문항 → 자동 점검표'},
+
 
 {aib:[1,0],k:'toeic',t:'토익',sub:'문법 40강부터<br>실전 모의고사까지',en:'TOEIC',
  c1:'#12365E',c2:'#081D33',rk:'시험 1위',
@@ -23155,6 +23165,261 @@ function _bw4Say(a,ix,i){
    _bw4.tm=setTimeout(function(){ if(_bw4&&_bw4.cd){clearInterval(_bw4.cd);_bw4.cd=null;} _bw4Say(a,ix,i+1); },gap+400);
   }
  },60);
+}
+
+
+/* ═══ 산글 토스 실전 모의고사 (2026-09-25 대표님 — 「돈주고 구매해야해 너가 만들수 없어」) ═══
+   참고: 시원스쿨 토스/오픽 AI 모의고사 이용권(INEAR 1회 15,000원) · 엔토영어 AI 토스 모의고사(무료 2회) · 링글 AI Prep(무료 1문제)
+   시험 구성은 한국토익위원회 공식 안내 그대로 — 11문항 · 약 20분
+     1-2 문장 읽기 준비45/답변45 · 3-4 사진 묘사 45/30 · 5-7 질문 답하기 3/15·15·30
+     8-10 정보 보고 답하기 (읽기 45) 3/15·15·30, 10번 질문 두 번 · 11 의견 말하기 45/60
+   문제는 전부 새로 썼습니다(기출 복제 없음). 사진은 학원 실사진. 음성은 원어민 합성음(audio/tos).
+   자동 점검 = 말한 시간 · 가장 긴 멈춤 · 단어 수 · 읽기 정확도(브라우저 음성인식). 공식 점수·등급은 내지 않습니다.
+   등급과 고칠 점은 강사가 녹음을 듣고 알려드립니다 → 강사 첨삭 이용권 → 상담 */
+var TOSQ=[
+ {n:1,ty:'read',en:'Read a Text Aloud',ko:'문장 읽기',prep:45,resp:45,
+  txt:"Attention, shoppers. Central Market will close one hour early this Friday for a special community event. Our bakery, flower shop, and fresh fruit section will offer free samples from three to five in the afternoon. Please visit the information desk near the main entrance to pick up a map of this weekend's activities. Thank you for shopping with us."},
+ {n:2,ty:'read',en:'Read a Text Aloud',ko:'문장 읽기',prep:45,resp:45,
+  txt:"Are you looking for a simple way to stay healthy this winter? Green Valley Fitness Center is now offering evening yoga, indoor cycling, and swimming classes for beginners. Members can reserve a class online, by phone, or at the front desk. Sign up before the end of the month, and your first personal training session is free."},
+ {n:3,ty:'pic',en:'Describe a Picture',ko:'사진 묘사',prep:45,resp:30,img:'img/hall_01.jpg'},
+ {n:4,ty:'pic',en:'Describe a Picture',ko:'사진 묘사',prep:45,resp:30,img:'img/hall_05.jpg'},
+ {n:5,ty:'q',set:'A',en:'Respond to Questions',ko:'질문에 답하기',prep:3,resp:15,au:'q5',q:"How often do you go to a coffee shop, and who do you usually go with?"},
+ {n:6,ty:'q',set:'A',en:'Respond to Questions',ko:'질문에 답하기',prep:3,resp:15,au:'q6',q:"When you go to a coffee shop, do you usually stay there or take your drink with you? Why?"},
+ {n:7,ty:'q',set:'A',en:'Respond to Questions',ko:'질문에 답하기',prep:3,resp:30,au:'q7',q:"What would make you visit a new coffee shop in your neighborhood? Explain why."},
+ {n:8,ty:'info',set:'B',en:'Respond to Questions Using Information Provided',ko:'정보 보고 답하기',prep:3,resp:15,au:'q8',q:"What time does the Business English Writing class start, and who teaches it?"},
+ {n:9,ty:'info',set:'B',en:'Respond to Questions Using Information Provided',ko:'정보 보고 답하기',prep:3,resp:15,au:'q9',q:"I heard that every class costs forty dollars. Is that right?"},
+ {n:10,ty:'info',set:'B',en:'Respond to Questions Using Information Provided',ko:'정보 보고 답하기',prep:3,resp:30,au:'q10',twice:1,q:"Could you tell me about all the classes that are held on Tuesday and Thursday?"},
+ {n:11,ty:'op',en:'Express an Opinion',ko:'의견 말하기',prep:45,resp:60,au:'q11',
+  q:"Do you agree or disagree with the following statement?<br><b>“Learning a foreign language in a classroom is more effective than learning it online.”</b><br>Use specific reasons and examples to support your opinion."}
+];
+var TOS_SETA="Imagine that a marketing company is doing research in your area. You have agreed to participate in a telephone interview about coffee shops.";
+var TOS_INFO='<div class="tos-info"><h4>Riverside Community Center</h4><p class="s">Adult Evening Classes · October</p>'
+ +'<table><tr><th>Day</th><th>Time</th><th>Class</th><th>Instructor</th></tr>'
+ +'<tr><td>Mon</td><td>7:00–8:30 p.m.</td><td>Beginner Photography</td><td>Daniel Park</td></tr>'
+ +'<tr><td>Tue</td><td>6:30–8:00 p.m.</td><td>Korean Home Cooking</td><td>Min-ji Lee</td></tr>'
+ +'<tr><td>Wed</td><td>7:00–8:30 p.m.</td><td>Business English Writing</td><td>Sarah Collins</td></tr>'
+ +'<tr><td>Thu</td><td>7:30–9:00 p.m.</td><td>Guitar for Beginners<br><small>No class on October 16</small></td><td>Tom Harris</td></tr>'
+ +'</table><p class="f">Fee: $40 per class · Members: $30 per class</p></div>';
+
+var _tos=null;
+function _tosE(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function sgTOS(){
+ try{ sgShopClose(); }catch(e){}
+ var el=document.getElementById('sgTOS');
+ if(!el){el=document.createElement('div');el.id='sgTOS';document.body.appendChild(el);}
+ el.classList.add('on'); document.body.style.overflow='hidden';
+ _tos={i:-1,res:[],stream:null,ac:null,an:null,tm:null,rec:null,sr:null,au:null,stop:0};
+ el.innerHTML='<div class="tos-in">'
+  +'<div class="tos-hd"><b>산글 토스 실전 모의고사</b><small>TOEIC Speaking · 11문항</small><button class="tos-x" onclick="sgTOSClose()" aria-label="닫기">✕</button></div>'
+  +'<div class="tos-bd" id="tosBd"></div></div>';
+ _tosIntro();
+}
+function _tosIntro(){
+ var b=document.getElementById('tosBd');
+ b.innerHTML='<div class="tos-intro">'
+  +'<div class="tos-k">SANGLE MOCK TEST</div>'
+  +'<h2>실제 시험과 같은 순서 · 같은 시간으로<br>11문항을 말해 봅니다</h2>'
+  +'<ul class="tos-li">'
+   +'<li><b>1–2</b> 문장 읽기 <span>준비 45초 · 답변 45초</span></li>'
+   +'<li><b>3–4</b> 사진 묘사 <span>준비 45초 · 답변 30초</span></li>'
+   +'<li><b>5–7</b> 질문에 답하기 <span>준비 3초 · 답변 15·15·30초</span></li>'
+   +'<li><b>8–10</b> 정보 보고 답하기 <span>표 읽기 45초 · 답변 15·15·30초</span></li>'
+   +'<li><b>11</b> 의견 말하기 <span>준비 45초 · 답변 60초</span></li></ul>'
+  +'<p class="tos-p">약 20분 걸립니다. 조용한 곳에서, <b>이어폰 없이 휴대폰 마이크</b>로 해도 됩니다.<br>답변은 녹음되고, 끝나면 <b>자동 점검표</b>(말한 시간 · 멈춤 · 읽기 정확도)가 나옵니다.</p>'
+  +'<p class="tos-note">자동 점검표는 공식 점수가 아닙니다. <b>예상 레벨은 강사가 녹음을 직접 듣고</b> 알려드립니다.</p>'
+  +'<button class="tos-go" onclick="_tosMic()">마이크 켜고 시작하기</button>'
+  +'<p class="tos-sm">녹음은 이 휴대폰 안에만 있고 서버로 올라가지 않습니다.</p></div>';
+}
+function _tosMic(){
+ if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||typeof MediaRecorder==='undefined'){
+  _tosMsg('이 브라우저는 녹음을 지원하지 않습니다.<br>크롬이나 사파리 최신 버전으로 열어 주십시오.'); return; }
+ navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}}).then(function(st){
+  if(!_tos) { st.getTracks().forEach(function(t){t.stop();}); return; }
+  _tos.stream=st;
+  try{ var AC=window.AudioContext||window.webkitAudioContext; _tos.ac=new AC(); var src=_tos.ac.createMediaStreamSource(st);
+   _tos.an=_tos.ac.createAnalyser(); _tos.an.fftSize=1024; src.connect(_tos.an); if(_tos.ac.resume) _tos.ac.resume(); }catch(e){ _tos.an=null; }
+  _tosNext();
+ }).catch(function(){ _tosMsg('마이크를 허용해 주셔야 시험을 볼 수 있습니다.<br>주소창 왼쪽 자물쇠 → 마이크 → 허용 후 다시 눌러 주십시오.'); });
+}
+function _tosMsg(h){ var b=document.getElementById('tosBd'); if(b) b.innerHTML='<div class="tos-intro"><p class="tos-p">'+h+'</p><button class="tos-go" onclick="_tosIntro()">처음으로</button></div>'; }
+function sgTOSClose(){
+ if(_tos){ _tos.stop=1; _tosClr();
+  try{ if(_tos.stream) _tos.stream.getTracks().forEach(function(t){t.stop();}); }catch(e){}
+  try{ if(_tos.ac) _tos.ac.close(); }catch(e){}
+  try{ (_tos.res||[]).forEach(function(r){ if(r&&r.url) URL.revokeObjectURL(r.url); }); }catch(e){}
+ }
+ _tos=null;
+ var el=document.getElementById('sgTOS'); if(el){ el.classList.remove('on'); el.innerHTML=''; }
+ document.body.style.overflow='';
+}
+function _tosClr(){
+ if(!_tos) return;
+ try{ if(_tos.tm){ clearInterval(_tos.tm); _tos.tm=null; } }catch(e){}
+ try{ if(_tos.au){ _tos.au.pause(); _tos.au=null; } }catch(e){}
+ try{ if(_tos.rec&&_tos.rec.state!=='inactive') _tos.rec.stop(); }catch(e){}
+ try{ if(_tos.sr){ _tos.sr._end=1; _tos.sr.stop(); } }catch(e){}
+}
+function _tosBeep(){
+ try{ var ac=_tos.ac; if(!ac) return; var o=ac.createOscillator(), g=ac.createGain(); o.frequency.value=880; g.gain.value=0.12;
+  o.connect(g); g.connect(ac.destination); o.start(); o.stop(ac.currentTime+0.35); }catch(e){}
+}
+function _tosPlay(key,cb,times){
+ times=times||1;
+ if(!_tos||_tos.stop) return;
+ var a=new Audio('audio/tos/tos_'+key+'.mp3'); _tos.au=a;
+ var done=false, fin=function(){ if(done) return; done=true; if(!_tos||_tos.au!==a) return; _tos.au=null;
+   if(times>1) setTimeout(function(){ _tosPlay(key,cb,times-1); },900); else cb(); };
+ a.onended=fin; a.onerror=fin;
+ var p=a.play(); if(p&&p.catch) p.catch(fin);
+}
+/* 한 문항 화면 */
+function _tosScreen(Q,body,lab){
+ var b=document.getElementById('tosBd'); if(!b) return;
+ b.innerHTML='<div class="tos-q">'
+  +'<div class="tos-qh"><span class="no">Question '+Q.n+' of 11</span><span class="ty">'+_tosE(Q.en)+' · '+Q.ko+'</span></div>'
+  +'<div class="tos-bar"><i id="tosBar"></i></div>'
+  +'<div class="tos-st"><span id="tosLab">'+lab+'</span><b id="tosT">--</b></div>'
+  +'<div class="tos-vu"><i id="tosVu"></i></div>'
+  +'<div class="tos-c">'+body+'</div>'
+  +'<div class="tos-ft"><button class="tos-skip" onclick="_tosSkip()">다음 단계로 ›</button></div></div>';
+}
+function _tosSkip(){ if(_tos&&_tos._skip) _tos._skip(); }
+/* 카운트다운: 초, 라벨, 녹음여부, 끝나면 cb */
+function _tosCount(sec,lab,recording,cb){
+ if(!_tos||_tos.stop) return;
+ var t0=Date.now(), L=document.getElementById('tosLab'); if(L) L.innerHTML=lab;
+ var st=document.querySelector('.tos-st'); if(st) st.classList.toggle('rec',!!recording);
+ var m={v:0,sil:0,maxSil:0,p3:0,first:-1,ns:[]}, buf=null;
+ if(_tos.an) buf=new Float32Array(_tos.an.fftSize);
+ var finished=false;
+ var end=function(){ if(finished) return; finished=true; clearInterval(_tos.tm); _tos.tm=null; _tos._skip=null; cb(m); };
+ _tos._skip=end;
+ _tos.tm=setInterval(function(){
+  if(!_tos||_tos.stop) return;
+  var el=(Date.now()-t0)/1000, left=Math.max(0,sec-el);
+  var T=document.getElementById('tosT'); if(T) T.textContent='00:'+(left<10?'0':'')+Math.ceil(left);
+  var B=document.getElementById('tosBar'); if(B) B.style.width=(Math.min(1,el/sec)*100).toFixed(1)+'%';
+  if(_tos.an&&buf){
+   _tos.an.getFloatTimeDomainData(buf); var s=0; for(var i=0;i<buf.length;i++) s+=buf[i]*buf[i]; var rms=Math.sqrt(s/buf.length);
+   var V=document.getElementById('tosVu'); if(V) V.style.width=Math.min(100,rms*900).toFixed(0)+'%';
+   if(!recording){ m.ns.push(rms); }
+   else{
+    var thr=Math.min(0.04,Math.max(0.012,(_tos.noise||0.008)*3));
+    if(rms>thr){ m.v+=0.1; m.lv=el; if(m.first<0) m.first=el; if(m.sil>=3) m.p3++; m.sil=0; }
+    else if(m.first>=0){ if(el-m.lv<0.35) m.v+=0.1; m.sil+=0.1; if(m.sil>m.maxSil) m.maxSil=m.sil; }
+   }
+  }
+  if(left<=0) end();
+ },100);
+ if(!recording) setTimeout(function(){ if(_tos&&m.ns.length){ var a=m.ns.slice().sort(function(x,y){return x-y;}); _tos.noise=a[Math.floor(a.length*0.2)]; } },Math.max(300,Math.min(sec*1000-50,2500)));
+}
+/* 녹음 + 음성인식 시작 */
+function _tosRecStart(){
+ var r={chunks:[],text:'',mime:''};
+ try{
+  var opt={}; if(MediaRecorder.isTypeSupported){ if(MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) opt.mimeType='audio/webm;codecs=opus'; else if(MediaRecorder.isTypeSupported('audio/mp4')) opt.mimeType='audio/mp4'; }
+  var mr=new MediaRecorder(_tos.stream,opt); r.mime=mr.mimeType||opt.mimeType||'audio/webm';
+  mr.ondataavailable=function(e){ if(e.data&&e.data.size) r.chunks.push(e.data); };
+  mr.start(250); _tos.rec=mr; r.mr=mr;
+ }catch(e){}
+ try{
+  var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(SR){ var s=new SR(); s.lang='en-US'; s.continuous=true; s.interimResults=true; r.fin='';
+   s.onresult=function(ev){ var f='',it=''; for(var i=0;i<ev.results.length;i++){ if(ev.results[i].isFinal) f+=ev.results[i][0].transcript+' '; else it+=ev.results[i][0].transcript; } r.cur=f; r.it=it; };
+   s.onend=function(){ r.fin=(r.fin||'')+(r.cur||'')+(r.it||''); r.cur='';r.it=''; if(!s._end&&_tos&&!_tos.stop){ try{ s.start(); }catch(e){} } };
+   s.onerror=function(){};
+   s.start(); _tos.sr=s; r.sr=s; }
+ }catch(e){}
+ return r;
+}
+function _tosRecStop(r,Q,m,cb){
+ var fin=function(){
+  var blob=new Blob(r.chunks,{type:(r.mime||'audio/webm').split(';')[0]});
+  var txt=((r.fin||'')+(r.cur||'')+(r.it||'')).replace(/\s+/g,' ').trim();
+  var res={n:Q.n,Q:Q,url:r.chunks.length?URL.createObjectURL(blob):'',mime:blob.type,text:txt,voiced:Math.round(m.v),resp:Q.resp,maxSil:Math.round(m.maxSil*10)/10,p3:m.p3,sr:!!r.sr};
+  _tos.res[Q.n-1]=res; cb();
+ };
+ try{ if(r.sr){ r.sr._end=1; r.sr.stop(); } }catch(e){}
+ try{ if(r.mr&&r.mr.state!=='inactive'){ r.mr.onstop=function(){ setTimeout(fin,350); }; r.mr.stop(); } else setTimeout(fin,350); }catch(e){ setTimeout(fin,350); }
+ _tos.rec=null; _tos.sr=null;
+}
+/* 문항 진행 */
+function _tosNext(){
+ if(!_tos||_tos.stop) return;
+ _tos.i++;
+ if(_tos.i>=TOSQ.length){ _tosResult(); return; }
+ var Q=TOSQ[_tos.i];
+ var body='';
+ if(Q.ty==='read') body='<div class="tos-dir">화면의 글을 소리 내어 읽으세요.</div><p class="tos-read">'+_tosE(Q.txt)+'</p>';
+ else if(Q.ty==='pic') body='<div class="tos-dir">사진을 최대한 자세히 묘사하세요.</div><img class="tos-img" src="'+Q.img+'" alt="묘사할 사진">';
+ else if(Q.ty==='q') body='<div class="tos-dir">'+_tosE(TOS_SETA)+'</div><div class="tos-ask"><span>🔊</span>질문을 듣고 답하세요<p class="tos-qt" id="tosQt" hidden>'+_tosE(Q.q)+'</p></div>';
+ else if(Q.ty==='info') body=TOS_INFO+'<div class="tos-ask"><span>🔊</span>질문을 듣고 위 표를 보며 답하세요<p class="tos-qt" id="tosQt" hidden>'+_tosE(Q.q)+'</p></div>';
+ else body='<div class="tos-dir">질문에 대한 의견을 말하세요.</div><p class="tos-op">'+Q.q+'</p>';
+ var go=function(){
+  _tosScreen(Q,body,'준비 시간 · Preparation');
+  var startPrep=function(){
+   var Qt=document.getElementById('tosQt'); if(Qt) Qt.hidden=false;
+   _tosCount(Q.prep,'준비 시간 · Preparation',false,function(){
+    _tosBeep();
+    var r=_tosRecStart();
+    _tosCount(Q.resp,'<b>● 답변 중</b> · Response',true,function(m){ _tosRecStop(r,Q,m,function(){ setTimeout(_tosNext,600); }); });
+   });
+  };
+  if(Q.au){ var L=document.getElementById('tosLab'); if(L) L.innerHTML='🔊 질문을 듣는 중';
+   _tos._skip=function(){ if(_tos.au){ _tos.au.pause(); _tos.au=null; } _tos._skip=null; startPrep(); };
+   _tosPlay(Q.au,function(){ if(_tos) _tos._skip=null; startPrep(); },Q.twice?2:1); }
+  else startPrep();
+ };
+ /* 세트 첫 문항: 상황 안내 / 표 읽기 45초 */
+ if(Q.n===5){
+  _tosScreen(Q,'<div class="tos-dir">'+_tosE(TOS_SETA)+'</div>','🔊 상황 안내');
+  _tos._skip=function(){ if(_tos.au){_tos.au.pause();_tos.au=null;} _tos._skip=null; go(); };
+  _tosPlay('a_intro',function(){ if(_tos) _tos._skip=null; go(); });
+ } else if(Q.n===8){
+  _tosScreen(Q,TOS_INFO,'표 읽는 시간 · Reading');
+  _tosPlay('b_intro',function(){});
+  _tosCount(45,'표 읽는 시간 · Reading',false,function(){ try{ if(_tos.au){_tos.au.pause();_tos.au=null;} }catch(e){} go(); });
+ } else go();
+}
+/* 읽기 정확도: 원문 단어 중 받아쓰기에 순서대로 나온 비율(LCS) */
+function _tosWords(s){ return String(s||'').toLowerCase().replace(/[’']/g,'').replace(/[^a-z0-9 ]+/g,' ').split(/\s+/).filter(Boolean); }
+function _tosAcc(orig,said){
+ var a=_tosWords(orig), b=_tosWords(said); if(!a.length||!b.length) return {p:0,miss:a};
+ var n=a.length,m=b.length,D=[]; for(var i=0;i<=n;i++){ D.push(new Array(m+1).fill(0)); }
+ for(i=1;i<=n;i++) for(var j=1;j<=m;j++) D[i][j]=(a[i-1]===b[j-1])?D[i-1][j-1]+1:Math.max(D[i-1][j],D[i][j-1]);
+ var hit={},x=n,y=m; while(x>0&&y>0){ if(a[x-1]===b[y-1]){ hit[x-1]=1; x--; y--; } else if(D[x-1][y]>=D[x][y-1]) x--; else y--; }
+ var miss=[]; for(i=0;i<n;i++) if(!hit[i]) miss.push(a[i]);
+ return {p:Math.round(D[n][m]/n*100),miss:miss};
+}
+function _tosResult(){
+ _tosClr();
+ try{ if(_tos.stream) _tos.stream.getTracks().forEach(function(t){t.stop();}); }catch(e){}
+ var R=_tos.res, h='<div class="tos-res"><div class="tos-k">RESULT</div><h2>11문항 끝 — 자동 점검표</h2>'
+  +'<p class="tos-note">공식 점수가 아닙니다. <b>말한 시간 · 멈춤 · 읽기 정확도</b>만 기계가 셉니다.<br>발음·문법·예상 레벨은 <b>강사가 녹음을 듣고</b> 알려드립니다.</p>';
+ var ok=0,tot=0;
+ for(var i=0;i<R.length;i++){ var r=R[i]; if(!r) continue;
+  var ratio=r.resp?r.voiced/r.resp:0, c1=ratio>=0.6, c2=(r.voiced>=3&&r.maxSil<3), acc=null;
+  if(r.Q.ty==='read'&&r.text) acc=_tosAcc(r.Q.txt,r.text);
+  var words=_tosWords(r.text).length;
+  tot+=2; ok+=(c1?1:0)+(c2?1:0);
+  h+='<div class="tos-rc"><div class="tos-rh"><b>Q'+r.n+'</b><span>'+r.Q.ko+'</span></div>'
+   +(r.url?'<audio controls preload="none" src="'+r.url+'"></audio>':'<p class="tos-sm">녹음이 저장되지 않았습니다.</p>')
+   +'<ul class="tos-ck">'
+   +'<li class="'+(c1?'y':'n')+'">'+(c1?'✓':'△')+' 말한 시간 <b>'+r.voiced+'초</b> / '+r.resp+'초</li>'
+   +'<li class="'+(c2?'y':'n')+'">'+(c2?'✓':'△')+' 가장 긴 멈춤 <b>'+r.maxSil+'초</b>'+(r.p3?' · 3초 넘게 멈춘 곳 '+r.p3+'번':'')+'</li>'
+   +(words?'<li>단어 <b>'+words+'개</b>'+(r.voiced?' · 분당 '+Math.round(words/Math.max(1,r.voiced)*60)+'단어':'')+'</li>':'')
+   +(acc?'<li class="'+(acc.p>=90?'y':'n')+'">'+(acc.p>=90?'✓':'△')+' 읽기 정확도 <b>'+acc.p+'%</b></li>':'')
+   +'</ul>'
+   +(acc&&acc.miss.length?'<p class="tos-miss">안 들린 단어: '+acc.miss.slice(0,12).map(_tosE).join(', ')+'</p>':'')
+   +(r.text?'<details><summary>기계가 받아쓴 내 답변</summary><p>'+_tosE(r.text)+'</p></details>':'')
+   +'</div>';
+ }
+ h+='<div class="tos-cta"><div class="tos-k">강사 첨삭 이용권</div>'
+  +'<h3>녹음 11개를 강사가 직접 듣고<br><b>예상 레벨과 고칠 점 3가지</b>를 알려드립니다</h3>'
+  +'<p>상담 예약을 남겨 주시면 결과는 학원에서 원장이 직접 설명드립니다.</p>'
+  +'<button class="tos-go" onclick="sgTOSClose();try{rsvOpen();}catch(e){openPage(\'원장상담\');}">첨삭 이용권 받기 · 상담 예약</button>'
+  +'<button class="tos-again" onclick="sgTOS()">처음부터 다시 보기</button></div></div>';
+ var b=document.getElementById('tosBd'); if(b){ b.innerHTML=h; b.scrollTop=0; }
 }
 
 
@@ -23700,6 +23965,74 @@ document.addEventListener('keydown',function(e){
 .bw4-x{flex:none;padding:7px 12px;border-radius:9px;border:1px solid rgba(160,205,232,.35);background:transparent;color:#C4DCEC;font-weight:800;font-size:13px;font-family:inherit;cursor:pointer}
 .bw4-done{margin-top:10px;color:#FFE3A3;font-size:14px;font-weight:700;line-height:1.5}
 .bw-txt.bw4-hide .en{filter:blur(7px);opacity:.55}
+/* 산글 토스 실전 모의고사 (2026-09-25) — 밝은 바탕 · 와인 포인트 */
+#sgTOS{position:fixed;inset:0;z-index:9850;display:none;background:#FBF7F0;color:#1F1A17}
+#sgTOS.on{display:block}
+#sgTOS *{box-sizing:border-box}
+#sgTOS h2,#sgTOS h3,#sgTOS h4,#sgTOS table{font-family:inherit}
+.tos-in{position:absolute;inset:0;display:flex;flex-direction:column}
+.tos-hd{display:flex;align-items:center;gap:10px;padding:12px 16px;background:#7B1733;color:#fff}
+.tos-hd b{font-size:15px;font-weight:900;letter-spacing:-.3px}
+.tos-hd small{font-size:11.5px;color:#F6D9DF;font-weight:600}
+.tos-x{margin-left:auto;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:transparent;color:#fff;font-size:15px;cursor:pointer}
+.tos-bd{flex:1;overflow-y:auto;padding:18px 16px 40px}
+.tos-intro,.tos-q,.tos-res{max-width:720px;margin:0 auto}
+.tos-k{color:#7B1733;font-size:11px;font-weight:900;letter-spacing:3px;margin-bottom:6px}
+.tos-intro h2,.tos-res h2{font-size:clamp(20px,5vw,28px);line-height:1.35;font-weight:900;letter-spacing:-.6px;margin:0 0 14px}
+.tos-li{list-style:none;padding:0;margin:0 0 14px;border-top:1px solid #E7DCCB}
+.tos-li li{display:flex;align-items:baseline;gap:10px;padding:10px 2px;border-bottom:1px solid #E7DCCB;font-size:15px;font-weight:700}
+.tos-li li b{min-width:40px;color:#7B1733;font-weight:900}
+.tos-li li span{margin-left:auto;color:#5A4F45;font-size:12.5px;font-weight:600}
+.tos-p{font-size:15px;line-height:1.7;color:#2E2723;margin:0 0 10px}
+.tos-note{font-size:13.5px;line-height:1.65;color:#5A4F45;background:#F3EADC;border-radius:10px;padding:10px 12px;margin:0 0 16px}
+.tos-go{display:block;width:100%;padding:15px;border-radius:12px;border:none;background:#7B1733;color:#fff;font-size:17px;font-weight:900;font-family:inherit;cursor:pointer}
+.tos-go:active{transform:scale(.98)}
+.tos-sm{font-size:12px;color:#6E6257;text-align:center;margin:10px 0 0}
+.tos-qh{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;margin-bottom:10px}
+.tos-qh .no{background:#7B1733;color:#fff;font-size:12.5px;font-weight:900;padding:4px 10px;border-radius:99px}
+.tos-qh .ty{font-size:13.5px;font-weight:800;color:#3A312B}
+.tos-bar{height:6px;border-radius:6px;background:#E7DCCB;overflow:hidden}
+.tos-bar i{display:block;height:100%;width:0;background:#C9962B;transition:width .1s linear}
+.tos-st{display:flex;align-items:center;justify-content:space-between;margin:10px 0 6px;font-size:14px;font-weight:800;color:#3A312B}
+.tos-st b#tosT{font-size:26px;font-weight:900;font-variant-numeric:tabular-nums;color:#1F1A17}
+.tos-st.rec span b{color:#C21D3A}
+.tos-st.rec b#tosT{color:#C21D3A}
+.tos-vu{height:4px;border-radius:4px;background:#EFE5D6;margin-bottom:14px;overflow:hidden}
+.tos-vu i{display:block;height:100%;width:0;background:#2E8B57;transition:width .08s}
+.tos-dir{font-size:14px;line-height:1.6;color:#5A4F45;margin-bottom:10px;font-weight:600}
+.tos-read{font-size:clamp(18px,4.6vw,22px);line-height:1.75;font-weight:700;color:#1F1A17;background:#fff;border:1px solid #E7DCCB;border-radius:12px;padding:14px 16px;margin:0}
+.tos-img{display:block;width:100%;border-radius:12px;border:1px solid #E7DCCB}
+.tos-ask{margin-top:12px;padding:14px;border-radius:12px;background:#fff;border:1px dashed #C9A97A;font-size:15px;font-weight:800;color:#3A312B}
+.tos-ask span{margin-right:6px}
+.tos-qt{margin:8px 0 0;font-size:15.5px;line-height:1.6;font-weight:700;color:#1F1A17}
+.tos-op{font-size:17px;line-height:1.7;background:#fff;border:1px solid #E7DCCB;border-radius:12px;padding:14px 16px;margin:0}
+.tos-info{background:#fff;border:1px solid #E7DCCB;border-radius:12px;padding:12px}
+.tos-info h4{margin:0;font-size:17px;font-weight:900;text-align:center}
+.tos-info .s{margin:2px 0 10px;text-align:center;font-size:13px;color:#5A4F45;font-weight:700}
+.tos-info table{width:100%;border-collapse:collapse;font-size:13px}
+.tos-info th{background:#F3EADC;font-weight:900;padding:7px 4px;text-align:left}
+.tos-info td{padding:8px 4px;border-top:1px solid #EFE5D6;vertical-align:top;font-weight:600}
+.tos-info small{color:#C21D3A;font-weight:800}
+.tos-info .f{margin:10px 0 0;font-size:13px;font-weight:800;text-align:center}
+.tos-ft{margin-top:18px;text-align:right}
+.tos-skip{padding:9px 14px;border-radius:10px;border:1px solid #C9B8A2;background:#fff;color:#3A312B;font-size:13.5px;font-weight:800;font-family:inherit;cursor:pointer}
+.tos-rc{background:#fff;border:1px solid #E7DCCB;border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.tos-rh{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.tos-rh b{background:#7B1733;color:#fff;font-size:12px;padding:3px 9px;border-radius:99px}
+.tos-rh span{font-weight:900;font-size:14.5px}
+.tos-rc audio{width:100%;height:36px;margin-bottom:6px}
+.tos-ck{list-style:none;padding:0;margin:0;font-size:14px;line-height:1.9;font-weight:600;color:#3A312B}
+.tos-ck li.y{color:#1F6B3F}
+.tos-ck li.n{color:#9A3412}
+.tos-miss{font-size:13px;color:#9A3412;margin:4px 0 0;line-height:1.6}
+.tos-rc details{margin-top:6px;font-size:13px;color:#5A4F45}
+.tos-rc summary{cursor:pointer;font-weight:800}
+.tos-cta{margin-top:18px;padding:18px 16px;border-radius:14px;background:#F3EADC;border:1px solid #E1CFB4}
+.tos-cta h3{margin:0 0 8px;font-size:19px;line-height:1.45;font-weight:900;letter-spacing:-.4px}
+.tos-cta h3 b{color:#7B1733}
+.tos-cta p{margin:0 0 14px;font-size:14px;color:#3A312B;line-height:1.6}
+.tos-again{display:block;width:100%;margin-top:8px;padding:12px;border-radius:12px;border:1px solid #C9B8A2;background:#fff;color:#3A312B;font-size:14.5px;font-weight:800;font-family:inherit;cursor:pointer}
+
 .bwt.on{background:linear-gradient(135deg,rgba(228,185,106,.22),rgba(228,185,106,.10));
  border-color:rgba(228,185,106,.62);box-shadow:0 0 0 1px rgba(228,185,106,.22) inset}
 .bwt.on b{color:#F0D39A}.bwt.on small{color:#C2A26A}
