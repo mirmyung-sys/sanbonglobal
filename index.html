@@ -5955,10 +5955,10 @@ var SGA_BIZ={name:'산본글로벌어학원',tel:'031-466-6969',mgr:'개인정�
    · 돌아올 때 주소에 ?sga_login=토큰&sga_name=닉네임 이 붙습니다 */
 var SGA_AUTH='https://script.google.com/macros/s/AKfycbwINs0dBxdNos4be-Jxc_1Fd5jhW3ndrFE26k4TbLR1ebfj4OV0h8uX-1GbGJ4oHU4e/exec'; /* 2026-09-25 theju0911 「SGA 로그인 서버」로 교체 */
 var SGA_KAKAO_KEY='4dd3e275be6c3af1a595b10d88726677';
+var SGA_CB='https://sanbonglobal.com/auth.html'; /* 카카오·구글·네이버 공통 리디렉션 (2026-09-25) */
 function sgaLoginKakao(){
- try{ localStorage.setItem('sga_back', location.hash||''); }catch(e){}
  location.href='https://kauth.kakao.com/oauth/authorize?client_id='+SGA_KAKAO_KEY
-  +'&redirect_uri='+encodeURIComponent(SGA_AUTH)+'&response_type=code';
+  +'&redirect_uri='+encodeURIComponent(SGA_CB)+'&response_type=code&state='+encodeURIComponent('kakao:'+_sgaState());
 }
 /* ── 구글·네이버 간편로그인 (2026-09-22 대표님 지시) ──────────────
    대표님 원문: "회원가입 구글 네이버 카카오 로그인 할 수있게"
@@ -5984,14 +5984,14 @@ function _sgaState(){
 function sgaLoginGoogle(){
  if(!SGA_GOOGLE_KEY){ _sgaNoKey('구글','구글 클라우드 콘솔'); return; }
  location.href='https://accounts.google.com/o/oauth2/v2/auth?client_id='+encodeURIComponent(SGA_GOOGLE_KEY)
-  +'&redirect_uri='+encodeURIComponent(SGA_AUTH)
+  +'&redirect_uri='+encodeURIComponent(SGA_CB)
   +'&response_type=code&scope='+encodeURIComponent('openid email profile')
   +'&state='+encodeURIComponent('google:'+_sgaState())+'&prompt=select_account';
 }
 function sgaLoginNaver(){
  if(!SGA_NAVER_KEY){ _sgaNoKey('네이버','네이버 개발자센터'); return; }
  location.href='https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id='+encodeURIComponent(SGA_NAVER_KEY)
-  +'&redirect_uri='+encodeURIComponent(SGA_AUTH)+'&state='+encodeURIComponent('naver:'+_sgaState());
+  +'&redirect_uri='+encodeURIComponent(SGA_CB)+'&state='+encodeURIComponent('naver:'+_sgaState());
 }
 function sgaUser(){
  try{ var t=localStorage.getItem('sga_token'); if(!t) return null;
