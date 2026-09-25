@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>로그인 중 · 산본글로벌어학원</title>
+<style>
+body{margin:0;background:#FBF7F4;color:#3A2A26;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard','Noto Sans KR',sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center}
+.b{text-align:center;padding:24px}
+.s{width:36px;height:36px;border:4px solid #EAD9CF;border-top-color:#B76E79;border-radius:50%;margin:0 auto 16px;animation:r 1s linear infinite}
+@keyframes r{to{transform:rotate(360deg)}}
+p{font-size:16px;margin:0}
+a{color:#B76E79;font-weight:700}
+</style></head><body><div class="b"><div class="s"></div><p id="m">로그인하는 중입니다…</p></div>
+<script>
+/* 카카오·구글·네이버 공통 리디렉션 (2026-09-25)
+   로그인 서버(Apps Script)를 화면 이동 없이 불러서, 여러 구글 계정이 로그인된 브라우저에서도 막히지 않게 합니다. */
+var SGA_AUTH='https://script.google.com/macros/s/AKfycbwINs0dBxdNos4be-Jxc_1Fd5jhW3ndrFE26k4TbLR1ebfj4OV0h8uX-1GbGJ4oHU4e/exec';
+(function(){
+ var q=new URLSearchParams(location.search);
+ function go(u){ location.replace(u); }
+ function fail(m){ go('/?sga_err='+encodeURIComponent(m)); }
+ if(q.get('error')){ fail('로그인이 취소되었습니다'); return; }
+ var code=q.get('code'), st=q.get('state')||'';
+ if(!code){ go('/'); return; }
+ var saved=''; try{ saved=localStorage.getItem('sga_state')||''; }catch(e){}
+ var tail=st.indexOf(':')>=0 ? st.slice(st.indexOf(':')+1) : st;
+ if(saved && tail && saved!==tail){ fail('로그인 요청이 만료되었습니다. 다시 눌러 주세요'); return; }
+ var u=SGA_AUTH+'?code='+encodeURIComponent(code)+'&state='+encodeURIComponent(st);
+ fetch(u,{method:'GET',credentials:'omit'}).then(function(r){return r.json();}).then(function(d){
+   try{ localStorage.removeItem('sga_state'); }catch(e){}
+   if(d && d.uid){ go('/?sga_login='+encodeURIComponent(d.uid)+'&sga_name='+encodeURIComponent(d.name||'회원')); }
+   else fail((d&&d.err)||'로그인 서버 응답 오류');
+ }).catch(function(){
+   document.getElementById('m').innerHTML='연결이 원활하지 않습니다.<br><a href="/">홈페이지로 돌아가기</a>';
+ });
+})();
+</script></body></html>
