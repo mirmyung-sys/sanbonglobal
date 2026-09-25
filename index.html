@@ -5953,7 +5953,7 @@ var SGA_BIZ={name:'산본글로벌어학원',tel:'031-466-6969',mgr:'개인정�
    · 카카오 앱: 산본 더 글로벌 어학원 (앱 ID 1567375)
    · 로그인 서버: Apps Script 웹앱 (실행 계정 대표님, 접근 모든 사용자)
    · 돌아올 때 주소에 ?sga_login=토큰&sga_name=닉네임 이 붙습니다 */
-var SGA_AUTH='https://script.google.com/macros/s/AKfycbwyPUwCY8YpK7NPqwdRLzuJj7yNLf0Q4yLxdzYpX338IU8tbCqRhYJ9raVP82iuq6ye/exec';
+var SGA_AUTH='https://script.google.com/macros/s/AKfycbwINs0dBxdNos4be-Jxc_1Fd5jhW3ndrFE26k4TbLR1ebfj4OV0h8uX-1GbGJ4oHU4e/exec'; /* 2026-09-25 theju0911 「SGA 로그인 서버」로 교체 */
 var SGA_KAKAO_KEY='4dd3e275be6c3af1a595b10d88726677';
 function sgaLoginKakao(){
  try{ localStorage.setItem('sga_back', location.hash||''); }catch(e){}
@@ -6012,6 +6012,8 @@ function sgaLogout(){
  sgToast('<b>로그아웃되었습니다</b>');
  setTimeout(function(){ location.reload(); },700);
 }
+/* 로그인 실패로 돌아왔을 때 안내 (2026-09-25) */
+(function(){try{var q=new URLSearchParams(location.search),er=q.get('sga_err');if(er){history.replaceState(null,'',location.pathname+location.hash);setTimeout(function(){try{sgToast('<b>로그인이 완료되지 않았습니다</b><br>'+er.replace(/</g,'&lt;')+'<br>다시 시도하시거나 031-466-6969로 연락 주세요.');}catch(e){alert('로그인이 완료되지 않았습니다: '+er);}},900);}}catch(e){}})();
 /* 로그인하고 돌아왔을 때 주소에서 토큰을 받아 저장하고, 주소는 깨끗하게 정리합니다 */
 (function(){
  try{
