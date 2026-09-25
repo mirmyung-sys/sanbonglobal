@@ -845,7 +845,7 @@ body{letter-spacing:-.012em}
 /* 상단 골드 바 */
 .util{border-top:3px solid var(--gold)}
 /* 히어로: 시네마틱 + 금색 액센트 */
-.hero-ov{background:linear-gradient(90deg,rgba(14,20,38,.74),rgba(14,20,38,.36) 52%,rgba(14,20,38,.08)),linear-gradient(0deg,rgba(9,13,26,.55),rgba(9,13,26,0) 42%)}
+.hero-ov{display:none!important}
 .hs-eyebrow{display:inline-flex;align-items:center;gap:12px;text-transform:uppercase;letter-spacing:2.5px;font-size:13px;color:var(--gold2);font-weight:800}
 .hs-eyebrow::before{content:"";width:36px;height:2px;background:linear-gradient(90deg,var(--gold2),rgba(216,178,106,0))}
 .hs-eyebrow b{color:#fff;letter-spacing:2.5px}
@@ -5233,7 +5233,7 @@ const COURSES={
  ],
  '중국어':[
   {n:'오금한',img:'chn_5',rows:[['입문','화·목','18:20~19:50'],['중급','월·수','20:00~21:30'],['중급','화·목','20:00~21:30']]},
-  {n:'하홍금 (원어민)',img:'chn_1',rows:[['입문','월·수','20:30~22:00'],['초급','월·수','18:50~20:20'],['고급','토요일','10:00~13:00']]}
+  {n:'하홍금 (원어민)',img:'chn_1',rows:[['초중급','월·수','18:50~20:20'],['초중급','월·수','20:30~22:00'],['고급','토요일','10:00~13:00']]}
  ]
 };
 const SPECIAL={
@@ -5520,7 +5520,7 @@ const SLIDES=[
     +(s.faces?('<div class="hs-faces">'+s.faces.map(function(f,k){return '<span><img src="img/teachers/'+f+'.png" alt=""><i>'+(s.fnames?s.fnames[k]:'')+'</i></span>';}).join('')+'</div>'):'')
     +'<button class="hs-btn" style="background:'+s.bbg+';color:'+s.btc+';border-color:'+s.bbg+'" onclick="'+s.act+'">자세히 보기 →</button>'
    +'</div></div></div></div>';}
-  return '<div class="hslide'+(i===0?' on':'')+(s.cls?(' '+s.cls):'')+'"'+(s.bg?' style="background-image:linear-gradient(rgba(26,26,24,.14),rgba(26,26,24,.14)),url('+s.bg+');background-size:cover;background-position:center"':'')+'><div class="hs-wrap"><div class="hs-panel" style="color:'+s.tc+'"><div class="hs-fill" style="background:'+s.pbg+'"></div><div class="hs-inner"><div class="hs-eyebrow" style="color:'+s.ac+'">'+s.e+'</div><div class="hs-title" style="color:'+s.tc+'">'+s.t+'</div><div class="hs-sub" style="color:'+(s.tc2||s.tc)+'">'+s.s+'</div>'+(s.faces?('<div class="hs-faces">'+s.faces.map(function(f,k){return '<span><img src="img/teachers/'+f+'.png" alt=""><i>'+(s.fnames?s.fnames[k]:'')+'</i></span>';}).join('')+'</div>'):'')+'<button class="hs-btn" style="background:'+s.bbg+';color:'+s.btc+';border-color:'+s.bbg+'" onclick="'+s.act+'">자세히 보기 →</button></div></div></div></div>';}).join('');
+  return '<div class="hslide'+(i===0?' on':'')+(s.cls?(' '+s.cls):'')+'"'+(s.bg?' style="background-image:url('+s.bg+');background-size:cover;background-position:center"':'')+'><div class="hs-wrap"><div class="hs-panel" style="color:'+s.tc+'"><div class="hs-fill" style="background:'+s.pbg+'"></div><div class="hs-inner"><div class="hs-eyebrow" style="color:'+s.ac+'">'+s.e+'</div><div class="hs-title" style="color:'+s.tc+'">'+s.t+'</div><div class="hs-sub" style="color:'+(s.tc2||s.tc)+'">'+s.s+'</div>'+(s.faces?('<div class="hs-faces">'+s.faces.map(function(f,k){return '<span><img src="img/teachers/'+f+'.png" alt=""><i>'+(s.fnames?s.fnames[k]:'')+'</i></span>';}).join('')+'</div>'):'')+'<button class="hs-btn" style="background:'+s.bbg+';color:'+s.btc+';border-color:'+s.bbg+'" onclick="'+s.act+'">자세히 보기 →</button></div></div></div></div>';}).join('');
  document.getElementById('hdots').innerHTML=SLIDES.map(function(s,i){return '<i data-i="'+i+'"'+(i===0?' class="on"':'')+'></i>';}).join('');
  var si=0, slides=hs.querySelectorAll('.hslide'), dots=document.querySelectorAll('#hdots i'), N=SLIDES.length;
  /* 2026-09-12 — 폰에서 히어로가 600px 고정이라 짧은 슬라이드는 아래가 200px 넘게 비었습니다.
@@ -7062,10 +7062,10 @@ var WCONV={
  desc:'입문부터 원어민 프리토킹까지 레벨별로 배우는 일본어. JLPT 대비까지 자연스럽게 이어집니다. 관리형 피드백·복습·1:1 상담 포함.'},
 '중국어':{eye:'발음부터 HSK까지, 진짜 중국어',title:'중국어 — 입문부터 고급까지<br>레벨별 회화',badge:'중국어 회화 · 관리형',
  /* 2026-09-17 — 영어와 같은 이유로 새벽반을 맨 뒤로 */
- levels:[['입문','chn_1','하홍금 (원어민)'],['초급','chn_1','하홍금 (원어민)'],['중급','chn_5','오금한'],['중고급','chn_7','현지인'],['고급','chn_5','하홍금 (원어민)'],['새벽반','chn_7','현지인']],
+ levels:[['입문','chn_1','하홍금 (원어민)'],['초중급','chn_1','하홍금 (원어민)'],['중급','chn_5','오금한'],['중고급','chn_7','현지인'],['고급','chn_5','하홍금 (원어민)'],['새벽반','chn_7','현지인']],
  cls:{
-  '입문':[['월·수','20:30~22:00','하홍금','8강의실','스피킹중국어1 (입문 3/3)'],['화·목','18:20~19:50','미정 · 모집중','','입문반 모집예정']],
-  '초급':[['월·수','18:50~20:20','하홍금','8강의실','스피킹중국어2 (초급 2/3)']],
+  '입문':[['화·목','18:20~19:50','미정 · 모집중','','입문반 모집예정']],
+  '초중급':[['월·수','18:50~20:20','하홍금','8강의실','스피킹중국어2 (초중급)'],['월·수','20:30~22:00','하홍금','8강의실','스피킹중국어1 (초중급)']],
   '중급':[['월·수','20:00~21:30','오금한','7강의실','신공략중국어5 (중급 4/4)'],['화·목','20:00~21:30','오금한','2강의실','맛있는중국어5 (중급 4/4)']],
   '중고급':[['토요일','10:00~13:00','현지인','3강의실','신공략중국어6']],
   '고급':[['토요일','10:00~13:00','하홍금','8강의실','스피킹중국어 고급 上']],
@@ -7918,8 +7918,8 @@ var EXAM={
    {n:'초급 (다이스키2)',tc:'서정아',day:'화·목',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
    {n:'입문 (다이스키1)',tc:'김민정',day:'월·수',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'}]},
  '중국어':{eye:'CHINESE · 개설반',title:'중국어 — 개설 시간표',photo:'chn_1',rows:[
-   {n:'스피킹중국어 초급',tc:'하홍금',day:'월·수',time:'18:50~20:20',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
-   {n:'스피킹중국어 입문 (밤)',tc:'하홍금',day:'월·수',time:'20:30~22:00',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'스피킹중국어 초중급',tc:'하홍금',day:'월·수',time:'18:50~20:20',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'스피킹중국어 초중급 (밤)',tc:'하홍금',day:'월·수',time:'20:30~22:00',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
    {n:'신공략 중급',tc:'오금한',day:'월·수',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
    {n:'맛있는중국어 중급',tc:'오금한',day:'화·목',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
    {n:'신공략6 중고급',tc:'현지인',day:'토요일',time:'10:00~13:00',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
@@ -20186,7 +20186,7 @@ var TSTAFF=[
   ['김연주','jpn_3','일본어회화','회화 중심 수업','일본어 담당'],
   ['이형림','jpn_11','일본어회화','기초 회화','일본어 담당']]},
  {g:'중국어',c:'#b8322a',list:[
-  ['하홍금','chn_1','원어민 회화 · 고급','발음·성조부터 고급 회화까지','현재 담당 — 초급(월·수), 토요 고급반, HSK 3·4급'],
+  ['하홍금','chn_1','원어민 회화 · 고급','발음·성조부터 고급 회화까지','현재 담당 — 초중급(월·수 18:50 / 20:30), 토요 고급반, HSK 3·4급'],
   ['오금한','chn_5','입문 · 초급 · 중급','처음 배우는 분도 편하게','현재 담당 — 중급(월·수 20:00 / 화·목 20:00), HSK 5·6급'],
   ['현지인','chn_7','HSK · 중국어회화','시험과 회화를 함께','현재 담당 — 토요 중고급반 · 중국어 새벽반(화·수·목 · 월 12회 · 모집중)'],
   ['노정아','chn_3','중국어회화','기초 회화 중심','중국어 담당']]}
