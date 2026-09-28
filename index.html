@@ -25000,6 +25000,22 @@ document.addEventListener('keydown',function(e){ if(e.key==='Escape') sgMenuClos
 .ak-toc .tc-i span{font-size:15px;font-weight:700;color:#2A211C;line-height:1.4}
 .ak-toc .tc-i.on{border-color:#C81F2B;background:#FFF1EE}
 
+
+/* 2026-09-28 대표님 「창닫기 노란색 원형으로, 가운데 아래」 — 우상단 회색 반투명 ✕가 잘 안 보였음.
+   페이지 창(#pgModal)과 아키 AI 강의실(#sgShop) 닫기를 같은 노란 원형 버튼으로 통일합니다. */
+#pgModal .aclose,#sgShop .sgs-x{position:fixed!important;left:50%!important;right:auto!important;top:auto!important;
+ bottom:calc(22px + env(safe-area-inset-bottom,0px))!important;transform:translateX(-50%)!important;margin:0!important;
+ width:60px!important;height:60px!important;padding:0!important;border-radius:50%!important;z-index:9700!important;
+ display:flex!important;align-items:center;justify-content:center;font-size:0!important;
+ background:linear-gradient(135deg,#FFD75E,#E8A912)!important;border:3px solid #fff!important;
+ box-shadow:0 6px 20px rgba(90,18,38,.38),0 0 0 4px rgba(247,207,91,.28)!important;backdrop-filter:none!important;cursor:pointer}
+#pgModal .aclose::before,#sgShop .sgs-x::before{content:'✕';font-size:24px;font-weight:900;color:#3A2410;line-height:1}
+#pgModal .aclose::after,#sgShop .sgs-x::after{display:none!important}
+#pgModal .aclose:active,#sgShop .sgs-x:active{transform:translateX(-50%) scale(.94)!important}
+body.has-tab #pgModal .aclose{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area-inset-bottom,0px))!important}
+#sgShop .sgs-bar{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+#pgModal .abox{padding-bottom:calc(180px + env(safe-area-inset-bottom,0px))!important}
+#sgShop .sgs-room{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))!important}
 </style>
 <script id="akNavJs">
 /* ═══════════════════════════════════════════════════════════════════
