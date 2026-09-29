@@ -25479,14 +25479,14 @@ body.has-tab #pgModal .aclose{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-
 
 </script>
 <script>
-/* 2026-09-28 광고판 카드에 실사 사진 — 슬라이드 순서대로. 사진은 이미 저장소 img/ 에 있는 것만 씁니다. */
+/* 2026-09-29 광고판 카드 실사 사진 12장(마츠 제작, img/hero01~12) — 슬라이드 순서대로. */
 (function(){
- var PH=['img/gen11.jpg','img/gen6.jpg','img/gen9.jpg','img/gen7.jpg','img/gen18.jpg','img/gen12.jpg',
-         'img/gen15.jpg','img/gen1.jpg','img/gen10.jpg','img/gen16.jpg','img/gen8.jpg','img/gen14.jpg'];
+ var PH=['img/hero01.jpg','img/hero02.jpg','img/hero03.jpg','img/hero04.jpg','img/hero05.jpg','img/hero06.jpg',
+         'img/hero07.jpg','img/hero08.jpg','img/hero09.jpg','img/hero10.jpg','img/hero11.jpg','img/hero12.jpg'];
  function put(){
   var sl=document.querySelectorAll('#heroslides .hslide'); if(!sl.length) return false;
   sl.forEach(function(x,i){ var p=x.querySelector('.hs-panel'); if(!p||p.classList.contains('has-ph')) return;
-   var u=PH[i%PH.length]; var d=document.createElement('div'); d.className='hs-ph'; d.style.backgroundImage='url('+u+')';
+   var u=PH[i%PH.length]; var d=document.createElement('div'); d.className='hs-ph'; d.setAttribute('data-ph',i+1); d.style.backgroundImage='url('+u+')';
    p.insertBefore(d,p.firstChild); p.classList.add('has-ph'); });
   try{ window.dispatchEvent(new Event('resize')); }catch(e){}
   return true;
@@ -25494,6 +25494,7 @@ body.has-tab #pgModal .aclose{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-
  if(!put()) document.addEventListener('DOMContentLoaded',put);
 })();
 </script>
+<style id="hsPhPos">@media(max-width:680px){.hs-ph[data-ph="2"]{background-position:18% 35%!important}}</style>
 <style id="rvPopCss">
 #rvPop{position:fixed;inset:0;z-index:9600;background:rgba(20,40,28,.55);display:flex;align-items:center;justify-content:center;padding:16px 16px calc(96px + env(safe-area-inset-bottom,0px));opacity:0;transition:opacity .25s}
 body.has-tab #rvPop{padding-bottom:calc(var(--sg-tabh,80px) + 90px + env(safe-area-inset-bottom,0px))}
