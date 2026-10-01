@@ -28,7 +28,7 @@ var SGA_AUTH='https://script.google.com/macros/s/AKfycbwINs0dBxdNos4be-Jxc_1Fd5j
  var u=SGA_AUTH+'?code='+encodeURIComponent(code)+'&state='+encodeURIComponent(st);
  fetch(u,{method:'GET',credentials:'omit'}).then(function(r){return r.json();}).then(function(d){
    try{ localStorage.removeItem('sga_state'); }catch(e){}
-   if(d && d.uid){ go('/?sga_login='+encodeURIComponent(d.uid)+'&sga_name='+encodeURIComponent(d.name||'회원')); }
+   if(d && d.uid){ go('/?sga_login='+encodeURIComponent(d.uid)+'&sga_name='+encodeURIComponent(d.name||'회원')+(d.sid?'&sga_sid='+encodeURIComponent(d.sid)+'&sga_g='+encodeURIComponent(d.g||''):'')); } /* 2026-09-30 v3: 접속키(한 기기)·수강 과정 */
    else fail((d&&d.err)||'로그인 서버 응답 오류');
  }).catch(function(){
    document.getElementById('m').innerHTML='연결이 원활하지 않습니다.<br><a href="/">홈페이지로 돌아가기</a>';

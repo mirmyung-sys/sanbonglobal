@@ -9831,12 +9831,12 @@ function aiBookHTML(){
  var toc=(B.toc&&B.toc.length)
   ? ('<details class="ai-toc-d"><summary class="ai-toc-h">목차 <span>'+B.toc.length+'과</span>'
      +(!AITXT[B.img]?'<em class="ai-toc-soon">본문 준비 중</em>'
-       :(FREE?'<em class="ai-toc-go free">수강생 · 전 과 열림</em>':'<em class="ai-toc-go">1과는 누구나 무료 · 2과부터 수강생</em>'))+'</summary><ol>'
+       :(FREE?'<em class="ai-toc-go free">수강생 · 전 과 열림</em>':'<em class="ai-toc-go">🔒 수강생 전용</em>'))+'</summary><ol>'
      +B.toc.map(function(t,i){
         var on=!!(AITXT[B.img]&&AITXT[B.img][i]);
         var tag=!on?' <span class="toc-b soon">준비 중</span>'
           :(FREE?' <span class="toc-b free">열림</span>'
-            :(i===0?' <span class="toc-b free">무료 맛보기</span>'
+            :(false?''
               :(i+1===fN?' <span class="toc-b today">오늘 무료</span>':' <span class="toc-b lock">🔒</span>')));
         return '<li'+(on?' class="go" onclick="aiLesson('+(i+1)+')"':' class="off"')+'>'+t+tag+'</li>';}).join('')
      +'</ol></details>')
@@ -9846,8 +9846,8 @@ function aiBookHTML(){
   ? (FREE
      ? ('<button class="ai-sample-btn" onclick="aiLesson(1)">▶ 1과부터 바로 시작하기 <small>— 수강생 코드 확인 · 전 과 열림</small></button>'
         +'<div class="ai-free-line free"><b>수강생 코드가 확인되어 전 과가 열려 있습니다.</b> 수업에서 배운 과를 여기서 다시 들으시면 됩니다.</div>')
-     : ('<button class="ai-sample-btn" onclick="aiLesson(1)">🎁 1과 무료 맛보기 열어보기 <small>— 회원가입 없이 바로</small></button>'
-        +'<div class="ai-free-line">누구나 <b>1과는 무료</b>입니다. 2과부터는 <b>등록한 수강생</b>에게 열립니다 — 등록하시면 데스크에서 수강생 코드를 드립니다.</div>'))
+     : ('<button class="ai-sample-btn" onclick="aiLesson(1)">🔒 수강생 전용 강의 <small>— 아래 목차로 무엇을 배우는지 먼저 보세요</small></button>'
+        +'<div class="ai-free-line">이 강의는 <b>학원에 등록한 수강생</b>에게만 열립니다. 누구나 무료인 것은 <b>기본제공(원서 · 팝송)</b>입니다.</div>'))
   : '';
  var price=(FREE
     ? ('<div class="ai-pr free"><div class="ai-pr-r hi"><span>수강생</span><b>0원 <em>수강 기간 전 과</em></b></div></div>'
@@ -9879,6 +9879,7 @@ function aiBookHTML(){
  +'<div class="ai-meta">'
   +'<h3>아키 AI 강의실 · '+G.k+' '+B.s+'</h3><p class="ai-d">'+B.d+'</p>'
   +sample
+  +(/^tc_/.test(B.img)?sgaQzBanner():'')
   +'<div class="ai-spec"><span><b>'+B.u+'</b>과'+((AITXT[B.img]&&AITXT[B.img].length>=B.u)?'':' <em style="font-style:normal;opacity:.72">예정</em>')+'</span><span>'+G.k+' · '+B.s+'</span><span><b>AI</b> 회화·채점 포함</span></div>'
   +'<ul class="ai-li">'+B.li.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>'
  +'</div></div>'
@@ -17120,18 +17121,26 @@ var SGA_SUBJ={eng:{nm:'영어회화',b:["eng_basic", "eng_begin", "eng_mid", "en
    코드 하나 = 과목(레벨) 하나. b 목록에 든 책만 열립니다. 영어회화 코드로는 토익이 안 열리고, 토익 초급 코드로는 중급이 안 열립니다. */
 function sgaSubjOf(k){ k=k||''; /* 이 책을 여는 가장 낮은 단계의 코드 */
  for(var id in SGA_SUBJ){ if(SGA_SUBJ[id].b.indexOf(k)>=0) return id; } return ''; }
-function sgaSubjOpen(sj){ /* sj 자리에 코드 id 가 오든 책 키가 오든 동작 */
- var key=(SGA_SUBJ[sj]?null:sj);
- for(var id in SGA_SUBJ){ var S=SGA_SUBJ[id];
-  if(key!==null && S.b.indexOf(key)<0) continue;
-  if(key===null && id!==sj) continue;
-  if(sgaGrantHas(id)) return true; }   /* 2026-09-30 대표님 「약점 막는 방법으로」 — 데스크 코드 폐지, 명부 확인만 */
+/* 2026-10-01 대표님 지시 — 「영어 스텝2를 열면 스텝2 밑으로 전부, 영어만 · 오픽이면 기본제공+오픽만 · 나머지는 입장하실 수 없습니다」
+   서버(명부)가 주는 과정 표시: eng2 = 영어 STEP2(그 아래 BASIC·STEP1 포함) / toeicB@2026-11-30 = 토익 초급, 등록 종료일
+   예전 표시(eng)는 BASIC 하나만 엽니다. sga_sid(서버 로그인) 없이 저장값만 있으면 아무것도 안 엽니다. */
+var SGA_LADDER={eng:["eng_basic","eng_begin","eng_mid","eng_real"],jpn:["jpn_basic","jpn_begin","jpn_mid","jpn_real"],chn:["chn_basic","chn_begin","chn_mid","chn_real"],kor:["kor_basic"]};
+var SGA_LVNM=['BASIC','STEP1','STEP2','STEP3'];
+function sgaGrants(){ var R={lang:{},ex:{}};
+ try{ if(!localStorage.getItem('sga_sid')) return R;
+  (localStorage.getItem('sga_g')||'').split(',').forEach(function(t){ t=String(t||'').trim(); if(!t) return;
+   var m=t.match(/^(eng|jpn|chn|kor)(\d?)$/);
+   if(m){ var lv=m[2]===''?0:+m[2]; if(!(m[1] in R.lang)||R.lang[m[1]]<lv) R.lang[m[1]]=lv; return; }
+   var e=t.split('@'); if(SGA_SUBJ[e[0]]) R.ex[e[0]]=e[1]||''; });
+ }catch(e){} return R; }
+function sgaSubjOpen(sj){ /* 책 키(eng_mid)나 과정 id(eng·toeicB)를 받습니다 */
+ try{ if(sgaIsMaster()) return true; }catch(e){}
+ var G=sgaGrants(), k=sj||'';
+ for(var L in SGA_LADDER){ var i=SGA_LADDER[L].indexOf(k); if(i>=0) return (L in G.lang)&&G.lang[L]>=i; if(k===L) return (L in G.lang); }
+ for(var id in G.ex){ if(id===k) return true; if(SGA_SUBJ[id]&&SGA_SUBJ[id].b.indexOf(k)>=0) return true; }
  return false; }
-/* ── 2026-09-30 v3 · 명부 확인 과정 + 한 아이디 한 기기 ──
-   로그인할 때 서버가 준 접속키(sga_sid)와 과정(sga_g)을 씁니다. 다른 기기에서 같은 아이디로 로그인하면
-   서버의 접속키가 바뀌고, 이 기기는 다음 확인 때 자동 로그아웃됩니다. 서버가 아직 v2면 아무 일도 하지 않습니다. */
-function sgaGrantHas(id){ try{ if(!localStorage.getItem('sga_sid')) return false;
- return (','+(localStorage.getItem('sga_g')||'')+',').indexOf(','+id+',')>=0; }catch(e){ return false; } }
+/* ── 2026-09-30 v3 · 명부 확인 과정 + 한 아이디 한 기기 ── */
+function sgaGrantHas(id){ var G=sgaGrants(); return (id in G.lang)||(id in G.ex); }
 function _sgaSrv(qs,cb){ try{ fetch(SGA_AUTH+'?'+qs,{method:'GET',credentials:'omit'}).then(function(r){return r.json();}).then(cb).catch(function(){}); }catch(e){} }
 function sgaKick(){
  try{ ['sga_token','sga_name','sga_sid','sga_g'].forEach(function(k){localStorage.removeItem(k);}); }catch(e){}
@@ -17178,16 +17187,17 @@ function sgaHasCheckin(){
 function sgaUnlocked(){ return sgaIsMaster() || sgaIsMember(); }
 function aiFreeNow(){ if(SGA_ALLOPEN) return true;
  try{ return aiIsFreeBook(aiTxtKey()); }catch(e){ return false; } }
-function aiFreeN(){ return 1; /* 2026-09-30 대표님 「1과만 무료」 — 매일 돌아가던 오늘의 무료 과 폐지 */ }
+function aiFreeN(){ return 0; /* 2026-10-01 맛보기 폐지 — 수강생만 */ return 1; /* 2026-09-30 대표님 「1과만 무료」 — 매일 돌아가던 오늘의 무료 과 폐지 */ }
 function aiLockShow(n){
  var T=AIB[_aiT],G=(T.subs&&T.subs[_aiG])||T,B=G.steps[_aiS];
  var sj=sgaSubjOf(aiTxtKey()), nm=(SGA_SUBJ[sj]&&SGA_SUBJ[sj].nm)||G.k;
+ var toc=(B.toc||[]).slice(0,6).map(function(t,i){return '<li>'+(i+1)+'과 · '+t+'</li>';}).join('')+((B.toc||[]).length>6?'<li>… 모두 '+B.toc.length+'과</li>':'');
  var m=document.createElement('div');m.className='sp-modal on';m.id='lsModal';
  m.innerHTML='<div class="sp-sheet ls-sheet ai-lock">'
   +'<div class="ls-book">아키 AI 강의실 · '+G.k+' '+B.s+'</div>'
-  +'<div class="lk-ic">🔒</div><h3 class="lk-t">'+n+'과부터는 '+nm+' 수강생 전용입니다</h3>'
-  +'<p class="lk-d"><b>1과는 누구나 무료</b>로 보실 수 있습니다.<br>'
-  +'<b>'+nm+'</b> 수업에 등록하신 분은<br>아래에서 <b>수강생 확인</b>을 하시면 전 과가 열립니다.</p>'
+  +'<div class="lk-ic">🔒</div><h3 class="lk-t">입장하실 수 없습니다</h3>'
+  +'<p class="lk-d"><b>'+G.k+' '+B.s+'</b>는 <b>'+nm+'</b> 수강생 전용 강의입니다.<br>학원에 등록하신 분은 아래에서 <b>수강생 확인</b>을 하시면 열립니다.</p>'
+  +(toc?'<div style="max-width:420px;margin:0 auto 10px;text-align:left;border:1.5px solid #E7D8C8;border-radius:14px;padding:10px 14px;background:#fff"><b style="font-size:13.5px;color:#7A2E12">이 강의에서 배우는 것</b><ol style="list-style:none;margin:6px 0 0;padding:0;font-size:14px;font-weight:700;color:#1A1A18;line-height:1.75">'+toc+'</ol></div>':'')
   +(function(){ var li=false; try{ li=!!(localStorage.getItem('sga_token')&&localStorage.getItem('sga_sid')); }catch(e){}
     return '<div style="max-width:420px;margin:4px auto 10px;padding:12px 12px 10px;border:1.5px solid #E7D8C8;border-radius:14px;background:#FFFBF5;text-align:left">'
      +'<b style="display:block;font-size:15px;font-weight:900;color:#1A1A18;margin-bottom:6px">학원 수강생이세요? 명부로 바로 확인</b>'
@@ -17197,14 +17207,187 @@ function aiLockShow(n){
         +'<p id="aiVfErr" style="display:none;color:#C81F2B;font-weight:800;font-size:13.5px;margin:6px 0 0"></p>')
        :('<button type="button" onclick="aiLsClose();openPage(\'로그인\')" style="display:block;width:100%;height:46px;border:0;border-radius:10px;background:#0e8a5a;color:#fff;font-size:15px;font-weight:900;cursor:pointer">로그인하고 수강생 확인하기</button>'))
      +'<span style="display:block;font-size:12.5px;color:#5A5750;margin-top:6px">학원에 등록할 때 적은 이름과 휴대폰 번호로 확인합니다 · 한 아이디는 한 기기에서만</span></div>'; })()
-  +'<button class="lk-free" onclick="aiLsClose();aiLesson(1)">1과 무료로 보기 ›</button>'
   +'<button class="lk-buy" onclick="aiLsClose();try{rsvOpen(\''+nm+'\');}catch(e){}">'+nm+' 상담 예약</button>'
-  /* 닫기 = 노란 원형 · 아래 가운데 (대표님 2026-09-28 지시) */
   +'<button type="button" aria-label="닫기" onclick="aiLsClose()" style="display:block;width:52px;height:52px;margin:10px auto 0;border:0;border-radius:50%;background:#FFC93C;color:#1A1A18;font-size:24px;font-weight:900;line-height:52px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.18)">✕</button></div>';
  document.body.appendChild(m);document.body.style.overflow='hidden';
  m.onclick=function(ev){if(ev.target===m)aiLsClose();};
- setTimeout(function(){ try{ var x=document.getElementById('aiSjCode'); if(x&&window.innerWidth>760) x.focus(); }catch(e){} },80);
 }
+
+/* ════════ 아키 시험문제풀이반 · 토익 (2026-10-01 대표님 지시) ════════
+   · 토익 초급(정규·스파르타)·중급 등록자만 · 등록 1건 = 문제풀이집 1개
+   · 등록 종료일이 든 달의 마지막 7일(말일 포함)에만 열림. 종료일이 비면 매달 마지막 7일
+   · 다운로드·인쇄·복사 막음 + 이름 워터마크
+   · 문제는 최근 출제 경향을 분석해 새로 만든 것(실제 시험 문제 아님) */
+function sgaQzWin(end){
+ var t=Date.now(), now=new Date(t+9*3600e3), y=now.getUTCFullYear(), mo=now.getUTCMonth();
+ if(end&&/^\d{4}-\d{2}-\d{2}$/.test(end)){ var q=end.split('-'); y=+q[0]; mo=+q[1]-1; }
+ var last=new Date(Date.UTC(y,mo+1,0)).getUTCDate();
+ var a=Date.UTC(y,mo,last-6)-9*3600e3, b=Date.UTC(y,mo,last+1)-9*3600e3;
+ return {open:t>=a&&t<b, past:t>=b, from:(mo+1)+'월 '+(last-6)+'일', to:(mo+1)+'월 '+last+'일'};
+}
+function sgaQzState(){
+ var G=sgaGrants(), id=('toeic' in G.ex)?'toeic':(('toeicB' in G.ex)?'toeicB':'');
+ var master=false; try{ master=sgaIsMaster(); }catch(e){}
+ if(!id&&!master) return {who:false};
+ var w=sgaQzWin(id?G.ex[id]:''); if(master) w.open=true;
+ return {who:true, win:w, id:id};
+}
+function sgaQzBanner(){
+ var S=sgaQzState(), st, btn;
+ if(!S.who){ st='토익 등록 수강생 전용 · 등록 기간 마지막 주에 열립니다'; btn='🔒 입장하실 수 없습니다'; }
+ else if(S.win.open){ st='<b>지금 열려 있습니다</b> · '+S.win.to+'까지'; btn='▶ 문제풀이 시작'; }
+ else if(S.win.past){ st='등록 기간이 끝나 닫혔습니다 · 재등록하시면 다시 열립니다'; btn='🔒 닫힘'; }
+ else { st='<b>'+S.win.from+'</b>에 열립니다 · '+S.win.to+'까지 7일간'; btn='🔒 '+S.win.from+' 오픈'; }
+ return '<div style="margin:10px 0;padding:12px 14px;border:2px solid #B06A3A;border-radius:14px;background:#FBEFE3">'
+  +'<b style="display:block;font-size:15.5px;font-weight:900;color:#5A1E08">📝 아키 시험문제풀이반 · 토익 초급 실전 1회 (샘플)</b>'
+  +'<span style="display:block;font-size:13.5px;font-weight:700;color:#1A1A18;margin:4px 0 8px">'+st+'</span>'
+  +'<button type="button" onclick="sgaQzOpen()" style="width:100%;height:46px;border:0;border-radius:10px;background:'+((S.who&&S.win.open)?'#0e8a5a':'#8A7E72')+';color:#fff;font-size:15px;font-weight:900;cursor:pointer">'+btn+'</button>'
+  +'<span style="display:block;font-size:12px;font-weight:600;color:#3d3833;margin-top:6px">최근 출제 경향을 분석해 새로 만든 문제입니다 · 저장·인쇄·복사는 되지 않습니다</span></div>';
+}
+var AKQZ_TOEIC_1=[
+["Ms. Patel asked that all expense reports ------- by the end of the month.",["submit","be submitted","submitting","are submitting"],1,"ask that 뒤에는 동사원형을 씁니다. 보고서는 「제출되는」 것이므로 수동 <b>be submitted</b>."],
+["The new scheduling app allows employees to request time off ------- through their phones.",["direct","directly","direction","directed"],1,"동사 request를 꾸미는 자리 → 부사 <b>directly</b>."],
+["Applicants must submit a portfolio ------- with their résumé.",["along","besides","despite","unless"],0,"<b>along with</b> = ~와 함께. 짝으로 외우는 표현입니다."],
+["Due to the ------- demand for electric scooters, the company is expanding its production line.",["grow","grows","growing","grown"],2,"명사 demand 앞 형용사 자리 · 「늘어나는 수요」 → <b>growing</b>."],
+["Please contact Mr. Kim, ------- is responsible for vendor contracts.",["who","whom","whose","which"],0,"사람 + 뒤에 주어 없이 동사 is → 주격 <b>who</b>."],
+["The quarterly report was ------- longer than last year's.",["very","much","many","so"],1,"비교급 강조는 <b>much</b>·far·even. very는 비교급을 못 꾸밉니다."],
+["All visitors are required to sign in at the front desk ------- entering the laboratory.",["prior","before","ahead","previous"],1,"동명사 entering 앞 전치사 → <b>before</b>. prior는 prior to로 써야 합니다."],
+["The conference room on the third floor is currently ------- for renovation.",["closing","closed","close","closure"],1,"be동사 뒤 상태 → <b>closed</b>(닫혀 있다)."],
+["Ms. Rivera will lead the training session ------- Mr. Grant is on vacation.",["during","while","despite","throughout"],1,"뒤에 주어+동사(Mr. Grant is) → 접속사 <b>while</b>. during은 명사만 받습니다."],
+["Our customer service team responds to inquiries ------- 24 hours.",["within","between","among","along"],0,"기간 안에 → <b>within</b> 24 hours."],
+["Neither the manager ------- the assistant was available to answer the call.",["or","nor","and","but"],1,"<b>neither A nor B</b> 짝 표현."],
+["The company's annual revenue increased ------- 12 percent last year.",["by","at","to","for"],0,"증감의 폭 → <b>by</b>. 「12% 늘었다」."],
+["Employees who wish to work remotely should obtain ------- from their supervisors first.",["approve","approval","approved","approving"],1,"동사 obtain의 목적어 → 명사 <b>approval</b>."],
+["The marketing campaign was so ------- that sales doubled within a month.",["succeed","success","successful","successfully"],2,"so + 형용사 + that → <b>successful</b>."],
+["Mr. Lee has worked at the firm ------- 2019.",["for","since","from","during"],1,"현재완료 + 시작 시점 → <b>since</b>. for는 기간(for five years)."],
+["If the shipment ------- late again, we will look for a new supplier.",["arrives","will arrive","arrived","arriving"],0,"조건 if절은 미래라도 현재시제 → <b>arrives</b>."],
+["The survey results will be shared with ------- department heads next week.",["every","each","all","much"],2,"복수명사 heads 앞 → <b>all</b>. every·each는 단수명사."],
+["Please keep your receipt ------- you need to return the item.",["in case","so that","even though","as if"],0,"「~할 경우에 대비해」 → <b>in case</b>."],
+["The software update is expected to improve system performance -------.",["significant","significance","significantly","signify"],2,"동사 improve를 꾸미는 부사 → <b>significantly</b>."],
+["Only employees ------- names appear on the list may enter the server room.",["who","whose","which","whom"],1,"「~의 이름」 소유 관계 → <b>whose</b>."],
+["The CEO's speech was ------- by more than 2,000 viewers online.",["watch","watched","watching","to watch"],1,"was + p.p. 수동태 → <b>watched</b>."],
+["We look forward to ------- with you on future projects.",["work","works","working","worked"],2,"look forward to의 to는 전치사 → 동명사 <b>working</b>."],
+["The deadline for the grant application has been ------- to November 15.",["extended","expanded","enlarged","increased"],0,"마감을 「연장하다」 → <b>extend</b>. 단골 어휘 문제."],
+["Ms. Tanaka is the most ------- candidate we have interviewed so far.",["qualify","qualified","qualification","qualifying"],1,"most + 형용사 + 명사 → <b>qualified</b>(자격을 갖춘)."],
+["The store will remain open ------- the holiday weekend.",["throughout","among","between","toward"],0,"기간 내내 → <b>throughout</b>."],
+["Before ------- the contract, please read the terms carefully.",["sign","signed","signing","signature"],2,"전치사 before + 동명사 → <b>signing</b> (목적어 the contract가 뒤에 있으므로 명사 signature는 불가)."],
+["The price includes delivery, but installation is charged -------.",["separate","separately","separation","separating"],1,"수동태 동사 뒤 부사 → <b>separately</b>."],
+["Had the team started earlier, it ------- the deadline.",["meets","would meet","would have met","has met"],2,"Had + 주어 + p.p. = 가정법 과거완료 도치 → <b>would have met</b>."],
+["The hotel offers a free shuttle service for guests ------- at the airport.",["arrive","arriving","arrived","arrives"],1,"guests를 뒤에서 꾸미는 능동 분사 → <b>arriving</b>."],
+["Customer feedback was ------- positive, with 92 percent rating the service as excellent.",["overwhelm","overwhelming","overwhelmingly","overwhelmed"],2,"형용사 positive를 꾸미는 부사 → <b>overwhelmingly</b>."]];
+var _qz={i:0,ok:0,pick:-1};
+function sgaQzOpen(){
+ var S=sgaQzState();
+ if(!S.who){ aiLockShowSimple('아키 시험문제풀이반 · 토익','토익(초급·중급·스파르타) 등록 수강생 전용입니다.'); return; }
+ if(!S.win.open){ aiLockShowSimple('아키 시험문제풀이반 · 토익', S.win.past?'등록 기간이 끝나 닫혔습니다. 재등록하시면 다시 열립니다.':('<b>'+S.win.from+' ~ '+S.win.to+'</b> 7일 동안 열립니다.')); return; }
+ sgaExIntro();
+}
+function aiLockShowSimple(t,d){
+ var m=document.createElement('div');m.className='sp-modal on';m.id='lsModal';
+ m.innerHTML='<div class="sp-sheet ls-sheet ai-lock"><div class="ls-book">'+t+'</div><div class="lk-ic">🔒</div><h3 class="lk-t">입장하실 수 없습니다</h3><p class="lk-d">'+d+'</p>'
+  +'<button type="button" aria-label="닫기" onclick="aiLsClose()" style="display:block;width:52px;height:52px;margin:10px auto 0;border:0;border-radius:50%;background:#FFC93C;color:#1A1A18;font-size:24px;font-weight:900;line-height:52px;cursor:pointer">✕</button></div>';
+ document.body.appendChild(m);document.body.style.overflow='hidden'; m.onclick=function(ev){if(ev.target===m)aiLsClose();};
+}
+function sgaQzWM(){ var nm='수강생'; try{ nm=(localStorage.getItem('sga_name')||'수강생'); }catch(e){} var u=''; try{ u=(localStorage.getItem('sga_token')||'').slice(-4); }catch(e){}
+ var t=('SGA · '+nm+' · '+u+' · ').repeat(6), h=''; for(var r=0;r<14;r++) h+='<div style="white-space:nowrap;margin:0 0 70px '+(r%2?'-120px':'0')+'">'+t+'</div>';
+ return '<div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:3"><div style="position:absolute;inset:-40%;transform:rotate(-24deg);opacity:.10;font-size:17px;font-weight:900;color:#5A1E08">'+h+'</div></div>'; }
+function sgaQzRender(){
+ var e=document.getElementById('qzModal'); if(e) e.remove();
+ var Q=AKQZ_TOEIC_1, i=_qz.i, m=document.createElement('div'); m.id='qzModal'; m.className='sp-modal on';
+ m.setAttribute('style','user-select:none;-webkit-user-select:none');
+ m.oncontextmenu=function(){return false;}; m.oncopy=function(ev){ev.preventDefault();return false;};
+ var body;
+ if(i>=Q.length){ body='<h3 style="font-size:22px;font-weight:900;margin:6px 0">결과 '+_qz.ok+' / '+Q.length+'</h3>'
+   +'<p style="font-size:15px;font-weight:700;line-height:1.6">'+(_qz.ok>=26?'실전 Part 5에서 시간이 남는 수준입니다.':(_qz.ok>=20?'자주 나오는 자리는 잡혀 있습니다. 틀린 문항의 해설을 한 번 더 보세요.':'품사 자리부터 다시 잡으면 점수가 가장 빨리 오릅니다. 수업 시간에 강사님께 질문하세요.'))+'</p>'
+   +'<button type="button" onclick="_qz={i:0,ok:0,pick:-1};sgaQzRender()" style="width:100%;height:48px;border:0;border-radius:12px;background:#0e8a5a;color:#fff;font-size:16px;font-weight:900;margin-top:8px">처음부터 다시 풀기</button>'; }
+ else { var q=Q[i];
+  body='<div style="font-size:13px;font-weight:800;color:#7A2E12">Part 5 · '+(i+1)+' / '+Q.length+' · 맞힌 문항 '+_qz.ok+'</div>'
+   +'<p style="font-size:17.5px;font-weight:800;line-height:1.55;margin:8px 0 12px;color:#1A1A18">'+q[0].replace('-------','<span style="display:inline-block;min-width:74px;border-bottom:2.5px solid #1A1A18;margin:0 3px">&nbsp;</span>')+'</p>'
+   +q[1].map(function(o,j){ var c=_qz.pick<0?'#fff':(j===q[2]?'#DDF2E5':(j===_qz.pick?'#FBE0E0':'#fff'));
+      return '<button type="button" '+(_qz.pick<0?'onclick="sgaQzPick('+j+')"':'')+' style="display:block;width:100%;text-align:left;margin:0 0 8px;padding:12px 14px;border:2px solid #D9C9B0;border-radius:12px;background:'+c+';font-size:16px;font-weight:800;color:#1A1A18">('+'ABCD'[j]+') '+o+'</button>'; }).join('')
+   +(_qz.pick<0?'':('<div style="border:1.5px solid #B06A3A;border-radius:12px;background:#FBEFE3;padding:10px 12px;font-size:14.5px;font-weight:700;line-height:1.6;color:#1A1A18"><b>'+(_qz.pick===q[2]?'⭕ 정답':'❌ 정답은 ('+'ABCD'[q[2]]+')')+'</b><br>'+q[3]+'</div>'
+     +'<button type="button" onclick="_qz.i++;_qz.pick=-1;sgaQzRender()" style="width:100%;height:48px;border:0;border-radius:12px;background:#0e8a5a;color:#fff;font-size:16px;font-weight:900;margin-top:10px">'+(i+1<Q.length?'다음 문제 ›':'결과 보기 ›')+'</button>')); }
+ m.innerHTML='<div class="sp-sheet" style="position:relative;max-width:560px;max-height:84vh;overflow-y:auto;padding:18px 18px 14px;box-sizing:border-box">'+sgaQzWM()
+  +'<div style="position:relative;z-index:2"><div class="ls-book">아키 시험문제풀이반 · 토익 문제풀이집 1회</div>'+body+'</div>'
+  +'<button type="button" aria-label="닫기" onclick="document.getElementById(\'qzModal\').remove();document.body.style.overflow=\'\'" style="position:relative;z-index:4;display:block;width:52px;height:52px;margin:12px auto 0;border:0;border-radius:50%;background:#FFC93C;color:#1A1A18;font-size:24px;font-weight:900;line-height:52px;cursor:pointer">✕</button></div>';
+ document.body.appendChild(m); document.body.style.overflow='hidden';
+}
+
+/* ════════ 실전 모드 — 2026-10-01 대표님 「방에서 PC로 하면 진짜 시험 보듯이 · 시작 누르면 초침 움직이고 산글이가 준비되셨습니까」 ════════ */
+var SGXM={sec:12*60,left:0,ans:{},t:null,done:false,title:'토익 초급 실전 1회 · 샘플 (RC Part 5 · 30문항)'};
+function sgaSay(t){ try{ var u=new SpeechSynthesisUtterance(t); u.lang='ko-KR'; u.rate=1; speechSynthesis.cancel(); speechSynthesis.speak(u); }catch(e){} }
+function sgaExCss(){ if(document.getElementById('sgxCss')) return; var st=document.createElement('style'); st.id='sgxCss';
+ st.textContent='#sgx{position:fixed;inset:0;z-index:2147483000;background:#FBF7EF;color:#1A1A18;font-family:inherit;user-select:none;-webkit-user-select:none;display:flex;flex-direction:column}'
+ +'#sgx .bar{display:flex;align-items:center;gap:10px;padding:10px 16px;background:#0A5C3D;color:#fff;font-weight:900}'
+ +'#sgx .bar .tt{flex:1;font-size:15px}#sgx .bar .tm{font-size:22px;letter-spacing:1px;background:#fff;color:#0A5C3D;border-radius:10px;padding:2px 12px;min-width:86px;text-align:center}'
+ +'#sgx .bar .tm.warn{color:#C81F2B}#sgx .bar button{height:40px;border:0;border-radius:10px;background:#FFC93C;color:#1A1A18;font-weight:900;font-size:15px;padding:0 16px;cursor:pointer}'
+ +'#sgx .main{flex:1;display:flex;min-height:0}#sgx .bk{flex:1;overflow-y:auto;padding:18px 22px 120px;position:relative}'
+ +'#sgx .omr{width:250px;flex:none;border-left:2px solid #D9C9B0;background:#fff;overflow-y:auto;padding:12px}'
+ +'#sgx .omr h4{margin:0 0 8px;font-size:14px;font-weight:900;color:#5A1E08}#sgx .orow{display:flex;align-items:center;gap:5px;margin:0 0 5px;font-size:13px;font-weight:800}'
+ +'#sgx .orow i{font-style:normal;width:22px;text-align:right}#sgx .ob{width:26px;height:22px;border:1.6px solid #1A1A18;border-radius:50%;font-size:11px;font-weight:900;background:#fff;cursor:pointer;padding:0}#sgx .ob.on{background:#1A1A18;color:#fff}'
+ +'#sgx .q{margin:0 0 22px;max-width:760px}#sgx .q p{font-size:17px;font-weight:800;line-height:1.6;margin:0 0 8px}#sgx .q .op{display:grid;grid-template-columns:1fr 1fr;gap:6px}'
+ +'#sgx .q .op button{text-align:left;padding:10px 12px;border:2px solid #D9C9B0;border-radius:10px;background:#fff;font-size:15.5px;font-weight:800;color:#1A1A18;cursor:pointer}#sgx .q .op button.on{border-color:#0A5C3D;background:#DDF2E5}'
+ +'#sgx .q .op button.ok{border-color:#0A5C3D;background:#DDF2E5}#sgx .q .op button.ng{border-color:#C81F2B;background:#FBE0E0}#sgx .ex{border:1.5px solid #B06A3A;border-radius:10px;background:#FBEFE3;padding:8px 12px;font-size:14px;font-weight:700;margin-top:6px;line-height:1.6}'
+ +'#sgx .blank{display:inline-block;min-width:74px;border-bottom:2.5px solid #1A1A18;margin:0 3px}'
+ +'#sgx .intro{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;overflow-y:auto}'
+ +'#sgx .clk{width:150px;height:150px;border-radius:50%;border:6px solid #0A5C3D;position:relative;background:#fff;margin:0 auto 14px;box-shadow:0 6px 20px rgba(0,0,0,.12)}'
+ +'#sgx .clk b{position:absolute;left:50%;bottom:50%;width:3px;height:62px;margin-left:-1.5px;background:#C81F2B;transform-origin:50% 100%;animation:sgxs 60s steps(60) infinite}'
+ +'#sgx .clk s{position:absolute;left:50%;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#0A5C3D}'
+ +'@keyframes sgxs{to{transform:rotate(360deg)}}#sgx .say{display:flex;align-items:flex-end;gap:10px;justify-content:center;margin:6px 0 14px}'
+ +'#sgx .say img{width:92px;height:92px;object-fit:contain}#sgx .say div{background:#fff;border:2px solid #0A5C3D;border-radius:16px 16px 16px 4px;padding:12px 16px;font-size:18px;font-weight:900;max-width:360px;text-align:left;line-height:1.5}'
+ +'#sgx .rules{font-size:14.5px;font-weight:700;line-height:1.8;text-align:left;background:#fff;border:1.5px solid #E7D8C8;border-radius:12px;padding:10px 16px;margin:0 0 14px;max-width:440px}'
+ +'#sgx .go{height:56px;min-width:220px;border:0;border-radius:14px;background:#0A5C3D;color:#fff;font-size:20px;font-weight:900;cursor:pointer;margin:4px}#sgx .no{height:48px;border:0;border-radius:12px;background:#E7D8C8;color:#1A1A18;font-size:15px;font-weight:800;padding:0 18px;margin:4px;cursor:pointer}'
+ +'#sgx .cf{position:absolute;inset:0;background:rgba(251,247,239,.92);display:flex;align-items:center;justify-content:center;z-index:9}#sgx .cf>div{background:#fff;border:2px solid #0A5C3D;border-radius:16px;padding:18px;max-width:340px;text-align:center;font-size:16px;font-weight:800}'
+ +'@media(max-width:860px){#sgx .bk{padding-bottom:140px!important}#sgx .omr{position:fixed;left:0;right:0;bottom:0;width:auto;height:118px;z-index:30;box-shadow:0 -4px 12px rgba(0,0,0,.08);overflow-y:auto;border-left:0;border-top:2px solid #D9C9B0;display:flex;flex-wrap:wrap;gap:4px 10px;align-content:flex-start;padding:8px 10px}#sgx .omr h4{width:100%;margin:0}#sgx .q .op{grid-template-columns:1fr}#sgx .bk{padding:14px 14px 140px}}'
+ +'@media print{#sgx{display:none!important}}';
+ document.head.appendChild(st); }
+function sgaExIntro(){
+ sgaExCss(); var o=document.getElementById('sgx'); if(o) o.remove();
+ var m=document.createElement('div'); m.id='sgx'; m.oncontextmenu=function(){return false;}; m.oncopy=function(e){e.preventDefault();};
+ m.innerHTML='<div class="bar"><span class="tt">아키 시험문제풀이반 · '+SGXM.title+'</span></div>'
+  +'<div class="intro"><div class="clk"><b></b><s></s></div>'
+  +'<div class="say"><img src="img/sgi_talk.png" alt="산글이" onerror="this.src=\'img/sgi_face.png\'"><div>준비되셨습니까?<br><small style="font-size:14.5px;font-weight:700">시작을 누르시면 진짜 토익처럼 시험이 시작됩니다.</small></div></div>'
+  +'<div class="rules">⏱ 제한 시간 <b>'+Math.round(SGXM.sec/60)+'분</b> · 끝나면 자동 제출<br>📝 문제지에서 고르거나 오른쪽 <b>답안지(OMR)</b>에 표시<br>🚫 중간에 멈추기·저장·인쇄·복사 없음<br>✅ 제출하면 바로 채점 · 문항별 해설</div>'
+  +'<button class="go" onclick="sgaExStart()">시작</button><button class="no" onclick="sgaExClose()">나가기</button></div>';
+ document.body.appendChild(m); document.body.style.overflow='hidden';
+ setTimeout(function(){ sgaSay('준비되셨습니까? 시작을 누르시면, 진짜 토익처럼 시험이 시작됩니다.'); },300);
+}
+function sgaExClose(){ try{clearInterval(SGXM.t);}catch(e){} var m=document.getElementById('sgx'); if(m) m.remove(); document.body.style.overflow=''; window.onbeforeunload=null; }
+function sgaExStart(){
+ SGXM.left=SGXM.sec; SGXM.ans={}; SGXM.done=false; sgaSay('시험을 시작합니다.');
+ window.onbeforeunload=function(){ return '시험 중입니다'; };
+ sgaExPaint(); clearInterval(SGXM.t);
+ SGXM.t=setInterval(function(){ SGXM.left--; var e=document.getElementById('sgxTm'); if(e){ var mm=Math.floor(Math.max(0,SGXM.left)/60), ss=Math.max(0,SGXM.left)%60; e.textContent=(mm<10?'0':'')+mm+':'+(ss<10?'0':'')+ss; e.className='tm'+(SGXM.left<=60?' warn':''); }
+  if(SGXM.left===60) sgaSay('1분 남았습니다.');
+  if(SGXM.left<=0){ clearInterval(SGXM.t); sgaSay('시험이 끝났습니다. 답안을 제출합니다.'); sgaExSubmit(true); } },1000);
+}
+function sgaExPaint(){
+ var Q=AKQZ_TOEIC_1, m=document.getElementById('sgx'); if(!m) return; var done=SGXM.done;
+ var bk=Q.map(function(q,i){ var a=SGXM.ans[i];
+  return '<div class="q" id="sgxq'+i+'"><p>'+(i+1)+'. '+q[0].replace('-------','<span class="blank">&nbsp;</span>')+'</p><div class="op">'
+   +q[1].map(function(o,j){ var c=''; if(done){ if(j===q[2]) c=' ok'; else if(a===j) c=' ng'; } else if(a===j) c=' on';
+     return '<button type="button" class="'+c.trim()+'" '+(done?'':'onclick="sgaExMark('+i+','+j+')"')+'>('+'ABCD'[j]+') '+o+'</button>'; }).join('')+'</div>'
+   +(done?'<div class="ex"><b>'+(a===q[2]?'⭕ 정답':(a===undefined?'— 안 푼 문항 · 정답 ('+'ABCD'[q[2]]+')':'❌ 정답 ('+'ABCD'[q[2]]+')'))+'</b> '+q[3]+'</div>':'')+'</div>'; }).join('');
+ var omr='<h4>답안지 (OMR) · '+Object.keys(SGXM.ans).length+' / '+Q.length+'</h4>'+Q.map(function(q,i){ return '<div class="orow"><i>'+(i+1)+'</i>'
+   +[0,1,2,3].map(function(j){ return '<button type="button" class="ob'+(SGXM.ans[i]===j?' on':'')+'" '+(done?'':'onclick="sgaExMark('+i+','+j+')"')+'>'+'ABCD'[j]+'</button>'; }).join('')+'</div>'; }).join('');
+ var ok=0; Q.forEach(function(q,i){ if(SGXM.ans[i]===q[2]) ok++; });
+ var head=done?('<div class="q" style="background:#fff;border:2px solid #0A5C3D;border-radius:14px;padding:14px 16px"><p style="font-size:22px">결과 '+ok+' / '+Q.length+'</p><span style="font-size:15px;font-weight:700">'+(ok>=26?'실전 Part 5에서 시간이 남는 수준입니다.':(ok>=20?'자주 나오는 자리는 잡혀 있습니다. 틀린 문항의 해설을 보세요.':'품사 자리부터 다시 잡으면 점수가 가장 빨리 오릅니다. 수업 시간에 강사님께 질문하세요.'))+' · 이 점수는 연습용이며 공식 점수가 아닙니다.</span></div>'):'';
+ var tm=(Math.floor(SGXM.left/60)<10?'0':'')+Math.floor(SGXM.left/60)+':'+((SGXM.left%60)<10?'0':'')+(SGXM.left%60);
+ m.innerHTML='<div class="bar"><span class="tt">'+SGXM.title+'</span>'+(done?'<button onclick="sgaExClose()">나가기</button>':'<span class="tm" id="sgxTm">'+tm+'</span><button onclick="sgaExSubmit()">제출</button>')+'</div>'
+  +'<div class="main"><div class="bk">'+sgaQzWM()+'<div style="position:relative;z-index:2">'+head+bk+'</div></div><div class="omr">'+omr+'</div></div>';
+}
+function sgaExMark(i,j){ var y=(document.querySelector('#sgx .bk')||{}).scrollTop; SGXM.ans[i]=j; sgaExPaint(); var b=document.querySelector('#sgx .bk'); if(b&&y!=null) b.scrollTop=y; }
+function sgaExSubmit(force){
+ var Q=AKQZ_TOEIC_1, left=Q.length-Object.keys(SGXM.ans).length;
+ if(!force&&left>0){ var m=document.getElementById('sgx'); var c=document.createElement('div'); c.className='cf';
+  c.innerHTML='<div>아직 <b>'+left+'문항</b>을 풀지 않았습니다.<br>그래도 제출할까요?<br><button class="go" style="min-width:120px;height:48px;font-size:17px" onclick="this.closest(\'.cf\').remove();sgaExSubmit(true)">제출</button><button class="no" onclick="this.closest(\'.cf\').remove()">계속 풀기</button></div>';
+  m.appendChild(c); return; }
+ clearInterval(SGXM.t); SGXM.done=true; window.onbeforeunload=null; sgaExPaint(); var b=document.querySelector('#sgx .bk'); if(b) b.scrollTop=0;
+}
+
+function sgaQzPick(j){ _qz.pick=j; if(j===AKQZ_TOEIC_1[_qz.i][2]) _qz.ok++; sgaQzRender(); }
+(function(){ try{ var st=document.createElement('style'); st.textContent='@media print{#qzModal{display:none!important}}'; document.head.appendChild(st);
+ document.addEventListener('keydown',function(ev){ if(document.getElementById('qzModal')&&(ev.ctrlKey||ev.metaKey)&&/^[pcsa]$/i.test(ev.key)){ ev.preventDefault(); } },true); }catch(e){} })();
 
 var _lsQ=0,_lsPick=[];
 /* ════════════════════════════════════════════════════════════════
@@ -18018,7 +18201,7 @@ function _atMood(m){var f=document.getElementById('atFace'); if(!f)return;
 function aiTeach(n){
  var k=aiTxtKey(), arr=AITXT[k];
  if(!arr||!arr[n-1]){sgToast('<b>'+n+'과는 준비 중입니다</b>');return;}
- if(n!==1&&n!==aiFreeN()&&!aiFreeNow()&&!sgaIsMaster()){aiLockShow(n);return;}
+ if(!aiFreeNow()&&!sgaIsMaster()){aiLockShow(n);return;}
  _lsQ=0;_lsPick=[];_lsN=n;_lsUseAlt={};_lsSet=[];_lsRound=1;_lsWrongQ=[];try{koLoad();}catch(e){}_lsTickStop();_atStop();
  var L=arr[n-1], T=_aiTeacher(k);
  _at={i:-1,S:_aiScript(L,n,T),T:T,n:n,paused:false,started:false};
@@ -18324,10 +18507,10 @@ function atPrev(){atBack();}
 function _atUse(k){return !/^tc_/.test(k||'');}
 function aiLesson(n,plain){
  var k=aiTxtKey(), arr=AITXT[k];
- if(!plain&&_atUse(k)&&arr&&arr[n-1]&&(n===1||n===aiFreeN()||aiFreeNow())){var e=document.getElementById('lsModal');if(e&&e.parentNode)e.parentNode.removeChild(e);return aiTeach(n);}
+ if(!plain&&_atUse(k)&&arr&&arr[n-1]&&(aiFreeNow()||sgaIsMaster())){var e=document.getElementById('lsModal');if(e&&e.parentNode)e.parentNode.removeChild(e);return aiTeach(n);}
  if(plain){var e2=document.getElementById('lsModal');if(e2&&e2.parentNode)e2.parentNode.removeChild(e2);}
  if(!arr||!arr[n-1]){sgToast('<b>'+n+'과는 준비 중입니다</b><br>영어 베이직부터 순서대로 열어 드리고 있습니다.');return;}
- if(n!==1&&n!==aiFreeN()&&!aiFreeNow()&&!sgaIsMaster()){aiLockShow(n);return;}
+ if(!aiFreeNow()&&!sgaIsMaster()){aiLockShow(n);return;}
  _lsQ=0;_lsPick=[];_lsN=n;_lsUseAlt={};_lsSet=[];_lsRound=1;_lsWrongQ=[];try{koLoad();}catch(e){}_lsTickStop(); /* 지금 몇 과인지 — 결과 화면의 「다음 과」가 이 값을 씁니다 */
  var L=arr[n-1], T=AIB[_aiT], G=(T.subs&&T.subs[_aiG])||T, B=G.steps[_aiS];
  var h='<div class="ls-hd"><span class="ls-no">'+n+'과</span><h3>'+L.t+'</h3>'
@@ -20321,9 +20504,9 @@ function tb40Page(){
   for(var n=g[1];n<=g[2];n++){
    var L=B[n-1]; if(!L) continue;
    /* 2026-09-30 대표님 「토익 40강 무료 없애줘」 — 1강만 무료, 2강부터 토익 수강생 */
-   var _op=(n===1)||master||sgaSubjOpen('tc_basic');
+   var _op=master||sgaSubjOpen('tc_basic');
    items+='<div class="tb-li" style="cursor:pointer" onclick="tb40Open('+n+')">'
-     +'<u>'+n+'강</u><s>'+L.t+'</s><em>'+(n===1?'무료':(_op?'열림':'🔒 수강생'))+'</em></div>';
+     +'<u>'+n+'강</u><s>'+L.t+'</s><em>'+(_op?'열림':'🔒 수강생')+'</em></div>';
   }
   return '<div class="tb-l"><div class="tb-lh"><span>'+g[0]+'</span><i>'+g[1]+'~'+g[2]+'강</i></div>'
    +'<div style="padding:14px 16px;font-size:15px;line-height:1.75;color:#3f4757;font-weight:600">'+g[3]+'</div>'+items+'</div>';
