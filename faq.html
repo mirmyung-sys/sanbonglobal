@@ -324,13 +324,13 @@ article p b{color:#C81F2B;font-weight:800}
 </style>
 </head>
 <body>
-<!-- 입장코드 게이트 (2026-09-02) — 10월 1일 0시에 자동으로 풀립니다. GATE_ON을 false로 바꾸면 즉시 해제 -->
+<!-- 입장코드 게이트 (2026-09-02) — 10월 17일 0시에 자동으로 풀립니다. GATE_ON을 false로 바꾸면 즉시 해제 -->
 <div id="sgGate" style="position:fixed;inset:0;z-index:2147483647;background:linear-gradient(160deg,#101830,#1A1A18);display:flex;align-items:center;justify-content:center;padding:24px">
   <div style="width:100%;max-width:360px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:34px 26px;text-align:center">
     <!-- 게이트 엠블럼은 10/1에 복구 -->
     <!-- 게이트 상단 영문 상호는 10/1에 복구: SANBON GLOBAL ACADEMY -->
     <div style="color:#fff;font-size:21px;font-weight:900;letter-spacing:-.02em;line-height:1.4;margin-bottom:6px">새 홈페이지 준비 중입니다</div>
-    <div style="color:#B9C6DE;font-size:13px;line-height:1.7;margin-bottom:20px">10월 1일 정식 오픈 — 그 전에는<br>안내받으신 입장코드로 들어오세요</div>
+    <div style="color:#B9C6DE;font-size:13px;line-height:1.7;margin-bottom:20px">10월 17일 그랜드오픈 — 그 전에는<br>안내받으신 입장코드로 들어오세요</div>
     <input id="sgGateIn" type="tel" inputmode="numeric" maxlength="8" placeholder="입장코드" autocomplete="off"
       style="width:100%;box-sizing:border-box;border:1.5px solid rgba(255,255,255,.3);background:rgba(0,0,0,.25);color:#fff;border-radius:12px;padding:13px;font-size:17px;text-align:center;letter-spacing:.3em;font-weight:800;outline:none"
       onkeydown="if(event.key==='Enter')sgGateTry()">
@@ -345,7 +345,7 @@ article p b{color:#C81F2B;font-weight:800}
  /* 2026-09-17 보강 — 예전에는 한 번 코드를 넣으면 그 브라우저가 영원히 그냥 들어왔습니다.
     열쇠 이름을 바꿔 지금까지 나간 통행증을 전부 무효로 만들고, 7일 만료를 붙였습니다.
     주소 끝에 #lock 을 붙여 열면 그 자리에서 통행증을 버립니다 (손님 눈으로 보실 때). */
- var GATE_ON=true, CODE='1001', OPEN_FROM=new Date(2026,9,1); /* 2026-10-01 자동 오픈 */
+ var GATE_ON=true, CODE='1001', OPEN_FROM=new Date(Date.UTC(2026,9,16,15,0,0)); /* 2026-10-17 00:00 KST 자동 오픈 (대표님 10/4 지시: 모든 화면 10/17까지 잠금) */
  var KEY='sga_gate_c2', DAYS=7;
  var g=document.getElementById('sgGate');
  function off(){if(g&&g.parentNode)g.parentNode.removeChild(g);document.documentElement.style.overflow='';}
