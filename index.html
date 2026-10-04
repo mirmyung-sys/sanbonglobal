@@ -4815,11 +4815,55 @@ html,body{overflow-x:hidden;max-width:100%}
 #sgGate .cs-staff{margin-top:14px;background:none;border:0;color:#8a7468;font-size:12px;font-weight:700;text-decoration:underline;cursor:pointer;font-family:inherit}
 #sgGate .cs-in{display:none;max-width:320px;margin:10px auto 0}
 #sgGate .cs-in.on{display:block}
-@media (max-width:360px){#sgGate .cs-h1{font-size:29px}#sgGate .cs-d{font-size:54px}#sgGate .cs-box{min-width:66px}#sgGate .cs-box b{font-size:30px}}
+@media (max-width:360px){#sgGate .cs-loc{font-size:12.5px;padding:10px 6px;gap:4px}#sgGate .cs-date{font-size:14px}#sgGate .cs-ph-h span{font-size:11.5px}#sgGate .cs-h1{font-size:29px}#sgGate .cs-d{font-size:54px}#sgGate .cs-box{min-width:66px}#sgGate .cs-box b{font-size:30px}}
 @media (min-height:820px){#sgGate .cs-medal{width:110px;height:110px}}
+/* 2026-10-04 마블 — 눌리지 않는 작은 글씨 정리 + 꾸밈(오픈 카운트다운 벤치마크: 실물 미리보기·혜택 한 줄·행동 하나) */
+#sgGate::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.75;background:
+ radial-gradient(circle at 8% 12%,#E8B86A 0 5px,transparent 6px),
+ radial-gradient(circle at 90% 9%,#B76E5D 0 5px,transparent 6px),
+ radial-gradient(circle at 4% 30%,#0A5C3D 0 4px,transparent 5px),
+ radial-gradient(circle at 96% 24%,#E8B86A 0 4.5px,transparent 5.5px),
+ radial-gradient(circle at 3% 52%,#C8341F 0 3.5px,transparent 4.5px),
+ radial-gradient(circle at 97% 42%,#E8B86A 0 5px,transparent 6px),
+ radial-gradient(circle at 3% 74%,#B76E5D 0 4px,transparent 5px),
+ radial-gradient(circle at 97% 70%,#0A5C3D 0 4px,transparent 5px),
+ radial-gradient(circle at 6% 93%,#E8B86A 0 4px,transparent 5px),
+ radial-gradient(circle at 94% 95%,#C8341F 0 3.5px,transparent 4.5px)}
+#sgGate .cs{position:relative}
+#sgGate .cs-glow{position:relative;display:block;width:150px;margin:0 auto}
+#sgGate .cs-glow::before{content:"";position:absolute;left:50%;top:48px;width:170px;height:170px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(232,184,106,.55) 0%,rgba(232,184,106,0) 68%);z-index:-1}
+#sgGate .cs-rule{display:flex;align-items:center;gap:10px;justify-content:center;margin:22px 0 0;color:#B76E5D}
+#sgGate .cs-rule::before,#sgGate .cs-rule::after{content:"";height:1.5px;width:56px;background:linear-gradient(90deg,transparent,#C9A06A)}
+#sgGate .cs-rule::after{transform:scaleX(-1)}
+#sgGate .cs-date{font-size:15.5px;line-height:1.5;color:#3f322b;margin-top:8px}
+#sgGate .cs-ph{margin-top:22px;background:#fff;border:1.5px solid #ecd9c8;border-radius:18px;padding:14px 12px 12px;box-shadow:0 8px 22px rgba(140,90,60,.10)}
+#sgGate .cs-ph-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 2px 10px}
+#sgGate .cs-ph-h b{white-space:nowrap;font-size:16px;font-weight:900;color:#0A5C3D}
+#sgGate .cs-ph-h span{white-space:nowrap;font-size:12.5px;font-weight:800;color:#B76E5D}
+#sgGate .cs-ph-g{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+#sgGate .cs-pic{position:relative;display:block;padding:0;border:0;background:none;cursor:zoom-in;border-radius:12px;overflow:hidden;-webkit-tap-highlight-color:transparent}
+#sgGate .cs-pic img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;transition:transform .25s ease}
+#sgGate .cs-pic:active img{transform:scale(.96)}
+#sgGate .cs-pic i{position:absolute;left:6px;bottom:6px;font-style:normal;background:rgba(255,255,255,.94);color:#0A5C3D;font-size:13px;font-weight:900;padding:4px 9px;border-radius:20px}
+#sgGate .cs-loc{display:flex;align-items:center;justify-content:center;gap:6px;margin:12px auto 0;padding:11px 12px;border-radius:12px;background:#F4FAF6;border:1.5px solid #CFE6D9;color:#0A5C3D;text-decoration:none;font-size:13.5px;font-weight:800;white-space:nowrap}
+#sgGate .cs-loc svg{width:16px;height:16px;flex:none}
+#sgGate .cs-loc b{color:#C8341F;font-weight:900;margin-left:2px}
+#sgGate .cs-ev{margin:16px auto 0;max-width:360px;border-radius:16px;padding:14px 14px 13px;background:linear-gradient(135deg,#C8341F,#B76E5D);color:#fff;text-align:center;box-shadow:0 8px 20px rgba(200,52,31,.22)}
+#sgGate .cs-ev small{display:inline-block;background:#FFC93C;color:#5a2a12;font-size:12.5px;font-weight:900;padding:3px 10px;border-radius:20px;letter-spacing:.04em}
+#sgGate .cs-ev strong{display:block;margin-top:7px;font-size:21px;font-weight:900;letter-spacing:-.02em}
+#sgGate .cs-ev span{display:block;margin-top:3px;font-size:14px;font-weight:700;opacity:.95}
+#sgGate .cs-call{font-size:17px;padding:16px;box-shadow:0 8px 18px rgba(10,92,61,.25)}
+#sgGate .cs-lb{position:fixed;inset:0;z-index:5;display:none;flex-direction:column;align-items:center;justify-content:center;background:#FAF3EA;padding:16px 14px 110px}
+#sgGate .cs-lb.on{display:flex}
+#sgGate .cs-lb img{max-width:100%;max-height:70vh;border-radius:14px;box-shadow:0 10px 30px rgba(120,70,50,.25)}
+#sgGate .cs-lb p{margin:14px 0 0;font-size:18px;font-weight:900;color:#0A5C3D}
+#sgGate .cs-lb em{display:block;font-style:normal;margin-top:4px;font-size:13px;font-weight:700;color:#8a7468}
+#sgGate .cs-lb-l,#sgGate .cs-lb-r{position:absolute;top:0;bottom:100px;width:50%;border:0;background:none;cursor:pointer}
+#sgGate .cs-lb-l{left:0}#sgGate .cs-lb-r{right:0}
+#sgGate .cs-lb-x{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);width:60px;height:60px;border-radius:50%;border:0;background:#FFC93C;color:#5a2a12;font-size:30px;font-weight:900;line-height:60px;cursor:pointer;box-shadow:0 6px 16px rgba(160,110,20,.35)}
 </style>
   <div class="cs">
-    <img class="cs-medal" src="img/sga_emblem.png" alt="SGA 산본글로벌어학원">
+    <span class="cs-glow"><img class="cs-medal" src="img/sga_emblem.png" alt="SGA 산본글로벌어학원"></span>
     <div class="cs-tag">GRAND OPEN <b>10.17</b></div>
     <div class="cs-h1">세상에 없던 어학원</div>
     <div class="cs-h2">온·오프라인 통합 어학원</div>
@@ -4831,12 +4875,18 @@ html,body{overflow-x:hidden;max-width:100%}
     </div>
     <div class="cs-name"><b>SGA</b><span>산본글로벌어학원</span></div>
     <div class="cs-soon">COMING SOON</div>
-    <div class="cs-date">2026년 10월 17일 토요일 · 새 홈페이지가 열립니다</div>
-    <div class="cs-ph"><p>지금 학원 모습 · 산본 롯데프라자 7층</p><div>
-      <figure><img src="img/open/sga_door.jpg" alt="산본글로벌어학원 입구 철문 SGA 간판" decoding="async"><figcaption>입구</figcaption></figure>
-      <figure><img src="img/open/sga_courses.jpg" alt="과정 안내 액자" decoding="async"><figcaption>과정 안내</figcaption></figure>
-      <figure><img src="img/open/sga_plaque.jpg" alt="SGA 산본글로벌어학원 명판" decoding="async"><figcaption>SGA 명판</figcaption></figure>
-    </div></div>
+    <div class="cs-rule">✦</div>
+    <div class="cs-date">2026년 10월 17일 토요일<br>새 홈페이지가 열립니다</div>
+    <div class="cs-ph">
+      <div class="cs-ph-h"><b>지금 학원 모습</b><span>사진을 누르면 크게 보여요</span></div>
+      <div class="cs-ph-g">
+        <button type="button" class="cs-pic" onclick="sgLb(0)"><img src="img/open/sga_door.jpg" alt="산본글로벌어학원 입구 철문 SGA 간판" decoding="async"><i>입구</i></button>
+        <button type="button" class="cs-pic" onclick="sgLb(1)"><img src="img/open/sga_courses.jpg" alt="과정 안내 액자" decoding="async"><i>과정</i></button>
+        <button type="button" class="cs-pic" onclick="sgLb(2)"><img src="img/open/sga_plaque.jpg" alt="SGA 산본글로벌어학원 명판" decoding="async"><i>명판</i></button>
+      </div>
+      <a class="cs-loc" href="https://map.naver.com/p/search/%EA%B5%B0%ED%8F%AC%EC%8B%9C%20%EC%82%B0%EB%B3%B8%EB%A1%9C323%EB%B2%88%EA%B8%B8%2016-7" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="#C8341F" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>롯데프라자 7층 · 산본역 3번 출구<b>길찾기 ›</b></a>
+    </div>
+    <div class="cs-ev"><small>오픈 이벤트 · 10월 31일까지</small><strong>회화반 오픈 10% + 환승 10%</strong><span>다른 학원에서 옮겨 오시면 최대 20%</span></div>
     <a class="cs-call" href="tel:031-466-6969">상담 문의 031-466-6969</a>
     <button type="button" class="cs-staff" onclick="var x=document.getElementById('sgGateBox');x.classList.toggle('on');if(x.classList.contains('on')){var i=document.getElementById('sgGateIn');if(i)i.focus();}">관계자 입장</button>
     <div class="cs-in" id="sgGateBox">
@@ -4848,7 +4898,23 @@ html,body{overflow-x:hidden;max-width:100%}
     <div id="sgGateMsg" style="color:#C8341F;font-size:12.5px;font-weight:700;min-height:18px;margin-top:8px"></div>
     </div>
   </div>
+  <div class="cs-lb" id="sgLbox" role="dialog" aria-label="학원 사진 크게 보기">
+    <img id="sgLbImg" alt="">
+    <p id="sgLbCap"></p><em id="sgLbN"></em>
+    <button type="button" class="cs-lb-l" aria-label="이전 사진" onclick="sgLb(sgLb.i-1)"></button>
+    <button type="button" class="cs-lb-r" aria-label="다음 사진" onclick="sgLb(sgLb.i+1)"></button>
+    <button type="button" class="cs-lb-x" aria-label="닫기" onclick="document.getElementById('sgLbox').classList.remove('on')">✕</button>
+  </div>
 </div>
+<script>
+function sgLb(n){var L=[['img/open/sga_door.jpg','입구'],['img/open/sga_courses.jpg','과정 안내'],['img/open/sga_plaque.jpg','SGA 명판']];
+ n=(n+L.length)%L.length;sgLb.i=n;var b=document.getElementById('sgLbox');if(!b)return;
+ document.getElementById('sgLbImg').src=L[n][0];document.getElementById('sgLbImg').alt=L[n][1];
+ document.getElementById('sgLbCap').textContent=L[n][1];
+ document.getElementById('sgLbN').textContent=(n+1)+' / '+L.length+' · 화면 왼쪽·오른쪽을 누르면 넘어가요';
+ b.classList.add('on');}
+sgLb.i=0;
+</script>
 <script>
 (function(){
  /* 2026-09-17 보강 — 예전에는 한 번 코드를 넣으면 그 브라우저가 영원히 그냥 들어왔습니다.
