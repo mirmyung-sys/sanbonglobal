@@ -4784,20 +4784,69 @@ html,body{overflow-x:hidden;max-width:100%}
 
 <style>.vf-up{display:block;text-align:center;background:#f0f3fa;border:1.5px dashed #b9c4dd;border-radius:12px;padding:20px;font-weight:800;color:#3a4a66;cursor:pointer;margin:12px 0}</style></head>
 <body>
-<!-- 입장코드 게이트 (2026-09-02) — 2026-09-30 대표님 지시로 10/1 자동 해제 보류(잠김 유지). GATE_ON을 false로 바꾸면 즉시 해제 -->
-<div id="sgGate" style="position:fixed;inset:0;z-index:2147483647;background:linear-gradient(160deg,#101830,#7B1733);display:flex;align-items:center;justify-content:center;padding:24px">
-  <div style="width:100%;max-width:360px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:34px 26px;text-align:center">
-    <!-- 게이트 엠블럼은 10/1에 복구 -->
-    <!-- 게이트 상단 영문 상호는 10/1에 복구: SANBON GLOBAL ACADEMY -->
-    <div style="color:#fff;font-size:21px;font-weight:900;letter-spacing:-.02em;line-height:1.4;margin-bottom:6px">지금은 서버 점검 중입니다</div>
-    <div style="color:#B9C6DE;font-size:13px;line-height:1.7;margin-bottom:20px">산본글로벌어학원 새 홈페이지<br>안내받으신 입장코드로 들어오세요</div>
+<!-- 입장코드 게이트 (2026-09-02) — 2026-10-04 대표님 「공개일 10월17일」: 그랜드오픈 카운트다운 화면으로 교체, 10/17 0시 자동 해제. GATE_ON을 false로 바꾸면 즉시 해제 -->
+<div id="sgGate" style="position:fixed;inset:0;z-index:2147483647;background:radial-gradient(120% 90% at 50% 20%,#FFFBF5 0%,#FBF1E6 55%,#F2E1D0 100%);display:flex;justify-content:center;padding:18px;overflow-y:auto;font-family:Pretendard,'Noto Sans KR','Apple SD Gothic Neo',sans-serif">
+<style>
+#sgGate .cs{width:100%;max-width:440px;text-align:center;padding:10px 4px 16px;margin:auto 0}
+#sgGate .cs-ph{margin-top:18px}
+#sgGate .cs-ph p{font-size:13px;font-weight:800;color:#0A5C3D;margin:0 0 8px}
+#sgGate .cs-ph div{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+#sgGate .cs-ph figure{margin:0}
+#sgGate .cs-ph img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:10px;display:block;border:1px solid #e6d3c4}
+#sgGate .cs-ph figcaption{font-size:11.5px;font-weight:700;color:#6b5b52;margin-top:4px}
+#sgGate .cs-medal{width:96px;height:96px;display:block;margin:0 auto 12px;filter:drop-shadow(0 6px 10px rgba(120,70,50,.25))}
+#sgGate .cs-tag{display:inline-block;background:#0A5C3D;color:#fff;font-weight:900;font-size:13px;letter-spacing:.18em;padding:7px 16px;border-radius:30px}
+#sgGate .cs-tag b{color:#FFC93C;font-weight:900}
+#sgGate .cs-h1{margin:14px 0 4px;color:#0A5C3D;font-size:34px;font-weight:900;letter-spacing:-.03em;line-height:1.2}
+#sgGate .cs-h2{color:#B76E5D;font-size:17px;font-weight:800;letter-spacing:-.01em}
+#sgGate .cs-d{margin:20px 0 8px;font-weight:900;color:#C8341F;font-size:64px;line-height:1;letter-spacing:-.03em}
+#sgGate .cs-clock{display:flex;justify-content:center;align-items:flex-start;gap:6px}
+#sgGate .cs-box{background:#fff;border:2px solid #0A5C3D;border-radius:14px;min-width:78px;padding:9px 4px 7px}
+#sgGate .cs-box b{display:block;font-size:36px;font-weight:900;color:#1d1d1d;line-height:1.05;font-variant-numeric:tabular-nums}
+#sgGate .cs-box small{display:block;font-size:12px;font-weight:800;color:#6b5b52;margin-top:2px}
+#sgGate .cs-sep{font-size:32px;font-weight:900;color:#B76E5D;padding-top:10px}
+#sgGate .cs-box.s{border-color:#C8341F}#sgGate .cs-box.s b{color:#C8341F}
+#sgGate .cs-name{margin-top:22px;display:flex;align-items:center;justify-content:center;gap:8px}
+#sgGate .cs-name b{font-size:22px;font-weight:900;color:#B76E5D;letter-spacing:.04em}
+#sgGate .cs-name span{font-size:22px;font-weight:900;color:#0A5C3D;letter-spacing:-.02em}
+#sgGate .cs-soon{margin-top:6px;font-size:20px;font-weight:900;letter-spacing:.42em;color:#A8743F;padding-left:.42em}
+#sgGate .cs-date{margin-top:4px;font-size:13.5px;font-weight:800;color:#5c4a40}
+#sgGate .cs-call{display:block;margin:18px auto 0;max-width:320px;background:#0A5C3D;color:#fff;text-decoration:none;font-weight:900;font-size:16px;padding:14px;border-radius:14px}
+#sgGate .cs-staff{margin-top:14px;background:none;border:0;color:#8a7468;font-size:12px;font-weight:700;text-decoration:underline;cursor:pointer;font-family:inherit}
+#sgGate .cs-in{display:none;max-width:320px;margin:10px auto 0}
+#sgGate .cs-in.on{display:block}
+@media (max-width:360px){#sgGate .cs-h1{font-size:29px}#sgGate .cs-d{font-size:54px}#sgGate .cs-box{min-width:66px}#sgGate .cs-box b{font-size:30px}}
+@media (min-height:820px){#sgGate .cs-medal{width:110px;height:110px}}
+</style>
+  <div class="cs">
+    <img class="cs-medal" src="img/sga_emblem.png" alt="SGA 산본글로벌어학원">
+    <div class="cs-tag">GRAND OPEN <b>10.17</b></div>
+    <div class="cs-h1">세상에 없던 어학원</div>
+    <div class="cs-h2">온·오프라인 통합 어학원</div>
+    <div class="cs-d" id="sgCdD">D-13</div>
+    <div class="cs-clock" aria-label="그랜드 오픈까지 남은 시간">
+      <div class="cs-box"><b id="sgCdH">00</b><small>시간</small></div><div class="cs-sep">:</div>
+      <div class="cs-box"><b id="sgCdM">00</b><small>분</small></div><div class="cs-sep">:</div>
+      <div class="cs-box s"><b id="sgCdS">00</b><small>초</small></div>
+    </div>
+    <div class="cs-name"><b>SGA</b><span>산본글로벌어학원</span></div>
+    <div class="cs-soon">COMING SOON</div>
+    <div class="cs-date">2026년 10월 17일 토요일 · 새 홈페이지가 열립니다</div>
+    <div class="cs-ph"><p>지금 학원 모습 · 산본 롯데프라자 7층</p><div>
+      <figure><img src="img/open/sga_lobby.jpg" alt="산본글로벌어학원 로비" loading="lazy"><figcaption>로비</figcaption></figure>
+      <figure><img src="img/open/sga_courses.jpg" alt="과정 안내 액자" loading="lazy"><figcaption>과정 안내</figcaption></figure>
+      <figure><img src="img/open/sga_plaque.jpg" alt="SGA 산본글로벌어학원 명판" loading="lazy"><figcaption>SGA 명판</figcaption></figure>
+    </div></div>
+    <a class="cs-call" href="tel:031-466-6969">상담 문의 031-466-6969</a>
+    <button type="button" class="cs-staff" onclick="var x=document.getElementById('sgGateBox');x.classList.toggle('on');if(x.classList.contains('on')){var i=document.getElementById('sgGateIn');if(i)i.focus();}">관계자 입장</button>
+    <div class="cs-in" id="sgGateBox">
     <input id="sgGateIn" type="tel" inputmode="numeric" maxlength="8" placeholder="입장코드" autocomplete="off"
-      style="width:100%;box-sizing:border-box;border:1.5px solid rgba(255,255,255,.3);background:rgba(0,0,0,.25);color:#fff;border-radius:12px;padding:13px;font-size:17px;text-align:center;letter-spacing:.3em;font-weight:800;outline:none"
+      style="width:100%;box-sizing:border-box;border:1.5px solid #cdb8a8;background:#fff;color:#1d1d1d;border-radius:12px;padding:12px;font-size:17px;text-align:center;letter-spacing:.3em;font-weight:800;outline:none"
       onkeydown="if(event.key==='Enter')sgGateTry()">
     <button type="button" onclick="sgGateTry()"
-      style="width:100%;border:0;margin-top:10px;background:#C6A15B;color:#1A1A18;border-radius:12px;padding:13px;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit">입장하기</button>
-    <div id="sgGateMsg" style="color:#FF8D96;font-size:12.5px;font-weight:700;min-height:18px;margin-top:9px"></div>
-    <div style="color:#8A94A8;font-size:11.5px;margin-top:6px">한 번 입력하시면 7일간 기억합니다 · 문의 031-466-6969</div>
+      style="width:100%;border:0;margin-top:8px;background:#B76E5D;color:#fff;border-radius:12px;padding:12px;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit">입장하기</button>
+    <div id="sgGateMsg" style="color:#C8341F;font-size:12.5px;font-weight:700;min-height:18px;margin-top:8px"></div>
+    </div>
   </div>
 </div>
 <script>
@@ -4805,7 +4854,7 @@ html,body{overflow-x:hidden;max-width:100%}
  /* 2026-09-17 보강 — 예전에는 한 번 코드를 넣으면 그 브라우저가 영원히 그냥 들어왔습니다.
     열쇠 이름을 바꿔 지금까지 나간 통행증을 전부 무효로 만들고, 7일 만료를 붙였습니다.
     주소 끝에 #lock 을 붙여 열면 그 자리에서 통행증을 버립니다 (손님 눈으로 보실 때). */
- var GATE_ON=true, CODE='1001', OPEN_FROM=new Date(2099,0,1); /* 2026-09-30 대표님 「10월1일 되도 잠깐 잠거」 — 10/1 자동 오픈 끔. 열 때는 이 날짜만 오늘로 바꾸거나 GATE_ON=false */
+ var GATE_ON=true, CODE='1001', OPEN_FROM=new Date(Date.UTC(2026,9,16,15,0,0)); /* 2026-10-04 대표님 「공개일 10월17일」 — 10/17 0시(한국시간) 자동 공개 */ /* 2026-09-30 대표님 「10월1일 되도 잠깐 잠거」 — 10/1 자동 오픈 끔. 열 때는 이 날짜만 오늘로 바꾸거나 GATE_ON=false */
  var KEY='sga_gate_c2', DAYS=7;
  var g=document.getElementById('sgGate');
  function off(){if(g&&g.parentNode)g.parentNode.removeChild(g);document.documentElement.style.overflow='';}
@@ -4835,7 +4884,26 @@ html,body{overflow-x:hidden;max-width:100%}
   if(!GATE_ON||new Date()>=OPEN_FROM||pass()){off();return;}
  }catch(e){off();return;}
  document.documentElement.style.overflow='hidden';
- setTimeout(function(){try{var i=document.getElementById('sgGateIn');if(i)i.focus();}catch(e){}},260);
+ /* 2026-10-04 그랜드오픈 카운트다운 — 한국시간 기준. D-n 은 날짜 차이, 시:분:초는 오늘 자정까지 */
+ (function(){
+  function p2(n){return (n<10?'0':'')+n;}
+  var T=Date.UTC(2026,9,17);
+  function tick(){
+   var k=new Date(Date.now()+9*3600000);
+   var day=Date.UTC(k.getUTCFullYear(),k.getUTCMonth(),k.getUTCDate());
+   var D=Math.round((T-day)/86400000);
+   if(D<=0){off();return;}
+   var left=Math.max(0,Math.floor((day+86400000-k.getTime())/1000));
+   var e=function(id){return document.getElementById(id);};
+   if(!e('sgCdD'))return;
+   e('sgCdD').textContent='D-'+D;
+   e('sgCdH').textContent=p2(Math.floor(left/3600));
+   e('sgCdM').textContent=p2(Math.floor(left%3600/60));
+   e('sgCdS').textContent=p2(left%60);
+   setTimeout(tick,1000-(Date.now()%1000)+5);
+  }
+  tick();
+ })();
  window.sgGateTry=function(){
   var i=document.getElementById('sgGateIn'),v=(i&&i.value||'').replace(/\s/g,'');
   if(v===CODE){try{localStorage.setItem(KEY,String(Date.now()));}catch(e){} off();}
