@@ -5083,7 +5083,7 @@ sgLb.i=0;
     <div class="ni"><a href="#" onclick="openPage('갤러리');return false;">학원 갤러리</a></div>
     <div class="ni"><a href="#" onclick="openPage('유튜브');return false;" style="color:#C81F2B;font-weight:900">▶ 유튜브</a></div>
     <div class="ni"><a href="#" onclick="openPage('외고');return false;">외고</a></div>
-    <div class="ni"><a href="#" onclick="openPage('과외');return false;">과외</a></div>
+    
     <div class="ni"><a href="#" onclick="openPage('1:1 전문');return false;">1:1 전문</a></div>
     <div class="ni"><a href="#" onclick="openPage('기업출강');return false;">기업출강</a></div>
     <div class="ni"><a href="#" onclick="openPage('임원강의');return false;">임원강의</a></div>
@@ -5335,6 +5335,7 @@ function sgdPaint(){
         전화 <b>031-466-6969</b> · 전자우편 <b>sanbonglobal@naver.com</b> · 카카오톡 채널 pf.kakao.com/_FxfgQT · 블로그 blog.naver.com/sanbonglobal · 인스타 @sanbonglobal · 유튜브 @sangle_kr<br>
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 통신판매업 신고 <b>제2026-경기군포-0689호</b> · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청 · 2026.09.14 등록) · 개업일 2024.10.01 · 호스팅서비스 제공자 <b>GitHub, Inc.</b><br>
         학원 종류 평생직업교육학원 / 교습과정 성인대상어학 · 일시수용능력 <b>138명</b> · 전용면적 266.38㎡<br>
+        교습비 영어·일본어·중국어 회화 <b>월 180,000원</b> / 시험대비(토익·토스·오픽·JLPT·HSK) <b>월 210,000원</b> · 그 밖에 추가로 받는 경비 없음<br>
         결제수단 신용·체크카드 · <b>민생회복 소비쿠폰</b> · <b>온누리상품권</b> · <b>경기지역화폐 군포愛머니</b> · <b>제로페이</b> 가맹점<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 09:30~16:00 · 일·공휴일 휴무
       </div>
@@ -5478,8 +5479,7 @@ const CHAPTERS=[
  {k:'일본어',co:'일본어',s:'일본인이 실제 쓰는 살아있는 일본어',e:'JAPANESE',bg:'linear-gradient(135deg,#1E4E85,#3E7FBE)',imgs:['jpn_2','jpn_1','jpn_7']},
  {k:'중국어',co:'중국어',s:'발음부터 HSK까지 탄탄하게',e:'CHINESE',bg:'linear-gradient(135deg,#9c1f24,#c8353b)',imgs:['chn_3','chn_5']},
  {k:'1:1 PT',pg:'1:1 전문',s:'나만을 위한 완전 맞춤 1:1 수업',e:'PRIVATE',bg:'linear-gradient(135deg,#14213d,#33507f)',imgs:['eng_14','eng_13','eng_6']},
- {k:'과외',pg:'과외',s:'학생별 맞춤 밀착 관리 과외',e:'TUTORING',bg:'linear-gradient(135deg,#3a2c5e,#5b4790)',imgs:['eng_7','eng_3']},
- {k:'외고/유학',pg:'유학상담',s:'외고 내신·유학 준비 무료 상담',e:'ABROAD',bg:'linear-gradient(135deg,#1f8058,#146043)',imgs:['jpn_4','jpn_5']},
+ {k:'외고/유학',pg:'외고',s:'외고·유학·수능 영어 학부모 상담',e:'ABROAD',bg:'linear-gradient(135deg,#1f8058,#146043)',imgs:['jpn_4','jpn_5']},
  {k:'기업출강',pg:'기업출강',s:'회사로 찾아가는 실무 어학 교육',e:'B2B',bg:'linear-gradient(120deg,#c81f2b,#c81f2b)',imgs:['eng_14','eng_12','jpn_2','chn_3']},
  {k:'임원 1:1 출강',pg:'임원강의',s:'임원 맞춤 1:1 프리미엄 출강',e:'EXECUTIVE',bg:'linear-gradient(135deg,#4E3A10,#8A6A22)',imgs:[]}
 ];
@@ -5552,6 +5552,14 @@ var NOTICES=[
     ⚠ 대표님 말씀은 "계약학과 가려면 오픽·토스가 필요하다"였으나,
       확인 결과 계약학과 입시에는 어학성적이 반영되지 않고 대교협 규정상 제출이 금지입니다.
       허위광고가 되므로 사실에 맞게 각도를 바꿔 썼습니다(취업 단계에서 필요하다는 쪽). */
+ /* 2026-10-05 대표님 「홈페이지 팝업창 그리고 공지사항란」 「아에 문제소지없게」 — 원장 상담 안내(성인대상어학 범위, 교습비 표시 포함) */
+ {id:'n17', tag:'공지', t:'영어, 토픽하자! — 영어 고민이라면 원장이 직접 들어드립니다', d:'2026.10.05', pin:1,
+  b:'<p><b>TALK</b>는 말하듯 편하게, <b>SPEAK</b>는 전문가처럼 또렷하게. 둘을 합쳐 <b>토픽</b>입니다.</p>'
+    +'<p>영어 고민이라면, 무엇이든 <b>원장이 직접</b> 들어드립니다.</p>'
+    +'<ul><li><b>유학</b> — 어학 준비, 어디서부터</li><li><b>외고</b> — 영어 준비 방향 (학부모님 상담)</li><li><b>수능 영어</b> — 우리 아이 공부법 (학부모님 상담)</li><li><b>취업 어학시험</b> — 토익·토스·오픽·JLPT·HSK</li></ul>'
+    +'<p>영어회화 · 토익은 기본, 아이 진학부터 내 취업까지.</p>'
+    +'<p><b>언제나 편하게 물어보세요.</b><br>031-466-6969 · 산본역 3번 출구 롯데프라자 7층</p>'
+    +'<p style="font-size:13px;color:#555">※ 산본글로벌어학원은 성인 대상 어학원입니다. 초·중·고 학생 수업은 하지 않으며, 자녀 영어·진학은 학부모님 상담으로 도와드립니다.<br>산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청) · 교습과정 성인대상어학 · 교습비 영어·일본어·중국어 회화 월 180,000원 / 시험대비 월 210,000원 · 그 밖에 추가로 받는 경비 없음</p>'},
  {id:'n16', tag:'이벤트', t:'계약학과 66대 1 — 그런데 오픽·토스는 입시가 아니라 취업에 필요합니다', d:'2026.09.15', pin:1,
   b:'<p>어제 나온 기사입니다. 삼성전자·SK하이닉스·현대차 등 <b>7개 대기업 13개 계약학과에 8,994명</b>이 수시 지원했습니다. '
     +'작년보다 <b>18.2% 늘어난 역대 최다</b>입니다. 서강대 시스템반도체공학과는 <b>66.15대 1</b>, 한양대 반도체공학과 44.41대 1, 성균관대 반도체시스템공학과 36.84대 1이었습니다.</p>'
@@ -5705,7 +5713,7 @@ const SLIDES=[
  { e:'무료 레벨 진단', t:'내 실력, 무료로<br>정확하게 진단', s:'문법·어휘·듣기 자가진단 + 원어민 회화 레벨테스트 · 결과 리포트를 바로 드립니다', act:"openPage('레벨테스트')", pbg:'linear-gradient(135deg,#0e8f88,#12a89f)', tc:'#fff3b0', tc2:'#ccf5f1', ac:'#ccf5f1', bbg:'#ffffff', btc:'#0e8f88'},
  { e:'1:1 GLOBAL', t:'나만을 위한<br>완전 맞춤 수업', s:'목표와 일정에 맞는 1대1 수업을 골라 드립니다', act:"openPage('맞춤수업')", pbg:'linear-gradient(135deg,#7658c8,#9a7ee0)', tc:'#f1eaff', tc2:'#dccffa', ac:'#efe6ff', bbg:'#ffffff', btc:'#5a3f92', cls:'hsty-soft'},
  { e:'FREE · 무료 상담 + 무료 청강', t:'듣고 나서<br>판단하세요', s:'산본글로벌어학원은 회원님께 무료 청강 혜택을 드립니다 — 유학 · 토익 · 영어 · 시험대비 전 과목 무료 상담과 실제 수업 청강 1회', act:"openPage('무료청강')", pbg:'linear-gradient(135deg,#0E8A5A,#14B06E)', tc:'#eaffd6', tc2:'#d6f5e7', ac:'#D6F5E7', bbg:'#ffffff', btc:'#0E8A5A'},
- { e:'유학 · 외고 · 과외', t:'늦었다고 생각할 때가<br>가장 빠릅니다', s:'유학부터 외고, 그리고 과외까지 — 지금 시작해도 늦지 않습니다. 무료 상담으로 먼저 길만 잡아보세요', act:"openPage('무료청강')", pbg:'linear-gradient(135deg,#434b7c,#5d68a8)', tc:'#ffd9c4', tc2:'#dfe3ff', ac:'#dfe3ff', bbg:'#ffffff', btc:'#3c4470', cls:'hsty-soft'},
+ { e:'유학 · 외고 · 수능 영어 · 학부모 상담', t:'자녀 영어 진로,<br>원장이 직접 상담합니다', s:'초·중·고 학생 수업은 하지 않습니다 — 외고·유학·수능 영어 준비 방향을 학부모님께 상담으로 안내해 드립니다', act:"openPage('외고')", pbg:'linear-gradient(135deg,#434b7c,#5d68a8)', tc:'#ffd9c4', tc2:'#dfe3ff', ac:'#dfe3ff', bbg:'#ffffff', btc:'#3c4470', cls:'hsty-soft'},
  { e:'동글 · 동네가 글로벌해진다', t:'동글이<br>동네 영어 모임', s:'동네와 글로벌을 합쳐 동글입니다. 산본에서 영어로 떠드는 가장 가벼운 자리 — <b>참가비 없음</b> · 커피도 무료', act:"openPage('동글이')", pbg:'linear-gradient(135deg,#3F5D4A,#5C8069)', tc:'#f2ecd9', tc2:'#dfe9df', ac:'#e3ebe3', bbg:'#ffffff', btc:'#3F5D4A', cls:'hsty-impact'}
 ];
 
@@ -7199,11 +7207,13 @@ const PAGES={
   .map(function(x){return '<div class="dg-c"><span class="i">'+x[0]+'</span>'
     +'<div><b>'+x[1]+'</b><p>'+x[2]+'</p></div></div>';}).join('')
  +'</div>')+SEC('🗓️ 자리 맡기 · 원하는 시간을 고르세요','<div class="lead">평일(월~금)은 <b>오후 1시 ~ 6시</b>, 토요일은 <b>오전 10시 ~ 오후 6시</b>에 엽니다. 원하는 칸을 누르거나 <b>드래그</b>해서 고르시면 됩니다.<br><b>참가비는 없습니다.</b> 결제 화면도 없고, 못 오셔도 따로 하실 일이 없습니다.</div><div id="dgBook"></div>')+'<div class="pgnote">☕ 커피·물·사탕 무료 · <b>참가비 없음</b> · 문의 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>'+'<div class="dg-law">동글이는 <b>수업이 아니라 무료로 열어 두는 자리</b>입니다. 교습·평가·첨삭을 하지 않으며 어떤 비용도 받지 않습니다.<br>'+'산본글로벌어학원 · 학원등록번호 <b>제2234호</b>(경기도군포의왕교육지원청) · 교습과정 성인대상어학 · 교습비와 반환기준은 <a href="#" onclick="openPage(\'수강신청\');return false;">수강신청</a>에서 보실 수 있습니다</div>'+'<h3 class="pgh2">영어에 관한 것은 원장님께 물어보세요</h3>'+'<p class="pgp">동글이에 오셔서 <b>영어 공부 이야기가 나오면</b> — 토익 점수가 안 오른다, 아이 유학을 보내고 싶다, 회사에서 영어를 쓰게 됐다 — 그 자리에서 <b>제이영 원장님께</b> 물어보십시오. 동글이 자리에 자주 앉아 계시고, 안 계시면 연락을 드립니다. <b>상담은 무료이고, 등록 권유는 하지 않습니다.</b></p>'+dirCard()+SGCTA('동글이는 시간만 고르시면 됩니다. 돈은 받지 않습니다.')+'<a class="pgcta" href="#" onclick="dgGo();return false;">🗓️ 동글이 자리 맡기 ›</a>'+shareMini(),
- '외고':H('외고·특목고 대비','외고 내신,<br>전략이 점수를 만듭니다','학교 진도와 시험 범위를 학생별로 분석해, 진단 → 내신 밀착 → 실전 마무리 3단계로 준비합니다. 무작정 많은 양이 아니라 “필요한 것을 정확히”가 산본글로벌의 방식입니다.','🎓')
-  +'<div class="steps"><div class="step"><div class="sh">STEP 01 · 진단 &amp; 기초</div><div class="sb"><b>정확한 출발점 찾기</b><p>레벨 진단으로 약점을 먼저 파악하고, 어휘·문법의 빈틈을 메워 내신 학습의 토대를 만듭니다.</p></div></div><div class="step"><div class="sh">STEP 02 · 내신 밀착</div><div class="sb"><b>학교별 맞춤 진도</b><p>재학 중인 학교의 진도·출제 경향에 맞춰 핵심 위주로 집중 학습하고, 부족한 부분을 반복 교정합니다.</p></div></div><div class="step"><div class="sh">STEP 03 · 실전 마무리</div><div class="sb"><b>시험 직전 요점 정리</b><p>시험 범위를 압축 정리하고 실전 문제로 마무리해, 마지막까지 점수를 끌어올립니다.</p></div></div></div>'
-  +'<div class="pgnote">외고·특목고 대비반은 소수정예로 운영되며, 학생별 학습 리포트를 제공합니다.</div>'+CTA(),
+ '외고':H('외고·유학·수능 영어 · 학부모 상담','자녀 영어 진로,<br>원장이 직접 상담합니다','산본글로벌어학원은 성인 대상 어학원입니다. 초·중·고 학생 수업은 하지 않으며, 외고·유학·수능 영어를 어떻게 준비하면 좋을지 학부모님께 상담으로 안내해 드립니다.','🎓')
+  +'<div class="steps"><div class="step"><div class="sh">01 · 지금 어디쯤인지</div><div class="sb"><b>현재 상황 듣기</b><p>학년·목표·지금까지의 공부 방법을 학부모님께 먼저 여쭙니다.</p></div></div>'
+  +'<div class="step"><div class="sh">02 · 무엇을 준비할지</div><div class="sb"><b>준비 방향 정리</b><p>외고·유학·수능 영어 중 목표에 맞춰 무엇을, 어떤 순서로 준비하면 좋을지 정리해 드립니다.</p></div></div>'
+  +'<div class="step"><div class="sh">03 · 학부모님 본인도</div><div class="sb"><b>성인 영어는 우리 수업으로</b><p>영어회화·토익·취업 어학시험은 성인 과정으로 직접 배우실 수 있습니다.</p></div></div></div>'
+  +'<div class="pgnote">※ 산본글로벌어학원은 성인 대상 어학원입니다. 초·중·고 학생 수업은 하지 않으며, 자녀 영어·진학은 학부모님 상담으로 도와드립니다.<br>산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청) · 교습과정 성인대상어학 · 교습비 영어·일본어·중국어 회화 월 180,000원 / 시험대비 월 210,000원 · 그 밖에 추가로 받는 경비 없음</div>'+CTA(),
  '과외':H('1:1 · 소수정예','나만을 위한<br>완전 맞춤 수업','정해진 커리큘럼이 아니라, 나의 레벨·목표·일정에 맞춰 설계하는 프라이빗 수업입니다. 원하는 요일과 시간에, 담당 선생님이 끝까지 관리합니다.','📖')
-  +'<div class="pgfeat"><div class="ft"><div class="fi">🧭</div><h4>레벨 진단 후 설계</h4><p>첫 수업 전 진단으로 정확한 커리큘럼을 만듭니다.</p></div><div class="ft"><div class="fi">🗓️</div><h4>원하는 요일·시간</h4><p>학생 일정에 맞춰 시간표를 자유롭게 구성합니다.</p></div><div class="ft"><div class="fi">🤝</div><h4>담당제 밀착관리</h4><p>한 명의 담당 선생님이 진도·숙제·약점을 책임 관리합니다.</p></div><div class="ft"><div class="fi">📊</div><h4>학습 리포트</h4><p>진도와 성취도를 정리해 학부모님께 공유합니다.</p></div></div>'+CTA(),
+  +'<div class="pgfeat"><div class="ft"><div class="fi">🧭</div><h4>레벨 진단 후 설계</h4><p>첫 수업 전 진단으로 정확한 커리큘럼을 만듭니다.</p></div><div class="ft"><div class="fi">🗓️</div><h4>원하는 요일·시간</h4><p>내 일정에 맞춰 시간표를 자유롭게 구성합니다.</p></div><div class="ft"><div class="fi">🤝</div><h4>담당제 밀착관리</h4><p>한 명의 담당 선생님이 진도·숙제·약점을 책임 관리합니다.</p></div><div class="ft"><div class="fi">📊</div><h4>학습 리포트</h4><p>진도와 성취도를 정리해 본인께 공유해 드립니다.</p></div></div>'+CTA(),
  '유학상담':bigImg('img/hall_03.jpg')+H('일본유학 · 어학연수','유학, 상담부터<br>준비까지 한 번에','어학원·학교 선정, 서류·비자, 현지 생활 준비까지 단계별로 안내합니다. EJU(일본유학시험)·전문학교 진학·일본 취업까지, 일본어 학습과 유학 준비를 한 곳에서 연결합니다.','✈️')
   +SEC('EJU (일본유학시험)','<div class="lead">일본 대학 진학에 필요한 EJU를 과목별로 대비합니다. 일본어(독해·청해·기술)와 종합과목·수학까지, 목표 대학 기준에 맞춰 준비합니다.</div><div class="chips"><span>일본어</span><span>종합과목</span><span>수학</span><span>대학별 기준 관리</span></div>')
   +SEC('전문학교 진학','<div class="lead">관심 분야(디자인·IT·조리·항공·뷰티 등)에 맞는 전문학교를 함께 찾고, 지원 서류와 면접을 준비합니다.</div>')
@@ -26033,6 +26043,89 @@ body.has-tab #rvPop .nrp-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-are
    n++; if(n>120){clearInterval(t);return;}          /* 60초 안에 기회가 없으면 이번 방문은 쉽니다 */
    if(busy()){calm=0;return;}
    if(++calm>=3){clearInterval(t);show();}            /* 다른 화면이 1.5초 조용하면 띄웁니다 */
+  },500);
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+})();
+</script>
+<link id="tpPopFont" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&display=swap">
+<style id="tpPopCss">
+#tpPop{position:fixed;inset:0;z-index:9650;background:rgba(40,22,28,.55);display:flex;align-items:center;justify-content:center;padding:16px 16px calc(96px + env(safe-area-inset-bottom,0px));opacity:0;transition:opacity .25s}
+body.has-tab #tpPop{padding-bottom:calc(var(--sg-tabh,80px) + 90px + env(safe-area-inset-bottom,0px))}
+#tpPop.on{opacity:1}
+#tpPop .tp-card{width:100%;max-width:420px;max-height:100%;overflow:auto;background:#F3EEEA;border-radius:22px;padding:18px 16px 14px;box-shadow:0 18px 50px rgba(40,10,20,.35);color:#2B1F24;word-break:keep-all;text-align:center}
+#tpPop .tp-hd{display:flex;align-items:center;justify-content:center;gap:8px;font-weight:900;font-size:15px;margin:0 0 8px}
+#tpPop .tp-hd img{width:32px;height:32px}
+#tpPop .tp-k{font-weight:900;font-size:15px;letter-spacing:1px;color:#7B1733}
+#tpPop h3{margin:2px 0 4px;font-size:34px;line-height:1.15;font-weight:900;letter-spacing:-1px}
+#tpPop h3 em{font-style:normal;color:#7B1733}
+#tpPop .tp-s{font-size:13.5px;font-weight:700;color:#5A4A50;margin-bottom:12px}
+#tpPop .tp-lead{font-size:15.5px;font-weight:800;margin:4px 0 10px}
+#tpPop .tp-lead b{color:#7B1733}
+#tpPop .tp-g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#tpPop .tp-g div{background:#7B1733;border-radius:14px;padding:14px 6px 12px;box-shadow:0 4px 10px rgba(80,10,30,.18)}
+#tpPop .tp-g b{display:block;font-size:24px;line-height:1.15;font-weight:900;color:#fff;letter-spacing:-.5px}
+#tpPop .tp-g span{display:block;font-size:12.5px;font-weight:700;color:#FFD9CF;margin-top:5px}
+#tpPop .tp-base{font-size:13.5px;font-weight:700;margin:10px 0 0}
+#tpPop .tp-base b{color:#7B1733}
+#tpPop .tp-band{background:#7B1733;border-radius:16px;padding:14px 8px;margin:12px 0 0}
+#tpPop .tp-band small{display:block;font-size:15px;font-weight:800;color:#F6D6CE}
+#tpPop .tp-band strong{display:block;font-family:'Gowun Batang','Noto Serif KR',serif;font-size:27px;line-height:1.25;font-weight:700;color:#FFC93C;letter-spacing:-.5px}
+#tpPop .tp-go{display:block;margin:10px 0 0;padding:14px;border-radius:14px;background:#7B1733;color:#fff!important;font-size:17px;font-weight:900;text-decoration:none}
+#tpPop .tp-note{font-size:11.5px;line-height:1.5;color:#5A4A50;margin:10px 2px 0;text-align:left}
+#tpPop .tp-ft{display:flex;justify-content:flex-end;margin:8px 2px 0;font-size:12.5px}
+#tpPop .tp-ft a{color:#5A4A50;text-decoration:underline;font-weight:700}
+#tpPop .tp-x{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:60px;height:60px;border-radius:50%;z-index:9700;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#FFD75E,#E8A912);border:3px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.3);font-size:26px;font-weight:900;color:#3a2a00;cursor:pointer}
+body.has-tab #tpPop .tp-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area-inset-bottom,0px))}
+</style>
+<script id="tpPopJs">
+/* 2026-10-05 대표님 「홈페이지 팝업창 그리고 공지사항란」 「아에 문제소지없게 만들어」 — 원장 상담 팝업(영어, 토픽하자!).
+   · 학원 등록(평생직업교육학원/성인대상어학) 범위: 학생 수업 아님·학부모 상담임을 명시, 법정 표시(등록번호·학원명·교습과정·교습비) 포함
+   · 리뷰 팝업(#rvPop)이 떠 있으면 닫힌 뒤에 뜹니다. 「오늘 하루 보지 않기」 · 검수용 ?tppop=1
+   · 닫기 = 노란 원형, 화면 아래 가운데 */
+(function(){
+ var OPEN=Date.UTC(2026,9,16,15,0,0); /* = 2026-10-17 00:00 KST 그랜드오픈 */
+ function today(){var d=new Date(Date.now()+9*3600e3);return d.toISOString().slice(0,10);}
+ function force(){return /[?&]tppop=1/.test(location.search);}
+ function hidden(){try{return localStorage.getItem('sga_tppop_off')===today();}catch(e){return false;}}
+ function vis(id){var e=document.getElementById(id);return e&&getComputedStyle(e).display!=='none'&&e.offsetHeight>0;}
+ function busy(){
+  if(vis('introSplash')||vis('sgGate')||vis('pgModal')||vis('sgShop'))return true;
+  if(document.getElementById('rvPop')||document.getElementById('admLogin')||document.getElementById('admPanel'))return true;
+  return false;
+ }
+ window.tpPopClose=function(off){
+  if(off){try{localStorage.setItem('sga_tppop_off',today());}catch(e){}}
+  var p=document.getElementById('tpPop'); if(p){p.classList.remove('on');setTimeout(function(){p.remove();},250);}
+ };
+ function show(){
+  if(document.getElementById('tpPop'))return;
+  var logo=(document.querySelector('#rvPop .nrp-hd img')||{}).src||'';
+  var m=document.createElement('div'); m.id='tpPop'; m.setAttribute('role','dialog'); m.setAttribute('aria-label','원장 상담 안내');
+  m.innerHTML='<div class="tp-card">'
+   +'<div class="tp-hd"><b>SGA</b> 산본글로벌어학원</div>'
+   +'<div class="tp-k">TALK + SPEAK</div>'
+   +'<h3>영어, <em>토픽</em>하자!</h3>'
+   +'<div class="tp-s">TALK 말하듯 편하게 + SPEAK 전문가처럼 또렷하게</div>'
+   +'<div class="tp-lead">영어 고민이라면, 무엇이든 <b>원장이 직접</b> 들어드립니다</div>'
+   +'<div class="tp-g"><div><b>유학</b><span>어학 준비, 어디서부터</span></div><div><b>외고</b><span>영어 준비 방향 · 학부모 상담</span></div>'
+   +'<div><b>수능 영어</b><span>우리 아이 공부법 · 학부모 상담</span></div><div><b>취업 어학시험</b><span>토익·토스·오픽·JLPT·HSK</span></div></div>'
+   +'<div class="tp-base">영어회화 · 토익은 기본, <b>아이 진학부터 내 취업까지</b></div>'
+   +'<div class="tp-band"><strong>언제나 편하게 물어보세요</strong></div>'
+   +'<a class="tp-go" href="tel:0314666969" onclick="tpPopClose(false)">전화 상담 031-466-6969</a>'
+   +'<div class="tp-note">'+NOTE1+'<br>'+LEGAL+'</div>'
+   +'<div class="tp-ft"><a href="#" onclick="tpPopClose(true);return false;">오늘 하루 보지 않기</a></div>'
+   +'</div><button class="tp-x" type="button" aria-label="닫기" onclick="tpPopClose(false)">✕</button>';
+  m.addEventListener('click',function(e){if(e.target===m)tpPopClose(false);});
+  document.body.appendChild(m); requestAnimationFrame(function(){m.classList.add('on');});
+ }
+ var NOTE1="※ 산본글로벌어학원은 성인 대상 어학원입니다. 초·중·고 학생 수업은 하지 않으며, 자녀 영어·진학은 학부모님 상담으로 도와드립니다.", LEGAL="산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청) · 교습과정 성인대상어학 · 교습비 영어·일본어·중국어 회화 월 180,000원 / 시험대비 월 210,000원 · 그 밖에 추가로 받는 경비 없음";
+ function start(){
+  if(!force()&&(Date.now()<OPEN||hidden()))return;
+  var n=0,calm=0,t=setInterval(function(){
+   n++; if(n>360){clearInterval(t);return;}          /* 3분 안에 기회가 없으면 이번 방문은 쉽니다 */
+   if(busy()){calm=0;return;}
+   if(++calm>=4){clearInterval(t);show();}
   },500);
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
