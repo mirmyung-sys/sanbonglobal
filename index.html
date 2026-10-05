@@ -5553,9 +5553,8 @@ var NOTICES=[
       확인 결과 계약학과 입시에는 어학성적이 반영되지 않고 대교협 규정상 제출이 금지입니다.
       허위광고가 되므로 사실에 맞게 각도를 바꿔 썼습니다(취업 단계에서 필요하다는 쪽). */
  /* 2026-10-05 대표님 「홈페이지 팝업창 그리고 공지사항란」 「아에 문제소지없게」 — 원장 상담 안내(성인대상어학 범위, 교습비 표시 포함) */
- {id:'n17', tag:'공지', t:'영어, 토픽하자! — 영어 고민이라면 원장이 직접 들어드립니다', d:'2026.10.05', pin:1,
-  b:'<p><b>TALK</b>는 말하듯 편하게, <b>SPEAK</b>는 전문가처럼 또렷하게. 둘을 합쳐 <b>토픽</b>입니다.</p>'
-    +'<p>영어 고민이라면, 무엇이든 <b>원장이 직접</b> 들어드립니다.</p>'
+ {id:'n17', tag:'공지', t:'영어 고민이라면, 무엇이든 원장이 직접 들어드립니다 — 유학·외고·수능 영어·취업 어학시험', d:'2026.10.05', pin:1,
+  b:'<p>영어 고민이라면, 무엇이든 <b>원장이 직접</b> 들어드립니다.</p>'
     +'<ul><li><b>유학</b> — 어학 준비, 어디서부터</li><li><b>외고</b> — 영어 준비 방향 (학부모님 상담)</li><li><b>수능 영어</b> — 우리 아이 공부법 (학부모님 상담)</li><li><b>취업 어학시험</b> — 토익·토스·오픽·JLPT·HSK</li></ul>'
     +'<p>영어회화 · 토익은 기본, 아이 진학부터 내 취업까지.</p>'
     +'<p><b>언제나 편하게 물어보세요.</b><br>031-466-6969 · 산본역 3번 출구 롯데프라자 7층</p>'
@@ -26057,7 +26056,7 @@ body.has-tab #tpPop{padding-bottom:calc(var(--sg-tabh,80px) + 90px + env(safe-ar
 #tpPop .tp-hd{display:flex;align-items:center;justify-content:center;gap:8px;font-weight:900;font-size:15px;margin:0 0 8px}
 #tpPop .tp-hd img{width:32px;height:32px}
 #tpPop .tp-k{font-weight:900;font-size:15px;letter-spacing:1px;color:#7B1733}
-#tpPop h3{margin:2px 0 4px;font-size:34px;line-height:1.15;font-weight:900;letter-spacing:-1px}
+#tpPop h3{margin:2px 0 12px;font-size:26px;line-height:1.3;font-weight:900;letter-spacing:-.5px}
 #tpPop h3 em{font-style:normal;color:#7B1733}
 #tpPop .tp-s{font-size:13.5px;font-weight:700;color:#5A4A50;margin-bottom:12px}
 #tpPop .tp-lead{font-size:15.5px;font-weight:800;margin:4px 0 10px}
@@ -26079,7 +26078,7 @@ body.has-tab #tpPop{padding-bottom:calc(var(--sg-tabh,80px) + 90px + env(safe-ar
 body.has-tab #tpPop .tp-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area-inset-bottom,0px))}
 </style>
 <script id="tpPopJs">
-/* 2026-10-05 대표님 「홈페이지 팝업창 그리고 공지사항란」 「아에 문제소지없게 만들어」 — 원장 상담 팝업(영어, 토픽하자!).
+/* 2026-10-05 대표님 「홈페이지 팝업창 그리고 공지사항란」 「아에 문제소지없게 만들어」 — 원장 상담 팝업. 10-05 대표님 「영어 토픽하자는 지워」 — 토픽 문구는 학원 비치 포스터 전용, 홈페이지에 넣지 않음.
    · 학원 등록(평생직업교육학원/성인대상어학) 범위: 학생 수업 아님·학부모 상담임을 명시, 법정 표시(등록번호·학원명·교습과정·교습비) 포함
    · 리뷰 팝업(#rvPop)이 떠 있으면 닫힌 뒤에 뜹니다. 「오늘 하루 보지 않기」 · 검수용 ?tppop=1
    · 닫기 = 노란 원형, 화면 아래 가운데 */
@@ -26104,10 +26103,7 @@ body.has-tab #tpPop .tp-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
   var m=document.createElement('div'); m.id='tpPop'; m.setAttribute('role','dialog'); m.setAttribute('aria-label','원장 상담 안내');
   m.innerHTML='<div class="tp-card">'
    +'<div class="tp-hd"><b>SGA</b> 산본글로벌어학원</div>'
-   +'<div class="tp-k">TALK + SPEAK</div>'
-   +'<h3>영어, <em>토픽</em>하자!</h3>'
-   +'<div class="tp-s">TALK 말하듯 편하게 + SPEAK 전문가처럼 또렷하게</div>'
-   +'<div class="tp-lead">영어 고민이라면, 무엇이든 <b>원장이 직접</b> 들어드립니다</div>'
+   +'<h3>영어 고민이라면,<br>무엇이든 <em>원장이 직접</em><br>들어드립니다</h3>'
    +'<div class="tp-g"><div><b>유학</b><span>어학 준비, 어디서부터</span></div><div><b>외고</b><span>영어 준비 방향 · 학부모 상담</span></div>'
    +'<div><b>수능 영어</b><span>우리 아이 공부법 · 학부모 상담</span></div><div><b>취업 어학시험</b><span>토익·토스·오픽·JLPT·HSK</span></div></div>'
    +'<div class="tp-base">영어회화 · 토익은 기본, <b>아이 진학부터 내 취업까지</b></div>'
