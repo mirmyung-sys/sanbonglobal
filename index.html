@@ -24180,6 +24180,8 @@ function sbPut(keep){
   h='<div class="sb-k">'+_sgsE(st2.s)+' · '+(P.ui+1)+'과 / '+arr.length+'과</div>';
   h+='<h2>'+_sgsE(L.t)+'</h2>';
   if(L.unit) h+='<div class="sb-u">'+_sgsE(L.unit)+(L.gtag?' <em>'+_sgsE(L.gtag)+'</em>':'')+'</div>';
+  /* 2026-10-05 대표님 「기존 화면 그대로인데」 — 아키 AI 강의실 책 화면에도 과 영상을 맨 위에 붙입니다(vid 있는 과만) */
+  if(L.vid) h+='<div class="sb-vid" ontouchstart="event.stopPropagation()" ontouchend="event.stopPropagation()" style="margin:10px 0 18px">'+'<div class="sb-lab">▶ 영상으로 먼저 보세요</div>'+'<video controls playsinline preload="metadata" poster="'+(L.vpo||'')+'" src="'+L.vid+'" style="width:100%;aspect-ratio:16/9;border-radius:12px;background:#E9E2DA;display:block"></video></div>';
   if(_sbV.ko&&L.goal) h+='<p class="sb-goal">'+L.goal+'</p>';
   /* ── 핵심 표현 ── */
   h+='<div class="sb-lab">이 표현만 외우시면 됩니다</div>';
