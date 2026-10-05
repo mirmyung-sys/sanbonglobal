@@ -10198,7 +10198,7 @@ AITXT['kor_basic']=[
  q:[["사정이 있어 갈 수 없을 때?","안 가요|못 가요|가지 마세요|안 갔어요",1,"능력·상황으로 불가능하면 못입니다."],["「아프다」에 이유를 붙이면?","아프어서|아파서|아팠어서|아프서",1,"어간 모음이 ㅏ이므로 아파서입니다."],["「담배를 피우다」를 금지하면?","피우지 마세요|피우세요|안 피워요|못 피워요",0,"-지 마세요가 금지 표현입니다."],["「어제 아파서 못 갔어요」에서 틀린 표현은?","아파서|아팠어서|못 갔어요|어제",1,"-아서 앞에는 과거를 쓰지 않습니다."]]}
 ];
 AITXT['eng_basic']=[
-{t:'이름 묻고 답하기',unit:'Unit 1 · What\'s your name?',gtag:'be동사 · 소유격 형용사',
+{t:'이름 묻고 답하기',vid:'media/en_basic_01.mp4',vpo:'media/en_basic_01.jpg',unit:'Unit 1 · What\'s your name?',gtag:'be동사 · 소유격 형용사',
  goal:'처음 만난 사람에게 이름을 말하고, 상대 이름을 묻습니다.',
  key:[['안녕하세요','Hello. / Hi.','「헬로우」가 아니라 <b>헬-로</b>. 끝을 올리지 않습니다'],['저는 민아예요','I\'m Mina.','I am을 다 발음하지 않습니다. <b>암</b> 한 덩어리로'],['성함이 어떻게 되세요?','What\'s your name?','왓츠 유어 → <b>와쳐</b>'],['제 이름은 김민아입니다','My name is Mina Kim.','My name is 는 격식 있는 자리에서'],['만나서 반갑습니다','Nice to meet you.','나이스 투 → <b>나이스터</b>'],['저도 반갑습니다','Nice to meet you, too.','too를 빼면 인사를 안 돌려준 게 됩니다'],['성함 철자가 어떻게 되나요?','How do you spell your name?','이름을 못 알아들었을 때'],['다시 말씀해 주시겠어요?','Could you say that again?','이 한 문장이면 다 해결됩니다']],
  dlg:[['A','Hi. I\'m Daniel. What\'s your name?','안녕하세요. 저는 다니엘입니다. 성함이 어떻게 되세요?'],['B','I\'m Mina. Nice to meet you.','저는 민아예요. 만나서 반갑습니다.'],['A','Nice to meet you, too. How do you spell your name?','저도 반갑습니다. 성함 철자가 어떻게 되나요?'],['B','M-I-N-A. And my last name is Kim.','M-I-N-A 이고, 성은 김입니다.'],['A','Got it. Is this your first class?','알겠습니다. 첫 수업이세요?'],['B','Yes, it is. I\'m a little nervous.','네, 맞아요. 조금 긴장되네요.']],
@@ -18746,6 +18746,8 @@ function atPrev(){atBack();}
 function _atUse(k){return !/^tc_/.test(k||'');}
 function aiLesson(n,plain){
  var k=aiTxtKey(), arr=AITXT[k];
+ /* 2026-10-05 대표님 「영어 1과가 아직도 영상이 아니네 영상으로 바꿔줘」 — vid 가 있는 과는 영상으로 먼저 엽니다. 교재 화면은 영상 아래 버튼으로. */
+ if(!plain&&!window._lsVidSkip&&arr&&arr[n-1]&&arr[n-1].vid&&(aiFreeNow()||sgaIsMaster())){return lsVidOpen(n,arr[n-1]);}
  if(!plain&&_atUse(k)&&arr&&arr[n-1]&&(aiFreeNow()||sgaIsMaster())){var e=document.getElementById('lsModal');if(e&&e.parentNode)e.parentNode.removeChild(e);return aiTeach(n);}
  if(plain){var e2=document.getElementById('lsModal');if(e2&&e2.parentNode)e2.parentNode.removeChild(e2);}
  if(!arr||!arr[n-1]){sgToast('<b>'+n+'과는 준비 중입니다</b><br>영어 베이직부터 순서대로 열어 드리고 있습니다.');return;}
@@ -26126,6 +26128,38 @@ body.has-tab #tpPop .tp-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
 })();
+</script>
+
+<style id="lsVidCss">
+#lsVid{position:fixed;inset:0;z-index:9500;background:#F3EEEA;display:flex;flex-direction:column;align-items:center;overflow:auto;padding:18px 14px calc(110px + env(safe-area-inset-bottom,0px))}
+body.has-tab #lsVid{padding-bottom:calc(var(--sg-tabh,80px) + 100px + env(safe-area-inset-bottom,0px))}
+#lsVid .lv-in{width:100%;max-width:960px}
+#lsVid .lv-k{font-size:13px;font-weight:800;color:#0A5C3D;letter-spacing:.5px}
+#lsVid h3{margin:4px 0 12px;font-size:24px;font-weight:900;color:#1F1F1F}
+#lsVid video{width:100%;aspect-ratio:16/9;background:#E9E2DA;border-radius:14px;display:block;box-shadow:0 8px 24px rgba(40,30,20,.18)}
+#lsVid .lv-b{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+#lsVid .lv-b button{flex:1;min-width:150px;padding:14px;border-radius:12px;font-size:16px;font-weight:800;cursor:pointer;border:0}
+#lsVid .lv-go{background:#0A5C3D;color:#fff}
+#lsVid .lv-q{background:#fff;color:#0A5C3D;border:2px solid #0A5C3D!important}
+#lsVid .lv-x{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:60px;height:60px;border-radius:50%;z-index:9600;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#FFD75E,#E8A912);border:3px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.3);font-size:26px;font-weight:900;color:#3a2a00;cursor:pointer}
+body.has-tab #lsVid .lv-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area-inset-bottom,0px))}
+</style>
+<script id="lsVidJs">
+/* 2026-10-05 대표님 「영어 1과가 아직도 영상이 아니네 영상으로 바꿔줘봐 니가 만든거」 — 과 영상 플레이어.
+   AITXT 과 객체에 vid(영상)·vpo(첫 화면 그림)가 있으면 aiLesson 이 이 화면을 먼저 엽니다.
+   닫기 = 노란 원형, 화면 아래 가운데 / 「교재 화면으로 공부하기」 = 기존 교재·문제 화면 */
+function lsVidClose(){var m=document.getElementById('lsVid');if(m){try{m.querySelector('video').pause();}catch(e){}m.parentNode.removeChild(m);}document.documentElement.style.overflow='';}
+function lsVidText(n){lsVidClose();window._lsVidSkip=true;try{aiLesson(n);}finally{window._lsVidSkip=false;}}
+function lsVidOpen(n,L){
+ lsVidClose();
+ var m=document.createElement('div');m.id='lsVid';m.setAttribute('role','dialog');m.setAttribute('aria-label',n+'과 영상');
+ m.innerHTML='<div class="lv-in"><div class="lv-k">'+n+'과 · 영상 수업</div><h3>'+L.t+'</h3>'
+  +'<video controls playsinline preload="metadata" poster="'+(L.vpo||'')+'" src="'+L.vid+'"></video>'
+  +'<div class="lv-b"><button class="lv-go" type="button" onclick="lsVidText('+n+')">영상 다 봤어요 · 교재와 문제로 복습하기 ›</button></div></div>'
+  +'<button class="lv-x" type="button" aria-label="닫기" onclick="lsVidClose()">✕</button>';
+ document.body.appendChild(m);document.documentElement.style.overflow='hidden';
+ return false;
+}
 </script>
 </body>
 </html>
