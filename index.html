@@ -4920,11 +4920,11 @@ sgLb.i=0;
  /* 2026-09-17 보강 — 예전에는 한 번 코드를 넣으면 그 브라우저가 영원히 그냥 들어왔습니다.
     열쇠 이름을 바꿔 지금까지 나간 통행증을 전부 무효로 만들고, 7일 만료를 붙였습니다.
     주소 끝에 #lock 을 붙여 열면 그 자리에서 통행증을 버립니다 (손님 눈으로 보실 때). */
- var GATE_ON=true, CODE='1001', OPEN_FROM=new Date(Date.UTC(2026,9,16,15,0,0)); /* 2026-10-04 대표님 「공개일 10월17일」 — 10/17 0시(한국시간) 자동 공개 */ /* 2026-09-30 대표님 「10월1일 되도 잠깐 잠거」 — 10/1 자동 오픈 끔. 열 때는 이 날짜만 오늘로 바꾸거나 GATE_ON=false */
- var KEY='sga_gate_c2', DAYS=7;
+ var GATE_ON=true, CODE='2513', OPEN_FROM=new Date(Date.UTC(2026,9,16,15,0,0)); /* 2026-10-04 대표님 「공개일 10월17일」 — 10/17 0시(한국시간) 자동 공개 */ /* 2026-09-30 대표님 「10월1일 되도 잠깐 잠거」 — 10/1 자동 오픈 끔. 열 때는 이 날짜만 오늘로 바꾸거나 GATE_ON=false */
+ var KEY='sga_gate_c3', DAYS=7;
  var g=document.getElementById('sgGate');
  function off(){if(g&&g.parentNode)g.parentNode.removeChild(g);document.documentElement.style.overflow='';}
- function pass(){ /* 통행증이 살아 있는가 */
+ function pass(){ /* 통행증이 살아 있는가 */ /* 2026-10-07 대표님 「홈페이지 입장코드 2513으로」 — 코드 1001→2513, 열쇠 c2→c3(옛 코드 통행증 무효) */
   try{
    if((location.hash||'')==='#lock'){localStorage.removeItem(KEY);return false;}
    var v=localStorage.getItem(KEY); if(!v)return false;
@@ -4935,7 +4935,7 @@ sgLb.i=0;
  }
  try{ localStorage.removeItem('sga_gate_ok'); }catch(e){}   /* 예전 열쇠 청소 */
  /* 2026-09-18 — 토스페이먼츠 PG 심사가 들어갔습니다. 심사자가 이 게이트에 막히면
-    「URL 접속 문제」로 거절됩니다. 게이트를 끄지 않고, 주소에 ?k=1001 을 붙인 링크로
+    「URL 접속 문제」로 거절됩니다. 게이트를 끄지 않고, 주소에 ?k=2513 을 붙인 링크로
     들어온 사람만 코드 입력 없이 통과시킵니다. 게이트·noindex·robots.txt 는 그대로입니다.
     링크를 모르는 사람은 여전히 못 들어옵니다. */
  try{
