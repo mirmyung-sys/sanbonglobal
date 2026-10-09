@@ -7838,9 +7838,77 @@ document.addEventListener('click',function(ev){
   sgToast('<b>전화번호를 복사했습니다</b><br>031-466-6969 · 학원으로 전화 주세요.');
  }
 },true);
+/* 2026-10-09 코페이 온라인 카드결제 — 서버(SGA 결제서버)에 MID·Mkey가 있으면 카드 버튼이 바로 결제로 바뀝니다 */
+/* SGA 코페이 카드결제 — 홈페이지용 (Mkey 없음. 서명은 SGA 결제서버가 만든다)
+ * 사용: sgaKorpay({amt:390000, goods:'토익 2개월', name:'홍길동', tel:'01012345678'})
+ * 결제창 주소: https://pgapi.korpay.com/payInit_hash.korpay (POST, 2026-10-09 실측: GET → 405 = 주소 존재)
+ */
+var SGA_PAY_SERVER = 'https://script.google.com/macros/s/AKfycbwy-G2PpY6cGNwJSjCarp06NDPCeUm_eidvvXlOVBYZDhktUxdxL_aKH03mrgBbUgST/exec';   // ← SGA 결제서버 웹앱 주소(배포 후 마리가 채움)
+var KP_PAY_URL = 'https://pgapi.korpay.com/payInit_hash.korpay';
+
+/* credentials:'omit' — 구글 계정 여러 개로 로그인한 손님도 /u/1/ 오류 없이 열리게 (2026-10-09 실측) */
+function _kpJsonp(url, cb){
+  fetch(url, { credentials: 'omit' }).then(function(r){ return r.json(); }).then(cb)
+    .catch(function(){ cb({ ok:false, msg:'결제 서버에 연결하지 못했습니다. 잠시 후 다시 시도해 주세요.' }); });
+}
+/* 서버에 MID·Mkey가 들어갔는지 — false면 홈페이지는 기존 「담당자 연락」 흐름 유지 */
+function sgaPayReady(cb){ if (!SGA_PAY_SERVER) return cb(false); _kpJsonp(SGA_PAY_SERVER, function(d){ cb(!!(d && d.ready)); }); }
+
+function sgaKorpay(o){
+  if (!SGA_PAY_SERVER) { alert('카드결제 준비 중입니다. 031-466-6969로 문의해 주세요.'); return; }
+  var q = 'a=ready&amt=' + encodeURIComponent(o.amt) + '&goods=' + encodeURIComponent(o.goods || '')
+        + '&name=' + encodeURIComponent(o.name || '') + '&tel=' + encodeURIComponent(o.tel || '');
+  _kpJsonp(SGA_PAY_SERVER + '?' + q, function(d){
+    if (!d || !d.ok) { alert((d && d.msg) || '결제를 시작하지 못했습니다.'); return; }
+    _kpOpen(d);
+  });
+}
+
+function _kpOpen(d){
+  var wrap = document.getElementById('kpWrap');
+  if (!wrap) {
+    wrap = document.createElement('div'); wrap.id = 'kpWrap';
+    wrap.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:rgba(43,35,32,.55);display:flex;align-items:center;justify-content:center;padding:12px';
+    wrap.innerHTML = '<div style="position:relative;width:100%;max-width:480px;height:min(720px,92vh);background:#fff;border-radius:20px;overflow:hidden">'
+      + '<iframe name="kpFrame" id="kpFrame" style="width:100%;height:100%;border:0" allow="payment"></iframe></div>'
+      + '<button type="button" onclick="kpClose()" aria-label="닫기" style="position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:2;width:56px;height:56px;border-radius:50%;border:0;background:#F5C542;color:#2B2320;font-size:26px;font-weight:900;box-shadow:0 6px 16px rgba(0,0,0,.2)">✕</button>';
+    document.body.appendChild(wrap);
+  }
+  wrap.style.display = 'flex';
+  var f = document.createElement('form');
+  f.method = 'post'; f.action = KP_PAY_URL; f.target = 'kpFrame'; f.acceptCharset = 'UTF-8'; f.style.display = 'none';
+  ['payMethod','id','goodsName','orderNo','amt','returnUrl','ediDate','hashStr','buyerName','buyerTel','buyerEmail','reqReserved'].forEach(function(k){
+    if (d[k] == null || d[k] === '') return;
+    var i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = d[k]; f.appendChild(i);
+  });
+  document.body.appendChild(f); f.submit(); f.remove();
+  window._kpReturnUrl = d.returnUrl;
+}
+function kpClose(){ var w = document.getElementById('kpWrap'); if (w) w.style.display = 'none'; }
+
+/* 결제 완료 → iframe 이 postMessage 로 결과를 보냄 → returnUrl(SGA 결제서버)로 FORM 제출 (가이드 2장) */
+window.addEventListener('message', function(e){
+  if (!/korpay\.com$/.test((e.origin || '').replace(/^https?:\/\//, '').split(':')[0])) return;
+  var data = e.data;
+  if (typeof data === 'string') { try { data = JSON.parse(data); } catch (x) { return; } }
+  if (!data || typeof data !== 'object' || !window._kpReturnUrl) return;
+  if (!('resultCd' in data) && !('resultMsg' in data)) return;
+  var f = document.createElement('form'); f.method = 'post'; f.action = window._kpReturnUrl; f.style.display = 'none';
+  Object.keys(data).forEach(function(k){ var i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = data[k] == null ? '' : data[k]; f.appendChild(i); });
+  document.body.appendChild(f); f.submit();
+});
+window._kpReady=false;
+sgaPayReady(function(ok){window._kpReady=ok;var b=document.getElementById('spPayBtn');if(ok&&b)b.innerHTML='💳 카드로 바로 결제하기';});
+(function(){try{var q=new URLSearchParams(location.search);if(q.get('paid')){var ok=q.get('r')==='ok';setTimeout(function(){try{sgToast(ok?'<b>결제가 완료되었습니다</b><br>담당자가 연락드려 첫 수업 일정을 잡아 드립니다.':'<b>결제가 완료되지 않았습니다</b><br>다시 시도하시거나 031-466-6969로 전화 주세요.');}catch(e){}},800);history.replaceState(null,'',location.pathname+location.hash);}}catch(e){}})();
+/* 대표님 테스트용: sanbonglobal.com/?paytest=1 → 화면 아래에 「1,000원 테스트 결제」 버튼 (손님에겐 안 보임) */
+(function(){try{if(new URLSearchParams(location.search).get('paytest')!=='1')return;var go=function(){var b=document.createElement('button');b.type='button';b.textContent='💳 1,000원 테스트 결제';b.style.cssText='position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:2147483647;white-space:nowrap;padding:16px 26px;border:0;border-radius:40px;background:#F5C542;color:#2B2320;font-weight:900;font-size:17px;box-shadow:0 6px 16px rgba(0,0,0,.2)';b.onclick=function(){sgaKorpay({amt:1000,goods:'결제 연동 테스트',name:'대표 테스트'});};document.body.appendChild(b);};if(document.body)go();else window.addEventListener('DOMContentLoaded',go);}catch(e){}})();
 function spPay(kind){
  if(!agSync('agPay')){alert('필수 동의 항목을 모두 확인해 주세요.');return;}
  var amt=_num(document.getElementById('spPtTot').innerHTML);
+ if(kind==='card'&&window._kpReady){
+  var g=((_payItemKeep||'').replace(/<br\s*\/?>/g,' ').replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim()||'산본글로벌어학원 수강료').slice(0,50);
+  var nm='';try{nm=localStorage.getItem('sga_name')||'';}catch(e){}
+  sgaKorpay({amt:amt,goods:g,name:(nm==='회원'?'':nm)});return;}
  var t=_orderText(kind,amt);
  var enc=encodeURIComponent(t);
  var d=document.getElementById('spDone');if(!d)return;
@@ -7886,7 +7954,7 @@ function spModalHTML(){return '<div class="sp-modal" id="spModal"><div class="sp
  +'<div class="sp-sum"><div><span id="spSumLb">수강료</span><b id="spSumAmt">-</b></div><div class="mi"><span>적립금 사용</span><b id="spPtVal">-0원</b></div><div><span>최종 결제금액</span><b id="spPtTot">-</b></div></div>'
  +payAgreeHTML()
  +'<label class="sp-kko" id="spKkoWrap"><input type="checkbox" id="spKko" checked><span><b>카카오톡으로 결제내역 바로 받기</b><br>결제가 끝나면 알림톡으로 <b>결제 내역</b>을 보내드립니다. 계약 이행에 필요한 정보성 안내라 광고 수신동의와 무관하게 발송됩니다.</span></label>'
- +'<button class="sp-charge2" id="spPayBtn" disabled onclick="spPay(\'card\')">💳 카드 결제 요청하기 (담당자 연락)</button>'
+ +'<button class="sp-charge2" id="spPayBtn" disabled onclick="spPay(\'card\')">'+(window._kpReady?'💳 카드로 바로 결제하기':'💳 카드 결제 요청하기 (담당자 연락)')+'</button>'
  +'<button class="sp-charge" onclick="spPay(\'bank\')">🏦 계좌이체로 지금 결제하기</button>'
  +'<div id="spDone" style="display:none"></div>'
  +'<div class="sp-mfoot"><span onclick="spClose()">닫기</span></div>'
