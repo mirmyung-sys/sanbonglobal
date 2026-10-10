@@ -4852,14 +4852,15 @@ html,body{overflow-x:hidden;max-width:100%}
 #sgGate .cs-ev small{display:inline-block;background:#FFC93C;color:#5a2a12;font-size:12.5px;font-weight:900;padding:3px 10px;border-radius:20px;letter-spacing:.04em}
 #sgGate .cs-ev strong{display:block;margin-top:7px;font-size:21px;font-weight:900;letter-spacing:-.02em}
 #sgGate .cs-ev span{display:block;margin-top:3px;font-size:14px;font-weight:700;opacity:.95}
-#sgGate .cs-fd{position:relative;margin:16px auto 0;max-width:360px;height:190px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#F4EEE2,#F3EDE1);border:2px solid #E3D3CC;box-shadow:0 8px 20px rgba(123,23,51,.14);text-align:left;word-break:keep-all}
-#sgGate .cs-fd img{position:absolute;right:-38px;bottom:0;height:100%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 25%);mask-image:linear-gradient(90deg,transparent 0,#000 25%)}
-#sgGate .cs-fd .t{position:absolute;left:14px;top:14px;width:190px;color:#2B1F24}
-#sgGate .cs-fd small{display:inline-block;background:#7B1733;color:#fff;font-size:12px;font-weight:900;padding:3px 10px;border-radius:20px}
-#sgGate .cs-fd strong{display:block;margin-top:8px;font-size:27px;line-height:1.15;font-weight:900;letter-spacing:-1px}
-#sgGate .cs-fd strong b{color:#7B1733;font-size:34px}
-#sgGate .cs-fd span{display:block;margin-top:6px;font-size:14px;line-height:1.4;font-weight:800}
-#sgGate .cs-fd em{display:block;margin-top:6px;font-style:normal;font-size:11.5px;font-weight:700;color:#8a7468}
+#sgGate .cs-fd{margin:16px auto 0;max-width:360px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 8px 20px rgba(123,23,51,.18);text-align:center;word-break:keep-all}
+#sgGate .cs-fd .p{position:relative;height:210px}
+#sgGate .cs-fd .p img{width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block}
+#sgGate .cs-fd small{position:absolute;left:12px;top:12px;background:#7B1733;color:#fff;font-size:13px;font-weight:900;padding:5px 12px;border-radius:20px}
+#sgGate .cs-fd strong{display:block;background:#7B1733;color:#fff;font-size:32px;line-height:1.2;font-weight:900;letter-spacing:-1px;padding:10px 6px}
+#sgGate .cs-fd strong b{color:#FFC93C}
+#sgGate .cs-fd span{display:block;padding:10px 8px 0;font-size:18px;line-height:1.4;font-weight:900;color:#2B1F24}
+#sgGate .cs-fd span b{color:#7B1733;font-size:21px}
+#sgGate .cs-fd em{display:block;padding:4px 0 10px;font-style:normal;font-size:12px;font-weight:800;color:#8a7468}
 #sgGate .cs-call{font-size:17px;padding:16px;box-shadow:0 8px 18px rgba(10,92,61,.25)}
 #sgGate .cs-lb{position:fixed;inset:0;z-index:5;display:none;flex-direction:column;align-items:center;justify-content:center;background:#FAF3EA;padding:16px 14px 110px}
 #sgGate .cs-lb.on{display:flex}
@@ -4894,7 +4895,7 @@ html,body{overflow-x:hidden;max-width:100%}
       </div>
       <a class="cs-loc" href="https://map.naver.com/p/search/%EA%B5%B0%ED%8F%AC%EC%8B%9C%20%EC%82%B0%EB%B3%B8%EB%A1%9C323%EB%B2%88%EA%B8%B8%2016-7" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="#C8341F" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>롯데프라자 7층 · 산본역 3번 출구<b>길찾기 ›</b></a>
     </div>
-    <div class="cs-fd"><img src="img/pop/fd_model.jpg" alt=""><div class="t"><small>토익 · 영어회화</small><strong>오늘이 <b>1일</b>입니다</strong><span>매달 1일 안 기다려도<br>수업일수 다 채워드려요</span><em>※ 일본어·중국어 반 제외</em></div></div>
+    <div class="cs-fd"><div class="p"><img src="img/pop/fd_model2.jpg" alt=""><small>토익 · 영어회화</small></div><strong>오늘이 <b>1일</b>입니다</strong><span>매달 1일 안 기다려도<br><b>수업일수 다 채워드려요</b></span><em>※ 일본어·중국어 반 제외</em></div>
     <div class="cs-ev"><small>오픈 이벤트 · 10월 31일까지</small><strong>회화반 오픈 10% + 환승 10%</strong><span>다른 학원에서 옮겨 오시면 최대 20%</span></div>
     <a class="cs-call" href="tel:031-466-6969">상담 문의 031-466-6969</a>
     <button type="button" class="cs-staff" onclick="var x=document.getElementById('sgGateBox');x.classList.toggle('on');if(x.classList.contains('on')){var i=document.getElementById('sgGateIn');if(i)i.focus();}">관계자 입장</button>
@@ -26278,21 +26279,21 @@ body.has-tab #tpPop .tp-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
 </script>
 
 <style id="fdPopCss">
-/* 2026-10-10 대표님 「글이 아니라 사진이 낫지 않을까 … 연예인을 모델로」 — 해커스·시원스쿨 팝업 구조(모델 사진 + 큰 글자 + 버튼 하나)로 교체 */
+/* 2026-10-10 대표님 「글이 아니라 사진」 → 「글자가 잘 안보여 … 여성을 아에 젊은 사람으로」 — 사진 위 → 와인 띠 큰 제목 → 흰 바탕 두 줄 → 버튼 하나 */
 #fdPop{position:fixed;inset:0;z-index:2147483647;background:rgba(40,22,28,.6);display:flex;align-items:center;justify-content:center;padding:16px 16px calc(96px + env(safe-area-inset-bottom,0px));opacity:0;transition:opacity .25s}
 body.has-tab #fdPop{padding-bottom:calc(var(--sg-tabh,80px) + 90px + env(safe-area-inset-bottom,0px))}
 #fdPop.on{opacity:1}
-#fdPop .fd-card{width:100%;max-width:380px;max-height:100%;overflow:auto;border-radius:22px;background:#F3EEEA;box-shadow:0 18px 50px rgba(0,0,0,.35);word-break:keep-all;font-family:Pretendard,'Noto Sans KR',sans-serif}
-#fdPop .fd-ph{position:relative;height:min(470px,56vh);overflow:hidden;background:linear-gradient(180deg,#F4EEE2,#F3EDE1)}
-#fdPop .fd-ph img{position:absolute;bottom:0;right:-70px;height:97%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%);mask-image:linear-gradient(90deg,transparent 0,#000 22%)}
-#fdPop .fd-tx{position:absolute;left:18px;top:18px;width:200px;z-index:2;color:#2B1F24}
-#fdPop .fd-bd{display:inline-block;background:#7B1733;color:#fff;font-weight:900;font-size:14px;padding:6px 13px;border-radius:999px}
-#fdPop .fd-h{margin:12px 0 0;font-size:44px;line-height:1.08;font-weight:900;letter-spacing:-2px}
-#fdPop .fd-h em{font-style:normal;color:#7B1733;font-size:64px}
-#fdPop .fd-s{margin-top:12px;font-size:17px;line-height:1.35;font-weight:800}
-#fdPop .fd-s b{color:#7B1733}
-#fdPop .fd-go{display:block;background:#7B1733;color:#fff!important;text-align:center;font-size:18px;font-weight:900;padding:16px 10px;text-decoration:none}
-#fdPop .fd-ft{display:flex;justify-content:space-between;align-items:center;padding:8px 14px 6px;font-size:11.5px;color:#5A4A50;font-weight:700}
+#fdPop .fd-card{width:100%;max-width:380px;max-height:100%;overflow:auto;border-radius:22px;background:#fff;box-shadow:0 18px 50px rgba(0,0,0,.35);word-break:keep-all;font-family:Pretendard,'Noto Sans KR',sans-serif}
+#fdPop .fd-ph{position:relative;height:min(300px,34vh);background:#F3EEEA}
+#fdPop .fd-ph img{width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block}
+#fdPop .fd-bd{position:absolute;left:14px;top:14px;background:#7B1733;color:#fff;font-weight:900;font-size:15px;padding:7px 14px;border-radius:999px;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+#fdPop .fd-band{background:#7B1733;color:#fff;text-align:center;padding:13px 8px 12px;font-weight:900;font-size:clamp(32px,10vw,40px);letter-spacing:-1.5px;line-height:1.15}
+#fdPop .fd-band em{font-style:normal;color:#FFC93C}
+#fdPop .fd-body{text-align:center;padding:13px 12px 12px;color:#2B1F24}
+#fdPop .fd-a{font-size:22px;font-weight:900;letter-spacing:-.5px}
+#fdPop .fd-b{font-size:clamp(23px,7vw,27px);font-weight:900;color:#7B1733;letter-spacing:-1px;margin-top:2px}
+#fdPop .fd-go{display:block;margin:0 12px;background:#7B1733;color:#fff!important;text-align:center;font-size:19px;font-weight:900;padding:15px 10px;border-radius:14px;text-decoration:none}
+#fdPop .fd-ft{display:flex;justify-content:space-between;align-items:center;padding:9px 14px 4px;font-size:12px;color:#5A4A50;font-weight:800}
 #fdPop .fd-ft a{color:#5A4A50;text-decoration:underline}
 #fdPop .fd-lg{padding:0 14px 10px;font-size:9.5px;line-height:1.45;color:#7a6a70}
 #fdPop .fd-x{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:60px;height:60px;border-radius:50%;z-index:2147483647;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#FFD75E,#E8A912);border:3px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.3);font-size:26px;font-weight:900;color:#3a2a00;cursor:pointer}
@@ -26322,9 +26323,9 @@ body.has-tab #fdPop .fd-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
   if(document.getElementById('fdPop'))return;
   var m=document.createElement('div'); m.id='fdPop'; m.setAttribute('role','dialog'); m.setAttribute('aria-label','토익·영어회화 등록 안내');
   m.innerHTML='<div class="fd-card">'
-   +'<div class="fd-ph"><img src="img/pop/fd_model.jpg" alt=""><div class="fd-tx"><span class="fd-bd">토익 · 영어회화</span>'
-   +'<div class="fd-h">오늘이<br><em>1일</em><br>입니다</div>'
-   +'<div class="fd-s">매달 1일<br>안 기다려도 돼요<br><br>수업일수는<br><b>다 채워드려요</b></div></div></div>'
+   +'<div class="fd-ph"><img src="img/pop/fd_model2.jpg" alt=""><span class="fd-bd">토익 · 영어회화</span></div>'
+   +'<div class="fd-band">오늘이 <em>1일</em>입니다</div>'
+   +'<div class="fd-body"><div class="fd-a">매달 1일 안 기다려도</div><div class="fd-b">수업일수 다 채워드려요</div></div>'
    +'<a class="fd-go" href="tel:0314666969" onclick="fdPopClose(false)">전화 상담 031-466-6969</a>'
    +'<div class="fd-ft"><span>※ 일본어·중국어 반 제외</span><a href="#" onclick="fdPopClose(true);return false;">오늘 하루 보지 않기</a></div>'
    +'<div class="fd-lg">'+LEGAL+'</div>'
