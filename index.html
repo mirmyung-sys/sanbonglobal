@@ -4858,6 +4858,7 @@ html,body{overflow-x:hidden;max-width:100%}
 #sgGate .cs-fd small{position:absolute;left:12px;top:12px;background:#7B1733;color:#fff;font-size:13px;font-weight:900;padding:5px 12px;border-radius:20px}
 #sgGate .cs-fd strong{display:block;background:#7B1733;color:#fff;font-size:32px;line-height:1.2;font-weight:900;letter-spacing:-1px;padding:10px 6px}
 #sgGate .cs-fd strong b{color:#FFC93C}
+#sgGate .cs-fd strong b.t2{display:block;font-size:52px;line-height:1.02;letter-spacing:-2px}
 #sgGate .cs-fd strong i{display:block;margin:0 auto 6px;width:max-content;font-style:normal;background:#FFC93C;color:#5a1020;font-size:24px;padding:3px 16px;border-radius:999px}
 #sgGate .cs-fd span{display:block;padding:10px 8px 0;font-size:18px;line-height:1.4;font-weight:900;color:#2B1F24}
 #sgGate .cs-fd span b{color:#7B1733;font-size:21px}
@@ -4896,7 +4897,7 @@ html,body{overflow-x:hidden;max-width:100%}
       </div>
       <a class="cs-loc" href="https://map.naver.com/p/search/%EA%B5%B0%ED%8F%AC%EC%8B%9C%20%EC%82%B0%EB%B3%B8%EB%A1%9C323%EB%B2%88%EA%B8%B8%2016-7" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="#C8341F" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>롯데프라자 7층 · 산본역 3번 출구<b>길찾기 ›</b></a>
     </div>
-    <div class="cs-fd"><div class="p"><img src="img/pop/fd_model2.jpg" alt=""></div><strong><i>토익 · 영어회화</i>오늘이 <b>1일</b>입니다</strong><span>매달 1일 안 기다려도<br><b>수업일수 다 채워드려요</b></span><em>※ 일본어·중국어 반 제외</em></div>
+    <div class="cs-fd"><div class="p"><img src="img/pop/fd_model2.jpg" alt=""></div><strong><i>토익 · 영어회화</i>우리 오늘부터<b class="t2">1일이다</b></strong><span>매달 1일 안 기다려도<br><b>수업일수 다 채워드려요</b></span><em>※ 일본어·중국어 반 제외</em></div>
     <div class="cs-ev"><small>오픈 이벤트 · 10월 31일까지</small><strong>회화반 오픈 10% + 환승 10%</strong><span>다른 학원에서 옮겨 오시면 최대 20%</span></div>
     <a class="cs-call" href="tel:031-466-6969">상담 문의 031-466-6969</a>
     <button type="button" class="cs-staff" onclick="var x=document.getElementById('sgGateBox');x.classList.toggle('on');if(x.classList.contains('on')){var i=document.getElementById('sgGateIn');if(i)i.focus();}">관계자 입장</button>
@@ -5560,7 +5561,7 @@ function _hitTxt(id){
 /* 글 목록 — 위에 있을수록 최신. 광고판에 뜨는 이벤트는 tag:'이벤트' 로 통일했습니다. */
 var NOTICES=[
  /* 2026-10-10 대표님 「토익과 영어는 중간에 들어와도 수업일수를 다 맞춘다 … 매달 1일 등록안해도된다 이게 포인트」 「일본어중국어는 안됨」 */
- {id:'n18', tag:'공지', t:'토익·영어회화 — 마음먹은 날 등록하세요. 수업일수는 다 채워드립니다', d:'2026.10.10', pin:1,
+ {id:'n18', tag:'공지', t:'우리 오늘부터 1일이다 — 토익·영어회화, 마음먹은 날 등록해도 수업일수는 다 채워드립니다', d:'2026.10.10', pin:1,
   b:'<p><b>매달 1일에 맞춰 등록하지 않으셔도 됩니다.</b><br>토익·영어회화는 <b>중간에 들어오셔도 수업일수를 다 채워 드립니다.</b></p>'
     +'<p><b>예를 들어</b> 10월 12일(월)에 <b>월·수 초급 정규반</b>을 등록하셨다면</p>'
     +'<ul><li>두 달 뒤 <b>중급으로 올라가시더라도</b></li><li>초급에서 <b>빠진 앞부분 수업 횟수를 다 들으실 수 있습니다.</b></li></ul>'
@@ -26162,7 +26163,7 @@ body.has-tab #rvPop .nrp-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-are
   var pm=document.getElementById('pgModal'); if(pm&&getComputedStyle(pm).display!=='none')return true;
   var sh=document.getElementById('sgShop'); if(sh&&getComputedStyle(sh).display!=='none'&&sh.offsetHeight>0)return true;
   if(document.getElementById('admLogin')||document.getElementById('admPanel'))return true;
-  if(document.getElementById('fdPop'))return true;
+  if(document.getElementById('fdPop')||document.getElementById('novPop'))return true;
   return false;
  }
  window.rvPopClose=function(off){
@@ -26241,7 +26242,7 @@ body.has-tab #tpPop .tp-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
  function vis(id){var e=document.getElementById(id);return e&&getComputedStyle(e).display!=='none'&&e.offsetHeight>0;}
  function busy(){
   if(vis('introSplash')||vis('sgGate')||vis('pgModal')||vis('sgShop'))return true;
-  if(document.getElementById('rvPop')||document.getElementById('fdPop')||document.getElementById('admLogin')||document.getElementById('admPanel'))return true;
+  if(document.getElementById('rvPop')||document.getElementById('fdPop')||document.getElementById('novPop')||document.getElementById('admLogin')||document.getElementById('admPanel'))return true;
   return false;
  }
  window.tpPopClose=function(off){
@@ -26290,6 +26291,8 @@ body.has-tab #fdPop{padding-bottom:calc(var(--sg-tabh,80px) + 90px + env(safe-ar
 #fdPop .fd-bd{position:absolute;left:14px;top:14px;background:#7B1733;color:#fff;font-weight:900;font-size:15px;padding:7px 14px;border-radius:999px;box-shadow:0 3px 10px rgba(0,0,0,.2)}
 #fdPop .fd-band{background:#7B1733;color:#fff;text-align:center;padding:13px 8px 12px;font-weight:900;font-size:clamp(32px,10vw,40px);letter-spacing:-1.5px;line-height:1.15}
 #fdPop .fd-band em{font-style:normal;color:#FFC93C}
+#fdPop .fd-t1{display:block;font-size:clamp(28px,8.6vw,34px)}
+#fdPop .fd-t2{display:block;font-size:clamp(50px,15vw,60px);line-height:1.02;letter-spacing:-2px}
 #fdPop .fd-sub{display:block;margin:0 auto 6px;width:max-content;max-width:100%;background:#FFC93C;color:#5a1020;font-size:clamp(24px,7.5vw,30px);letter-spacing:-.5px;padding:4px 18px;border-radius:999px}
 #fdPop .fd-body{text-align:center;padding:13px 12px 12px;color:#2B1F24}
 #fdPop .fd-a{font-size:22px;font-weight:900;letter-spacing:-.5px}
@@ -26326,7 +26329,7 @@ body.has-tab #fdPop .fd-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
   var m=document.createElement('div'); m.id='fdPop'; m.setAttribute('role','dialog'); m.setAttribute('aria-label','토익·영어회화 등록 안내');
   m.innerHTML='<div class="fd-card">'
    +'<div class="fd-ph"><img src="img/pop/fd_model2.jpg" alt=""></div>'
-   +'<div class="fd-band"><span class="fd-sub">토익 · 영어회화</span>오늘이 <em>1일</em>입니다</div>'
+   +'<div class="fd-band"><span class="fd-sub">토익 · 영어회화</span><span class="fd-t1">우리 오늘부터</span><em class="fd-t2">1일이다</em></div>'
    +'<div class="fd-body"><div class="fd-a">매달 1일 안 기다려도</div><div class="fd-b">수업일수 다 채워드려요</div></div>'
    +'<a class="fd-go" href="tel:0314666969" onclick="fdPopClose(false)">전화 상담 031-466-6969</a>'
    +'<div class="fd-ft"><span>※ 일본어·중국어 반 제외</span><a href="#" onclick="fdPopClose(true);return false;">오늘 하루 보지 않기</a></div>'
@@ -26338,6 +26341,94 @@ body.has-tab #fdPop .fd-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
  var LEGAL="산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청) · 교습과정 성인대상어학 · 교습비 영어·일본어·중국어 회화 월 180,000원 / 시험대비 월 210,000원 · 그 밖에 추가로 받는 경비 없음";
  function start(){
   if(!force()&&hidden())return;
+  if(!force()&&today()>='2026-11-01'&&today()<='2026-11-30')return; /* 11월은 빼데이 팝업(#novPop)만 */
+  var n=0,calm=0,t=setInterval(function(){
+   n++; if(n>360){clearInterval(t);return;}
+   if(busy()){calm=0;return;}
+   if(++calm>=2){clearInterval(t);show();}
+  },500);
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+})();
+</script>
+
+<style id="novPopCss">
+/* 2026-10-10 대표님 「11월 1대1 빼데이 한정이벤트가 크게 … 맨위에 빼빼로 모양으로 1대1」 · 영어회화 1:1 20시간 1,000,000원 / 토익 1,200,000원 기준 */
+#novPop{position:fixed;inset:0;z-index:2147483647;background:rgba(40,22,28,.6);display:flex;align-items:center;justify-content:center;padding:8px 14px calc(92px + env(safe-area-inset-bottom,0px));opacity:0;transition:opacity .25s}
+body.has-tab #novPop{padding-bottom:calc(var(--sg-tabh,80px) + 86px + env(safe-area-inset-bottom,0px))}
+#novPop.on{opacity:1}
+#novPop .nv-card{width:100%;max-width:380px;max-height:100%;overflow:auto;border-radius:22px;background:#fff;box-shadow:0 18px 50px rgba(0,0,0,.35);word-break:keep-all;font-family:Pretendard,'Noto Sans KR',sans-serif;color:#2B1F24}
+#novPop .nv-hd{background:linear-gradient(180deg,#FFE9EC,#FFF6F0);padding:10px 12px 6px;text-align:center}
+#novPop .nv-lim{display:inline-block;background:#C8323C;color:#fff;font-weight:900;font-size:15px;padding:4px 12px;border-radius:999px;letter-spacing:.5px}
+#novPop .nv-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px}
+#novPop .nv-row svg{width:min(124px,15vh);height:min(98px,11.8vh);flex:none}
+#novPop .nv-t{text-align:left;line-height:1.05}
+#novPop .nv-t b{display:block;font-size:min(40px,5vh);font-weight:900;color:#7B1733;letter-spacing:-2px}
+#novPop .nv-t span{display:block;font-size:22px;font-weight:900;letter-spacing:-1px;margin-top:4px}
+#novPop .nv-ph{position:relative;height:min(160px,14.5vh);background:#F3EEEA}
+#novPop .nv-ph img{width:100%;height:100%;object-fit:cover;object-position:center 34%;display:block}
+#novPop .nv-stk{position:absolute;right:12px;bottom:8px;width:80px;height:80px;border-radius:50%;background:#FFC93C;color:#3a2200;font-weight:900;font-size:14px;line-height:1.2;display:flex;align-items:center;justify-content:center;text-align:center;transform:rotate(8deg);box-shadow:0 6px 14px rgba(0,0,0,.25);border:3px solid #fff}
+#novPop .nv-band{background:#7B1733;color:#fff;text-align:center;padding:9px 8px;font-weight:900;letter-spacing:-1px;line-height:1.1}
+#novPop .nv-l0{font-size:24px}#novPop .nv-l0 i{font-style:normal;color:#FFC93C}
+#novPop .nv-l1{font-size:min(46px,5.6vh);color:#FFC93C}#novPop .nv-l1 small{font-size:30px;color:#fff}
+#novPop .nv-body{text-align:center;padding:9px 10px}
+#novPop .nv-b{font-size:21px;font-weight:900;color:#7B1733;letter-spacing:-.8px}
+#novPop .nv-c{font-size:13px;font-weight:800;color:#5A4A50;margin-top:3px;line-height:1.45}
+#novPop .nv-c s{color:#9A8A90}#novPop .nv-c b{color:#7B1733;font-weight:900}
+#novPop .nv-go{display:block;margin:0 12px;background:#7B1733;color:#fff;text-align:center;font-size:18px;font-weight:900;padding:11px 10px;border-radius:14px;text-decoration:none}
+#novPop .nv-tk{margin:8px 12px 0;background:#FFF1F4;border:2px solid #F3C2CF;border-radius:12px;padding:7px 10px;text-align:center;font-size:14px;font-weight:800;color:#3A2A30;line-height:1.45}
+#novPop .nv-tk i{font-style:normal;background:#7B1733;color:#FFC93C;border-radius:6px;padding:1px 7px;font-weight:900}
+#novPop .nv-tk b{font-size:19px;color:#7B1733;font-weight:900}
+#novPop .nv-tk em{font-style:normal;font-size:12px;color:#6A5A60;display:block}
+#novPop .nv-ft{display:flex;justify-content:space-between;align-items:center;padding:8px 14px 3px;font-size:12px;color:#5A4A50;font-weight:800}
+#novPop .nv-ft a{color:#5A4A50;text-decoration:underline}
+#novPop .nv-lg{padding:0 14px 9px;font-size:9.5px;line-height:1.45;color:#7a6a70}
+#novPop .nv-lg b{color:#5A4A50}
+#novPop .nv-x{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:60px;height:60px;border-radius:50%;z-index:2147483647;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#FFD75E,#E8A912);border:3px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.3);font-size:26px;font-weight:900;color:#3a2a00;cursor:pointer}
+body.has-tab #novPop .nv-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area-inset-bottom,0px))}
+</style>
+<script id="novPopJs">
+/* 11월 빼데이 1:1 한정 이벤트 팝업 · 2026-11-01 00:00 ~ 11-30 (KST) 자동 노출 · 검수용 ?novpop=1
+   · 11월에는 #fdPop(오늘부터 1일) 대신 이 팝업만 · 리뷰·원장 팝업은 이 팝업 뒤에 차례로 */
+(function(){
+ function today(){var d=new Date(Date.now()+9*3600e3);return d.toISOString().slice(0,10);}
+ function force(){return /[?&]novpop=1/.test(location.search);}
+ function onDate(){var t=today();return t>='2026-11-01'&&t<='2026-11-30';}
+ function hidden(){try{return localStorage.getItem('sga_novpop_off')===today();}catch(e){return false;}}
+ function vis(id){var e=document.getElementById(id);return e&&getComputedStyle(e).display!=='none'&&e.offsetHeight>0;}
+ function busy(){
+  if((vis('introSplash')&&!vis('sgGate'))||vis('pgModal')||vis('sgShop'))return true;
+  if(document.getElementById('fdPop')||document.getElementById('rvPop')||document.getElementById('tpPop')||document.getElementById('admLogin')||document.getElementById('admPanel'))return true;
+  return false;
+ }
+ window.novPopClose=function(off){
+  if(off){try{localStorage.setItem('sga_novpop_off',today());}catch(e){}}
+  var p=document.getElementById('novPop'); if(p){p.classList.remove('on');setTimeout(function(){p.remove();},250);}
+ };
+ var STK='<g id="nvStk"><rect x="-9" y="0" width="18" height="112" rx="9" fill="url(#nvBs)"/><rect x="-10" y="0" width="20" height="82" rx="10" fill="url(#nvCh)"/><path d="M-10 78 q5 6 10 2 q5 -4 10 2 v-4 h-20z" fill="#3B1B0E"/><rect x="-5" y="8" width="3" height="62" rx="1.5" fill="#fff" opacity=".28"/></g>';
+ var SVG='<svg viewBox="0 0 150 118" role="img" aria-label="1:1"><defs><linearGradient id="nvCh" x1="0" x2="1"><stop offset="0" stop-color="#3B1B0E"/><stop offset=".45" stop-color="#6B3A20"/><stop offset="1" stop-color="#2E140A"/></linearGradient><linearGradient id="nvBs" x1="0" x2="1"><stop offset="0" stop-color="#D9A75A"/><stop offset=".5" stop-color="#F2CF8A"/><stop offset="1" stop-color="#C99245"/></linearGradient>'+STK+'</defs>'
+  +'<g transform="translate(36,4)"><use href="#nvStk"/></g><g transform="translate(24,14) rotate(-45)"><rect x="-6" y="-2" width="12" height="30" rx="6" fill="url(#nvCh)"/></g>'
+  +'<circle cx="75" cy="42" r="8" fill="#6B3A20"/><circle cx="75" cy="80" r="8" fill="#6B3A20"/>'
+  +'<g transform="translate(120,4)"><use href="#nvStk"/></g><g transform="translate(108,14) rotate(-45)"><rect x="-6" y="-2" width="12" height="30" rx="6" fill="url(#nvCh)"/></g></svg>';
+ var LEGAL="산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청) · 교습과정 성인대상어학 · 교습비 영어·일본어·중국어 회화 월 180,000원 / 시험대비 월 210,000원 · 그 밖에 추가로 받는 경비 없음";
+ function show(){
+  if(document.getElementById('novPop'))return;
+  var m=document.createElement('div'); m.id='novPop'; m.setAttribute('role','dialog'); m.setAttribute('aria-label','11월 빼데이 1:1 한정 이벤트');
+  m.innerHTML='<div class="nv-card">'
+   +'<div class="nv-hd"><span class="nv-lim">11월 한정 이벤트</span><div class="nv-row">'+SVG+'<div class="nv-t"><b>빼데이</b><span>1:1 한정 이벤트</span></div></div></div>'
+   +'<div class="nv-ph"><img src="img/pop/nov_model2.jpg" alt=""><div class="nv-stk">빼빼로도<br>드려요!</div></div>'
+   +'<div class="nv-band"><div class="nv-l0"><i>영어회화 1:1</i>이 시간당</div><div class="nv-l1">36,000원<small>?</small></div></div>'
+   +'<div class="nv-body"><div class="nv-b">1:1 10% 할인 + 정규반 한 달 무료</div><div class="nv-c">영어회화 1:1 20시간 <s>1,000,000원</s> → 10% 할인 900,000원<br>원어민 정규반 180,000원 무료 → 실질 <b>720,000원</b> ÷ 20시간</div></div>'
+   +'<a class="nv-go" href="tel:0314666969" onclick="novPopClose(false)">전화 상담 031-466-6969</a>'
+   +'<div class="nv-tk"><i>토익 1:1</i> 20시간 → <b>시간당 43,500원</b><em>1,200,000원에서 10% 할인 1,080,000원 − 토익 정규반 210,000원 무료 = 870,000원</em></div>'
+   +'<div class="nv-ft"><span>1:1 20시간 기준</span><a href="#" onclick="novPopClose(true);return false;">오늘 하루 보지 않기</a></div>'
+   +'<div class="nv-lg">'+LEGAL+'<br><b>※ 퍼스널 1:1은 제외됩니다.</b></div>'
+   +'</div><button class="nv-x" type="button" aria-label="닫기" onclick="novPopClose(false)">✕</button>';
+  m.addEventListener('click',function(e){if(e.target===m)novPopClose(false);});
+  document.body.appendChild(m); requestAnimationFrame(function(){m.classList.add('on');});
+ }
+ function start(){
+  if(!force()&&(!onDate()||hidden()))return;
   var n=0,calm=0,t=setInterval(function(){
    n++; if(n>360){clearInterval(t);return;}
    if(busy()){calm=0;return;}
