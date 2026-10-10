@@ -4852,6 +4852,11 @@ html,body{overflow-x:hidden;max-width:100%}
 #sgGate .cs-ev small{display:inline-block;background:#FFC93C;color:#5a2a12;font-size:12.5px;font-weight:900;padding:3px 10px;border-radius:20px;letter-spacing:.04em}
 #sgGate .cs-ev strong{display:block;margin-top:7px;font-size:21px;font-weight:900;letter-spacing:-.02em}
 #sgGate .cs-ev span{display:block;margin-top:3px;font-size:14px;font-weight:700;opacity:.95}
+#sgGate .cs-fd{margin:16px auto 0;max-width:360px;border-radius:16px;padding:14px 14px 12px;background:#fff;border:2.5px solid #0A5C3D;color:#1d1d1d;text-align:center;box-shadow:0 8px 20px rgba(10,92,61,.14);word-break:keep-all}
+#sgGate .cs-fd small{display:inline-block;background:#0A5C3D;color:#fff;font-size:12.5px;font-weight:900;padding:3px 12px;border-radius:20px;letter-spacing:.04em}
+#sgGate .cs-fd strong{display:block;margin-top:8px;font-size:20px;line-height:1.35;font-weight:900;color:#0A5C3D;letter-spacing:-.02em}
+#sgGate .cs-fd span{display:block;margin-top:7px;font-size:13.5px;line-height:1.55;font-weight:800;color:#5c4a40}
+#sgGate .cs-fd em{display:block;margin-top:6px;font-style:normal;font-size:12px;font-weight:700;color:#8a7468}
 #sgGate .cs-call{font-size:17px;padding:16px;box-shadow:0 8px 18px rgba(10,92,61,.25)}
 #sgGate .cs-lb{position:fixed;inset:0;z-index:5;display:none;flex-direction:column;align-items:center;justify-content:center;background:#FAF3EA;padding:16px 14px 110px}
 #sgGate .cs-lb.on{display:flex}
@@ -4886,6 +4891,7 @@ html,body{overflow-x:hidden;max-width:100%}
       </div>
       <a class="cs-loc" href="https://map.naver.com/p/search/%EA%B5%B0%ED%8F%AC%EC%8B%9C%20%EC%82%B0%EB%B3%B8%EB%A1%9C323%EB%B2%88%EA%B8%B8%2016-7" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="#C8341F" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>롯데프라자 7층 · 산본역 3번 출구<b>길찾기 ›</b></a>
     </div>
+    <div class="cs-fd"><small>토익 · 영어회화</small><strong>마음먹은 날 등록하세요<br>수업일수는 다 채워드립니다</strong><span><b style="color:#C8341F">매달 1일 등록, 안 하셔도 됩니다</b><br>예) 10/12(월) 월·수 초급 정규반 등록<br>→ 두 달 뒤 중급으로 올라가도<br>→ 초급에서 빠진 앞 수업 횟수, 다 들으세요</span><em>※ 일본어·중국어 반 제외</em></div>
     <div class="cs-ev"><small>오픈 이벤트 · 10월 31일까지</small><strong>회화반 오픈 10% + 환승 10%</strong><span>다른 학원에서 옮겨 오시면 최대 20%</span></div>
     <a class="cs-call" href="tel:031-466-6969">상담 문의 031-466-6969</a>
     <button type="button" class="cs-staff" onclick="var x=document.getElementById('sgGateBox');x.classList.toggle('on');if(x.classList.contains('on')){var i=document.getElementById('sgGateIn');if(i)i.focus();}">관계자 입장</button>
@@ -5548,6 +5554,15 @@ function _hitTxt(id){
 
 /* 글 목록 — 위에 있을수록 최신. 광고판에 뜨는 이벤트는 tag:'이벤트' 로 통일했습니다. */
 var NOTICES=[
+ /* 2026-10-10 대표님 「토익과 영어는 중간에 들어와도 수업일수를 다 맞춘다 … 매달 1일 등록안해도된다 이게 포인트」 「일본어중국어는 안됨」 */
+ {id:'n18', tag:'공지', t:'토익·영어회화 — 마음먹은 날 등록하세요. 수업일수는 다 채워드립니다', d:'2026.10.10', pin:1,
+  b:'<p><b>매달 1일에 맞춰 등록하지 않으셔도 됩니다.</b><br>토익·영어회화는 <b>중간에 들어오셔도 수업일수를 다 채워 드립니다.</b></p>'
+    +'<p><b>예를 들어</b> 10월 12일(월)에 <b>월·수 초급 정규반</b>을 등록하셨다면</p>'
+    +'<ul><li>두 달 뒤 <b>중급으로 올라가시더라도</b></li><li>초급에서 <b>빠진 앞부분 수업 횟수를 다 들으실 수 있습니다.</b></li></ul>'
+    +'<p><b>수업일수 걱정은 접어 두시고, 마음먹은 오늘 등록하세요.</b></p>'
+    +'<p>적용 반 : <b>토익 · 영어회화</b><br>※ 일본어·중국어 반은 해당되지 않습니다.</p>'
+    +'<p>상담 031-466-6969 · 산본역 3번 출구 롯데프라자 7층</p>'
+    +'<p style="font-size:13px;color:#555">산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청) · 교습과정 성인대상어학 · 교습비 영어·일본어·중국어 회화 월 180,000원 / 시험대비 월 210,000원 · 그 밖에 추가로 받는 경비 없음</p>'},
  /* 2026-09-15 대표님 지시 — 국민일보 계약학과 기사(9/15) 이벤트에 반영.
     ⚠ 대표님 말씀은 "계약학과 가려면 오픽·토스가 필요하다"였으나,
       확인 결과 계약학과 입시에는 어학성적이 반영되지 않고 대교협 규정상 제출이 금지입니다.
@@ -10192,7 +10207,7 @@ var AITXT={};
    배열 근거: 세종한국어 1(국립국어원 기획) · 한국어와 한국문화 초급1(법무부 KIIP) 공통 골격.
    두 국가 교재 모두 해요체를 먼저 가르치고 격식체(-스ㅂ니다)를 뒤에 둡니다. 그 순서를 따랐습니다. ===== */
 AITXT['kor_basic']=[
-{t:"한글 읽기",unit:"Unit 1 · 한글 (Hangul)",gtag:"모음 · 자음 · 받침",
+{t:"한글 읽기",vid:'media/1_media/ko_basic_01.mp4',vpo:'media/1_media/ko_basic_01.jpg',unit:"Unit 1 · 한글 (Hangul)",gtag:"모음 · 자음 · 받침",
  goal:"한글을 소리 내어 읽습니다. <i>Read Hangul out loud.</i>",
  key:[["Hello. (formal)","안녕하세요","「안녕하십니까」보다 이 말을 훨씬 많이 씁니다. <i>The everyday greeting.</i>"],["a / eo / o / u","아 어 오 우","「어」와 「오」를 구별하십시오. <i>어 is unrounded, 오 is rounded — Korean keeps them apart.</i>"],["i / eu","이 으","「으」는 영어에 없는 소리입니다. <i>Spread your lips flat, do not round them.</i>"],["ga na da","가 나 다","자음 + 모음 = 한 글자. <i>One consonant + one vowel makes one block.</i>"],["Korea","한국","받침 ㄴ, ㄱ. <i>The bottom letter is called 받침 (batchim).</i>"],["Korean (language)","한국어","받침 ㄱ이 뒤 모음으로 넘어가 「한구거」로 들립니다. <i>Linking (연음).</i>"],["Thank you.","감사합니다","「합니다」는 「함니다」로 소리납니다. <i>ㅂ before ㄴ becomes ㅁ.</i>"],["I am sorry.","죄송합니다","사과할 때 가장 안전한 말입니다. <i>The safe apology in any situation.</i>"]],
  dlg:[["A","안녕하세요.","Hello."],["B","안녕하세요. 반갑습니다.","Hello. Nice to meet you."],["A","이름이 뭐예요?","What is your name?"],["B","저는 응웬이에요.","I am Nguyen."],["A","반가워요, 응웬 씨.","Nice to meet you, Nguyen."],["B","감사합니다.","Thank you."]],
@@ -26142,6 +26157,7 @@ body.has-tab #rvPop .nrp-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-are
   var pm=document.getElementById('pgModal'); if(pm&&getComputedStyle(pm).display!=='none')return true;
   var sh=document.getElementById('sgShop'); if(sh&&getComputedStyle(sh).display!=='none'&&sh.offsetHeight>0)return true;
   if(document.getElementById('admLogin')||document.getElementById('admPanel'))return true;
+  if(document.getElementById('fdPop'))return true;
   return false;
  }
  window.rvPopClose=function(off){
@@ -26220,7 +26236,7 @@ body.has-tab #tpPop .tp-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
  function vis(id){var e=document.getElementById(id);return e&&getComputedStyle(e).display!=='none'&&e.offsetHeight>0;}
  function busy(){
   if(vis('introSplash')||vis('sgGate')||vis('pgModal')||vis('sgShop'))return true;
-  if(document.getElementById('rvPop')||document.getElementById('admLogin')||document.getElementById('admPanel'))return true;
+  if(document.getElementById('rvPop')||document.getElementById('fdPop')||document.getElementById('admLogin')||document.getElementById('admPanel'))return true;
   return false;
  }
  window.tpPopClose=function(off){
@@ -26252,6 +26268,87 @@ body.has-tab #tpPop .tp-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
    n++; if(n>360){clearInterval(t);return;}          /* 3분 안에 기회가 없으면 이번 방문은 쉽니다 */
    if(busy()){calm=0;return;}
    if(++calm>=4){clearInterval(t);show();}
+  },500);
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+})();
+</script>
+
+<style id="fdPopCss">
+#fdPop{position:fixed;inset:0;z-index:2147483647;background:rgba(40,22,28,.55);display:flex;align-items:center;justify-content:center;padding:16px 16px calc(96px + env(safe-area-inset-bottom,0px));opacity:0;transition:opacity .25s}
+body.has-tab #fdPop{padding-bottom:calc(var(--sg-tabh,80px) + 90px + env(safe-area-inset-bottom,0px))}
+#fdPop.on{opacity:1}
+#fdPop .fd-card{width:100%;max-width:420px;max-height:100%;overflow:auto;background:#F3EEEA;border-radius:22px;padding:18px 16px 14px;box-shadow:0 18px 50px rgba(40,10,20,.35);color:#2B1F24;word-break:keep-all;text-align:center}
+#fdPop .fd-hd{font-weight:900;font-size:15px;margin:0 0 6px}
+#fdPop .fd-k{display:inline-block;background:#7B1733;color:#fff;font-weight:900;font-size:14px;letter-spacing:.5px;border-radius:999px;padding:5px 14px;margin:2px 0 8px}
+#fdPop h3{margin:2px 0 10px;font-size:25px;line-height:1.32;font-weight:900;letter-spacing:-.5px}
+#fdPop h3 em{font-style:normal;color:#7B1733}
+#fdPop .fd-band{background:#7B1733;border-radius:16px;padding:13px 8px;margin:0 0 10px}
+#fdPop .fd-band strong{display:block;font-family:'Gowun Batang','Noto Serif KR',serif;font-size:24px;line-height:1.3;font-weight:700;color:#FFC93C;letter-spacing:-.5px}
+#fdPop .fd-ex{background:#fff;border:2px solid #E3D3CC;border-radius:14px;padding:11px 12px;text-align:left;font-size:14.5px;line-height:1.55;font-weight:700}
+#fdPop .fd-ex .h{display:block;color:#7B1733;font-weight:900;font-size:13px;margin-bottom:4px}
+#fdPop .fd-ex ol{margin:0;padding:0;list-style:none}
+#fdPop .fd-ex li{position:relative;padding-left:22px;margin:3px 0}
+#fdPop .fd-ex li i{position:absolute;left:0;top:2px;width:17px;height:17px;border-radius:50%;background:#7B1733;color:#fff;font-style:normal;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center}
+#fdPop .fd-ex b{color:#7B1733}
+#fdPop .fd-lead{font-size:16px;font-weight:900;margin:12px 0 0}
+#fdPop .fd-go{display:block;margin:10px 0 0;padding:14px;border-radius:14px;background:#7B1733;color:#fff!important;font-size:17px;font-weight:900;text-decoration:none}
+#fdPop .fd-more{display:block;margin:8px 0 0;font-size:13.5px;font-weight:800;color:#7B1733;text-decoration:underline}
+#fdPop .fd-note{font-size:11.5px;line-height:1.5;color:#5A4A50;margin:10px 2px 0;text-align:left}
+#fdPop .fd-ft{display:flex;justify-content:flex-end;margin:8px 2px 0;font-size:12.5px}
+#fdPop .fd-ft a{color:#5A4A50;text-decoration:underline;font-weight:700}
+#fdPop .fd-x{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:60px;height:60px;border-radius:50%;z-index:9710;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#FFD75E,#E8A912);border:3px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.3);font-size:26px;font-weight:900;color:#3a2a00;cursor:pointer}
+#fdPop .fd-x{z-index:2147483647}
+body.has-tab #fdPop .fd-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area-inset-bottom,0px))}
+</style>
+<script id="fdPopJs">
+/* 2026-10-10 대표님 「홈페이지 팝업창에도 토익 마음먹은날 등록해도 수업일수 다채운다 . 매달 1일 등록안해도된다 이게 포인트야」
+   · 토익·영어회화만 (일본어·중국어 제외) · 공지 n18 과 같은 내용
+   · 리뷰 팝업(#rvPop)·원장 상담 팝업(#tpPop)과 겹치지 않고 차례로 뜹니다. 이 팝업이 먼저 뜹니다.
+   · 「오늘 하루 보지 않기」 · 검수용 ?fdpop=1 · 닫기 = 노란 원형, 화면 아래 가운데 */
+(function(){
+ function today(){var d=new Date(Date.now()+9*3600e3);return d.toISOString().slice(0,10);}
+ function force(){return /[?&]fdpop=1/.test(location.search);}
+ function hidden(){try{return localStorage.getItem('sga_fdpop_off')===today();}catch(e){return false;}}
+ function vis(id){var e=document.getElementById(id);return e&&getComputedStyle(e).display!=='none'&&e.offsetHeight>0;}
+ function busy(){
+  if((vis('introSplash')&&!vis('sgGate'))||vis('pgModal')||vis('sgShop'))return true; /* 오픈 전 대문(#sgGate) 위에도 뜹니다 */
+  if(document.getElementById('rvPop')||document.getElementById('tpPop')||document.getElementById('admLogin')||document.getElementById('admPanel'))return true;
+  return false;
+ }
+ window.fdPopClose=function(off){
+  if(off){try{localStorage.setItem('sga_fdpop_off',today());}catch(e){}}
+  var p=document.getElementById('fdPop'); if(p){p.classList.remove('on');setTimeout(function(){p.remove();},250);}
+ };
+ window.fdPopMore=function(){fdPopClose(false);setTimeout(function(){try{noticeOpen('n18');}catch(e){}},260);return false;};
+ function show(){
+  if(document.getElementById('fdPop'))return;
+  var m=document.createElement('div'); m.id='fdPop'; m.setAttribute('role','dialog'); m.setAttribute('aria-label','토익·영어회화 등록 안내');
+  m.innerHTML='<div class="fd-card">'
+   +'<div class="fd-hd"><b>SGA</b> 산본글로벌어학원</div>'
+   +'<div class="fd-k">토익 · 영어회화</div>'
+   +'<h3>마음먹은 날 등록하세요<br><em>수업일수는 다 채워드립니다</em></h3>'
+   +'<div class="fd-band"><strong>매달 1일 등록,<br>안 하셔도 됩니다</strong></div>'
+   +'<div class="fd-ex"><span class="h">예를 들어</span><ol>'
+   +'<li><i>1</i>10월 12일(월) <b>월·수 초급 정규반</b> 등록</li>'
+   +'<li><i>2</i>두 달 뒤 <b>중급으로 올라가도</b></li>'
+   +'<li><i>3</i>초급에서 <b>빠진 앞 수업 횟수, 다 들으세요</b></li></ol></div>'
+   +'<div class="fd-lead">수업일수 걱정 말고, 오늘 등록하세요</div>'
+   +'<a class="fd-go" href="tel:0314666969" onclick="fdPopClose(false)">전화 상담 031-466-6969</a>'
+   +(vis('sgGate')?'':'<a class="fd-more" href="#" onclick="return fdPopMore()">공지사항에서 자세히 보기 ›</a>')
+   +'<div class="fd-note">※ 토익·영어회화 반에 적용됩니다. 일본어·중국어 반은 해당되지 않습니다.<br>'+LEGAL+'</div>'
+   +'<div class="fd-ft"><a href="#" onclick="fdPopClose(true);return false;">오늘 하루 보지 않기</a></div>'
+   +'</div><button class="fd-x" type="button" aria-label="닫기" onclick="fdPopClose(false)">✕</button>';
+  m.addEventListener('click',function(e){if(e.target===m)fdPopClose(false);});
+  document.body.appendChild(m); requestAnimationFrame(function(){m.classList.add('on');});
+ }
+ var LEGAL="산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청) · 교습과정 성인대상어학 · 교습비 영어·일본어·중국어 회화 월 180,000원 / 시험대비 월 210,000원 · 그 밖에 추가로 받는 경비 없음";
+ function start(){
+  if(!force()&&hidden())return;
+  var n=0,calm=0,t=setInterval(function(){
+   n++; if(n>360){clearInterval(t);return;}
+   if(busy()){calm=0;return;}
+   if(++calm>=2){clearInterval(t);show();}
   },500);
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
