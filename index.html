@@ -4823,6 +4823,22 @@ html,body{overflow-x:hidden;max-width:100%}
 .sx-est .lr b{color:#7B1733}
 .sx-est p{margin:8px 0 0;font-size:11.5px;color:#8C7A66;line-height:1.5}
 </style>
+<style id="kkGiftCss">
+#kkGift{position:fixed;inset:0;z-index:2147480500;background:rgba(40,30,20,.55);display:flex;align-items:center;justify-content:center;padding:16px 16px 100px}
+#kkGift .kg-c{width:100%;max-width:380px;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.3);text-align:center;font-family:inherit}
+#kkGift .kg-top{background:#FEE500;padding:22px 18px 18px}
+#kkGift .kg-k{display:inline-block;font-size:12px;font-weight:900;color:#3A1D1D;background:rgba(255,255,255,.65);border-radius:999px;padding:4px 11px;letter-spacing:.2px}
+#kkGift h3{margin:12px 0 0;font-size:25px;line-height:1.3;font-weight:900;color:#3A1D1D;letter-spacing:-.6px;word-break:keep-all}
+#kkGift h3 b{color:#C81F2B}
+#kkGift .kg-gift{font-size:44px;line-height:1;margin-top:10px}
+#kkGift .kg-b{padding:16px 18px 20px}
+#kkGift .kg-b p{margin:0 0 14px;font-size:14px;line-height:1.6;color:#4A4038;font-weight:700;word-break:keep-all}
+#kkGift .kg-b p small{display:block;font-size:12px;color:#8C7A66;font-weight:600;margin-top:4px}
+#kkGift a{display:block;text-decoration:none;border-radius:12px;padding:14px;font-size:16px;font-weight:900;margin-top:8px}
+#kkGift .kg-go{background:#FEE500;color:#3A1D1D}
+#kkGift .kg-ch{background:#F5F0E8;color:#3A2F28;font-size:14px;padding:12px}
+#kkGiftX{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:2147480600;width:52px;height:52px;border-radius:50%;border:0;background:#FFD23F;color:#3A2A00;font-size:22px;font-weight:900;box-shadow:0 6px 16px rgba(0,0,0,.25);cursor:pointer}
+</style>
 </head>
 <body>
 <!-- 입장코드 게이트 (2026-09-02) — 2026-10-04 대표님 「공개일 10월17일」: 그랜드오픈 카운트다운 화면으로 교체, 10/17 0시 자동 해제. GATE_ON을 false로 바꾸면 즉시 해제 -->
@@ -26696,21 +26712,6 @@ AITXT['jpn_begin']=[{"t": "몇 식구예요? · 가족 소개", "vid": "media/ja
 })();</script>
 <script id="sgaVidMap">/* 2026-10-12 아키 AI 강의실 과별 복습 영상 — sga-video 저장소(GitHub Pages)에서 재생 */
 (function(){if(typeof AITXT==='undefined')return;var B='https://mirmyung-sys.github.io/sga-video/';var V={"eng_basic":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],"eng_begin":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],"chn_basic":[2,3,4,5,6,7,8,9,10,11,12],"jpn_mid":[1,3,4,7,8,9,10,11]};Object.keys(V).forEach(function(k){var a=AITXT[k];if(!a)return;V[k].forEach(function(n){var L=a[n-1];if(!L||L.vid)return;var f=B+k+'/'+(n<10?'0':'')+n;L.vid=f+'.mp4';L.vpo=f+'.jpg';});});})();</script>
-<script id="sgaMediaGuard">/* 2026-10-12 대표님 「영어 베이직 1 영상 틀었는데 x누르거나 뒤로가기 누르면 소리가 계속 들려」
-   책방(sgBook)·강의 화면은 닫을 때 숨기기만 해서 안의 영상이 계속 재생됐습니다.
-   이제 화면에서 사라진 영상·소리는 자동으로 멈춥니다(배경 홍보영상처럼 무음인 것은 그대로). */
-(function(){
- function vis(m){ if(!document.contains(m)||!m.getClientRects().length) return false;
-  try{ if(getComputedStyle(m).visibility==='hidden') return false; }catch(e){} return true; }
- function stop(scope){ var L=(scope||document).querySelectorAll('video,audio');
-  for(var i=0;i<L.length;i++){ var m=L[i]; if(!m.paused&&!m.muted&&(scope||!vis(m))){ try{m.pause();}catch(e){} } } }
- window.sgaStopHiddenMedia=function(){ stop(); };
- var t=null; function later(){ if(t) clearTimeout(t); t=setTimeout(function(){ t=null; stop(); },80); }
- try{ new MutationObserver(later).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style','hidden']}); }catch(e){}
- window.addEventListener('popstate',function(){ setTimeout(function(){ stop(); },120); });
- if(typeof window.sgBookClose==='function'){ var _c=window.sgBookClose;
-  window.sgBookClose=function(){ try{ var b=document.getElementById('sgBook'); if(b) stop(b); }catch(e){} return _c.apply(this,arguments); }; }
-})();</script>
 <script id="sxOmrJs">/* 2026-10-12 대표님 「진짜 시험보듯이 … 우측에 답쓴 내역을 보여주는건」
    실제 토익처럼: 풀 때는 답만 표시(정답은 안 보임) → 오른쪽 OMR 답안지에 마킹 현황 → 제출·시간 종료 시 자동 채점.
    전체판은 LC·RC 예상 환산 점수(990점 만점)까지 보여 줍니다. */
@@ -26800,6 +26801,81 @@ AITXT['jpn_begin']=[{"t": "몇 식구예요? · 가족 소개", "vid": "media/ja
   var k='abcd'.indexOf((ev.key||'').toLowerCase()); if(k<0) k='1234'.indexOf(ev.key||'');
   if(k>=0){ _sxOmrMark(qs[0].id,k); ev.preventDefault(); }
  });
+})();</script>
+<script id="sgaMediaGuard">/* 2026-10-12 대표님 「x누르거나 뒤로가기 누르면 소리가 계속 들려」 「한국어를 다시 들어봐도 … 뒤로가기 하면 소리가 계속 들림」
+   소리를 낸 화면(강의·책방·모의고사 창)이 닫히거나 숨겨지면 그 소리를 자동으로 멈춥니다.
+   ① 화면 속 영상·소리 태그 ② 원어민 음성 재생기(sgpPlay — 녹음·브라우저 음성) ③ 아키 대화형 수업 진행(_at) 전부. */
+(function(){
+ function vis(m){ if(!m||!document.contains(m)||!m.getClientRects().length) return false;
+  try{ if(getComputedStyle(m).visibility==='hidden') return false; }catch(e){} return true; }
+ function topLayer(){ var best=null, bz=-1, W=innerWidth, H=innerHeight;
+  var L=[].slice.call(document.body.children).concat([].slice.call(document.querySelectorAll('.amodal.open,.sp-modal.on')));
+  for(var i=0;i<L.length;i++){ var e=L[i]; if(e.id==='sgaMB') continue; var cs; try{cs=getComputedStyle(e);}catch(x){continue;}
+   if(cs.position!=='fixed'||cs.display==='none'||cs.visibility==='hidden') continue;
+   var r=e.getBoundingClientRect(); if(r.width<W*0.5||r.height<H*0.5) continue;
+   var z=parseInt(cs.zIndex,10)||0; if(z>=bz){ bz=z; best=e; } }
+  return best; }
+ var tracked=[];
+ var _play=HTMLMediaElement.prototype.play;
+ HTMLMediaElement.prototype.play=function(){ try{ if(!this.muted){ this._sgCtx=topLayer(); if(tracked.indexOf(this)<0) tracked.push(this); if(tracked.length>40) tracked=tracked.filter(function(m){return !m.paused;}); } }catch(e){} return _play.apply(this,arguments); };
+ function stopAll(){ try{ if(typeof sgpStop==='function') sgpStop(); }catch(e){} try{ if(typeof _atStop==='function') _atStop(); }catch(e){} try{ speechSynthesis.cancel(); }catch(e){} }
+ function check(){
+  var L=document.querySelectorAll('video,audio');
+  for(var i=0;i<L.length;i++){ var m=L[i]; if(!m.paused&&!m.muted&&!vis(m)){ try{m.pause();}catch(e){} } }
+  for(var j=0;j<tracked.length;j++){ var t=tracked[j]; if(!t.paused&&t._sgCtx&&!vis(t._sgCtx)){ try{t.pause();}catch(e){} } }
+  try{ if(window.SGA_P&&SGA_P.on&&SGA_P._ctx&&!vis(SGA_P._ctx)) stopAll(); }catch(e){}
+  try{ if(window._at&&_at.started&&!vis(document.getElementById('lsModal'))){ _at.started=false; stopAll(); } }catch(e){}
+ }
+ /* 뒤로가기 = 맨 위 강의 창(영상·수업)부터 닫기. 전에는 뒤로가기가 강의 창 아래 페이지만 바꿔서 수업 소리가 계속 났습니다. */
+ var pushed=false, ignoreNext=false;
+ function lsTop(){ var v=document.getElementById('lsVid'); if(v) return v; var m=document.getElementById('lsModal'); return (m&&vis(m))?m:null; }
+ function histSync(){ var el=lsTop();
+  if(el&&!pushed){ try{ history.pushState({sgLs:1},''); pushed=true; }catch(e){} }
+  else if(!el&&pushed){ pushed=false; if(history.state&&history.state.sgLs){ ignoreNext=true; try{ history.back(); }catch(e){ ignoreNext=false; } } } }
+ /* 사이트 뒤로가기 처리기(_akPop)가 맨 먼저 묻는 자리에 끼워 넣습니다 — 강의 창이 떠 있으면 그것만 닫고 끝 */
+ var _ap=window._akPop;
+ window._akPop=function(){
+  if(ignoreNext){ ignoreNext=false; return true; }
+  var el=lsTop();
+  if(pushed&&el){ pushed=false; stopAll();
+   try{ if(el.id==='lsVid') lsVidClose(); else if(typeof aiLsClose==='function') aiLsClose(); else el.parentNode.removeChild(el); }catch(x){ try{ el.parentNode.removeChild(el); }catch(y){} }
+   stopAll(); return true; }
+  return _ap?_ap.apply(this,arguments):false;
+ };
+ window.sgaStopHiddenMedia=check;
+ if(typeof window.sgpPlay==='function'){ var _sp=window.sgpPlay; window.sgpPlay=sgpPlay=function(){ var r=_sp.apply(this,arguments); try{ SGA_P._ctx=topLayer(); }catch(e){} return r; }; }
+ var t=null; function later(){ if(t) clearTimeout(t); t=setTimeout(function(){ t=null; check(); histSync(); },80); }
+ try{ new MutationObserver(later).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style','hidden']}); }catch(e){}
+ window.addEventListener('popstate',function(){ setTimeout(check,150); });
+ window.addEventListener('pagehide',function(){ stopAll(); });
+ if(typeof window.sgBookClose==='function'){ var _c=window.sgBookClose;
+  window.sgBookClose=sgBookClose=function(){ try{ var b=document.getElementById('sgBook'); if(b){ var M=b.querySelectorAll('video,audio'); for(var i=0;i<M.length;i++) M[i].pause(); } stopAll(); }catch(e){} return _c.apply(this,arguments); }; }
+})();</script>
+<script id="kkGiftJs">/* 2026-10-12 대표님 「카카오톡 채널 클릭하면 채널추가시 립밤증정 항상 나오게 해줘」
+   홈페이지의 카카오톡 채널 버튼을 누르면 매번 혜택 안내가 먼저 뜹니다(오늘 그만 보기 없음).
+   카카오 채널 쿠폰 「청강+립밤 무료증정」 응모기간 2026.10.09~12.31 — 기간이 끝나면 자동으로 안 뜨고 바로 채널로 갑니다. */
+(function(){
+ var END=new Date(2027,0,1).getTime(), CH='https://pf.kakao.com/_xbxkCFX';
+ function close(){ ['kkGift','kkGiftX'].forEach(function(k){ var e=document.getElementById(k); if(e&&e.parentNode) e.parentNode.removeChild(e); }); }
+ window.kkGiftClose=close;
+ window.kkGiftOpen=function(href){
+  close();
+  var m=document.createElement('div'); m.id='kkGift'; m.setAttribute('role','dialog'); m.setAttribute('aria-label','카카오톡 채널 친구 추가 혜택');
+  m.innerHTML='<div class="kg-c"><div class="kg-top"><span class="kg-k">카카오톡 채널 친구 추가 혜택</span>'
+   +'<h3>채널 추가하면<br><b>무료 청강 + 립밤</b> 드려요</h3><div class="kg-gift">🎁</div></div>'
+   +'<div class="kg-b"><p>채널을 추가하고 쿠폰을 받아 두세요.<br>학원에 오실 때 쿠폰을 보여 주시면 됩니다.<small>쿠폰 「청강+립밤 무료증정」 · 2026.12.31까지</small></p>'
+   +'<a class="kg-go" href="'+CH+'/coupons" target="_blank" rel="noopener noreferrer" onclick="setTimeout(kkGiftClose,300)">채널 추가하고 쿠폰 받기</a>'
+   +'<a class="kg-ch" href="'+(href||CH)+'" target="_blank" rel="noopener noreferrer" onclick="setTimeout(kkGiftClose,300)">채널로 바로 가기</a></div></div>';
+  m.addEventListener('click',function(e){ if(e.target===m) close(); });
+  document.body.appendChild(m);
+  var x=document.createElement('button'); x.id='kkGiftX'; x.type='button'; x.setAttribute('aria-label','닫기'); x.textContent='✕'; x.onclick=close; document.body.appendChild(x);
+ };
+ document.addEventListener('click',function(e){
+  if(Date.now()>=END) return;
+  var a=e.target&&e.target.closest?e.target.closest('a[href^="https://pf.kakao.com/_xbxkCFX"]'):null; if(!a||a.closest('#kkGift')) return;
+  var h=a.getAttribute('href')||''; if(/\/(chat|coupons|friend)/.test(h)) return;
+  e.preventDefault(); e.stopPropagation(); kkGiftOpen(h);
+ },true);
 })();</script>
 </body>
 </html>
