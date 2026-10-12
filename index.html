@@ -26657,5 +26657,20 @@ AITXT['jpn_begin']=[{"t": "몇 식구예요? · 가족 소개", "vid": "media/ja
 })();</script>
 <script id="sgaVidMap">/* 2026-10-12 아키 AI 강의실 과별 복습 영상 — sga-video 저장소(GitHub Pages)에서 재생 */
 (function(){if(typeof AITXT==='undefined')return;var B='https://mirmyung-sys.github.io/sga-video/';var V={"eng_basic":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],"eng_begin":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],"chn_basic":[2,3,4,5,6,7,8,9,10,11,12],"jpn_mid":[1,3,4,7,8,9,10,11]};Object.keys(V).forEach(function(k){var a=AITXT[k];if(!a)return;V[k].forEach(function(n){var L=a[n-1];if(!L||L.vid)return;var f=B+k+'/'+(n<10?'0':'')+n;L.vid=f+'.mp4';L.vpo=f+'.jpg';});});})();</script>
+<script id="sgaMediaGuard">/* 2026-10-12 대표님 「영어 베이직 1 영상 틀었는데 x누르거나 뒤로가기 누르면 소리가 계속 들려」
+   책방(sgBook)·강의 화면은 닫을 때 숨기기만 해서 안의 영상이 계속 재생됐습니다.
+   이제 화면에서 사라진 영상·소리는 자동으로 멈춥니다(배경 홍보영상처럼 무음인 것은 그대로). */
+(function(){
+ function vis(m){ if(!document.contains(m)||!m.getClientRects().length) return false;
+  try{ if(getComputedStyle(m).visibility==='hidden') return false; }catch(e){} return true; }
+ function stop(scope){ var L=(scope||document).querySelectorAll('video,audio');
+  for(var i=0;i<L.length;i++){ var m=L[i]; if(!m.paused&&!m.muted&&(scope||!vis(m))){ try{m.pause();}catch(e){} } } }
+ window.sgaStopHiddenMedia=function(){ stop(); };
+ var t=null; function later(){ if(t) clearTimeout(t); t=setTimeout(function(){ t=null; stop(); },80); }
+ try{ new MutationObserver(later).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style','hidden']}); }catch(e){}
+ window.addEventListener('popstate',function(){ setTimeout(function(){ stop(); },120); });
+ if(typeof window.sgBookClose==='function'){ var _c=window.sgBookClose;
+  window.sgBookClose=function(){ try{ var b=document.getElementById('sgBook'); if(b) stop(b); }catch(e){} return _c.apply(this,arguments); }; }
+})();</script>
 </body>
 </html>
