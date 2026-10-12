@@ -801,13 +801,13 @@ function simil(a,b){a=norm(a);b=norm(b);if(!a||!b)return 0;
 
 /* ═══════════════════════════════════════════════════════════════
    유튜브 · 네이버 블로그 자동 연동 (2026-09-15 대표님 지시: "블로그 연동해줘 / 유튜브도")
-   · 유튜브 RSS  https://www.youtube.com/feeds/videos.xml?channel_id=UC1E5DtZ3yEHBbQK2iB2iCHA
+   · 유튜브 RSS  https://www.youtube.com/feeds/videos.xml?channel_id=UC_j6HdOrW6AR-BQ0Vv3E_ug
    · 블로그 RSS  https://rss.blog.naver.com/sanbonglobal.xml
    · 둘 다 브라우저에서 바로 못 읽습니다(CORS). 무료 변환 서비스 rss2json 경유 — 일 1만 건 무료
    · 2026-09-15 실측: 유튜브 6편 정상 수신 / 블로그는 아직 글 0건
    · 실패하거나 0건이면 카드 대신 「바로가기」 버튼만 보입니다 (빈 칸 방지)
    ═══════════════════════════════════════════════════════════════ */
-var SGF_YT_CH='UC1E5DtZ3yEHBbQK2iB2iCHA';           /* 산글 SANGLE */
+var SGF_YT_CH='UC_j6HdOrW6AR-BQ0Vv3E_ug';           /* 산글 SANGLE */
 var SGF_BLOG='https://blog.naver.com/sanbonglobal';
 var SGF_CACHE={};
 
@@ -854,7 +854,7 @@ function _sgfPaint(kind,box,items){
    box.innerHTML='<div class="sgf-empty">'
     +'<b>아직 올라온 영상이 없습니다</b>'
     +'<span>새로 올리시면 <b>여기에 자동으로</b> 나타납니다.</span>'
-    +'<a href="https://www.youtube.com/@sangle_kr" target="_blank" rel="noopener noreferrer">▶ 유튜브 채널 바로가기</a></div>';
+    +'<a href="https://www.youtube.com/@sanbonglobal" target="_blank" rel="noopener noreferrer">▶ 유튜브 채널 바로가기</a></div>';
    return;
   }
   box.innerHTML='<div class="sgf-live">'
@@ -881,7 +881,7 @@ function _sgfPaint(kind,box,items){
    +'<span class="bd"><b>'+t+'</b><span class="dt">'+_sgfDate(it.pubDate)+'</span></span></a>';
  }).join('');
  box.innerHTML='<div class="sgf-grid">'+cards+'</div>'
-  +'<a class="sgf-more" href="'+(isYT?'https://www.youtube.com/@sangle_kr':SGF_BLOG)+'" target="_blank" rel="noopener noreferrer">'
+  +'<a class="sgf-more" href="'+(isYT?'https://www.youtube.com/@sanbonglobal':SGF_BLOG)+'" target="_blank" rel="noopener noreferrer">'
   +(isYT?'채널에서 전체 보기':'블로그에서 전체 보기')+' ↗</a>';
 }
 
@@ -1032,10 +1032,10 @@ function vWelcome(){
  /* --- SNS (2026-09-15 대표님 지시) --- */
  +'<div class="aiw-h"><b>산글이는 여기에도 있습니다</b><em>매일 짧게 올립니다</em></div>'
  +'<div class="aiw-sns">'
-  +'<a class="s-ig" href="https://www.instagram.com/sanbonglobal" target="_blank" rel="noopener noreferrer">'
-   +'<span>◎</span>인스타 릴스<small>@sanbonglobal</small></a>'
-  +'<a class="s-yt" href="https://www.youtube.com/@sangle_kr" target="_blank" rel="noopener noreferrer">'
-   +'<span>▶</span>유튜브<small>@sangle_kr</small></a>'
+  +'<a class="s-ig" href="https://www.instagram.com/sanbonglobal_" target="_blank" rel="noopener noreferrer">'
+   +'<span>◎</span>인스타 릴스<small>@sanbonglobal_</small></a>'
+  +'<a class="s-yt" href="https://www.youtube.com/@sanbonglobal" target="_blank" rel="noopener noreferrer">'
+   +'<span>▶</span>유튜브<small>@sanbonglobal</small></a>'
   +'<a class="s-bl" href="https://blog.naver.com/sanbonglobal" target="_blank" rel="noopener noreferrer">'
    +'<span>B</span>블로그<small>네이버</small></a>'
  +'</div>'
