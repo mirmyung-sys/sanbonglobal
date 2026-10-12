@@ -4784,6 +4784,45 @@ html,body{overflow-x:hidden;max-width:100%}
 
 <style>.vf-up{display:block;text-align:center;background:#f0f3fa;border:1.5px dashed #b9c4dd;border-radius:12px;padding:20px;font-weight:800;color:#3a4a66;cursor:pointer;margin:12px 0}</style><style id="sgsSecCss">.sgs-sec{margin:44px auto 4px;text-align:center;color:#F6D9A8;font-weight:900;font-size:30px;letter-spacing:1px}.sgs-sec small{display:block;margin-bottom:6px;font-size:12px;letter-spacing:5px;color:#E7C9A0;opacity:.85}.sgs-sh-t b{white-space:nowrap}@media(min-width:561px){#sgShop .sgs-tab .sgs-bk{flex:0 1 calc((100% - 3 * clamp(14px,2.2vw,34px)) / 4);max-width:330px}}</style>
 <style>.sx-p1{display:block;width:100%;max-width:560px;margin:10px auto;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.12)}.sx-p1.sm{max-width:320px}.sx-full{margin:14px 0 18px;padding:14px 14px 12px;border:2px solid #b8865b;border-radius:14px;background:#fffaf4;text-align:left}.sx-full h3{margin:4px 0 8px;font-size:18px;line-height:1.35}.sx-full h3 b{color:#b8865b}.sx-full-k{font-size:11px;font-weight:800;letter-spacing:.08em;color:#b8865b}.sx-book{display:block;margin-top:10px;font-weight:700;color:#7a4e2d;text-decoration:underline}.tos-go.half{background:#fff;color:#333;border:1px solid #bbb}.sx-psg table.g,.tos-q table.g{border-collapse:collapse;margin:8px 0;font-size:14px;width:100%}.tos-q table.g td,.tos-q table.g th{border:1px solid #ccc;padding:5px 7px;text-align:left}.tos-q .g{margin:8px 0}.sx-psg hr.p7sep{border:0;border-top:2px dashed #ccc;margin:14px 0}.sx-psg .doc h5{margin:0 0 6px;font-size:13px;color:#777}</style>
+<style id="tsnBlogCss">.tsn.bl{font-family:Arial,Helvetica,sans-serif;font-size:9.5px;font-weight:900;letter-spacing:-.4px;text-transform:lowercase;line-height:1}</style>
+<style id="sxOmrCss">
+#sxOmr{position:absolute;right:0;top:58px;bottom:0;width:300px;background:#fff;border-left:1px solid #E7DCCB;overflow:auto;padding:12px 12px 90px;z-index:3;font-family:inherit}
+#sxOmr h4{margin:0 0 2px;font-size:15px;font-weight:900;color:#7B1733;letter-spacing:-.3px}
+#sxOmr .om-c{font-size:12px;color:#6E6257;font-weight:700;margin:0}
+#sxOmr .om-c b{color:#7B1733}
+#sxOmr .om-s{margin:12px 0 6px;font-size:12px;font-weight:900;color:#fff;background:#7B1733;border-radius:6px;padding:4px 8px;letter-spacing:.5px}
+#sxOmr .om-g{columns:2;column-gap:10px}
+#sxOmr .om-g .om-r{break-inside:avoid}
+#sxOmr .om-top{position:sticky;top:-12px;background:#fff;padding:10px 0 6px;margin-top:-12px;z-index:2;border-bottom:1px solid #F0E6D6}
+.om-r{display:flex;align-items:center;gap:3px;padding:2px 3px;border-radius:6px}
+.om-r.cur{background:#FFF1C9}
+.om-r>b{width:30px;font-size:12px;font-weight:800;color:#3A2F28;cursor:pointer;text-align:right;padding-right:4px}
+.om-r>i{flex:0 0 19px;height:19px;border-radius:50%;border:1.5px solid #B9A58C;font-style:normal;font-size:10px;font-weight:800;color:#8C7A66;display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none}
+.om-r>i.on{background:#1F1A17;border-color:#1F1A17;color:#fff}
+.om-r>i.x{visibility:hidden}
+.om-r.empty>b{color:#C81F2B}
+#sxOmr .om-sub{display:block;width:100%;margin-top:14px;padding:13px;border:0;border-radius:12px;background:#7B1733;color:#fff;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit}
+#sxOmr .om-tip{font-size:11.5px;line-height:1.55;color:#6E6257;margin-top:8px}
+#sgX.omr .tos-bd{margin-right:300px}
+#sxOmrBtn{display:none}
+#sxOmrX{display:none}
+@media(max-width:999px){
+ #sgX.omr .tos-bd{margin-right:0}
+ #sxOmr{display:none;position:fixed;left:0;right:0;top:auto;bottom:0;width:auto;height:72vh;border-left:0;border-top:2px solid #7B1733;border-radius:16px 16px 0 0;box-shadow:0 -10px 30px rgba(0,0,0,.18);padding:12px 14px 96px;z-index:9900}
+ #sxOmr.open{display:block}
+ #sxOmrBtn{display:flex;align-items:center;gap:6px;position:fixed;right:14px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:9890;border:0;border-radius:999px;background:#7B1733;color:#fff;font-size:14px;font-weight:900;padding:11px 16px;box-shadow:0 8px 20px rgba(0,0,0,.22);cursor:pointer;font-family:inherit}
+ #sxOmrX{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:9910;width:52px;height:52px;border-radius:50%;border:0;background:#FFD23F;color:#3A2A00;font-size:22px;font-weight:900;box-shadow:0 6px 16px rgba(0,0,0,.25);cursor:pointer}
+ #sxOmr.open ~ #sxOmrX{display:block}
+ #sgX.omr .sx-nav{padding-right:120px}
+}
+.sx-est{margin:10px auto 14px;max-width:520px;background:#fff;border:2px solid #E7DCCB;border-radius:14px;padding:14px 16px;text-align:center}
+.sx-est .k{font-size:12px;font-weight:900;color:#7B1733;letter-spacing:.6px}
+.sx-est .t{font-size:34px;font-weight:900;color:#1F1A17;margin:4px 0}
+.sx-est .t small{font-size:15px;color:#6E6257;font-weight:800}
+.sx-est .lr{display:flex;justify-content:center;gap:18px;font-size:14px;font-weight:800;color:#3A2F28}
+.sx-est .lr b{color:#7B1733}
+.sx-est p{margin:8px 0 0;font-size:11.5px;color:#8C7A66;line-height:1.5}
+</style>
 </head>
 <body>
 <!-- 입장코드 게이트 (2026-09-02) — 2026-10-04 대표님 「공개일 10월17일」: 그랜드오픈 카운트다운 화면으로 교체, 10/17 0시 자동 해제. GATE_ON을 false로 바꾸면 즉시 해제 -->
@@ -5110,7 +5149,7 @@ sgLb.i=0;
 <div class="sns-strip">
   <a class="tsn yt" href="https://www.youtube.com/@sanbonglobal" target="_blank" rel="noopener noreferrer" title="유튜브">▶</a>
   <a class="tsn ig" href="https://www.instagram.com/sanbonglobal_" target="_blank" rel="noopener noreferrer" title="인스타그램">◎</a>
-  <a class="tsn nv" href="https://search.naver.com/search.naver?query=%EC%82%B0%EB%B3%B8%EA%B8%80%EB%A1%9C%EB%B2%8C%EC%96%B4%ED%95%99%EC%9B%90" target="_blank" rel="noopener" title="네이버">N</a>
+  <a class="tsn nv bl" href="https://blog.naver.com/sanbonglobal" target="_blank" rel="noopener noreferrer" title="블로그" aria-label="산본글로벌어학원 블로그">blog</a>
 </div>
 <section class="hero" id="hero">
   <video class="hero-vid" autoplay muted loop playsinline preload="metadata"><source src="media/promo.mp4" type="video/mp4"></video>
@@ -24770,19 +24809,19 @@ function _sxGo(i){
    +_sxAudio(it.id,once)+_sxOpts(it,true);
  } else if(s.ty==='p3'||s.ty==='p4'){
   h+='<div class="tos-dir">'+(s.ty==='p3'?'대화':'담화')+'를 듣고 세 문제에 답하세요.</div>'+_sxAudio(it.id,once)+(it.graphic||'');
-  it.qs.forEach(function(q,k){ h+='<div class="sx-q"><p class="sx-qt"><b>'+(k+1)+'.</b> '+_sxE(q.q)+'</p>'+_sxOpts(q)+'</div>'; });
+  it.qs.forEach(function(q,k){ h+='<div class="sx-q"><p class="sx-qt"><b>'+_sxNo(q.id,k+1)+'.</b> '+_sxE(q.q)+'</p>'+_sxOpts(q)+'</div>'; });
  } else if(s.ty==='p5'){
   h+='<p class="sx-sent">'+_sxE(it.q).replace('-------','<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>')+'</p>'+_sxOpts(it);
  } else if(s.ty==='p6'||s.ty==='p7'){
   h+='<div class="sx-psg">'+it.text+'</div>';
-  it.qs.forEach(function(q,k){ h+='<div class="sx-q"><p class="sx-qt"><b>'+(s.ty==='p6'?q.q:(k+1)+'. '+_sxE(q.q))+'</b></p>'+_sxOpts(q)+'</div>'; });
+  it.qs.forEach(function(q,k){ h+='<div class="sx-q"><p class="sx-qt"><b>'+(s.ty==='p6'?(_sxNo(q.id,'')+'. 빈칸 '+q.q):_sxNo(q.id,k+1)+'. '+_sxE(q.q))+'</b></p>'+_sxOpts(q)+'</div>'; });
  } else if(s.ty==='p7m'){
   h+='<div class="sx-psg">'+it.text+'</div><div class="sx-q"><p class="sx-qt"><b>'+_sxE(it.q)+'</b></p>'+_sxOpts(it)+'</div>';
  }
  var last=_sx.i===_sx.sc.length-1;
  var bd=document.getElementById('sxBd');
  bd.innerHTML='<div class="tos-q sx-scr">'
-  +'<div class="tos-qh"><span class="no">'+(_sx.i+1)+' / '+_sx.sc.length+'</span><span class="ty">'+PN[s.ty]+'</span><span class="sx-clk" id="sxClock"></span></div>'
+  +'<div class="tos-qh"><span class="no">'+_sxRange()+'</span><span class="ty">'+PN[s.ty]+'</span><span class="sx-clk" id="sxClock"></span></div>'
   +'<div class="tos-bar"><i style="width:'+((_sx.i+1)/_sx.sc.length*100).toFixed(1)+'%"></i></div>'
   +h
   +'<div class="sx-nav"><button class="sx-prev" '+(_sx.i?'':'disabled')+' onclick="_sxGo('+(_sx.i-1)+')">‹ 이전</button>'
@@ -26671,6 +26710,96 @@ AITXT['jpn_begin']=[{"t": "몇 식구예요? · 가족 소개", "vid": "media/ja
  window.addEventListener('popstate',function(){ setTimeout(function(){ stop(); },120); });
  if(typeof window.sgBookClose==='function'){ var _c=window.sgBookClose;
   window.sgBookClose=function(){ try{ var b=document.getElementById('sgBook'); if(b) stop(b); }catch(e){} return _c.apply(this,arguments); }; }
+})();</script>
+<script id="sxOmrJs">/* 2026-10-12 대표님 「진짜 시험보듯이 … 우측에 답쓴 내역을 보여주는건」
+   실제 토익처럼: 풀 때는 답만 표시(정답은 안 보임) → 오른쪽 OMR 답안지에 마킹 현황 → 제출·시간 종료 시 자동 채점.
+   전체판은 LC·RC 예상 환산 점수(990점 만점)까지 보여 줍니다. */
+(function(){
+ if(typeof _sxGo!=='function') return;
+ function nopt(s,q){ return s.ty==='p1'?4:(s.ty==='p2'?3:((q.o&&q.o.length)||4)); }
+ window._sxOmrMap=function(){
+  if(!_sx) return null; if(_sx.qmap) return _sx.qmap;
+  var m={}, L=[], n=0;
+  _sx.sc.forEach(function(s,si){ _sxQs(s).forEach(function(q){ n++; m[q.id]={n:n,scr:si,k:nopt(s,q),lc:/^p[1-4]$/.test(s.ty)}; L.push(q.id); }); });
+  _sx.qmap=m; _sx.qlist=L; return m;
+ };
+ window._sxNo=function(id,dflt){ var m=_sxOmrMap(); return (m&&m[id])?m[id].n:dflt; };
+ window._sxRange=function(){
+  var m=_sxOmrMap(); if(!m) return (_sx.i+1)+' / '+_sx.sc.length;
+  var qs=_sxQs(_sx.sc[_sx.i]).map(function(q){return m[q.id].n;});
+  var a=Math.min.apply(null,qs), b=Math.max.apply(null,qs);
+  return (a===b?a:a+'–'+b)+'번 / '+_sx.n;
+ };
+ function bigEnough(){ return _sx && (_sx.n>=40); }
+ function build(){
+  var host=document.getElementById('sgX'); if(!host||!_sx) return;
+  var m=_sxOmrMap(), L=_sx.qlist, hasLC=L.some(function(id){return m[id].lc;}), hasRC=L.some(function(id){return !m[id].lc;});
+  var row=function(id){ var r=m[id], h='<div class="om-r" data-q="'+id+'"><b onclick="_sxOmrJump(\''+id+'\')">'+r.n+'</b>';
+   for(var k=0;k<4;k++) h+='<i class="'+(k>=r.k?'x':'')+'" onclick="_sxOmrMark(\''+id+'\','+k+')">'+'ABCD'[k]+'</i>';
+   return h+'</div>'; };
+  var sec=function(lab,f){ var ids=L.filter(f); if(!ids.length) return ''; return '<div class="om-s">'+lab+'</div><div class="om-g">'+ids.map(row).join('')+'</div>'; };
+  var h='<div class="om-top"><h4>답안지 (OMR)</h4><div class="om-c" id="sxOmrC"></div></div>'
+   +(hasLC?sec('LISTENING · 1–'+L.filter(function(id){return m[id].lc;}).length,function(id){return m[id].lc;}):'')
+   +(hasRC?sec('READING',function(id){return !m[id].lc;}):'')
+   +'<button class="om-sub" onclick="_sxSubmit()">답안 제출 · 채점하기</button>'
+   +'<div class="om-tip">번호를 누르면 그 문제로 갑니다. 동그라미를 눌러 여기서 바로 마킹해도 됩니다. 정답은 제출 뒤에 공개됩니다.</div>';
+  var el=document.createElement('aside'); el.id='sxOmr'; el.innerHTML=h; host.appendChild(el);
+  var bt=document.createElement('button'); bt.id='sxOmrBtn'; bt.type='button'; bt.onclick=function(){ el.classList.toggle('open'); paint(); }; host.appendChild(bt);
+  var x=document.createElement('button'); x.id='sxOmrX'; x.type='button'; x.setAttribute('aria-label','답안지 닫기'); x.textContent='✕'; x.onclick=function(){ el.classList.remove('open'); }; host.appendChild(x);
+  host.classList.add('omr');
+ }
+ function paint(){
+  var el=document.getElementById('sxOmr'); if(!el||!_sx) return;
+  var m=_sxOmrMap(), c=0, cur={};
+  _sxQs(_sx.sc[_sx.i]).forEach(function(q){ cur[q.id]=1; });
+  var rows=el.querySelectorAll('.om-r');
+  for(var i=0;i<rows.length;i++){ var r=rows[i], id=r.getAttribute('data-q'), a=_sx.ans[id];
+   if(a!==undefined) c++;
+   r.classList.toggle('cur',!!cur[id]); r.classList.toggle('empty',a===undefined && m[id].scr<_sx.i);
+   var bs=r.querySelectorAll('i'); for(var k=0;k<bs.length;k++) bs[k].classList.toggle('on',a===k); }
+  var t='마킹 <b>'+c+'</b> / '+_sx.n+(c<_sx.n?' · 빈칸 '+(_sx.n-c):' · 모두 마킹');
+  var cc=document.getElementById('sxOmrC'); if(cc) cc.innerHTML=t;
+  var bt=document.getElementById('sxOmrBtn'); if(bt) bt.innerHTML='📝 답안지 '+c+'/'+_sx.n;
+  var curRow=el.querySelector('.om-r.cur'); if(curRow&&!el._userScroll){ try{ var top=curRow.offsetTop-el.clientHeight/3; el.scrollTop=Math.max(0,top);}catch(e){} }
+ }
+ window._sxOmrJump=function(id){ var m=_sxOmrMap(); if(!m[id]) return; var el=document.getElementById('sxOmr'); if(el) el.classList.remove('open'); _sxGo(m[id].scr); };
+ window._sxOmrMark=function(id,k){
+  var m=_sxOmrMap(); if(!m[id]||k>=m[id].k) return;
+  _sx.ans[id]=k;
+  var bs=document.querySelectorAll('#sxBd .sx-op'); for(var i=0;i<bs.length;i++){ var oc=bs[i].getAttribute('onclick')||'';
+   if(oc.indexOf("'"+id+"'")>-1){ var mm=oc.match(/,(\d+),this\)/); if(mm) bs[i].classList.toggle('on',+mm[1]===k); } }
+  try{ _sxNavPaint(); }catch(e){} paint();
+ };
+ var _go=_sxGo; window._sxGo=_sxGo=function(i){ _go.apply(this,arguments); if(!bigEnough()) return; if(!document.getElementById('sxOmr')) build(); paint(); };
+ var _pk=_sxPick; window._sxPick=_sxPick=function(){ _pk.apply(this,arguments); paint(); };
+ function rmOmr(){ ['sxOmr','sxOmrBtn','sxOmrX'].forEach(function(k){ var e=document.getElementById(k); if(e&&e.parentNode) e.parentNode.removeChild(e); }); var h=document.getElementById('sgX'); if(h) h.classList.remove('omr'); }
+ /* LC·RC 예상 환산 점수 — ETS 공식표는 비공개라 시중 통용 환산표(원점수→점수) 기준 추정치입니다. */
+ var LCT=[[0,5],[5,10],[10,30],[15,50],[20,75],[25,100],[30,125],[35,150],[40,180],[45,210],[50,240],[55,265],[60,295],[65,320],[70,350],[75,380],[80,410],[85,440],[90,470],[95,495],[100,495]];
+ var RCT=[[0,5],[5,5],[10,20],[15,40],[20,60],[25,85],[30,110],[35,135],[40,160],[45,190],[50,215],[55,245],[60,270],[65,300],[70,330],[75,360],[80,390],[85,420],[90,450],[95,480],[100,495]];
+ function conv(T,raw){ for(var i=1;i<T.length;i++){ if(raw<=T[i][0]){ var a=T[i-1],b=T[i],v=a[1]+(b[1]-a[1])*(raw-a[0])/(b[0]-a[0]); return Math.max(5,Math.min(495,Math.round(v/5)*5)); } } return 495; }
+ window._sxEst=function(lcRaw,rcRaw){ return {lc:conv(LCT,lcRaw),rc:conv(RCT,rcRaw)}; };
+ var _rs=_sxResult; window._sxResult=_sxResult=function(){
+  var full=_sx&&_sx.kind==='full'&&!_sx.only, lc=0, rc=0, nl=0, nr=0;
+  if(full){ _sx.sc.forEach(function(s){ var isL=/^p[1-4]$/.test(s.ty); _sxQs(s).forEach(function(q){ var hit=_sx.ans[q.id]===q.a; if(isL){nl++; if(hit)lc++;} else {nr++; if(hit)rc++;} }); }); }
+  rmOmr();
+  var r=_rs.apply(this,arguments);
+  if(full&&nl===100&&nr===100){ try{ var e=_sxEst(lc,rc), box=document.querySelector('#sxBd .sx-score');
+   if(box){ var d=document.createElement('div'); d.className='sx-est';
+    d.innerHTML='<div class="k">예상 토익 점수</div><div class="t">'+(e.lc+e.rc)+' <small>/ 990</small></div>'
+     +'<div class="lr"><span>LC <b>'+e.lc+'</b> <small>('+lc+'/100)</small></span><span>RC <b>'+e.rc+'</b> <small>('+rc+'/100)</small></span></div>'
+     +'<p>맞힌 개수를 시중에서 통용되는 환산표로 바꾼 추정 점수입니다. 실제 시험은 회차마다 환산 기준이 조금씩 다릅니다.</p>';
+    box.parentNode.insertBefore(d,box.nextSibling); } }catch(x){} }
+  return r;
+ };
+ var _cl=sgxClose; window.sgxClose=sgxClose=function(){ rmOmr(); return _cl.apply(this,arguments); };
+ /* 숫자 키 1~4 / A~D 로 마킹 (PC) */
+ document.addEventListener('keydown',function(ev){
+  var h=document.getElementById('sgX'); if(!h||!h.classList.contains('on')||!_sx||!document.getElementById('sxOmr')) return;
+  if(/INPUT|TEXTAREA/.test((ev.target&&ev.target.tagName)||'')) return;
+  var qs=_sxQs(_sx.sc[_sx.i]); if(qs.length!==1) return;
+  var k='abcd'.indexOf((ev.key||'').toLowerCase()); if(k<0) k='1234'.indexOf(ev.key||'');
+  if(k>=0){ _sxOmrMark(qs[0].id,k); ev.preventDefault(); }
+ });
 })();</script>
 </body>
 </html>
