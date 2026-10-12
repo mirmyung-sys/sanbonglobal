@@ -5111,7 +5111,7 @@ sgLb.i=0;
       </div>
     </div>
     <div class="ni"><a href="#" onclick="openPage('강의안내');return false;">글로벌 시험반<b class="car">▾</b></a>
-      <div class="ddown"> <a href="#" onclick="akGo('mock');return false;">🐋 아키 AI 모의고사</a>
+      <div class="ddown"> <a href="#" onclick="akGo('mock');return false;">🐋 아키 AI 토익모의고사</a>
         <a href="#" onclick="openCourse('토익');return false;">토익</a>
         <a href="#" onclick="openCourse('토스');return false;">토스</a>
         <a href="#" onclick="openCourse('오픽');return false;">오픽</a>
@@ -5127,7 +5127,7 @@ sgLb.i=0;
         <a href="#" onclick="akGo('hall');return false;">🐋 강의실 입구</a>
         <a href="#" onclick="akGo('conv');return false;">회화 책장 — 영어·일본어·중국어</a>
         <a href="#" onclick="akGo('exam');return false;">시험 책장 — 토익·토스·오픽·JLPT·HSK</a>
-        <a href="#" onclick="akGo('mock');return false;">아키 AI 모의고사</a>
+        <a href="#" onclick="akGo('mock');return false;">아키 AI 토익모의고사</a>
         <a href="#" onclick="akGo('tb40');return false;">토익 기초문법 40강</a>
         <a href="#" onclick="akGo('lib');return false;">산글 원서</a>
       </div>
@@ -23314,11 +23314,11 @@ var SGSHOP=[
  go:'sgShopGo("conv")',goT:'한국어 책 펴기',goS:'아키 AI 강의실 회화반 · 수강생은 0원'}
 ]},
 
-{sh:'아키 모의고사', ss:'실제 시험과 같은 형식으로 — 아키 AI 모의고사 · 오픽 실전 · 토스 실전', bks:[
+{sh:'아키 모의고사', ss:'실제 시험과 같은 형식으로 — 아키 AI 토익모의고사 · 오픽 실전 · 토스 실전', bks:[
 
-{k:'akimock',t:'아키 AI 모의고사',sub:'토익 오늘의 10문제<br>월간 실전 모의고사',en:'AKI MOCK TEST',
+{k:'akimock',t:'아키 AI 토익모의고사',sub:'토익 오늘의 10문제<br>월간 실전 모의고사',en:'AKI TOEIC MOCK TEST',
  c1:'#C81F2B',c2:'#6B0F1C',rk:'NEW',
- pop:'아키 AI 모의고사',pops:'최신 출제 경향 · 아키 오답 해설',
+ pop:'아키 AI 토익모의고사',pops:'최신 출제 경향 · 아키 오답 해설',
  lead:'기출을 베끼지 않고 <b>최근 시험 흐름만 골라</b> 새로 쓴 토익 문제입니다. 다 풀면 <b>틀린 문제마다 아키가 왜 틀렸는지</b> 알려 드립니다.',
  fact:[['10문항','오늘의 문제 · 매일 바뀜'],['50문항','월간 하프 모의고사'],['0원','토익 수강생 수강 기간']],
  toc:[['매일','오늘의 10문제 — 듣기·문법·독해, 누구나'],['매달','월간 실전 모의고사 — 토익 수강생 전용'],['오답','틀린 문제만 다시 풀기 · 아키 해설']],
@@ -24669,7 +24669,7 @@ function sgxOpen(k){
  _sxLock(k);
 }
 function _sxLock(k,err){
- var K=SGX_KEYS[k], b=_sxShell('아키 AI 모의고사',_sxE(K.nm));
+ var K=SGX_KEYS[k], b=_sxShell(k==='toeicM'?'아키 AI 토익모의고사':'아키 AI 모의고사',_sxE(K.nm));
  var closed=!K.open;
  b.innerHTML='<div class="tos-intro sx-lock">'
   +'<img class="sx-aki" src="'+SGX_AKI+'" alt="아키">'
@@ -24726,8 +24726,8 @@ function sgxStart(kind,only){
  if(only){ sc=sc.filter(function(s){ return _sxQs(s).some(function(q){ return only[q.id]; }); }); }
  _sx={kind:kind,sc:sc,i:0,ans:{},played:{},t0:Date.now(),lim:(kind==='month'&&!only)?60*60:0,tm:null,only:only||null};
  var n=0; sc.forEach(function(s){ n+=_sxQs(s).length; }); _sx.n=n;
- var t= kind==='month'?'토익 월간 실전 모의고사':'토익 오늘의 10문제';
- var b=_sxShell('아키 AI 모의고사',t);
+ var t= kind==='month'?'월간 실전 모의고사':'오늘의 10문제';
+ var b=_sxShell('아키 AI 토익모의고사',t);
  if(only){ _sxGo(0); return; }
  var d=new Date(Date.now()+9*3600*1000);
  b.innerHTML='<div class="tos-intro">'
@@ -24763,10 +24763,10 @@ function sgxFull(only){
   if(only){ sc=sc.filter(function(s){ return _sxQs(s).some(function(q){ return only[q.id]; }); }); }
   _sx={kind:'full',ym:F.nm,sc:sc,i:0,ans:{},played:{},t0:Date.now(),lim:only?0:120*60,tm:null,only:only||null,ab:'audio/mock/f'+k+'/',ib:'img/mock/f'+k+'/'};
   var n=0; sc.forEach(function(s){ n+=_sxQs(s).length; }); _sx.n=n;
-  _sxShell('아키 AI 모의고사','토익 전체 실전 모의고사 '+F.nm); _sx.t0=Date.now(); _sxGo(0);
+  _sxShell('아키 AI 토익모의고사','전체 실전 모의고사 '+F.nm); _sx.t0=Date.now(); _sxGo(0);
  };
  if(_sxFullCache[k]){ go(_sxFullCache[k]); return; }
- var b=_sxShell('아키 AI 모의고사','토익 전체 실전 모의고사'); b.innerHTML='<div class="tos-intro"><p class="tos-p">문제를 불러오는 중입니다…</p></div>';
+ var b=_sxShell('아키 AI 토익모의고사','전체 실전 모의고사'); b.innerHTML='<div class="tos-intro"><p class="tos-p">문제를 불러오는 중입니다…</p></div>';
  fetch('exam/full'+k+'.json?v=1013').then(function(r){return r.json();}).then(function(F){ _sxFullCache[k]=F; go(F); })
   .catch(function(){ b.innerHTML='<div class="tos-intro"><p class="tos-p">문제를 불러오지 못했습니다. 인터넷 연결을 확인하고 다시 눌러 주세요.</p><button class="tos-go" onclick="sgxFull()">다시 시도</button></div>'; });
 }
@@ -25036,7 +25036,7 @@ function sgxHubPage(){
    +'<ul>'+o.li.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>'
    +'<button onclick="sgxOpen(\''+o.k+'\')">'+o.b+'</button></div>';
  };
- return HV('AKI AI MOCK TEST · 아키 AI 모의고사','최신 출제 경향으로만<br>새로 쓴 문제풀이',
+ return HV('AKI AI TOEIC MOCK TEST · 아키 AI 토익모의고사','최신 출제 경향으로만<br>새로 쓴 문제풀이',
    '기출을 베끼지 않고 최근 시험 흐름만 골라 아키가 새로 만든 모의고사입니다. 다 풀면 <b>틀린 문제마다 아키가 왜 틀렸는지</b> 알려 드립니다.',
    'linear-gradient(135deg,#7B1733,#A52847)','')
   +'<div class="sxh-g">'
