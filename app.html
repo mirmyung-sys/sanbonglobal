@@ -91,7 +91,7 @@ a{color:inherit;text-decoration:none}
 .wc-h{margin:22px 2px 10px}
 .wc-h b{display:block;font-size:18px;font-weight:900;letter-spacing:-.02em}
 .wc-h em{display:block;font-style:normal;font-size:12.5px;color:var(--ink3);margin-top:2px}
-/* 산글이 말풍선 */
+/* 아키 말풍선 */
 .sgtalk{padding:14px}
 .sgt-hd{display:flex;align-items:center;gap:10px;padding-bottom:11px;border-bottom:1px solid var(--line2);margin-bottom:11px}
 .sgt-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(140deg,#1D2D4F,#2B4173);
@@ -339,7 +339,7 @@ body.wdark .pg{padding:0 0 8px;max-width:none}
 /* ── 영상 히어로 (유지 — 여기만 어둡습니다. 영상이라서) ── */
 .aiw-vh{position:relative;background:#070A12;overflow:hidden}
 .aiw-vwrap{position:relative;max-width:none;margin:0 auto}
-/* 2026-09-22 대표님 지시 — 「산글이 화면이 짤림」.
+/* 2026-09-22 대표님 지시 — 「아키 화면이 짤림」.
    원본 영상이 720x720 정사각인데 4:3 / 16:9 상자에 object-fit:cover 로 넣어
    위아래가 잘려 나가고 있었습니다. 상자를 정사각으로 바꾸고 contain 으로 바로잡습니다. */
 .aiw-v{display:block;width:100%;aspect-ratio:1/1;max-height:62vh;object-fit:contain;object-position:50% 34%;
@@ -472,7 +472,7 @@ body.wdark .pg{padding:0 0 8px;max-width:none}
 .sgf-empty a{display:inline-block;margin-top:14px;text-decoration:none;background:#14213D;color:#fff;
  border-radius:12px;padding:13px 20px;font-size:14px;font-weight:900;min-height:48px;line-height:22px}
 
-/* ── 산글 원서 배너 (2026-09-15 대표님 지시) ── */
+/* ── 아키 원서 배너 (2026-09-15 대표님 지시) ── */
 .aiw-bk{position:relative;overflow:hidden;background:linear-gradient(140deg,#0B7A50,#14B06E);
  border-radius:20px;padding:26px 20px 22px;margin-top:6px;
  box-shadow:0 12px 30px rgba(11,122,80,.28)}
@@ -650,7 +650,7 @@ function addMin(m,kind){DB.save(function(d){
     d.streak=(d.last===ys)?(d.streak||0)+1:1;d.last=t;}
   d.logs.unshift({t:t,k:kind,m:m});if(d.logs.length>120)d.logs.length=120;
 });}
-/* ================= 산글 포인트 (학습 리워드) ================= */
+/* ================= 아키 포인트 (학습 리워드) ================= */
 var PTRULE=[
  {k:'attend', p:10,  cap:1,  n:'학원 출석체크'},
  {k:'memo',   p:5,   cap:6,  n:'통암기 한 문장 완성'},
@@ -703,7 +703,7 @@ function vShop(d){
    return '<div class="pr"><span>'+l.n+'</span><b style="color:var(--green)">+'+l.p+'P</b><em>'+l.t.slice(5)+'</em></div>';}).join('')
    ||'<div class="pr"><span class="muted">아직 적립 내역이 없어요</span></div>';
  return '<div class="hero" style="background:linear-gradient(140deg,#0E8A5A,#14B06E)">'+
-  '<div class="hi" style="color:#D6F5E7">산글 포인트</div>'+
+  '<div class="hi" style="color:#D6F5E7">아키 포인트</div>'+
   '<div class="nm"><b>'+(d.pt||0).toLocaleString()+'</b> P</div>'+
   '<div style="font-size:13px;color:#D6F5E7;margin-top:6px">공부한 만큼 쌓여요. 커피·교재·수강료로 바꿔 쓰세요.</div></div>'+
   '<div class="sec-t">바꿀 수 있는 것</div><div class="gwrap">'+cards+'</div>'+
@@ -807,7 +807,7 @@ function simil(a,b){a=norm(a);b=norm(b);if(!a||!b)return 0;
    · 2026-09-15 실측: 유튜브 6편 정상 수신 / 블로그는 아직 글 0건
    · 실패하거나 0건이면 카드 대신 「바로가기」 버튼만 보입니다 (빈 칸 방지)
    ═══════════════════════════════════════════════════════════════ */
-var SGF_YT_CH='UC_j6HdOrW6AR-BQ0Vv3E_ug';           /* 산글 SANGLE */
+var SGF_YT_CH='UC_j6HdOrW6AR-BQ0Vv3E_ug';           /* 아키 AKI */
 var SGF_BLOG='https://blog.naver.com/sanbonglobal';
 var SGF_CACHE={};
 
@@ -889,7 +889,7 @@ function _sgfPaint(kind,box,items){
 function sgFeedHTML(){
  setTimeout(function(){ sgfLoad('yt','sgfYT'); sgfLoad('blog','sgfBL'); }, 120);
  return '<div class="sgf">'
-  +'<div class="sgf-h"><span class="k yt">▶ 유튜브</span><b>산글 SANGLE</b>'
+  +'<div class="sgf-h"><span class="k yt">▶ 유튜브</span><b>아키 AKI</b>'
    +'<em>새 영상은 올리는 즉시 여기에 뜹니다</em></div>'
   +'<div id="sgfYT"></div>'
   +'<div class="sgf-h" style="margin-top:26px"><span class="k bl">B 네이버 블로그</span><b>산본글로벌어학원</b>'
@@ -919,7 +919,7 @@ document.addEventListener('fullscreenchange',function(){
 
 /* ================= 라우터 ================= */
 var TAB='home';
-var TITLES={home:'홈',learn:'학습',memo:'100일 통암기',shop:'산글 포인트',talk:'AI 회화',rep:'리포트',me:'내 정보'};
+var TITLES={home:'홈',learn:'학습',memo:'100일 통암기',shop:'아키 포인트',talk:'AI 회화',rep:'리포트',me:'내 정보'};
 function go(t){TAB=t;document.getElementById('ttl').textContent=TITLES[t]||'';
  var hl=(t==='memo')?'learn':(t==='shop'?'me':t);
  document.querySelectorAll('.nav button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-t')===hl);});
@@ -937,7 +937,7 @@ function render(){var d=DB.init();var p=document.getElementById('pg');
 var AIW_CARDS=[
  {k:'k1',i:'🎧',t:'회화 한 과 3분',p:'영어·일본어·중국어. 읽고 듣고 문제 몇 개면 끝.',
   g:'한 과 3분',a:"location.href='index.html#ai-free'"},
- {k:'k2',i:'📖',t:'산글 영어원서',p:'원어민이 제일 많이 쓰는 덩어리만 골라 쓴 소설.',
+ {k:'k2',i:'📖',t:'아키 영어원서',p:'원어민이 제일 많이 쓰는 덩어리만 골라 쓴 소설.',
   g:'20과 141문장 무료',a:"location.href='index.html#ai'"},
  {k:'k3',i:'🔥',t:'영어 뽀개기 3단',p:'뼈대 → 살 → 속도. 순서대로만 가면 됩니다.',
   g:'학습법 보기',a:"location.href='index.html#ai'"},
@@ -960,7 +960,7 @@ function vWelcome(){
 
  return '<div class="aiw">'
 
- /* --- 산글이 인사 영상 --- */
+ /* --- 아키 인사 영상 --- */
  +'<div class="aiw-vh">'
   +'<div class="aiw-vwrap">'
    +'<video class="aiw-v" id="sgiV" autoplay muted loop playsinline preload="metadata" poster="img/sgi_poster.jpg">'
@@ -971,7 +971,7 @@ function vWelcome(){
   +'</div>'
   +'<div class="aiw-cap">'
    +'<div class="aiw-eye">SANGEUL AI · 인공지능 선생님</div>'
-   +'<h2>안녕하세요,<br>저는 <b>AI 산글이</b>입니다</h2>'
+   +'<h2>안녕하세요,<br>저는 <b>AI 아키</b>입니다</h2>'
    +'<p>24시간 곁에 있습니다. 소리를 켜면 인사드릴게요.</p>'
   +'</div>'
  +'</div>'
@@ -988,13 +988,13 @@ function vWelcome(){
  +'<div class="aiw-h"><b>무엇부터 하시겠습니까</b><em>하나만 고르세요. 나머지는 언제든 열립니다</em></div>'
  +'<div class="aiw-fx">'+cards+'</div>'
 
- /* --- 산글 원서 (2026-09-15 대표님 지시) --- */
+ /* --- 아키 원서 (2026-09-15 대표님 지시) --- */
  +'<div class="aiw-h" style="margin-top:30px"><b>이건 <u>우리가 쓴 책</u>입니다</b>'
-  +'<em>빌려온 원서가 아니라, 산글이가 처음부터 만든 소설</em></div>'
+  +'<em>빌려온 원서가 아니라, 아키가 처음부터 만든 소설</em></div>'
  +'<div class="aiw-bk">'
-  +'<div class="kk">SANGEUL ORIGINAL · 산글 영어원서</div>'
+  +'<div class="kk">SANGEUL ORIGINAL · 아키 영어원서</div>'
   +'<h3>이 책 한 권만 다 외워도<br><b>원어민 대화의 절반</b>을 갖게 됩니다</h3>'
-  +'<p class="kp">산글이가 <b>원어민이 실제로 가장 많이 쓰는 단어·패턴·문구만</b> 골라 이야기로 엮었습니다. '
+  +'<p class="kp">아키가 <b>원어민이 실제로 가장 많이 쓰는 단어·패턴·문구만</b> 골라 이야기로 엮었습니다. '
    +'문법책에는 안 나오고, 원어민은 매일 쓰는 말들입니다.</p>'
   +'<div class="kfig">'
    +'<div><b>20과</b><span>1과 3분</span></div>'
@@ -1030,7 +1030,7 @@ function vWelcome(){
  +'</div>'
 
  /* --- SNS (2026-09-15 대표님 지시) --- */
- +'<div class="aiw-h"><b>산글이는 여기에도 있습니다</b><em>매일 짧게 올립니다</em></div>'
+ +'<div class="aiw-h"><b>아키는 여기에도 있습니다</b><em>매일 짧게 올립니다</em></div>'
  +'<div class="aiw-sns">'
   +'<a class="s-ig" href="https://www.instagram.com/sanbonglobal_" target="_blank" rel="noopener noreferrer">'
    +'<span>◎</span>인스타 릴스<small>@sanbonglobal_</small></a>'
@@ -1089,9 +1089,9 @@ function wcShots(){
  return S.map(function(x){
   return '<div class="wc-shot"><div class="ph"><div class="ph-nt"></div><div class="ph-in">'+x.c+'</div></div><span>'+x.t+'</span></div>';}).join('');
 }
-/* 산글이가 한 줄씩 말하듯 나타납니다 */
+/* 아키가 한 줄씩 말하듯 나타납니다 */
 var SGTALK=[
- '안녕하세요, 저는 <b>산글이</b>입니다. 이 앱 안에서 여러분과 말로 연습하는 AI 선생님이에요.',
+ '안녕하세요, 저는 <b>아키</b>입니다. 이 앱 안에서 여러분과 말로 연습하는 AI 선생님이에요.',
  '학원 수업은 일주일에 두 번이죠. 그 사이 <b>닷새</b>가 빕니다. 그 닷새를 제가 맡습니다.',
  '문법 문제만 푸는 게 아니라 <b>소리 내서 말하게</b> 합니다. 제가 상대역을 맡으니 틀려도 부끄럽지 않아요.',
  '어디서 막히셨는지 저는 다 기억합니다. 그 기록이 <b>담임 선생님께 그대로 갑니다.</b>',
@@ -1631,7 +1631,7 @@ function vMe(d){
   '<div style="margin-top:10px"><span class="badge '+(d.offline?'b-g':'b-o')+'">'+(d.offline?'학원 수강생 · 앱 무료':'온라인 회원')+'</span></div></div>'+
   '<div class="sec-t">이용권</div>'+planCards(d)+
   '<div class="sec-t">설정</div><div class="card pad0">'+
-  '<div class="li" onclick="go(\'shop\')"><div class="ic" style="background:#E4F5EC">🎁</div><div class="tx"><b>산글 포인트 · 포인트샵</b><span>'+(d.pt||0).toLocaleString()+'P 보유 · 커피·교재·수강료로 교환</span></div><span class="go">›</span></div>'+
+  '<div class="li" onclick="go(\'shop\')"><div class="ic" style="background:#E4F5EC">🎁</div><div class="tx"><b>아키 포인트 · 포인트샵</b><span>'+(d.pt||0).toLocaleString()+'P 보유 · 커피·교재·수강료로 교환</span></div><span class="go">›</span></div>'+
   '<div class="li" onclick="openSheet(\'goal\')"><div class="ic">🎯</div><div class="tx"><b>하루 목표 시간</b><span>'+d.goal+'분</span></div><span class="go">›</span></div>'+
   '<div class="li" onclick="openSheet(\'set\')"><div class="ic">🌐</div><div class="tx"><b>기본 학습 언어</b><span>'+d.lang+'</span></div><span class="go">›</span></div>'+
   '<div class="li" onclick="installTip()"><div class="ic">📲</div><div class="tx"><b>홈 화면에 앱 추가</b><span>아이콘으로 바로 열기</span></div><span class="go">›</span></div>'+
