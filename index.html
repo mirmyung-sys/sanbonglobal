@@ -18040,7 +18040,8 @@ function voPlay(k,onDone){
  var f=SGVO[k];
  if(!f||!_atCfg.sound){ if(onDone)onDone(); return false; }
  try{
-  var a=new Audio('media/'+f+'.mp3');
+  /* 2026-10-13 대표님 「힉스써 … 아키목소리로 안내하게 해」 — 01~21 안내는 아키 목소리(media/akivo) */
+  var a=new Audio(((+f>0&&+f<30&&f!=='02')?'media/akivo/':'media/')+f+'.mp3');
   a.playbackRate=Math.min(2,Math.max(0.6,_atCfg.speed||1));
   _voAu=a;
   var done=false, fin=function(){ if(done)return; done=true;
