@@ -4839,6 +4839,18 @@ html,body{overflow-x:hidden;max-width:100%}
 #kkGift .kg-ch{background:#F5F0E8;color:#3A2F28;font-size:14px;padding:12px}
 #kkGiftX{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:2147480600;width:52px;height:52px;border-radius:50%;border:0;background:#FFD23F;color:#3A2A00;font-size:22px;font-weight:900;box-shadow:0 6px 16px rgba(0,0,0,.25);cursor:pointer}
 </style>
+<style id="sxDemoCss">
+.sx-demo{margin:14px auto 6px;max-width:420px;background:#FFF3E6;border:2px solid #E7B9A8;border-radius:18px;padding:14px 14px 12px;text-align:center}
+.sx-demo .sd-k{font-size:12px;font-weight:900;color:#B9776A;letter-spacing:.3px}
+.sx-demo .sd-t{font-size:17px;font-weight:900;color:#3A2A22;margin:4px 0 10px;line-height:1.4;word-break:keep-all}
+.sx-demo .sd-t b{color:#B9776A}
+.sx-demo button{display:block;width:100%;border:0;border-radius:12px;background:#FFD23F;color:#3A2A00;font-size:16px;font-weight:900;padding:13px;cursor:pointer;font-family:inherit}
+.sx-demo .sd-s{font-size:12px;color:#8C7A66;margin-top:8px;line-height:1.5;word-break:keep-all}
+#sxDemo{position:fixed;inset:0;z-index:2147480700;background:rgba(58,42,34,.72);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 12px 96px}
+#sxDemo video{max-width:100%;max-height:calc(100vh - 150px);aspect-ratio:9/16;border-radius:18px;background:#FFF3E6;box-shadow:0 12px 40px rgba(0,0,0,.3)}
+#sxDemo p{color:#FFF3E6;font-size:13px;font-weight:700;margin:10px 0 0;text-align:center;word-break:keep-all}
+#sxDemoX{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:2147480800;width:52px;height:52px;border-radius:50%;border:0;background:#FFD23F;color:#3A2A00;font-size:22px;font-weight:900;box-shadow:0 6px 16px rgba(0,0,0,.25);cursor:pointer}
+</style>
 </head>
 <body>
 <!-- 입장코드 게이트 (2026-09-02) — 2026-10-04 대표님 「공개일 10월17일」: 그랜드오픈 카운트다운 화면으로 교체, 10/17 0시 자동 해제. GATE_ON을 false로 바꾸면 즉시 해제 -->
@@ -26876,6 +26888,44 @@ AITXT['jpn_begin']=[{"t": "몇 식구예요? · 가족 소개", "vid": "media/ja
   var h=a.getAttribute('href')||''; if(/\/(chat|coupons|friend)/.test(h)) return;
   e.preventDefault(); e.stopPropagation(); kkGiftOpen(h);
  },true);
+})();</script>
+<script id="sxDemoJs">/* 2026-10-12 대표님 「유료채점도 한달 1회로 … 맛보기로 보여주는걸로 … 실제로 오픽 토스를 등록한 사람에게만 월1회 제공되는 서비스로」
+   토스·오픽 모의고사 잠금화면에 「AI 채점 맛보기」 영상(예시 화면)을 붙입니다. 실제 채점은 등록생에게 매달 1번. */
+(function(){
+ var B='https://mirmyung-sys.github.io/sga-video/demo/speak_demo_', NM={tos:'토스',opic:'오픽'};
+ var pushed=false, ignore=false;
+ function close(fromBack){
+  var d=document.getElementById('sxDemo'); if(d){ var v=d.querySelector('video'); try{v.pause();}catch(e){} d.parentNode.removeChild(d); }
+  var x=document.getElementById('sxDemoX'); if(x) x.parentNode.removeChild(x);
+  if(pushed&&!fromBack){ pushed=false; if(history.state&&history.state.sxDemo){ ignore=true; try{history.back();}catch(e){ignore=false;} } }
+  pushed=false;
+ }
+ window.sgxDemoClose=function(){ close(false); };
+ window.sgxDemo=function(k){
+  close(false);
+  var d=document.createElement('div'); d.id='sxDemo'; d.setAttribute('role','dialog'); d.setAttribute('aria-label',NM[k]+' AI 채점 맛보기');
+  d.innerHTML='<video controls playsinline autoplay preload="auto" poster="'+B+k+'.jpg" src="'+B+k+'.mp4"></video>'
+   +'<p>예시 화면입니다 · 실제 채점은 '+NM[k]+' 등록생에게 매달 1번</p>';
+  d.addEventListener('click',function(e){ if(e.target===d) close(false); });
+  document.body.appendChild(d);
+  var x=document.createElement('button'); x.id='sxDemoX'; x.type='button'; x.setAttribute('aria-label','닫기'); x.textContent='✕'; x.onclick=function(){ close(false); }; document.body.appendChild(x);
+  try{ history.pushState({sxDemo:1},''); pushed=true; }catch(e){}
+ };
+ var _ap=window._akPop;
+ window._akPop=function(){
+  if(ignore){ ignore=false; return true; }
+  if(document.getElementById('sxDemo')){ close(true); return true; }
+  return _ap?_ap.apply(this,arguments):false;
+ };
+ if(typeof window._sxLock==='function'){ var _l=window._sxLock;
+  window._sxLock=_sxLock=function(k,err){ var r=_l.apply(this,arguments);
+   try{ if(k==='tos'||k==='opic'){ var w=document.querySelector('.sx-lock'); if(w&&!w.querySelector('.sx-demo')){
+    var b=document.createElement('div'); b.className='sx-demo';
+    b.innerHTML='<div class="sd-k">AI SPEAKING CHECK</div><div class="sd-t">등록생은 <b>매달 1번</b>, 내 목소리로<br>AI 말하기 채점을 받아요</div>'
+     +'<button type="button" onclick="sgxDemo(\''+k+'\')">▶ 채점 맛보기 영상 보기</button>'
+     +'<div class="sd-s">발음·유창성·문법·어휘 · 예상 등급 · 문장 첨삭 · 모범 답안<br>영상은 예시 화면이며, 등급은 AI 추정입니다.</div>';
+    var c=w.querySelector('.sx-code'); w.insertBefore(b,c||null); } } }catch(e){}
+   return r; }; }
 })();</script>
 </body>
 </html>
