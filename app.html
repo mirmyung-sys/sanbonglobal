@@ -963,16 +963,14 @@ function vWelcome(){
  /* --- 아키 인사 영상 --- */
  +'<div class="aiw-vh">'
   +'<div class="aiw-vwrap">'
-   +'<video class="aiw-v" id="sgiV" autoplay muted loop playsinline preload="metadata" poster="img/sgi_poster.jpg">'
-    +'<source src="media/sgi_hello.mp4" type="video/mp4">'
-   +'</video>'
+   +'<img class="aiw-v" id="sgiV" src="img/aki/aki_face.jpg" alt="아키">'
    +'<div class="aiw-em"><img src="img/app_emblem.png" alt=""><span><b>산본글로벌어학원</b><i>SGA · AI CAMPUS</i></span></div>'
    +'<button class="aiw-snd" id="sgiSnd" type="button" onclick="sgiSnd()">🔇 소리 켜기</button>'
   +'</div>'
   +'<div class="aiw-cap">'
-   +'<div class="aiw-eye">SANGEUL AI · 인공지능 선생님</div>'
+   +'<div class="aiw-eye">AKI AI · 인공지능 선생님</div>'
    +'<h2>안녕하세요,<br>저는 <b>AI 아키</b>입니다</h2>'
-   +'<p>24시간 곁에 있습니다. 소리를 켜면 인사드릴게요.</p>'
+   +'<p>24시간 곁에 있습니다. 지금 바로 한 과 들어가 볼까요?.</p>'
   +'</div>'
  +'</div>'
 
@@ -992,7 +990,7 @@ function vWelcome(){
  +'<div class="aiw-h" style="margin-top:30px"><b>이건 <u>우리가 쓴 책</u>입니다</b>'
   +'<em>빌려온 원서가 아니라, 아키가 처음부터 만든 소설</em></div>'
  +'<div class="aiw-bk">'
-  +'<div class="kk">SANGEUL ORIGINAL · 아키 영어원서</div>'
+  +'<div class="kk">AKI ORIGINAL · 아키 영어원서</div>'
   +'<h3>이 책 한 권만 다 외워도<br><b>원어민 대화의 절반</b>을 갖게 됩니다</h3>'
   +'<p class="kp">아키가 <b>원어민이 실제로 가장 많이 쓰는 단어·패턴·문구만</b> 골라 이야기로 엮었습니다. '
    +'문법책에는 안 나오고, 원어민은 매일 쓰는 말들입니다.</p>'
@@ -1057,6 +1055,7 @@ function sgiInit(){
  var s=v.querySelector('source');
  /* 영상이 없어도 판은 유지(배경 그라데이션이 보임) — 소리 버튼만 감춥니다 */
  function off(){v.dataset.dead='1';var b=document.getElementById('sgiSnd');if(b)b.style.display='none';}
+ if(v.tagName!=='VIDEO'){off();return;} /* 2026-10-12 아키 얼굴 사진으로 교체 — 소리 버튼 감춤 */
  if(s)s.addEventListener('error',off);
  v.addEventListener('error',off);
 }

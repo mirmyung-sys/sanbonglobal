@@ -1797,9 +1797,9 @@ li:first-child > .pgh{margin-top:2px}
 .at-face img{width:100%;height:100%;object-fit:cover;display:block}
 .at-face.talk{box-shadow:0 0 0 6px rgba(198,161,91,.28),0 12px 32px -12px rgba(29,45,79,.55);animation:atBob 1.4s ease-in-out}
 /* 2026-09-04 아키를 전신 캐릭터 이미지로 교체 — 강사 사진은 cover 그대로, 아키만 contain */
-.at-face img[src*='sgi_']{object-fit:cover;padding:0}
+.at-face img[src*='aki_']{object-fit:cover;padding:0}
 /* 2026-09-05 — 얼굴 클로즈업 이미지는 원을 꽉 채웁니다 */
-.at-face img[src*='sgi_face']{object-fit:cover!important;padding:0!important}
+.at-face img[src*='aki_face']{object-fit:cover!important;padding:0!important}
 
 @keyframes atBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 @media(prefers-reduced-motion:reduce){.at-face.talk{animation:none}}
@@ -2901,7 +2901,7 @@ li:first-child > .pgh{margin-top:2px}
 @media(max-width:400px){.pg-kpi b{font-size:23px}.pg-kpi span{font-size:11.5px}}
 .sge-face{width:104px;height:104px;margin:14px auto 4px;border-radius:50%;overflow:hidden;
  background:#FFF3E2;border:3px solid rgba(255,255,255,.85);box-shadow:0 10px 26px rgba(0,0,0,.22)}
-.sge-face video{width:100%;height:100%;object-fit:cover;display:block}
+.sge-face video,.sge-face img{width:100%;height:100%;object-fit:cover;display:block}
 .sge-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:420px;margin:20px auto 0}
 .sge-kpi>div{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);
  border-radius:14px;padding:13px 6px 11px;text-align:center}
@@ -8566,7 +8566,7 @@ function aiFlowCard(t){
  var wk=spa?'월~금 하루 한 강':'월·수 하루 한 강 + 격주 금요일 복습 한 강';
  var mo=spa?'2개월':'4개월';
  return '<div class="aif">'
- +'<div class="aif-h"><img src="img/sgi_face.png" alt="아키"><div><b>아키 AI 강의실은 이렇게 진행됩니다</b>'
+ +'<div class="aif-h"><img src="img/aki/aki_face.jpg" alt="아키"><div><b>아키 AI 강의실은 이렇게 진행됩니다</b>'
  +'<em>학원이 아니라 <u>홈페이지</u>에서 합니다 · 24시간 · 추가 요금 없음</em></div>'
  +'<span class="aif-free">무료 포함</span></div>'
  +'<ol class="aif-s">'
@@ -10109,7 +10109,7 @@ function aiCalHTML(){
   +'<span><i class="now"></i>오늘</span><span><i class="soon"></i>예정</span></div>'
  +'<div class="aic-t"><em>'+(done?'다음 강의 · ':'첫 강의 · ')+(cur.rv?'복습':(cur.no+'강'))+' · '+_md(cur.d)+'</em><b>'+cur.unit+'</b>'
   +'<span>5문항 · 3분'+(miss?(' · 결석 '+miss+'강은 언제든 보충하실 수 있습니다'):'')+'</span></div>'
- +'<div class="ai-say" style="margin:16px 0 0"><img src="img/sgi_face.png" alt="아키"><div class="ai-bub">'
+ +'<div class="ai-say" style="margin:16px 0 0"><img src="img/aki/aki_face.jpg" alt="아키"><div class="ai-bub">'
  +'한 번에 다 열어드리면 사흘이면 다 푸시고 안 오세요. 그래서 <b>현강 나오는 날에 한 강씩</b>만 엽니다.<br>'
  +'못 하고 넘어간 날은 <b class="ms">결석</b>으로 남지만 사라지지는 않아요. <b>언제든 보충</b>하실 수 있습니다.</div></div></div>';}
 
@@ -17777,7 +17777,7 @@ function sgaExIntro(){
  var m=document.createElement('div'); m.id='sgx'; m.oncontextmenu=function(){return false;}; m.oncopy=function(e){e.preventDefault();};
  m.innerHTML='<div class="bar"><span class="tt">아키 시험문제풀이반 · '+SGXM.title+'</span></div>'
   +'<div class="intro"><div class="clk"><b></b><s></s></div>'
-  +'<div class="say"><img src="img/sgi_talk.png" alt="아키" onerror="this.src=\'img/sgi_face.png\'"><div>준비되셨습니까?<br><small style="font-size:14.5px;font-weight:700">시작을 누르시면 진짜 토익처럼 시험이 시작됩니다.</small></div></div>'
+  +'<div class="say"><img src="img/aki/aki_talk.jpg" alt="아키" onerror="this.src=\'img/aki/aki_face.jpg\'"><div>준비되셨습니까?<br><small style="font-size:14.5px;font-weight:700">시작을 누르시면 진짜 토익처럼 시험이 시작됩니다.</small></div></div>'
   +'<div class="rules">⏱ 제한 시간 <b>'+Math.round(SGXM.sec/60)+'분</b> · 끝나면 자동 제출<br>📝 문제지에서 고르거나 오른쪽 <b>답안지(OMR)</b>에 표시<br>🚫 중간에 멈추기·저장·인쇄·복사 없음<br>✅ 제출하면 바로 채점 · 문항별 해설</div>'
   +'<button class="go" onclick="sgaExStart()">시작</button><button class="no" onclick="sgaExClose()">나가기</button></div>';
  document.body.appendChild(m); document.body.style.overflow='hidden';
@@ -18330,7 +18330,7 @@ function _aiHostOf(k){
  if(!L || typeof CRY==='undefined' || !CRY[L]) return null;
  var av=(typeof CRAV!=='undefined'&&CRAV[L])?CRAV[L]:null;
  return { lang:L, name:CRY[L].me, en:CRY[L].en, code:CRY[L].code,
-          photo:(av&&av.photo)||'img/sgi_face.png', sub:L+' 담당' };
+          photo:(av&&av.photo)||'img/aki/aki_face.jpg', sub:L+' 담당' };
 }
 
 /* 이 과를 새 구성으로 진행할지 */
@@ -18623,9 +18623,9 @@ function _atMood(m){var f=document.getElementById('atFace'); if(!f)return;
   /* 2026-09-10 — 진행자가 선생님이면 표정 그림이 없습니다.
      전에는 여기서 아키 얼굴을 도로 꽂아, 이름은 크리스탈인데 얼굴은 아키였습니다. */
   if(_atHost){ if(im.getAttribute('src')!==_atHost.photo) im.src=_atHost.photo; return; }
-  var want = (m==='celebrate') ? 'img/sgi_smile.png'
-           : (m==='talking')   ? 'img/sgi_talk.png'
-           :                     'img/sgi_face.png';
+  var want = (m==='celebrate') ? 'img/aki/aki_smile.jpg'
+           : (m==='talking')   ? 'img/aki/aki_talk.jpg'
+           :                     'img/aki/aki_face.jpg';
   if(im.getAttribute('src')!==want) im.src=want;
  }catch(e){}}
 
@@ -18642,7 +18642,7 @@ function aiTeach(n){
   +'<div class="sp-x" onclick="aiLsClose()">✕</div>'
   /* ── 시작 화면 : 이 버튼 한 번이 소리 잠금까지 풀어 줍니다 ── */
   +'<div class="at-start" id="atStart">'
-   +'<div class="at-face idle" id="atFace0"><img src="'+(_atHost?_atHost.photo:'img/sgi_face.png')+'" alt="'+(_atHost?_atHost.name:'아키')+'"></div>'
+   +'<div class="at-face idle" id="atFace0"><img src="'+(_atHost?_atHost.photo:'img/aki/aki_face.jpg')+'" alt="'+(_atHost?_atHost.name:'아키')+'"></div>'
    +'<h3>'+(_atHost?(_atHost.name+_josa(_atHost.name,'이','가')):'아키가')+' 진행하는<br><b>'+n+'과 · '+L.t+'</b></h3>'
    +'<p>제가 한 마디씩 말씀드립니다. 화면 아무 곳이나 누르시면 넘어갑니다.</p>'
    +'<button class="at-start-b" onclick="atBegin()">'+(_atHost?(_atHost.name+_josa(_atHost.name,'과','와')):'아키랑')+' 시작하기 ›</button>'
@@ -18651,7 +18651,7 @@ function aiTeach(n){
   +'</div>'
   /* ── 진행 화면 ── */
   +'<div class="at-run" id="atRun" hidden>'
-   +'<div class="at-hd"><div class="at-face idle" id="atFace"><img id="atFaceImg" src="'+(_atHost?_atHost.photo:'img/sgi_face.png')+'" alt="'+(_atHost?_atHost.name:'아키')+'"></div>'
+   +'<div class="at-hd"><div class="at-face idle" id="atFace"><img id="atFaceImg" src="'+(_atHost?_atHost.photo:'img/aki/aki_face.jpg')+'" alt="'+(_atHost?_atHost.name:'아키')+'"></div>'
     +'<div class="at-nm" id="atNm">'+(_atHost?(_atHost.name+'<span>'+_atHost.sub+'</span>'):'아키<span>AI 진행</span>')+'</div>'
     +'<div class="at-pb"><i id="atPb"></i></div></div>'
    /* 2026-09-10 — 지금 어느 구간인지 보이게. 숫자만으로는 얼마나 남았는지 감이 안 옵니다 */
@@ -18720,7 +18720,7 @@ function atGo(){
     학습관 진행자는 처음부터 끝까지 아키 하나입니다. 얼굴은 절대 바뀌지 않고,
     누가 말하는지는 이름표로만 알립니다. */
  if(im&&nm){
-  var _hp=_atHost?_atHost.photo:'img/sgi_face.png';
+  var _hp=_atHost?_atHost.photo:'img/aki/aki_face.jpg';
   if(im.getAttribute('data-w')!==_hp){ im.src=_hp; im.setAttribute('data-w',_hp); im.onerror=null; }
   nm.innerHTML = _atHost
     ? (_atHost.name+'<span>'+_atHost.sub+'</span>')
@@ -19153,7 +19153,7 @@ function lsQDraw(){
   /* 2026-09-08 대표님 지시 — 1차에서 하나라도 틀렸으면 같은 유형으로 한 번 더 */
   if(_lsRound===1 && right<_lsSetLen()){
    box.innerHTML='<div class="ls-r2">'
-    +'<div class="r2-face"><img src="img/sgi_face.png" alt="아키" onerror="this.style.display=\'none\'"></div>'
+    +'<div class="r2-face"><img src="img/aki/aki_face.jpg" alt="아키" onerror="this.style.display=\'none\'"></div>'
     +'<h3>'+_lsSetLen()+'문제 중 <b>'+right+'개</b> 맞히셨습니다</h3>'
     +'<p>틀린 <b>'+(_lsSetLen()-right)+'문제</b>는 그냥 넘기면 다음 과에서 또 막힙니다.<br>'
     +'<b>같은 유형으로 '+LSQ_N+'문제</b> 더 풀고 확실히 잡고 가시겠어요?</p>'
@@ -19252,7 +19252,7 @@ function _aiDiagHTML(last){
    +'<dt>남은 길</dt><dd><b>'+(last?'전 과정 완료':(d.tot+'과 중 '+d.n+'과 완료 · 남은 '+left+'과'))+'</b>'
      +'<span>'+(last?'축하드립니다. 다음 단계로 가시면 됩니다.':('주 3회 속도면 약 '+_aiWeeks(left)+' 걸립니다.'))+'</span></dd>'
   +'</dl>'
-  +'<div class="dg-say"><img src="img/sgi_face.png" alt="아키" onerror="this.style.display=\'none\'">'
+  +'<div class="dg-say"><img src="img/aki/aki_face.jpg" alt="아키" onerror="this.style.display=\'none\'">'
    +'<div class="dg-bub">'+(d.band.lv>=3
       ? '여기까지 오셨으면 혼자서도 하실 수 있어요. 다만 <b>막히는 자리</b>는 사람이 봐야 빨리 뚫립니다.'
       : '괜찮습니다. 이 구간에서 혼자 하시면 대부분 <b>같은 자리에서 계속 막히십니다.</b> 그 자리만 잡아 드릴게요.')
@@ -19297,7 +19297,7 @@ function lsPick(i){
   +'<div class="ls-ans '+(ok?'o':'x')+'">'+(ok?'잘하셨어요':'아쉬워요')
   +' — 정답은 <b>'+opts[Q[2]]+'</b></div>'
   /* 2026-09-03 대표님 지시 — 해설은 아키가 말해 주는 형태로 (맨 글씨 X) */
-  +'<div class="ls-say"><img src="img/sgi_face.png" alt="아키" onerror="this.style.display=\'none\'">'
+  +'<div class="ls-say"><img src="img/aki/aki_face.jpg" alt="아키" onerror="this.style.display=\'none\'">'
    +'<div class="ls-bub"><em>'+(ok?'맞아요!':'괜찮아요, 여기만 보시면 돼요.')+'</em> '+Q[3]
    +(vo?' <button class="ls-vo" data-ic="&#128011;" style="display:inline-flex;vertical-align:middle;margin-left:4px" title="아키 설명 듣기" onclick="sgVoSay(\''+vo+'\',\''+voTxt+'\',this)">&#128011;</button>':'')
    +'</div></div>'
@@ -19348,7 +19348,7 @@ function aiToeicX(){
  /* ── 가르치는 법 ── */
  +'<div class="aiv-h"><span class="k">방식</span><b>아키는 이렇게 가르칩니다</b>'
   +'<p>토익 문법은 외우는 게 아니라 <b>자리를 보는 것</b>입니다.</p></div>'
- +'<div class="aiv-say"><img src="img/sgi_face.png" alt="아키">'
+ +'<div class="aiv-say"><img src="img/aki/aki_face.jpg" alt="아키">'
   +'<div class="aiv-bub"><em>안녕하세요, 아키예요.</em><br>매일 다섯 문제씩 들고 올게요. '
   +'해석부터 하지 마세요. <b>빈칸이 무슨 자리인지</b>만 먼저 보시면 됩니다. 지하철에서 끝나요.</div></div>'
  +'<div class="aiv-steps">'
@@ -19593,7 +19593,7 @@ function sgeHTML(){
   /* 2026-09-17 — 첫 화면은 읽는 자리가 아니라 붙잡는 자리입니다.
      듀오링고(캐릭터+한 문장+버튼) · 야나두(거대한 숫자 하나)를 보고 다시 짰습니다. */
   +'<div class="sge-face">'
-   +'<video src="media/sgi_hello.mp4" poster="img/sgi_face.png" muted autoplay loop playsinline preload="metadata" aria-hidden="true"></video>'
+   +'<img src="img/aki/aki_face.jpg" alt="" aria-hidden="true">'
   +'</div>'
   +'<h2>하루 <em>3분</em>이면<br>입이 열립니다</h2>'
   +'<div class="sge-kpi">'
@@ -19654,7 +19654,7 @@ function sgdHTML(){
  var hi=SGHI.map(function(c){
   return '<article class="cn-c" style="background:'+c.bg+'">'
    +'<div class="cn-lg"><img src="img/sga_emblem.png" alt=""><b>SGA</b></div>'
-   +(c.face?'<div class="sgd-face2"><img src="img/sgi_face.png" alt="아키" onerror="this.parentNode.style.display=\'none\'"></div>':'')
+   +(c.face?'<div class="sgd-face2"><img src="img/aki/aki_face.jpg" alt="아키" onerror="this.parentNode.style.display=\'none\'"></div>':'')
    +'<div class="no">'+c.no+' / 03</div>'
    +'<h3>'+c.h+'</h3>'
    +(c.p?'<p>'+c.p+'</p>':'')
@@ -20713,13 +20713,13 @@ function tqRender(pick){
      if(done){c=(k===q.a)?' ok':(k===pick?' no':' dim');}
      return '<button class="tq-b'+c+'" '+(done?'disabled':'')+' onclick="tqRender('+k+')">'
       +'<i>'+L[k]+'</i>'+o+'</button>';}).join('')+'</div>'
-  +(done?('<div class="tq-say"><img src="img/sgi_face.png" alt="아키"><div class="tq-bub">'
+  +(done?('<div class="tq-say"><img src="img/aki/aki_face.jpg" alt="아키"><div class="tq-bub">'
      +'<em>'+(pick===q.a?'잘하셨어요!':'아깝습니다 —')+'</em> '
      +(pick===q.a?'':'정답은 <b>'+L[q.a]+'. '+q.o[q.a]+'</b>이에요.<br>')
      +'<span class="cue">'+q.c+'</span><br>'+q.x
      +'<br><br>이런 문제가 <b>40강</b> 들어 있어요. 하루 다섯 문제씩, 저랑 같이 가시죠.'
      +'</div></div>'):
-     '<div class="tq-say sm"><img src="img/sgi_face.png" alt="아키"><div class="tq-bub">'
+     '<div class="tq-say sm"><img src="img/aki/aki_face.jpg" alt="아키"><div class="tq-bub">'
      +'<em>아키예요.</em> 해석하지 마시고 <b>빈칸 앞뒤 두 단어</b>만 보세요.</div></div>');}
 try{tqRender();}catch(e){}
 document.addEventListener('DOMContentLoaded',function(){try{tqRender();}catch(e){}});
@@ -22888,7 +22888,7 @@ a[href="app.html"]{background:linear-gradient(120deg,#C81F2B,#8E1119)!important}
 <div id="sgGd" aria-live="polite">
  <div class="gd-card">
   <div class="gd-top">
-   <div class="gd-face"><img src="img/sgi_talk.png" alt="AI 아키"></div>
+   <div class="gd-face"><img src="img/aki/aki_talk.jpg" alt="AI 아키"></div>
    <div class="gd-bub">
     <div class="gd-who">AI 아키</div>
     <div class="gd-say" id="gdSay">안녕하세요!</div>
@@ -22899,7 +22899,7 @@ a[href="app.html"]{background:linear-gradient(120deg,#C81F2B,#8E1119)!important}
  </div>
 </div>
 <button id="sgGdMini" type="button" onclick="gdShow(1)" aria-label="아키 부르기">
- <img src="img/sgi_talk.png" alt="AI 아키">
+ <img src="img/aki/aki_talk.jpg" alt="AI 아키">
 </button>
 
 <script>
