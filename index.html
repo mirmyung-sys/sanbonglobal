@@ -7985,6 +7985,12 @@ function _kpParse(x, depth){
   if (typeof x === 'string') {
     var s = x.trim();
     if (s.charAt(0) === '{' || s.charAt(0) === '[') { try { return _kpParse(JSON.parse(s), depth + 1); } catch (e) { return null; } }
+    /* 2026-10-14 실측: 코페이 결제창은 결과를 <form id="transRslt"> … <input name="resultCd" value="3001"> … HTML 문자열로 보낸다 */
+    if (/<input/i.test(s) && /resultCd/.test(s)) {
+      try { var doc = new DOMParser().parseFromString(s, 'text/html'), fo = {};
+        doc.querySelectorAll('input[name]').forEach(function(el){ fo[el.getAttribute('name')] = el.getAttribute('value') || ''; });
+        return ('resultCd' in fo) ? fo : null; } catch (e) { return null; }
+    }
     if (/(^|[?&])resultCd=/.test(s)) { var o = {}; s.replace(/^\?/, '').split('&').forEach(function(p){ var i = p.indexOf('='); if (i > 0) { try { o[decodeURIComponent(p.slice(0, i))] = decodeURIComponent(p.slice(i + 1).replace(/\+/g, ' ')); } catch (e) {} } }); return o; }
     return null;
   }
