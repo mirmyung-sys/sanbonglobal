@@ -7965,6 +7965,7 @@ function _kpOpen(d){
     document.body.appendChild(wrap);
   }
   wrap.style.display = 'flex';
+  var oldWait = document.getElementById('kpWait'); if (oldWait) oldWait.remove();
   var f = document.createElement('form');
   f.method = 'post'; f.action = KP_PAY_URL; f.target = 'kpFrame'; f.acceptCharset = 'UTF-8'; f.style.display = 'none';
   /* 2026-10-14: 코페이 결제창은 결과를 returnUrl 주소(origin)로 postMessage 한다 → returnUrl 을 이 홈페이지 주소로 보내고,
@@ -8011,6 +8012,13 @@ window.addEventListener('message', function(e){
   var data = _kpParse(e.data);
   if (!data) return;
   window._kpDone = true;
+  /* 결과를 받으면 하얀 결제창 위에 「결제 확인 중」을 바로 띄운다 (결제서버가 기록·개인코드를 만드는 1~3초 동안) */
+  try { var bx = document.querySelector('#kpWrap > div'); if (bx && !document.getElementById('kpWait')) { var ov = document.createElement('div'); ov.id = 'kpWait';
+    ov.style.cssText = 'position:absolute;inset:0;z-index:3;background:#FBF3EA;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;font-family:inherit;color:#2B2320';
+    ov.innerHTML = '<div style="width:46px;height:46px;border:5px solid #F5C542;border-top-color:transparent;border-radius:50%;animation:kpSpin 1s linear infinite"></div><style>@keyframes kpSpin{to{transform:rotate(360deg)}}</style>'
+      + '<div style="font-size:20px;font-weight:900;margin-top:18px">' + (String(data.resultCd) === '3001' ? '결제가 승인되었습니다' : '결제 결과 확인 중') + '</div>'
+      + '<div style="font-size:15px;color:#5c4a40;margin-top:8px;line-height:1.6">결과 화면으로 넘어가는 중입니다.<br>창을 닫지 말고 잠시만 기다려 주세요.</div>';
+    bx.appendChild(ov); } } catch (x) {}
   if (!data.ordNo && window._kpOrder) data.ordNo = window._kpOrder;
   var f = document.createElement('form'); f.method = 'post'; f.action = window._kpServer; f.target = '_top'; f.acceptCharset = 'UTF-8'; f.style.display = 'none';
   Object.keys(data).forEach(function(k){ var v = data[k]; if (v != null && typeof v === 'object') return; var i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = v == null ? '' : v; f.appendChild(i); });
