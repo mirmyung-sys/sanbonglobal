@@ -7967,31 +7967,54 @@ function _kpOpen(d){
   wrap.style.display = 'flex';
   var f = document.createElement('form');
   f.method = 'post'; f.action = KP_PAY_URL; f.target = 'kpFrame'; f.acceptCharset = 'UTF-8'; f.style.display = 'none';
+  /* 2026-10-14: 코페이 결제창은 결과를 returnUrl 주소(origin)로 postMessage 한다 → returnUrl 을 이 홈페이지 주소로 보내고,
+     받은 결과는 아래 message 처리기가 SGA 결제서버(d.returnUrl)로 넘긴다. hashStr 에 returnUrl 은 안 들어가 서명은 그대로 */
+  window._kpServer = d.returnUrl; window._kpOrder = d.orderNo; window._kpDone = false;
   ['payMethod','id','goodsName','orderNo','amt','returnUrl','ediDate','hashStr','buyerName','buyerTel','buyerEmail','reqReserved'].forEach(function(k){
-    if (d[k] == null || d[k] === '') return;
-    var i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = d[k]; f.appendChild(i);
+    var v = (k === 'returnUrl') ? (location.origin + '/') : d[k];
+    if (v == null || v === '') return;
+    var i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = v; f.appendChild(i);
   });
   document.body.appendChild(f); f.submit(); f.remove();
-  window._kpReturnUrl = d.returnUrl;
 }
-function kpClose(){ var w = document.getElementById('kpWrap'); if (w) w.style.display = 'none'; }
+function kpClose(){ var w = document.getElementById('kpWrap'); if (w) w.style.display = 'none'; window._kpBusy = false; }
 
-/* 결제 완료 → iframe 이 postMessage 로 결과를 보냄 → returnUrl(SGA 결제서버)로 FORM 제출 (가이드 2장) */
+/* 결제 결과 꺼내기 — 객체 / JSON 문자열 / a=1&b=2 문자열 / 한 겹 감싼 객체 모두 */
+function _kpParse(x, depth){
+  depth = depth || 0; if (x == null || depth > 3) return null;
+  if (typeof x === 'string') {
+    var s = x.trim();
+    if (s.charAt(0) === '{' || s.charAt(0) === '[') { try { return _kpParse(JSON.parse(s), depth + 1); } catch (e) { return null; } }
+    if (/(^|[?&])resultCd=/.test(s)) { var o = {}; s.replace(/^\?/, '').split('&').forEach(function(p){ var i = p.indexOf('='); if (i > 0) { try { o[decodeURIComponent(p.slice(0, i))] = decodeURIComponent(p.slice(i + 1).replace(/\+/g, ' ')); } catch (e) {} } }); return o; }
+    return null;
+  }
+  if (typeof x !== 'object') return null;
+  if ('resultCd' in x) return x;
+  for (var k in x) { var r = _kpParse(x[k], depth + 1); if (r) return r; }
+  return null;
+}
+/* 결제 완료 → 결제창(iframe)이 postMessage 로 결과를 보냄 → SGA 결제서버로 FORM 제출 (가이드 2장)
+   2026-10-14: 결과를 보내는 주소가 korpay.com 이 아닐 수 있어(상위 PG), 주소 대신 「우리가 띄운 결제창(kpFrame)에서 온 메시지인지」로 확인한다.
+   결제 진행 중일 때만·한 번만 받는다 */
 window.addEventListener('message', function(e){
-  if (!/korpay\.com$/.test((e.origin || '').replace(/^https?:\/\//, '').split(':')[0])) return;
-  var data = e.data;
-  if (typeof data === 'string') { try { data = JSON.parse(data); } catch (x) { return; } }
-  if (!data || typeof data !== 'object' || !window._kpReturnUrl) return;
-  if (!('resultCd' in data) && !('resultMsg' in data)) return;
-  var f = document.createElement('form'); f.method = 'post'; f.action = window._kpReturnUrl; f.style.display = 'none';
-  Object.keys(data).forEach(function(k){ var i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = data[k] == null ? '' : data[k]; f.appendChild(i); });
+  var fr = document.getElementById('kpFrame');
+  var fromPay = false;
+  try { var w = e.source; for (var n = 0; fr && w && n < 6; n++) { if (w === fr.contentWindow) { fromPay = true; break; } var up = (w.parent && w.parent !== w) ? w.parent : w.opener; if (!up || up === w) break; w = up; } } catch (x) {}
+  try { if (window._kpDebug && window._kpServer) window._kpDebug(e.origin + (fromPay ? ' (결제창)' : ' (다른 곳 — 무시)'), e.data); } catch (x) {}
+  if (!fromPay || !window._kpServer || window._kpDone) return;
+  var data = _kpParse(e.data);
+  if (!data) return;
+  window._kpDone = true;
+  if (!data.ordNo && window._kpOrder) data.ordNo = window._kpOrder;
+  var f = document.createElement('form'); f.method = 'post'; f.action = window._kpServer; f.target = '_top'; f.acceptCharset = 'UTF-8'; f.style.display = 'none';
+  Object.keys(data).forEach(function(k){ var v = data[k]; if (v != null && typeof v === 'object') return; var i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = v == null ? '' : v; f.appendChild(i); });
   document.body.appendChild(f); f.submit();
 });
 window._kpReady=false;
 sgaPayReady(function(ok){window._kpReady=ok;var b=document.getElementById('spPayBtn');if(ok&&b)b.innerHTML='💳 카드로 바로 결제하기';});
 (function(){try{var q=new URLSearchParams(location.search);if(q.get('paid')){var ok=q.get('r')==='ok';setTimeout(function(){try{sgToast(ok?'<b>결제가 완료되었습니다</b><br>담당자가 연락드려 첫 수업 일정을 잡아 드립니다.':'<b>결제가 완료되지 않았습니다</b><br>다시 시도하시거나 031-466-6969로 전화 주세요.');}catch(e){}},800);history.replaceState(null,'',location.pathname+location.hash);}}catch(e){}})();
 /* 대표님 테스트용: sanbonglobal.com/?paytest=1 → 화면 아래에 「1,000원 테스트 결제」 버튼 (손님에겐 안 보임) */
-(function(){try{if(new URLSearchParams(location.search).get('paytest')!=='1')return;var go=function(){var b=document.createElement('button');b.type='button';b.textContent='💳 1,000원 테스트 결제';b.style.cssText='position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:2147483647;white-space:nowrap;padding:16px 26px;border:0;border-radius:40px;background:#F5C542;color:#2B2320;font-weight:900;font-size:17px;box-shadow:0 6px 16px rgba(0,0,0,.2)';b.onclick=function(){sgaKorpay({amt:1000,goods:'결제 연동 테스트',name:'대표 테스트'});};document.body.appendChild(b);};if(document.body)go();else window.addEventListener('DOMContentLoaded',go);}catch(e){}})();
+(function(){try{if(new URLSearchParams(location.search).get('paytest')!=='1')return;var go=function(){var b=document.createElement('button');b.type='button';b.textContent='💳 1,000원 테스트 결제';b.style.cssText='position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:2147483647;white-space:nowrap;padding:16px 26px;border:0;border-radius:40px;background:#F5C542;color:#2B2320;font-weight:900;font-size:17px;box-shadow:0 6px 16px rgba(0,0,0,.2)';b.onclick=function(){if(window._kpBusy)return;window._kpBusy=true;setTimeout(function(){window._kpBusy=false;},8000);sgaKorpay({amt:1000,goods:'결제 연동 테스트',name:'대표 테스트'});};document.body.appendChild(b);var lg=document.createElement('div');lg.id='kpLog';lg.style.cssText='position:fixed;left:8px;right:8px;top:8px;z-index:2147483647;max-height:30vh;overflow:auto;background:#FFF8E1;color:#2B2320;border:2px solid #F5C542;border-radius:12px;padding:8px 10px;font:12px/1.5 monospace;white-space:pre-wrap;word-break:break-all;display:none';document.body.appendChild(lg);window._kpDebug=function(o,d){var t;try{t=typeof d==='string'?d:JSON.stringify(d);}catch(x){t=String(d);}lg.style.display='block';lg.textContent+='['+new Date().toLocaleTimeString()+'] '+o+'\n'+String(t).slice(0,600)+'\n\n';};};if(document.body)go();else window.addEventListener('DOMContentLoaded',go);}catch(e){}})();
 function spPay(kind){
  if(!agSync('agPay')){alert('필수 동의 항목을 모두 확인해 주세요.');return;}
  var amt=_num(document.getElementById('spPtTot').innerHTML);
