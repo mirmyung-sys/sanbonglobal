@@ -4208,7 +4208,19 @@ html,body{overflow-x:hidden;max-width:100%}
 .nt-vhead h3{margin:8px 0 0;font-size:21px;font-weight:900;color:var(--navy);letter-spacing:-.02em;line-height:1.4}
 .nt-vmeta{margin-top:9px;color:#8a94a8;font-size:13px;font-weight:700}
 .nt-cards{display:flex;flex-direction:column;gap:14px;align-items:center;margin:18px 0 6px}.nt-cards img{width:100%;max-width:560px;height:auto;border-radius:16px;box-shadow:0 6px 22px rgba(91,16,38,.16);display:block;background:#FBF3EA}
-.nt-more{margin:14px auto 0;max-width:560px}.nt-more summary{cursor:pointer;font-weight:800;color:#7B1733;padding:12px 4px;font-size:16px}
+.nt-more{margin:14px auto 0;max-width:560px}
+/* 2026-10-17 대표님 「공지사항 넓은 화면 다 비우고 너무 작게 글씨」 — PC: 카드 왼쪽 · 글 오른쪽 크게 / 카드 여러 장이면 3장씩 펼치고 글은 아래 */
+.nt-view.hc .nt-body{font-size:17px;line-height:1.9;color:#2B2320}
+@media(min-width:900px){
+ .nt-view.hc{display:grid;grid-template-columns:minmax(0,500px) minmax(0,1fr);column-gap:44px;align-items:start}
+ .nt-view.hc>*{grid-column:1/-1}
+ .nt-view.hc>.nt-cards{grid-column:1;position:sticky;top:84px;margin:22px 0 0}
+ .nt-view.hc>.nt-cards img{max-width:100%}
+ .nt-view.hc>.nt-body{grid-column:2;font-size:19px;line-height:1.95;padding-top:26px}
+ .nt-view.hc>.nt-body b{color:#7B1733}
+ .nt-view.hm>.nt-cards{grid-column:1/-1;position:static;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+ .nt-view.hm>.nt-body{grid-column:1/-1;max-width:860px;margin:0 auto}
+}.nt-more summary{cursor:pointer;font-weight:800;color:#7B1733;padding:12px 4px;font-size:16px}
 .nt-th{width:46px;height:58px;object-fit:cover;border-radius:6px;vertical-align:middle;margin-right:8px;box-shadow:0 1px 4px rgba(0,0,0,.15)}
 .nt-body{padding:22px 4px;color:#3d4657;font-size:15.5px;line-height:1.85}
 .nt-body p{margin:0 0 14px}
@@ -5857,11 +5869,11 @@ function _ntCards(n){var L=NT_CARDS[n.id];if(!L)return '';
 function noticeView(n){
  var cd=_ntCards(n);
  return H('NOTICE','공지사항','','📢')
-  +'<div class="nt-view">'
+  +'<div class="nt-view'+(cd?(NT_CARDS[n.id].length>1?' hc hm':' hc'):'')+'">'
   +'<div class="nt-vhead"><span class="nt-tag nt-'+n.tag+'">'+n.tag+'</span><h3>'+n.t+'</h3>'
   +'<div class="nt-vmeta">'+n.d+' · 조회 '+_hitTxt(n.id)+'</div></div>'
   +cd
-  +(cd?'<details class="nt-more"><summary>글로 읽기</summary><div class="nt-body">'+n.b+'</div></details>':'<div class="nt-body">'+n.b+'</div>')
+  +'<div class="nt-body">'+n.b+'</div>'   /* 2026-10-17 대표님 「그냥 사진 나오고 밑에 전부 글도」 — 접기 없음 */
   +(n.act?('<a class="pgcta" href="#" onclick="'+n.act+'return false;">'+(n.actLabel||'자세히 보기')+' ›</a>'):'')
   +'<div class="nt-back"><a href="#" onclick="_sgSub(noticePage());return false;">← 목록으로</a></div>'
   +'</div>';
@@ -7535,7 +7547,7 @@ function spTermRedraw(){
 function _spBase(k,v){var P=_spP(k);for(var i=0;i<P.opt.length;i++){if(P.opt[i][0]===v)return P.opt[i];}return P.opt[0];}
 var _spSubj='영어';
 function _wdays(s){if(Array.isArray(s))s=s.join(' ');var mp={'일':0,'월':1,'화':2,'수':3,'목':4,'금':5,'토':6};s=(s||'').replace(/요일/g,'');var r=[];for(var i=0;i<s.length;i++){var w=mp[s.charAt(i)];if(w!==undefined&&r.indexOf(w)<0)r.push(w);}if(/주말/.test(s))r=[0,6];if(/평일/.test(s))r=[1,2,3,4,5];if(/월~금|매일/.test(s))r=[1,2,3,4,5];return r;}
-var _spCalD=new Date(2026,10,1);var _calWd=[];var _exRows=[];var _exPay='';var _exM1=0,_exM2=0;var _calHol={'2026-1-1':'신정','2026-2-16':'설날','2026-2-17':'설날','2026-2-18':'설날','2026-3-1':'삼일절','2026-3-2':'대체','2026-5-5':'어린이날','2026-5-24':'석가탄신','2026-5-25':'대체','2026-6-6':'현충일','2026-8-15':'광복절','2026-8-17':'대체','2026-9-24':'추석','2026-9-25':'추석','2026-9-26':'추석','2026-10-3':'개천절','2026-10-5':'대체','2026-10-9':'한글날','2026-12-25':'성탄절'};var _calStart=new Date(2026,10,1),_calEnd=new Date(2026,10,30);var _calN=99;
+var _spCalD=new Date(2026,10,1);var _calWd=[];var _exRows=[];var _exPay='';var _exM1=0,_exM2=0;var _calHol={'2026-1-1':'신정','2026-2-16':'설날','2026-2-17':'설날','2026-2-18':'설날','2026-3-1':'삼일절','2026-3-2':'대체','2026-5-5':'어린이날','2026-5-24':'석가탄신','2026-5-25':'대체','2026-6-6':'현충일','2026-8-15':'광복절','2026-8-17':'대체','2026-9-24':'추석','2026-9-25':'추석','2026-9-26':'추석','2026-10-3':'개천절','2026-10-5':'대체','2026-10-9':'한글날','2026-12-24':'휴강','2026-12-25':'성탄절'};var _calStart=new Date(2026,10,1),_calEnd=new Date(2026,10,30);var _calN=99;
 /* 달력 색: _calColor = 한 가지 반일 때 동그라미 색 / _calGrp = 여러 반을 색으로 구분(무한수강권) */
 var _calColor=null,_calGrp=null,_calUntil=null,_calMon=4;
 /* 2026-08-30 — 등록 기간을 바꾸면 달력도 그만큼 늘어납니다.
@@ -7582,6 +7594,7 @@ function _grpCapOK(g,dt){if(!dt||!g||!g.wd||!g.wd.length)return true;var cap=_ca
  var y=dt.getFullYear(),m=dt.getMonth(),d=new Date(y,m,1),n=0;
  if(g.f&&d<g.f)d=new Date(g.f.getFullYear(),g.f.getMonth(),g.f.getDate());
  if(d<_calStart)d=new Date(_calStart.getFullYear(),_calStart.getMonth(),_calStart.getDate());
+ d=_calAnchorIn(g.wd,y,m,d); if(dt<d)return false;
  var end=new Date(y,m,dt.getDate());
  while(d<=end){var k=d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
   if(g.wd.indexOf(d.getDay())>=0&&!(typeof _calHol!=='undefined'&&_calHol[k]))n++;d.setDate(d.getDate()+1);}
@@ -7620,8 +7633,17 @@ function _grpEdge(){/* 그룹 모드의 개강일·종강일 — 개강은 과�
   d.setDate(d.getDate()+1);}
  return [ed?st:null,ed];}
 function _calSess(s){if(Array.isArray(s))s=s.join(" ");if(/월~금|매일|평일/.test(s))return 16;if(/토/.test(s)&&!/월|화|수|목|금/.test(s))return 4;var n=_wdays(s).length;if(n>=3)return n*4;return 8;}
-function _calOrd(t,wd){var c=0,d=new Date(_calStart.getFullYear(),_calStart.getMonth(),_calStart.getDate());while(d<=t){if(wd.indexOf(d.getDay())>=0&&!_calHol[d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()])c++;d.setDate(d.getDate()+1);}return c;}
-function _calRange(wd,n,from){if(!wd||!wd.length||!n||n>400)return null;var c=0,st=null,ed=null;var bs=from||_calStart;var dt=new Date(bs.getFullYear(),bs.getMonth(),bs.getDate());var g=0;while(c<n&&g<1400){var k=dt.getFullYear()+'-'+(dt.getMonth()+1)+'-'+dt.getDate();if(wd.indexOf(dt.getDay())>=0&&!_calHol[k]){c++;if(c===1)st=new Date(dt);if(c===n)ed=new Date(dt);}dt.setDate(dt.getDate()+1);g++;}if(!st||!ed)return null;return {start:st,end:ed,n:n};}
+/* 2026-10-17 대표님 「달력 만들었잖아? 그거에 준해서 … 왜 월수 시작반이 11/2일이 맞는지 확인해」
+   학사달력 규칙(이지 규칙 승계 · 2026-09-20 확정)대로 그달 개강일을 정합니다:
+   월수 = 첫 수요일 / 화목 = 첫 화요일 / 새벽(화수목) = 첫 화요일 / 토 = 첫 토요일(토요일이 5번인 달은 첫 토요일 패스) / 그 밖 = 첫 수업 요일 */
+function _anchorWd(wd){var s=(wd||[]).slice().sort().join(',');if(s==='1,3')return 3;if(s==='2,4'||s==='2,3,4')return 2;if(s==='6')return 6;return (wd&&wd.length)?Math.min.apply(null,wd):-1;}
+function _calAnchorIn(wd,y,m,from){var a=_anchorWd(wd);if(a<0)return from||new Date(y,m,1);
+ var d=new Date(y,m,1);if(from&&from>d)d=new Date(from.getFullYear(),from.getMonth(),from.getDate());
+ if(a===6){var n=0,t=new Date(y,m,1);while(t.getMonth()===m){if(t.getDay()===6)n++;t.setDate(t.getDate()+1);}if(n===5){while(d.getDay()!==6)d.setDate(d.getDate()+1);d.setDate(d.getDate()+1);}}
+ var g=0;while(g<40){var k=d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();if(d.getDay()===a&&!_calHol[k])return d;d.setDate(d.getDate()+1);g++;}return d;}
+function _calAnchor(wd){return _calAnchorIn(wd,_calStart.getFullYear(),_calStart.getMonth(),_calStart);}
+function _calOrd(t,wd){var c=0,_a=_calAnchor(wd),d=new Date(_a.getFullYear(),_a.getMonth(),_a.getDate());while(d<=t){if(wd.indexOf(d.getDay())>=0&&!_calHol[d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()])c++;d.setDate(d.getDate()+1);}return c;}
+function _calRange(wd,n,from){if(!wd||!wd.length||!n||n>400)return null;var c=0,st=null,ed=null;var bs=from||_calAnchor(wd);var dt=new Date(bs.getFullYear(),bs.getMonth(),bs.getDate());var g=0;while(c<n&&g<1400){var k=dt.getFullYear()+'-'+(dt.getMonth()+1)+'-'+dt.getDate();if(wd.indexOf(dt.getDay())>=0&&!_calHol[k]){c++;if(c===1)st=new Date(dt);if(c===n)ed=new Date(dt);}dt.setDate(dt.getDate()+1);g++;}if(!st||!ed)return null;return {start:st,end:ed,n:n};}
 function _dstr(x){return (x.getMonth()+1)+'/'+x.getDate();}
 function _wlabel(wd){var nm=['일','월','화','수','목','금','토'];if(!wd||!wd.length)return '';if(wd.length===5&&wd.indexOf(1)>=0&&wd.indexOf(5)>=0)return '월~금';return wd.slice().sort(function(a,b){return a-b;}).map(function(i){return nm[i];}).join('·');}
 function _calSumHTML(wd){
@@ -7641,7 +7663,7 @@ function _calCell(cur,wd,GE,showMonth){
  var y=cur.getFullYear(),m=cur.getMonth(),day=cur.getDate();
  var hol=_calHol[y+'-'+(m+1)+'-'+day];
  var G=_calGrp?_grpOf(cur.getDay(),cur):null;
- var match=_calGrp?(!!G&&cur>=_calStart&&cur<=_calUntil&&!hol):(wd.indexOf(cur.getDay())>=0&&cur>=_calStart&&!hol);
+ var match=_calGrp?(!!G&&cur>=_calStart&&cur<=_calUntil&&!hol):(wd.indexOf(cur.getDay())>=0&&cur>=_calAnchor(wd)&&!hol);
  var on=false,faint=false,ord=0;
  if(match){ if(_calGrp){on=true;} else {ord=_calOrd(cur,wd); if(ord<=_calN){on=true;faint=false;}} }
  var mark='';
