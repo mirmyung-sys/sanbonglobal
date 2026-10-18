@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.sanbonglobal.sga",
+      "sha256_cert_fingerprints": [
+        "52:E1:AD:7F:84:45:D1:25:A4:A1:B4:7D:4B:9E:52:95:F4:5B:D3:D8:5C:59:64:80:DC:00:EB:44:D2:EF:89:D8"
+      ]
+    }
+  }
+]
