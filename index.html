@@ -4912,6 +4912,14 @@ a.sg-tel{color:inherit;text-decoration:underline;text-underline-offset:3px}
 a[onclick*="Close(true)"],a.sg-skip{display:inline-flex!important;align-items:center;gap:4px;background:#fff!important;color:#5B1026!important;border:1.5px solid #D9C3B0!important;border-radius:999px!important;padding:7px 14px!important;font-size:13px!important;font-weight:800!important;text-decoration:none!important;min-height:36px;box-sizing:border-box;white-space:nowrap}
 a[onclick*="Close(true)"]::before,a.sg-skip::before{content:'✓';font-size:12px}
 .kg-ft{text-align:center;margin-top:10px}
+.tk-ra{margin:10px 0;background:#FFF8EA;border:2px solid #E8B44A;border-radius:12px;padding:14px;font-size:18px;font-weight:800;line-height:1.6;color:#2B2320}
+.tkx{margin:12px 0;display:flex;flex-direction:column;gap:8px}
+.tkx-r{display:grid;grid-template-columns:78px 1fr 34px;align-items:center;gap:6px 8px;font-size:13px}
+.tkx-r .l{font-weight:800;color:#3f3530}.tkx-r .b{height:10px;background:#F1E6DA;border-radius:6px;overflow:hidden}.tkx-r .b i{display:block;height:100%;background:linear-gradient(90deg,#C96A3A,#7B1733)}
+.tkx-r b{color:#7B1733;font-size:13px}.tkx-r .na{grid-column:2/4;color:#a99;font-size:12.5px}.tkx-r em{grid-column:2/4;font-style:normal;color:#8a7768;font-size:11.5px;margin-top:-4px}
+.tkx-ra{background:#fff;border:1px solid #E6D5B8;border-radius:12px;padding:12px;margin:8px 0;font-size:13px}
+.tkx-ra .t{margin:8px 0;font-size:16px;line-height:1.8}.tkx-ra .ok{color:#1F6B4E;font-weight:700}.tkx-ra .no{color:#C81F2B;font-weight:900;text-decoration:underline wavy}
+.tkx-ra .h{color:#8a7768;font-size:12px}
 </style>
 </head>
 <body>
@@ -15559,7 +15567,7 @@ function lvTalk(lang){
   '<button class="lvr-go tk-ghost" onclick="lvChoose()">← 다른 테스트 고르기</button>');
 }
 function tkStart(){
- var t=TALK[_tk.lang];
+ var t=TALK[_tk.lang];_tk.ra=null;
  tkRender('연결 중…','');
  _say(t.hi,_tk.code,function(){tkAsk();});
 }
@@ -15584,7 +15592,7 @@ function tkQuit(){_tk.stopAll=true;try{speechSynthesis.cancel();}catch(e){}if(_t
 
 function tkAsk(){
  if(_tk.stopAll)return;
- if(_tk.qi>=5){tkFinish();return;}
+ if(_tk.qi>=5){if(!_tk.ra&&!_tk.fallback){tkReadAloud();return;}tkFinish();return;}
  var q=tkQuestion();
  _tk.log.push({me:false,txt:q});
  tkRender('🔊 선생님이 말하고 있어요…','');
@@ -15599,18 +15607,20 @@ function tkListen(){
  }
  var SR=_SR();var rec=new SR();_tk.rec=rec;
  rec.lang=_tk.code;rec.interimResults=true;rec.continuous=false;rec.maxAlternatives=1;
- var finalTxt='',got=false;
+ var finalTxt='',got=false,cs=[],t0=0,t1=0;
  tkRender('🎙️ 듣고 있어요. 지금 말씀하세요…','',
    '<div class="tk-live" id="tkLive"></div><button class="lvr-go tk-done" onclick="tkStopRec()">답변 끝 ›</button>');
  rec.onresult=function(e){
    var interim='';
+   if(!t0)t0=Date.now();t1=Date.now();
    for(var i=e.resultIndex;i<e.results.length;i++){
-     if(e.results[i].isFinal)finalTxt+=e.results[i][0].transcript+' ';
+     if(e.results[i].isFinal){finalTxt+=e.results[i][0].transcript+' ';var cf=e.results[i][0].confidence;if(cf>0)cs.push(cf);}
      else interim+=e.results[i][0].transcript;
    }
    var l=document.getElementById('tkLive');if(l)l.textContent=(finalTxt+interim).trim();
    got=true;
  };
+ rec.onspeechstart=function(){t0=Date.now();};rec.onspeechend=function(){t1=Date.now();};
  rec.onerror=function(ev){
    if(ev.error==='not-allowed'||ev.error==='service-not-allowed'){
      _tk.fallback=true;tkListen();return;
@@ -15620,7 +15630,8 @@ function tkListen(){
    if(_tk.stopAll)return;
    var txt=finalTxt.trim();
    if(!txt){tkNoAnswer();return;}
-   tkAnswered(txt);
+   if(t0&&!(t1>t0))t1=Date.now();
+   tkAnswered(txt,{c:cs.length?cs.reduce(function(a,b){return a+b;},0)/cs.length:null,d:(t0&&t1>t0)?(t1-t0)/1000:null});
  };
  try{rec.start();}catch(e){_tk.fallback=true;tkListen();}
  setTimeout(function(){if(_tk.rec===rec){try{rec.stop();}catch(e){}}},28000);
@@ -15641,14 +15652,45 @@ function _wordCount(txt,code){
  }
  return txt.split(/\s+/).filter(Boolean).length;
 }
-function tkAnswered(txt){
- _tk.log.push({me:true,txt:txt});
+function tkAnswered(txt,m){
+ m=m||{};_tk.log.push({me:true,txt:String(txt).replace(/[<>]/g,''),c:m.c,d:m.d,typed:!m.hasOwnProperty('c')});
  var w=_wordCount(txt,_tk.code);
  if(w>=14&&_tk.lv<3)_tk.lv++;
  else if(w<=3&&_tk.lv>1)_tk.lv--;
  _tk.qi++;
  tkRender('✅ 잘 하셨어요. 다음 질문으로 넘어갑니다…','');
  setTimeout(function(){if(!_tk.stopAll)tkAsk();},900);
+}
+/* 2026-10-18 대표님 「레벨테스트 … 내 발음 안 좋은데 그대로 맞게 써지고 스텝3 나옴 · 전문가스럽지 않다」
+   원인: 음성인식은 비슷한 단어로 자동 보정해서 적어 줍니다. 그리고 판정은 「말한 단어 수」만 봤습니다.
+   고침: ① 정해진 문장 소리 내어 읽기(낭독) — 원문과 인식 결과를 단어·글자 단위로 대조해 발음 정확도를 잽니다
+         ② 인식 신뢰도·말하기 속도·문장 연결(접속사)·발화량 다섯 항목으로 나눠 보여 주고
+         ③ 최종 단계는 발음 정확도보다 한 단계 이상 높게 나오지 않게 묶습니다. 입력(타자)으로 한 경우 최대 STEP 2. */
+var TK_RA={'영어':"I usually take the subway to work, but yesterday I walked because the weather was really nice.",
+ '일본어':"私は毎朝コーヒーを飲んでから、電車で会社に行きます。",
+ '중국어':"我每天早上喝一杯咖啡，然后坐地铁去公司。"};
+function _raTok(t,code){t=String(t||'');if(code.indexOf('en')===0)return t.toLowerCase().replace(/[^a-z'\s]/g,' ').split(/\s+/).filter(Boolean);
+ return t.replace(/[\s、。，,.！？!?・「」]/g,'').split('');}
+function _raLcs(a,b){var m=a.length,n=b.length,D=[];for(var i=0;i<=m;i++){D.push(new Array(n+1).fill(0));}
+ for(i=1;i<=m;i++)for(var j=1;j<=n;j++)D[i][j]=a[i-1]===b[j-1]?D[i-1][j-1]+1:Math.max(D[i-1][j],D[i][j-1]);
+ var hit=new Array(m).fill(false);i=m;j=n;while(i>0&&j>0){if(a[i-1]===b[j-1]){hit[i-1]=true;i--;j--;}else if(D[i-1][j]>=D[i][j-1])i--;else j--;}
+ return {n:D[m][n],hit:hit};}
+function tkReadAloud(){
+ var tg=TK_RA[_tk.lang]||TK_RA['영어'];_tk.ra={tg:tg,txt:'',acc:0,c:null};
+ var SR=_SR();if(!SR){_tk.ra.skip=1;tkFinish();return;}
+ var rec=new SR();_tk.rec=rec;rec.lang=_tk.code;rec.interimResults=true;rec.continuous=false;rec.maxAlternatives=1;
+ var fin='',cs=[];
+ tkRender('📖 마지막 — 아래 문장을 <b>소리 내어 읽어 주세요</b> (발음 정확도 측정)','',
+  '<div class="tk-ra">'+tg+'</div><div class="tk-live" id="tkLive"></div><button class="lvr-go tk-done" onclick="tkStopRec()">다 읽었어요 ›</button>');
+ rec.onresult=function(e){var it='';for(var i=e.resultIndex;i<e.results.length;i++){if(e.results[i].isFinal){fin+=e.results[i][0].transcript+' ';var cf=e.results[i][0].confidence;if(cf>0)cs.push(cf);}else it+=e.results[i][0].transcript;}
+  var l=document.getElementById('tkLive');if(l)l.textContent=(fin+it).trim();};
+ rec.onerror=function(){};
+ rec.onend=function(){if(_tk.stopAll)return;var A=_raTok(tg,_tk.code),B=_raTok(fin,_tk.code),L=_raLcs(A,B);
+  var extra=Math.max(0,B.length-L.n);var acc=A.length?Math.max(0,(L.n-extra*0.5)/A.length):0;
+  _tk.ra={tg:tg,txt:fin.trim(),acc:acc,hit:L.hit,toks:A,c:cs.length?cs.reduce(function(a,b){return a+b;},0)/cs.length:null};
+  tkFinish();};
+ try{rec.start();}catch(e){_tk.ra.skip=1;tkFinish();}
+ setTimeout(function(){if(_tk.rec===rec){try{rec.stop();}catch(e){}}},25000);
 }
 function tkFinish(){
  var t=TALK[_tk.lang];
@@ -15659,27 +15701,54 @@ function tkFinish(){
 var _tkDone=false;
 function tkResult(){
  if(_tkDone)return;_tkDone=true;
- var ans=_tk.log.filter(function(x){return x.me;}).map(function(x){return x.txt;}).filter(function(x){return x.indexOf('인식되지')<0;});
- var all=ans.join(' ');
- var total=_wordCount(all,_tk.code);
- var uniq=(function(){var set={},n=0;
-   var toks=(_tk.code.indexOf('ja')===0||_tk.code.indexOf('zh')===0)?all.replace(/\s/g,'').split(''):all.toLowerCase().replace(/[^a-z\s']/g,' ').split(/\s+/);
-   toks.filter(Boolean).forEach(function(w){if(!set[w]){set[w]=1;n++;}});return n;})();
+ var me=_tk.log.filter(function(x){return x.me&&String(x.txt).indexOf('인식되지')<0;});
+ var ans=me.map(function(x){return x.txt;});
+ var all=ans.join(' ');var code=_tk.code;var cj=(code.indexOf('ja')===0||code.indexOf('zh')===0);
+ var total=_wordCount(all,code);
+ var uniq=(function(){var set={},n=0;var toks=cj?all.replace(/\s/g,'').split(''):all.toLowerCase().replace(/[^a-z\s']/g,' ').split(/\s+/);toks.filter(Boolean).forEach(function(w){if(!set[w]){set[w]=1;n++;}});return n;})();
  var avg=ans.length?Math.round(total/ans.length):0;
- var band,desc,step;
- if(total<12){band='STEP BASIC';desc='아직 문장으로 말하기 전 단계입니다. 기초 표현과 발음부터 시작하면 빠르게 올라갑니다.';step='BASIC';}
- else if(total<35){band='STEP 1 · 초급';desc='단어와 짧은 문장으로 의사 전달이 됩니다. 문장을 길게 이어 말하는 연습이 필요합니다.';step='STEP1';}
- else if(total<70){band='STEP 2 · 초중급';desc='문장으로 답하실 수 있습니다. 이유·설명을 덧붙이는 훈련을 하면 중급으로 올라갑니다.';step='STEP2';}
- else if(uniq<45){band='STEP 3 · 중급';desc='막힘 없이 말하십니다. 어휘 폭을 넓히면 자연스러움이 크게 올라갑니다.';step='STEP3';}
- else {band='STEP 4 · 중상급';desc='자유롭게 의견을 말하는 수준입니다. 프리토킹·토론 중심 수업이 맞습니다.';step='STEP4';}
+ var typed=_tk.fallback||me.every(function(x){return x.typed;});
+ var cl=me.map(function(x){return x.c;}).filter(function(c){return c>0;});var C=cl.length?cl.reduce(function(a,b){return a+b;},0)/cl.length:null;
+ var dw=0,dd=0;me.forEach(function(x){if(x.d>0.5){dw+=_wordCount(x.txt,code);dd+=x.d;}});var wps=dd?dw/dd:null;
+ var CON={en:/\b(because|so|but|when|if|although|though|which|that|since|while|after|before|then)\b/gi,ja:/(から|ので|けど|けれど|たら|ながら|ために|って|て、)/g,zh:/(因为|所以|但是|如果|虽然|然后|可是|而且|的时候|还是)/g};
+ var cr=CON[code.slice(0,2)]||CON.en;var conn=(all.match(cr)||[]).length;
+ function band5(v,cuts){if(v==null)return null;for(var i=0;i<cuts.length;i++)if(v<cuts[i])return i+1;return 5;}
+ var sVol=band5(total,[12,30,55,85]);
+ var sFlu=typed?null:band5(wps,[0.8,1.2,1.7,2.2]);
+ var sStr=avg<4?1:avg<7?2:(conn<2?3:conn<5?4:5);
+ var RA=_tk.ra&&!_tk.ra.skip&&_tk.ra.toks?_tk.ra:null;
+ var sPro=RA?band5(RA.acc,[0.5,0.7,0.82,0.92]):null;
+ var sCon=typed?null:band5(C,[0.6,0.7,0.8,0.88]);
+ var core=[sVol,sFlu,sStr].filter(function(v){return v!=null;});
+ var lv=Math.round(core.reduce(function(a,b){return a+b;},0)/core.length);
+ var why='';
+ if(sPro!=null&&lv>sPro+1){lv=sPro+1;why='발음 정확도에 맞춰 한 단계로 묶었습니다.';}
+ if(sCon!=null&&sCon<=2&&lv>3){lv=3;why='음성 인식 신뢰도가 낮아 STEP 2까지만 판정했습니다.';}
+ if(typed&&lv>3){lv=3;why='입력(타자)으로 응시하셔서 발음·속도를 잴 수 없어 STEP 2까지만 판정했습니다.';}
+ if(!RA&&!typed&&lv>3){lv=3;why='낭독(발음 측정)을 마치지 않아 STEP 2까지만 판정했습니다.';}
+ var BN=['','STEP BASIC','STEP 1 · 초급','STEP 2 · 초중급','STEP 3 · 중급','STEP 4 · 중상급'];
+ var ST=['','BASIC','STEP1','STEP2','STEP3','STEP4'];
+ var DS=['','아직 문장으로 말하기 전 단계입니다. 기초 표현과 발음부터 잡으면 빠르게 올라갑니다.','단어와 짧은 문장으로 뜻은 전해집니다. 문장을 이어 말하는 연습과 발음 교정이 필요합니다.','문장으로 답하실 수 있습니다. 이유·설명을 덧붙이고 발음을 다듬으면 중급으로 올라갑니다.','막힘 없이 말하십니다. 어휘 폭과 문장 연결을 넓히면 자연스러움이 크게 올라갑니다.','자유롭게 의견을 말하는 수준입니다. 프리토킹·토론 중심 수업이 맞습니다.'];
+ var band=BN[lv],step=ST[lv],desc=DS[lv];
+ function bar(lb,v,sub){return '<div class="tkx-r"><span class="l">'+lb+'</span>'+(v==null?'<span class="na">측정 안 됨</span>':'<span class="b"><i style="width:'+(v*20)+'%"></i></span><b>'+v+'/5</b>')+'<em>'+sub+'</em></div>';}
+ var raHTML='';
+ if(RA){raHTML='<div class="tkx-ra"><b>📖 낭독 대조</b> — 빨간 부분은 인식되지 않은 '+(cj?'글자':'단어')+'입니다<div class="t">'
+  +RA.toks.map(function(w,i){return '<span class="'+(RA.hit[i]?'ok':'no')+'">'+w+'</span>';}).join(cj?'':' ')+'</div>'
+  +'<div class="h">인식된 문장: '+(RA.txt||'(인식 안 됨)').replace(/[<>]/g,'')+'</div></div>';}
  var script=_tk.log.map(function(x){return '<div class="tk-row '+(x.me?'me':'ai')+'"><div class="tk-b">'+x.txt+'</div></div>';}).join('');
  var goStep=(_tk.lang==='영어')?"openStep('영어회화','"+step+"')":"openStep('"+_tk.lang+"')";
  lvOpenRun('<h3 class="lvr-t">'+_tk.lang+' 회화 진단 결과</h3>'+
   '<div class="tk-band">'+band+'</div>'+
-  '<p class="tk-desc">'+desc+'</p>'+
-  '<div class="tk-stats"><div><b>'+total+'</b><span>총 발화량</span></div><div><b>'+uniq+'</b><span>사용 어휘 수</span></div><div><b>'+avg+'</b><span>답변당 평균</span></div></div>'+
+  '<p class="tk-desc">'+desc+(why?'<br><small style="color:#8a6a5a">'+why+'</small>':'')+'</p>'+
+  '<div class="tkx">'
+   +bar('발음 정확도',sPro,RA?Math.round(RA.acc*100)+'% 일치 (낭독)':'낭독 미응시')
+   +bar('인식 신뢰도',sCon,C!=null?Math.round(C*100)+'%':'—')
+   +bar('말하기 속도',sFlu,wps?(cj?'초당 '+wps.toFixed(1)+' 어절':'초당 '+wps.toFixed(1)+'단어'):'—')
+   +bar('문장 연결',sStr,'답변당 '+avg+(cj?'어절':'단어')+' · 연결어 '+conn+'회')
+   +bar('발화량',sVol,'총 '+total+(cj?'어절':'단어')+' · 어휘 '+uniq)
+  +'</div>'+raHTML+
   '<div class="tk-fold"><b>대화 내용 다시 보기</b><div class="tk-chat sm">'+script+'</div></div>'+
-  '<div class="lvr-note">※ 이 결과는 발화량·어휘를 자동 분석한 <b>참고용</b>입니다. 정확한 반 배정은 강사가 직접 확인 후 결정합니다.</div>'+
+  '<div class="lvr-note">※ 휴대폰 음성인식은 <b>비슷한 단어로 자동 보정</b>해서 적기 때문에, 대화 글자만으로는 발음을 알 수 없습니다. 그래서 정해진 문장 낭독으로 발음을 따로 재고, 결과는 그보다 높게 나오지 않게 했습니다. 이 결과는 <b>참고용</b>이며 반 배정은 강사가 직접 듣고 결정합니다.</div>'+
   '<button class="lvr-go" style="border:0;cursor:pointer;width:100%" onclick="lvCloseRun();closeLv();'+goStep+'">'+band+' 반 시간표 보기 ›</button>'+
   '<button class="lvr-go tk-ghost" onclick="lvCloseRun();closeLv();rsvOpen()">강사에게 무료 판정 받기</button>');
  _tkDone=false;
