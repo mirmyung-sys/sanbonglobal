@@ -5746,34 +5746,32 @@ function renderProg(k){
 var SGA_HITS = null;
 /* 2026-10-19 마리 — 방문자·조회수는 SGA 결제서버(더주 계정)에 쌓고, 결제서버가 10분마다 학개부(자동연동) 「홈페이지 방문자」 탭에 날짜별로 기록합니다. (로그인 서버에는 이 기능이 없어 숫자가 안 뜨던 것) */
 var SGA_HIT_SRV='https://script.google.com/macros/s/AKfycbwy-G2PpY6cGNwJSjCarp06NDPCeUm_eidvvXlOVBYZDhktUxdxL_aKH03mrgBbUgST/exec';            /* {글ID: 조회수} — 백엔드에서 채워집니다 */
+/* 2026-10-19 마리 — <script> 방식은 구글 계정 여러 개로 로그인한 브라우저에서 계정 선택 화면으로 넘어가 안 세어졌습니다.
+   쿠키 없이 보내는 fetch 로 바꿨습니다. 날짜 함수 이름도 다른 기능의 _sgDay(2026-10-19 형식)와 겹쳐 _sgVDay 로 분리했습니다. */
 function sgaHitsLoad(cb){
  if(SGA_HITS){ if(cb)cb(); return; }
+ var done=false;function fin(d){if(done)return;done=true;SGA_HITS=d||{};if(cb)cb();}
  try{
-  var fn='sgaHitsCb'+Date.now();
-  window[fn]=function(d){ SGA_HITS=d||{}; try{delete window[fn];}catch(e){} if(cb)cb(); };
-  var sc=document.createElement('script');
-  sc.src=SGA_HIT_SRV+'?action=hits&cb='+fn;
-  sc.onerror=function(){ SGA_HITS={}; if(cb)cb(); };
-  document.head.appendChild(sc);
-  setTimeout(function(){ if(!SGA_HITS){ SGA_HITS={}; if(cb)cb(); } }, 4000);
- }catch(e){ SGA_HITS={}; if(cb)cb(); }
+  fetch(SGA_HIT_SRV+'?action=hits',{credentials:'omit'}).then(function(r){return r.json();}).then(fin).catch(function(){fin({});});
+  setTimeout(function(){fin({});},6000);
+ }catch(e){ fin({}); }
 }
 function sgaHit(id){
  try{
-  var sc=document.createElement('script');
-  window._sgNoop=window._sgNoop||function(){};sc.src=SGA_HIT_SRV+'?action=hit&id='+encodeURIComponent(id)+'&cb=_sgNoop';sc.onload=sc.onerror=function(){try{sc.parentNode.removeChild(sc);}catch(e){}};
-  document.head.appendChild(sc);
+  var u=SGA_HIT_SRV+'?action=hit&id='+encodeURIComponent(id);
+  if(window.fetch)fetch(u,{credentials:'omit',keepalive:true}).catch(function(){});
+  else{var im=new Image();im.src=u;}
   if(SGA_HITS) SGA_HITS[id]=(SGA_HITS[id]||0)+1;
  }catch(e){}
 }
-/* 2026-10-18 대표님 「홈페이지 접속자 수 누구나 볼 수 있게」 — 브라우저 한 대당 하루 1번 셉니다 (SGA 서버 시트에 실제로 쌓임, 가짜 숫자 없음) */
-function _sgDay(){var d=new Date(Date.now()+9*3600e3);return d.getUTCFullYear()+('0'+(d.getUTCMonth()+1)).slice(-2)+('0'+d.getUTCDate()).slice(-2);}
-function sgVisit(){try{var day=_sgDay(),k='sga_vday',last='';try{last=localStorage.getItem(k)||'';}catch(e){}
+/* 2026-10-18 대표님 「홈페이지 접속자 수 누구나 볼 수 있게」 — 브라우저 한 대당 하루 1번 셉니다 (결제서버에 쌓이고 학개부(자동연동) 「홈페이지 방문자」 탭에 날짜별 기록, 가짜 숫자 없음) */
+function _sgVDay(){var d=new Date(Date.now()+9*3600e3);return d.getUTCFullYear()+('0'+(d.getUTCMonth()+1)).slice(-2)+('0'+d.getUTCDate()).slice(-2);}
+function sgVisit(){try{var day=_sgVDay(),k='sga_vday2',last='';try{last=localStorage.getItem(k)||'';}catch(e){}
   if(last!==day){sgaHit('site');sgaHit('site_'+day);try{localStorage.setItem(k,day);}catch(e){}}
   sgaHit('pv_'+day);
   setTimeout(function(){SGA_HITS=null;sgaHitsLoad(function(){var e=document.getElementById('ftVis');if(!e||!SGA_HITS)return;var a=SGA_HITS['site'],b=SGA_HITS['site_'+day];if(!a&&!b)return;
-   e.innerHTML='오늘 방문 <b>'+(b||0).toLocaleString()+'</b>명 · 누적 <b>'+(a||0).toLocaleString()+'</b>명';});},1500);}catch(e){}}
-function sgPgHit(k){try{if(k)sgaHit('pg_'+String(k).replace(/\s+/g,'').slice(0,30)+'_'+_sgDay());}catch(e){}}
+   e.innerHTML='오늘 방문 <b>'+(b||0).toLocaleString()+'</b>명 · 누적 <b>'+(a||0).toLocaleString()+'</b>명';});},2500);}catch(e){}}
+function sgPgHit(k){try{if(k)sgaHit('pg_'+String(k).replace(/\s+/g,'').slice(0,30)+'_'+_sgVDay());}catch(e){}}
 function _hitTxt(id){
  if(!SGA_HITS) return '—';
  return (SGA_HITS[id]||0).toLocaleString();
