@@ -1573,6 +1573,7 @@ span.pay-b.tel{cursor:default;opacity:.85}
 .sp-tabs span{flex:1;text-align:center;padding:16px;font-weight:800;font-size:15px;color:#98a2b3;cursor:pointer}
 .sp-tabs span.on{color:#1A1A18;border-bottom:3px solid #c81f2b;margin-bottom:-2px}
 .sp-desc{padding:24px 4px;font-size:15px;color:#4a5568;line-height:1.8}
+.pd-body{padding:16px 20px 6px}.pd-ok{font-size:22px;font-weight:900;color:#2a1418;text-align:center;margin:2px 0 10px}.pd-goods{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#f6f1ec;border-radius:12px;padding:12px 14px;font-size:15px}.pd-goods span{font-weight:900;color:#7B1733;white-space:nowrap}.pd-st{margin:12px 0;padding:12px 14px;border-radius:12px;background:#eaf7ef;border:1.5px solid #9fd4b4;color:#0b6b3c;font-weight:800;font-size:15px;line-height:1.6}.pd-code{border:2px dashed #c81f2b;border-radius:14px;background:#fff6f3;padding:12px 14px;text-align:center}.pd-cl{font-size:13.5px;color:#5c4a40;font-weight:800}.pd-cl em{font-style:normal;color:#8a7a72;font-weight:600}.pd-cv{font-family:monospace;font-size:24px;font-weight:900;letter-spacing:2px;margin:4px 0 6px;color:#2a1418}.pd-cn{font-size:13.5px;color:#4a3f3a;line-height:1.65}.pd-cb{display:flex;gap:8px;margin-top:10px}.pd-cb button{flex:1;border:1.5px solid #d9b9c0;background:#fff;border-radius:10px;padding:11px 6px;font-weight:800;font-size:14px;color:#7B1733;cursor:pointer}.pd-next{list-style:none;padding:0;margin:14px 0;font-size:14px;color:#3a3330;line-height:1.7}.pd-next li{margin:4px 0}#paidModal .sp-sheet{max-height:calc(100vh - 120px);overflow-y:auto}
 .sp-lg{padding:8px 20px 6px}.sp-lg-t{font-size:19px;font-weight:900;color:#2a1418;line-height:1.45;margin:4px 0 8px}.sp-lg-t b{color:#c81f2b}.sp-lg-s{font-size:14px;color:#4a5263;line-height:1.7;margin-bottom:12px}.sp-lg-amt{background:#fbf3ef;border:1px solid #ecd6cd;border-radius:10px;padding:10px 12px;font-size:14px;color:#3a2a2c;margin-bottom:14px;line-height:1.6}
 .sp-modal{position:fixed;inset:0;background:rgba(15,20,32,.55);display:none;align-items:center;justify-content:center;z-index:2000}
 .sp-modal.on{display:flex}
@@ -6875,6 +6876,7 @@ function loginPage(){
   +'<div class="plog-body"><div class="plog-l" style="justify-content:center;text-align:center">'
   +'<div style="font-size:22px;font-weight:900;color:var(--navy);margin-bottom:6px">'+_u.name+' 님</div>'
   +'<div style="color:#5b6478;line-height:1.7;margin-bottom:18px">'+((/^google:/.test(_u.token||''))?'구글':(/^naver:/.test(_u.token||''))?'네이버':'카카오')+' 계정으로 로그인되어 있습니다.<br>수강신청·상담예약을 바로 이용하실 수 있습니다.</div>'
+  +(function(){var L=[];try{L=JSON.parse(localStorage.getItem('sga_my_codes')||'[]')||[];}catch(e){}if(!L.length)return '';return '<div class="pd-code" style="text-align:left;margin-bottom:14px"><div class="pd-cl">🔑 내 개인코드 <em>· 다른 기기에서 열 때만 필요</em></div>'+L.map(function(x){return '<div style="margin-top:8px"><span class="pd-cv" style="font-size:18px">'+String(x.c).replace(/[<>]/g,'')+'</span><br><span style="font-size:13px;color:#5c4a40">'+String(x.goods||'').replace(/[<>]/g,'')+' · '+(x.d||'')+'</span></div>';}).join('')+'</div>';})()
   +'<button class="plog-btn" type="button" onclick="sgCloseOrBack();openPage(\'수강신청\');">수강신청 하러 가기</button>'
   +'<button class="plog-btn" type="button" style="background:#fff;color:var(--navy);border:1.5px solid #c9d0dd;margin-top:8px" onclick="sgaLogout();">로그아웃</button>'
   +'</div>'
@@ -8362,7 +8364,46 @@ window.addEventListener('message', function(e){
 });
 window._kpReady=false;
 sgaPayReady(function(ok){window._kpReady=ok;var b=document.getElementById('spPayBtn');if(ok&&b)b.innerHTML='💳 카드로 바로 결제하기';});
-(function(){try{var q=new URLSearchParams(location.search);if(q.get('paid')){var ok=q.get('r')==='ok';setTimeout(function(){try{sgToast(ok?'<b>결제가 완료되었습니다</b><br>담당자가 연락드려 첫 수업 일정을 잡아 드립니다.':'<b>결제가 완료되지 않았습니다</b><br>다시 시도하시거나 031-466-6969로 전화 주세요.');}catch(e){}},800);history.replaceState(null,'',location.pathname+location.hash);}}catch(e){}})();
+/* 2026-10-18 대표님 「개인코드는 뭐야? 그 사람이 알고 있어야 하잖아 … 나도 저거 뭐야 하고 바로 홈페이지로 돌아가기 할 듯」
+   결제하고 돌아오면 토스트 한 줄 대신 「결제 완료」 창을 띄웁니다.
+   ① 로그인한 아이디에 수강이 자동 등록됐다는 것(따로 입력할 것 없음) ② 개인코드는 다른 기기에서만 쓰는 보관용 + 복사·카톡 보관 버튼 ③ 다음에 무슨 일이 생기는지.
+   (전에는 이 줄이 주소의 sgacode 를 먼저 지워 버려서, 아래 자동 등록이 한 번도 돌지 못했습니다 — 코드를 먼저 챙깁니다) */
+(function(){try{var q=new URLSearchParams(location.search);var ord=q.get('paid');if(!ord)return;window._sgPopShown=true;window._pcModal=true;var ok=q.get('r')==='ok';var pc=q.get('sgacode')||'';
+ var lp={};try{lp=JSON.parse(localStorage.getItem('sga_last_pay')||'{}')||{};}catch(e){}
+ if(ok&&pc){try{localStorage.setItem('sga_pc_pend',pc);var L=[];try{L=JSON.parse(localStorage.getItem('sga_my_codes')||'[]')||[];}catch(e){}if(!L.some(function(x){return x.c===pc;}))L.unshift({c:pc,ord:ord,goods:lp.goods||'',d:new Date().toISOString().slice(0,10)});localStorage.setItem('sga_my_codes',JSON.stringify(L.slice(0,20)));}catch(e){}window._pcModal=true;}
+ history.replaceState(null,'',location.pathname+location.hash);
+ setTimeout(function(){if(!ok){try{sgToast('<b>결제가 완료되지 않았습니다</b><br>다시 시도하시거나 031-466-6969로 전화 주세요.');}catch(e){}return;}sgPaidShow(ord,pc,lp);},700);
+}catch(e){}})();
+function sgPaidShow(ord,pc,lp){lp=lp||{};window._sgPopShown=true;try{var _tp=document.getElementById('tkPop');if(_tp)_tp.parentNode.removeChild(_tp);}catch(e){}var old=document.getElementById('paidModal');if(old)old.parentNode.removeChild(old);
+ var tel=String(lp.tel||'').replace(/^(01\d)(\d{3,4})(\d{4})$/,'$1-$2-$3');
+ var m=document.createElement('div');m.className='sp-modal on';m.id='paidModal';
+ m.innerHTML='<div class="sp-sheet pd-sheet"><div class="sp-x" onclick="sgPaidClose()">✕</div><div class="sp-mhead">SANBON GLOBAL</div><div class="pd-body">'
+  +'<div class="pd-ok">🎉 결제가 완료되었습니다</div>'
+  +(lp.goods?'<div class="pd-goods"><b>'+String(lp.goods).replace(/</g,'&lt;')+'</b>'+(lp.amt?'<span>'+_won(lp.amt)+'</span>':'')+'</div>':'')
+  +'<div class="pd-st" id="pdSt">'+(pc?'⏳ 회원님 아이디에 수강을 등록하고 있습니다…':'✅ 결제가 접수되었습니다.')+'</div>'
+  +(pc?'<div class="pd-code"><div class="pd-cl">개인코드 <em>· 보관용</em></div><div class="pd-cv">'+pc+'</div>'
+   +'<div class="pd-cn">'+(_pdLi()?'지금 로그인한 아이디에는 <b>자동으로 등록</b>되어 <b>따로 입력하실 것이 없습니다</b>.':'로그인하시면 그 아이디에 <b>자동으로 등록</b>됩니다. <b>따로 입력하실 것이 없습니다</b>.')+'<br>다른 휴대폰·PC나 다른 아이디로 들으실 때만 이 코드를 넣으시면 됩니다.</div>'
+   +'<div class="pd-cb"><button type="button" onclick="sgPaidCopy(\''+pc+'\')">📋 코드 복사</button><button type="button" onclick="sgPaidShare(\''+pc+'\')">💬 카톡·문자로 보관</button></div></div>':'')
+  +'<ul class="pd-next"><li>📞 담당자가 '+(tel?'<b>'+tel+'</b> 로 ':'')+'연락드려 <b>첫 수업 일정</b>을 잡아 드립니다.</li><li>🧾 카드사 결제 문자도 함께 보관해 주세요. 주문번호 '+ord+'</li><li>🔑 개인코드는 언제든 <b>로그인 → 내 정보</b>에서 다시 볼 수 있습니다.</li></ul>'
+  +'<button class="plog-btn" type="button" onclick="sgPaidClose();openPage(\'AI학습\')">🐋 아키 AI 강의실 바로 가기</button>'
+  +'<button class="plog-btn" type="button" style="background:#fff;color:#7B1733;border:1.5px solid #d9b9c0;margin-top:8px" onclick="sgPaidClose()">확인</button>'
+  +'</div></div>';
+ document.body.appendChild(m);
+ if(!pc)return;
+ var st=function(h){var e=document.getElementById('pdSt');if(e)e.innerHTML=h;};
+ var li=false;try{li=!!(localStorage.getItem('sga_token')&&localStorage.getItem('sga_sid'));}catch(e){}
+ if(!li){st('🔑 <b>로그인하시면 이 과정이 자동으로 열립니다.</b> 코드는 따로 넣지 않으셔도 됩니다.<br><a href="#" onclick="sgPaidClose();openPage(\'로그인\');return false;" style="color:#c81f2b;font-weight:900">로그인하러 가기 ›</a>');return;}
+ var tries=0,go=function(){if(typeof sgaPcRedeem!=='function'){if(++tries<20)setTimeout(go,300);return;}
+  sgaPcRedeem(pc,function(d){if(d&&d.ok)st('✅ <b>'+(d.course||'등록하신 과정')+'</b>이(가) 회원님 아이디에 <b>등록되었습니다</b>.<br>따로 입력하실 것은 없습니다.');
+   else if(d&&d.kicked)st('🔑 다시 로그인하시면 자동으로 열립니다.');
+   else st('⚠️ 자동 등록이 아직 안 됐습니다 ('+((d&&d.err)||'서버 확인 중')+').<br>아래 개인코드를 데스크(031-466-6969)에 알려 주시면 바로 열어 드립니다.');});};
+ go();}
+function _pdLi(){try{return !!(localStorage.getItem('sga_token')&&localStorage.getItem('sga_sid'));}catch(e){return false;}}
+function sgPaidClose(){var m=document.getElementById('paidModal');if(m)m.parentNode.removeChild(m);}
+function sgPaidCopy(c){var t='산본글로벌어학원 개인코드 '+c;try{navigator.clipboard.writeText(t).then(function(){sgToast('<b>복사했습니다</b><br>'+c);},function(){prompt('아래 코드를 길게 눌러 복사하세요',c);});}catch(e){prompt('아래 코드를 길게 눌러 복사하세요',c);}}
+function sgPaidShare(c){var t='[산본글로벌어학원] 개인코드 '+c+'\n다른 기기에서 아키 AI 강의실을 열 때 sanbonglobal.com 로그인 후 이 코드를 넣으세요. 문의 031-466-6969';
+ try{if(navigator.share){navigator.share({title:'산본글로벌어학원 개인코드',text:t}).catch(function(){});return;}}catch(e){}
+ try{navigator.clipboard.writeText(t).then(function(){sgToast('<b>복사했습니다</b><br>카톡 「나와의 채팅」에 붙여 넣어 보관하세요');});}catch(e){prompt('복사해서 보관하세요',t);}}
 /* 대표님 테스트용: sanbonglobal.com/?paytest=1 → 화면 아래에 「1,000원 테스트 결제」 버튼 (손님에겐 안 보임) */
 (function(){try{if(new URLSearchParams(location.search).get('paytest')!=='1')return;var go=function(){var b=document.createElement('button');b.type='button';b.textContent='💳 1,000원 테스트 결제';b.style.cssText='position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:2147483647;white-space:nowrap;padding:16px 26px;border:0;border-radius:40px;background:#F5C542;color:#2B2320;font-weight:900;font-size:17px;box-shadow:0 6px 16px rgba(0,0,0,.2)';b.onclick=function(){if(window._kpBusy)return;window._kpBusy=true;setTimeout(function(){window._kpBusy=false;},8000);sgaKorpay({amt:1000,goods:'결제 연동 테스트',name:'대표 테스트'});};document.body.appendChild(b);var lg=document.createElement('div');lg.id='kpLog';lg.style.cssText='position:fixed;left:8px;right:8px;top:8px;z-index:2147483647;max-height:30vh;overflow:auto;background:#FFF8E1;color:#2B2320;border:2px solid #F5C542;border-radius:12px;padding:8px 10px;font:12px/1.5 monospace;white-space:pre-wrap;word-break:break-all;display:none';document.body.appendChild(lg);window._kpDebug=function(o,d){var t;try{t=typeof d==='string'?d:JSON.stringify(d);}catch(x){t=String(d);}lg.style.display='block';lg.textContent+='['+new Date().toLocaleTimeString()+'] '+o+'\n'+String(t).slice(0,600)+'\n\n';};};if(document.body)go();else window.addEventListener('DOMContentLoaded',go);}catch(e){}})();
 function _buyer(){var n=document.getElementById('spBuyerNm'),t=document.getElementById('spBuyerTel');
@@ -8382,6 +8423,7 @@ function spPay(kind){
  var g=window._payGoodsKeep||_gClean((_payItemKeep||'').replace(/<br\s*\/?>/g,' ')).slice(0,40)||'산본글로벌어학원 수강료';
  if(kind==='card'&&window._kpReady){
   if(window._kpBusy)return;window._kpBusy=true;setTimeout(function(){window._kpBusy=false;},15000);
+  try{localStorage.setItem('sga_last_pay',JSON.stringify({goods:g,amt:amt,tel:B.tel,nm:B.nm,t:Date.now()}));}catch(e){}
   sgaKorpay({amt:amt,goods:g,name:B.nm,tel:B.tel,memo:_payMemo(amt)});return;}
  /* 계좌이체·카드요청 신청도 결제서버 기록 시트에 남깁니다 (서버가 아직 모르면 그냥 무시됨) */
  try{if(SGA_PAY_SERVER)fetch(SGA_PAY_SERVER+'?a=apply&kind='+kind+'&amt='+amt+'&goods='+encodeURIComponent(g)+'&name='+encodeURIComponent(B.nm)+'&tel='+B.tel+'&memo='+encodeURIComponent(_payMemo(amt)),{credentials:'omit'}).catch(function(){});}catch(e){}
@@ -11750,7 +11792,7 @@ function aiRedeem(n){
 (function(){ try{
  var q=new URLSearchParams(location.search), c=q.get('sgacode');
  if(c){ localStorage.setItem('sga_pc_pend',c); q.delete('sgacode'); history.replaceState(null,'',location.pathname+(q.toString()?'?'+q.toString():'')+location.hash); }
- setTimeout(function(){ var p=null; try{ p=localStorage.getItem('sga_pc_pend'); }catch(e){} if(!p) return;
+ setTimeout(function(){ if(window._pcModal) return; var p=null; try{ p=localStorage.getItem('sga_pc_pend'); }catch(e){} if(!p) return;
   var li=false; try{ li=!!(localStorage.getItem('sga_token')&&localStorage.getItem('sga_sid')); }catch(e){}
   if(!li){ try{ sgToast('<b>결제가 확인되었습니다</b><br>로그인하시면 등록하신 과정이 바로 열립니다 · 코드 '+p); }catch(e){} return; }
   sgaPcRedeem(p,function(d){ try{ if(d.ok) sgToast('<b>'+(d.course||'등록 과정')+' 열렸습니다</b><br>아키 AI 강의실에서 바로 들으실 수 있습니다'); else if(d.err) sgToast('<b>개인코드 확인</b><br>'+d.err+'<br>코드 '+p); }catch(e){} });
@@ -21441,6 +21483,7 @@ body.has-tab #lvPop .lv-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
   if((vis('introSplash')&&!vis('sgGate'))||vis('pgModal')||vis('sgShop')||vis('sgVid'))return true;
   if(document.getElementById('admLogin')||document.getElementById('admPanel'))return true;
   if(window._tkPend||document.getElementById('tkPop')||window._sgPopShown)return true;
+  if(window._pcModal||document.getElementById('paidModal')||document.querySelector('.sp-modal.on'))return true;
   return false;
  }
  var LEGAL="산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청)";
