@@ -1590,7 +1590,13 @@ span.pay-b.tel{cursor:default;opacity:.85}
 .sp-welcome{text-align:center;font-size:14px;font-weight:700;color:#0a8f4f;margin:16px 20px 0}
 .sp-camt{text-align:center;font-size:14px;color:#4a5568;margin:6px 20px 0}
 .sp-camt b{font-size:20px;color:#c81f2b;font-weight:900}
-#spCharge{max-height:min(78vh,760px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+#spCharge{max-height:min(calc(100vh - 190px),860px);max-height:min(calc(100dvh - 190px),860px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+/* 2026-10-18 대표님 「결제창에 카드까지 길게 해줘 — 번호까지 넣고 나서 그다음 어떻게 하는지 모를 것 같아」 — 카드 버튼을 결제창 맨 아래에 늘 붙여 두고, 번호를 다 넣으면 다음 할 일을 알려 줍니다 */
+#spCharge .sp-charge2{position:sticky;bottom:8px;z-index:3;font-size:17px;padding:17px;box-shadow:0 10px 0 8px #fff,0 -16px 18px 4px rgba(255,255,255,.96)}
+.sp-modal.on{padding:10px 0 96px;box-sizing:border-box}
+#spCharge .sp-charge2.go{animation:spGo 1.1s ease-in-out 3}@keyframes spGo{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+.sp-next{margin:12px 20px 0;padding:12px 14px;border-radius:12px;font-size:15px;font-weight:800;line-height:1.6;display:none}
+.sp-next.ok{display:block;background:#eaf7ef;border:1.5px solid #9fd4b4;color:#0b6b3c}.sp-next.ag{display:block;background:#fff4e5;border:1.5px solid #f2c27a;color:#8a4b00}
 #spCharge .ag-box{margin:14px 20px}
 #spCharge .pt-row{margin:12px 20px 0}
 .sp-sum{margin:12px 20px 0;border:1px solid #e3e6ee;border-radius:12px;overflow:hidden}
@@ -8423,6 +8429,7 @@ function spModalHTML(){return '<div class="sp-modal" id="spModal"><div class="sp
  +'<div class="sp-sum"><div><span id="spSumLb">수강료</span><b id="spSumAmt">-</b></div><div class="mi"><span>적립금 사용</span><b id="spPtVal">-0원</b></div><div><span>최종 결제금액</span><b id="spPtTot">-</b></div></div>'
  +payAgreeHTML()
  +'<div class="sp-buyer"><label>수강생 이름<input id="spBuyerNm" autocomplete="name" placeholder="홍길동"></label><label>휴대폰 번호<input id="spBuyerTel" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000"></label><p>결제·입금 확인 후 이 번호로 첫 수업 일정을 안내드립니다.</p></div>'
+ +'<div class="sp-next" id="spNext"></div>'
  +'<button class="sp-charge2" id="spPayBtn" disabled onclick="spPay(\'card\')">'+(window._kpReady?'💳 카드로 바로 결제하기':'💳 카드 결제 요청하기 (담당자 연락)')+'</button>'
  +'<button class="sp-charge" onclick="spPay(\'bank\')">🏦 계좌이체로 지금 결제하기</button>'
  +'<div id="spDone" style="display:none"></div>'
@@ -8654,12 +8661,23 @@ function spOpenPay(a){
  if(lg)lg.style.display='none'; if(cg)cg.style.display='block';
  var _it=_payItem||(window._payGoods?'<b>'+window._payGoods+'</b>':'');var ci=document.getElementById('spCitem');if(ci){ci.innerHTML=_it;ci.style.display=_it?'block':'none';}_payItemKeep=_it;_payItem='';window._payGoodsKeep=window._payGoods||'';window._payGoods='';window._kpBusy=false;try{var _bn=document.getElementById('spBuyerNm');if(_bn&&!_bn.value){var _sn=localStorage.getItem('sga_name')||'';if(_sn&&_sn!=='회원')_bn.value=_sn;}}catch(e){}
  var dn=document.getElementById('spDone');if(dn){dn.style.display='none';dn.innerHTML='';}
+ setTimeout(function(){try{spNextHint(false);}catch(e){}},0);
  var u=document.getElementById('spPtUse');if(u)u.value='';
  spRecalc();
  var b=document.getElementById('agPay');if(b){var cs=b.querySelectorAll('input');for(var i=0;i<cs.length;i++)cs[i].checked=false;agSync('agPay');}
  /* 2026-10-18 대표님 「모든 순서는 결제창에 갈 때는 전부 회원가입 후 로그인 후 결제」 — 로그인 전에는 결제 칸 대신 로그인 칸을 보여 줍니다 */
  if(!sgaUser()){_spGate();}
  var m=document.getElementById('spModal');if(m)m.classList.add('on');}
+function spNextHint(scroll){var h=document.getElementById('spNext');if(!h)return;var B=_buyer();var agOk=false;try{agOk=agSync('agPay');}catch(e){}
+ if(!B.ok){h.className='sp-next';h.innerHTML='';return;}
+ if(!agOk){h.className='sp-next ag';h.innerHTML='⬆ 위의 <b>「아래 내용에 모두 동의합니다」</b>에 먼저 체크해 주세요.<br>체크하시면 아래 카드 버튼이 켜집니다.';}
+ else{h.className='sp-next ok';h.innerHTML='✅ 입력이 끝났습니다.<br>⬇ 맨 아래 <b>💳 「카드로 바로 결제하기」</b>를 누르시면 <b>카드사 결제창</b>이 열립니다.<br><span style="font-weight:600;font-size:13.5px">카드사 창에서 카드 종류 고르기 → 약관 동의 → 카드 인증 순서로 진행됩니다.</span>';
+  var b=document.getElementById('spPayBtn');if(b){b.classList.remove('go');void b.offsetWidth;b.classList.add('go');}}
+ if(scroll){try{h.scrollIntoView({block:'center',behavior:'smooth'});}catch(e){}}}
+/* 결제창이 떠 있을 때 노란 닫기는 결제창부터 닫습니다 (밑의 과정 화면은 그대로) */
+document.addEventListener('click',function(ev){var t=ev.target;if(!t||!t.closest||!t.closest('.aclose'))return;var m=document.querySelector('.sp-modal.on');if(!m)return;ev.preventDefault();ev.stopPropagation();if(m.id==='spModal')spClose();else m.classList.remove('on');},true);
+document.addEventListener('input',function(ev){var t=ev.target;if(t&&(t.id==='spBuyerNm'||t.id==='spBuyerTel'))spNextHint(t.id==='spBuyerTel'&&_buyer().ok);});
+document.addEventListener('change',function(ev){var t=ev.target;if(t&&t.closest&&t.closest('#agPay'))setTimeout(function(){spNextHint(false);},0);});
 function _spSavePend(){try{var de=_discSel();localStorage.setItem('sga_pay_pend',JSON.stringify({a:_won(_payBase),item:_payItemKeep||'',goods:window._payGoodsKeep||'',ng:!!_noGift,list:window._listKeep||0,discV:de?de.value:(window._pendDiscV||'0'),vf:(typeof _vfInfo!=='undefined'&&_vfInfo)?_vfInfo:'',t:Date.now()}));}catch(e){}}
 function _spGate(){_spSavePend();var lg=document.getElementById('spLogin'),cg=document.getElementById('spCharge');if(lg)lg.style.display='block';if(cg)cg.style.display='none';var la=document.getElementById('spLgAmt');if(la)la.innerHTML=(window._payGoodsKeep?'<b>'+window._payGoodsKeep+'</b><br>':'')+'결제 예정 '+_won(_payBase);}
 function spLoginGo(p){_spSavePend();if(p==='naver')sgaLoginNaver();else if(p==='google')sgaLoginGoogle();else sgaLoginKakao();}
