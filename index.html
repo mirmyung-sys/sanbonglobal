@@ -4908,6 +4908,10 @@ a.sg-tel{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .ttn-tc{font-size:12px;color:#8a7768;margin-top:auto}
 .ttn-one{display:flex;flex-direction:column;gap:6px;background:#FBF5EC;border-radius:16px;padding:16px;margin:6px 0 14px}.ttn-one b{font-size:17px}.ttn-one span{font-size:13.5px;color:#5a4a40}
 .ttn-one button{align-self:flex-start;border:0;background:#7B1733;color:#fff;border-radius:999px;padding:9px 16px;font-weight:800;cursor:pointer}
+/* 2026-10-18 대표님 「모든 팝업창에 오늘 하루 안보기 버튼」 */
+a[onclick*="Close(true)"],a.sg-skip{display:inline-flex!important;align-items:center;gap:4px;background:#fff!important;color:#5B1026!important;border:1.5px solid #D9C3B0!important;border-radius:999px!important;padding:7px 14px!important;font-size:13px!important;font-weight:800!important;text-decoration:none!important;min-height:36px;box-sizing:border-box;white-space:nowrap}
+a[onclick*="Close(true)"]::before,a.sg-skip::before{content:'✓';font-size:12px}
+.kg-ft{text-align:center;margin-top:10px}
 </style>
 </head>
 <body>
@@ -20658,7 +20662,7 @@ body.has-tab #rvPop .nrp-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-are
    +'<div class="sum"><b>합계 10,000P</b> · 수강 등록 시 현금처럼 사용</div></div>'
    +'<a class="nrp-go" href="review.html" onclick="rvPopClose(false)">네이버에서 리뷰 쓰기 →</a>'
    +'<a class="nrp-how" href="#" onclick="rvPopClose(false);try{openPage(\'네이버 리뷰 이벤트\')}catch(e){};return false;">참여 방법 보기</a>'
-   +'<div class="nrp-ft"><span>별점과 관계없이 드려요 · 1인 1회</span><a href="#" onclick="rvPopClose(true);return false;">오늘 하루 보지 않기</a></div>'
+   +'<div class="nrp-ft"><span>별점과 관계없이 드려요 · 1인 1회</span><a href="#" onclick="rvPopClose(true);return false;">오늘 하루 안보기</a></div>'
    +'</div><button class="nrp-x" type="button" aria-label="닫기" onclick="rvPopClose(false)">✕</button>';
   m.addEventListener('click',function(e){if(e.target===m)rvPopClose(false);});
   try{[].forEach.call(document.querySelectorAll('body *'),function(e){if(e.closest('#rvPop,[data-nrphid]'))return;var cs=getComputedStyle(e);if(cs.position==='fixed'&&cs.display!=='none'&&/뭐부터 보실까요|그냥 둘러볼게요/.test(e.innerText||'')){e.setAttribute('data-nrphid','1');e.style.visibility='hidden';}});}catch(e){}
@@ -20740,7 +20744,7 @@ body.has-tab #tpPop .tp-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
    +'<div class="tp-band"><strong>언제나 편하게 물어보세요</strong></div>'
    +'<a class="tp-go" href="tel:0314666969" onclick="tpPopClose(false)">전화 상담 031-466-6969</a>'
    +'<div class="tp-note">'+NOTE1+'<br>'+LEGAL+'</div>'
-   +'<div class="tp-ft"><a href="#" onclick="tpPopClose(true);return false;">오늘 하루 보지 않기</a></div>'
+   +'<div class="tp-ft"><a href="#" onclick="tpPopClose(true);return false;">오늘 하루 안보기</a></div>'
    +'</div><button class="tp-x" type="button" aria-label="닫기" onclick="tpPopClose(false)">✕</button>';
   m.addEventListener('click',function(e){if(e.target===m)tpPopClose(false);});
   document.body.appendChild(m); requestAnimationFrame(function(){m.classList.add('on');});
@@ -20812,7 +20816,7 @@ body.has-tab #fdPop .fd-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
    +'<div class="fd-band"><span class="fd-sub">토익 · 영어회화</span><span class="fd-t1">우리 오늘부터</span><em class="fd-t2">1일이다</em></div>'
    +'<div class="fd-body"><div class="fd-a">매달 1일 안 기다려도</div><div class="fd-b">수업일수 다 채워드려요</div></div>'
    +'<a class="fd-go" href="tel:0314666969" onclick="fdPopClose(false)">전화 상담 031-466-6969</a>'
-   +'<div class="fd-ft"><span>※ 일본어·중국어 반 제외</span><a href="#" onclick="fdPopClose(true);return false;">오늘 하루 보지 않기</a></div>'
+   +'<div class="fd-ft"><span>※ 일본어·중국어 반 제외</span><a href="#" onclick="fdPopClose(true);return false;">오늘 하루 안보기</a></div>'
    +'<div class="fd-lg">'+LEGAL+'</div>'
    +'</div><button class="fd-x" type="button" aria-label="닫기" onclick="fdPopClose(false)">✕</button>';
   m.addEventListener('click',function(e){if(e.target===m)fdPopClose(false);});
@@ -20903,7 +20907,7 @@ body.has-tab #novPop .nv-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-are
    +'<div class="nv-body"><div class="nv-b">1:1 10% 할인 + 정규반 한 달 무료</div><div class="nv-c">영어회화 1:1 20시간 <s>1,000,000원</s> → 10% 할인 900,000원<br>원어민 정규반 180,000원 무료 → 실질 <b>720,000원</b> ÷ 20시간</div></div>'
    +'<a class="nv-go" href="tel:0314666969" onclick="novPopClose(false)">전화 상담 031-466-6969</a>'
    +'<div class="nv-tk"><i>토익 1:1</i> 20시간 → <b>시간당 43,500원</b><em>1,200,000원에서 10% 할인 1,080,000원 − 토익 정규반 210,000원 무료 = 870,000원</em></div>'
-   +'<div class="nv-ft"><span>1:1 20시간 기준</span><a href="#" onclick="novPopClose(true);return false;">오늘 하루 보지 않기</a></div>'
+   +'<div class="nv-ft"><span>1:1 20시간 기준</span><a href="#" onclick="novPopClose(true);return false;">오늘 하루 안보기</a></div>'
    +'<div class="nv-lg">'+LEGAL+'<br><b>※ 퍼스널 1:1은 제외됩니다.</b></div>'
    +'</div><button class="nv-x" type="button" aria-label="닫기" onclick="novPopClose(false)">✕</button>';
   m.addEventListener('click',function(e){if(e.target===m)novPopClose(false);});
@@ -21103,6 +21107,9 @@ AITXT['jpn_begin']=[{"t": "몇 식구예요? · 가족 소개", "vid": "media/ja
    카카오 채널 쿠폰 「청강+립밤 무료증정」 응모기간 2026.10.09~12.31 — 기간이 끝나면 자동으로 안 뜨고 바로 채널로 갑니다. */
 (function(){
  var END=new Date(2027,0,1).getTime(), CH='https://pf.kakao.com/_xbxkCFX';
+ function _kd(){var d=new Date(Date.now()+9*3600e3);return d.getUTCFullYear()+'-'+(d.getUTCMonth()+1)+'-'+d.getUTCDate();}
+ function skipped(){try{return localStorage.getItem('sga_kk_skip')===_kd();}catch(e){return false;}}
+ window.kkGiftSkip=function(){try{localStorage.setItem('sga_kk_skip',_kd());}catch(e){}close();};
  function close(){ ['kkGift','kkGiftX'].forEach(function(k){ var e=document.getElementById(k); if(e&&e.parentNode) e.parentNode.removeChild(e); }); }
  window.kkGiftClose=close;
  window.kkGiftOpen=function(href){
@@ -21112,13 +21119,14 @@ AITXT['jpn_begin']=[{"t": "몇 식구예요? · 가족 소개", "vid": "media/ja
    +'<h3>채널 추가하면<br><b>무료 청강 + 립밤</b> 드려요</h3><div class="kg-gift">🎁</div></div>'
    +'<div class="kg-b"><p>채널을 추가하고 쿠폰을 받아 두세요.<br>학원에 오실 때 쿠폰을 보여 주시면 됩니다.<small>쿠폰 「청강+립밤 무료증정」 · 2026.12.31까지</small></p>'
    +'<a class="kg-go" href="'+CH+'/coupons" target="_blank" rel="noopener noreferrer" onclick="setTimeout(kkGiftClose,300)">채널 추가하고 쿠폰 받기</a>'
-   +'<a class="kg-ch" href="'+(href||CH)+'" target="_blank" rel="noopener noreferrer" onclick="setTimeout(kkGiftClose,300)">채널로 바로 가기</a></div></div>';
+   +'<a class="kg-ch" href="'+(href||CH)+'" target="_blank" rel="noopener noreferrer" onclick="setTimeout(kkGiftClose,300)">채널로 바로 가기</a>'
+   +'<div class="kg-ft"><a href="#" class="sg-skip" onclick="kkGiftSkip();return false;">오늘 하루 안보기</a></div></div></div>';
   m.addEventListener('click',function(e){ if(e.target===m) close(); });
   document.body.appendChild(m);
   var x=document.createElement('button'); x.id='kkGiftX'; x.type='button'; x.setAttribute('aria-label','닫기'); x.textContent='✕'; x.onclick=close; document.body.appendChild(x);
  };
  document.addEventListener('click',function(e){
-  if(Date.now()>=END) return;
+  if(Date.now()>=END||skipped()) return;
   var a=e.target&&e.target.closest?e.target.closest('a[href^="https://pf.kakao.com/_xbxkCFX"]'):null; if(!a||a.closest('#kkGift')) return;
   var h=a.getAttribute('href')||''; if(/\/(chat|coupons|friend)/.test(h)) return;
   e.preventDefault(); e.stopPropagation(); kkGiftOpen(h);
@@ -21337,7 +21345,7 @@ body.has-tab #lvPop .lv-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
    +'<a class="lv-go" href="tel:0314666969" onclick="lvPopClose(false)">이용권 수강 상담 031-466-6969</a>'
    +'<a class="lv-chk" href="https://www.lllcard.kr/main/guide/useVcOrgan.do" target="_blank" rel="noopener" onclick="lvPopClose(false)">공식 누리집에서 「산본글로벌」 확인하기 ↗</a>'
    +'<a class="lv-chk" href="#" onclick="return lvPopMore()" style="border-color:#C9D9CF;color:#3A5A46">자세히 보기</a>'
-   +'<div class="lv-ft"><span>이용권 문의 1600-3005</span><a href="#" onclick="lvPopClose(true);return false;">오늘 하루 보지 않기</a></div>'
+   +'<div class="lv-ft"><span>이용권 문의 1600-3005</span><a href="#" onclick="lvPopClose(true);return false;">오늘 하루 안보기</a></div>'
    +'<div class="lv-lg">'+LEGAL+'</div>'
    +'</div><button class="lv-x" type="button" aria-label="닫기" onclick="lvPopClose(false)">✕</button>';
   m.addEventListener('click',function(e){if(e.target===m)lvPopClose(false);});
@@ -21410,7 +21418,7 @@ body.has-tab #tkPop .tk-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
   m.innerHTML='<div class="tk-card"><div class="tk-rail" id="tkRail">'+L.map(function(u,i){return '<img src="'+u+'" alt="'+(i===0?'11월 토익 스파르타 · 정규반 모집 — 송윤정 · 엘리 킴 · 김현정':'')+'" loading="'+(i<2?'eager':'lazy')+'">';}).join('')+'</div>'
    +'<div class="tk-dots" id="tkDots">'+L.map(function(u,i){return '<i'+(i===0?' class="on"':'')+'></i>';}).join('')+'</div>'
    +'<a class="tk-go" href="#" onclick="tkPopClose(false);try{openPage(\'무료청강\');}catch(e){}return false;">토익 첫 수업 무료로 들어보기</a>'
-   +'<div class="tk-ft"><a href="#" onclick="tkPopClose(false);try{noticeOpen(\'n22\');}catch(e){}return false;">자세히 보기</a><a href="#" onclick="tkPopClose(true);return false;">오늘 하루 보지 않기</a></div>'
+   +'<div class="tk-ft"><a href="#" onclick="tkPopClose(false);try{noticeOpen(\'n22\');}catch(e){}return false;">자세히 보기</a><a href="#" onclick="tkPopClose(true);return false;">오늘 하루 안보기</a></div>'
    +'</div><button class="tk-x" type="button" aria-label="닫기" onclick="tkPopClose(false)">✕</button>';
   m.addEventListener('click',function(e){if(e.target===m)tkPopClose(false);});
   document.body.appendChild(m); requestAnimationFrame(function(){m.classList.add('on');});
