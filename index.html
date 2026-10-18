@@ -1573,6 +1573,7 @@ span.pay-b.tel{cursor:default;opacity:.85}
 .sp-tabs span{flex:1;text-align:center;padding:16px;font-weight:800;font-size:15px;color:#98a2b3;cursor:pointer}
 .sp-tabs span.on{color:#1A1A18;border-bottom:3px solid #c81f2b;margin-bottom:-2px}
 .sp-desc{padding:24px 4px;font-size:15px;color:#4a5568;line-height:1.8}
+.sp-lg{padding:8px 20px 6px}.sp-lg-t{font-size:19px;font-weight:900;color:#2a1418;line-height:1.45;margin:4px 0 8px}.sp-lg-t b{color:#c81f2b}.sp-lg-s{font-size:14px;color:#4a5263;line-height:1.7;margin-bottom:12px}.sp-lg-amt{background:#fbf3ef;border:1px solid #ecd6cd;border-radius:10px;padding:10px 12px;font-size:14px;color:#3a2a2c;margin-bottom:14px;line-height:1.6}
 .sp-modal{position:fixed;inset:0;background:rgba(15,20,32,.55);display:none;align-items:center;justify-content:center;z-index:2000}
 .sp-modal.on{display:flex}
 .sp-sheet{background:#fff;width:min(420px,92vw);border-radius:14px;overflow:hidden;position:relative;padding-bottom:18px}
@@ -8159,7 +8160,7 @@ function spBuy(){_payGoodsSet();
   spOpenPay(fin.toLocaleString()+'원');return;}
  spBuyAmt(document.getElementById('spAmt').innerHTML);}
 function spDoLogin(){document.getElementById('spLogin').style.display='none';document.getElementById('spCharge').style.display='block';}
-function spClose(){var m=document.getElementById('spModal');if(m)m.classList.remove('on');var l=document.getElementById('spLogin'),c=document.getElementById('spCharge');if(l)l.style.display='none';if(c)c.style.display='none';}
+function spClose(){var m=document.getElementById('spModal');if(m)m.classList.remove('on');try{var h=document.getElementById('spModalHost');if(h)setTimeout(function(){if(h.parentNode)h.parentNode.removeChild(h);},50);}catch(e){}var l=document.getElementById('spLogin'),c=document.getElementById('spCharge');if(l)l.style.display='none';if(c)c.style.display='none';}
 function openStep(k,lvl){_sgSub(stepPage(k,lvl));try{spPrice();}catch(e){}try{spTimeChg();}catch(e){}}
 function payAgreeHTML(){var b='agPay';
  return '<div class="ag-box" id="'+b+'" data-btn="spPayBtn">'
@@ -8362,9 +8363,10 @@ function _buyer(){var n=document.getElementById('spBuyerNm'),t=document.getEleme
  var nm=(n&&n.value||'').trim(),tel=(t&&t.value||'').replace(/[^0-9]/g,'');
  return {nm:nm,tel:tel,ok:nm.length>=2&&/^01[016789][0-9]{7,8}$/.test(tel)};}
 function _payMemo(amt){var pt=_num((document.getElementById('spPtVal')||{}).innerHTML||'');
- var de=_discSel(),v=de?de.value:'0';
+ var de=_discSel(),v=de?de.value:(window._pendDiscV||'0');
  return ['정가 '+(window._listKeep||_fullAmt||_payBase),'할인적용 '+_payBase,(v&&v!=='0'?'할인 '+evLabel(v):''),(pt?'적립금 '+pt:''),'결제 '+amt,(typeof _vfInfo!=='undefined'&&_vfInfo?'환승 '+_vfInfo:'')].filter(Boolean).join(' / ').slice(0,190);}
 function spPay(kind){
+ if(!sgaUser()){_spGate();alert('결제는 회원 로그인 후에 진행됩니다.\n카카오·네이버·구글 중 하나로 로그인해 주세요. 처음이시면 그게 곧 회원가입입니다.');return;}
  if(!agSync('agPay')){alert('필수 동의 항목을 모두 확인해 주세요.');return;}
  var B=_buyer();
  if(!B.ok){alert('수강생 이름과 휴대폰 번호를 정확히 적어 주세요.\n결제 확인 후 이 번호로 첫 수업 일정을 안내드립니다.');var f=document.getElementById(B.nm.length<2?'spBuyerNm':'spBuyerTel');if(f)f.focus();return;}
@@ -8407,7 +8409,7 @@ function spPay(kind){
  d.style.display='block';
  d.scrollIntoView({block:'center'});}
 function spModalHTML(){return '<div class="sp-modal" id="spModal"><div class="sp-sheet"><div class="sp-x" onclick="spClose()">✕</div><div class="sp-mhead">SANBON GLOBAL</div>'
- +'<div id="spLogin"><input placeholder="아이디"><input placeholder="비밀번호" type="password"><button class="sp-login" onclick="spDoLogin()">로그인</button><div class="sp-social">다른 계정으로 로그인 · <b>네이버</b> · <b>카카오</b> · <b>구글</b></div><div class="sp-mfoot"><span onclick="spClose();openPage(\'회원가입\')">회원가입</span><span>아이디/비밀번호 찾기</span></div></div>'
+ +'<div id="spLogin" style="display:none"><div class="sp-lg"><div class="sp-lg-t">🔒 결제는 <b>회원 로그인</b> 후에 진행됩니다</div><div class="sp-lg-s">처음이시면 아래 버튼이 곧 <b>회원가입</b>입니다 (가입 즉시 5,000P).<br>로그인하시면 <b>이 결제창으로 바로 돌아옵니다</b>. 고르신 과정·금액은 그대로 남아 있습니다.</div><div class="sp-lg-amt" id="spLgAmt"></div><button class="plog-btn" type="button" style="background:#FEE500;color:#3A1D1D" onclick="spLoginGo(\'kakao\')">카카오로 3초 만에 로그인 · 가입</button><button class="plog-btn" type="button" style="background:#03C75A;color:#fff;margin-top:8px" onclick="spLoginGo(\'naver\')">네이버로 로그인 · 가입</button><button class="plog-btn" type="button" style="background:#F2F2F2;color:#1F1F1F;border:1.5px solid #747775;margin-top:8px" onclick="spLoginGo(\'google\')">Google로 로그인 · 가입</button><div class="sp-mfoot"><span onclick="spClose()">닫기</span></div></div></div>'
  +'<div id="spCharge" style="display:none">'
  +'<div class="sp-welcome">결제 내용을 확인해 주세요.</div>'
  +'<div class="sp-camt">결제 예정 <b id="spCamt">-</b></div>'
@@ -8655,7 +8657,21 @@ function spOpenPay(a){
  var u=document.getElementById('spPtUse');if(u)u.value='';
  spRecalc();
  var b=document.getElementById('agPay');if(b){var cs=b.querySelectorAll('input');for(var i=0;i<cs.length;i++)cs[i].checked=false;agSync('agPay');}
+ /* 2026-10-18 대표님 「모든 순서는 결제창에 갈 때는 전부 회원가입 후 로그인 후 결제」 — 로그인 전에는 결제 칸 대신 로그인 칸을 보여 줍니다 */
+ if(!sgaUser()){_spGate();}
  var m=document.getElementById('spModal');if(m)m.classList.add('on');}
+function _spSavePend(){try{var de=_discSel();localStorage.setItem('sga_pay_pend',JSON.stringify({a:_won(_payBase),item:_payItemKeep||'',goods:window._payGoodsKeep||'',ng:!!_noGift,list:window._listKeep||0,discV:de?de.value:(window._pendDiscV||'0'),vf:(typeof _vfInfo!=='undefined'&&_vfInfo)?_vfInfo:'',t:Date.now()}));}catch(e){}}
+function _spGate(){_spSavePend();var lg=document.getElementById('spLogin'),cg=document.getElementById('spCharge');if(lg)lg.style.display='block';if(cg)cg.style.display='none';var la=document.getElementById('spLgAmt');if(la)la.innerHTML=(window._payGoodsKeep?'<b>'+window._payGoodsKeep+'</b><br>':'')+'결제 예정 '+_won(_payBase);}
+function spLoginGo(p){_spSavePend();if(p==='naver')sgaLoginNaver();else if(p==='google')sgaLoginGoogle();else sgaLoginKakao();}
+/* 로그인하고 돌아오면 저장해 둔 결제를 30분 안에 한해 그대로 다시 엽니다 */
+(function(){var go=function(){try{if(!sgaUser())return;var r=localStorage.getItem('sga_pay_pend');if(!r)return;var P=JSON.parse(r);localStorage.removeItem('sga_pay_pend');if(!P||!P.a||Date.now()-(P.t||0)>1800000)return;
+  if(!document.getElementById('spModal')){var w=document.createElement('div');w.id='spModalHost';w.innerHTML=spModalHTML();document.body.appendChild(w);}
+  window._pendDiscV=P.discV||'0';try{if(P.vf)_vfInfo=P.vf;}catch(e){}
+  _payItem=P.item||'';window._payGoods=P.goods||'';_noGift=!!P.ng;window._listKeep=P.list||0;spOpenPay(P.a);
+  try{sgaPayReady(function(ok){window._kpReady=ok;var b=document.getElementById('spPayBtn');if(ok&&b)b.innerHTML='💳 카드로 바로 결제하기';});}catch(e){}
+  setTimeout(function(){try{sgToast('<b>로그인되었습니다</b><br>고르신 과정의 결제창을 다시 열었습니다');}catch(e){}},400);
+ }catch(e){}};
+ var t=function(){setTimeout(go,1600);};if(document.readyState==='complete')t();else window.addEventListener('load',t);})();
 function _curAmt(){var a=document.getElementById('spAmt');return a?a.innerHTML:'-';}
 function evApply(v){var de=_discSel();if(de)de.value=v;evClose();
  var P=window._evPend||{};window._evPend=null;
