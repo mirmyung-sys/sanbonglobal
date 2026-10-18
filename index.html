@@ -5743,14 +5743,16 @@ function renderProg(k){
    · 조회수는 구글 Apps Script(SGA 로그인 서버)의 시트에 실제로 쌓입니다.
      불러오지 못하면 숫자 대신 '—' 가 뜨고, 가짜 숫자는 절대 넣지 않습니다.
    ═══════════════════════════════════════════════════════════════ */
-var SGA_HITS = null;            /* {글ID: 조회수} — 백엔드에서 채워집니다 */
+var SGA_HITS = null;
+/* 2026-10-19 마리 — 방문자·조회수는 SGA 결제서버(더주 계정)에 쌓고, 결제서버가 10분마다 학개부(자동연동) 「홈페이지 방문자」 탭에 날짜별로 기록합니다. (로그인 서버에는 이 기능이 없어 숫자가 안 뜨던 것) */
+var SGA_HIT_SRV='https://script.google.com/macros/s/AKfycbwy-G2PpY6cGNwJSjCarp06NDPCeUm_eidvvXlOVBYZDhktUxdxL_aKH03mrgBbUgST/exec';            /* {글ID: 조회수} — 백엔드에서 채워집니다 */
 function sgaHitsLoad(cb){
  if(SGA_HITS){ if(cb)cb(); return; }
  try{
   var fn='sgaHitsCb'+Date.now();
   window[fn]=function(d){ SGA_HITS=d||{}; try{delete window[fn];}catch(e){} if(cb)cb(); };
   var sc=document.createElement('script');
-  sc.src=SGA_AUTH+'?action=hits&cb='+fn;
+  sc.src=SGA_HIT_SRV+'?action=hits&cb='+fn;
   sc.onerror=function(){ SGA_HITS={}; if(cb)cb(); };
   document.head.appendChild(sc);
   setTimeout(function(){ if(!SGA_HITS){ SGA_HITS={}; if(cb)cb(); } }, 4000);
@@ -5759,7 +5761,7 @@ function sgaHitsLoad(cb){
 function sgaHit(id){
  try{
   var sc=document.createElement('script');
-  window._sgNoop=window._sgNoop||function(){};sc.src=SGA_AUTH+'?action=hit&id='+encodeURIComponent(id)+'&cb=_sgNoop';sc.onload=sc.onerror=function(){try{sc.parentNode.removeChild(sc);}catch(e){}};
+  window._sgNoop=window._sgNoop||function(){};sc.src=SGA_HIT_SRV+'?action=hit&id='+encodeURIComponent(id)+'&cb=_sgNoop';sc.onload=sc.onerror=function(){try{sc.parentNode.removeChild(sc);}catch(e){}};
   document.head.appendChild(sc);
   if(SGA_HITS) SGA_HITS[id]=(SGA_HITS[id]||0)+1;
  }catch(e){}
@@ -22407,5 +22409,31 @@ function sgHpSend(){
 </script>
 
 <script>try{setTimeout(sgVisit,800);}catch(e){}</script>
+<style>
+/* 2026-10-19 대표님 「수강신청 그리드 지금보다 두 배로 · PC에서 너무 작아 강사 얼굴이 안 보여」 — PC(900px 이상)만 카드 2배, 폰은 그대로 */
+@media(min-width:900px){
+ .abox:has(.bk){max-width:1240px!important}
+ .bk-grid,.bk-grp+.bk-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:22px!important}
+ .bk-book{border-radius:8px 20px 20px 8px!important}
+ .bk-book:before{width:10px!important}
+ .bk-cv{min-height:250px!important;padding:24px 22px 20px 32px!important}
+ .bk-cv .lb{font-size:16px!important}
+ .bk-cv .tt{font-size:32px!important;margin-top:6px!important}
+ .bk-cv .tt small{font-size:18px!important;margin-top:4px!important}
+ .bk-cv .fc{padding-top:14px!important}
+ .bk-cv .fc img{width:92px!important;height:92px!important;border-width:3px!important;margin-right:-14px!important}
+ .bk-in{padding:16px 22px 20px 32px!important}
+ .bk-in .tm{font-size:18px!important;line-height:1.5!important}
+ .bk-in .pr{font-size:26px!important;margin-top:10px!important}
+ .bk-in .pr s{font-size:18px!important}
+ .bk-in .pr em{font-size:16px!important;padding:2px 9px!important;border-radius:8px!important}
+ .bk-in .pr small.prn{font-size:15px!important}
+ .bk-in .pr.ask{font-size:20px!important}
+ .bk-grp b{font-size:26px!important}
+ .bk-grp span{font-size:16px!important}
+ .bk-hd h2{font-size:30px!important}
+ .bk-hd p{font-size:17px!important}
+}
+</style>
 </body>
 </html>
