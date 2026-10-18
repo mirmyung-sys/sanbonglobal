@@ -5898,9 +5898,9 @@ function noticeOpen(id){
 }
 /* 2026-10-17 대표님 「모든 공지사항은 제미나이로 이미지 만들어서 이미지로 글을 남겨 · 공지사항란 전부 카드뉴스 사진」
    카드 = 1080×1350 (그림: 제미나이 나노바나나 · 글·강사 사진: 직접 얹음). 글은 아래 「글로 읽기」에 그대로 둡니다(검색·낭독용). */
-var NT_CARDS={"n29": ["img/notice/n29.jpg?v=1017q"], "n22": ["img/notice/n22_1.jpg?v=1017m", "img/notice/n22_2.jpg?v=1017m", "img/notice/n22_3.jpg?v=1017m", "img/notice/n22_4.jpg?v=1017m", "img/notice/n22_5.jpg?v=1017m"], "n28": ["img/notice/n28.jpg?v=1017m"], "n24": ["img/notice/n24.jpg?v=1017b"], "n23": ["img/notice/n23.jpg?v=1017m"], "n26": ["img/notice/n26.jpg?v=1017m"], "n27": ["img/notice/n27.jpg?v=1017b"], "n25": ["img/notice/n25.jpg?v=1017b"], "n21": ["img/notice/n21.jpg?v=1017b"], "n20": ["img/notice/n20.jpg?v=1017b"], "n17": ["img/notice/n17.jpg?v=1017b"], "n16": ["img/notice/n16.jpg?v=1017b"], "n15": ["img/notice/n15.jpg?v=1017b"], "n14": ["img/notice/n14.jpg?v=1017b"], "n13": ["img/notice/n13.jpg?v=1017b"], "n12": ["img/notice/n12.jpg?v=1017b"], "n11": ["img/notice/n11.jpg?v=1017b"], "n08": ["img/notice/n08.jpg?v=1017b"], "n07": ["img/notice/n07.jpg?v=1017b"], "n06": ["img/notice/n06.jpg?v=1017b"], "n05": ["img/notice/n05.jpg?v=1017b"], "n04": ["img/notice/n04.jpg?v=1017b"], "n03": ["img/notice/n03.jpg?v=1017b"], "n02": ["img/notice/n02.jpg?v=1017b"], "n01": ["img/notice/n01.jpg?v=1017b"], "n19": ["img/notice/n19_1.jpg?v=1017", "img/notice/n19_2.jpg?v=1017", "img/notice/n19_3.jpg?v=1017", "img/notice/n19_4.jpg?v=1017", "img/notice/n19_5.jpg?v=1017"], "n18": ["img/notice/n18.jpg?v=1017"]};
+var NT_CARDS={"n29": ["img/notice/n29.jpg?v=1017q"], "n22": ["img/notice/n22_1.jpg?v=1018f", "img/notice/n22_2.jpg?v=1017m", "img/notice/n22_3.jpg?v=1017m", "img/notice/n22_4.jpg?v=1017m", "img/notice/n22_5.jpg?v=1017m"], "n28": ["img/notice/n28.jpg?v=1017m"], "n24": ["img/notice/n24.jpg?v=1017b"], "n23": ["img/notice/n23.jpg?v=1017m"], "n26": ["img/notice/n26.jpg?v=1017m"], "n27": ["img/notice/n27.jpg?v=1017b"], "n25": ["img/notice/n25.jpg?v=1017b"], "n21": ["img/notice/n21.jpg?v=1017b"], "n20": ["img/notice/n20.jpg?v=1018f"], "n17": ["img/notice/n17.jpg?v=1017b"], "n16": ["img/notice/n16.jpg?v=1017b"], "n15": ["img/notice/n15.jpg?v=1017b"], "n14": ["img/notice/n14.jpg?v=1017b"], "n13": ["img/notice/n13.jpg?v=1017b"], "n12": ["img/notice/n12.jpg?v=1017b"], "n11": ["img/notice/n11.jpg?v=1017b"], "n08": ["img/notice/n08.jpg?v=1017b"], "n07": ["img/notice/n07.jpg?v=1018f"], "n06": ["img/notice/n06.jpg?v=1017b"], "n05": ["img/notice/n05.jpg?v=1017b"], "n04": ["img/notice/n04.jpg?v=1017b"], "n03": ["img/notice/n03.jpg?v=1017b"], "n02": ["img/notice/n02.jpg?v=1018f"], "n01": ["img/notice/n01.jpg?v=1017b"], "n19": ["img/notice/n19_1.jpg?v=1017", "img/notice/n19_2.jpg?v=1017", "img/notice/n19_3.jpg?v=1017", "img/notice/n19_4.jpg?v=1017", "img/notice/n19_5.jpg?v=1017"], "n18": ["img/notice/n18.jpg?v=1017"]};
 function _ntCards(n){var L=NT_CARDS[n.id];if(!L)return '';
- return '<div class="nt-cards">'+L.map(function(u,i){return '<img src="'+u+'" alt="'+(i===0?n.t.replace(/"/g,'&quot;'):'')+'" loading="'+(i<2?'eager':'lazy')+'">';}).join('')+'</div>';}
+ return '<div class="nt-cards">'+L.map(function(u,i){return '<img src="'+u+'" alt="'+(i===0?n.t.replace(/"/g,'&quot;'):'')+'" loading="'+(i<2?'eager':'lazy')+'"'+(n.act?' style="cursor:pointer" onclick="'+n.act+';"':'')+'>';}).join('')+'</div>';}
 function noticeView(n){
  var cd=_ntCards(n);
  return H('NOTICE','공지사항','','📢')
@@ -5909,7 +5909,7 @@ function noticeView(n){
   +'<div class="nt-vmeta">'+n.d+' · 조회 '+_hitTxt(n.id)+'</div></div>'
   +cd
   +'<div class="nt-body">'+n.b+'</div>'   /* 2026-10-17 대표님 「그냥 사진 나오고 밑에 전부 글도」 — 접기 없음 */
-  +(n.act?('<a class="pgcta" href="#" onclick="'+n.act+'return false;">'+(n.actLabel||'자세히 보기')+' ›</a>'):'')
+  +(n.act?('<a class="pgcta" href="#" onclick="'+n.act+';return false;">'+(n.actLabel||'자세히 보기')+' ›</a>'):'')
   +'<div class="nt-back"><a href="#" onclick="_sgSub(noticePage());return false;">← 목록으로</a></div>'
   +'</div>';
 }
@@ -5938,7 +5938,7 @@ function noticePage(){
 
 const SLIDES=[
 /* 2026-10-17 대표님 「100점짜리로」 — 슬라이드 13장 → 5장 (토익 · JLPT · 무료청강 · 문화센터 · 원장상담). 빠진 8장은 공지사항·메뉴에 그대로 있음 */
- { e:'11월 토익 스파르타 · 정규반 모집', bg:'img/notice/toeic_bg2.jpg?v=1017b', t:'토익 강사 3명,<br>먼저 들어보시고 결정하세요', s:'토익 만점 강사 송윤정 · 더 쎈토익 창시자 엘리 킴 · 「김현정 토익은 진짜다」', act:"noticeOpen('n22')", pbg:'linear-gradient(135deg,#6B1F2E,#b8322a)', tc:'#ffd94d', tc2:'#ffe3e0', ac:'#ffe0dd', bbg:'#ffd94d', btc:'#6B1F2E', cls:'hsty-impact', faces:['eng_13','elly','eng_15'], fnames:['송윤정','엘리 킴','김현정']},
+ { e:'11월 토익 스파르타 · 정규반 모집', bg:'img/notice/toeic_bg2.jpg?v=1017b', t:'토익 강사 3명,<br>먼저 들어보시고 선택하세요', s:'토익 만점 강사 송윤정 · 더 쎈토익 창시자 엘리 킴 · 「김현정 토익은 진짜다」', act:"noticeOpen('n22')", pbg:'linear-gradient(135deg,#6B1F2E,#b8322a)', tc:'#ffd94d', tc2:'#ffe3e0', ac:'#ffe0dd', bbg:'#ffd94d', btc:'#6B1F2E', cls:'hsty-impact', faces:['eng_13','elly','eng_15'], fnames:['송윤정','엘리 킴','김현정']},
  { e:'JLPT · 내년 7월 시험', nb:1, bg:'img/notice/jlpt_bg.jpg?v=1017b', t:'히라가나부터<br>N3까지', s:'JLPT 방학 특공대반 · 내년 7월 시험대비반 모집 — 올해는 퍼스널로 바로 시작', act:"noticeOpen('n28')", pbg:'linear-gradient(135deg,#9E1F1A,#C8352B)', tc:'#FFF8EC', tc2:'#FFE7E1', ac:'#F6D58A', bbg:'#F6D58A', btc:'#7A1712', cls:'hsty-impact'},
  { e:'FREE · 무료 청강', bg:'img/ai/classroom.jpg', t:'모든 강좌<br>첫 수업 무료', s:'영어·일본어·중국어 회화부터 토익·JLPT·HSK까지 — 등록 전에 1번 들어보세요', act:"openPage('무료청강')", pbg:'linear-gradient(135deg,#0E8A5A,#14B06E)', tc:'#eaffd6', tc2:'#d6f5e7', ac:'#D6F5E7', bbg:'#ffffff', btc:'#0E8A5A'},
  { e:'산본글로벌 문화센터 · 오후 1~6시', nb:1, bg:'img/notice/n24_bg.jpg?v=1017b', t:'문화센터,<br>멀리 가지 마세요', s:'월 69,000원으로 원어민과 대화하기 — 영어 김현정 · 일본어 타나이 치토세', act:"noticeOpen('n24')", pbg:'linear-gradient(135deg,#0F6B5E,#1C8B76)', tc:'#FFF8EC', tc2:'#E8F5EF', ac:'#F6D58A', bbg:'#F6D58A', btc:'#0F4B42', cls:'hsty-impact', faces:['eng_15','../../t_tanai'], fnames:['김현정','타나이 치토세']},
@@ -21311,7 +21311,7 @@ body.has-tab #tkPop .tk-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
    첫 화면 팝업은 이것 하나만 — 이 팝업이 뜬 방문에서는 다른 안내 팝업(평생교육이용권·리뷰·원장·1일·11월)을 다시 띄우지 않습니다. 검수용 ?tkpop=1 */
 (function(){
  var OPEN=Date.UTC(2026,9,18,15,0,0);
- var L=["img/notice/n22_1.jpg?v=1017m","img/notice/n22_2.jpg?v=1017m","img/notice/n22_3.jpg?v=1017m","img/notice/n22_4.jpg?v=1017m","img/notice/n22_5.jpg?v=1017m"];
+ var L=["img/notice/n22_1.jpg?v=1018f","img/notice/n22_2.jpg?v=1017m","img/notice/n22_3.jpg?v=1017m","img/notice/n22_4.jpg?v=1017m","img/notice/n22_5.jpg?v=1017m"];
  function today(){var d=new Date(Date.now()+9*3600e3);return d.toISOString().slice(0,10);}
  function force(){return /[?&]tkpop=1/.test(location.search);}
  function admin(){return /[?&]k=2513/.test(location.search);}
@@ -21879,6 +21879,10 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
 .bk-rib{position:absolute;bottom:0;right:0;background:#E8C97A;color:#5B1026;font-weight:900;font-size:11px;padding:4px 9px;border-radius:10px 0 0 0}
 .bk-in{padding:10px 12px 12px 18px}
 .bk-in .tm{font-size:12.5px;color:#6b5a50;font-weight:700;line-height:1.4}
+.bk-in .tm.tl i{display:block;font-style:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.bk-in .tm.tl i:last-child{color:#5B1026}
+.bk-grp{display:flex;align-items:baseline;gap:10px;margin:18px 2px 10px;padding-top:12px;border-top:1px solid #E6D5B8}.bk-grp:first-of-type{border-top:0;padding-top:0;margin-top:4px}.bk-grp b{font-family:'Noto Serif KR',serif;font-size:19px;font-weight:900;color:#5B1026}.bk-grp span{font-size:13px;font-weight:700;color:#8a7466}
+.bk-book{height:100%}.bk-cv .tt{min-height:2.5em}
+@media(min-width:900px){.bk-grp+.bk-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
 .bk-in .pr{margin-top:6px;font-size:16px;font-weight:900;color:#7B1733}
 .bk-in .pr s{color:#a99;font-weight:700;font-size:12.5px;margin-right:4px}
 .bk-in .pr em{font-style:normal;font-size:12px;color:#fff;background:#C81F2B;border-radius:6px;padding:1px 6px;margin-left:4px;vertical-align:2px}
@@ -21954,7 +21958,14 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
    var best=null;(t.terms||[]).forEach(function(x){if(x[2]&&x[2]>x[1])best=x;});var first=(t.terms||[])[0];
    var pr=best?('<s>'+man(best[2])+'</s>'+man(best[1])+'<em>'+(t.dc||Math.round((1-best[1]/best[2])*100)+'%')+'</em>'):(first&&first[1]?('1개월 '+man(first[1])):'');
    var c=COL[t.g||'etc']||COL.etc;var ph=(t.photos&&t.photos.length)?t.photos:[t.photo];
-   return {i:i,dc:!!t.dc,rank:(t.dc?0:1),c:c,lb:(t.g==='spa'?'스파르타 · 월~금 매일':t.g==='reg'?'정규반':(E.status||k)),main:main,sub:sub,tm:[day,tm].filter(Boolean).join(' · ')||'요일·시간 상담 후 확정',pr:pr,ask:!pr,ph:ph,teach:t.teach,rib:t.dc?('BEST · '+t.dc+' 할인'):(/모집/.test(t.n)?'모집중':''),
+   /* 2026-10-18 대표님 「스파르타반 다 나열 · 정규반 전부 나열 · 라인을 통일」 — 카드마다 같은 세 줄: ①요일·시간 ②기간·횟수 ③강사 */
+   var t0=String(t.times&&t.times[0]||'');var dd=t0.match(/(월~금|월·수|화·목|토요일|토)/)||String(d0).match(/(월~금|월·수|화·목|토요일|토)/);var dd2=dd?dd[1].replace('토요일','토'):'';
+   var T0=(t.terms||[])[0]||[''];var tn=String(T0[0]);var mm=tn.match(/(\d+)개월/),cc=tn.match(/(\d+)회/);
+   var per=t.dc?((mm?mm[1]+'개월':'')+(sub?' · '+sub.replace(/\+/g,'→'):'')):((mm?mm[1]+'개월':'')+(cc?' · '+cc[1]+'회':''));
+   if(t.g==='spa'||t.g==='reg')main=main.replace(/^(스파르타|정규)\s*/,'');
+   if(!t.dc&&first&&first[1])pr=(mm?mm[1]+'개월 ':'')+man(first[1]);
+   var L3=[[dd2,tm].filter(Boolean).join(' · ')||'요일·시간 상담 후 확정',per||'기간 상담 후 확정',t.teach||''];
+   return {i:i,g:(t.g||'etc'),dc:!!t.dc,rank:0,c:c,lb:(t.g==='spa'?'스파르타 · 월~금 매일':t.g==='reg'?'정규반':(E.status||k)),main:main,sub:sub,tm:L3,pr:pr,ask:!pr,ph:ph,teach:t.teach,rib:t.dc?('BEST · '+t.dc+' 할인'):(/모집/.test(t.n)?'모집중':''),
     go:"bkOpenEx('"+k+"',"+i+")"};
   }).sort(function(a,b){return a.rank-b.rank||a.i-b.i;});}
  function cvBooks(c){var W=(typeof WCONV!=='undefined')&&WCONV[c.w];if(!W)return [];
@@ -21964,17 +21975,19 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
    return {dc:dawn,c:dawn?COL.dawn:COL.cv,lb:c.k+(dawn?' · 출근 전':''),main:l[0],sub:'',tm:tm,pr:base+(dawn?'<em>20% 할인</em>':''),ask:!base,ph:[l[1]],teach:l[2],rib:dawn?'20% 할인':(mo?'모집중':''),go:"bkOpenCv('"+c.k.replace('회화','')+"','"+l[0]+"')"};});}
  function book(b){return '<button type="button" class="bk-book" style="--bc:'+b.c[0]+';--bg:'+b.c[1]+'" onclick="'+b.go+'">'
   +'<div class="bk-cv">'+(b.rib?'<span class="bk-rib">'+esc(b.rib)+'</span>':'')+'<span class="lb">'+esc(b.lb)+'</span><span class="tt">'+esc(b.main)+(b.sub?'<small>'+esc(b.sub)+'</small>':'')+'</span>'+faces(b.ph)+'</div>'
-  +'<div class="bk-in"><div class="tm">'+esc(b.tm)+(b.teach?'<br>'+esc(b.teach):'')+'</div><div class="pr'+(b.ask?' ask':'')+'">'+(b.pr||'수강료 상담 안내')+'</div></div></button>';}
+  +'<div class="bk-in">'+(Array.isArray(b.tm)?('<div class="tm tl">'+b.tm.map(function(x){return '<i>'+esc(x||'\u00a0')+'</i>';}).join('')+'</div>'):('<div class="tm">'+esc(b.tm)+(b.teach?'<br>'+esc(b.teach):'')+'</div>'))+'<div class="pr'+(b.ask?' ask':'')+'">'+(b.pr||'수강료 상담 안내')+'</div></div></button>';}
  window.bkStore=function(cat){
   if(cat)window._bkCat=cat;var cur=window._bkCat;var C=null;CAT.forEach(function(x){if(x.k===cur)C=x;});if(!C)C=CAT[0];
   var tabs=CAT.map(function(x){return '<button type="button" class="'+(x.k===C.k?'on':'')+'" onclick="bkGo(\''+x.k+'\')">'+x.k+'</button>';}).join('');
   var L=C.t==='ex'?exBooks(C.k):C.t==='cv'?cvBooks(C):[];
-  var body=L.length?('<div class="bk-grid">'+L.map(book).join('')+'</div>'):'';
+  var GN={spa:['스파르타반','월~금 매일 2시간'],reg:['정규반','평일 저녁 주 2회 · 실전 토요일']};
+  var gs=[];L.forEach(function(b){var g=b.g||'_';if(gs.indexOf(g)<0)gs.push(g);});
+  var body=!L.length?'':(C.t==='ex'&&gs.length>1)?gs.map(function(g){var LL=L.filter(function(b){return (b.g||'_')===g;});var nm=GN[g]||[g,''];return '<div class="bk-grp"><b>'+esc(nm[0])+'</b><span>'+esc(nm[1])+' · '+LL.length+'개 반</span></div><div class="bk-grid">'+LL.map(book).join('')+'</div>';}).join(''):('<div class="bk-grid">'+L.map(book).join('')+'</div>');
   if(C.t==='pg')body='<div class="bk-grid">'+book({c:COL.etc,lb:'1:1 개인레슨',main:'일대일 (시간권)',sub:'10·20시간',tm:'요일·시간 자유',pr:'시간당 5~6.5만',ph:['../../t_cody','eng_13','eng_5'],teach:'',rib:'오픈 10%',go:"openPage('맞춤수업')"})+book({c:COL.etc,lb:'1:1 개인레슨',main:'퍼스널 (고정)',sub:'주 2회 50분 · 주 1회 80분',tm:'2개월',pr:'48만',ph:['eng_14'],teach:'',rib:'',go:"openPage('맞춤수업')"})+book({c:COL.etc,lb:'1:1 개인레슨',main:'시험일 맞춤 단기집중',sub:'',tm:'시험 날짜에 맞춰',pr:'',ask:1,ph:['eng_13'],teach:'',rib:'',go:"openPage('맞춤수업')"})+'</div>';
   if(C.t==='biz')body='<div class="bk-grid">'+book({c:['#4A3A30','linear-gradient(150deg,#5A4A3E,#3A2C24)'],lb:'회사로 강사가 갑니다',main:'기업체 출강',sub:'영어 · 일본어 · 중국어',tm:'인원·횟수에 맞춰 견적',pr:'',ask:1,ph:['eng_14','eng_5','eng_15'],teach:'',rib:'',go:"location.href='biz.html'"})+book({c:['#4A3A30','linear-gradient(150deg,#5A4A3E,#3A2C24)'],lb:'임원 1:1',main:'임원 1:1 출강',sub:'사무실 방문 · 화상',tm:'요일·시간 맞춤',pr:'',ask:1,ph:['../../t_cody'],teach:'',rib:'',go:"openPage('임원강의')"})+'</div>';
   return '<div class="bk"><div class="bk-hd"><h2>수강신청</h2><p>과목 → 반 → 결제, 세 번이면 끝</p></div>'
    +'<div class="bk-tabs" id="bkTabs">'+tabs+'</div>'
-   +'<div class="bk-shelf"><div class="bk-sh-t"><b>'+esc(C.k)+' 책방</b><span>'+(L.length?L.length+'개 반 · 할인반 먼저':'')+'</span></div>'+body
+   +'<div class="bk-shelf"><div class="bk-sh-t"><b>'+esc(C.k)+' 책방</b><span>'+(L.length?L.length+'개 반':'')+'</span></div>'+body
    +'<div class="bk-note">반을 누르면 선생님 · 수강료 · 달력 · 결제가 한 화면에 나옵니다</div>'
    +'<div class="bk-call"><a class="c1" href="tel:0314666969">📞 031-466-6969</a><a class="c2" href="https://pf.kakao.com/_xbxkCFX" target="_blank" rel="noopener">💬 카카오톡</a></div></div></div>';
  };
