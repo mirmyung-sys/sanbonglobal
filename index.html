@@ -8565,19 +8565,24 @@ function rvSubmit(){
  var u=sgaUser()||{};var who='';try{who=localStorage.getItem('sga_token')||localStorage.getItem('sga_sid')||'';}catch(e){}
  if(!who){bad('로그인이 풀렸습니다. 다시 로그인해 주세요.');return;}
  var btn=document.getElementById('rvGo');btn.disabled=true;btn.textContent='올리는 중…';
- var q='?action=review&c='+encodeURIComponent(g('rvC'))+'&tc='+encodeURIComponent(g('rvTc'))+'&s='+(window._rvS||5)
+ /* 2026-10-19 실측: 결제서버 주소에 「c=」 값을 붙이면 구글 쪽에서 응답이 막힙니다 → 과정은 선생님 칸에 「과정 · 선생님」으로 함께 보냅니다 */
+ var _tc=(g('rvC')+(g('rvTc')?' · '+g('rvTc'):'')).slice(0,20);
+ var q='?action=review&tc='+encodeURIComponent(_tc)+'&s='+(window._rvS||5)
   +'&t='+encodeURIComponent(t)+'&b='+encodeURIComponent(b)+'&n='+encodeURIComponent(g('rvNm')||u.name||'')+'&u='+encodeURIComponent(who);
  fetch(SGA_PAY_SERVER+q,{credentials:'omit'}).then(function(r){return r.json();}).then(function(j){
-  if(j&&j.ok&&j.rv){var bx=document.querySelector('#rvW .rvw-b');if(bx)bx.innerHTML='<div class="rvw-ok"><div class="rvw-oki">💌</div><b>후기가 접수되었습니다</b><p>확인 후 홈페이지 수강후기에 올라갑니다.<br>소중한 후기 감사합니다!</p></div><button type="button" class="rvw-x" onclick="rvClose()">✕ 닫기</button>';}
+  if(j&&j.ok&&j.rv){window._rvTxt=t+'\n'+b;var bx=document.querySelector('#rvW .rvw-b');if(bx)bx.innerHTML='<div class="rvw-ok"><div class="rvw-oki">💌</div><b>후기가 접수되었습니다</b><p>확인 후 홈페이지 수강후기에 올라갑니다.<br>소중한 후기 감사합니다!</p></div>'+'<div class="rvw-nv"><b>네이버에도 같은 후기를 남겨 주시면 큰 힘이 됩니다</b><span>① 아래 버튼을 누르면 방금 쓴 글이 복사돼요<br>② 네이버 지도 산본글로벌어학원 → 리뷰 쓰기 → 영수증·결제 인증 후 붙여넣기<br>③ 리뷰 화면을 카카오톡 채널로 보내 주시면 데스크에서 리뷰 이벤트 혜택을 드려요</span>'+'<button type="button" class="rvw-nvb" onclick="rvToNaver()">📋 복사하고 네이버 리뷰 쓰러 가기</button></div>'+'<button type="button" class="rvw-x" onclick="rvClose()">✕ 닫기</button>';}
   else{btn.disabled=false;btn.textContent='후기 올리기';bad((j&&j.msg&&!j.svc)?j.msg:'후기 접수 준비 중입니다. 잠시 후 다시 시도해 주세요 · 031-466-6969');}
  }).catch(function(){btn.disabled=false;btn.textContent='후기 올리기';bad('연결이 잠깐 끊겼어요. 다시 눌러 주세요. 계속 안 되면 031-466-6969');});
 }
+/* 홈페이지 후기 → 네이버 플레이스 리뷰: 자동 연동은 안 되므로(네이버 계정·영수증 인증 필수) 글을 복사해 주고 리뷰 화면을 엽니다 */
+function rvToNaver(){var t=window._rvTxt||'';var go=function(){window.open('https://m.place.naver.com/place/1554688156/review/visitor','_blank');};
+ try{if(navigator.clipboard&&t){navigator.clipboard.writeText(t).then(function(){try{sgToast('후기를 복사했어요 · 네이버 리뷰 칸에 붙여넣기 하세요');}catch(e){}go();},go);return;}}catch(e){}go();}
 function rvLoad(){
  var box=document.getElementById('rvLive');if(!box)return;
  fetch(SGA_PAY_SERVER+'?action=reviews',{credentials:'omit'}).then(function(r){return r.json();}).then(function(j){
   var L=(j&&j.list)||[];if(!L.length){box.innerHTML='';return;}
   box.innerHTML='<div class="rv-block"><h3 class="rv-bh"><b>NEW</b> 새 수강후기 <span>홈페이지에서 쓴 후기</span></h3><div class="rv-list">'
-   +L.map(function(r){var st=new Array((+r.s||5)+1).join('★');return'<div class="rv-item"><span class="rv-badge">'+_rvEsc(r.c)+'</span><div class="rvw-stars">'+st+'</div><h4>'+_rvEsc(r.t)+'</h4><div class="rv-meta">'+_rvEsc(r.c)+(r.tc?' · '+_rvEsc(r.tc):'')+' | '+_rvEsc(r.n)+' · '+_rvEsc(r.d)+'</div><p>'+_rvEsc(r.b).replace(/\n/g,'<br>')+'</p></div>';}).join('')+'</div></div>';
+   +L.map(function(r){if(!r.c&&r.tc){var _p=String(r.tc).split(' · ');r.c=_p[0];r.tc=_p.slice(1).join(' · ');}var st=new Array((+r.s||5)+1).join('★');return'<div class="rv-item"><span class="rv-badge">'+_rvEsc(r.c)+'</span><div class="rvw-stars">'+st+'</div><h4>'+_rvEsc(r.t)+'</h4><div class="rv-meta">'+_rvEsc(r.c)+(r.tc?' · '+_rvEsc(r.tc):'')+' | '+_rvEsc(r.n)+' · '+_rvEsc(r.d)+'</div><p>'+_rvEsc(r.b).replace(/\n/g,'<br>')+'</p></div>';}).join('')+'</div></div>';
  }).catch(function(){});
 }
 function rvWriteBox(){return'<div class="rvw-cta"><div><b>수강하셨나요?</b><span>후기를 남겨 다음 수강생에게 길을 알려 주세요</span></div><button type="button" onclick="rvWrite()">✍️ 수강후기 쓰기</button></div>';}
@@ -22480,6 +22485,8 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
 .rvw-cta button{flex:none;border:0;border-radius:12px;background:#7B1733;color:#fff;font-weight:900;font-size:15px;padding:12px 16px;cursor:pointer}
 .review .rvw-m1,.review .rvw-m2{border-radius:12px!important;font-weight:900!important;font-size:16px!important;padding:13px 22px!important;cursor:pointer;border:1.5px solid #7B1733!important}
 .review .rvw-m1{background:#7B1733!important;color:#fff!important}.review .rvw-m2{background:#fff!important;color:#7B1733!important}
+.rvw-nv{background:#F1FAF3;border:1.5px solid #BFE3CB;border-radius:14px;padding:12px 14px;margin:14px 0 4px;text-align:left}.rvw-nv b{display:block;font-size:15px;color:#0E6B3E;margin-bottom:6px}.rvw-nv span{display:block;font-size:13px;color:#33493b;line-height:1.7}
+.rvw-nvb{display:block;width:100%;margin-top:10px;border:0;border-radius:12px;background:#03C75A;color:#fff;font-weight:900;font-size:15.5px;padding:13px 10px;cursor:pointer}
 .rvw-stars{color:#F2B705;font-size:15px;letter-spacing:1px;margin:2px 0 4px}
 @media(max-width:480px){.rvw-cta{flex-direction:column;align-items:stretch;text-align:left}.rvw-cta button{width:100%}}
 </style>
