@@ -589,6 +589,7 @@ nav a{font-size:14px}
 .sns-yt{background:#ff0000}
 .sns-kk{background:#ffe600;color:#3a1d1d}
 .sns-bl{background:#03c75a}
+.sns-dg{background:#FF6F0F}
 .sns-rv{background:var(--red)}
 .snsbtn .si{font-size:18px}
 .scard{display:flex;gap:26px;align-items:center;background:linear-gradient(120deg,#f7f5ee,#eef1f7);border:1px solid var(--line);border-radius:14px;padding:34px 36px;animation:fadeUp .3s ease}
@@ -5421,8 +5422,13 @@ function sgdPaint(){
   
 
   
+  <!-- 2026-10-19 대표님 「가운데 유튜브 인스타 블로그 카카오톡 채널 당근채널까지 다섯개」 -->
   <div class="wrap">
+  <a class="snsbtn sns-yt" href="https://www.youtube.com/@sanbonglobal" target="_blank" rel="noopener noreferrer"><span class="si">▶</span> 유튜브</a>
+  <a class="snsbtn sns-ig" href="https://www.instagram.com/sanbonglobal_" target="_blank" rel="noopener noreferrer"><span class="si">◎</span> 인스타그램</a>
+  <a class="snsbtn sns-bl" href="https://blog.naver.com/sanbonglobal" target="_blank" rel="noopener noreferrer"><span class="si">B</span> 블로그</a>
   <a class="snsbtn sns-kk" href="https://pf.kakao.com/_xbxkCFX" target="_blank" rel="noopener noreferrer"><span class="si">💬</span> 카카오톡 채널</a>
+  <a class="snsbtn sns-dg" href="https://www.daangn.com/kr/local-profile/%EC%82%B0%EB%B3%B8%EA%B8%80%EB%A1%9C%EB%B2%8C%EC%96%B4%ED%95%99%EC%9B%90-t729zog2ptz4/" target="_blank" rel="noopener noreferrer"><span class="si">🥕</span> 당근</a>
   <a class="snsbtn sns-rv" href="#review"><span class="si">⭐</span> 수강후기</a>
 </div></div>
 
@@ -6484,24 +6490,25 @@ function memberTabs(){return '<div class="mb-tabs">'+
 '<a href="#" onclick="alert(\'회원탈퇴는 로그인 후 이용하실 수 있습니다.\');return false;">회원탈퇴</a>'+
 '<a href="#" onclick="openPage(\'이용약관\');return false;">이용약관</a>'+
 '<a href="#" onclick="openPage(\'개인정보처리방침\');return false;">개인정보처리방침</a></div>';}
+/* 2026-10-19 대표님 「로그인 버튼 누르면 무조건 회원가입으로 유도 … 회원가입시 입력된게 아이디 비번이 아니잖아?」
+   회원가입 = 카카오·네이버·구글 계정 하나(아이디·비밀번호 없음). 가짜였던 휴대폰 인증·아이핀·일반가입 폼은 뺐습니다.
+   가입하는 순간 적립금 5,000P, 이름·휴대폰은 처음 한 번만 받아 이 기기에 저장(다음부터 자동 입력). */
+function sgaJoinBox(){
+ return '<div class="sjn">'
+  +'<div class="sjn-gift">🎁 가입 즉시 적립금 <b>5,000P</b> <span>첫 결제 때 바로 사용</span></div>'
+  +'<button class="plog-btn" type="button" style="background:#FEE500;color:#3A1D1D" onclick="sgaLoginKakao()">카카오로 회원가입</button>'
+  +'<button class="plog-btn" type="button" style="background:#03C75A;color:#fff;margin-top:8px" onclick="sgaLoginNaver()">네이버로 회원가입</button>'
+  +'<button class="plog-btn" type="button" style="background:#F2F2F2;color:#1F1F1F;border:1.5px solid #747775;margin-top:8px" onclick="sgaLoginGoogle()">Google로 회원가입</button>'
+  +'<ul class="sjn-li"><li>아이디·비밀번호를 만들지 않습니다. 쓰시는 계정 하나로 끝.</li>'
+  +'<li><b>이미 가입하셨으면 같은 버튼</b>을 누르면 바로 로그인됩니다.</li>'
+  +'<li>한 번 로그인하면 <b>이 기기에서는 자동 로그인</b> — 다음부터 누를 것이 없습니다.</li>'
+  +'<li>이름·휴대폰은 <b>처음 한 번만</b> 적으면 결제 때마다 자동으로 들어갑니다.</li></ul>'
+  +'</div>';}
 function joinPage(){return memberTabs()
- +'<div class="pghero big" style="background:linear-gradient(120deg,#c81f2b,#c81f2b)"><div class="pgeyebrow">JOIN · 회원가입</div><h2>회원가입</h2><p>지금 가입하면 적립금 <b>5,000포인트</b>를 바로 드려요. 네이버 영수증 리뷰까지 남기면 5,000포인트 + 립밤이 더해져 <b>최대 10,000포인트</b>입니다.</p></div>'
- +'<div class="findwrap" style="padding:22px 24px 6px"><a class="findbtn" href="#" onclick="agOpen();return false;"><span class="fi">📱</span><b>휴대폰 번호로 30초 만에 가입</b><em>아이디·비밀번호 없이 번호 하나면 됩니다 →</em></a></div>'+'<div class="jn-steps">'
- +'<div class="jn-st on"><div class="jc">🧑‍💻</div><b>본인인증</b></div><div class="jn-arrow">›</div>'
- +'<div class="jn-st"><div class="jc">✅</div><b>약관동의</b></div><div class="jn-arrow">›</div>'
- +'<div class="jn-st"><div class="jc">✏️</div><b>정보입력</b></div><div class="jn-arrow">›</div>'
- +'<div class="jn-st"><div class="jc">🎉</div><b>가입완료</b></div></div>'
- +'<div class="sec" style="text-align:center"><h3>회원가입을 위해 본인인증을 진행해 주세요.</h3><div class="lead">휴대폰 인증 또는 아이핀(i-PIN) 인증, SNS 회원가입 중 선택하여 본인확인을 진행해 주세요.</div></div>'
- +'<div class="jn-grid">'
- +'<div><div class="jn-c"><h4>휴대폰 인증</h4><div class="jd">휴대폰 번호를 통해 신원을 확인합니다.</div><button class="jn-btn" type="button" onclick="alert(\'회원 시스템은 11월에 엽니다.\\n우선 전화 031-466-6969 또는 카카오톡 채널로 등록 상담해 주세요.\')">휴대폰 인증</button><div class="jn-note">SKT · KT · LGU+ · 알뜰폰 통신사를 통한 신원확인 수단입니다.</div></div>'
- +'<div class="jn-c" style="margin-top:16px"><h4>아이핀(i-PIN)이란?</h4><div class="jd">주민등록번호를 대신하여 온라인상에서 신원을 확인하는 수단입니다.</div><button class="jn-btn" type="button" onclick="alert(\'회원 시스템은 11월에 엽니다.\\n등록·상담은 전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원으로 해주세요.\')">아이핀 인증</button><div class="jn-note">아이핀이 없는 경우 발급 기관에서 발급받으셔야 합니다.</div></div></div>'
- +'<div class="jn-c"><h4>SNS 가입</h4><div class="jd">가지고 계신 SNS 아이디로 산본글로벌 회원으로 가입합니다.</div><div class="jn-sns">'
- +'<a href="#" onclick="sgaLoginNaver();return false;" style="background:#03C75A;color:#fff;border-color:#03C75A">NAVER로 회원가입</a>'
- +'<a href="#" onclick="sgaLoginKakao();return false;" style="background:#FEE500;color:#3A1D1D;border-color:#FEE500">kakaotalk으로 회원가입</a>'
- +'<a href="#" onclick="sgaLoginGoogle();return false;" style="background:#DB4437;color:#fff;border-color:#DB4437">Google로 회원가입</a></div>'
- +'<div class="jn-note" style="text-align:left;margin-top:14px">· SNS 계정이 없는 경우 각 SNS별 제공사 회원가입이 필요합니다.<br>· SNS로 가입 시 휴대폰/아이핀 인증을 통해 사용자 인증을 하셔야 합니다.</div></div></div>'
- +'<ul class="jn-cautions"><li>입력하신 인증 정보는 본인인증에만 사용되며 이외의 용도로 사용 또는 저장되지 않습니다.</li><li>인증이 정상적으로 작동하지 않으면 브라우저의 팝업 차단 기능을 해제하신 후 이용해 주세요.</li><li>기존 오프라인 수강 등록생은 회원가입 시 학원 방문 혹은 유선으로 수강등록 내역 통합을 요청해 주세요.</li><li>통합이 되지 않을 경우, 사이트 내에서 기존 수강등록 내역 조회가 되지 않습니다.</li><div class="jn-tip">빠른 실명확인을 위한 TIP!</div><li>본인인증이 어려우시면 전화 031-466-6969 또는 카카오톡 채널 @산본글로벌어학원으로 도와드립니다.</li></ul>'
- +'<div class="mb-join"><a class="child" href="#" onclick="alert(\'만 14세 미만은 보호자와 함께 가입해 주세요. (준비 중)\');return false;">만 14세 미만<br>어린이 회원가입</a><a class="adult" href="#" onclick="openPage(\'회원가입폼\');return false;">만 14세 이상<br>일반 회원가입</a></div>'+CTA();}
+ +'<div class="pghero big" style="background:linear-gradient(120deg,#7B1733,#A8323F)"><div class="pgeyebrow">JOIN · 회원가입</div><h2>회원가입</h2><p>가입하면 적립금 <b>5,000P</b>를 바로 드려요. 학원 수강생은 회원가입 후 수강생 확인을 하면 홈페이지 강의가 전부 무료입니다.</p></div>'
+ +'<div style="max-width:440px;margin:18px auto 8px;padding:0 16px">'+sgaJoinBox()+'</div>'
+ +'<div class="pgnote" style="text-align:center">만 14세 미만은 보호자와 함께 가입해 주세요 · 문의 031-466-6969</div>'+CTA();}
+
 /* ===== 약관·동의 (개인정보보호법 / 정보통신망법 / 전자상거래법) ===== */
 var SGA_BIZ={name:'산본글로벌어학원',tel:'031-466-6969',mgr:'개인정보 보호책임자 · 원장'};
 
@@ -6557,7 +6564,7 @@ function sgaUser(){
 function sgaPaintHeader(){
  var u=sgaUser();
  var a=document.getElementById('hcLogin');
- if(a){ a.innerHTML = u ? '<span class="gi">\u2705</span>'+u.name : '<span class="gi">🔑</span>로그인'; }
+ if(a){ a.innerHTML = u ? '<span class="gi">\u2705</span>'+u.name : '<span class="gi">🔑</span>회원가입·로그인'; }
  var links=document.querySelectorAll('.htoplinks a');
  for(var i=0;i<links.length;i++){
   if(links[i].textContent.trim()==='로그인'&&u){ links[i].textContent=u.name+'님'; }
@@ -6792,8 +6799,8 @@ var AGFULL={
 };
 
 var _agSt={step:1,ph:'',cert:false,sel:{tos:0,priv:0,age:0,mkt:0},night:0};
-function agOpen(){_agSt={step:1,ph:'',cert:false,sel:{tos:0,priv:0,age:0,mkt:0},night:0};agRender();
- var el=document.getElementById('agSheet');if(el){el.classList.add('on');document.body.style.overflow='hidden';}}
+/* 2026-10-19 — 번호만 받고 아무 일도 안 일어나던 가짜 「휴대폰 가입」을 진짜 회원가입(카카오·네이버·구글)으로 보냅니다 */
+function agOpen(){try{agClose();}catch(e){}openPage('회원가입');}
 function agClose(){var el=document.getElementById('agSheet');if(el){el.classList.remove('on');document.body.style.overflow='';}}
 function agStep(n){_agSt.step=n;agRender();}
 function agPhCert(){var i=document.getElementById('agPh');var n=(i&&i.value||'').replace(/[^0-9]/g,'');
@@ -6893,9 +6900,7 @@ function loginPage(){
   +'</div>'
   +'<div class="plog-r"><div class="plog-promo"><div class="plog-pr-head">지금은<br><b>11월 개강 등록 기간</b>입니다<em>개강일 : 11월 3일(화·목) · 4일(월·수)</em></div><div class="plog-pr-body"><div class="plog-pr-gw">11월 개강 등록 기간</div><div class="plog-pr-big">지금 등록,<br>회화반 오픈이벤트 <b>10%</b><span class="plog-ar">↓</span></div><a class="plog-pr-go" href="#" onclick="sgCloseOrBack();openPage(\'수강신청\');return false;">온라인 수강신청 바로가기 <span>GO</span></a></div></div></div>'
   +'</div></div>'; }
- return '<div class="plog">'+'<div class="plog-top"><img src="img/intro_logo.png" alt="산본글로벌어학원"><span>산본글로벌어학원</span></div>'+'<div class="plog-body"><div class="plog-l">'+/* 2026-10-18 대표님 「직접 로긴 해봐 이상해」 — 쓰지 못하는 아이디·비밀번호 칸을 빼고, 결제 직후면 왜 로그인하는지부터 알려 드립니다 */(function(){var pc='';try{pc=localStorage.getItem('sga_pc_pend')||'';}catch(e){}
- return pc?('<div class="plog-paid"><b>✅ 결제가 완료되었습니다</b><span>개인코드 <em>'+pc.replace(/[<>]/g,'')+'</em><br>아래 버튼 하나로 로그인하시면 결제하신 과정이 <b>바로 열립니다</b>.<br>회원가입·비밀번호는 따로 없습니다.</span></div>')
-  :'<div class="plog-paid plain"><b>카카오·네이버·구글 계정으로 3초 로그인</b><span>회원가입·비밀번호는 따로 없습니다. 처음이시면 이 버튼이 곧 가입입니다.</span></div>';})()+'<button class="plog-btn" type="button" style="background:#FEE500;color:#3A1D1D;margin-top:8px" onclick="sgaLoginKakao()">카카오로 3초 만에 로그인</button>'+'<button class="plog-btn" type="button" style="background:#03C75A;color:#fff;margin-top:6px" onclick="sgaLoginNaver()"><svg viewBox="0 0 20 20" width="15" height="15" style="vertical-align:-2px;margin-right:9px"><path fill="#fff" d="M13.56 10.7 6.2 0H0v20h6.44V9.3L13.8 20H20V0h-6.44z"/></svg>네이버 로그인</button>'+'<button class="plog-btn" type="button" style="background:#F2F2F2;color:#1F1F1F;border:1.5px solid #747775;margin-top:6px" onclick="sgaLoginGoogle()"><svg viewBox="0 0 48 48" width="20" height="20" style="vertical-align:-4px;margin-right:8px"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google로 로그인</button>'+'<div class="plog-sns-t">다른 계정으로 로그인</div>'+'<div class="plog-sns">'+'<a href="#" class="psi psi-n" title="네이버 로그인" onclick="sgaLoginNaver();return false;"><svg viewBox="0 0 20 20" width="18" height="18"><path fill="#fff" d="M13.56 10.7 6.2 0H0v20h6.44V9.3L13.8 20H20V0h-6.44z"/></svg></a>'+'<a href="#" class="psi psi-k" title="카카오로 로그인" onclick="sgaLoginKakao();return false;"><b>TALK</b></a>'+'<a href="#" class="psi psi-g" title="구글로 로그인" onclick="sgaLoginGoogle();return false;"><svg viewBox="0 0 48 48" width="24" height="24"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg></a>'+'</div></div>'+'<div class="plog-r"><div class="plog-promo"><div class="plog-pr-head">지금은<br><b>11월 개강 등록 기간</b>입니다<em>개강일 : 11월 3일(화·목) · 4일(월·수)</em></div><div class="plog-pr-body"><div class="plog-pr-gw">11월 개강 등록 기간</div><div class="plog-pr-big">지금 등록,<br>회화반 오픈이벤트 <b>10%</b><span class="plog-ar">↓</span></div><a class="plog-pr-go" href="#" onclick="sgCloseOrBack();openPage(\'수강신청\');return false;">온라인 수강신청 바로가기 <span>GO</span></a></div></div></div>'+'</div>'+'<div class="plog-foot"><a href="#" onclick="openPage(\'회원가입\');return false;">회원가입</a><a href="#" onclick="alert(\'회원 시스템은 11월에 엽니다.\\n등록·상담은 전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원으로 해주세요.\');return false;">아이디/비밀번호찾기</a></div>'+'</div>';}
+ return '<div class="plog">'+'<div class="plog-top"><img src="img/intro_logo.png" alt="산본글로벌어학원"><span>산본글로벌어학원</span></div>'+'<div class="plog-body"><div class="plog-l">'+(function(){var pc='';try{pc=localStorage.getItem('sga_pc_pend')||'';}catch(e){}return pc?('<div class="plog-paid"><b>✅ 결제가 완료되었습니다</b><span>개인코드 <em>'+pc.replace(/[<>]/g,'')+'</em><br>아래 버튼으로 로그인하시면 결제하신 과정이 <b>바로 열립니다</b>.</span></div>'):'<div class="plog-paid plain"><b>회원가입 · 로그인</b><span>처음이시면 아래 버튼이 <strong>회원가입</strong>, 이미 가입하셨으면 <strong>로그인</strong>입니다.</span></div>';})()+sgaJoinBox()+'</div>'+'<div class="plog-r"><div class="plog-promo"><div class="plog-pr-head">지금은<br><b>11월 개강 등록 기간</b>입니다<em>개강일 : 11월 3일(화·목) · 4일(월·수)</em></div><div class="plog-pr-body"><div class="plog-pr-gw">11월 개강 등록 기간</div><div class="plog-pr-big">지금 등록,<br>회화반 오픈이벤트 <b>10%</b><span class="plog-ar">↓</span></div><a class="plog-pr-go" href="#" onclick="sgCloseOrBack();openPage(\'수강신청\');return false;">온라인 수강신청 바로가기 <span>GO</span></a></div></div></div>'+'</div>'+'<div class="plog-foot"><a href="#" onclick="openPage(\'회원가입\');return false;">회원가입</a><a href="#" onclick="alert(\'회원 시스템은 11월에 엽니다.\\n등록·상담은 전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원으로 해주세요.\');return false;">아이디/비밀번호찾기</a></div>'+'</div>';}
 /* 2026-10-18 대표님 「광고판 들어가면 나오는 학원 사진 다 없애고 제미나이로」 — 학원 사진(hall_XX·sbg_hall)은 쓰지 않음.
    HALL_AI에 제미나이 그림 경로가 들어오면 그 그림을, 없으면 사진 칸 자체를 뺀다. */
 var HALL_AI={'01':'img/ai/clock.jpg','02':'img/ai/gift.jpg','03':'img/ai/consult.jpg','04':'img/ai/classroom.jpg','05':'img/ai/clock.jpg','06':'img/ai/clock.jpg','07':'img/ai/classroom.jpg','08':'img/ai/talk.jpg','09':'img/ai/classroom.jpg','10':'img/ai/classroom.jpg','11':'img/ai/gift.jpg','12':'img/ai/classroom.jpg','hall':'img/ai/gift.jpg'}; /* 2026-10-18 제미나이 그림 5종 */
@@ -8321,6 +8326,7 @@ function _kpOpen(d){
     wrap.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:rgba(43,35,32,.55);display:flex;align-items:center;justify-content:center;padding:12px';
     wrap.innerHTML = '<div style="position:relative;width:100%;max-width:480px;height:min(720px,92vh);background:#fff;border-radius:20px;overflow:hidden">'
       + '<iframe name="kpFrame" id="kpFrame" style="width:100%;height:100%;border:0" allow="payment"></iframe></div>'
+      + '<div style="position:fixed;left:50%;transform:translateX(-50%);top:calc(10px + env(safe-area-inset-top));z-index:2;max-width:70vw;background:#FFF8EC;color:#5B1026;border-radius:12px;padding:7px 12px;font-size:12.5px;font-weight:800;box-shadow:0 4px 14px rgba(0,0,0,.2);text-align:center">카드사 창이 안 열리면 → 팝업 허용 또는 크롬·사파리에서 다시 · 031-466-6969</div>'
       + '<button type="button" onclick="_kpCancelled()" aria-label="결제창 닫기" style="position:fixed;right:calc(12px + env(safe-area-inset-right));top:calc(12px + env(safe-area-inset-top));z-index:3;height:44px;padding:0 16px;border:0;border-radius:999px;background:#fff;color:#C81F2B;font-size:15px;font-weight:900;box-shadow:0 4px 14px rgba(0,0,0,.25)">✕ 결제창 닫기</button>'
       + '<button type="button" onclick="kpClose()" aria-label="닫기" style="position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:2;width:56px;height:56px;border-radius:50%;border:0;background:#F5C542;color:#2B2320;font-size:26px;font-weight:900;box-shadow:0 6px 16px rgba(0,0,0,.2)">✕</button>';
     document.body.appendChild(wrap);
@@ -8446,21 +8452,94 @@ function sgPaidShare(c){var t='[산본글로벌어학원] 개인코드 '+c+'\n�
  try{navigator.clipboard.writeText(t).then(function(){sgToast('<b>복사했습니다</b><br>카톡 「나와의 채팅」에 붙여 넣어 보관하세요');});}catch(e){prompt('복사해서 보관하세요',t);}}
 /* 대표님 테스트용: sanbonglobal.com/?paytest=1 → 화면 아래에 「1,000원 테스트 결제」 버튼 (손님에겐 안 보임) */
 (function(){try{if(new URLSearchParams(location.search).get('paytest')!=='1')return;var go=function(){var b=document.createElement('button');b.type='button';b.textContent='💳 1,000원 테스트 결제';b.style.cssText='position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:2147483647;white-space:nowrap;padding:16px 26px;border:0;border-radius:40px;background:#F5C542;color:#2B2320;font-weight:900;font-size:17px;box-shadow:0 6px 16px rgba(0,0,0,.2)';b.onclick=function(){if(window._kpBusy)return;window._kpBusy=true;setTimeout(function(){window._kpBusy=false;},8000);sgaKorpay({amt:1000,goods:'결제 연동 테스트',name:'대표 테스트'});};document.body.appendChild(b);var lg=document.createElement('div');lg.id='kpLog';lg.style.cssText='position:fixed;left:8px;right:8px;top:8px;z-index:2147483647;max-height:30vh;overflow:auto;background:#FFF8E1;color:#2B2320;border:2px solid #F5C542;border-radius:12px;padding:8px 10px;font:12px/1.5 monospace;white-space:pre-wrap;word-break:break-all;display:none';document.body.appendChild(lg);window._kpDebug=function(o,d){var t;try{t=typeof d==='string'?d:JSON.stringify(d);}catch(x){t=String(d);}lg.style.display='block';lg.textContent+='['+new Date().toLocaleTimeString()+'] '+o+'\n'+String(t).slice(0,600)+'\n\n';};};if(document.body)go();else window.addEventListener('DOMContentLoaded',go);}catch(e){}})();
+/* ===== 2026-10-19 회원 정보 자동 저장 · 가입 적립금 =====
+   대표님 「회원가입후 … 로그인 누르면 이름하고 전화번호를 치게 되어 있잖아? 이것도 자동저장 … 매번 이름하고 번호저장하게 하지말고」
+   「회원가입하면 바로 5000점이 포인트가 있어야 하고 … 결제할때 보유적립금에서 바로 결제」
+   · 이름·휴대폰: 처음 한 번만 받아 이 기기(sga_prof)에 저장 → 결제창에 자동 입력, 칸은 접어 둠
+   · 가입 적립금 5,000P: 이 계정으로 이 기기에서 처음 로그인할 때 한 번 (적립금은 아직 기기별 저장 — 서버 적립금은 로그인 서버 수정 후) */
+function sgaProf(){try{var p=JSON.parse(localStorage.getItem('sga_prof')||'null');if(p&&p.nm&&/^01[016789]\d{7,8}$/.test(p.tel||''))return p;}catch(e){}return null;}
+function sgaProfSave(nm,tel){try{localStorage.setItem('sga_prof',JSON.stringify({nm:nm,tel:tel,t:Date.now()}));if(nm)localStorage.setItem('sga_name',nm);}catch(e){}try{sgaPaintHeader();}catch(e){}}
+function _sgaJbKey(){var u=sgaUser();return u?('sga_jb_'+String(u.token).slice(0,60)):'';}
+function sgaJoinBonus(){try{var k=_sgaJbKey();if(!k||localStorage.getItem(k))return false;
+  SGPT.pt=(SGPT.pt||0)+5000;SGPT.log=SGPT.log||[];SGPT.log.unshift({d:new Date().toISOString().slice(0,10),t:'회원가입 적립',p:5000});ptSave();localStorage.setItem(k,'1');return true;}catch(e){return false;}}
+function sgaProfShow(force){
+ if(document.getElementById('sgProf'))return;var p=sgaProf()||{};var u=sgaUser()||{};var dn=(u.name&&u.name!=='회원')?u.name:'';
+ var m=document.createElement('div');m.className='sp-modal on';m.id='sgProf';
+ m.innerHTML='<div class="sp-sheet" style="max-width:420px"><div class="sp-mhead">SANBON GLOBAL</div><div style="padding:18px 18px 10px">'
+  +'<div style="font-size:20px;font-weight:900;color:#5B1026;line-height:1.4">처음 한 번만 적어 주세요</div>'
+  +'<div style="font-size:14px;color:#5c4a40;margin:6px 0 14px;line-height:1.6">수업 안내와 결제 기록에 쓰입니다. <b>이 기기에 저장</b>되어 다음부터는 결제할 때 <b>자동으로 들어갑니다</b>.</div>'
+  +'<label style="display:block;font-weight:800;font-size:14px;margin-bottom:10px">이름<input id="sgPfNm" autocomplete="name" value="'+String(p.nm||dn).replace(/"/g,'')+'" style="display:block;width:100%;box-sizing:border-box;height:50px;border:2px solid #D9C9B0;border-radius:10px;padding:0 12px;font-size:17px;margin:6px 0 0;max-width:100%"></label>'
+  +'<label style="display:block;font-weight:800;font-size:14px">휴대폰 번호<input id="sgPfTel" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000" value="'+String(p.tel||'')+'" style="display:block;width:100%;box-sizing:border-box;height:50px;border:2px solid #D9C9B0;border-radius:10px;padding:0 12px;font-size:17px;margin:6px 0 0;max-width:100%"></label>'
+  +'<p id="sgPfErr" style="display:none;color:#C81F2B;font-weight:800;font-size:13.5px;margin:8px 0 0"></p>'
+  +'<button type="button" class="plog-btn" style="margin-top:14px" onclick="sgaProfSubmit()">저장하고 계속하기</button>'
+  +(force?'':'<button type="button" class="plog-btn" style="background:#fff;color:#7B1733;border:1.5px solid #d9b9c0;margin-top:8px" onclick="sgaProfClose()">나중에 (결제할 때 적기)</button>')
+  +'</div></div>';
+ document.body.appendChild(m);}
+function sgaProfClose(){var m=document.getElementById('sgProf');if(m)m.parentNode.removeChild(m);try{sessionStorage.setItem('sga_prof_skip','1');}catch(e){}}
+function sgaProfSubmit(){var nm=((document.getElementById('sgPfNm')||{}).value||'').trim(),tel=((document.getElementById('sgPfTel')||{}).value||'').replace(/\D/g,'');
+ var er=document.getElementById('sgPfErr');var bad=function(t){if(er){er.textContent=t;er.style.display='block';}};
+ if(nm.length<2){bad('이름을 적어 주세요.');return;}if(!/^01[016789]\d{7,8}$/.test(tel)){bad('휴대폰 번호를 정확히 적어 주세요.');return;}
+ sgaProfSave(nm,tel);var m=document.getElementById('sgProf');if(m)m.parentNode.removeChild(m);
+ try{sgToast('<b>저장했습니다</b><br>다음부터 결제할 때 자동으로 들어갑니다');}catch(e){}
+ try{spProfFill();}catch(e){}}
+/* 로그인 직후: 가입 적립금 → 정보 한 번 받기 (결제창을 다시 여는 중이면 결제창에서 받음) */
+(function(){var go=function(){try{if(!sgaUser())return;
+  if(sgaJoinBonus()){setTimeout(function(){try{sgToast('<b>🎁 회원가입 적립금 5,000P</b><br>결제할 때 「보유 적립금」에서 바로 쓰실 수 있어요');}catch(e){}},1200);}
+  var pend=false;try{pend=!!localStorage.getItem('sga_pay_pend');}catch(e){}
+  var skip=false;try{skip=!!sessionStorage.getItem('sga_prof_skip');}catch(e){}
+  if(!sgaProf()&&!pend&&!skip&&!window._pcModal)setTimeout(function(){if(!document.querySelector('.sp-modal.on'))sgaProfShow(false);},2600);
+ }catch(e){}};if(document.readyState==='complete')go();else window.addEventListener('load',go);})();
+/* 결제창: 저장된 정보가 있으면 이름·번호 칸을 접고 한 줄로 */
+function _telFmt(t){return String(t||'').replace(/^(01\d)(\d{3,4})(\d{4})$/,'$1-$2-$3');}
+function spProfFill(){var P=sgaProf();var bx=document.querySelector('#spModal .sp-buyer');if(!bx)return;var sm=document.getElementById('spProfSum');
+ if(!sm){sm=document.createElement('div');sm.id='spProfSum';sm.className='sp-prof';bx.parentNode.insertBefore(sm,bx);}
+ if(P){var n=document.getElementById('spBuyerNm'),t=document.getElementById('spBuyerTel');if(n)n.value=P.nm;if(t)t.value=_telFmt(P.tel);
+  bx.style.display='none';sm.style.display='flex';sm.innerHTML='<span>👤 <b>'+String(P.nm).replace(/</g,'&lt;')+'</b> · '+_telFmt(P.tel)+'<br><em>회원정보 자동 입력</em></span><button type="button" onclick="spProfEdit()">변경</button>';}
+ else{bx.style.display='';sm.style.display='none';if(!document.getElementById('spProfKeep')){var l=document.createElement('label');l.className='sp-keep';l.innerHTML='<input type="checkbox" id="spProfKeep" checked> 이 정보 저장 — 다음 결제부터 자동 입력';bx.appendChild(l);}}
+ try{spNextHint(false);}catch(e){}}
+function spProfEdit(){var bx=document.querySelector('#spModal .sp-buyer'),sm=document.getElementById('spProfSum');if(bx)bx.style.display='';if(sm)sm.style.display='none';
+ if(bx&&!document.getElementById('spProfKeep')){var l=document.createElement('label');l.className='sp-keep';l.innerHTML='<input type="checkbox" id="spProfKeep" checked> 이 정보 저장 — 다음 결제부터 자동 입력';bx.appendChild(l);}}
+/* 결제창 적립금 줄을 열 때마다 새로 그립니다 (가입 적립금이 결제창을 만든 뒤에 들어와도 보이게) */
+function spPtRow(){var r=document.getElementById('spPtRow');if(!r)return;
+ r.innerHTML='<span class="lb">💰 보유 적립금</span><span class="vl">'+_won(SGPT.pt||0)+'</span>'
+  +((SGPT.pt||0)>0?'<div class="pt-use" style="width:100%"><input id="spPtUse" inputmode="numeric" placeholder="사용할 적립금" oninput="ptApply()"><button type="button" onclick="ptMax()">전액사용</button></div><div style="width:100%;font-size:12.5px;color:#7a6658;margin-top:4px">한 번 결제에 최대 10,000P까지 · 사용 내역은 결제 기록에 함께 남습니다</div>'
+   :'<div style="width:100%;font-size:13px;color:#8a90a0;line-height:1.7;margin-top:6px">적립금은 회원가입(5,000P)·네이버 리뷰(5,000P)로 쌓입니다. 다음 등록 때 현금처럼 쓰실 수 있습니다.</div>');}
+/* 네이버 리뷰 이벤트 — 이벤트 할인 아래 체크칸 (결제 금액은 그대로, 리뷰 확인 후 지급) */
+window._revEv=false;
+function revRow(subj){var ex=false;try{ex=_examSubj(subj);}catch(e){}
+ var gift=ex?'교재 1권 + 5,000P':'립밤 + 5,000P';
+ return '<label class="rev-row" style="grid-column:1/-1"><input type="checkbox" id="revEv" '+(window._revEv?'checked':'')+' onchange="window._revEv=this.checked;"> <span><b>📝 네이버 리뷰 이벤트</b> — 등록 후 네이버 영수증 리뷰를 남기시면 <b>'+gift+'</b><br><small>결제 금액은 그대로이고, 리뷰 확인 후 데스크에서 드립니다 · 리뷰 화면 캡처를 카카오톡 채널로 보내 주세요</small></span></label>';}
+/* 카카오톡·인스타 등 앱 안 브라우저 — 카드사 창(새 창)이 막혀 결제가 끝나지 않는 경우가 많습니다 (2026-10-19 결제 「대기」 5건) */
+function _inApp(){var u=navigator.userAgent||'';return /KAKAOTALK|Instagram|FBAN|FBAV|NAVER\(inapp|; wv\)|Line\/|DaumApps|everytimeApp/i.test(u);}
+function _openExt(){var url=location.origin+'/?from=inapp';var u=navigator.userAgent||'';
+ if(/KAKAOTALK/i.test(u)){location.href='kakaotalk://web/openExternal?url='+encodeURIComponent(url);return;}
+ if(/Android/i.test(u)){location.href='intent://'+location.host+'/?from=inapp#Intent;scheme=https;package=com.android.chrome;end';return;}
+ try{navigator.clipboard.writeText(url);}catch(e){}
+ alert('화면 아래(또는 위) ⋯ 메뉴에서 「Safari로 열기」 또는 「다른 브라우저로 열기」를 눌러 주세요.\n주소를 복사해 두었습니다: '+url);}
+function _inAppWarn(go){var old=document.getElementById('inAppW');if(old)old.parentNode.removeChild(old);var m=document.createElement('div');m.className='sp-modal on';m.id='inAppW';
+ m.innerHTML='<div class="sp-sheet" style="max-width:420px"><div class="sp-mhead">카드 결제 전에 확인해 주세요</div><div style="padding:16px 18px 12px;font-size:15px;line-height:1.7;color:#2B2320">'
+  +'지금 <b>카카오톡·인스타그램 같은 앱 안</b>에서 홈페이지를 보고 계십니다.<br>이 화면에서는 <b>카드사 인증 창이 열리지 않아</b> 결제가 끝나지 않는 경우가 많습니다.'
+  +'<button type="button" class="plog-btn" style="margin-top:14px" onclick="_openExt()">크롬·사파리로 열어서 결제하기 (권장)</button>'
+  +'<button type="button" class="plog-btn" style="background:#fff;color:#7B1733;border:1.5px solid #d9b9c0;margin-top:8px" id="inAppGo">그래도 여기서 결제하기</button>'
+  +'<div style="font-size:13px;color:#7a6658;margin-top:10px">결제가 계속 안 되면 031-466-6969 · 데스크에서 바로 결제해 드립니다.</div></div></div>';
+ document.body.appendChild(m);document.getElementById('inAppGo').onclick=function(){m.parentNode.removeChild(m);window._inAppOk=true;go();};}
 function _buyer(){var n=document.getElementById('spBuyerNm'),t=document.getElementById('spBuyerTel');
  var nm=(n&&n.value||'').trim(),tel=(t&&t.value||'').replace(/[^0-9]/g,'');
  return {nm:nm,tel:tel,ok:nm.length>=2&&/^01[016789][0-9]{7,8}$/.test(tel)};}
 function _payMemo(amt){var pt=_num((document.getElementById('spPtVal')||{}).innerHTML||'');
  var de=_discSel(),v=de?de.value:(window._pendDiscV||'0');
- return [(window._payClsKeep?'반 '+window._payClsKeep:''),'정가 '+(window._listKeep||_fullAmt||_payBase),'할인적용 '+_payBase,(v&&v!=='0'?'할인 '+evLabel(v):''),(pt?'적립금 '+pt:''),'결제 '+amt,(typeof _vfInfo!=='undefined'&&_vfInfo?'환승 '+_vfInfo:'')].filter(Boolean).join(' / ').slice(0,190);}
+ return [(window._payClsKeep?'반 '+window._payClsKeep:''),'정가 '+(window._listKeep||_fullAmt||_payBase),'할인적용 '+_payBase,(v&&v!=='0'?'할인 '+evLabel(v):''),(pt?'적립금 '+pt:''),'결제 '+amt,(window._revEv?'리뷰이벤트':''),(typeof _vfInfo!=='undefined'&&_vfInfo?'환승 '+_vfInfo:'')].filter(Boolean).join(' / ').slice(0,190);}
 function spPay(kind){
  if(!sgaUser()){_spGate();alert('결제는 회원 로그인 후에 진행됩니다.\n카카오·네이버·구글 중 하나로 로그인해 주세요. 처음이시면 그게 곧 회원가입입니다.');return;}
  if(!agSync('agPay')){alert('필수 동의 항목을 모두 확인해 주세요.');return;}
  var B=_buyer();
  if(!B.ok){alert('수강생 이름과 휴대폰 번호를 정확히 적어 주세요.\n결제 확인 후 이 번호로 첫 수업 일정을 안내드립니다.');var f=document.getElementById(B.nm.length<2?'spBuyerNm':'spBuyerTel');if(f)f.focus();return;}
  try{localStorage.setItem('sga_name',B.nm);}catch(e){}
+ try{var _kp=document.getElementById('spProfKeep');if(!sgaProf()||(_kp&&_kp.checked))sgaProfSave(B.nm,B.tel);}catch(e){}
  var amt=_num(document.getElementById('spPtTot').innerHTML);
  if(amt<100){alert('결제 금액을 확인해 주세요. 031-466-6969');return;}
  var g=window._payGoodsKeep||_gClean((_payItemKeep||'').replace(/<br\s*\/?>/g,' ')).slice(0,40)||'산본글로벌어학원 수강료';
+ if(kind==='card'&&window._kpReady&&_inApp()&&!window._inAppOk){_inAppWarn(function(){spPay(kind);});return;}
  if(kind==='card'&&window._kpReady){
   if(window._kpBusy)return;window._kpBusy=true;setTimeout(function(){window._kpBusy=false;},15000);
   try{localStorage.setItem('sga_last_pay',JSON.stringify({goods:g,amt:amt,tel:B.tel,nm:B.nm,t:Date.now()}));}catch(e){}
@@ -8497,17 +8576,14 @@ function spPay(kind){
  d.style.display='block';
  d.scrollIntoView({block:'center'});}
 function spModalHTML(){return '<div class="sp-modal" id="spModal"><div class="sp-sheet"><div class="sp-x" onclick="spClose()">✕</div><div class="sp-mhead">SANBON GLOBAL</div>'
- +'<div id="spLogin" style="display:none"><div class="sp-lg"><div class="sp-lg-t">🔒 결제는 <b>회원 로그인</b> 후에 진행됩니다</div><div class="sp-lg-s">처음이시면 아래 버튼이 곧 <b>회원가입</b>입니다 (가입 즉시 5,000P).<br>로그인하시면 <b>이 결제창으로 바로 돌아옵니다</b>. 고르신 과정·금액은 그대로 남아 있습니다.</div><div class="sp-lg-amt" id="spLgAmt"></div><button class="plog-btn" type="button" style="background:#FEE500;color:#3A1D1D" onclick="spLoginGo(\'kakao\')">카카오로 3초 만에 로그인 · 가입</button><button class="plog-btn" type="button" style="background:#03C75A;color:#fff;margin-top:8px" onclick="spLoginGo(\'naver\')">네이버로 로그인 · 가입</button><button class="plog-btn" type="button" style="background:#F2F2F2;color:#1F1F1F;border:1.5px solid #747775;margin-top:8px" onclick="spLoginGo(\'google\')">Google로 로그인 · 가입</button><div class="sp-mfoot"><span onclick="spClose()">닫기</span></div></div></div>'
+ +'<div id="spLogin" style="display:none"><div class="sp-lg"><div class="sp-lg-t">🔒 결제는 <b>회원가입</b> 후에 진행됩니다</div><div class="sp-lg-s">처음이시면 아래 버튼이 곧 <b>회원가입</b>입니다 (가입 즉시 5,000P).<br>로그인하시면 <b>이 결제창으로 바로 돌아옵니다</b>. 고르신 과정·금액은 그대로 남아 있습니다.</div><div class="sp-lg-amt" id="spLgAmt"></div><button class="plog-btn" type="button" style="background:#FEE500;color:#3A1D1D" onclick="spLoginGo(\'kakao\')">카카오로 3초 만에 로그인 · 가입</button><button class="plog-btn" type="button" style="background:#03C75A;color:#fff;margin-top:8px" onclick="spLoginGo(\'naver\')">네이버로 로그인 · 가입</button><button class="plog-btn" type="button" style="background:#F2F2F2;color:#1F1F1F;border:1.5px solid #747775;margin-top:8px" onclick="spLoginGo(\'google\')">Google로 로그인 · 가입</button><div class="sp-mfoot"><span onclick="spClose()">닫기</span></div></div></div>'
  +'<div id="spCharge" style="display:none">'
  +'<div class="sp-welcome">결제 내용을 확인해 주세요.</div>'
  +'<div class="sp-camt">결제 예정 <b id="spCamt">-</b></div>'
  +'<div class="sp-citem" id="spCitem"></div>'
  /* 2026-09-17 — 어학상품권을 없앴습니다. 결제창에 남는 것은 적립금뿐입니다. */
- +'<div class="pt-row" style="flex-wrap:wrap"><span class="lb">💰 보유 적립금</span><span class="vl">'+_won(SGPT.pt)+'</span>'
- +(SGPT.pt>0
-   ? '<div class="pt-use" style="width:100%"><input id="spPtUse" inputmode="numeric" placeholder="사용할 적립금" oninput="ptApply()"><button type="button" onclick="ptMax()">전액사용</button></div>'
-   : '<div style="width:100%;font-size:13px;color:#8a90a0;line-height:1.7;margin-top:6px">적립금은 회원가입(5,000P)·네이버 리뷰(5,000P)·수강 등록·출석으로 쌓입니다. 다음 등록 때 현금처럼 쓰실 수 있습니다.</div>')
- +'</div>'
+ +'<div class="pt-row" id="spPtRow" style="flex-wrap:wrap"></div>'
+ +'<label class="rev-row pay"><input type="checkbox" id="revEvPay" onchange="window._revEv=this.checked"> <span><b>📝 네이버 리뷰 이벤트 참여</b> — 등록 후 네이버 영수증 리뷰를 남기시면 데스크에서 혜택(교재·립밤 + 5,000P)을 드립니다</span></label>'
  +'<div class="sp-sum"><div><span id="spSumLb">수강료</span><b id="spSumAmt">-</b></div><div class="mi"><span>적립금 사용</span><b id="spPtVal">-0원</b></div><div><span>최종 결제금액</span><b id="spPtTot">-</b></div></div>'
  +payAgreeHTML()
  +'<div class="sp-buyer"><label>수강생 이름<input id="spBuyerNm" autocomplete="name" placeholder="홍길동"></label><label>휴대폰 번호<input id="spBuyerTel" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000"></label><p>결제·입금 확인 후 이 번호로 첫 수업 일정을 안내드립니다.</p></div>'
@@ -8559,7 +8635,7 @@ function discHint(subj){if(_examSubj(subj)){return '<div class="dc-hint soon" on
  return '<div class="dc-hint'+cls+'" onclick="discInfo(\''+subj+'\')"><span class="dc-ic">&#127881;</span>'
   +'<span class="dc-tx"><b>'+t+'</b><em>'+d+'</em></span>'
   +'<span class="dc-more">자세히 &rsaquo;</span></div>'+dawnRow;}
-function discHintBox(subj){return '<div id="dcHintBox" style="grid-column:1/-1;width:100%">'+discHint(subj)+'</div>';}
+function discHintBox(subj){return '<div id="dcHintBox" style="grid-column:1/-1;width:100%">'+discHint(subj)+'</div>'+revRow(subj);}
 function discRefresh(subj){var box=document.getElementById('dcHintBox');if(box)box.innerHTML=discHint(subj);}
 function discClose(){var m=document.getElementById('diModal');if(m&&m.parentNode)m.parentNode.removeChild(m);}
 var _dpSel={};
@@ -8744,8 +8820,12 @@ function spOpenPay(a){
  var _it=_payItem||(window._payGoods?'<b>'+window._payGoods+'</b>':'');var ci=document.getElementById('spCitem');if(ci){ci.innerHTML=_it;ci.style.display=_it?'block':'none';}_payItemKeep=_it;_payItem='';window._payGoodsKeep=window._payGoods||'';window._payGoods='';window._payClsKeep=window._payCls||'';window._payCls='';window._kpBusy=false;try{var _bn=document.getElementById('spBuyerNm');if(_bn&&!_bn.value){var _sn=localStorage.getItem('sga_name')||'';if(_sn&&_sn!=='회원')_bn.value=_sn;}}catch(e){}
  var dn=document.getElementById('spDone');if(dn){dn.style.display='none';dn.innerHTML='';}
  setTimeout(function(){try{spNextHint(false);}catch(e){}},0);
- var u=document.getElementById('spPtUse');if(u)u.value='';
+ /* 2026-10-19 대표님 「회원가입안해도 … 결제가 되면 안됨 무조건 회원가입후야」 — 비회원은 이름·번호 칸 대신 회원가입 버튼부터 */
+ if(!sgaUser()){try{_spGate();}catch(e){}}
+ try{spPtRow();}catch(e){}var u=document.getElementById('spPtUse');if(u)u.value='';
+ try{var rv=document.getElementById('revEvPay');if(rv)rv.checked=!!window._revEv;}catch(e){}
  spRecalc();
+ try{setTimeout(spProfFill,0);}catch(e){}
  var b=document.getElementById('agPay');if(b){var cs=b.querySelectorAll('input');for(var i=0;i<cs.length;i++)cs[i].checked=false;agSync('agPay');}
  /* 2026-10-18 대표님 「모든 순서는 결제창에 갈 때는 전부 회원가입 후 로그인 후 결제」 — 로그인 전에는 결제 칸 대신 로그인 칸을 보여 줍니다 */
  if(!sgaUser()){_spGate();}
@@ -8760,13 +8840,13 @@ function spNextHint(scroll){var h=document.getElementById('spNext');if(!h)return
 document.addEventListener('click',function(ev){var t=ev.target;if(!t||!t.closest||!t.closest('.aclose'))return;var m=document.querySelector('.sp-modal.on');if(!m)return;ev.preventDefault();ev.stopPropagation();if(m.id==='spModal')spClose();else m.classList.remove('on');},true);
 document.addEventListener('input',function(ev){var t=ev.target;if(t&&(t.id==='spBuyerNm'||t.id==='spBuyerTel'))spNextHint(t.id==='spBuyerTel'&&_buyer().ok);});
 document.addEventListener('change',function(ev){var t=ev.target;if(t&&t.closest&&t.closest('#agPay'))setTimeout(function(){spNextHint(false);},0);});
-function _spSavePend(){try{var de=_discSel();localStorage.setItem('sga_pay_pend',JSON.stringify({a:_won(_payBase),item:_payItemKeep||'',goods:window._payGoodsKeep||'',cls:window._payClsKeep||'',ng:!!_noGift,list:window._listKeep||0,discV:de?de.value:(window._pendDiscV||'0'),vf:(typeof _vfInfo!=='undefined'&&_vfInfo)?_vfInfo:'',t:Date.now()}));}catch(e){}}
+function _spSavePend(){try{var de=_discSel();localStorage.setItem('sga_pay_pend',JSON.stringify({a:_won(_payBase),item:_payItemKeep||'',goods:window._payGoodsKeep||'',cls:window._payClsKeep||'',ng:!!_noGift,list:window._listKeep||0,discV:de?de.value:(window._pendDiscV||'0'),vf:(typeof _vfInfo!=='undefined'&&_vfInfo)?_vfInfo:'',rv:!!window._revEv,t:Date.now()}));}catch(e){}}
 function _spGate(){_spSavePend();var lg=document.getElementById('spLogin'),cg=document.getElementById('spCharge');if(lg)lg.style.display='block';if(cg)cg.style.display='none';var la=document.getElementById('spLgAmt');if(la)la.innerHTML=(window._payGoodsKeep?'<b>'+window._payGoodsKeep+'</b><br>':'')+'결제 예정 '+_won(_payBase);}
 function spLoginGo(p){_spSavePend();if(p==='naver')sgaLoginNaver();else if(p==='google')sgaLoginGoogle();else sgaLoginKakao();}
 /* 로그인하고 돌아오면 저장해 둔 결제를 30분 안에 한해 그대로 다시 엽니다 */
 (function(){var go=function(){try{if(!sgaUser())return;var r=localStorage.getItem('sga_pay_pend');if(!r)return;var P=JSON.parse(r);localStorage.removeItem('sga_pay_pend');if(!P||!P.a||Date.now()-(P.t||0)>1800000)return;
   if(!document.getElementById('spModal')){var w=document.createElement('div');w.id='spModalHost';w.innerHTML=spModalHTML();document.body.appendChild(w);}
-  window._pendDiscV=P.discV||'0';try{if(P.vf)_vfInfo=P.vf;}catch(e){}
+  window._pendDiscV=P.discV||'0';window._revEv=!!P.rv;try{if(P.vf)_vfInfo=P.vf;}catch(e){}
   _payItem=P.item||'';window._payGoods=P.goods||'';window._payCls=P.cls||'';_noGift=!!P.ng;window._listKeep=P.list||0;spOpenPay(P.a);
   try{sgaPayReady(function(ok){window._kpReady=ok;var b=document.getElementById('spPayBtn');if(ok&&b)b.innerHTML='💳 카드로 바로 결제하기';});}catch(e){}
   setTimeout(function(){try{sgToast('<b>로그인되었습니다</b><br>고르신 과정의 결제창을 다시 열었습니다');}catch(e){}},400);
@@ -22092,7 +22172,10 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
 
 <style id="sgSlim">
 /* 2026-10-17 대표님 「수강 신청부터 전부 싹 간결하게 · 설명 많이 필요 없이」 — 홈 화면만 정리 (각 페이지·기능은 그대로) */
-.sns-strip,#sgOffer,section.prog,#lounge,section.sharesec,.snsbar .findwrap,.snsbar>.wrap:last-child{display:none!important}
+.sns-strip,#sgOffer,section.prog,#lounge,section.sharesec,.snsbar .findwrap{display:none!important}
+/* 2026-10-19 대표님 「유튜브 인스타 블로그 카카오톡 채널 당근채널까지 다섯개 넣어 중간에 저번에 있었던것」 — 숨겨 두었던 SNS 줄 다시 보이게 */
+.snsbar>.wrap:last-child .snsbtn{min-width:128px;justify-content:center}
+@media(max-width:560px){.snsbar>.wrap:last-child{display:grid!important;grid-template-columns:1fr 1fr;gap:8px;padding:16px}.snsbar>.wrap:last-child .snsbtn{min-width:0}}
 /* 오늘의 아키 → 한 줄 */
 #sgDaily.sl-fold>*:not(.sl-dbar){display:none!important}
 #sgDaily.sl-fold{padding:0!important;margin:0!important;background:none!important;border:0!important;box-shadow:none!important}
@@ -22290,6 +22373,31 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
 .lnx-c.open .p{-webkit-line-clamp:unset;display:block}
 .lnx-c .b{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
 .lnx-c .b a,.lnx-c .b button{border:1px solid #E6D5B8;background:#fff;border-radius:10px;padding:7px 11px;font-size:13px;font-weight:800;color:#5B1026;text-decoration:none;cursor:pointer}
+/* 2026-10-19 대표님 「강사님 얼굴을 크게 보여 빈공간 두지 말고」 — 표지 전체를 강사 사진으로 채우고 글자는 아래 색 띠 위에 */
+.bk-cv.ph{min-height:196px;justify-content:flex-end;padding:0 12px 12px 18px;background:var(--bc,#7B1733);overflow:hidden}
+.bk-cv.ph .fc{position:absolute;top:0;bottom:0;right:0;left:auto;width:100%;display:flex;margin:0;padding:0;z-index:0;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 16%);mask-image:linear-gradient(to right,transparent 0,#000 16%)}
+
+.bk-cv.ph .fc img{flex:1 1 0;min-width:0;width:auto!important;height:100%!important;max-height:none!important;max-width:none!important;border:0;border-radius:0;margin:0;object-fit:cover;object-position:50% 12%;background:transparent}
+.bk-cv.ph .fc.n2 img+img,.bk-cv.ph .fc.n3 img+img{border-left:2px solid rgba(255,248,236,.85)}
+.bk-cv.ph .bk-sh{position:absolute;left:0;right:0;bottom:0;height:62%;z-index:1;background:linear-gradient(to top,var(--bc,#7B1733) 0%,var(--bc,#7B1733) 38%,transparent 100%);pointer-events:none}
+.bk-cv.ph .lb,.bk-cv.ph .tt{position:relative;z-index:2;text-shadow:0 1px 3px rgba(0,0,0,.25)}
+.bk-cv.ph .lb{display:inline-block;align-self:flex-start;background:rgba(255,248,236,.18);border-radius:6px;padding:2px 7px;margin-bottom:2px}
+.bk-cv.ph .tt{min-height:0;margin-top:2px}
+.bk-cv.ph .bk-rib{z-index:3;top:0;bottom:auto;border-radius:0 0 0 10px}
+@media(min-width:700px){.bk-cv.ph{min-height:230px;justify-content:center}.bk-cv.ph .bk-sh{display:none}.bk-cv.ph .lb,.bk-cv.ph .tt{max-width:46%}.bk-cv.ph .fc{width:56%}.bk-cv.ph .fc.n2{width:70%}.bk-cv.ph .fc.n3{width:80%}.bk-cv.ph .tt{font-size:24px}}
+/* 2026-10-19 회원가입 상자 · 결제자 한 줄 · 리뷰 이벤트 */
+.sjn{background:#fff;border:1.5px solid #E6D5B8;border-radius:16px;padding:16px 14px 12px}
+.sjn-gift{background:#FFF3D6;border:1.5px solid #E8C97A;border-radius:12px;padding:10px 12px;margin-bottom:12px;font-size:16px;font-weight:800;color:#5B1026;text-align:center}
+.sjn-gift b{font-size:20px;color:#C81F2B}.sjn-gift span{display:block;font-size:12.5px;color:#7a6658;font-weight:700;margin-top:2px}
+.sjn-li{margin:12px 0 2px;padding-left:18px;font-size:13.5px;color:#4a3d35;line-height:1.75;text-align:left}
+.sjn-li li{font-size:13.5px!important;line-height:1.7!important;margin:0 0 2px!important}
+.sp-prof{display:none;align-items:center;justify-content:space-between;gap:10px;background:#F4FBF6;border:1.5px solid #BFE3CB;border-radius:12px;padding:12px 14px;margin:10px 0;font-size:15px;color:#1A1A18}
+.sp-prof em{font-style:normal;font-size:12px;color:#0e8a5a;font-weight:800}
+.sp-prof button{flex:none;border:1.5px solid #c9d6cd;background:#fff;border-radius:10px;padding:7px 12px;font-weight:800;color:#3B2A22;cursor:pointer}
+.sp-keep{display:flex;align-items:center;gap:6px;font-size:13.5px;font-weight:800;color:#0e8a5a;margin-top:6px}
+.rev-row{display:flex;gap:8px;align-items:flex-start;background:#F4FBF6;border:1.5px solid #BFE3CB;border-radius:12px;padding:10px 12px;margin:8px 0;font-size:14px;line-height:1.55;color:#1A1A18;cursor:pointer;text-align:left;font-weight:600}
+.rev-row input{margin-top:4px;width:18px;height:18px;flex:none}
+.rev-row small{font-size:12px;color:#5c6a60;font-weight:600}
 </style>
 <script id="bkStoreJs">
 /* 2026-10-17 대표님 — 수강신청 「책방」 · 어학뉴스 「책장」 */
@@ -22300,10 +22408,14 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
   {k:'1:1',t:'pg',p:'맞춤수업'},{k:'기업출강',t:'biz'}];
  var COL={spa:['#8A5A12','linear-gradient(150deg,#9C6A1C,#6E4510)'],reg:['#7B1733','linear-gradient(150deg,#8E1D3D,#5B1026)'],etc:['#5E4B8B','linear-gradient(150deg,#6C5A9C,#4A3A72)'],
   cv:['#1F6B4E','linear-gradient(150deg,#2A7D5C,#17513B)'],dawn:['#B5562B','linear-gradient(150deg,#C96A3A,#93421E)']};
+ /* 2026-10-19 대표님 「영어회화 누르면 나오는 그리드 색상을 회화마다 토익마다 각 언어별로 다 바꿔주고」 — 탭(과목)마다 고유 색. 남색·파랑·검정 없음 */
+ var CATCOL={'토스':['#B8432F','linear-gradient(150deg,#C9553F,#8F2E1F)'],'오픽':['#7A3E8E','linear-gradient(150deg,#8C4FA0,#58296A)'],'토플':['#5E6B1E','linear-gradient(150deg,#717F27,#454F14)'],
+  'JLPT':['#9C2A60','linear-gradient(150deg,#B0376F,#7A1D49)'],'HSK':['#A9760A','linear-gradient(150deg,#BE8A18,#805806)'],
+  '영어회화':['#1F6B4E','linear-gradient(150deg,#2A7D5C,#17513B)'],'일본어회화':['#C2477F','linear-gradient(150deg,#D25A90,#9A2F60)'],'중국어회화':['#C0392B','linear-gradient(150deg,#D24A3A,#962A1F)']};
  window._bkCat=window._bkCat||'토익';
  function man(n){n=+n||0;return (n%10000?(n/10000).toFixed(1):(n/10000))+'만';}
  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
- function faces(list){return '<div class="fc">'+list.filter(Boolean).slice(0,3).map(function(im){return '<img src="img/teachers/'+im+'.png" alt="" loading="lazy" onerror="this.remove()">';}).join('')+'</div>';}
+ function faces(list){var L=list.filter(Boolean).slice(0,3);if(!L.length)return '';return '<div class="fc n'+L.length+'">'+L.map(function(im){return '<img src="img/teachers/'+im+'.png" alt="" loading="lazy" onerror="this.remove()">';}).join('')+'</div>';}
  function exBooks(k){var E=(typeof TEXAM!=='undefined')&&TEXAM[k];if(!E)return [];
   return E.tabs.map(function(t,i){
    var nm=String(t.n).replace(/⭐\s*/,'');var m=nm.match(/^(.*?)\s*\(([^)]*)\)\s*(.*)$/);var main=m?m[1]+(m[3]?' '+m[3]:''):nm,sub=m?m[2]:'';
@@ -22312,7 +22424,7 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
    var mo=String(((t.terms||[])[0]||[''])[0]).match(/(\d+)개월/);if(t.dc&&mo)day=mo[1]+'개월 · '+day;
    var best=null;(t.terms||[]).forEach(function(x){if(x[2]&&x[2]>x[1])best=x;});var first=(t.terms||[])[0];
    var pr=best?('<s>'+man(best[2])+'</s>'+man(best[1])+'<em>'+(t.dc||Math.round((1-best[1]/best[2])*100)+'%')+'</em>'):(first&&first[1]?('1개월 '+man(first[1])):'');
-   var c=COL[t.g||'etc']||COL.etc;var ph=(t.photos&&t.photos.length)?t.photos:[t.photo];
+   var c=(k!=='토익'&&CATCOL[k])?CATCOL[k]:(COL[t.g||'etc']||COL.etc);var ph=(t.photos&&t.photos.length)?t.photos:[t.photo];
    /* 2026-10-18 대표님 「스파르타반 다 나열 · 정규반 전부 나열 · 라인을 통일」 — 카드마다 같은 세 줄: ①요일·시간 ②기간·횟수 ③강사 */
    var t0=String(t.times&&t.times[0]||'');var dd=t0.match(/(월~금|월·수|화·목|토요일|토)/)||String(d0).match(/(월~금|월·수|화·목|토요일|토)/);var dd2=dd?dd[1].replace('토요일','토'):'';
    var T0=(t.terms||[])[0]||[''];var tn=String(T0[0]);var mm=tn.match(/(\d+)개월/),cc=tn.match(/(\d+)회/);
@@ -22328,9 +22440,9 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
   return W.levels.map(function(l){var cls=W.cls[l[0]]||[];var dawn=l[0]==='새벽반';var mo=cls.length&&/모집중/.test(cls.map(function(x){return x[4]||'';}).join(''))&&cls.every(function(x){return /모집중/.test(x[4]||'');});
    var tm=cls.length?(cls[0][0]+' '+cls[0][1]+(cls.length>1?' 외 '+(cls.length-1)+'개 반':'')):'요일·시간 상담 후 확정';
    var sp=(typeof _spP==='function')?_spP(c.w):null;var o6=sp&&sp.opt&&sp.opt.filter(function(o){return o[0]==='6';})[0];var pm=o6?Math.round(o6[2]/10/100)*100:0;var base=o6?('월 '+man(pm)):'';var pmD=Math.round(pm*0.8/100)*100;
-   return {dc:dawn,c:dawn?COL.dawn:COL.cv,lb:c.k+(dawn?' · 출근 전':''),main:l[0],sub:'',tm:tm,pr:(dawn&&pm?('<s>월 '+man(pm)+'</s>월 '+man(pmD)+'<em>20%</em>'):base)+(pm?'<small class="prn">6+4개월(총 10개월) 108만 ÷ 10</small>':''),ask:!base,ph:[l[1]],teach:l[2],rib:dawn?'20% 할인':(mo?'모집중':''),go:"bkOpenCv('"+c.k.replace('회화','')+"','"+l[0]+"')"};});}
+   return {dc:dawn,c:dawn?COL.dawn:(CATCOL[c.k]||COL.cv),lb:c.k+(dawn?' · 출근 전':''),main:l[0],sub:'',tm:tm,pr:(dawn&&pm?('<s>월 '+man(pm)+'</s>월 '+man(pmD)+'<em>20%</em>'):base)+(pm?'<small class="prn">6+4개월(총 10개월) 108만 ÷ 10</small>':''),ask:!base,ph:[l[1]],teach:l[2],rib:dawn?'20% 할인':(mo?'모집중':''),go:"bkOpenCv('"+c.k.replace('회화','')+"','"+l[0]+"')"};});}
  function book(b){return '<button type="button" class="bk-book" style="--bc:'+b.c[0]+';--bg:'+b.c[1]+'" onclick="'+b.go+'">'
-  +'<div class="bk-cv">'+(b.rib?'<span class="bk-rib">'+esc(b.rib)+'</span>':'')+'<span class="lb">'+esc(b.lb)+'</span><span class="tt">'+esc(b.main)+(b.sub?'<small>'+esc(b.sub)+'</small>':'')+'</span>'+faces(b.ph)+'</div>'
+  +'<div class="bk-cv'+((b.ph||[]).filter(Boolean).length?' ph':'')+'">'+faces(b.ph)+'<span class="bk-sh"></span>'+(b.rib?'<span class="bk-rib">'+esc(b.rib)+'</span>':'')+'<span class="lb">'+esc(b.lb)+'</span><span class="tt">'+esc(b.main)+(b.sub?'<small>'+esc(b.sub)+'</small>':'')+'</span></div>'
   +'<div class="bk-in">'+(Array.isArray(b.tm)?('<div class="tm tl">'+b.tm.map(function(x){return '<i>'+esc(x||'\u00a0')+'</i>';}).join('')+'</div>'):('<div class="tm">'+esc(b.tm)+(b.teach?'<br>'+esc(b.teach):'')+'</div>'))+'<div class="pr'+(b.ask?' ask':'')+'">'+(b.pr||'수강료 상담 안내')+'</div></div></button>';}
  window.bkStore=function(cat){
   if(cat)window._bkCat=cat;var cur=window._bkCat;var C=null;CAT.forEach(function(x){if(x.k===cur)C=x;});if(!C)C=CAT[0];
