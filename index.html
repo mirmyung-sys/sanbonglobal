@@ -5272,6 +5272,30 @@ sgLb.i=0;
   <a class="tsn ig" href="https://www.instagram.com/sanbonglobal_" target="_blank" rel="noopener noreferrer" title="인스타그램">◎</a>
   <a class="tsn nv bl" href="https://blog.naver.com/sanbonglobal" target="_blank" rel="noopener noreferrer" title="블로그" aria-label="산본글로벌어학원 블로그">blog</a>
 </div>
+<!-- 2026-10-19 대표님 「메인화면 중간광고판을 아에 저런식으로 나열」→「바꿔」 — 슬라이드 광고판 대신 8장 책장형. 옛 #hero는 숨김(코드·promo.mp4 보존) -->
+<style>
+.hsh{max-width:1100px;margin:0 auto;padding:18px 14px 8px}
+.hsh-h{display:flex;align-items:baseline;gap:10px;margin:0 2px 12px}
+.hsh-h b{font-size:20px;color:#5B1026;font-weight:900}.hsh-h span{font-size:13px;color:#7a6658}
+.hsh-g{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.hsh-c{position:relative;display:flex;flex-direction:column;justify-content:flex-start;text-align:left;aspect-ratio:3/4;border:0;padding:12px 12px 10px 16px;border-radius:5px 14px 14px 5px;overflow:hidden;background:#7B1733 center/cover no-repeat;cursor:pointer;box-shadow:inset 6px 0 0 rgba(0,0,0,.18),inset 8px 0 0 rgba(255,255,255,.12),0 8px 18px rgba(60,10,20,.22);font-family:inherit;transition:transform .15s}
+.hsh-c:active{transform:scale(.97)}
+@media(hover:hover){.hsh-c:hover{transform:translateY(-4px)}}
+.hsh-c>.hsh-ov{position:absolute;inset:0;opacity:.42}
+.hsh-c>.hsh-dk{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,6,12,.45) 0%,rgba(30,6,12,0) 28%,rgba(30,6,12,0) 42%,rgba(30,6,12,.82) 100%)}
+.hsh-c>span,.hsh-c>img{position:relative}
+.hsh-e{color:#FFE3A3;font-size:10.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;line-height:1.3}
+.hsh-bd{position:absolute!important;top:10px;right:10px;background:#F6D58A;color:#5B1026;font-size:10px;font-weight:900;border-radius:4px;padding:2px 6px}
+.hsh-t{color:#fff;margin-top:auto;font-size:18px;font-weight:900;line-height:1.28;word-break:keep-all;text-shadow:0 2px 8px rgba(0,0,0,.25)}
+.hsh-s{color:#FFE9D6;font-size:12px;font-weight:700;margin-top:4px;opacity:.92}
+.hsh-f{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,.28);font-size:9.5px;font-weight:900;letter-spacing:.12em;color:rgba(255,255,255,.85)}
+.hsh-f em{font-style:normal;letter-spacing:0;font-size:11.5px}
+.hsh-aki{height:96px;width:auto;margin:6px auto 0;filter:drop-shadow(0 6px 12px rgba(0,0,0,.3))}
+@media(min-width:900px){.hsh{padding:26px 20px 10px}.hsh-g{grid-template-columns:repeat(4,1fr);gap:18px}.hsh-t{font-size:23px}.hsh-e{font-size:11.5px}.hsh-aki{height:130px}.hsh-c{padding:16px 16px 12px 20px}}
+
+#hero{display:none!important}
+</style>
+<section id="heroShelf"></section>
 <section class="hero" id="hero">
   <video class="hero-vid" autoplay muted loop playsinline preload="metadata"><source src="media/promo.mp4" type="video/mp4"></video>
   <div class="hero-veil" id="heroVeil"></div>
@@ -6036,6 +6060,24 @@ const SLIDES=[
  { e:'DIRECTOR · 원장 직접 상담', bg:'img/ai/consult.jpg', t:'토익·유학·시험대비,<br>원장이 직접 상담합니다', s:'Georgetown TESOL 출신 원장 · 상담은 무료입니다', act:"openPage('원장상담')", pbg:'linear-gradient(135deg,#5A1226,#8E1F35)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5A1226', cls:'hsty-soft'},
 ];
 
+/* 2026-10-19 대표님 「메인화면 중간광고판을 아에 저런식으로 나열하는건 어때 … 한번에 볼 수 있게」 — 광고판 8장을 책장처럼 한 화면에 */
+function heroShelfHTML(){
+ return '<div class="hsh"><div class="hsh-h"><b>지금 산본글로벌</b><span>'+SLIDES.length+'가지 소식 · 누르면 자세히</span></div><div class="hsh-g">'
+ +SLIDES.map(function(s,i){
+  var t=String(s.t||'').replace(/<br\s*\/?>/g,' ');
+  var eb=String(s.e||'').split('·');
+  return '<button type="button" class="hsh-c'+(s.aki?' ak':'')+'" onclick="'+String(s.act).replace(/"/g,'&quot;')+'" style="'+(s.bg?'background-image:url('+s.bg+');':'')+'">'
+   +'<span class="hsh-ov" style="background:'+(s.pbg||'#7B1733')+'"></span><span class="hsh-dk"></span>'
+   +'<span class="hsh-e">'+eb[0].trim()+'</span>'
+   +(i<2?'<span class="hsh-bd">'+(i===0?'NEW':'HOT')+'</span>':'')
+   +(s.aki?'<img class="hsh-aki" src="'+s.aki+'" alt="">':'')
+   +'<span class="hsh-t">'+t+'</span>'
+   +'<span class="hsh-s">'+(eb[1]?eb[1].trim():'')+'</span>'
+   +'<span class="hsh-f">SANBON GLOBAL<em>보기 ›</em></span></button>';
+ }).join('')+'</div></div>';
+}
+
+try{document.getElementById('heroShelf').innerHTML=heroShelfHTML();var _hv=document.querySelector('#hero video');if(_hv){_hv.removeAttribute('autoplay');_hv.preload='none';_hv.pause();}}catch(e){}
 (function(){
  var hs=document.getElementById('heroslides');
  hs.innerHTML=SLIDES.map(function(s,i){
