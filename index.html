@@ -5874,7 +5874,7 @@ var NOTICES=[
     +'<li><b>대학 3~4학년</b> — 그때 오픽 또는 토익스피킹이 <b>지원자격</b>이 됩니다</li>'
     +'<li><b>그 사이</b> — 시험이 아니라 <b>말하기 자체</b>를 해 두면, 그때 한 달이면 끝납니다</li></ul>'
     +'<p>그래서 저희가 중·고등학생에게 권하는 것은 <b>오픽 학원이 아니라 영어로 말해 보는 시간</b>입니다. '
-    +'<b>아키 AI 강의실</b>은 모든 책 1과와 명쌤 영상 1강을 누구나 무료로 보실 수 있고, <b>동글이</b>(교재·숙제·첨삭 없는 영어 모임)는 <b>참가비가 없습니다</b>. '
+    +'<b>아키 AI 강의실</b>은 모든 책 1과와 영상 강의 1강을 누구나 무료로 보실 수 있고, <b>동글이</b>(교재·숙제·첨삭 없는 영어 모임)는 <b>참가비가 없습니다</b>. '
     +'시험은 나중에 봐도 됩니다. 급한 건 <b>입이 열리는 일</b>입니다.</p>'
     +'<p style="font-size:12.5px;color:#6A7285;margin-top:14px">근거 — 국민일보 2026.9.15 보도(종로학원 집계) · 한국대학교육협의회 「대학입학전형기본사항」 · 삼성전자 채용 안내 공식 페이지. '
     +'삼성전자가 요구하는 <b>최소 등급은 공개되어 있지 않습니다</b> — 저희도 모르는 건 모른다고 적습니다.</p>',
@@ -11993,7 +11993,7 @@ function aiJoinShow(t){
  var m=document.createElement('div');m.className='sp-modal on';m.id='lsModal';
  m.innerHTML='<div class="sp-sheet ls-sheet ai-lock"><div class="ls-book">'+(t||'아키 AI 강의실')+'</div><div class="lk-ic">🎁</div>'
   +'<h3 class="lk-t">로그인하면 전부 무료입니다</h3>'
-  +'<p class="lk-d">회원이시면 <b>영어·일본어·중국어 회화</b>와 <b>토익·토스·오픽·JLPT·HSK</b> 교재·강의·명쌤 영상을 <b>전부 무료</b>로 보실 수 있습니다.<br>1과(1강)는 로그인 없이도 보실 수 있어요.</p>'
+  +'<p class="lk-d">회원이시면 <b>영어·일본어·중국어 회화</b>와 <b>토익·토스·오픽·JLPT·HSK</b> 교재·강의·영상을 <b>전부 무료</b>로 보실 수 있습니다.<br>1과(1강)는 로그인 없이도 보실 수 있어요.</p>'
   +'<button type="button" onclick="aiLsClose();try{sgShopClose();}catch(e){}try{sgVidClose();}catch(e){}openPage(\'로그인\')" style="display:block;width:100%;max-width:380px;margin:6px auto 0;height:52px;border:0;border-radius:12px;background:#0e8a5a;color:#fff;font-size:16.5px;font-weight:900;cursor:pointer">카카오·네이버·구글로 3초 로그인</button>'
   +'<p style="font-size:12.5px;color:#5A5750;margin:8px 0 0">실전 모의고사(시험문제풀이)만 학원에서 드리는 <b>입장코드</b>가 필요합니다.</p>'
   +'<button type="button" aria-label="닫기" onclick="aiLsClose()" style="display:block;width:52px;height:52px;margin:12px auto 0;border:0;border-radius:50%;background:#FFC93C;color:#1A1A18;font-size:24px;font-weight:900;line-height:52px;cursor:pointer">✕</button></div>';
@@ -17619,7 +17619,7 @@ body.has-tab #pgbody,body.has-tab #abox .abody,body.has-tab .sp-wrap{padding-bot
    책을 누르면 펼쳐지고, 페이지를 넘기면 마지막 장에서 진짜 강의로 들어갑니다.
    ═══════════════════════════════════════════════════════════════ */
 var SGSHOP=[
-{sh:'회화', ss:'말이 트이는 순서대로 — 영어 · 일본어 · 중국어 · 한국어', bks:[
+{sh:'회화', ss:'말이 트이는 순서대로 — 영어 · 일본어 · 중국어 · 한국어 · 영상 강의(1강은 누구나 · 회원은 전 강의 무료)', bks:[
 
 {aib:[0,0],k:'eng',t:'영어회화',sub:'왕초보부터 원어민까지<br>STEP 1 → 4',en:'ENGLISH SPEAKING',
  c1:'#0B5A44',c2:'#062E23',rk:'인기 1위',
@@ -17682,15 +17682,15 @@ var SGSHOP=[
       ['기업','회사에서 외국인 직원 단체로 들으실 경우 출강도 나갑니다']],
  note:'영어 뜻과 발음 요령을 함께 적어 두었습니다. 기업체 출강 문의는 <b>031-466-6969</b>',
  go:'sgShopGo("conv")',goT:'한국어 책 펴기',goS:'아키 AI 강의실 회화반 · 회원은 0원'}
+/* 2026-10-19 대표님 「명쌤을 없애 · 같은 영상을 두 번 올릴 필요 없음」 — 「명쌤 영상 강의」 칸을 없애고 영상은 이 「회화」 칸 안에 산본글로벌 이름으로 합침 */
+,{vid:'en_b',t:'영어회화 영상 · 기초',sub:'첫만남부터<br>지난 주말 이야기까지',en:'ENGLISH · VIDEO',c1:'#0B5A44',c2:'#062E23',rk:'무료 1강',pop:'영어회화 영상 · 기초',pops:'28강 · 영상'}
+,{vid:'en_s',t:'영어회화 영상 · 초급',sub:'하고 싶은 말을<br>짧은 문장으로',en:'ENGLISH · VIDEO',c1:'#14532D',c2:'#0A2A17',rk:'무료 1강',pop:'영어회화 영상 · 초급',pops:'28강 · 영상'}
+,{vid:'ja_b',t:'일본어회화 영상 · 기초',sub:'히라가나부터<br>일상 회화까지',en:'JAPANESE · VIDEO',c1:'#8C1C2B',c2:'#4A0E17',rk:'무료 1강',pop:'일본어회화 영상 · 기초',pops:'30강 · 영상'}
+,{vid:'zh_b',t:'중국어회화 영상 · 기초',sub:'발음·성조부터<br>생활 표현까지',en:'CHINESE · VIDEO',c1:'#B3541E',c2:'#5E2A0C',rk:'무료 0·1강',pop:'중국어회화 영상 · 기초',pops:'25강 · 영상'}
+,{vid:'lp_en',t:'어린왕자 영어 영상',sub:'원서로 읽는<br>어린왕자 27과',en:'LITTLE PRINCE',c1:'#1F3A6E',c2:'#0D1B36',rk:'무료 1과',pop:'어린왕자 영어 영상',pops:'27과 · 영상'}
+
 ]},
 
-{sh:'명쌤 영상 강의', ss:'눌러서 바로 재생 — 1강은 누구나 · 로그인한 회원은 전 강의 무료', bks:[
-{vid:'en_b',t:'기초영어',sub:'첫만남부터<br>지난 주말 이야기까지',en:'ENGLISH · VIDEO',c1:'#0B5A44',c2:'#062E23',rk:'무료 1강',pop:'기초영어',pops:'28강 · 영상'},
-{vid:'en_s',t:'초급영어',sub:'하고 싶은 말을<br>짧은 문장으로',en:'ENGLISH · VIDEO',c1:'#14532D',c2:'#0A2A17',rk:'무료 1강',pop:'초급영어',pops:'28강 · 영상'},
-{vid:'ja_b',t:'기초일본어',sub:'히라가나부터<br>일상 회화까지',en:'JAPANESE · VIDEO',c1:'#8C1C2B',c2:'#4A0E17',rk:'무료 1강',pop:'기초일본어',pops:'30강 · 영상'},
-{vid:'zh_b',t:'기초중국어',sub:'발음·성조부터<br>생활 표현까지',en:'CHINESE · VIDEO',c1:'#B3541E',c2:'#5E2A0C',rk:'무료 0·1강',pop:'기초중국어',pops:'25강 · 영상'},
-{vid:'lp_en',t:'어린왕자 영어',sub:'원서로 읽는<br>어린왕자 27과',en:'LITTLE PRINCE',c1:'#1F3A6E',c2:'#0D1B36',rk:'무료 1과',pop:'어린왕자 영어',pops:'27과 · 영상'},
-]},
 {sh:'아키 모의고사', ss:'실제 시험과 같은 형식으로 — 아키 AI 토익모의고사 · 오픽 실전 · 토스 실전', bks:[
 
 {k:'akimock',t:'아키 AI 토익모의고사',sub:'토익 오늘의 10문제<br>월간 실전 모의고사',en:'AKI TOEIC MOCK TEST',
@@ -21359,7 +21359,7 @@ AITXT['jpn_begin']=[{"t": "몇 식구예요? · 가족 소개", "vid": "media/ja
    · 영상은 유튜브 「일부 공개」 — 링크를 아는 사람만 재생 · 검색·채널에는 안 뜸
    · 1강(중국어는 발음 0강·1강)은 누구나 / 나머지는 그 과정 수강생(명부 확인)만
    · ID는 뒤집어 저장(소스에서 바로 안 보이게) — 보안장치가 아니라 가림막입니다 */
-var SGVID={"en_b":{"t":"명쌤 기초영어","g":"eng_basic","nm":"영어회화","free":1,"L":[["01","첫만남 · 이름묻기","kJb_-ZKhWbW"],["02","가족소개 · 나이묻기","4ZgqPDfvgxj"],["03","물건이름 · 주인찾기","gHUnctyHFNq"],["04","하루일과 · 출근길","IeBxMJNHxp9"],["05","여가시간 · 얼마나자주","kwGe7jT9R5C"],["06","직업 · 할줄아는것","E9-CsNKFM6i"],["07","음식 · 식습관","UUHpLYusD79"],["08","우리동네 · 길찾기","oe44QUGOcCu"],["09","지금뭐하고있어","gruLVxZmK75"],["10","지난주말 · 과거이야기","wsLFdXWc7V3"],["11","휴가 · 여행이야기","A-mpHjDz2qN"],["12","생일 · 파티계획","ENP2ey77lgy"],["13","친구소개 · 연락처","oRfWhnm3Xij"],["14","물건찾기 · 어디있어","AK3UcXd9Zvv"],["15","어디서왔어요 · 나이 · 성격","EgSADpMgh8o"],["16","누구거야 · 색깔 · 날씨","UsmW5Gb5tG2"],["17","몇시예요 · 하루일정","oTDm2RFeWM_"],["18","어떻게다녀요 · 가족이야기","QFqAz3Ma6Wp"],["19","우리집소개 · 방과가구","AaGVHuo-HAM"],["20","어디서일해요 · 직업과일터","MY-R5fdibXN"],["21","아침먹어요 · 식사와습관","El6v2mcp9_A"],["22","좋아하는운동 · 할줄알아","ww2lBvq_HFa"],["23","주말계획 · 할거야","4F5CZ8YQUAD"],["24","어디가아파요 · 몸과건강","saf4eC3r1d3"],["25","가는길묻기 · 가게와위치","EhANDdErHP3"],["26","어제뭐했어요 · 지난이야기","QtuomT-Ds4W"],["27","어디서태어났어요 · 어린시절","8_Xa11u9PUe"],["28","전화받기 · 약속잡기","80AcG-N7iUT"]],"n":28},"en_s":{"t":"명쌤 초급영어","g":"eng_begin","nm":"영어회화","free":1,"L":[["01","관심사말하기 · interestedin","0DZL3KxufPn"],["02","성격 · 생김새묘사","Yjp3dOQ47Bq"],["03","날씨 · 내생각말하기","YhJQxujBsav"],["04","우리집 · 부탁하기","YsBCrgEG6T7"],["05","건강 · 몸이안좋아요","k_AlwfZ6eiR"],["06","TV이야기 · 좋아요 · 싫어요","UfYhX1a-pbC"],["07","쇼핑 · 비교하기","Q2Ahpq9SLU2"],["08","도시추천 · 놓치면안돼요","Avgjz9rcMpA"],["09","인물이야기 · 존경하는사람","cXeoYIcYNez"],["10","식당 · 먹어본적있어요","MhgJ7NnIZ1G"],["11","공연 · 나도그래맞장구","wRsVZKp6syw"],["12","변화 · 예전엔했어요","A6RexMgfU5i"],["13","어디서왔어요 · 첫인사확장","82aXpioW9ul"],["14","무슨일해요 · 하루일과","QEjhorbjxsC"],["15","이거얼마예요 · thisthese","g2W1MP0CRY9"],["16","음악좋아해요 · 초대하기","8UxIlWjHkGu"],["17","가족이야기 · 요즘하고있어요","kkZaRAVFyVR"],["18","얼마나자주운동해요","oM2nMB2ZHkd"],["19","즐거웠어요 · 휴가이야기","w-7TpxTWHHg"],["20","우리동네 · 근처에있어요","UR69Gb4uqTA"],["21","그사람누구예요 · 옷차림으로찾기","gmpkZrpAhj7"],["22","해본적있어요 · for · since","UG9ykHgsIgu"],["23","정말신나는도시예요 · 도시소개","w5wdZ-XBttY"],["24","감기엔이게최고예요 · 건강조언","w_cSyxq0Ogo"],["25","주문하시겠어요 · 식당영어","chPl52cHZ5e"],["26","세계에서제일해요 · 비교 · 최상급","ocdtrX_qOyo"],["27","이번주말에뭐해 · 계획과메시지","EQhChTQ5CL_"],["28","달라졌어요 · 변화와꿈","o1ycbhqP2_b"]],"n":28},"ja_b":{"t":"명쌤 기초일본어","g":"jpn_basic","nm":"일본어","free":1,"L":[["01","문자와발음① · 히라가나","QAlpMo8xrbE"],["02","문자와발음② · 탁음 · 요음 · 가타카나","IClkY3UZaww"],["03","첫만남 · 자기소개",""],["04","이건뭐예요 · 누구거예요",""],["05","몇시예요 · 시간말하기",""],["06","날짜 · 요일 · 생일",""],["07","얼마예요 · 가격묻기",""],["08","맛있어요 · 재밌어요い형용사",""],["09","조용하고깨끗한방な형용사",""],["10","어디예요 · 위치와있어요",""],["11","몇식구예요 · 가족소개",""],["12","같이영화봐요 · ます형",""],["13","추워졌네요 · 변화말하기",""],["14","놀러가요 · 하러가요",""],["15","한자도많고 · 이유말하기",""],["16","지금뭐해요 · 하고있어요",""],["17","어디살아요 · 상태말하기",""],["18","해도돼요 · 허락구하기",""],["19","가본적있어요 · 경험말하기",""],["20","이것저것해요 · たりたり",""],["21","할수있어요 · 가능형",""],["22","해야해요 · なければなりません",""],["23","래요 · 전해들은말そうです",""],["24","마치같아요 · ようです",""],["25","어떻게가면돼요 · ば",""],["26","해주지않을래요 · てくれませんか",""],["27","당했어요 · 수동형",""],["28","하게해요 · 사역형",""],["29","잠시만기다려주십시오 · 존경어",""],["30","제가들어드리겠습니다 · 겸양어",""]],"n":30},"zh_b":{"t":"명쌤 기초중국어","g":"chn_basic","nm":"중국어","free":2,"L":[["00","발음 · 성조와병음","E7wCuJvVJWk"],["01","안녕하세요 · 첫인사","M0z9qHWEPDZ"],["02","그는누구예요 · 谁",""],["03","나는영화를봐요 · 동사",""],["04","그는어디에있어요 · 在",""],["05","이름이뭐예요 · 叫",""],["06","가족은몇명이에요 · 几口人",""],["07","이건얼마예요 · 多少钱",""],["08","생일은몇월며칠 · 날짜",""],["09","몇시에퇴근해요 · 시간",""],["10","놀러가고싶어요 · 想",""],["11","그는회의중이에요 · 在진행",""],["12","기타칠줄알아요 · 会",""],["13","아침먹었어요 · 了",""],["14","전화번호가몇번이에요 · 숫자읽기",""],["15","날씨가따뜻해졌어요 · 날씨",""],["16","좀봐도될까요 · 쇼핑",""],["17","어떻게가요 · 길묻기",""],["18","핸드폰이없어졌어요 · 不见了",""],["19","위가좀아파요 · 有点儿",""],["20","일주일에세번요가해요 · 次",""],["21","무슨요리먹어요 · 식당",""],["22","봄이점점짧아져요 · 越来越",""],["23","여행갈계획이에요 · 打算",""],["24","보고싶을거예요 · 会",""]],"n":25},"lp_en":{"t":"명쌤 어린왕자 영어","g":"eng","nm":"영어회화","free":1,"L":[["01","모자가 아니에요","A8KYUdHBnZt"],["02","양 한 마리 그려 줄래요?","QitIV6qNVRd"],["03","어느 별에서 왔니?","UfIaYFPQ2xU"],["04","소행성 B-612","4BPkFgL4ra4"],["05","바오바브나무","w91qJOb59x1"],["06","마흔네 번의 노을","Q1cwODl4Z8H"],["07","가시는 뭐에 쓰는 거야?","UBeAEzk5KzZ"],["08","아침 해와 함께 핀 꽃","k7yi9c59ERe"],["09","잘 가, 행복해","sWDIDeAI_um"],["10","모든 것을 다스리는 왕","818oHI37UKS"],["11","칭찬받고 싶은 남자","Q0v0JDh-at9"],["12","술 마시는 사람","UQpf6_MOYy0"],["13","별을 세는 사업가","EtXzCyR6dq0"],["14","가로등 켜는 사람","8jR7eM9lumB"],["15","탐험하지 않는 지리학자","kcM6Ef7LyxD"],["16","지구라는 별","E_umO0_Gr4D"],["17","사막의 뱀","UA1dQTSYvnM"],["18","꽃잎 세 장짜리 꽃","ARmcT21jLnB"],["19","메아리","EipaIsyWh6E"],["20","오천 송이 장미","oBWNBgh2DLH"],["21","여우","In4TVgEfw84"],["22","철도원","kxOFn9ddZEw"],["23","약장수","AmIijym9PLc"],["24","별 아래를 걷다","kTDYUDty7ux"],["25","노래하는 우물","07Urt7AXQXM"],["26","별이 웃는 선물","8bTQPb_plhS"],["27","그 별 아래에서","Qbw-0WvYsCl"]],"n":27}};
+var SGVID={"en_b":{"t":"영어회화 영상 · 기초","g":"eng_basic","nm":"영어회화","free":1,"L":[["01","첫만남 · 이름묻기","kJb_-ZKhWbW"],["02","가족소개 · 나이묻기","4ZgqPDfvgxj"],["03","물건이름 · 주인찾기","gHUnctyHFNq"],["04","하루일과 · 출근길","IeBxMJNHxp9"],["05","여가시간 · 얼마나자주","kwGe7jT9R5C"],["06","직업 · 할줄아는것","E9-CsNKFM6i"],["07","음식 · 식습관","UUHpLYusD79"],["08","우리동네 · 길찾기","oe44QUGOcCu"],["09","지금뭐하고있어","gruLVxZmK75"],["10","지난주말 · 과거이야기","wsLFdXWc7V3"],["11","휴가 · 여행이야기","A-mpHjDz2qN"],["12","생일 · 파티계획","ENP2ey77lgy"],["13","친구소개 · 연락처","oRfWhnm3Xij"],["14","물건찾기 · 어디있어","AK3UcXd9Zvv"],["15","어디서왔어요 · 나이 · 성격","EgSADpMgh8o"],["16","누구거야 · 색깔 · 날씨","UsmW5Gb5tG2"],["17","몇시예요 · 하루일정","oTDm2RFeWM_"],["18","어떻게다녀요 · 가족이야기","QFqAz3Ma6Wp"],["19","우리집소개 · 방과가구","AaGVHuo-HAM"],["20","어디서일해요 · 직업과일터","MY-R5fdibXN"],["21","아침먹어요 · 식사와습관","El6v2mcp9_A"],["22","좋아하는운동 · 할줄알아","ww2lBvq_HFa"],["23","주말계획 · 할거야","4F5CZ8YQUAD"],["24","어디가아파요 · 몸과건강","saf4eC3r1d3"],["25","가는길묻기 · 가게와위치","EhANDdErHP3"],["26","어제뭐했어요 · 지난이야기","QtuomT-Ds4W"],["27","어디서태어났어요 · 어린시절","8_Xa11u9PUe"],["28","전화받기 · 약속잡기","80AcG-N7iUT"]],"n":28},"en_s":{"t":"영어회화 영상 · 초급","g":"eng_begin","nm":"영어회화","free":1,"L":[["01","관심사말하기 · interestedin","0DZL3KxufPn"],["02","성격 · 생김새묘사","Yjp3dOQ47Bq"],["03","날씨 · 내생각말하기","YhJQxujBsav"],["04","우리집 · 부탁하기","YsBCrgEG6T7"],["05","건강 · 몸이안좋아요","k_AlwfZ6eiR"],["06","TV이야기 · 좋아요 · 싫어요","UfYhX1a-pbC"],["07","쇼핑 · 비교하기","Q2Ahpq9SLU2"],["08","도시추천 · 놓치면안돼요","Avgjz9rcMpA"],["09","인물이야기 · 존경하는사람","cXeoYIcYNez"],["10","식당 · 먹어본적있어요","MhgJ7NnIZ1G"],["11","공연 · 나도그래맞장구","wRsVZKp6syw"],["12","변화 · 예전엔했어요","A6RexMgfU5i"],["13","어디서왔어요 · 첫인사확장","82aXpioW9ul"],["14","무슨일해요 · 하루일과","QEjhorbjxsC"],["15","이거얼마예요 · thisthese","g2W1MP0CRY9"],["16","음악좋아해요 · 초대하기","8UxIlWjHkGu"],["17","가족이야기 · 요즘하고있어요","kkZaRAVFyVR"],["18","얼마나자주운동해요","oM2nMB2ZHkd"],["19","즐거웠어요 · 휴가이야기","w-7TpxTWHHg"],["20","우리동네 · 근처에있어요","UR69Gb4uqTA"],["21","그사람누구예요 · 옷차림으로찾기","gmpkZrpAhj7"],["22","해본적있어요 · for · since","UG9ykHgsIgu"],["23","정말신나는도시예요 · 도시소개","w5wdZ-XBttY"],["24","감기엔이게최고예요 · 건강조언","w_cSyxq0Ogo"],["25","주문하시겠어요 · 식당영어","chPl52cHZ5e"],["26","세계에서제일해요 · 비교 · 최상급","ocdtrX_qOyo"],["27","이번주말에뭐해 · 계획과메시지","EQhChTQ5CL_"],["28","달라졌어요 · 변화와꿈","o1ycbhqP2_b"]],"n":28},"ja_b":{"t":"일본어회화 영상 · 기초","g":"jpn_basic","nm":"일본어","free":1,"L":[["01","문자와발음① · 히라가나","QAlpMo8xrbE"],["02","문자와발음② · 탁음 · 요음 · 가타카나","IClkY3UZaww"],["03","첫만남 · 자기소개",""],["04","이건뭐예요 · 누구거예요",""],["05","몇시예요 · 시간말하기",""],["06","날짜 · 요일 · 생일",""],["07","얼마예요 · 가격묻기",""],["08","맛있어요 · 재밌어요い형용사",""],["09","조용하고깨끗한방な형용사",""],["10","어디예요 · 위치와있어요",""],["11","몇식구예요 · 가족소개",""],["12","같이영화봐요 · ます형",""],["13","추워졌네요 · 변화말하기",""],["14","놀러가요 · 하러가요",""],["15","한자도많고 · 이유말하기",""],["16","지금뭐해요 · 하고있어요",""],["17","어디살아요 · 상태말하기",""],["18","해도돼요 · 허락구하기",""],["19","가본적있어요 · 경험말하기",""],["20","이것저것해요 · たりたり",""],["21","할수있어요 · 가능형",""],["22","해야해요 · なければなりません",""],["23","래요 · 전해들은말そうです",""],["24","마치같아요 · ようです",""],["25","어떻게가면돼요 · ば",""],["26","해주지않을래요 · てくれませんか",""],["27","당했어요 · 수동형",""],["28","하게해요 · 사역형",""],["29","잠시만기다려주십시오 · 존경어",""],["30","제가들어드리겠습니다 · 겸양어",""]],"n":30},"zh_b":{"t":"중국어회화 영상 · 기초","g":"chn_basic","nm":"중국어","free":2,"L":[["00","발음 · 성조와병음","E7wCuJvVJWk"],["01","안녕하세요 · 첫인사","M0z9qHWEPDZ"],["02","그는누구예요 · 谁",""],["03","나는영화를봐요 · 동사",""],["04","그는어디에있어요 · 在",""],["05","이름이뭐예요 · 叫",""],["06","가족은몇명이에요 · 几口人",""],["07","이건얼마예요 · 多少钱",""],["08","생일은몇월며칠 · 날짜",""],["09","몇시에퇴근해요 · 시간",""],["10","놀러가고싶어요 · 想",""],["11","그는회의중이에요 · 在진행",""],["12","기타칠줄알아요 · 会",""],["13","아침먹었어요 · 了",""],["14","전화번호가몇번이에요 · 숫자읽기",""],["15","날씨가따뜻해졌어요 · 날씨",""],["16","좀봐도될까요 · 쇼핑",""],["17","어떻게가요 · 길묻기",""],["18","핸드폰이없어졌어요 · 不见了",""],["19","위가좀아파요 · 有点儿",""],["20","일주일에세번요가해요 · 次",""],["21","무슨요리먹어요 · 식당",""],["22","봄이점점짧아져요 · 越来越",""],["23","여행갈계획이에요 · 打算",""],["24","보고싶을거예요 · 会",""]],"n":25},"lp_en":{"t":"어린왕자 영어 영상","g":"eng","nm":"영어회화","free":1,"L":[["01","모자가 아니에요","A8KYUdHBnZt"],["02","양 한 마리 그려 줄래요?","QitIV6qNVRd"],["03","어느 별에서 왔니?","UfIaYFPQ2xU"],["04","소행성 B-612","4BPkFgL4ra4"],["05","바오바브나무","w91qJOb59x1"],["06","마흔네 번의 노을","Q1cwODl4Z8H"],["07","가시는 뭐에 쓰는 거야?","UBeAEzk5KzZ"],["08","아침 해와 함께 핀 꽃","k7yi9c59ERe"],["09","잘 가, 행복해","sWDIDeAI_um"],["10","모든 것을 다스리는 왕","818oHI37UKS"],["11","칭찬받고 싶은 남자","Q0v0JDh-at9"],["12","술 마시는 사람","UQpf6_MOYy0"],["13","별을 세는 사업가","EtXzCyR6dq0"],["14","가로등 켜는 사람","8jR7eM9lumB"],["15","탐험하지 않는 지리학자","kcM6Ef7LyxD"],["16","지구라는 별","E_umO0_Gr4D"],["17","사막의 뱀","UA1dQTSYvnM"],["18","꽃잎 세 장짜리 꽃","ARmcT21jLnB"],["19","메아리","EipaIsyWh6E"],["20","오천 송이 장미","oBWNBgh2DLH"],["21","여우","In4TVgEfw84"],["22","철도원","kxOFn9ddZEw"],["23","약장수","AmIijym9PLc"],["24","별 아래를 걷다","kTDYUDty7ux"],["25","노래하는 우물","07Urt7AXQXM"],["26","별이 웃는 선물","8bTQPb_plhS"],["27","그 별 아래에서","Qbw-0WvYsCl"]],"n":27}};
 var _sgv={k:'',i:-1};
 function _sgvId(s){ return String(s||'').split('').reverse().join(''); }
 function _sgvOpen(c){ try{ if(sgaSubjOpen(c.g)) return true; }catch(e){} return false; }
@@ -21406,7 +21406,7 @@ function sgVid(k,i){
   +'<button class="x" type="button" onclick="sgVidClose()" aria-label="닫기">✕</button></div>'
   +(player||('<div class="sgv-intro"><p>보고 싶은 강의를 누르세요.</p>'+(nextI>=0?'<button type="button" onclick="sgVid(\''+k+'\','+nextI+')">'+(nseen?'이어서 보기':'1강부터 보기')+' — '+c.L[nextI][0]+' ›</button>':'')+'</div>'))
   +'<div class="sgv-ls">'+list+'</div>'
-  +'<p class="sgv-ft">영상은 명쌤 유튜브 채널의 「일부 공개」 영상입니다. 수업 교재와 같은 순서로 올라갑니다.</p>'
+  +'<p class="sgv-ft">영상은 산본글로벌어학원 강의 영상(「일부 공개」)입니다. 수업 교재와 같은 순서로 올라갑니다.</p>'
   +'</div>';
  el.classList.add('on'); document.body.style.overflow='hidden';
  try{ var on=el.querySelector('.sgv-it.on'); if(on&&on.scrollIntoView) on.scrollIntoView({block:'nearest'}); el.scrollTop=0; }catch(e){}
@@ -22433,5 +22433,30 @@ function sgHpSend(){
  .bk-hd p{font-size:17px!important}
 }
 </style>
+<style>
+/* 2026-10-19 대표님 「닫기 노란색 버튼을 전부 가운데 밑으로 통일해」 — 창마다 따로 있던 오른쪽 위 ✕를 전부 화면 아래 가운데 노란 「✕ 닫기」로(폰은 하단 탭바 바로 위) */
+.cs-lb-x,.agx,.sp-x,.sgs-x,.sgsp-hd .x,.bw-x,.tos-x,.sb-x,.nrp-x,.tp-x,.fd-x,.nv-x,.lv-x,.tk-x,.sgv-hd .x,#glLb>.x,.ak-toc .tc-hd button{position:fixed!important;left:50%!important;right:auto!important;top:auto!important;bottom:calc(86px + env(safe-area-inset-bottom,0px))!important;transform:translateX(-50%)!important;width:auto!important;height:auto!important;min-width:0!important;margin:0!important;padding:13px 22px!important;display:inline-flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:6px!important;background:linear-gradient(135deg,#F7CF5B,#E2A413)!important;border:2px solid #fff!important;border-radius:999px!important;color:#1A1A18!important;font-size:0!important;line-height:1!important;font-weight:900!important;z-index:2147483000!important;box-shadow:0 6px 22px rgba(20,33,61,.42)!important;opacity:1!important;cursor:pointer!important;text-indent:0!important;overflow:visible!important}
+.cs-lb-x::before,.agx::before,.sp-x::before,.sgs-x::before,.sgsp-hd .x::before,.bw-x::before,.tos-x::before,.sb-x::before,.nrp-x::before,.tp-x::before,.fd-x::before,.nv-x::before,.lv-x::before,.tk-x::before,.sgv-hd .x::before,#glLb>.x::before,.ak-toc .tc-hd button::before{content:'✕'!important;font-size:17px!important;font-weight:900!important;color:#fff!important;line-height:1!important;display:inline!important;position:static!important}
+.cs-lb-x::after,.agx::after,.sp-x::after,.sgs-x::after,.sgsp-hd .x::after,.bw-x::after,.tos-x::after,.sb-x::after,.nrp-x::after,.tp-x::after,.fd-x::after,.nv-x::after,.lv-x::after,.tk-x::after,.sgv-hd .x::after,#glLb>.x::after,.ak-toc .tc-hd button::after{content:'닫기'!important;font-size:15px!important;font-weight:900!important;color:#1A1A18!important;letter-spacing:-.02em;display:inline!important;position:static!important}
+.cs-lb-x:hover,.agx:hover,.sp-x:hover,.sgs-x:hover,.sgsp-hd .x:hover,.bw-x:hover,.tos-x:hover,.sb-x:hover,.nrp-x:hover,.tp-x:hover,.fd-x:hover,.nv-x:hover,.lv-x:hover,.tk-x:hover,.sgv-hd .x:hover,#glLb>.x:hover,.ak-toc .tc-hd button:hover{background:linear-gradient(135deg,#7B1733,#9B2A48)!important;color:#F7CF5B!important;border-color:#F7CF5B!important}
+
+.cs-lb-x > *,.agx > *,.sp-x > *,.sgs-x > *,.sgsp-hd .x > *,.bw-x > *,.tos-x > *,.sb-x > *,.nrp-x > *,.tp-x > *,.fd-x > *,.nv-x > *,.lv-x > *,.tk-x > *,.sgv-hd .x > *,#glLb>.x > *,.ak-toc .tc-hd button > *{display:none!important}
+@media(min-width:861px){ .cs-lb-x,.agx,.sp-x,.sgs-x,.sgsp-hd .x,.bw-x,.tos-x,.sb-x,.nrp-x,.tp-x,.fd-x,.nv-x,.lv-x,.tk-x,.sgv-hd .x,#glLb>.x,.ak-toc .tc-hd button{bottom:26px!important} }
+#sgShop .sgs-x,#pgModal #sgShop .sgs-x{bottom:calc(86px + env(safe-area-inset-bottom,0px))!important;font-size:0!important;padding:13px 22px!important}
+#sgShop .sgs-x::after{display:inline!important;content:'닫기'!important;font-size:15px!important}
+#sgShop .sgs-x{width:auto!important;height:auto!important;border-radius:999px!important;gap:6px!important}
+#sgShop .sgs-x::before{content:'✕'!important;font-size:17px!important}
+body:has(.sp-modal.on) .aclose{visibility:hidden!important}
+body:has(#sgVid.on) .sgs-x,body:has(#sgSpread.on) .sgs-x,body:has(.sp-modal.on) .sgs-x{visibility:hidden!important}
+@media(min-width:861px){ #sgShop .sgs-x{bottom:26px!important} }
+
+</style>
+<script>
+/* 2026-10-19 닫기 버튼 통일 — 버튼 안 글자(✕·닫기)를 비우고 CSS의 「✕ 닫기」 한 벌만 보이게 */
+(function(){var SEL='.cs-lb-x,.agx,.sp-x,.sgs-x,.sgsp-hd .x,.bw-x,.tos-x,.sb-x,.nrp-x,.tp-x,.fd-x,.nv-x,.lv-x,.tk-x,.sgv-hd .x,#glLb>.x,.ak-toc .tc-hd button';
+ function fix(){try{document.querySelectorAll(SEL).forEach(function(e){if(e.textContent!==''){e.textContent='';}});}catch(x){}}
+ try{new MutationObserver(function(){fix();}).observe(document.body,{childList:true,subtree:true});}catch(x){}
+ fix();})();
+</script>
 </body>
 </html>
