@@ -11879,30 +11879,71 @@ function aiLockShow(n){
    · 시험문제풀이(실전 모의고사) 전부 하나의 입장코드. 원문은 파일에 없고 SHA-256만 둡니다.
    · 코드를 바꾸려면 SGA_XC_H 한 줄만 교체 · 한 번 넣으면 이 기기에 기억 ═══ */
 var SGA_XC_H='2879a628463d6be0954a4172a470140cc8bd7dab1bcb7a50ff81564aaa135d1d';
+/* 2026-10-19 대표님 「결제할 때 생기는 거 … 저거 한개만 기억하면 되는거야?」 → 실전 모의고사도 「내 코드 하나」로 연다.
+   ① 홈페이지 결제 개인코드(SGA-XXXX-XXXX) ② 데스크 등록생은 이름·휴대폰 뒤 4자리 확인 — 둘 다 시험대비반 등록이면 바로 열림.
+   예전 공용 입장코드(SGA_XC_H)는 데스크 예비용으로만 남김 */
+var SGA_XEX=/^(toeicB|toeic|tos|opic|toefl|jlpt|hsk)$/;
+function sgaXGrant(){ try{ var G=sgaGrants(), t=new Date(Date.now()+9*3600e3).toISOString().slice(0,10);
+  for(var k in G.ex){ if(!SGA_XEX.test(k)) continue; var d=G.ex[k]; if(d&&/^\d{4}-\d{2}-\d{2}$/.test(d)&&d<t) continue; return true; } }catch(e){} return false; }
 function sgaXOk(){ try{ if(sgaIsMaster()) return true; }catch(e){}
+ if(sgaXGrant()) return true;
  try{ if(localStorage.getItem('sga_xc')===SGA_XC_H) return true; }catch(e){} return false; }
+function _sgaXGo(){ try{ aiLsClose(); }catch(e){} var cb=window._sgaXcb; window._sgaXcb=null; if(cb) setTimeout(cb,120); }
+function _sgaXErr(t){ var er=document.getElementById('sgaXcErr'); if(er){ er.textContent=t; er.style.display='block'; } }
 function sgaXGate(title,cb,err){
  if(sgaXOk()){ try{ cb(); }catch(e){} return; }
  window._sgaXcb=cb;
  var o=document.getElementById('lsModal'); if(o) o.remove();
+ var login=false; try{ login=!!(localStorage.getItem('sga_token')&&localStorage.getItem('sga_sid')); }catch(e){}
+ var IN='flex:1 1 0;width:0;min-width:0;margin:0;box-sizing:border-box;height:50px;border:2px solid #D9C9B0;border-radius:12px;padding:0 10px;font-size:17px;font-weight:800';
+ var BT='flex:none;margin:0;height:50px;padding:0 16px;border:0;border-radius:12px;background:#0e8a5a;color:#fff;font-size:16px;font-weight:900;cursor:pointer';
  var m=document.createElement('div');m.className='sp-modal on';m.id='lsModal';
  m.innerHTML='<div class="sp-sheet ls-sheet ai-lock"><div class="ls-book">아키 시험문제풀이 · '+(title||'실전 모의고사')+'</div><div class="lk-ic">🔑</div>'
-  +'<h3 class="lk-t">입장코드를 넣어 주세요</h3>'
-  +'<p class="lk-d">실전 모의고사(시험문제풀이)는 학원에서 드리는 <b>입장코드</b>로 엽니다.<br>교재·강의·영상은 회원이면 전부 무료예요.</p>'
-  +'<div style="display:flex;gap:6px;max-width:360px;margin:6px auto 0"><input id="sgaXcIn" inputmode="numeric" autocomplete="off" maxlength="12" placeholder="입장코드" onkeydown="if(event.key===\'Enter\')sgaXTry()" style="flex:1 1 0;width:0;min-width:0;margin:0;box-sizing:border-box;height:52px;border:2px solid #D9C9B0;border-radius:12px;padding:0 12px;font-size:20px;font-weight:900;text-align:center;letter-spacing:3px">'
-  +'<button type="button" onclick="sgaXTry()" style="flex:none;margin:0;height:52px;padding:0 18px;border:0;border-radius:12px;background:#0e8a5a;color:#fff;font-size:16px;font-weight:900;cursor:pointer">입장</button></div>'
-  +'<p id="sgaXcErr" style="'+(err?'':'display:none;')+'color:#C81F2B;font-weight:800;font-size:13.5px;margin:8px 0 0">'+(err||'')+'</p>'
-  +'<p style="font-size:12.5px;color:#5A5750;margin:8px 0 0">입장코드는 데스크 · 담당 강사님께 받으세요 · 031-466-6969 · 카카오톡 채널</p>'
+  +'<h3 class="lk-t">수강생 확인 한 번만 해 주세요</h3>'
+  +'<p class="lk-d">실전 모의고사는 시험대비반(토익·토스·오픽·JLPT·HSK) 수강생에게 열립니다.<br>교재·강의·영상은 회원이면 전부 무료예요.</p>'
+  +(login?'':'<p style="background:#FFF6E0;border:1.5px solid #F2C14E;border-radius:12px;padding:10px 12px;font-size:14.5px;font-weight:800;color:#5B1026;margin:6px auto 0;max-width:360px">먼저 맨 위 「회원가입」(휴대폰 번호로 30초)부터 해 주세요.<br>가입 후 다시 이 버튼을 누르면 됩니다.</p>')
+  +'<div style="max-width:360px;margin:12px auto 0;text-align:left"><div style="font-size:15px;font-weight:900;color:#5B1026;margin:0 0 6px">① 홈페이지에서 결제하셨나요?</div>'
+  +'<div style="font-size:13.5px;color:#5A5750;margin:0 0 6px">결제할 때 화면에 나온 <b>개인코드</b>(SGA-로 시작)를 넣으세요.</div>'
+  +'<div style="display:flex;gap:6px"><input id="sgaXcIn" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="16" placeholder="SGA-XXXX-XXXX" onkeydown="if(event.key===\'Enter\')sgaXTry()" style="'+IN+';text-align:center;letter-spacing:1px;font-family:ui-monospace,Menlo,Consolas,monospace;text-transform:uppercase">'
+  +'<button type="button" onclick="sgaXTry()" style="'+BT+'">열기</button></div>'
+  +'<div style="font-size:15px;font-weight:900;color:#5B1026;margin:16px 0 6px">② 학원 데스크에서 등록하셨나요?</div>'
+  +'<div style="font-size:13.5px;color:#5A5750;margin:0 0 6px">코드 없이 <b>이름</b>과 <b>휴대폰 뒤 4자리</b>만 넣으세요.</div>'
+  +'<div style="display:flex;gap:6px"><input id="sgaXNm" placeholder="이름" autocomplete="name" style="'+IN+';flex:1.2 1 0"><input id="sgaXP4" placeholder="뒤 4자리" inputmode="numeric" maxlength="4" onkeydown="if(event.key===\'Enter\')sgaXVerify()" style="'+IN+';text-align:center"><button type="button" onclick="sgaXVerify()" style="'+BT+'">확인</button></div></div>'
+  +'<p id="sgaXcErr" style="'+(err?'':'display:none;')+'color:#C81F2B;font-weight:800;font-size:13.5px;margin:10px 0 0">'+(err||'')+'</p>'
+  +'<p style="font-size:12.5px;color:#5A5750;margin:8px 0 0">한 번 확인하면 이 기기에서는 다시 묻지 않습니다 · 모르시면 031-466-6969</p>'
   +'<button type="button" aria-label="닫기" onclick="aiLsClose()" style="display:block;width:52px;height:52px;margin:12px auto 0;border:0;border-radius:50%;background:#FFC93C;color:#1A1A18;font-size:24px;font-weight:900;line-height:52px;cursor:pointer">✕</button></div>';
  document.body.appendChild(m);document.body.style.overflow='hidden'; m.onclick=function(ev){if(ev.target===m)aiLsClose();};
- setTimeout(function(){ try{ document.getElementById('sgaXcIn').focus(); }catch(e){} },150);
 }
 function sgaXTry(){
- var i=document.getElementById('sgaXcIn'), v=(i&&i.value||'').replace(/\s+/g,'').toUpperCase(), er=document.getElementById('sgaXcErr');
- if(!v){ if(er){er.textContent='입장코드를 넣어 주세요.';er.style.display='block';} return; }
- _sxSha(v).then(function(h){
-  if(h&&h===SGA_XC_H){ try{ localStorage.setItem('sga_xc',h); }catch(e){} try{ aiLsClose(); }catch(e){} var cb=window._sgaXcb; window._sgaXcb=null; if(cb) setTimeout(cb,120); }
-  else if(er){ er.textContent='입장코드가 맞지 않습니다. 다시 확인해 주세요.'; er.style.display='block'; }
+ var i=document.getElementById('sgaXcIn'), v=(i&&i.value||'').replace(/\s+/g,'').toUpperCase();
+ if(!v){ _sgaXErr('결제 때 받은 개인코드를 넣어 주세요.'); return; }
+ var c=v.replace(/[^A-Z0-9]/g,'');
+ if(c.length===11&&c.indexOf('SGA')===0){
+  _sgaXErr('확인하는 중입니다…');
+  sgaPcRedeem('SGA-'+c.slice(3,7)+'-'+c.slice(7),function(d){
+   if(d.kicked){ try{ aiLsClose(); }catch(e){} return; }
+   if(!d.ok){ _sgaXErr(d.err||'코드를 찾지 못했습니다. 다시 확인해 주세요.'); return; }
+   if(sgaXOk()) _sgaXGo(); else _sgaXErr('확인되었습니다. 다만 이 코드는 시험대비반 과정이 아니라 모의고사가 열리지 않습니다.');
+  });
+  return;
+ }
+ _sxSha(v).then(function(h){   /* 데스크 예비용 공용 입장코드 */
+  if(h&&h===SGA_XC_H){ try{ localStorage.setItem('sga_xc',h); }catch(e){} _sgaXGo(); }
+  else _sgaXErr('코드가 맞지 않습니다. 개인코드는 SGA-XXXX-XXXX 모양입니다.');
+ });
+}
+function sgaXVerify(){
+ var u=null,sid=''; try{ u=localStorage.getItem('sga_token'); sid=localStorage.getItem('sga_sid')||''; }catch(e){}
+ var nm=((document.getElementById('sgaXNm')||{}).value||'').replace(/\s+/g,''), p4=((document.getElementById('sgaXP4')||{}).value||'').replace(/\D/g,'');
+ if(!u||!sid){ _sgaXErr('먼저 맨 위 「회원가입」 또는 「로그인」을 해 주세요.'); return; }
+ if(!nm||p4.length!==4){ _sgaXErr('이름과 휴대폰 뒤 4자리를 넣어 주세요.'); return; }
+ _sgaXErr('확인하는 중입니다…');
+ _sgaSrv('a=verify&uid='+encodeURIComponent(u)+'&sid='+encodeURIComponent(sid)+'&nm='+encodeURIComponent(nm)+'&p4='+p4,function(d){
+  if(!d||(!d.ok&&!d.err&&!d.kicked)){ _sgaXErr('서버 준비 중입니다. 잠시 뒤 다시 해 주세요.'); return; }
+  if(d.kicked){ sgaKick(); try{ aiLsClose(); }catch(e){} return; }
+  if(!d.ok){ _sgaXErr(d.err||'학원 명부에서 찾지 못했습니다. 데스크(031-466-6969)로 연락 주세요.'); return; }
+  try{ localStorage.setItem('sga_g',d.g||''); }catch(e){}
+  if(sgaXOk()) _sgaXGo(); else _sgaXErr('확인되었습니다. 다만 등록하신 과정이 시험대비반이 아니라 모의고사가 열리지 않습니다.');
  });
 }
 function sgaQzWin(end){
