@@ -6677,15 +6677,20 @@ try{var _sgw=localStorage.getItem('sga_wallet');
   if(SGPT.pt===12000&&!SGPT._c){SGPT.pt=0;SGPT._c=1;}
   /* 예전에 저장된 상품권 잔액이 남아 있으면 지웁니다 */
   if(SGPT.gift!==undefined){delete SGPT.gift;}
-  /* 2026-10-20 마리 — 로그아웃 후 재로그인마다 회원가입 적립금 5,000P가 중복 적립되던 버그(토큰 기준 중복방지 키가 로그인마다 바뀌던 문제) 피해를 한 번만 자동으로 바로잡습니다 */
-  try{
-   var _jbCnt=0,_jbRm=0,_jbLog=[];
-   (SGPT.log||[]).forEach(function(e){ if(e&&e.t==='회원가입 적립'){ _jbCnt++; if(_jbCnt>1){ _jbRm+=(+e.p||0); return; } } _jbLog.push(e); });
-   if(_jbRm>0){ SGPT.log=_jbLog; SGPT.pt=Math.max(0,(SGPT.pt||0)-_jbRm); try{localStorage.setItem('sga_jb_device_v2','1');}catch(e){} }
-  }catch(e){}
   localStorage.setItem('sga_wallet',JSON.stringify(SGPT));}
 }catch(e){}
 function ptSave(){try{localStorage.setItem('sga_wallet',JSON.stringify(SGPT));}catch(e){}}
+/* 2026-10-20 마리 — 로그아웃 후 재로그인마다 회원가입 적립금 5,000P가 중복 적립되던 버그 자동 교정.
+   페이지 로드 시 1회만이 아니라, 미리(탭을 오래 띄워둔 경우) 상태까지 스스로 다시 고치도록 myPage() 열 때도 호출됩니다. */
+function _sgaFixWallet(){
+ try{
+  var _jbCnt=0,_jbRm=0,_jbLog=[];
+  (SGPT.log||[]).forEach(function(e){ if(e&&e.t==='회원가입 적립'){ _jbCnt++; if(_jbCnt>1){ _jbRm+=(+e.p||0); return; } } _jbLog.push(e); });
+  if(_jbRm>0){ SGPT.log=_jbLog; SGPT.pt=Math.max(0,(SGPT.pt||0)-_jbRm); try{localStorage.setItem('sga_jb_device_v2','1');}catch(e){} ptSave(); return true; }
+ }catch(e){}
+ return false;
+}
+_sgaFixWallet();
 function _won(n){return (n||0).toString().replace(/\B(?=(\d{3})+(?!\d))/g,',')+'원';}
 function _num(s){return parseInt(String(s).replace(/[^0-9]/g,''),10)||0;}
 /* '<s>210,000</s> 189,000원' 처럼 정가 취소선이 붙은 경우 뒤의 실제 금액만 읽습니다 */
@@ -8539,6 +8544,12 @@ function sgaProfSave(nm,tel){try{localStorage.setItem('sga_prof',JSON.stringify(
 function _sgaJbKey(){var u=sgaUser();return u?'sga_jb_device_v2':'';}
 function sgaJoinBonus(){try{var k=_sgaJbKey();if(!k||localStorage.getItem(k))return false;
   SGPT.pt=(SGPT.pt||0)+5000;SGPT.log=SGPT.log||[];SGPT.log.unshift({d:new Date().toISOString().slice(0,10),t:'회원가입 적립',p:5000});ptSave();localStorage.setItem(k,'1');return true;}catch(e){return false;}}
+/* 2026-10-20 마리 — 대표님 「네이버적립 이벤트는 오천피는 따로 만들어봐」: 네이버 리뷰 확인 후 보낼 수 있는
+   1회용 지급 링크(?giftrv=1). 학생이 로그인한 상태로 그 링크를 열면 5,000P가 자동으로 한 번만 들어갑니다.
+   사용법: 리뷰 캡처 확인 후 https://sanbonglobal.com/?giftrv=1 링크를 카톡으로 보내 주세요. */
+function _sgaRvKey(){var u=sgaUser();return u?'sga_rv_pt_v1':'';}
+function sgaReviewBonus(){try{var k=_sgaRvKey();if(!k||localStorage.getItem(k))return false;
+  SGPT.pt=(SGPT.pt||0)+5000;SGPT.log=SGPT.log||[];SGPT.log.unshift({d:new Date().toISOString().slice(0,10),t:'네이버리뷰 적립',p:5000});ptSave();localStorage.setItem(k,'1');return true;}catch(e){return false;}}
 function sgaProfShow(force){
  if(document.getElementById('sgProf'))return;var p=sgaProf()||{};var u=sgaUser()||{};var dn=(u.name&&u.name!=='회원')?u.name:'';
  var m=document.createElement('div');m.className='sp-modal on';m.id='sgProf';
@@ -8562,6 +8573,12 @@ function sgaProfSubmit(){var nm=((document.getElementById('sgPfNm')||{}).value||
 /* 로그인 직후: 가입 적립금 → 정보 한 번 받기 (결제창을 다시 여는 중이면 결제창에서 받음) */
 (function(){var go=function(){try{if(!sgaUser())return;
   if(sgaJoinBonus()){setTimeout(function(){try{sgToast('<b>🎁 회원가입 적립금 5,000P</b><br>결제할 때 「보유 적립금」에서 바로 쓰실 수 있어요');}catch(e){}},1200);}
+  try{
+   if(/[?&]giftrv=1/.test(location.search)&&sgaReviewBonus()){
+    setTimeout(function(){try{sgToast('<b>🎁 네이버 리뷰 적립금 5,000P</b><br>결제할 때 「보유 적립금」에서 바로 쓰실 수 있어요');}catch(e){}},1200);
+    try{var u=location.pathname+location.search.replace(/([?&])giftrv=1&?/,'$1').replace(/[?&]$/,'')+location.hash;history.replaceState(null,'',u);}catch(e){}
+   }
+  }catch(e){}
   var pend=false;try{pend=!!localStorage.getItem('sga_pay_pend');}catch(e){}
   var skip=false;try{skip=!!sessionStorage.getItem('sga_prof_skip');}catch(e){}
   if(!sgaProf()&&!pend&&!skip&&!window._pcModal)setTimeout(function(){if(!document.querySelector('.sp-modal.on'))sgaProfShow(false);},2600);
@@ -22697,6 +22714,7 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
  function myPage(){
   var u=(typeof sgaUser==='function')?sgaUser():null;
   if(!u){ try{openPage('로그인');}catch(e){} return H('MY PAGE','마이페이지','로그인하고 포인트를 확인하세요','👤'); }
+  try{ if(typeof _sgaFixWallet==='function') _sgaFixWallet(); }catch(e){}
   var log=(window.SGPT&&SGPT.log)||[];
   var joinDate='';
   for(var i=log.length-1;i>=0;i--){ if(log[i]&&log[i].t==='회원가입 적립'){ joinDate=log[i].d; break; } }
