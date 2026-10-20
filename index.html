@@ -4212,6 +4212,26 @@ html,body{overflow-x:hidden;max-width:100%}
 .nt-개강{background:#e6f6ee;color:#0E8A5A}
 .nt-휴무{background:#f0f1f4;color:#6b7280}
 .nt-empty{padding:40px 0!important;color:#98a2b3!important}
+/* 2026-10-20 마리 — 대표님 「공지사항도 너무 사진도 작아서 안보여 … 책장처럼 보이게 하든가」
+   목록을 46×58 썸네일 테이블에서, 카드뉴스 표지를 크게 보여주는 "책장형" 카드 그리드로 교체.
+   글이 늘어나도(27건→더) 줄만 자연스럽게 늘어나는 구조라 페이지 수 걱정 없이 계속 씁니다. */
+.nt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:0 0 6px}
+.nt-card{background:#fff;border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:0 4px 14px rgba(40,20,10,.1);border:1px solid #eee2d4;transition:transform .15s}
+.nt-card:active{transform:scale(.97)}
+@media(hover:hover){.nt-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(40,20,10,.16)}}
+.nt-cph{position:relative;aspect-ratio:4/5;background:#f4f0e8;overflow:hidden}
+.nt-cph img{width:100%;height:100%;object-fit:cover;display:block}
+.nt-cph-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.nt-cph-ph span{color:#fff;font-size:15px;font-weight:900;letter-spacing:.02em}
+.nt-cno,.nt-cpin{position:absolute;top:8px;left:8px;background:rgba(20,10,10,.55);color:#fff;font-size:10.5px;font-weight:800;border-radius:5px;padding:3px 7px;letter-spacing:.02em}
+.nt-cpin{background:var(--brand);font-weight:900}
+.nt-cbd{padding:11px 12px 13px}
+.nt-cbd .nt-tag{margin:0 0 6px}
+.nt-ctt{font-weight:800;color:var(--navy);font-size:14.5px;line-height:1.38;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.76em}
+.nt-cmeta{margin-top:7px;color:#98a2b3;font-size:12px;font-weight:700}
+.nt-empty2{padding:48px 0;text-align:center;color:#98a2b3;grid-column:1/-1;font-size:14px}
+@media(min-width:620px){.nt-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.nt-grid{grid-template-columns:repeat(4,1fr);gap:18px}}
 .nt-view{margin-top:4px}
 .nt-vhead{border-top:2px solid var(--navy);border-bottom:1px solid #e3e8f0;padding:18px 4px 14px}
 .nt-vhead h3{margin:8px 0 0;font-size:21px;font-weight:900;color:var(--navy);letter-spacing:-.02em;line-height:1.4}
@@ -6032,19 +6052,26 @@ function noticePage(){
  });
  var tabs=['전체','공지','이벤트','개강','휴무'];
  var list=NOTICES.filter(function(n){ return _ntFilter==='전체'||n.tag===_ntFilter; });
+ /* 2026-10-20 마리 — 대표님 「공지사항도 너무 사진도 작아서 안보여 … 책장처럼 보이게 하든가」
+    46×58 썸네일 테이블 → 카드뉴스 표지를 크게 보여주는 책장형 카드 그리드로 교체 */
+ var _ntBg={'공지':'#2b4c8f','이벤트':'#c81f2b','개강':'#0E8A5A','휴무':'#6b7280'};
  var rows=list.map(function(n,i){
-  return '<tr onclick="noticeOpen(\''+n.id+'\')">'
-   +'<td class="nt-no">'+(n.pin?'<span class="nt-pin">중요</span>':(list.length-i))+'</td>'
-   +'<td class="nt-t">'+(NT_CARDS[n.id]?'<img class="nt-th" src="'+NT_CARDS[n.id][0]+'" alt="" loading="lazy">':'')+'<span class="nt-tag nt-'+n.tag+'">'+n.tag+'</span><span class="nt-tt">'+n.t+'</span></td>'
-   +'<td class="nt-d">'+n.d+'</td>'
-   +'<td class="nt-h"><span class="nt-hit" data-id="'+n.id+'">'+_hitTxt(n.id)+'</span></td></tr>';
+  var img=NT_CARDS[n.id]?NT_CARDS[n.id][0]:'';
+  return '<div class="nt-card" onclick="noticeOpen(\''+n.id+'\')">'
+   +'<div class="nt-cph">'
+    +(img?'<img src="'+img+'" alt="" loading="lazy">':'<div class="nt-cph-ph" style="background:'+(_ntBg[n.tag]||'#7B1733')+'"><span>'+n.tag+'</span></div>')
+    +(n.pin?'<span class="nt-cpin">중요</span>':'<span class="nt-cno">No.'+(list.length-i)+'</span>')
+   +'</div>'
+   +'<div class="nt-cbd"><span class="nt-tag nt-'+n.tag+'">'+n.tag+'</span>'
+    +'<div class="nt-ctt">'+n.t+'</div>'
+    +'<div class="nt-cmeta">'+n.d+' · 조회 <span class="nt-hit" data-id="'+n.id+'">'+_hitTxt(n.id)+'</span></div>'
+   +'</div></div>';
  }).join('');
  return H('NOTICE','공지사항','개강 일정, 이벤트, 휴무 안내 등 산본글로벌어학원의 새로운 소식입니다.','📢')
   +KPI([[String(NOTICES.length),'건'],[String(tabs.length-1),'분류'],['최신','맨 위']])
   +'<div class="nt-tabs">'+tabs.map(function(t){
      return '<button class="nt-tb'+(t===_ntFilter?' on':'')+'" onclick="noticeFilter(\''+t+'\')">'+t+'</button>';}).join('')+'</div>'
-  +'<table class="nt-tbl"><thead><tr><th>번호</th><th>제목</th><th>등록일</th><th>조회</th></tr></thead>'
-  +'<tbody>'+(rows||'<tr><td colspan="4" class="nt-empty">해당하는 글이 없습니다.</td></tr>')+'</tbody></table>'
+  +'<div class="nt-grid">'+(rows||'<div class="nt-empty2">해당하는 글이 없습니다.</div>')+'</div>'
   +'<div class="pgnote">자세한 내용은 전화 또는 카카오톡 채널로 문의해 주세요. · 031-466-6969</div>';
 }
 
@@ -22688,7 +22715,10 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
     cls.forEach(function(x){var _hr=+(String(x[1]).split(':')[0]);var _slot=_hr<17?'오전':'저녁';var _key=x[2]+'|'+_slot+'|'+x[0];
      if(!_byT[_key]){_byT[_key]={slot:_slot,day:x[0],teach:x[2],times:[]};_ord.push(_key);}
      _byT[_key].times.push(x[1]);});
-    tm=_ord.map(function(k){var g=_byT[k];return g.slot+' '+g.day+' '+g.times.join('/')+' · '+g.teach;});
+    /* 2026-10-20 마리 — 대표님 「아직 영어회화도 그대로인데 수강신청이 누르면 켈리 메이 안나옴」:
+       줄 끝에 강사명을 붙였더니 카드가 좁아 말줄임(…)에 강사명이 통째로 잘려 안 보였던 문제.
+       강사명을 요일·시간보다 앞으로 당겨 잘려도 이름은 항상 보이게 합니다. */
+    tm=_ord.map(function(k){var g=_byT[k];return g.slot+' '+g.teach+' · '+g.day+' '+g.times.join('/');});
    }
    var sp=(typeof _spP==='function')?_spP(c.w):null;var o6=sp&&sp.opt&&sp.opt.filter(function(o){return o[0]==='6';})[0];var pm=o6?Math.round(o6[2]/10/100)*100:0;var base=o6?('월 '+man(pm)):'';var pmD=Math.round(pm*0.8/100)*100;
    return {dc:dawn,c:dawn?COL.dawn:(CATCOL[c.k]||COL.cv),lb:c.k+(dawn?' · 출근 전':''),main:l[0],sub:'',tm:tm,pr:(dawn&&pm?('<s>월 '+man(pm)+'</s>월 '+man(pmD)+'<em>20%</em>'):base)+(pm?'<small class="prn">6+4개월(총 10개월) 108만 ÷ 10</small>':''),ask:!base,ph:[l[1]],teach:l[2],rib:dawn?'20% 할인':(mo?'모집중':''),go:"bkOpenCv('"+c.k.replace('회화','')+"','"+l[0]+"')"};});}
