@@ -8819,7 +8819,7 @@ var _dpSel={};
 var _dpSubj='';
 function _dpNoDisc(subj){return /퍼스널/.test(String(subj||''))&&!/일대일|1:1|1대1/.test(String(subj||''))&&false;}
 function _dpOpenLine(subj){
- if(_examSubj(subj))return '<b>오픈이벤트</b>는 회화반·1:1만 — <b>시험대비반은 환승 10%만</b> 적용됩니다';
+ if(_examSubj(subj))return '<b>오픈이벤트</b>는 회화반만 — <b>시험대비반은 환승 10%만</b> 적용됩니다';
  if(_persSubj(subj))return '<b>1:1·퍼스널</b>은 할인이 적용되지 않습니다';
  return '<b>오픈이벤트 10%</b> — 회화반 자동 적용 (10월 31일 등록분까지 · 시험대비반·퍼스널 제외)';}
 function _dpOnlineLine(subj){
