@@ -6677,6 +6677,12 @@ try{var _sgw=localStorage.getItem('sga_wallet');
   if(SGPT.pt===12000&&!SGPT._c){SGPT.pt=0;SGPT._c=1;}
   /* 예전에 저장된 상품권 잔액이 남아 있으면 지웁니다 */
   if(SGPT.gift!==undefined){delete SGPT.gift;}
+  /* 2026-10-20 마리 — 로그아웃 후 재로그인마다 회원가입 적립금 5,000P가 중복 적립되던 버그(토큰 기준 중복방지 키가 로그인마다 바뀌던 문제) 피해를 한 번만 자동으로 바로잡습니다 */
+  try{
+   var _jbCnt=0,_jbRm=0,_jbLog=[];
+   (SGPT.log||[]).forEach(function(e){ if(e&&e.t==='회원가입 적립'){ _jbCnt++; if(_jbCnt>1){ _jbRm+=(+e.p||0); return; } } _jbLog.push(e); });
+   if(_jbRm>0){ SGPT.log=_jbLog; SGPT.pt=Math.max(0,(SGPT.pt||0)-_jbRm); try{localStorage.setItem('sga_jb_device_v2','1');}catch(e){} }
+  }catch(e){}
   localStorage.setItem('sga_wallet',JSON.stringify(SGPT));}
 }catch(e){}
 function ptSave(){try{localStorage.setItem('sga_wallet',JSON.stringify(SGPT));}catch(e){}}
@@ -8527,7 +8533,10 @@ function sgPaidShare(c){var t='[산본글로벌어학원] 개인코드 '+c+'\n�
    · 가입 적립금 5,000P: 이 계정으로 이 기기에서 처음 로그인할 때 한 번 (적립금은 아직 기기별 저장 — 서버 적립금은 로그인 서버 수정 후) */
 function sgaProf(){try{var p=JSON.parse(localStorage.getItem('sga_prof')||'null');if(p&&p.nm&&/^01[016789]\d{7,8}$/.test(p.tel||''))return p;}catch(e){}return null;}
 function sgaProfSave(nm,tel){try{localStorage.setItem('sga_prof',JSON.stringify({nm:nm,tel:tel,t:Date.now()}));if(nm)localStorage.setItem('sga_name',nm);}catch(e){}try{sgaPaintHeader();}catch(e){}}
-function _sgaJbKey(){var u=sgaUser();return u?('sga_jb_'+String(u.token).slice(0,60)):'';}
+/* 2026-10-20 마리 — 대표님 「로그아웃하고 다시 카톡으로 로그인했더니 만원이 된것같은데」: 로그인 토큰이 로그인마다 새로 발급돼
+   (sga_token이 로그아웃 때 지워지고 재로그인 때마다 값이 바뀜) 토큰 기준 중복방지 키가 매번 새로 생겨 5,000P가 로그인할 때마다 또 적립됐습니다.
+   로그아웃해도 지워지지 않는 "이 기기에서 평생 한 번" 키로 고정합니다. */
+function _sgaJbKey(){var u=sgaUser();return u?'sga_jb_device_v2':'';}
 function sgaJoinBonus(){try{var k=_sgaJbKey();if(!k||localStorage.getItem(k))return false;
   SGPT.pt=(SGPT.pt||0)+5000;SGPT.log=SGPT.log||[];SGPT.log.unshift({d:new Date().toISOString().slice(0,10),t:'회원가입 적립',p:5000});ptSave();localStorage.setItem(k,'1');return true;}catch(e){return false;}}
 function sgaProfShow(force){
