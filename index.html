@@ -22544,7 +22544,9 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
 .bk-rib{position:absolute;bottom:0;right:0;background:#E8C97A;color:#5B1026;font-weight:900;font-size:11px;padding:4px 9px;border-radius:10px 0 0 0}
 .bk-in{padding:10px 12px 12px 18px}
 .bk-in .tm{font-size:12.5px;color:#6b5a50;font-weight:700;line-height:1.4}
-.bk-in .tm.tl i{display:block;font-style:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.bk-in .tm.tl i:last-child{color:#5B1026}
+/* 2026-10-20 마리 — 대표님 「아직도 여전함」(강사명을 줄 앞으로 옮겨도 "…"가 남아 못 믿으시던 문제):
+   줄이 넘치면 통째로 자르던 말줄임표를 없애고 두 줄로 자연스럽게 줄바꿈합니다 — 이제 어떤 글자도 안 잘림 */
+.bk-in .tm.tl i{display:block;font-style:normal;white-space:normal;word-break:keep-all;overflow:visible}.bk-in .tm.tl i:last-child{color:#5B1026}
 .bk-grp{display:flex;align-items:baseline;gap:10px;margin:18px 2px 10px;padding-top:12px;border-top:1px solid #E6D5B8}.bk-grp:first-of-type{border-top:0;padding-top:0;margin-top:4px}.bk-grp b{font-family:'Noto Serif KR',serif;font-size:19px;font-weight:900;color:#5B1026}.bk-grp span{font-size:13px;font-weight:700;color:#8a7466}
 .bk-book{height:100%}.bk-cv .tt{min-height:2.5em}
 @media(min-width:900px){.bk-grp+.bk-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
