@@ -22677,7 +22677,19 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
   }).sort(function(a,b){return a.rank-b.rank||a.i-b.i;});}
  function cvBooks(c){var W=(typeof WCONV!=='undefined')&&WCONV[c.w];if(!W)return [];
   return W.levels.map(function(l){var cls=W.cls[l[0]]||[];var dawn=l[0]==='새벽반';var mo=cls.length&&/모집중/.test(cls.map(function(x){return x[4]||'';}).join(''))&&cls.every(function(x){return /모집중/.test(x[4]||'');});
-   var tm=cls.length?(cls[0][0]+' '+cls[0][1]+(cls.length>1?' 외 '+(cls.length-1)+'개 반':'')):'요일·시간 상담 후 확정';
+   /* 2026-10-20 마리 — 대표님 「저녁반은 왜 없어, 메이쌤 켈리쌤 반이 수강신청란에 빠져있어」:
+      카드 요약이 첫 수업(오전) 시간만 보여주고 나머지는 "외 N개 반" 속에 숨어 저녁반·담당 강사가
+      안 보이던 문제. 교시(오전/저녁)·요일·강사별로 줄을 나눠 전부 보이게 고칩니다. */
+   var tm;
+   if(cls.length<=1){
+    tm=cls.length?(cls[0][0]+' '+cls[0][1]):'요일·시간 상담 후 확정';
+   }else{
+    var _ord=[],_byT={};
+    cls.forEach(function(x){var _hr=+(String(x[1]).split(':')[0]);var _slot=_hr<17?'오전':'저녁';var _key=x[2]+'|'+_slot+'|'+x[0];
+     if(!_byT[_key]){_byT[_key]={slot:_slot,day:x[0],teach:x[2],times:[]};_ord.push(_key);}
+     _byT[_key].times.push(x[1]);});
+    tm=_ord.map(function(k){var g=_byT[k];return g.slot+' '+g.day+' '+g.times.join('/')+' · '+g.teach;});
+   }
    var sp=(typeof _spP==='function')?_spP(c.w):null;var o6=sp&&sp.opt&&sp.opt.filter(function(o){return o[0]==='6';})[0];var pm=o6?Math.round(o6[2]/10/100)*100:0;var base=o6?('월 '+man(pm)):'';var pmD=Math.round(pm*0.8/100)*100;
    return {dc:dawn,c:dawn?COL.dawn:(CATCOL[c.k]||COL.cv),lb:c.k+(dawn?' · 출근 전':''),main:l[0],sub:'',tm:tm,pr:(dawn&&pm?('<s>월 '+man(pm)+'</s>월 '+man(pmD)+'<em>20%</em>'):base)+(pm?'<small class="prn">6+4개월(총 10개월) 108만 ÷ 10</small>':''),ask:!base,ph:[l[1]],teach:l[2],rib:dawn?'20% 할인':(mo?'모집중':''),go:"bkOpenCv('"+c.k.replace('회화','')+"','"+l[0]+"')"};});}
  function book(b){return '<button type="button" class="bk-book" style="--bc:'+b.c[0]+';--bg:'+b.c[1]+'" onclick="'+b.go+'">'
