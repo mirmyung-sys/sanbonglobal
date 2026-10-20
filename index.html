@@ -5336,19 +5336,19 @@ function sgdTab(l){ SGD.lang=l; sgdPaint(); }
 function sgdQuiz(j){ var x=sgdDay(); if(!x) return; try{ localStorage.setItem('sgd_q_'+x.d,String(j)); }catch(e){} sgdPaint(); }
 function sgdAtt(go,d){
  var u=null,sid='',nm=''; try{ u=localStorage.getItem('sga_token'); sid=localStorage.getItem('sga_sid')||''; nm=localStorage.getItem('sga_name')||''; }catch(e){}
- if(!u||!sid){ if(go){ try{ sgToast('<b>로그인하고 출석 30일 채우면 3,000P</b><br>카카오·구글로 10초면 됩니다'); }catch(e){} try{ openPage('로그인'); }catch(e){} } return; }
+ if(!u||!sid){ if(go){ try{ sgToast('<b>로그인하고 매일 출석 체크해보세요</b><br>카카오·구글로 10초면 됩니다'); }catch(e){} try{ openPage('로그인'); }catch(e){} } return; }
  var g=go==='rv'?'rv':(go?1:0);
  _sgaSrv('a=att&go='+g+(d?'&d='+encodeURIComponent(d):'')+'&uid='+encodeURIComponent(u)+'&sid='+encodeURIComponent(sid)+'&nm='+encodeURIComponent(nm),function(r){
   if(!r) return; if(r.kicked){ try{ sgaKick(); }catch(e){} return; }
   if(!r.ok){ SGD.att={err:1}; sgdPaint(); return; }
   SGD.att=r; sgdPaint(); var C=r.cyc;
   try{
+   /* 2026-10-20 마리 — 대표님 「출첵은 공부용으로만, 3,000P 지급은 일단 지금은 없애자」: 포인트 적립·문구 전부 제거, 30일 완주는 축하만 */
    if(r.got){
-    try{ SGPT.pt=(SGPT.pt||0)+(+r.got||0); SGPT.log=SGPT.log||[]; SGPT.log.unshift({d:sgdToday(),t:'출석 30일 적립',p:+r.got||0}); ptSave(); }catch(e){}
-    sgToast('<b>🎉 30일 출석 완성! +'+r.got.toLocaleString()+'P</b><br>수강료 결제 때 현금처럼 쓰실 수 있어요');
+    sgToast('<b>🎉 30일 출석 완성!</b><br>꾸준히 공부하셨네요, 정말 대단해요');
    }
    else if(g==='rv'){ sgToast('<b>'+(r.msg||'부활')+'</b>'+(C?'<br>이번 판 '+C.filled+' / '+C.need+'칸':'')); }
-   else if(go&&C){ sgToast('<b>출석 완료 ✅</b><br>이번 판 '+C.filled+' / '+C.need+'칸 · 다 채우면 3,000P'); }
+   else if(go&&C){ sgToast('<b>출석 완료 ✅</b><br>이번 판 '+C.filled+' / '+C.need+'칸'); }
   }catch(e){}
  });
 }
@@ -5357,12 +5357,12 @@ function sgdPaint(){
  var t=new Date(Date.now()+9*3600e3), wd='일월화수목금토'.charAt(t.getUTCDay());
  var A=SGD.att, logged=false; try{ logged=!!(localStorage.getItem('sga_token')&&localStorage.getItem('sga_sid')); }catch(e){}
  var attTxt, btn, dis='', board='';
- if(!logged){ attTxt='출석 <b>30일</b> 다 채우면 <b>3,000P</b> · 빠진 날은 15일마다 1번 <b>부활</b> · 1P = 수강료 1원'; btn='로그인하고 출석'; }
+ if(!logged){ attTxt='매일 출석 체크로 <b>30일</b> 공부 습관 만들기 · 빠진 날은 15일마다 1번 <b>부활</b>'; btn='로그인하고 출석'; }
  else if(!A){ attTxt='출석 기록을 불러오는 중…'; btn='출석체크'; }
- else if(A.err||!A.cyc){ attTxt='출석체크 새 규칙 준비 중 · 30일 다 채우면 <b>3,000P</b>'; btn='준비 중'; dis=' disabled'; }
+ else if(A.err||!A.cyc){ attTxt='출석체크 새 규칙 준비 중'; btn='준비 중'; dis=' disabled'; }
  else {
   var C=A.cyc, rvLeft=(C.day<=C.half?C.rvA:C.rvB);
-  attTxt=(A.done?'✅ 오늘 출석 완료 · ':'')+'이번 판 <b>'+C.filled+' / '+C.need+'칸</b> ('+C.day+'일째)'+(C.rewarded?' · <b>3,000P 받음</b>':' · 다 채우면 <b>3,000P</b>')+'<br><span style="font-size:12.5px;color:#5A4E42">빠진 날 부활 — 1~15일째 '+C.rvA+'번 · 16~30일째 '+C.rvB+'번 남음</span>';
+  attTxt=(A.done?'✅ 오늘 출석 완료 · ':'')+'이번 판 <b>'+C.filled+' / '+C.need+'칸</b> ('+C.day+'일째)'+(C.rewarded?' · <b>30일 완주 🎉</b>':'')+'<br><span style="font-size:12.5px;color:#5A4E42">빠진 날 부활 — 1~15일째 '+C.rvA+'번 · 16~30일째 '+C.rvB+'번 남음</span>';
   btn=A.done?'내일 또 만나요':'출석체크'; if(A.done) dis=' disabled';
   var dots=''; for(var k=0;k<C.slots.length;k++){ var ch=C.slots.charAt(k), dd=''; try{ var _d=new Date(C.start+'T00:00:00Z'); _d.setUTCDate(_d.getUTCDate()+k); dd=_d.toISOString().slice(0,10); }catch(e){}
    var can=(ch==='x'&&((k<C.half?C.rvA:C.rvB)>0));
@@ -6540,7 +6540,7 @@ function memberTabs(){return '<div class="mb-tabs">'+
 '<a href="#" onclick="openPage(\'통합회원안내\');return false;">통합회원안내</a>'+
 '<a href="#" onclick="openPage(\'회원가입\');return false;">회원가입</a>'+
 '<a href="#" onclick="alert(\'회원정보변경은 로그인 후 이용하실 수 있습니다.\');return false;">회원정보변경</a>'+
-'<a href="#" onclick="alert(\'회원 시스템은 11월에 엽니다.\\n등록·상담은 전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원으로 해주세요.\');return false;">아이디/비밀번호찾기</a>'+
+'<a href="#" onclick="alert(\'이 시스템은 아이디·비밀번호가 없습니다.\\n가입하실 때 쓰신 카카오·네이버·구글 버튼을 다시 누르시면 바로 로그인됩니다.\\n그래도 안 되시면 031-466-6969로 전화 주세요.\');return false;">로그인이 안 되시나요?</a>'+
 '<a href="#" onclick="alert(\'회원탈퇴는 로그인 후 이용하실 수 있습니다.\');return false;">회원탈퇴</a>'+
 '<a href="#" onclick="openPage(\'이용약관\');return false;">이용약관</a>'+
 '<a href="#" onclick="openPage(\'개인정보처리방침\');return false;">개인정보처리방침</a></div>';}
@@ -6618,7 +6618,7 @@ function sgaUser(){
 function sgaPaintHeader(){
  var u=sgaUser();
  var a=document.getElementById('hcLogin');
- if(a){ a.innerHTML = u ? '<span class="gi">\u2705</span>'+u.name : '<span class="gi">🔑</span>회원가입·로그인'; }
+ if(a){ a.innerHTML = u ? '<span class="gi">\u2705</span>'+u.name : '<span class="gi">🔑</span>로그인'; }
  var links=document.querySelectorAll('.htoplinks a');
  for(var i=0;i<links.length;i++){
   if(links[i].textContent.trim()==='로그인'&&u){ links[i].textContent=u.name+'님'; }
@@ -6967,7 +6967,7 @@ function loginPage(){
   +'</div>'
   +'<div class="plog-r"><div class="plog-promo"><div class="plog-pr-head">지금은<br><b>11월 개강 등록 기간</b>입니다<em>개강일 : 11월 3일(화·목) · 4일(월·수)</em></div><div class="plog-pr-body"><div class="plog-pr-gw">11월 개강 등록 기간</div><div class="plog-pr-big">지금 등록,<br>회화반 오픈이벤트 <b>10%</b><span class="plog-ar">↓</span></div><a class="plog-pr-go" href="#" onclick="sgCloseOrBack();openPage(\'수강신청\');return false;">온라인 수강신청 바로가기 <span>GO</span></a></div></div></div>'
   +'</div></div>'; }
- return '<div class="plog">'+'<div class="plog-top"><img src="img/intro_logo.png" alt="산본글로벌어학원"><span>산본글로벌어학원</span></div>'+'<div class="plog-body"><div class="plog-l">'+(function(){var pc='';try{pc=localStorage.getItem('sga_pc_pend')||'';}catch(e){}return pc?('<div class="plog-paid"><b>✅ 결제가 완료되었습니다</b><span>개인코드 <em>'+pc.replace(/[<>]/g,'')+'</em><br>아래 버튼으로 로그인하시면 결제하신 과정이 <b>바로 열립니다</b>.</span></div>'):'<div class="plog-paid plain"><b>회원가입 · 로그인</b><span>처음이시면 아래 버튼이 <strong>회원가입</strong>, 이미 가입하셨으면 <strong>로그인</strong>입니다.</span></div>';})()+sgaJoinBox()+'</div>'+'<div class="plog-r"><div class="plog-promo"><div class="plog-pr-head">지금은<br><b>11월 개강 등록 기간</b>입니다<em>개강일 : 11월 3일(화·목) · 4일(월·수)</em></div><div class="plog-pr-body"><div class="plog-pr-gw">11월 개강 등록 기간</div><div class="plog-pr-big">지금 등록,<br>회화반 오픈이벤트 <b>10%</b><span class="plog-ar">↓</span></div><a class="plog-pr-go" href="#" onclick="sgCloseOrBack();openPage(\'수강신청\');return false;">온라인 수강신청 바로가기 <span>GO</span></a></div></div></div>'+'</div>'+'<div class="plog-foot"><a href="#" onclick="openPage(\'회원가입\');return false;">회원가입</a><a href="#" onclick="alert(\'회원 시스템은 11월에 엽니다.\\n등록·상담은 전화 031-466-6969 · 카카오톡 채널 @산본글로벌어학원으로 해주세요.\');return false;">아이디/비밀번호찾기</a></div>'+'</div>';}
+ return '<div class="plog">'+'<div class="plog-top"><img src="img/intro_logo.png" alt="산본글로벌어학원"><span>산본글로벌어학원</span></div>'+'<div class="plog-body"><div class="plog-l">'+(function(){var pc='';try{pc=localStorage.getItem('sga_pc_pend')||'';}catch(e){}return pc?('<div class="plog-paid"><b>✅ 결제가 완료되었습니다</b><span>개인코드 <em>'+pc.replace(/[<>]/g,'')+'</em><br>아래 버튼으로 로그인하시면 결제하신 과정이 <b>바로 열립니다</b>.</span></div>'):'<div class="plog-paid plain"><b>회원가입 · 로그인</b><span>처음이시면 아래 버튼이 <strong>회원가입</strong>, 이미 가입하셨으면 <strong>로그인</strong>입니다.</span></div>';})()+sgaJoinBox()+'</div>'+'<div class="plog-r"><div class="plog-promo"><div class="plog-pr-head">지금은<br><b>11월 개강 등록 기간</b>입니다<em>개강일 : 11월 3일(화·목) · 4일(월·수)</em></div><div class="plog-pr-body"><div class="plog-pr-gw">11월 개강 등록 기간</div><div class="plog-pr-big">지금 등록,<br>회화반 오픈이벤트 <b>10%</b><span class="plog-ar">↓</span></div><a class="plog-pr-go" href="#" onclick="sgCloseOrBack();openPage(\'수강신청\');return false;">온라인 수강신청 바로가기 <span>GO</span></a></div></div></div>'+'</div>'+'<div class="plog-foot"><a href="#" onclick="openPage(\'회원가입\');return false;">회원가입</a><a href="#" onclick="alert(\'이 시스템은 아이디·비밀번호가 없습니다.\\n가입하실 때 쓰신 카카오·네이버·구글 버튼을 다시 누르시면 바로 로그인됩니다.\\n그래도 안 되시면 031-466-6969로 전화 주세요.\');return false;">로그인이 안 되시나요?</a></div>'+'</div>';}
 /* 2026-10-18 대표님 「광고판 들어가면 나오는 학원 사진 다 없애고 제미나이로」 — 학원 사진(hall_XX·sbg_hall)은 쓰지 않음.
    HALL_AI에 제미나이 그림 경로가 들어오면 그 그림을, 없으면 사진 칸 자체를 뺀다. */
 var HALL_AI={'01':'img/ai/clock.jpg','02':'img/ai/gift.jpg','03':'img/ai/consult.jpg','04':'img/ai/classroom.jpg','05':'img/ai/clock.jpg','06':'img/ai/clock.jpg','07':'img/ai/classroom.jpg','08':'img/ai/talk.jpg','09':'img/ai/classroom.jpg','10':'img/ai/classroom.jpg','11':'img/ai/gift.jpg','12':'img/ai/classroom.jpg','hall':'img/ai/gift.jpg'}; /* 2026-10-18 제미나이 그림 5종 */
@@ -7572,7 +7572,7 @@ const PAGES={
   +'<div class="pgnote">담당: 오금한·하홍금 외 원어민 강사 · 시간표는 강의관에서 확인</div>'+GO('중국어')+CTA(),
  '가을학기 할인':bigImg('img/hall_11.jpg?v=1012')+HV('DISCOUNT · 지금 받는 할인','지금 받는 할인','새벽반 상시 20% 별도','linear-gradient(120deg,#12203d,#caa23a)',ART_GIFT)
   +'<div class="evtimeline"><div class="evt on"><div class="evt-d">NOW</div><div class="evt-b"><b>오픈이벤트 10%</b><p>10월 31일까지 · 회화반·1:1</p></div></div><div class="evt on"><div class="evt-d">상시</div><div class="evt-b"><b>환승 이벤트 10%</b><p>타 학원에서 옮기신 분 · 상시 · 퍼스널 제외</p></div></div><div class="evt"><div class="evt-d">재등록</div><div class="evt-b"><b>재등록 이벤트 5%</b><p>기존 수강생 · 상시 · 데스크 신청</p></div></div><div class="evt"><div class="evt-d">11월</div><div class="evt-b"><b>1대1 20시간 → 정규반 1개월 무료 수강권</b><p>11월 1일부터</p></div></div></div>'
-  +SEC('혜택 한눈에',CT(['이벤트','내용'],[['시험대비반','<b>환승 10%</b>만 · 토익: 문제풀이 월 1회 + 기초문법 40강 무료'],['동글이벤트','<b>회화반</b> · 가족·친구 함께 등록 시 <b>교재 무한 제공</b> (과정 이수 때 지급) · 할인과 중복'],['네이버 영수증 리뷰','<b>10,000P + 립밤</b> (가입 5,000P + 리뷰 5,000P) · 전 과정 · 토익·토스·오픽은 교재 1권 추가'],['출석체크','<b>30일 출석 3,000P</b>'],['포인트 사용','수강료에서 차감 · 1P = 1원'],['아키 패스','장기 수강 시 무료 개월 추가'],['다과목 수강','교재 지원 · 상담 후 안내'],['<b>상한</b>','새벽반 <b>20%</b> · 그 외 신규 <b>20%</b> · 기존 수강생 <b>15%</b> · 1:1 <b>10%</b> · 시험대비반 <b>환승 10%만</b> · 퍼스널 <b>할인 없음</b>']]).replace('class="ctable"','class="ctable wrap"'))
+  +SEC('혜택 한눈에',CT(['이벤트','내용'],[['시험대비반','<b>환승 10%</b>만 · 토익: 문제풀이 월 1회 + 기초문법 40강 무료'],['동글이벤트','<b>회화반</b> · 가족·친구 함께 등록 시 <b>교재 무한 제공</b> (과정 이수 때 지급) · 할인과 중복'],['네이버 영수증 리뷰','<b>10,000P + 립밤</b> (가입 5,000P + 리뷰 5,000P) · 전 과정 · 토익·토스·오픽은 교재 1권 추가'],['포인트 사용','수강료에서 차감 · 1P = 1원'],['아키 패스','장기 수강 시 무료 개월 추가'],['다과목 수강','교재 지원 · 상담 후 안내'],['<b>상한</b>','새벽반 <b>20%</b> · 그 외 신규 <b>20%</b> · 기존 수강생 <b>15%</b> · 1:1 <b>10%</b> · 시험대비반 <b>환승 10%만</b> · 퍼스널 <b>할인 없음</b>']]).replace('class="ctable"','class="ctable wrap"'))
   +'<div class="pgnote">※ 정확한 금액은 031-466-6969</div><a class="pgcta" href="#" onclick="closePage();openTT();return false;">개강 일정 보기 ›</a>'+CTA(),
  '수강신청':enrollPage(),
  '수강후기':reviewPage, /* 2026-10-19 열 때마다 새 후기 불러오기 */
@@ -22408,7 +22408,7 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
   var d=q('#sgDaily');
   if(d&&!d.querySelector('.sl-dbar')){
    var bar=document.createElement('div');bar.className='sl-dbar';
-   bar.innerHTML='<button type="button"><b>🎯 오늘의 아키</b><span>매일 출석 · 30일 채우면 3,000P</span><i>출석하기 ›</i></button>';
+   bar.innerHTML='<button type="button"><b>🎯 오늘의 아키</b><span>매일 출석 · 30일 공부 습관 만들기</span><i>출석하기 ›</i></button>';
    d.insertBefore(bar,d.firstChild);d.classList.add('sl-fold');
    bar.firstChild.onclick=function(){d.classList.remove('sl-fold');bar.style.display='none';};
   }
