@@ -21755,6 +21755,9 @@ function sgvVerify(k,i){ var u=null,sid=''; try{ u=localStorage.getItem('sga_tok
   try{ localStorage.setItem('sga_g',d.g||''); }catch(e){}
   if(_sgvOpen(SGVID[k])){ try{ sgToast('<b>수강생 확인이 끝났습니다</b><br>등록하신 과정이 열렸습니다'); }catch(e){} sgVid(k,i); }
   else _sgvErr('확인되었습니다. 다만 이 영상은 등록하신 과정에 들어 있지 않습니다.'); }); }
+/* 2026-10-22 대표님 「회원이 초급 3강이 책 어디부분인줄 모르잖아? 그렇게 해 연동되게」 — 영어회화 영상마다 교재·Unit 표기 */
+var SGV_BOOK={en_b:[[12,'포코너스 1'],[16,'인터체인지 Intro']],en_s:[[12,'포코너스 2'],[16,'인터체인지 1']]};
+function sgvBook(k,j){var B=SGV_BOOK[k];if(!B)return '';var s=0;for(var b=0;b<B.length;b++){if(j<s+B[b][0])return B[b][1]+' · Unit '+(j-s+1);s+=B[b][0];}return '';}
 function sgVid(k,i){
  var c=SGVID[k]; if(!c) return;
  var el=document.getElementById('sgVid');
@@ -21767,7 +21770,7 @@ function sgVid(k,i){
  if(cur&&canPlay){
   var vid=_sgvId(cur[2]);
   player='<div class="sgv-pl"><iframe src="https://www.youtube-nocookie.com/embed/'+vid+'?rel=0&modestbranding=1&playsinline=1&autoplay=1" title="'+_sgsE(c.t+' '+cur[0])+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>'
-   +'<div class="sgv-now"><b>'+cur[0]+(k.indexOf('lp_')===0?'과':'강')+'</b> '+_sgsE(cur[1])
+   +'<div class="sgv-now"><b>'+cur[0]+(k.indexOf('lp_')===0?'과':'강')+'</b> '+_sgsE(cur[1])+(sgvBook(k,i)?' <small style="display:inline-block;font-size:13px;font-weight:900;color:#7B1733;background:#F6EBDD;border-radius:6px;padding:2px 7px;margin-left:4px">교재 '+sgvBook(k,i)+'</small>':'')
    +'<span class="sgv-nv">'+(i>0?'<button type="button" onclick="sgVid(\''+k+'\','+(i-1)+')">‹ 이전</button>':'')
    +(i<c.L.length-1?'<button type="button" onclick="sgVid(\''+k+'\','+(i+1)+')">다음 ›</button>':'')+'</span></div>';
   _sgvMark(k,cur[0]); try{ sgStreakHit('vid'); }catch(e){}
@@ -21795,7 +21798,7 @@ function sgVid(k,i){
  var list=c.L.map(function(x,j){
    var ok=x[2]&&(open||j<c.free), soon=!x[2];
    return '<button type="button" class="sgv-it'+(j===i?' on':'')+(ok?'':' lk')+'" onclick="sgVid(\''+k+'\','+j+')">'
-    +'<span class="n">'+x[0]+'</span><span class="t">'+_sgsE(x[1])+'</span>'
+    +'<span class="n">'+x[0]+'</span><span class="t">'+_sgsE(x[1])+(sgvBook(k,j)?'<small style="display:block;font-size:13px;font-weight:800;color:#F3D9A4;margin-top:3px">'+sgvBook(k,j)+'</small>':'')+'</span>'
     +'<span class="s">'+(soon?'곧 공개':(j<c.free?'무료':(ok?(seen[x[0]]?'✓ 봤어요':'▶'):'🔑')))+'</span></button>';}).join('');
  var nextI=-1; for(var j=0;j<c.L.length;j++){ if(c.L[j][2]&&(open||j<c.free)&&!seen[c.L[j][0]]){ nextI=j; break; } }
  el.innerHTML='<div class="sgv-w">'
@@ -21803,7 +21806,7 @@ function sgVid(k,i){
   +'<button class="x" type="button" onclick="sgVidClose()" aria-label="닫기">✕</button></div>'
   +(player||('<div class="sgv-intro"><p>보고 싶은 강의를 누르세요.</p>'+(nextI>=0?'<button type="button" onclick="sgVid(\''+k+'\','+nextI+')">'+(nseen?'이어서 보기':'1강부터 보기')+' — '+c.L[nextI][0]+' ›</button>':'')+'</div>'))
   +'<div class="sgv-ls">'+list+'</div>'
-  +'<p class="sgv-ft">영상은 산본글로벌어학원 강의 영상(「일부 공개」)입니다. 수업 교재와 같은 순서로 올라갑니다.</p>'
+  +'<p class="sgv-ft">영상은 산본글로벌어학원 강의 영상(「일부 공개」)입니다. 수업 교재와 같은 순서로 올라갑니다.'+(SGV_BOOK[k]?' 강마다 적힌 교재·Unit은 진도 안내용이며, 영상은 학원이 직접 만든 강의로 교재 본문은 담지 않았습니다.':'')+'</p>'
   +'</div>';
  el.classList.add('on'); document.body.style.overflow='hidden';
  try{ var on=el.querySelector('.sgv-it.on'); if(on&&on.scrollIntoView) on.scrollIntoView({block:'nearest'}); el.scrollTop=0; }catch(e){}
