@@ -18635,6 +18635,7 @@ function _bwChunks(parts){
 }
 function bwPut(keepScroll){
  var P=_bwPages[_bwP], bd=document.getElementById('bwPg'); if(!bd)return;
+ try{ bd.querySelectorAll('video').forEach(function(v){ try{v.pause();}catch(e){} }); }catch(e){}
  var top=keepScroll?bd.scrollTop:0;
  var h='';
  if(P.k==='cover'){
@@ -19231,6 +19232,7 @@ function sbQuiz(si,ui){
 }
 function sbPut(keep){
  var P=_sbPages[_sbP], bd=document.getElementById('sbPg'); if(!bd)return;
+ try{ bd.querySelectorAll('video').forEach(function(v){ try{v.pause();v.removeAttribute('src');v.load();}catch(e){} }); }catch(e){}
  var top=keep?bd.scrollTop:0, b=_sbBook, grp=b.grp, h='';
  var sub=document.getElementById('sbSub');
  if(P.k==='cover'){
@@ -21047,6 +21049,8 @@ body.has-tab #pgModal .aclose{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-
  window.akToc=function(kind){
   var host=document.getElementById(kind==='sb'?'sgBook':'sgBW'); if(!host) return;
   var old=host.querySelector('.ak-toc'); if(old){ old.remove(); down('toc'); return; }
+  /* 2026-10-22 대표님 「영상 틀면 목차를 누르면 영상은 없어지는데 소리가 계속남」 — 목차가 영상을 덮기 전에 재생 중인 영상을 멈춤 */
+  try{ host.querySelectorAll('video').forEach(function(v){ try{v.pause();}catch(e){} }); host.querySelectorAll('iframe').forEach(function(f){ try{f.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');}catch(e){} }); }catch(e){}
   var h='', cur=(kind==='sb')?_sbP:_bwP;
   if(kind==='sb'){
    var g=_sbBook.grp, last=-1;
