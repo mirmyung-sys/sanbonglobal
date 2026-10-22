@@ -8027,7 +8027,9 @@ var SGEV={
  /* 2026-09-17 대표님 확정 — 환승은 「항시」입니다. 기간을 없앴습니다.
     두 달(오픈이벤트 기간) 안에 환승하시면 오픈 10 + 환승 10 = 20%,
     두 달이 지나 환승하시면 환승 10% 만 붙습니다. 기간을 지운 것만으로 그대로 됩니다. */
- transfer:{rate:0.10,plabel:'상시',nm:'환승 이벤트',
+ /* 2026-10-22 대표님 「환승이벤트결제는 홈피에서하지말자 … 점만치고 해도결제가되네 … 영수증첨부했는지 체크가되야할듯」
+    — 홈페이지에서 체크만으로 10%가 빠지던 것을 막고, 이전 학원 결제 영수증 확인 후 데스크에서만 적용합니다(offline). */
+ transfer:{rate:0.10,plabel:'상시',nm:'환승 이벤트',offline:true,
   verify:true,dsc:'다른 학원에서 옮겨 오시는 분 · 상시 · 회화반·시험대비반 (1:1·퍼스널 제외)'},
  /* 2026-09-17 — 얼리버드(12월 10%)는 뺐습니다.
     대표님 「할인률이 많은게 좋은것만은 아닌것같다」. 오픈·환승·재등록 셋으로 단순하게 갑니다. */
@@ -8140,7 +8142,8 @@ function spDiscChange(){var de=document.getElementById('spDisc');if(!evGate(de.v
    온라인 결제로는 '두 사람이 같은 날 등록했는지'를 확인할 방법이 없습니다.
    그래서 즉시 할인으로 두지 않고, 두 분 결제가 확인된 뒤에 혜택을 드리는 구조로 갑니다. */
 var CLAIMS={
- early:{nm:'재등록 이벤트',ic:'\u2B50'}};
+ early:{nm:'재등록 이벤트',ic:'\u2B50'},
+ transfer:{nm:'환승 이벤트',ic:'\uD83D\uDD01'}};
 /* 2026-09-17 — 온라인 신청 폼을 없앴습니다.
    대표님 「사무처에서 확인 후 진행됩니다. 데스크에서 진행해 주시기 바랍니다.」
    성함·연락처를 받아 두고 처리는 데스크에서 하면 손님이 두 번 말해야 합니다.
@@ -8150,14 +8153,20 @@ function claimOpen(k){var C=CLAIMS[k]||CLAIMS.early;_claimK=k;
  lvOpenRun(
  '<h3 class="lvr-t">'+C.ic+' '+C.nm+' '+pct+'% 안내</h3>'
  +'<div class="lvr-note" style="text-align:left;font-size:15.5px;line-height:1.95">'
- +'<b>재등록 이벤트 '+pct+'% 할인은 사무처에서 확인 후 진행됩니다.</b><br>'
+ +(k==='transfer'
+  ?('<b>환승 이벤트는 데스크에서만 결제됩니다.</b><br>'
+   +'홈페이지 결제에서는 환승 '+pct+'% 할인이 적용되지 않습니다.<br><br>'
+   +'\u00b7 다니시던 학원의 <b>결제 영수증</b>(수강증·카드 결제내역)을 가져오시거나 보내 주세요.<br>'
+   +'\u00b7 영수증이 확인되면 데스크에서 <b>'+pct+'%</b> 할인가로 결제해 드립니다.<br>'
+   +'\u00b7 기간 없이 <b>상시</b> · 회화반·시험대비반 (1:1·퍼스널 제외)</div>')
+  :('<b>재등록 이벤트 '+pct+'% 할인은 사무처에서 확인 후 진행됩니다.</b><br>'
  +'<b>데스크에서 진행해 주시기 바랍니다.</b><br><br>'
  +'\u00b7 결제는 <b>오픈이벤트</b> 적용가로 먼저 하셔도 됩니다.<br>'
  +'\u00b7 재원 여부가 확인되면 데스크에서 <b>'+pct+'%</b>를 처리해 드립니다.<br>'
- +'\u00b7 수강이 끝난 뒤 <b>이어서 등록하시면 상시</b> 적용됩니다</div>'
+ +'\u00b7 수강이 끝난 뒤 <b>이어서 등록하시면 상시</b> 적용됩니다</div>'))
  +'<a class="lvr-go" href="tel:0314666969">전화로 문의 031-466-6969</a>'
  +'<button class="lvr-go tk-ghost" type="button" style="border:0;cursor:pointer;width:100%;margin-top:8px" onclick="lvCloseRun()">닫기</button>'
- +'<div class="lvr-note" style="font-size:12px">\u203B 학생 명부에서 확인되지 않으면 적용되지 않습니다.</div>');}
+ +'<div class="lvr-note" style="font-size:12px">\u203B '+(k==='transfer'?'이전 학원 영수증이 확인되지 않으면 적용되지 않습니다.':'학생 명부에서 확인되지 않으면 적용되지 않습니다.')+'</div>');}
 var _claimK='early';
 function famCopy(b){var t=(b.getAttribute('data-t')||'').replace(/\\n/g,'\n');
  if(sgCopy(t))sgToast('<b>복사했습니다.</b><br>카카오톡 채널 @산본글로벌어학원 또는 문자 031-466-6969 로 붙여넣어 보내 주세요.');
@@ -8169,7 +8178,8 @@ function famCopy(b){var t=(b.getAttribute('data-t')||'').replace(/\\n/g,'\n');
    1:1·퍼스널에는 붙지 않습니다. */
 var _vfInfo='';
 function openVerify(ctx){
- _vfCtx=ctx||'sp';
+ /* 2026-10-22 — 환승은 데스크 전용. 예전 경로로 들어와도 안내창만 띄웁니다 */
+ _vfCtx=ctx||'sp'; if((SGEV.transfer||{}).offline){claimOpen('transfer');return;}
  var pct=Math.round(((SGEV.transfer&&SGEV.transfer.rate)||0.10)*100);
  lvOpenRun(
   '<h3 class="lvr-t">\uD83D\uDD01 환승 이벤트 확인</h3>'
@@ -8850,8 +8860,8 @@ function _dpOpenLine(subj){
  if(_persSubj(subj))return '<b>1:1·퍼스널</b>은 할인이 적용되지 않습니다';
  return '<b>오픈이벤트 10%</b> — 회화반 자동 적용 (10월 31일 등록분까지 · 시험대비반·퍼스널 제외)';}
 function _dpOnlineLine(subj){
- if(_examSubj(subj))return '시험대비반은 <b>오픈이벤트가 없고</b>, 다른 학원에서 옮겨 오시면 <b>환승 10%</b>가 온라인에서 바로 빠집니다.';
- return '온라인에서 바로 깎이는 할인은 <b>오픈이벤트 10%</b>와 <b>환승 10%</b>(다니던 학원 입력)입니다.';}
+ if(_examSubj(subj))return '시험대비반은 <b>오픈이벤트가 없고</b>, 환승 10%는 다니던 학원 <b>영수증 확인 후 데스크에서</b> 적용됩니다.';
+ return '온라인에서 바로 깎이는 할인은 <b>오픈이벤트 10%</b>입니다. <b>환승 10%</b>는 다니던 학원 영수증 확인 후 <b>데스크에서</b> 적용됩니다.';}
 function discPick(subj){discClose();_dpSel={};_dpSubj=subj;
  var cur=_discSel();evParts(cur?cur.value:'').forEach(function(k){if(evActive(k))_dpSel[k]=1;});
  var d=document.createElement('div');d.className='sp-modal on';d.id='diModal';
@@ -20550,6 +20560,9 @@ document.addEventListener('keydown',function(e){ if(e.key==='Escape') sgMenuClos
 <style id="akNavCss">
 /* ═══ 아키 AI 강의실 — 채널 하나 (2026-09-28) ═══ */
 #pgModal.ak-over{z-index:9660!important}
+/* 2026-10-22 마리 버그수정: 모의고사 수강생확인(.sp-modal)와 .amodal이 pgModal(9660) 뒤에 가려져 버튼이 안 눈려는 문제 수정 — 모달은 항상 pgModal보다 위에 */
+.sp-modal{z-index:9700!important}
+.amodal{z-index:9700!important}
 /* 검정 바탕 금지 — 강의실 윗줄을 와인색으로 */
 .sgs-bar{background:rgba(90,18,38,.94)!important;border-bottom:1px solid rgba(240,214,170,.22)!important}
 .sgs-bar small{color:#E3C9A8!important}
