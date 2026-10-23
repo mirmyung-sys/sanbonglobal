@@ -38,7 +38,7 @@
  "description":"산본역 3번 출구 도보 1분. 영어·일본어·중국어 회화와 토익·토스·오픽·JLPT·HSK를 현강과 아키 AI 강의실로 함께 배웁니다. 강사 21명, 1:1·기업출강까지. 무료 레벨테스트 031-466-6969",
  "address":{
    "@type":"PostalAddress",
-   "streetAddress":"산본로323번길 16-7 롯데프라자 7층 701·702·703호",
+   "streetAddress":"산본로323번길 16-7 롯데프라자 7층",
    "addressLocality":"군포시",
    "addressRegion":"경기도",
    "addressCountry":"KR"
@@ -3621,12 +3621,12 @@ li:first-child > .pgh{margin-top:2px}
 .bt-langs span{font-size:13px;font-weight:800;color:var(--ink3);margin-right:2px}
 .bt-lg{font-size:15px;font-weight:800;padding:9px 20px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--ink2);cursor:pointer}
 .bt-lg.on{background:var(--brand);border-color:var(--brand);color:#fff}
-.bt-price{background:linear-gradient(135deg,#7B1733,#B03A55);color:#fff;border-radius:18px;padding:26px 22px;text-align:center;margin:18px 0}
-.bt-price .o{font-size:15px;color:#a9b6ce;text-decoration:line-through;font-variant-numeric:tabular-nums}
-.bt-price .f{font-size:40px;font-weight:900;letter-spacing:-.03em;margin:6px 0 4px;font-variant-numeric:tabular-nums}
+.bt-price{background:#FFF8F6;color:#2B1F24;border:2px solid #D21F2B;border-radius:18px;padding:22px 22px;text-align:center;margin:18px 0}
+.bt-price .o{font-size:17px;color:#8a7a80;text-decoration:line-through;font-variant-numeric:tabular-nums}
+.bt-price .f{font-size:52px;font-weight:900;color:#D21F2B;letter-spacing:-.03em;margin:6px 0 4px;font-variant-numeric:tabular-nums}
 .bt-price .f em{font-style:normal;font-size:22px;margin-left:4px}
-.bt-price .n{font-size:14px;color:#cdd8ec;line-height:1.7}
-.bt-price .n b{color:#ffd94d}
+.bt-price .n{font-size:14.5px;color:#4a3a40;line-height:1.7}
+.bt-price .n b{color:#D21F2B}
 .bt-sec{margin:26px 0 0}
 .bt-sec h3{font-size:20px;font-weight:900;color:var(--ink);margin:0 0 6px;letter-spacing:-.02em}
 /* 검정 바탕 + 적색 테두리 + 적색 글씨 강조 제목 */
@@ -5240,10 +5240,12 @@ sgLb.i=0;
       <div class="ddown">
         <a href="#" onclick="curGo('en');return false;">영어회화</a>
         <a href="#" onclick="curGo('toeic');return false;">토익</a>
-        <a href="#" onclick="curGo('tos');return false;">토익스피킹</a>
+        <a href="#" onclick="curGo('ja');return false;">일본어</a>
+        <a href="#" onclick="curGo('jlpt');return false;">JLPT</a>
+        <a href="#" onclick="curGo('zh');return false;">중국어</a>
+        <a href="#" onclick="curGo('hsk');return false;">HSK</a>
         <a href="#" onclick="curGo('opic');return false;">오픽</a>
-        <a href="#" onclick="curGo('ja');return false;">일본어 · JLPT</a>
-        <a href="#" onclick="curGo('zh');return false;">중국어 · HSK</a>
+        <a href="#" onclick="curGo('tos');return false;">토스</a>
       </div>
     </div>
     <div class="ni"><a href="#" onclick="openPage('강의안내');return false;">글로벌 시험반<b class="car">▾</b></a>
@@ -5623,7 +5625,7 @@ function sgdPaint(){
       <div class="ftlogo">SGA<span>산본글로벌어학원</span></div>
       <div class="ftlines">
         상호 <b>산본글로벌어학원</b> (SANBON GLOBAL ACADEMY) · 대표 <b>명충건</b><br>
-        주소 경기도 군포시 산본로323번길 16-7 롯데프라자 7층 701·702·703호 (산본동, 산본역 인근)<br>
+        주소 경기도 군포시 산본로323번길 16-7 롯데프라자 7층 (산본동, 산본역 인근)<br>
         전화 <b>031-466-6969</b> · 전자우편 <b>sanbonglobal@naver.com</b> · 카카오톡 채널 pf.kakao.com/_FxfgQT · 블로그 blog.naver.com/sanbonglobal · 인스타 @sanbonglobal_ · 유튜브 @sanbonglobal<br>
         사업자등록번호 <b>270-95-01735</b> (부가가치세 면세사업자) · 통신판매업 신고 <b>제2026-경기군포-0689호</b> · 학원등록번호 <b>제2234호</b> (경기도군포의왕교육지원청 · 2026.09.14 등록) · 개업일 2024.10.01 · 호스팅서비스 제공자 <b>GitHub, Inc.</b><br>
         학원 종류 평생직업교육학원 / 교습과정 성인대상어학 · 일시수용능력 <b>138명</b> · 전용면적 266.38㎡<br>
@@ -5865,15 +5867,15 @@ var NOTICES=[
   act:"openPage('무료청강')", actLabel:'JLPT 상담'},
  {id:'n24', tag:'공지', t:'SGA문화센터 단기반 · 엄마(맘)들의 영어수다 두 달 과정', d:'2026.10.22', pin:1,
   b:'<div style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:0 0 14px;-webkit-overflow-scrolling:touch"><img src="img/notice/n24_1.jpg?v=1023m" alt="SGA문화센터 단기반 — 김현정 · 타나이 치토세" style="flex:0 0 100%;width:100%;max-width:520px;scroll-snap-align:center;border-radius:14px;aspect-ratio:4/5;object-fit:cover"><img src="img/notice/n24_2.jpg?v=1023m" alt="SGA문화센터 영어 김현정 강사" style="flex:0 0 100%;width:100%;max-width:520px;scroll-snap-align:center;border-radius:14px;aspect-ratio:4/5;object-fit:cover"><img src="img/notice/n24_3.jpg?v=1022d" alt="SGA문화센터 일본어 타나이 치토세 강사" style="flex:0 0 100%;width:100%;max-width:520px;scroll-snap-align:center;border-radius:14px;aspect-ratio:4/5;object-fit:cover"></div><p style="font-size:13px;color:#5A5750;margin:-6px 0 12px">옆으로 넘겨 보세요 (1/3 → 3/3)</p><p style="font-family:&quot;Noto Serif KR&quot;,serif;font-size:36px;font-weight:900;color:#7B1733;margin:2px 0 0;line-height:1.15">엄마(맘)들의 영어수다</p><p style="font-size:18px;font-weight:800;color:#0F6B5E;margin:4px 0 12px">여행 가서 남편보다 잘하는 영어</p><p><b>SGA문화센터 단기반 — 두 달 과정입니다.</b> 석 달씩 묶지 않고 두 달(8번)로 끝냅니다. 오후 1시부터 6시까지, 동네 가까이 가볍게 배우세요.</p><ul><li><b>두 달 96,000원</b>(한 달 48,000원) — 80분 수업 한 달 4번, 두 달 8번</li><li>영어 — <b>김현정</b> 강사 · 일본어 — <b>타나이 치토세</b>(일본인 원어민)</li><li>주 1회 80분 · 두 달 8번 · <b>반마다 8명</b></li><li><b>8명이 모이면 개강</b> — 개강 날짜는 정원이 차는 대로 문자로 알려 드립니다</li><li>정원제 반이라 <b>무료 청강은 없습니다</b></li></ul><table style="width:100%;border-collapse:collapse;margin:10px 0 14px;font-size:15px"><tr style="background:#0F6B5E;color:#fff"><th style="padding:8px;text-align:left">반</th><th style="padding:8px">요일</th><th style="padding:8px">시간</th><th style="padding:8px">강사</th></tr><tr><td style="padding:8px;border-bottom:1px solid #e6ddd0"><b style="font-size:17px;color:#7B1733;white-space:nowrap">엄마(맘)들의 영어수다</b> <b style="white-space:nowrap">화반</b><br><small>여행 가서 남편보다 잘하는 영어</small></td><td style="padding:8px;border-bottom:1px solid #e6ddd0;text-align:center">화</td><td style="padding:8px;border-bottom:1px solid #e6ddd0;text-align:center">13:00~14:20</td><td style="padding:8px;border-bottom:1px solid #e6ddd0;text-align:center">김현정</td></tr><tr><td style="padding:8px;border-bottom:1px solid #e6ddd0"><b style="font-size:17px;color:#7B1733;white-space:nowrap">엄마(맘)들의 영어수다</b> <b style="white-space:nowrap">목반</b></td><td style="padding:8px;border-bottom:1px solid #e6ddd0;text-align:center">목</td><td style="padding:8px;border-bottom:1px solid #e6ddd0;text-align:center">13:00~14:20</td><td style="padding:8px;border-bottom:1px solid #e6ddd0;text-align:center">김현정</td></tr><tr><td style="padding:8px;border-bottom:1px solid #e6ddd0"><b style="font-size:17px;color:#7B1733;white-space:nowrap">맘편한 일본어</b> <b style="white-space:nowrap">화반</b><br><small>일본 가족여행, 통역은 엄마가 · 일본인 원어민</small></td><td style="padding:8px;border-bottom:1px solid #e6ddd0;text-align:center">화</td><td style="padding:8px;border-bottom:1px solid #e6ddd0;text-align:center">13:00~14:20</td><td style="padding:8px;border-bottom:1px solid #e6ddd0;text-align:center">타나이 치토세</td></tr><tr><td style="padding:8px;border-bottom:1px solid #e6ddd0"><b style="font-size:17px;color:#7B1733;white-space:nowrap">맘편한 일본어</b> <b style="white-space:nowrap">목반</b></td><td style="padding:8px;border-bottom:1px solid #e6ddd0;text-align:center">목</td><td style="padding:8px;border-bottom:1px solid #e6ddd0;text-align:center">13:00~14:20</td><td style="padding:8px;border-bottom:1px solid #e6ddd0;text-align:center">타나이 치토세</td></tr><tr><td style="padding:8px"><b>엄마도 학원 간다</b><br><small>아이 학원 간 사이 80분, 엄마는 영어</small></td><td style="padding:8px;text-align:center">화 또는 목</td><td style="padding:8px;text-align:center">16:40~18:00</td><td style="padding:8px;text-align:center">김현정</td></tr></table><p>반마다 8명이 모이면 개강하고, 다 차면 마감합니다. 자리 남았는지는 전화로 물어보세요.</p><p>상담 031-466-6969 · 산본역 3번 출구 롯데프라자 7층</p><p style="font-size:13px;color:#555">산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청)</p>',
-  act:"openPage('무료청강')", actLabel:'SGA문화센터 상담'},
+  act:"deskPop('SGA문화센터')", actLabel:'SGA문화센터 상담'},
  {id:'n23', tag:'개강', t:'새벽반 개설 · 20% 할인', d:'2026.10.17', pin:1,
   b:'<p><b>비비에나 수업, 무료로 들어보세요.</b></p><p>여러분은 <b>시간만</b> 내어주세요. 영어 실력은 <b>저희가 알아서</b> 올려드립니다.</p><p>출근 전 1시간, 화·수·목 아침에 수업합니다.</p><ul><li>영어 회화 최강1타 강사 — <b>김현정 (Vivienne Kim)</b></li><li>화·수·목 <b>06:30~07:30</b> · 한 달 12번</li><li>새벽반은 <b>상시 20% 할인</b> (다른 할인과 중복되지 않습니다)</li></ul><p>상담 031-466-6969 · 산본역 3번 출구 롯데프라자 7층</p><p style="font-size:13px;color:#555">산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청)</p>',
   act:"openPage('무료청강')", actLabel:'새벽반 상담'},
  {id:'n26', tag:'이벤트', t:'모든 강좌 첫 수업 무료', d:'2026.10.17', pin:1,
   b:'<p><b>등록 전에 원하는 강좌 첫 수업을 무료로 들어보실 수 있어요.</b></p><ul><li>영어·일본어·중국어 회화 · 토익·토스·오픽·JLPT·HSK 전부</li><li>등록 전 1회 · 전화나 카카오톡으로 자리를 잡아 드립니다</li><li>SGA문화센터는 정원제 반이라 무료 청강이 없습니다</li></ul><p>상담 031-466-6969 · 산본역 3번 출구 롯데프라자 7층</p><p style="font-size:13px;color:#555">산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청)</p>',
   act:"openPage('무료청강')", actLabel:'무료 청강 신청'},
- {id:'n27', tag:'이벤트', t:'빼빼로데이 1+1 · 1:1 등록 시 원어민 회화 한 달 무료', d:'2026.10.17', pin:1,
-  b:'<p><b>11월 빼빼로데이 1+1 이벤트.</b> 일대일 수업을 등록하시면 원어민 회화를 최소 한 달 무료로 드립니다.</p><ul><li>대상 — 일대일(시간권) · 퍼스널 1:1 제외</li><li>자세한 조건은 상담 때 안내드립니다</li></ul><p>상담 031-466-6969 · 산본역 3번 출구 롯데프라자 7층</p><p style="font-size:13px;color:#555">산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청)</p>',
+ {id:'n27', tag:'이벤트', t:'11월 1:1 1+1 · 20시간 등록하면 정규반 한 달 무료', d:'2026.10.17', pin:1,
+  b:'<p><b>11월 1:1 1+1 이벤트.</b> 일대일 수업을 <b>20시간</b> 등록하시면 정규반 <b>210,000원 무료 수강권</b>(한 달)을 드립니다.</p><ul><li>기간 — 11월 1일 ~ 30일 등록분</li><li>대상 — 일대일 20시간 등록 · 퍼스널 1:1 제외</li><li>1:1 수강료는 정가 그대로입니다</li></ul><p>상담 031-466-6969 · 산본역 3번 출구 롯데프라자 7층</p><p style="font-size:13px;color:#555">산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청)</p>',
   act:"openPage('맞춤수업')", actLabel:'1:1 안내 보기'},
  {id:'n25', tag:'이벤트', t:'당근 모임장님께 · 모임 장소 무료', d:'2026.10.17', pin:1,
   b:'<p><b>산본동이 글로벌해지게!</b> 당근 모임장님, 모든 모임 글로벌하게 모이세요.</p><ul><li>학원 공간 <b>무료 대여</b> — 시간만 예약해 주세요</li><li>커피 · 사탕 <b>무한 제공</b></li></ul><p>상담 031-466-6969 · 산본역 3번 출구 롯데프라자 7층</p><p style="font-size:13px;color:#555">산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청)</p>',
@@ -6089,24 +6091,25 @@ function noticePage(){
 }
 
 const SLIDES=[
+/* 2026-10-23 대표님 「중간그리드 광고에서 과목별 커리큘럼을 맨위 첫번째로 올려 그리고 토익스파르타 그리곤 원래 순서데로」 */
+ { st:'과목별 커리큘럼', e:'CURRICULUM · 커리큘럼', bg:'img/cur_toeic.jpg?v=1023', t:'어디서 시작해<br>몇 달 뒤 어디까지', chips:['영어회화','토익','일본어','JLPT','중국어','HSK','오픽','토스'], s:'과목별 단계·교재·기간을 한 장으로 — 우리 학원 커리큘럼을 그대로 보여 드립니다', act:"openPage('커리큘럼')", pbg:'linear-gradient(135deg,#4A0F22,#7B1733)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5A1226'},
+ { st:'11월 토익 스파르타', e:'11월 토익 스파르타 · 정규반 모집', bg:'img/notice/toeic_bg2.jpg?v=1017b', t:'토익 강사 3명,<br>먼저 들어보시고 선택하세요', s:'토익 만점 강사 송윤정 · 더 쎈토익 창시자 엘리 킴 · 「김현정 토익은 진짜다」', act:"openPage('수강신청');bkGo('토익')", pbg:'linear-gradient(135deg,#6B1F2E,#b8322a)', tc:'#ffd94d', tc2:'#ffe3e0', ac:'#ffe0dd', bbg:'#ffd94d', btc:'#6B1F2E', cls:'hsty-impact', faces:['eng_13','elly','eng_15'], fnames:['송윤정','엘리 킴','김현정']},
 /* 2026-10-23 대표님 순서 확정 (폰·PC 같은 그리드 순서): 1 1:1 PT어학원 · 2 11월 신규강좌 · 3 토익강사(11월 토익 스파르타) · 4 기업체 출강 · 5 평생교육이용권 · 6 아키 · 7 SGA 문화센터 · 8 JLPT · 9 토익·유학(원장상담) · 10 모든 강좌 무료. 목록에 없는 「곧 오픈 · 어학 수강권 선물」은 광고판에서 뺌(아래 주석에 원본 보관). st = 광고판 카드의 큰 제목 */
 /* 2026-10-23 대표님 「11월 신규개강안내 … 그리드 순서 1~10」 — 1번 1:1 PT어학원(신규 커리큘럼) · 11월 한정 이벤트 */
  { st:'1:1 PT어학원', bd:'11월 한정', e:'1:1 PT어학원 · 신규 커리큘럼', bg:'img/hall_03.jpg', t:'개인 1:1 20시간 등록 시<br>정규반 한 달 무료', s:'11월 한정 이벤트 — 1:1 PT어학원(신규 커리큘럼)에서 개인 1:1 20시간을 등록하시면 정규반 한 달을 무료로 드립니다', act:"openPage('1:1 전문')", pbg:'linear-gradient(135deg,#6E1450,#A8327A)', tc:'#FFF8EC', tc2:'#F7E1EE', ac:'#F6D58A', bbg:'#F6D58A', btc:'#6E1450', cls:'hsty-impact'},
 /* 2026-10-23 대표님 「왕기초 반 생성 · 언어의 문턱을 넘겨드립니다 · 모든 언어 최초 1회만 · 메인 중간광고판에도」 — 학원 게시 포스터 「왕기초 일대일 Package」 금액 그대로 (A 회화 138만→99만 · B 시험 165만→119만) */
  { st:'왕기초 1:1 패키지', bd:'최초 1회', e:'왕기초 1:1 · 영어·토익·일본어·중국어·JLPT·HSK', bg:'img/gen1.jpg', t:'언어의 문턱을<br>넘겨드립니다', chips:['왕기초 영어회화','왕기초 토익','왕기초 일본어','왕기초 중국어','왕기초 JLPT','왕기초 HSK'], s:'1:1 20시간 + 정규반 2개월 무료 + 교재 — 회화 138만원→99만원 · 시험 165만원→119만원 (28% 할인) · 언어별 최초 1회', act:"openPage('왕기초')", pbg:'linear-gradient(135deg,#7A2E0E,#C2571A)', tc:'#FFF8EC', tc2:'#FBE6D4', ac:'#F6D58A', bbg:'#F6D58A', btc:'#7A2E0E', cls:'hsty-impact'},
+{ st:'11월 1:1 1+1', bd:'11월 한정', e:'11월 1+1 · 일대일 20시간', bg:'img/gen_pt.jpg', t:'1:1 20시간 등록하면<br>정규반 한 달이 +1', chips:['영어 1:1','토익 1:1','일본어 1:1','중국어 1:1','오픽·토스 1:1'], s:'11월 1일~30일 · 1:1 20시간 등록 시 정규반 210,000원 무료 수강권 증정 · 퍼스널 1:1 제외', act:"openPage('맞춤수업')", pbg:'linear-gradient(135deg,#8A6416,#C99A3B)', tc:'#FFFDF5', tc2:'#FFF3D6', ac:'#FFE9A8', bbg:'#FFE9A8', btc:'#5A3E08', cls:'hsty-impact'},
 /* 2번 11월 신규강좌 — 대표님 「그냥 신규강좌로 적기만 하고 저렇게 써놔」 */
- { st:'11월 신규강좌', bd:'NEW', e:'11월 신규강좌 · NEW', bg:'img/hall_12.jpg', t:'11월 신규강좌 오픈', chips:['새벽반 오픈','토익 스파르타','토익 정규반','오픽 · 토스반','일본어 입문','중국어 입문','토요일 영어','토요일 일본어 입문','JLPT반'], s:'새벽반 오픈 · 토익 스파르타 · 토익 정규반 · 오픽·토스반 · 일본어 입문 · 중국어 입문 · 토요일 영어 · 토요일 일본어 입문 · JLPT반', act:"openPage('수강신청')", pbg:'linear-gradient(135deg,#7A4A00,#C8901A)', tc:'#FFF8EC', tc2:'#FFF0D2', ac:'#FFE7A8', bbg:'#FFE7A8', btc:'#6A3F00', cls:'hsty-impact'},
- { st:'11월 토익 스파르타', e:'11월 토익 스파르타 · 정규반 모집', bg:'img/notice/toeic_bg2.jpg?v=1017b', t:'토익 강사 3명,<br>먼저 들어보시고 선택하세요', s:'토익 만점 강사 송윤정 · 더 쎈토익 창시자 엘리 킴 · 「김현정 토익은 진짜다」', act:"openPage('수강신청');bkGo('토익')", pbg:'linear-gradient(135deg,#6B1F2E,#b8322a)', tc:'#ffd94d', tc2:'#ffe3e0', ac:'#ffe0dd', bbg:'#ffd94d', btc:'#6B1F2E', cls:'hsty-impact', faces:['eng_13','elly','eng_15'], fnames:['송윤정','엘리 킴','김현정']},
+ { st:'11월 신규강좌', bd:'NEW', e:'11월 신규강좌 · NEW', bg:'img/hall_12.jpg', t:'11월 신규강좌 오픈', chips:['토익 스파르타 · 송윤정','영어회화 입문 · 김현정 비비에나','일본어 입문 · 타나이치토세','영어회화 토요반 · 최자운','일본어 · 중국어 입문반'], s:'송윤정 만점강사의 토익 스파르타 · 김현정 비비에나 강사의 영어회화 입문 · 일본어 원어민 타나이치토세 입문반(오전반·토요반) · 최자운 강사의 영어회화 토요반 · 일본어·중국어 입문반', act:"openPage('11월신규강좌')", pbg:'linear-gradient(135deg,#7A4A00,#C8901A)', tc:'#FFF8EC', tc2:'#FFF0D2', ac:'#FFE7A8', bbg:'#FFE7A8', btc:'#6A3F00', cls:'hsty-impact', faces:['eng_13','eng_15','../../t_tanai','eng_6','jpn_2','chn_5'], fnames:['송윤정','김현정','타나이','최자운','일본어','중국어']},
  { st:'기업체 출강', e:'기업체 출강 · 임원 1:1', bg:'img/biz_main.jpg', t:'전문강사진 25명이<br>회사로 찾아갑니다', s:'원어민 · 한인 회화강사 · 토익·토플·오픽·토스 전문강사 — 기업체 출강 · 임원 1:1', act:"location.href='biz.html#native'", pbg:'linear-gradient(135deg,#3E1F5C,#6B3A8E)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5A1226', cls:'hsty-impact', faces:['eng_11','jpn_8','eng_13','eng_15','chn_1'], fnames:['원어민','원어민','토익','토플·오픽','원어민']},
  { st:'평생교육 이용권', e:'정부 지원 · 평생교육이용권', bg:'img/ai/clock.jpg', t:'평생교육이용권,<br>1인당 연 최대 35만원', s:'산본글로벌어학원은 평생교육이용권 사용기관입니다 — 영어·일본어·중국어·토익 수강료를 이용권으로 결제하세요', act:"openPage('평생교육이용권')", pbg:'linear-gradient(135deg,#8A3410,#C8622A)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5B1026', cls:'hsty-impact'},
 /* 2026-10-23 대표님 「아키영상은 그대로 두고 팝업창으로 만들자는거였어 … 메인창에 아키관은 그대로」 — 6번 칸 「아키 AI 강의실」 원래대로 복원, 영상 맛보기는 팝업(sgTastePop)으로 */
  { st:'아키 AI 강의실', e:'AKI · 아키 AI 강의실', aki:'img/aki/aki_hero.png?v=1019f', bg:'img/ai/talk.jpg', t:'안녕하세요,<br>저는 아키예요', s:'산본글로벌어학원 AI 선생님 — 영어·일본어·중국어·토익 1강은 누구나 무료, 학원 수강생은 전부 무료', act:"try{closePage()}catch(e){};sgShop()", pbg:'linear-gradient(135deg,#9C2A5A,#D4588A)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5B1026', cls:'hsty-impact'},
  { st:'SGA 문화센터', e:'SGA문화센터 · 오후 1~6시', nb:1, bg:'img/notice/n24_bg.jpg?v=1017b', t:'엄마(맘)들의 영어수다,<br>두 달 과정 모집', s:'SGA문화센터 단기반 · 엄마(맘)들의 영어수다 · 맘편한 일본어 · 엄마도 학원 간다 — 반마다 8명 모이면 개강', act:"noticeOpen('n24')", pbg:'linear-gradient(135deg,#0F6B5E,#1C8B76)', tc:'#FFF8EC', tc2:'#E8F5EF', ac:'#F6D58A', bbg:'#F6D58A', btc:'#0F4B42', cls:'hsty-impact', faces:['eng_15','../../t_tanai'], fnames:['김현정','타나이 치토세']},
- { st:'JLPT', e:'JLPT · 내년 7월 시험', nb:1, bg:'img/notice/jlpt_bg.jpg?v=1017b', t:'히라가나부터<br>N3까지', s:'JLPT 방학 특공대반 · 내년 7월 시험대비반 모집 — 올해는 퍼스널로 바로 시작', act:"rsvOpen('일본어 / JLPT')", pbg:'linear-gradient(135deg,#9E1F1A,#C8352B)', tc:'#FFF8EC', tc2:'#FFE7E1', ac:'#F6D58A', bbg:'#F6D58A', btc:'#7A1712', cls:'hsty-impact'},
+ { st:'JLPT', e:'JLPT · 내년 7월 시험', nb:1, bg:'img/notice/jlpt_bg.jpg?v=1017b', t:'히라가나부터<br>N3까지', s:'JLPT 방학 특공대반 · 내년 7월 시험대비반 모집 — 올해는 퍼스널로 바로 시작', act:"curGo('ja')", pbg:'linear-gradient(135deg,#9E1F1A,#C8352B)', tc:'#FFF8EC', tc2:'#FFE7E1', ac:'#F6D58A', bbg:'#F6D58A', btc:'#7A1712', cls:'hsty-impact'},
  { st:'토익 · 유학 상담', e:'DIRECTOR · 원장 직접 상담', bg:'img/ai/consult.jpg', t:'토익·유학·시험대비,<br>원장이 직접 상담합니다', s:'Georgetown TESOL 출신 원장 · 상담은 무료입니다', act:"openPage('원장상담')", pbg:'linear-gradient(135deg,#5A1226,#8E1F35)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5A1226', cls:'hsty-soft'},
  { st:'모든 강좌 무료', e:'FREE · 무료 청강', bg:'img/ai/classroom.jpg', t:'모든 강좌<br>첫 수업 무료', s:'영어·일본어·중국어 회화부터 토익·JLPT·HSK까지 — 등록 전에 1번 들어보세요', act:"openPage('무료청강')", pbg:'linear-gradient(135deg,#0E8A5A,#14B06E)', tc:'#eaffd6', tc2:'#d6f5e7', ac:'#D6F5E7', bbg:'#ffffff', btc:'#0E8A5A'},
-/* 2026-10-23 커리큘럼 메뉴 신설에 맞춰 광고판 맨 끝에 추가 (기존 칸은 그대로) */
- { st:'과목별 커리큘럼', e:'CURRICULUM · 커리큘럼', bg:'img/cur_toeic.jpg?v=1023', t:'어디서 시작해<br>몇 달 뒤 어디까지', chips:['영어회화','토익','토익스피킹','오픽','일본어·JLPT','중국어·HSK'], s:'과목별 단계·교재·기간을 한 장으로 — 우리 학원 커리큘럼을 그대로 보여 드립니다', act:"openPage('커리큘럼')", pbg:'linear-gradient(135deg,#4A0F22,#7B1733)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5A1226'},
 /* 보관(광고판에서 뺌 10/23): { e:'곧 오픈 · 어학 수강권 선물', bg:'img/ai/gift.jpg', t:'어학을 선물하세요', s:'영어·일본어·중국어 수강권을 소중한 사람에게 — 선물 수강권이 곧 오픈합니다. 미리 문의하시면 오픈 소식을 가장 먼저 알려드려요', act:"sgToast('<b>어학 선물 수강권, 곧 오픈됩니다</b><br>오픈 소식을 가장 먼저 알려드릴게요')", pbg:'linear-gradient(135deg,#4F6B1A,#7D9A2A)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5B1026', cls:'hsty-impact'}, */
 ];
 
@@ -7074,26 +7077,43 @@ function eventHubPage(){
 }
 /* ═══ 커리큘럼 — 2026-10-23 대표님 「커리큘럼이 중요한데 우리 홈페이지에는 없어서 … 우리 만든 사진 자료들 구성해서 만들어」
    10/06 과목별 커리큘럼 6장 + 10/11 교재·시험대비 로드맵 6장(대표님 PC 원본)을 과목별로 묶음. 사진을 누르면 크게 봅니다. */
+/* 2026-10-23 대표님 「커리큘럼을 아키원서처럼 옆으로 넘겼으면 · 순서는 영어회화 토익 일본어 JLPT 중국어 HSK 오픽 토스」 */
 var CURR=[
- {k:'en',t:'영어회화',c:'#0A5C3D',s:'기초부터 원어민 회화까지 — 한 단계는 책 두 권으로 4개월',im:[['cur_en','영어회화 단계별 커리큘럼'],['cur_en_book','영어회화 교재 로드맵']],rs:'영어회화'},
- {k:'toeic',t:'토익',c:'#7B1733',s:'초급 → 중급 → 실전 · 정규반 6개월 / 스파르타 3개월',im:[['cur_toeic','토익 단계별 커리큘럼'],['cur_exam_en','영어 시험대비 로드맵 (토익·토스·오픽)']],rs:'토익'},
- {k:'tos',t:'토익스피킹',c:'#9A5B13',s:'두 달, 한 과정으로 끝냅니다 — 11문제 전 파트',im:[['cur_tos','토익스피킹 2개월 완성 커리큘럼']],rs:'토스'},
- {k:'opic',t:'오픽',c:'#C8452F',s:'두 달, 한 과정으로 끝냅니다 — 매주 토요일',im:[['cur_opic','오픽 2개월 완성 커리큘럼']],rs:'오픽'},
- {k:'ja',t:'일본어 · JLPT',c:'#B8324F',s:'글자부터 원어민 수업까지 — 다이스키 1·2·3 + JLPT',im:[['cur_ja','일본어회화 단계별 커리큘럼'],['cur_ja_book','일본어 교재 로드맵'],['cur_jlpt','2027년 7월 JLPT 합격 로드맵']],rs:'일본어'},
- {k:'zh',t:'중국어 · HSK',c:'#8C4A2F',s:'성조부터 비즈니스 회화까지 — 맛있는 중국어 + HSK',im:[['cur_zh','중국어회화 단계별 커리큘럼'],['cur_zh_book','중국어 교재 로드맵'],['cur_hsk','중국어 HSK 합격 로드맵']],rs:'중국어'}
+ {k:'en',t:'영어회화',c:'#0A5C3D',rs:'영어회화',im:[['cur_en','영어회화 단계별 커리큘럼'],['cur_en_book','영어회화 교재 로드맵 · 정규반 수업 시간']]},
+ {k:'toeic',t:'토익',c:'#7B1733',rs:'토익',im:[['cur_toeic','토익 단계별 커리큘럼'],['cur_exam_en','영어 시험대비 로드맵 (토익·토스·오픽)']]},
+ {k:'ja',t:'일본어',c:'#B8324F',rs:'일본어',im:[['cur_ja','일본어회화 단계별 커리큘럼'],['cur_ja_book','일본어 교재 로드맵']]},
+ {k:'jlpt',t:'JLPT',c:'#9E1F1A',rs:'일본어 / JLPT',im:[['cur_jlpt','2027년 7월 JLPT 합격 로드맵']]},
+ {k:'zh',t:'중국어',c:'#8C4A2F',rs:'중국어',im:[['cur_zh','중국어회화 단계별 커리큘럼'],['cur_zh_book','중국어 교재 로드맵']]},
+ {k:'hsk',t:'HSK',c:'#6E3A22',rs:'중국어 / HSK',im:[['cur_hsk','중국어 HSK 합격 로드맵']]},
+ {k:'opic',t:'오픽',c:'#C8452F',rs:'오픽',im:[['cur_opic','오픽 2개월 완성 커리큘럼']]},
+ {k:'tos',t:'토스',c:'#9A5B13',rs:'토스',im:[['cur_tos','토익스피킹 2개월 완성 커리큘럼']]}
 ];
+var CUSL=[]; CURR.forEach(function(g){ g.im.forEach(function(m){ CUSL.push({g:g,m:m}); }); });
+var _cuI=0;
 function curPage(){
- var tabs=CURR.map(function(g){ return '<a href="#" style="--cc:'+g.c+'" onclick="curJump(\''+g.k+'\');return false;">'+g.t+'</a>'; }).join('');
- var secs=CURR.map(function(g){
-  var ims=g.im.map(function(m){ return '<figure class="cu-f"><a href="#" onclick="curZoom(\'img/'+m[0]+'.jpg?v=1023\',\''+m[1]+'\');return false;"><img src="img/'+m[0]+'.jpg?v=1023" alt="'+m[1]+'" loading="lazy"></a><figcaption>'+m[1]+' <span>🔍 누르면 크게</span></figcaption></figure>'; }).join('');
-  return '<section class="cu-s" id="cu_'+g.k+'"><div class="cu-hd" style="--cc:'+g.c+'"><h3>'+g.t+'</h3><p>'+g.s+'</p></div><div class="cu-g">'+ims+'</div>'
-   +'<div class="cu-cta"><a href="#" class="a" style="background:'+g.c+'" onclick="try{rsvOpen(\''+g.rs+'\');}catch(e){}return false;">'+g.t+' 상담 예약</a><a href="tel:0314666969" class="b">📞 031-466-6969</a></div></section>';
- }).join('');
- return '<div class="pghero big" style="background:linear-gradient(120deg,#4A0F22,#7B1733)"><div class="pgeyebrow">CURRICULUM · 커리큘럼</div><h2>과목별 커리큘럼</h2><p>어디서 시작해서, 몇 달 뒤 어디까지 가는지 — 한 장으로 보세요.</p></div>'
-  +'<div class="cu-tabs">'+tabs+'</div>'+secs+CTA();
+ _cuI=0;
+ var tabs=CURR.map(function(g){ return '<a href="#" data-k="'+g.k+'" class="'+(g.k==='en'?'on':'')+'" style="--cc:'+g.c+'" onclick="curJump(\''+g.k+'\');return false;">'+g.t+'</a>'; }).join('');
+ var sl=CUSL.map(function(x,i){ var v=(x.m[0]==='cur_en_book')?'1023b':'1023';
+   return '<figure class="cu-sl" data-k="'+x.g.k+'"><div class="cu-tag" style="background:'+x.g.c+'">'+x.g.t+'</div>'
+    +'<a href="#" onclick="curZoom(\'img/'+x.m[0]+'.jpg?v='+v+'\',\''+x.m[1]+'\');return false;"><img src="img/'+x.m[0]+'.jpg?v='+v+'" alt="'+x.m[1]+'"'+(i>1?' loading="lazy"':'')+'></a>'
+    +'<figcaption>'+x.m[1]+' <span>🔍 누르면 크게</span></figcaption></figure>'; }).join('');
+ return '<div class="pghero big" style="background:linear-gradient(120deg,#4A0F22,#7B1733)"><div class="pgeyebrow">CURRICULUM · 커리큘럼</div><h2>과목별 커리큘럼</h2><p>옆으로 넘겨 보세요 — 영어회화부터 토스까지 한 장씩</p></div>'
+  +'<div class="cu-tabs" id="cuTabs">'+tabs+'</div>'
+  +'<div class="cu-car"><button type="button" class="cu-ar l" aria-label="이전" onclick="curStep(-1)">‹</button>'
+  +'<div class="cu-tr" id="cuTr" onscroll="curSync()">'+sl+'</div>'
+  +'<button type="button" class="cu-ar r" aria-label="다음" onclick="curStep(1)">›</button></div>'
+  +'<div class="cu-ct" id="cuCt">1 / '+CUSL.length+' · 옆으로 넘기세요 ›</div>'
+  +'<div class="cu-cta" id="cuCta">'+curCta(CURR[0])+'</div>'+CTA();
 }
-function curJump(k){ var e=document.getElementById('cu_'+k); if(e) e.scrollIntoView({behavior:'smooth',block:'start'}); }
-function curGo(k){ openPage('커리큘럼'); setTimeout(function(){ curJump(k); },120); }
+function curCta(g){ return '<a href="#" class="a" style="background:'+g.c+'" onclick="try{rsvOpen(\''+g.rs+'\');}catch(e){}return false;">'+g.t+' 상담 예약</a><a href="tel:0314666969" class="b">📞 031-466-6969</a>'; }
+function curTo(i,inst){ var tr=document.getElementById('cuTr'); if(!tr)return; i=Math.max(0,Math.min(CUSL.length-1,i)); var el=tr.children[i]; if(!el)return; tr.scrollTo({left:el.offsetLeft-tr.offsetLeft,behavior:inst?'auto':'smooth'}); if(inst){_cuI=-1;curSync();} }
+function curStep(d){ curTo(_cuI+d); }
+function curSync(){ var tr=document.getElementById('cuTr'); if(!tr)return; var w=tr.clientWidth||1, i=Math.round(tr.scrollLeft/w); if(i===_cuI)return; _cuI=i; var x=CUSL[i]; if(!x)return;
+ var ct=document.getElementById('cuCt'); if(ct) ct.innerHTML=(i+1)+' / '+CUSL.length+' · '+x.g.t+(i<CUSL.length-1?' · 옆으로 넘기세요 ›':'');
+ var cc=document.getElementById('cuCta'); if(cc&&cc.getAttribute('data-k')!==x.g.k){ cc.innerHTML=curCta(x.g); cc.setAttribute('data-k',x.g.k); }
+ var ts=document.querySelectorAll('#cuTabs a'); for(var j=0;j<ts.length;j++){ var on=ts[j].getAttribute('data-k')===x.g.k; ts[j].classList.toggle('on',on); if(on&&ts[j].scrollIntoView){ try{ var tb=document.getElementById('cuTabs'); tb.scrollTo({left:ts[j].offsetLeft-tb.clientWidth/2+ts[j].clientWidth/2,behavior:'smooth'}); }catch(e){} } } }
+function curJump(k,inst){ for(var i=0;i<CUSL.length;i++){ if(CUSL[i].g.k===k){ curTo(i,inst); break; } } }
+function curGo(k){ openPage('커리큘럼'); setTimeout(function(){ curJump(k,true); },150); setTimeout(function(){ curJump(k,true); },600); }
 function curZoom(src,t){
  var el=document.getElementById('cuLb'); if(!el){ el=document.createElement('div'); el.id='cuLb'; document.body.appendChild(el); }
  el.innerHTML='<div class="cl-in" onclick="if(event.target===this)curZoomX()"><img src="'+src+'" alt="'+t+'"></div><button type="button" class="cl-x" onclick="curZoomX()" aria-label="닫기">✕<br>닫기</button>';
@@ -7662,6 +7682,7 @@ const PAGES={
  '어학 뉴스':langNewsPage,
  '강의안내':guidePage(),
  '커리큘럼':curPage,
+ '11월신규강좌':nwPage,
  '이벤트혜택':eventHubPage,
  '강사소개':teacherPage(),
  '시험대비반':tGrid('linear-gradient(120deg,#8f1a20,#c81f2b)','시험대비반','토익 · JLPT · EJU · 토스 · 오픽 · HSK 한 번에',T_EXAM),
@@ -9695,7 +9716,7 @@ function _oneSec(t,h){return '<div class="oh-sec"><h3 class="oh-h">'+t+'</h3>'+h
 function oneHubPage(tab){
  _oneT=tab||0;_exSubj='퍼스널';_exVerified=false;_onePer=ONEPER.map(function(r){return [r[0],r[1],r[2]];});
  var btns=ONETABS.map(function(n,i){return '<button class="sp-step'+(i===_oneT?' on':'')+'"'+' onclick="oneTab('+i+')">'+n+'</button>';}).join('');
- return '<div class="sp-wrap"><button class="sp-back" onclick="openPage(\'수강신청\')">‹ 수강신청으로</button>'+wkBanner()
+ return '<div class="sp-wrap"><button class="sp-back" onclick="openPage(\'수강신청\')">‹ 수강신청으로</button>'+wkBanner()+ppBanner()
  +'<div class="oh-bn">'+(_hallSrc('img/hall_08.jpg')?'<img src="'+_hallSrc('img/hall_08.jpg')+'" alt="">':'')+'<div class="oh-bn-in">'
  +'<div class="oh-eye">1:1 GLOBAL · 1대1 글로벌 강의관</div>'
  +'<h2 class="oh-t">일대일 개인레슨으로<br><em>어학실력을 확 올리세요</em></h2>'
@@ -9927,16 +9948,52 @@ function cartGo(){
    ③은 openPage() 가 창 맨 아래에 자동으로 붙입니다. 여기서 부르지 마세요. */
 /* ═══ 왕기초 1:1 패키지 허브 — 2026-10-23 대표님 「언어의 문턱을 넘겨드립니다 · 모든 언어 최초 1회만 · 일대일 메인판에 가장 먼저」
    금액 = 학원 게시 포스터 「왕기초 일대일 Package」(대표님 사진 10/23): A 회화 1,380,000→990,000 / B 토익 1,650,000→1,190,000 (각 약 28%) */
-var WKL=[['왕기초영어','💬','왕기초 영어회화','A 회화'],['왕기초토익','📝','왕기초 토익','B 시험'],['왕기초일본어','🌸','왕기초 일본어','A 회화'],['왕기초중국어','🏮','왕기초 중국어','A 회화'],['왕기초JLPT','🎌','왕기초 JLPT','B 시험'],['왕기초HSK','🀄','왕기초 HSK','B 시험']];
+var WKL=[['왕기초영어','💬','왕기초 영어회화','A 회화','a'],['왕기초일본어','🌸','왕기초 일본어','A 회화','j'],['왕기초중국어','🏮','왕기초 중국어','A 회화','c'],['왕기초토익','📝','왕기초 토익','B 시험','b'],['왕기초JLPT','🎌','왕기초 JLPT','B 시험','jl'],['왕기초HSK','🀄','왕기초 HSK','B 시험','hs']];
+/* 2026-10-23 대표님 「상담예약이 아니라 수강신청란을 만들어서 수강까지」 — 왕기초 허브에서 바로 결제창 */
+function wkBuy(k){ _btK=k; BT={slots:{},memo:'',start:'',any:false}; btBuy(); }
 function wkBanner(){
  return '<div class="wk-bn" onclick="openPage(\'왕기초\')"><div class="wk-k">왕기초 1:1 PACKAGE · 언어별 최초 1회</div>'
   +'<div class="wk-t">언어의 문턱을<br>넘겨드립니다</div>'
   +'<div class="wk-p"><span><s>138만원</s> <b>99만원</b><i>회화 · 영어·일본어·중국어</i></span><span><s>165만원</s> <b>119만원</b><i>시험 · 토익·JLPT·HSK</i></span></div>'
   +'<div class="wk-s">1:1 20시간 + 정규반 2개월 무료 + 교재 · <b>28% 할인</b></div>'
   +'<div class="wk-go">왕기초 6개 과정 보기 ›</div></div>';}
+/* 2026-10-23 대표님 「11월 신규강좌 … 문화센터처럼 · 사진 넣고 시간은 빼고 강사님 사진 그리고 일본어 입문 이렇게만」 */
+var NWL=[
+ {ph:['img/teachers/eng_13.png'],k:'토익 스파르타',t:'송윤정 만점강사의<br>토익 스파르타',go:"openPage('수강신청');try{bkGo('토익')}catch(e){}"},
+ {ph:['img/teachers/eng_15.png'],k:'영어회화 입문',t:'김현정 비비에나 강사의<br>영어회화 입문',go:"openPage('수강신청')"},
+ {ph:['t_tanai.png'],k:'일본어 입문',t:'일본어 원어민 타나이치토세<br>입문반',sub:'오전반 · 토요반',go:"openPage('수강신청')"},
+ {ph:['img/teachers/eng_6.png'],k:'영어회화 토요반',t:'최자운 강사의<br>영어회화 토요반',go:"openPage('수강신청')"},
+ {ph:['img/teachers/jpn_2.png','img/teachers/chn_5.png'],k:'일본어 · 중국어',t:'일본어 · 중국어<br>입문반',sub:'신규강좌',go:"openPage('수강신청')"}];
+function nwPage(){
+ return '<div class="sp-wrap nw-wrap"><div class="nw-hd"><span>NEW · 11월</span><h2>11월 신규강좌</h2><p>새로 여는 반입니다 · 첫 수업 전에 상담으로 자리를 먼저 잡으세요</p></div>'
+  +'<div class="nw-grid">'+NWL.map(function(c){
+    return '<button type="button" class="nw-c" onclick="'+c.go+'"><div class="nw-ph'+(c.ph.length>1?' two':'')+'">'+c.ph.map(function(u){return '<img src="'+u+'" alt="" loading="lazy">';}).join('')+'</div>'
+     +'<em>'+c.k+'</em><b>'+c.t+'</b>'+(c.sub?'<small>'+c.sub+'</small>':'')+'<i>수강신청 ›</i></button>';}).join('')+'</div>'
+  +'<div class="cu-cta"><a href="#" class="a" onclick="openPage(\'수강신청\');return false;">수강신청</a><a href="tel:0314666969" class="b">📞 031-466-6969</a></div>'
+  +'<div class="pgnote">산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청) · 산본역 3번 출구 롯데프라자 7층</div></div>';}
+/* 2026-10-23 대표님 「문화센터상담 누르면 데스크 안내로 가게해」 — 무료 청강이 없는 반이라 데스크 상담으로 */
+function deskPop(subj){
+ var o=document.getElementById('deskPop'); if(o)o.remove();
+ var m=document.createElement('div'); m.id='deskPop'; m.setAttribute('role','dialog');
+ m.innerHTML='<div class="dk-card"><div class="dk-k">'+(subj||'')+' 상담</div><h3>데스크에서 상담해 드립니다</h3>'
+  +'<p>신청·자리 확인·개강 날짜는 학원 데스크에서 바로 안내해 드립니다.<br>전화 주시거나 편하실 때 들러 주세요.</p>'
+  +'<div class="dk-row"><b>📞 전화</b><span>031-466-6969</span></div>'
+  +'<div class="dk-row"><b>📍 방문</b><span>산본역 3번 출구 · 롯데프라자 7층</span></div>'
+  +'<a class="dk-go" href="tel:0314666969">데스크에 전화하기</a>'
+  +'<a class="dk-go2" href="#" onclick="deskPopClose();openPage(\'오시는길\');return false;">오시는 길 보기</a></div>'
+  +'<button type="button" class="dk-x" onclick="deskPopClose()">✕ 닫기</button>';
+ m.addEventListener('click',function(e){if(e.target===m)deskPopClose();});
+ document.body.appendChild(m);
+}
+function deskPopClose(){var o=document.getElementById('deskPop'); if(o)o.remove();}
+function ppBanner(){
+ return '<div class="pp-bn" onclick="openPage(\'맞춤수업\')"><div class="pp-k">11월 한정 · 1:1 1+1</div>'
+  +'<div class="pp-t">1:1 20시간 등록하면<br><b>정규반 한 달 +1</b></div>'
+  +'<div class="pp-s">정규반 <b>210,000원 무료 수강권</b> 증정 · 11월 1일~30일 등록분 · 퍼스널 1:1 제외</div>'
+  +'<div class="pp-go">1:1 수강신청 ›</div></div>';}
 function wkHubPage(){
  var cards=WKL.map(function(x){ var b=x[3].indexOf('B')===0;
-  return '<button type="button" class="wk-c'+(b?' b':'')+'" onclick="openPage(\''+x[0]+'\')"><span class="ic">'+x[1]+'</span><b>'+x[2]+'</b><em>'+(b?'119만원':'99만원')+'</em><small>'+x[3]+' 코스 · 자세히 ›</small></button>'; }).join('');
+  return '<button type="button" class="wk-c'+(b?' b':'')+'" onclick="openPage(\''+x[0]+'\')"><span class="ic">'+x[1]+'</span><b>'+x[2]+'</b><em>'+(b?'1,190,000원':'990,000원')+'</em><small>'+x[3]+' 코스 · 자세히 ›</small></button>'; }).join('');
  return '<div class="sp-wrap">'
   +'<div class="wk-hero"><div class="wk-k">왕기초 일대일 PACKAGE</div><h2>언어의 문턱을<br>넘겨드립니다</h2>'
   +'<p>번번이 언어의 벽을 넘지 못하셨던 분 · 정규반 가장 낮은 레벨도 따라가기 어려운 분 — 1:1로 20시간 기초를 먼저 만들고, 정규반은 무료로 이어 듣습니다.</p></div>'
@@ -9948,11 +10005,16 @@ function wkHubPage(){
   +'<tr><th>수강료</th><td><s>1,380,000원</s><br><b class="red">990,000원</b><br><em class="pct">28% 할인</em></td><td><s>1,650,000원</s><br><b class="red">1,190,000원</b><br><em class="pct">28% 할인</em></td></tr>'
   +'<tr><th>특징</th><td>회화를 목표로 한 기초 문법 정리 — 정규 회화반 첫 단계에 들어갈 수 있을 때까지</td><td>시험 점수를 목표로 한 기초 문법·필수 어휘 관리 — 인강·학원으로 효과를 못 보신 분</td></tr></table></div>'
   +'<div class="wk-note">※ 왕기초 일대일 Package는 <b>언어별 최초 1회</b>에 한해 수강하실 수 있으며, 재등록은 되지 않습니다.<br>※ 패키지 가격이라 다른 할인은 함께 적용되지 않습니다 · 문의 031-466-6969</div>'
-  +'<div class="cu-cta"><a href="#" class="a" style="background:#7A2E0E" onclick="try{rsvOpen(\'왕기초 1:1\');}catch(e){}return false;">왕기초 상담 예약</a><a href="tel:0314666969" class="b">📞 031-466-6969</a></div>'
-  +'</div>';}
+  +'<div class="wk-buy" id="wkBuy"><h3>왕기초 수강신청</h3><p>과정을 고르시고 <b>수강신청</b>을 누르시면 바로 결제됩니다 · 결제 후 담당자가 연락드려 첫 수업 일정을 잡습니다</p>'
+  +WKL.map(function(x){ var b=x[3].indexOf('B')===0;
+     return '<div class="wk-row'+(b?' b':'')+'"><div class="nm"><span>'+x[1]+'</span><b>'+x[2]+'</b><small>'+x[3]+' · 1:1 20시간</small></div>'
+      +'<div class="pr"><s>'+(b?'1,650,000원':'1,380,000원')+'</s><b>'+(b?'1,190,000':'990,000')+'<em>원</em></b></div>'
+      +'<button type="button" onclick="wkBuy(\''+x[4]+'\')">수강신청</button></div>'; }).join('')
+  +'</div>'
+  +spModalHTML()+'</div>';}
 function oneProPage(){
  /* 2026-09-17 — 1:1 인데 빈 교실이었습니다. 마주 앉은 사진으로. */
- return wkBanner()+bigImg('img/gen_pt.jpg')
+ return wkBanner()+ppBanner()+bigImg('img/gen_pt.jpg')
  +H('1:1 PROFESSIONAL','완전 1:1<br>전문 강사 수업',
    '일대일 개인레슨으로 어학실력을 확 올리세요','🎯')
  +KPI([['1:1','나 한 명'],['20','시간권'],['5만','시간당']])
@@ -9995,6 +10057,7 @@ function onePickPage(){
  return _pgHero('img/hall_08.jpg?v=1012','1:1 GLOBAL · 맞춤 수업','1대1 맞춤 수업<br>선생님 1명 · 학생 1명',
   '시간권 · 퍼스널 · 시험일 맞춤 — 강사는 상담 후 배정',
   'linear-gradient(120deg,#c81f2b,#e0453e)')
+ +'<div style="padding:14px 14px 0">'+ppBanner()+'</div>'
  +'<div class="op-h">1대1 과정 3가지</div>'
  +''
  +'<div class="op-menu">'+menu+'</div>'
@@ -15831,10 +15894,10 @@ function mapPage(){return _pgHero('img/hall_01.jpg?v=1012','LOCATION · 오시�
   +'<div class="rt-a">›</div>'
   +'<div class="rt-n"><b>🚶</b><span>직진 1분</span><i>신호 없음</i></div>'
   +'<div class="rt-a">›</div>'
-  +'<div class="rt-n"><b>🏢</b><span>롯데프라자</span><i>7층 701~703호</i></div>'
+  +'<div class="rt-n"><b>🏢</b><span>롯데프라자</span><i>7층</i></div>'
  +'</div><div class="rt-cap">산본역 3번 출구에서 횡단보도 없이 1분</div></div>'
  +SEC('주소와 연락처',CT(['구분','내용'],
-  [['주소','경기도 군포시 산본로323번길 16-7 <b>롯데프라자 7층</b> 701·702·703호'],
+  [['주소','경기도 군포시 산본로323번길 16-7 <b>롯데프라자 7층</b>'],
    ['전화','031-466-6969'],
    ['카카오톡','채널 @산본글로벌어학원'],
    ['수업 시간','평일 <b>06:30 ~ 22:00</b> · 토요일 <b>10:00 ~ 16:30</b>'],
@@ -21554,7 +21617,7 @@ body.has-tab #novPop .nv-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-are
  /* 2026-10-20 마리 — 대표님 「일대일 과정 10프로 할인은 없다」: 이 팝업이 11월에 "1:1 10% 할인"을
     그대로 광고하도록 만들어져 있어 정책과 충돌해 꺼 둡니다. 「정규반 1개월 무료」만 남길지,
     전체를 뺄지는 대표님 확인 후 다시 켭니다. (검수용 ?novpop=1 로는 여전히 미리보기 가능) */
- function onDate(){return false;}
+ function onDate(){var d=today();return d>='2026-11-01'&&d<='2026-11-30';}
  function hidden(){try{return localStorage.getItem('sga_novpop_off')===today();}catch(e){return false;}}
  function vis(id){var e=document.getElementById(id);return e&&getComputedStyle(e).display!=='none'&&e.offsetHeight>0;}
  function busy(){
@@ -21576,14 +21639,14 @@ body.has-tab #novPop .nv-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-are
  var LEGAL="산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청)";
  function show(){
   if(document.getElementById('novPop'))return;
-  var m=document.createElement('div'); m.id='novPop'; m.setAttribute('role','dialog'); m.setAttribute('aria-label','11월 빼데이 1:1 한정 이벤트');
+  var m=document.createElement('div'); m.id='novPop'; m.setAttribute('role','dialog'); m.setAttribute('aria-label','11월 1:1 1+1 이벤트');
   m.innerHTML='<div class="nv-card">'
-   +'<div class="nv-hd"><span class="nv-lim">11월 한정 이벤트</span><div class="nv-row">'+SVG+'<div class="nv-t"><b>빼데이</b><span>1:1 한정 이벤트</span></div></div></div>'
-   +'<div class="nv-ph"><img src="img/pop/nov_model2.jpg" alt=""><div class="nv-stk">빼빼로도<br>드려요!</div></div>'
-   +'<div class="nv-band"><div class="nv-l0"><i>영어회화 1:1</i>이 시간당</div><div class="nv-l1">36,000원<small>?</small></div></div>'
-   +'<div class="nv-body"><div class="nv-b">1:1 10% 할인 + 정규반 한 달 무료</div><div class="nv-c">영어회화 1:1 20시간 <s>1,000,000원</s> → 10% 할인 900,000원<br>원어민 정규반 180,000원 무료 → 실질 <b>720,000원</b> ÷ 20시간</div></div>'
+   +'<div class="nv-hd"><span class="nv-lim">11월 한정 이벤트</span><div class="nv-row">'+SVG+'<div class="nv-t"><b>1+1</b><span>11월 1:1 이벤트</span></div></div></div>'
+   +'<div class="nv-ph"><img src="img/pop/nov_model2.jpg" alt=""><div class="nv-stk">1:1<br>1+1</div></div>'
+   +'<div class="nv-band"><div class="nv-l0"><i>1:1 20시간</i> 등록하면</div><div class="nv-l1">정규반 +1<small> 한 달</small></div></div>'
+   +'<div class="nv-body"><div class="nv-b">정규반 210,000원 무료 수강권</div><div class="nv-c">영어 · 토익 · 일본어 · 중국어 · 오픽 · 토스 1:1<br><b>20시간</b> 등록하시면 정규반 한 달을 무료로 드립니다</div></div>'
    +'<a class="nv-go" href="tel:0314666969" onclick="novPopClose(false)">전화 상담 031-466-6969</a>'
-   +'<div class="nv-tk"><i>토익 1:1</i> 20시간 → <b>시간당 43,500원</b><em>1,200,000원에서 10% 할인 1,080,000원 − 토익 정규반 210,000원 무료 = 870,000원</em></div>'
+   +'<div class="nv-tk"><i>11월 1일~30일</i> 등록분<em>1:1 수강료는 정가 그대로 · 정규반 무료 수강권 1장 증정</em></div>'
    +'<div class="nv-ft"><span>1:1 20시간 기준</span><a href="#" onclick="novPopClose(true);return false;">오늘 하루 안보기</a></div>'
    +'<div class="nv-lg">'+LEGAL+'<br><b>※ 퍼스널 1:1은 제외됩니다.</b></div>'
    +'</div><button class="nv-x" type="button" aria-label="닫기" onclick="novPopClose(false)">✕</button>';
@@ -23167,6 +23230,36 @@ body:has(#sgVid.on) .sgs-x,body:has(#sgSpread.on) .sgs-x,body:has(.sp-modal.on) 
 #sgX:has(#sxOmr.open) .tos-x{visibility:hidden!important;pointer-events:none!important}
 </style>
 <style id="wkCss">
+#deskPop{position:fixed;inset:0;z-index:2147483600;background:rgba(40,22,28,.55);display:flex;align-items:center;justify-content:center;padding:14px 14px 110px}
+#deskPop .dk-card{width:100%;max-width:380px;background:#fff;border-radius:20px;padding:20px 18px;box-shadow:0 18px 50px rgba(0,0,0,.3);word-break:keep-all}
+#deskPop .dk-k{display:inline-block;background:#0F6B5E;color:#fff;font-weight:900;font-size:13px;border-radius:999px;padding:3px 12px}
+#deskPop h3{margin:8px 0 6px;font-size:23px;font-weight:900;color:#7B1733}
+#deskPop p{margin:0 0 12px;font-size:15px;line-height:1.6;color:#3a2a30}
+#deskPop .dk-row{display:flex;gap:10px;align-items:center;padding:10px 0;border-top:1px solid #eee;font-size:16px}#deskPop .dk-row b{flex:none;width:72px}
+#deskPop .dk-go{display:block;margin-top:12px;background:#7B1733;color:#fff;text-align:center;font-weight:900;font-size:18px;padding:13px;border-radius:14px;text-decoration:none}
+#deskPop .dk-go2{display:block;margin-top:8px;background:#F4EDDF;color:#7B1733;text-align:center;font-weight:900;font-size:16px;padding:11px;border-radius:14px;text-decoration:none}
+#deskPop .dk-x{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(22px + env(safe-area-inset-bottom,0px));height:54px;padding:0 22px;border-radius:999px;background:linear-gradient(135deg,#FFD75E,#E8A912);border:3px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.3);font-size:18px;font-weight:900;color:#3a2a00;cursor:pointer}
+body.has-tab #deskPop .dk-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area-inset-bottom,0px))}
+.nw-hd{text-align:center;padding:22px 14px 16px;border-radius:18px;background:linear-gradient(180deg,#FFF6EC,#FBEFE2);margin:0 0 14px}
+.nw-hd span{display:inline-block;background:#7B1733;color:#FFE9A8;font-weight:900;font-size:13px;border-radius:999px;padding:3px 12px}
+.nw-hd h2{font-family:'Noto Serif KR',serif;font-size:36px;font-weight:900;color:#7B1733;margin:8px 0 4px}
+.nw-hd p{margin:0;font-size:14.5px;font-weight:700;color:#5A4A50;word-break:keep-all}
+.nw-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:760px){.nw-grid{grid-template-columns:repeat(3,1fr)}}
+.nw-c{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;background:#FFFDF8;border:2px solid #EAD9C4;border-radius:18px;padding:12px 8px 12px;cursor:pointer;font-family:inherit}
+.nw-ph{width:100%;aspect-ratio:4/5;border-radius:999px 999px 14px 14px;overflow:hidden;background:#F3EEEA;border:3px solid #E2C27A;display:flex}
+.nw-ph img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;flex:1;min-width:0}
+.nw-ph.two img+img{border-left:2px solid #fff}
+.nw-c em{font-style:normal;margin-top:6px;font-size:12.5px;font-weight:900;color:#fff;background:#0F6B5E;border-radius:999px;padding:2px 10px}
+.nw-c b{font-family:'Noto Serif KR',serif;font-size:17.5px;font-weight:900;color:#7B1733;line-height:1.3;word-break:keep-all}
+.nw-c small{font-size:14px;font-weight:900;color:#0F6B5E}
+.nw-c i{font-style:normal;margin-top:4px;font-size:13px;font-weight:900;color:#7B1733}
+.pp-bn{cursor:pointer;margin:0 0 16px;padding:16px 18px;border-radius:18px;background:linear-gradient(135deg,#8A6416,#C99A3B);color:#FFFDF5;box-shadow:0 8px 22px rgba(138,100,22,.25)}
+.pp-bn .pp-k{display:inline-block;font-size:12.5px;font-weight:900;letter-spacing:.04em;background:#FFF3D6;color:#7A1F2B;border-radius:999px;padding:3px 10px}
+.pp-bn .pp-t{font-family:'Noto Serif KR',serif;font-size:26px;font-weight:900;line-height:1.28;margin:8px 0 8px}
+.pp-bn .pp-t b{color:#FFE9A8}
+.pp-bn .pp-s{font-size:14.5px;font-weight:800;line-height:1.5;word-break:keep-all}.pp-bn .pp-s b{color:#FFE9A8}
+.pp-bn .pp-go{display:inline-block;margin-top:10px;background:#FFE9A8;color:#5A3E08;font-weight:900;border-radius:999px;padding:9px 16px;font-size:14.5px}
 /* 2026-10-23 왕기초 1:1 패키지 */
 .wk-bn{cursor:pointer;margin:0 0 16px;padding:18px 18px 16px;border-radius:18px;background:linear-gradient(135deg,#7A2E0E,#C2571A);color:#FFF8EC;box-shadow:0 8px 22px rgba(122,46,14,.25)}
 .wk-bn .wk-k{font-size:12.5px;font-weight:900;letter-spacing:.06em;color:#F6D58A}
@@ -23181,8 +23274,22 @@ body:has(#sgVid.on) .sgs-x,body:has(#sgSpread.on) .sgs-x,body:has(.sp-modal.on) 
 .wk-hero .wk-k{font-size:12.5px;font-weight:900;letter-spacing:.06em;color:#F6D58A}
 .wk-hero h2{font-family:'Noto Serif KR',serif;font-size:34px;font-weight:900;line-height:1.22;margin:8px 0 10px;color:#fff}
 .wk-hero p{margin:0;font-size:15px;font-weight:700;line-height:1.6;word-break:keep-all}
-.wk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0 0 16px}
-@media(min-width:760px){.wk-grid{grid-template-columns:repeat(3,1fr)}}
+.wk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 16px}
+.wk-grid .wk-c em{font-style:normal;font-size:19px!important;font-weight:900!important;color:#D21F2B!important;letter-spacing:-.5px}
+@media(max-width:420px){.wk-grid .wk-c{padding:10px 8px!important}.wk-grid .wk-c b{font-size:14px}.wk-grid .wk-c em{font-size:16px!important}.wk-grid .wk-c small{font-size:11px}}
+.wk-tb b.red{font-size:24px;color:#D21F2B}
+.wk-buy{margin:18px 0 6px;padding:16px 14px;border:2px solid #D21F2B;border-radius:18px;background:#FFF8F6}
+.wk-buy h3{margin:0 0 4px;font-size:22px;font-weight:900;color:#7B1733}
+.wk-buy>p{margin:0 0 12px;font-size:14px;line-height:1.55;color:#4a3a40;word-break:keep-all}
+.wk-row{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #F0D2CF;border-radius:14px;padding:10px 12px;margin-top:8px}
+.wk-row.b{border-color:#E9C9A6}
+.wk-row .nm{flex:1;min-width:0;display:flex;flex-direction:column}
+.wk-row .nm span{font-size:18px}.wk-row .nm b{font-size:16px;font-weight:900;color:#2B1F24}.wk-row .nm small{font-size:12px;color:#6a5a60;font-weight:700}
+.wk-row .pr{text-align:right;line-height:1.1}
+.wk-row .pr s{display:block;font-size:12.5px;color:#8a7a80}
+.wk-row .pr b{font-size:26px;font-weight:900;color:#D21F2B;letter-spacing:-1px}.wk-row .pr b em{font-style:normal;font-size:15px;margin-left:1px}
+.wk-row button{flex:none;background:#D21F2B;color:#fff;border:0;border-radius:12px;padding:12px 12px;font-size:15px;font-weight:900;cursor:pointer}
+@media(max-width:420px){.wk-row{flex-wrap:wrap}.wk-row .nm{flex:1 1 55%}.wk-row button{flex:1 1 100%}}
 .wk-c{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;background:#fff;border:2px solid #E7CDB8;border-radius:14px;padding:12px;cursor:pointer;font-family:inherit}
 .wk-c.b{border-color:#E3B8C2}
 .wk-c .ic{font-size:24px}.wk-c b{font-size:16.5px;font-weight:900;color:#1F1B14}
@@ -23202,6 +23309,21 @@ body:has(#sgVid.on) .sgs-x,body:has(#sgSpread.on) .sgs-x,body:has(.sp-modal.on) 
 .cu-tabs a{flex:none;padding:10px 16px;border-radius:999px;background:#fff;border:2px solid var(--cc);color:var(--cc)!important;font-weight:900;font-size:15px;text-decoration:none;white-space:nowrap}
 .cu-tabs a:hover{background:var(--cc);color:#fff!important}
 .cu-s{padding:22px 4px 8px;scroll-margin-top:64px}
+.cu-tabs a.on{background:var(--cc);color:#fff!important}
+.cu-car{position:relative;max-width:900px;margin:12px auto 0}
+.cu-tr{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:0;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.cu-tr::-webkit-scrollbar{display:none}
+.cu-sl{flex:0 0 100%;scroll-snap-align:center;margin:0;padding:0 4px;box-sizing:border-box;position:relative}
+.cu-sl>a{display:block;background:#fff;border:1.5px solid #E7DCCB;border-radius:14px;overflow:hidden;box-shadow:0 4px 14px rgba(60,40,20,.08)}
+.cu-sl img{display:block;width:100%;height:auto}
+.cu-sl figcaption{padding:8px 6px 0;font-size:14.5px;font-weight:900;color:#1F1B14;display:flex;justify-content:space-between;gap:8px;word-break:keep-all}
+.cu-sl figcaption span{flex:none;font-size:12px;font-weight:800;color:#8A6A22}
+.cu-tag{display:none;position:absolute;left:14px;top:10px;z-index:2;color:#fff;font-weight:900;font-size:13px;border-radius:999px;padding:3px 11px;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.cu-ar{position:absolute;top:220px;z-index:3;width:46px;height:46px;border-radius:50%;border:2px solid #fff;background:rgba(123,23,51,.88);color:#fff;font-size:30px;font-weight:900;line-height:38px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.cu-ar.l{left:-6px}.cu-ar.r{right:-6px}
+@media(max-width:700px){.cu-ar{top:150px;width:40px;height:40px;font-size:26px;line-height:32px}.cu-ar.l{left:2px}.cu-ar.r{right:2px}}
+.cu-ct{text-align:center;font-size:14px;font-weight:900;color:#7B1733;margin:10px 0 0}
+
 .cu-hd{border-left:6px solid var(--cc);padding:2px 0 2px 12px;margin:0 0 14px}
 .cu-hd h3{margin:0;font-size:24px;font-weight:900;color:var(--cc)}
 .cu-hd p{margin:4px 0 0;font-size:15px;font-weight:700;color:#4A4234;line-height:1.5;word-break:keep-all}

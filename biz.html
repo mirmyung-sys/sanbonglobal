@@ -528,6 +528,10 @@ form textarea{min-height:90px;resize:vertical}
 </div></footer>
 
 <div class="bar"><a class="btn r" href="#calc">견적 계산</a><a class="btn k" href="tel:031-466-6969">전화 상담</a></div>
+<!-- 2026-10-23 대표님 「기업체 출강 밑 하단중앙에 닫기 버튼」 — 노란 원형 · 화면 아래 가운데 (아래 버튼줄 바로 위) -->
+<button type="button" class="biz-x" aria-label="닫기" onclick="try{if(document.referrer&&document.referrer.indexOf(location.host)>-1&&history.length>1){history.back();}else{location.href='/';}}catch(e){location.href='/';}">✕ 닫기</button>
+<style>.biz-x{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(74px + env(safe-area-inset-bottom,0px));z-index:31;height:52px;padding:0 22px;border-radius:999px;background:linear-gradient(135deg,#FFD75E,#E8A912);border:3px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,.28);font-size:18px;font-weight:900;color:#3a2a00;cursor:pointer;font-family:inherit}
+body{padding-bottom:140px}</style>
 
 <script>
 (function(){
