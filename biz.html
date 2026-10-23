@@ -183,6 +183,37 @@ form textarea{min-height:90px;resize:vertical}
 .dirb img{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:top;background:var(--cream2);flex:0 0 72px}
 .dirb b{display:block;font-size:16px;color:var(--wine-dk)}
 .dirb p{font-size:14px;color:var(--ink2)}
+/* 2026-10-23 대표님 「클릭하면 원어민강사로 짝 도배하고 총 25명의 전문강사진으로 전문성 있게」 — 원어민 강사 사진 벽 (#native) */
+.nw{scroll-margin-top:60px;background:linear-gradient(180deg,var(--cream) 0%,var(--cream2) 100%);padding:40px 0 44px}
+.nw .hd2{text-align:center;margin-bottom:18px}
+.nw h2{font-size:clamp(24px,6vw,36px);line-height:1.3}
+.nw h2 b{color:var(--wine);font-size:1.25em}
+.nw .sd{margin:0 auto 14px;max-width:560px}
+.nst{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.nst span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700;color:var(--ink2)}
+.nst span b{color:var(--wine);font-size:15px}
+.wall{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.wt{position:relative;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#fff,var(--rose-lt));aspect-ratio:3/4;box-shadow:var(--sh)}
+.wt img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .35s}
+.wt:hover img{transform:scale(1.04)}
+.wt .lg{font-style:normal;position:absolute;left:6px;top:6px;font-size:11px;font-weight:800;color:#fff;background:var(--wine);padding:3px 8px;border-radius:999px}
+.wt .lg.n{background:var(--wine)}.wt .lg.k{background:var(--rose)}.wt .lg.x{background:var(--gold)}
+.nst span{display:inline-flex;align-items:center;gap:6px}.nst span::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--wine)}.nst span.k::before{background:var(--rose)}.nst span.x::before{background:var(--gold)}
+.exe{margin-top:18px;background:linear-gradient(120deg,var(--wine-dk),var(--wine));color:#fff;border-radius:20px;padding:20px 18px;display:grid;gap:12px;box-shadow:var(--sh)}
+.exe .et span{display:block;font-size:12px;letter-spacing:.12em;color:var(--yel);font-weight:800}
+.exe .et b{display:block;font-size:clamp(20px,5.4vw,26px);line-height:1.3;margin-top:4px}
+.exe ul{list-style:none;display:grid;gap:6px;font-size:15px}
+.exe li{padding-left:22px;position:relative}.exe li::before{content:"✓";position:absolute;left:0;color:var(--yel);font-weight:800}
+.exe .btn{justify-self:start}
+@media(min-width:760px){.exe{grid-template-columns:1.2fr 1.4fr auto;align-items:center;padding:24px 28px}}
+.wt .nm2{position:absolute;left:0;right:0;bottom:0;padding:22px 6px 7px;background:linear-gradient(180deg,rgba(90,18,38,0) 0%,rgba(90,18,38,.9) 70%);color:#fff;text-align:center;font-size:13px;font-weight:800;line-height:1.25}
+.wt .nm2 small{display:block;font-size:11px;font-weight:600;opacity:.88}
+.wt.more{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:var(--wine);color:#fff;padding:10px;text-decoration:none}
+.wt.more b{font-size:clamp(26px,7vw,40px);line-height:1;color:var(--yel)}
+.wt.more span{font-size:12px;font-weight:700;margin-top:6px;line-height:1.4}
+.wt.ask{background:var(--yel);color:var(--wine-dk)}.wt.ask b{color:var(--wine-dk);font-size:clamp(18px,4.6vw,24px)}
+.nw .note{text-align:center;margin-top:12px}
+@media(min-width:760px){.wall{grid-template-columns:repeat(6,1fr);gap:10px}.nw{padding:56px 0 60px}}
 @media(min-width:760px){.trust .wrap{grid-template-columns:repeat(4,1fr)}.trust .wrap>div{border-bottom:0}.sum dl{grid-template-columns:150px 1fr 150px 1fr}.rp .rb{grid-template-columns:1fr 1.2fr}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "기업출강 비용은 어떻게 정해지나요?", "acceptedAnswer": {"@type": "Answer", "text": "강사 1시간 금액 × 수업 횟수입니다. 내국인 강사 60분 80,000원, 원어민 강사 60분 90,000원이고 주 2회 8주(16회)면 1,280,000원 / 1,440,000원입니다. 인원이 늘어도 회사가 내는 금액은 같습니다."}}, {"@type": "Question", "name": "세금계산서가 나오나요?", "acceptedAnswer": {"@type": "Answer", "text": "학원 교육비는 부가세가 없는 면세라 세금계산서 대신 계산서를 발행합니다. 회사 회계 처리에는 똑같이 증빙으로 쓰입니다."}}, {"@type": "Question", "name": "어느 지역까지 오나요?", "acceptedAnswer": {"@type": "Answer", "text": "군포 · 안양 · 안산 · 과천은 출장비 없이 갑니다. 그 밖의 지역은 상담 때 안내합니다."}}, {"@type": "Question", "name": "몇 명부터 가능한가요?", "acceptedAnswer": {"@type": "Answer", "text": "5명부터 출강합니다. 5명 미만은 학원 수업이나 1:1 수업을 함께 알아봐 드립니다."}}, {"@type": "Question", "name": "교재비가 따로 드나요?", "acceptedAnswer": {"@type": "Answer", "text": "수업 자료를 학원이 준비해 드립니다. 계산기에 나온 금액 외에 추가로 받는 돈은 없습니다."}}, {"@type": "Question", "name": "어디서 수업하나요?", "acceptedAnswer": {"@type": "Answer", "text": "회사 회의실에서 합니다. 화면을 띄울 모니터나 화이트보드가 있으면 충분합니다."}}, {"@type": "Question", "name": "결석한 직원은 어떻게 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "아키 AI 강의실에서 영상 강의와 문제로 보충합니다. 출석은 매달 리포트로 담당자께 보내드립니다."}}, {"@type": "Question", "name": "중간에 그만두면 환불되나요?", "acceptedAnswer": {"@type": "Answer", "text": "진행하지 않은 회차만큼 돌려드립니다."}}, {"@type": "Question", "name": "원어민 강사도 회사로 오나요?", "acceptedAnswer": {"@type": "Answer", "text": "원어민 강사 출강은 강사별 근무 조건을 확인한 뒤 배정합니다. 상담 때 가능한 강사와 시간을 알려 드립니다."}}, {"@type": "Question", "name": "계약 기간은 어떻게 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "8주 단위가 기본입니다. 끝나면 출석 · 진도 결과를 보고 다음 기수를 함께 정합니다."}}]}</script>
@@ -216,11 +247,53 @@ form textarea{min-height:90px;resize:vertical}
 </div></div>
 
 <div class="trust"><div class="wrap">
- <div><b>21명</b><span>영 · 일 · 중 강사진</span></div>
+ <div><b>25명</b><span>영 · 일 · 중 전문강사진</span></div>
  <div><b>3개 언어</b><span>영어 · 일본어 · 중국어</span></div>
  <div><b>30년</b><span>원장 강의 경력</span></div>
  <div><b>제2234호</b><span>교육청 등록 학원</span></div>
 </div></div>
+
+<!-- 2026-10-23 대표님 「원어민강사로 짝 도배 · 총 25명의 전문강사진」+「원어민, 한인회화강사, 토익토플오픽토스 전문강사진이 찾아갑니다 · 기업체 출강 · 임원 1대1」 — 메인 중간광고판 「기업체 출강」을 누르면 여기로 옵니다. chn_7 현지인 강사님 = 한인 강사(대표님 확인) -->
+<section class="nw" id="native"><div class="wrap">
+ <div class="hd2">
+  <div class="st">TEACHERS · 기업체 출강 · 임원 1:1</div>
+  <h2>총 <b>25명</b> 전문강사진이<br>회사로 찾아갑니다</h2>
+  <p class="sd">회화는 원어민과 한인 강사가,<br>토익·토플·오픽·토스는 시험 전문강사가 맡습니다.</p>
+ </div>
+ <div class="nst"><span class="n">원어민 강사</span><span class="k">한인 회화강사</span><span class="x">토익·토플·오픽·토스 전문</span></div>
+ <div class="wall">
+  <div class="wt"><img src="t_cody.png" alt="코디 영어 원어민 강사" loading="lazy"><i class="lg n">영어 원어민</i><div class="nm2">코디<small>Cody · 1:1</small></div></div>
+  <div class="wt"><img src="img/teachers/eng_11.png" alt="제롤린 영어 원어민 강사" loading="lazy"><i class="lg n">영어 원어민</i><div class="nm2">제롤린<small>회화</small></div></div>
+  <div class="wt"><img src="img/teachers/eng_5.png" alt="애플 영어 원어민 강사" loading="lazy"><i class="lg n">영어 원어민</i><div class="nm2">애플<small>Apple · 회화</small></div></div>
+  <div class="wt"><img src="img/teachers/eng_6.png" alt="최자운 영어 원어민 강사" loading="lazy"><i class="lg n">영어 원어민</i><div class="nm2">최자운<small>Deborah · 토스</small></div></div>
+  <div class="wt"><img src="img/teachers/jpn_6.png" alt="마무로 히토시 일본어 원어민 강사" loading="lazy"><i class="lg n">일본어 원어민</i><div class="nm2">마무로 히토시<small>회화</small></div></div>
+  <div class="wt"><img src="img/teachers/jpn_8.png" alt="나카무라 모모코 일본어 원어민 강사" loading="lazy"><i class="lg n">일본어 원어민</i><div class="nm2">나카무라 모모코<small>회화</small></div></div>
+  <div class="wt"><img src="img/teachers/jpn_10.png" alt="조미히로 일본어 원어민 강사" loading="lazy"><i class="lg n">일본어 원어민</i><div class="nm2">조미히로<small>회화</small></div></div>
+  <div class="wt"><img src="t_tanai.png" alt="타나이 치토세 일본어 원어민 강사" loading="lazy"><i class="lg n">일본어 원어민</i><div class="nm2">타나이 치토세<small>입문·회화</small></div></div>
+  <div class="wt"><img src="img/teachers/chn_1.png" alt="하홍금 중국어 원어민 강사" loading="lazy"><i class="lg n">중국어 원어민</i><div class="nm2">하홍금<small>회화</small></div></div>
+  <div class="wt"><img src="img/teachers/eng_13.png" alt="송윤정 토익 전문 강사" loading="lazy"><i class="lg x">토익 전문</i><div class="nm2">송윤정<small>토익</small></div></div>
+  <div class="wt"><img src="img/teachers/eng_14.png" alt="유미용 시험 전문 강사" loading="lazy"><i class="lg x">시험 전문</i><div class="nm2">유미용<small>토익·토스·오픽</small></div></div>
+  <div class="wt"><img src="img/teachers/eng_15.png" alt="김현정 시험 전문 강사" loading="lazy"><i class="lg x">시험 전문</i><div class="nm2">김현정<small>토플·토익·오픽</small></div></div>
+  <div class="wt"><img src="img/teachers/eng_4.png" alt="박호임 영어 회화 강사" loading="lazy"><i class="lg k">영어 회화</i><div class="nm2">박호임<small>영어</small></div></div>
+  <div class="wt"><img src="img/teachers/eng_2.png" alt="공미영 영어 회화 강사" loading="lazy"><i class="lg k">영어 회화</i><div class="nm2">공미영<small>Olive · 회화</small></div></div>
+  <div class="wt"><img src="img/teachers/eng_10.png" alt="권미화 영어 회화 강사" loading="lazy"><i class="lg k">영어 회화</i><div class="nm2">권미화<small>May · 회화</small></div></div>
+  <div class="wt"><img src="img/teachers/eng_9.png" alt="케이티 영어 회화 강사" loading="lazy"><i class="lg k">영어 회화</i><div class="nm2">케이티<small>회화</small></div></div>
+  <div class="wt"><img src="img/teachers/eng_1.png" alt="Amy 영어 회화 강사" loading="lazy"><i class="lg k">영어 회화</i><div class="nm2">Amy<small>회화</small></div></div>
+  <div class="wt"><img src="img/teachers/jpn_2.png" alt="김민정 일본어 회화 강사" loading="lazy"><i class="lg k">일본어 회화</i><div class="nm2">김민정<small>JLPT·회화</small></div></div>
+  <div class="wt"><img src="img/teachers/jpn_3.png" alt="김연주 일본어 회화 강사" loading="lazy"><i class="lg k">일본어 회화</i><div class="nm2">김연주<small>기초·회화</small></div></div>
+  <div class="wt"><img src="img/teachers/jpn_7.png" alt="서정아 일본어 회화 강사" loading="lazy"><i class="lg k">일본어 회화</i><div class="nm2">서정아<small>기초·회화</small></div></div>
+  <div class="wt"><img src="img/teachers/chn_5.png" alt="오금한 중국어 회화 강사" loading="lazy"><i class="lg k">중국어 회화</i><div class="nm2">오금한<small>회화·HSK</small></div></div>
+  <div class="wt"><img src="img/teachers/chn_7.png" alt="현지인 강사 중국어 회화 강사" loading="lazy"><i class="lg k">중국어 회화</i><div class="nm2">현지인 강사<small>회화·HSK</small></div></div>
+  <a class="wt more ask" href="#ask"><b>강사 배정<br>상담 →</b><span>우리 회사에 맞는 강사</span></a>
+  <a class="wt more" href="#calc"><b>30초</b><span>견적 계산<br>원어민 60분 90,000원</span></a>
+ </div>
+ <div class="exe">
+  <div class="et"><span>EXECUTIVE · 임원 1:1</span><b>임원 1:1, 어디든 찾아갑니다</b></div>
+  <ul><li>시간 · 장소 · 주제 맞춤 1:1</li><li>사무실 · 자택 방문</li><li>미팅 · 프레젠테이션 · 의전 대비</li></ul>
+  <a class="btn y" href="#ask">임원 1:1 상담 신청</a>
+ </div>
+ <p class="note">강사는 회사 일정과 레벨 진단 결과를 보고 상담 후 배정합니다. 사진은 산본글로벌어학원 강사진입니다.</p>
+</div></section>
 
 <section class="alt" id="sum"><div class="wrap">
  <div class="st">AT A GLANCE</div>

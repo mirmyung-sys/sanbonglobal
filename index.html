@@ -5301,17 +5301,19 @@ sgLb.i=0;
 .hsh-c{position:relative;display:flex;flex-direction:column;justify-content:flex-start;text-align:left;aspect-ratio:3/4;border:0;padding:12px 12px 10px 16px;border-radius:5px 14px 14px 5px;overflow:hidden;background:#7B1733 center/cover no-repeat;cursor:pointer;box-shadow:inset 6px 0 0 rgba(0,0,0,.18),inset 8px 0 0 rgba(255,255,255,.12),0 8px 18px rgba(60,10,20,.22);font-family:inherit;transition:transform .15s}
 .hsh-c:active{transform:scale(.97)}
 @media(hover:hover){.hsh-c:hover{transform:translateY(-4px)}}
-.hsh-c>.hsh-ov{position:absolute;inset:0;opacity:.42}
-.hsh-c>.hsh-dk{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,6,12,.45) 0%,rgba(30,6,12,0) 28%,rgba(30,6,12,0) 42%,rgba(30,6,12,.82) 100%)}
+.hsh-c>.hsh-ov{position:absolute;inset:0;opacity:.66;mix-blend-mode:multiply}
+.hsh-c>.hsh-dk{position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,16,12,.38) 0%,rgba(24,16,12,0) 28%,rgba(24,16,12,0) 40%,rgba(24,16,12,.72) 100%)}
 .hsh-c>span,.hsh-c>img{position:relative}
-.hsh-e{color:#FFE3A3;font-size:10.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;line-height:1.3}
+.hsh-e{color:#fff;font-family:'Noto Serif KR','Nanum Myeongjo',serif;font-size:27px;font-weight:900;letter-spacing:-.03em;line-height:1.14;margin-top:20px;word-break:keep-all;text-shadow:0 2px 10px rgba(0,0,0,.55),0 1px 2px rgba(0,0,0,.45)} /* 2026-10-23 대표님 「제목을 크게 써 … 묻혀서 안보임」「3배는 더 크게」 10.5px→27px(PC 34px) */
+.hsh-c.ch .hsh-s{display:none}.hsh-c.ch .hsh-e{margin-bottom:6px}@media(max-width:899px){.hsh-c.ch .hsh-e{font-size:24px}.hsh-ch{gap:3px!important}.hsh-ch i{font-size:10.5px!important;padding:2px 6px!important}}
+.hsh-ch{margin-top:auto;display:flex;flex-wrap:wrap;gap:4px}.hsh-ch i{font-style:normal;font-size:11.5px;font-weight:800;color:#5A3A00;background:rgba(255,240,205,.94);border-radius:999px;padding:3px 8px;line-height:1.3}
 .hsh-bd{position:absolute!important;top:10px;right:10px;background:#F6D58A;color:#5B1026;font-size:10px;font-weight:900;border-radius:4px;padding:2px 6px}
-.hsh-t{color:#fff;margin-top:auto;font-size:18px;font-weight:900;line-height:1.28;word-break:keep-all;text-shadow:0 2px 8px rgba(0,0,0,.25)}
+.hsh-t{color:#FFF1DE;margin-top:auto;font-family:'Noto Sans KR',sans-serif;font-size:14.5px;font-weight:700;letter-spacing:-.025em;line-height:1.3;word-break:keep-all;text-shadow:0 2px 8px rgba(0,0,0,.25)}
 .hsh-s{color:#FFE9D6;font-size:12px;font-weight:700;margin-top:4px;opacity:.92}
 .hsh-f{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,.28);font-size:9.5px;font-weight:900;letter-spacing:.12em;color:rgba(255,255,255,.85)}
 .hsh-f em{font-style:normal;letter-spacing:0;font-size:11.5px}
 .hsh-aki{height:96px;width:auto;margin:6px auto 0;filter:drop-shadow(0 6px 12px rgba(0,0,0,.3))}
-@media(min-width:900px){.hsh{padding:26px 20px 10px}.hsh-g{grid-template-columns:repeat(4,1fr);gap:18px}.hsh-t{font-size:23px}.hsh-e{font-size:11.5px}.hsh-aki{height:130px}.hsh-c{padding:16px 16px 12px 20px}}
+@media(min-width:900px){.hsh{padding:26px 20px 10px}.hsh-g{grid-template-columns:repeat(4,1fr);gap:18px}.hsh-t{font-size:17px}.hsh-e{font-size:34px}.hsh-ch i{font-size:13px;padding:4px 10px}.hsh-aki{height:130px}.hsh-c{padding:16px 16px 12px 20px}}
 
 #hero{display:none!important}
 </style>
@@ -6076,21 +6078,20 @@ function noticePage(){
 }
 
 const SLIDES=[
-/* 2026-10-17 대표님 「100점짜리로」 — 슬라이드 13장 → 5장 (토익 · JLPT · 무료청강 · SGA문화센터 · 원장상담). 빠진 8장은 공지사항·메뉴에 그대로 있음 */
-/* 2026-10-19 대표님 「평생교육이용원 메인 중간광고판에 넣어 · 그게 포인트야」 → 맨 앞 1장. 누르면 아래 「평생교육이용권 사용기관」 칸(#lvVoucher)으로 내려갑니다 */
-/* 2026-10-20 대표님 「중간광고판 첫 화면에 11월 신규 모집건 보이게 해」 → 맨 앞 1장 */
- { e:'11월 토익 스파르타 · 정규반 모집', bg:'img/notice/toeic_bg2.jpg?v=1017b', t:'토익 강사 3명,<br>먼저 들어보시고 선택하세요', s:'토익 만점 강사 송윤정 · 더 쎈토익 창시자 엘리 킴 · 「김현정 토익은 진짜다」', act:"openPage('수강신청');bkGo('토익')", pbg:'linear-gradient(135deg,#6B1F2E,#b8322a)', tc:'#ffd94d', tc2:'#ffe3e0', ac:'#ffe0dd', bbg:'#ffd94d', btc:'#6B1F2E', cls:'hsty-impact', faces:['eng_13','elly','eng_15'], fnames:['송윤정','엘리 킴','김현정']},
- { e:'정부 지원 · 평생교육이용권', bg:'img/ai/clock.jpg', t:'평생교육이용권,<br>1인당 연 최대 35만원', s:'산본글로벌어학원은 평생교육이용권 사용기관입니다 — 영어·일본어·중국어·토익 수강료를 이용권으로 결제하세요', act:"openPage('평생교육이용권')", pbg:'linear-gradient(135deg,#5B1026,#8E1F35)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5B1026', cls:'hsty-impact'},
-/* 2026-10-19 대표님 「어학상품권 오픈 예정. 어학을 선물하세요라는문구도 중간광고판에넣고」 → 2번째 1장. 이름은 「수강권」(상품권 표기 금지 메모), 누르면 카카오톡 채널 상담 */
-/* 2026-10-19 대표님 「아키 얼굴 나오게 해서 중간광고판에 넣어줘 잘 인지 안되는듯」 → 2번째 1장. 누르면 아키 AI 강의실 */
- { e:'AKI · 아키 AI 강의실', aki:'img/aki/aki_hero.png?v=1019f', bg:'img/ai/talk.jpg', t:'안녕하세요,<br>저는 아키예요', s:'산본글로벌어학원 AI 선생님 — 영어·일본어·중국어·토익 1강은 누구나 무료, 학원 수강생은 전부 무료', act:"try{closePage()}catch(e){};sgShop()", pbg:'linear-gradient(135deg,#5B1026,#8E1F35)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5B1026', cls:'hsty-impact'},
-/* 2026-10-20 대표님 「어학을 선물하세요 누르면 왜 카카오톡 채널로 가지? 곧 오픈됩니다라고 띄어줘」 → 카카오 채널 이동 대신 토스트 안내로 교체. 이미지는 마츠 쪽에서 별도 제작 예정(아직 미제작) */
- { e:'곧 오픈 · 어학 수강권 선물', bg:'img/ai/gift.jpg', t:'어학을 선물하세요', s:'영어·일본어·중국어 수강권을 소중한 사람에게 — 선물 수강권이 곧 오픈합니다. 미리 문의하시면 오픈 소식을 가장 먼저 알려드려요', act:"sgToast('<b>어학 선물 수강권, 곧 오픈됩니다</b><br>오픈 소식을 가장 먼저 알려드릴게요')", pbg:'linear-gradient(135deg,#5B1026,#8E1F35)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5B1026', cls:'hsty-impact'},
-/* 2026-10-20 대표님 「히라가나 누르면 창 떠서 상담창 뜨듯이」 — 공지 상세 대신 상담 예약창 바로 열림 (추정: 배너 문구 "히라가나부터 N3까지" 기준) */
- { e:'JLPT · 내년 7월 시험', nb:1, bg:'img/notice/jlpt_bg.jpg?v=1017b', t:'히라가나부터<br>N3까지', s:'JLPT 방학 특공대반 · 내년 7월 시험대비반 모집 — 올해는 퍼스널로 바로 시작', act:"rsvOpen('일본어 / JLPT')", pbg:'linear-gradient(135deg,#9E1F1A,#C8352B)', tc:'#FFF8EC', tc2:'#FFE7E1', ac:'#F6D58A', bbg:'#F6D58A', btc:'#7A1712', cls:'hsty-impact'},
- { e:'FREE · 무료 청강', bg:'img/ai/classroom.jpg', t:'모든 강좌<br>첫 수업 무료', s:'영어·일본어·중국어 회화부터 토익·JLPT·HSK까지 — 등록 전에 1번 들어보세요', act:"openPage('무료청강')", pbg:'linear-gradient(135deg,#0E8A5A,#14B06E)', tc:'#eaffd6', tc2:'#d6f5e7', ac:'#D6F5E7', bbg:'#ffffff', btc:'#0E8A5A'},
- { e:'SGA문화센터 · 오후 1~6시', nb:1, bg:'img/notice/n24_bg.jpg?v=1017b', t:'맘편한 영어,<br>두 달 과정 모집', s:'SGA문화센터 단기반 · 맘편한 영어 · 맘편한 일본어 · 엄마도 학원 간다 — 반마다 8명 모이면 개강', act:"noticeOpen('n24')", pbg:'linear-gradient(135deg,#0F6B5E,#1C8B76)', tc:'#FFF8EC', tc2:'#E8F5EF', ac:'#F6D58A', bbg:'#F6D58A', btc:'#0F4B42', cls:'hsty-impact', faces:['eng_15','../../t_tanai'], fnames:['김현정','타나이 치토세']},
- { e:'DIRECTOR · 원장 직접 상담', bg:'img/ai/consult.jpg', t:'토익·유학·시험대비,<br>원장이 직접 상담합니다', s:'Georgetown TESOL 출신 원장 · 상담은 무료입니다', act:"openPage('원장상담')", pbg:'linear-gradient(135deg,#5A1226,#8E1F35)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5A1226', cls:'hsty-soft'},
+/* 2026-10-23 대표님 순서 확정 (폰·PC 같은 그리드 순서): 1 1:1 PT어학원 · 2 11월 신규강좌 · 3 토익강사(11월 토익 스파르타) · 4 기업체 출강 · 5 평생교육이용권 · 6 아키 · 7 SGA 문화센터 · 8 JLPT · 9 토익·유학(원장상담) · 10 모든 강좌 무료. 목록에 없는 「곧 오픈 · 어학 수강권 선물」은 광고판에서 뺌(아래 주석에 원본 보관). st = 광고판 카드의 큰 제목 */
+/* 2026-10-23 대표님 「11월 신규개강안내 … 그리드 순서 1~10」 — 1번 1:1 PT어학원(신규 커리큘럼) · 11월 한정 이벤트 */
+ { st:'1:1 PT어학원', bd:'11월 한정', e:'1:1 PT어학원 · 신규 커리큘럼', bg:'img/hall_03.jpg', t:'개인 1:1 20시간 등록 시<br>정규반 한 달 무료', s:'11월 한정 이벤트 — 1:1 PT어학원(신규 커리큘럼)에서 개인 1:1 20시간을 등록하시면 정규반 한 달을 무료로 드립니다', act:"openPage('1:1 전문')", pbg:'linear-gradient(135deg,#6E1450,#A8327A)', tc:'#FFF8EC', tc2:'#F7E1EE', ac:'#F6D58A', bbg:'#F6D58A', btc:'#6E1450', cls:'hsty-impact'},
+/* 2번 11월 신규강좌 — 대표님 「그냥 신규강좌로 적기만 하고 저렇게 써놔」 */
+ { st:'11월 신규강좌', bd:'NEW', e:'11월 신규강좌 · NEW', bg:'img/hall_12.jpg', t:'11월 신규강좌 오픈', chips:['새벽반 오픈','토익 스파르타','토익 정규반','오픽 · 토스반','일본어 입문','중국어 입문','토요일 영어','토요일 일본어 입문','JLPT반'], s:'새벽반 오픈 · 토익 스파르타 · 토익 정규반 · 오픽·토스반 · 일본어 입문 · 중국어 입문 · 토요일 영어 · 토요일 일본어 입문 · JLPT반', act:"openPage('수강신청')", pbg:'linear-gradient(135deg,#7A4A00,#C8901A)', tc:'#FFF8EC', tc2:'#FFF0D2', ac:'#FFE7A8', bbg:'#FFE7A8', btc:'#6A3F00', cls:'hsty-impact'},
+ { st:'11월 토익 스파르타', e:'11월 토익 스파르타 · 정규반 모집', bg:'img/notice/toeic_bg2.jpg?v=1017b', t:'토익 강사 3명,<br>먼저 들어보시고 선택하세요', s:'토익 만점 강사 송윤정 · 더 쎈토익 창시자 엘리 킴 · 「김현정 토익은 진짜다」', act:"openPage('수강신청');bkGo('토익')", pbg:'linear-gradient(135deg,#6B1F2E,#b8322a)', tc:'#ffd94d', tc2:'#ffe3e0', ac:'#ffe0dd', bbg:'#ffd94d', btc:'#6B1F2E', cls:'hsty-impact', faces:['eng_13','elly','eng_15'], fnames:['송윤정','엘리 킴','김현정']},
+ { st:'기업체 출강', e:'기업체 출강 · 임원 1:1', bg:'img/biz_main.jpg', t:'전문강사진 25명이<br>회사로 찾아갑니다', s:'원어민 · 한인 회화강사 · 토익·토플·오픽·토스 전문강사 — 기업체 출강 · 임원 1:1', act:"location.href='biz.html#native'", pbg:'linear-gradient(135deg,#3E1F5C,#6B3A8E)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5A1226', cls:'hsty-impact', faces:['eng_11','jpn_8','eng_13','eng_15','chn_1'], fnames:['원어민','원어민','토익','토플·오픽','원어민']},
+ { st:'평생교육 이용권', e:'정부 지원 · 평생교육이용권', bg:'img/ai/clock.jpg', t:'평생교육이용권,<br>1인당 연 최대 35만원', s:'산본글로벌어학원은 평생교육이용권 사용기관입니다 — 영어·일본어·중국어·토익 수강료를 이용권으로 결제하세요', act:"openPage('평생교육이용권')", pbg:'linear-gradient(135deg,#8A3410,#C8622A)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5B1026', cls:'hsty-impact'},
+ { st:'아키 AI 강의실', e:'AKI · 아키 AI 강의실', aki:'img/aki/aki_hero.png?v=1019f', bg:'img/ai/talk.jpg', t:'안녕하세요,<br>저는 아키예요', s:'산본글로벌어학원 AI 선생님 — 영어·일본어·중국어·토익 1강은 누구나 무료, 학원 수강생은 전부 무료', act:"try{closePage()}catch(e){};sgShop()", pbg:'linear-gradient(135deg,#9C2A5A,#D4588A)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5B1026', cls:'hsty-impact'},
+ { st:'SGA 문화센터', e:'SGA문화센터 · 오후 1~6시', nb:1, bg:'img/notice/n24_bg.jpg?v=1017b', t:'맘편한 영어,<br>두 달 과정 모집', s:'SGA문화센터 단기반 · 맘편한 영어 · 맘편한 일본어 · 엄마도 학원 간다 — 반마다 8명 모이면 개강', act:"noticeOpen('n24')", pbg:'linear-gradient(135deg,#0F6B5E,#1C8B76)', tc:'#FFF8EC', tc2:'#E8F5EF', ac:'#F6D58A', bbg:'#F6D58A', btc:'#0F4B42', cls:'hsty-impact', faces:['eng_15','../../t_tanai'], fnames:['김현정','타나이 치토세']},
+ { st:'JLPT', e:'JLPT · 내년 7월 시험', nb:1, bg:'img/notice/jlpt_bg.jpg?v=1017b', t:'히라가나부터<br>N3까지', s:'JLPT 방학 특공대반 · 내년 7월 시험대비반 모집 — 올해는 퍼스널로 바로 시작', act:"rsvOpen('일본어 / JLPT')", pbg:'linear-gradient(135deg,#9E1F1A,#C8352B)', tc:'#FFF8EC', tc2:'#FFE7E1', ac:'#F6D58A', bbg:'#F6D58A', btc:'#7A1712', cls:'hsty-impact'},
+ { st:'토익 · 유학 상담', e:'DIRECTOR · 원장 직접 상담', bg:'img/ai/consult.jpg', t:'토익·유학·시험대비,<br>원장이 직접 상담합니다', s:'Georgetown TESOL 출신 원장 · 상담은 무료입니다', act:"openPage('원장상담')", pbg:'linear-gradient(135deg,#5A1226,#8E1F35)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5A1226', cls:'hsty-soft'},
+ { st:'모든 강좌 무료', e:'FREE · 무료 청강', bg:'img/ai/classroom.jpg', t:'모든 강좌<br>첫 수업 무료', s:'영어·일본어·중국어 회화부터 토익·JLPT·HSK까지 — 등록 전에 1번 들어보세요', act:"openPage('무료청강')", pbg:'linear-gradient(135deg,#0E8A5A,#14B06E)', tc:'#eaffd6', tc2:'#d6f5e7', ac:'#D6F5E7', bbg:'#ffffff', btc:'#0E8A5A'},
+/* 보관(광고판에서 뺌 10/23): { e:'곧 오픈 · 어학 수강권 선물', bg:'img/ai/gift.jpg', t:'어학을 선물하세요', s:'영어·일본어·중국어 수강권을 소중한 사람에게 — 선물 수강권이 곧 오픈합니다. 미리 문의하시면 오픈 소식을 가장 먼저 알려드려요', act:"sgToast('<b>어학 선물 수강권, 곧 오픈됩니다</b><br>오픈 소식을 가장 먼저 알려드릴게요')", pbg:'linear-gradient(135deg,#4F6B1A,#7D9A2A)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5B1026', cls:'hsty-impact'}, */
 ];
 
 /* 2026-10-19 대표님 「메인화면 중간광고판을 아에 저런식으로 나열하는건 어때 … 한번에 볼 수 있게」 — 광고판 8장을 책장처럼 한 화면에 */
@@ -6099,12 +6100,12 @@ function heroShelfHTML(){
  +SLIDES.map(function(s,i){
   var t=String(s.t||'').replace(/<br\s*\/?>/g,' ');
   var eb=String(s.e||'').split('·');
-  return '<button type="button" class="hsh-c'+(s.aki?' ak':'')+'" onclick="'+String(s.act).replace(/"/g,'&quot;')+'" style="'+(s.bg?'background-image:url('+s.bg+');':'')+'">'
+  return '<button type="button" class="hsh-c'+(s.aki?' ak':'')+(s.chips?' ch':'')+'" onclick="'+String(s.act).replace(/"/g,'&quot;')+'" style="'+(s.bg?'background-image:url('+s.bg+');':'')+'">'
    +'<span class="hsh-ov" style="background:'+(s.pbg||'#7B1733')+'"></span><span class="hsh-dk"></span>'
-   +'<span class="hsh-e">'+eb[0].trim()+'</span>'
-   +(i<2?'<span class="hsh-bd">'+(i===0?'NEW':'HOT')+'</span>':'')
+   +(s.bd||i<2?'<span class="hsh-bd">'+(s.bd||(i===0?'NEW':'HOT'))+'</span>':'')
+   +'<span class="hsh-e">'+(s.st||eb[0].trim())+'</span>'
    +(s.aki?'<img class="hsh-aki" src="'+s.aki+'" alt="">':'')
-   +'<span class="hsh-t">'+t+'</span>'
+   +(s.chips?'<span class="hsh-ch">'+s.chips.map(function(c){return '<i>'+c+'</i>';}).join('')+'</span>':'<span class="hsh-t">'+t+'</span>')
    +'<span class="hsh-s">'+(eb[1]?eb[1].trim():'')+'</span>'
    +'<span class="hsh-f">SANBON GLOBAL<em>보기 ›</em></span></button>';
  }).join('')+'</div></div>';
@@ -12108,12 +12109,14 @@ function sgaPcRedeem(code,done){
   done(d);
  });
 }
+/* 2026-10-23 대표님 「SGA고정으로 두고 … 숫자 4자리로만 만들어 앞으론」 — 입력칸 앞에 SGA- 고정, 손님은 숫자 4자리만. 예전 8자리 코드(SGA-XXXX-XXXX)도 그대로 받음 */
+function sgaPcNorm(v){ var c=String(v||'').toUpperCase().replace(/[^A-Z0-9]/g,''); if(c.indexOf('SGA')===0) c=c.slice(3); if(/^\d{4}$/.test(c)) return 'SGA-'+c; if(/^[A-Z0-9]{8}$/.test(c)) return 'SGA-'+c.slice(0,4)+'-'+c.slice(4); return ''; }
 function aiRedeem(n){
  var er=document.getElementById('aiPcErr'), bad=function(t){ if(er){ er.textContent=t; er.style.display='block'; } };
- var c=((document.getElementById('aiPc')||{}).value||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
- if(c.length!==11||c.indexOf('SGA')!==0){ bad('코드는 SGA-XXXX-XXXX 모양입니다.'); return; }
+ var pc=sgaPcNorm((document.getElementById('aiPc')||{}).value);
+ if(!pc){ bad('결제 때 받은 개인코드 숫자 4자리를 넣어 주세요.'); return; }
  bad('확인하는 중입니다…');
- sgaPcRedeem('SGA-'+c.slice(3,7)+'-'+c.slice(7),function(d){
+ sgaPcRedeem(pc,function(d){
   if(d.kicked){ aiLsClose(); return; }
   if(!d.ok){ bad(d.err||'코드를 찾지 못했습니다.'); return; }
   var k=aiTxtKey(); if(aiIsFreeBook(k)){ aiLsClose(); try{ sgToast('<b>'+(d.course||'등록 과정')+' 열렸습니다</b><br>개인코드가 이 아이디에 등록되었습니다'); }catch(e){} try{ aiLesson(n); }catch(e){} }
@@ -12158,7 +12161,7 @@ function aiLockShow(n){
   +(function(){ var li=false; try{ li=!!(localStorage.getItem('sga_token')&&localStorage.getItem('sga_sid')); }catch(e){}
     return '<div style="max-width:420px;margin:4px auto 10px;padding:12px 12px 10px;border:1.5px solid #E7D8C8;border-radius:14px;background:#FFFBF5;text-align:left">'
      +'<b style="display:block;font-size:15px;font-weight:900;color:#1A1A18;margin-bottom:6px">학원 수강생이세요? 개인코드로 열기</b>'
-     +(li?('<div style="display:flex;gap:6px;margin-bottom:6px"><input id="aiPc" placeholder="SGA-XXXX-XXXX" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="16" style="flex:1 1 0;width:0;min-width:0;margin:0;box-sizing:border-box;height:50px;border:2px solid #D9C9B0;border-radius:10px;padding:0 10px;font-size:18px;font-weight:900;letter-spacing:1px;font-family:ui-monospace,Menlo,Consolas,monospace;text-transform:uppercase">'+'<button type="button" onclick="aiRedeem('+n+')" style="margin:0;flex:none;height:50px;padding:0 16px;border:0;border-radius:10px;background:#0e8a5a;color:#fff;font-size:16px;font-weight:900;cursor:pointer">열기</button></div>'+'<p id="aiPcErr" style="display:none;color:#C81F2B;font-weight:800;font-size:13.5px;margin:0 0 6px"></p>'+'<details style="margin-top:2px"><summary style="cursor:pointer;font-size:13px;font-weight:800;color:#5A5750">코드를 아직 못 받으셨나요? 이름·휴대폰으로 확인</summary><div style="margin-top:6px">'+'<div style="display:flex;gap:6px"><input id="aiVfNm" placeholder="이름" autocomplete="name" style="flex:1.2 1 0;width:0;min-width:0;margin:0;box-sizing:border-box;height:46px;border:2px solid #D9C9B0;border-radius:10px;padding:0 10px;font-size:16px;font-weight:800">'
+     +(li?('<div style="display:flex;gap:6px;margin-bottom:6px"><span style="flex:none;display:flex;align-items:center;height:50px;box-sizing:border-box;padding:0 10px;border:2px solid #D9C9B0;border-radius:10px;background:#F3EBDD;font-size:18px;font-weight:900;color:#5B1026;font-family:ui-monospace,Menlo,Consolas,monospace">SGA-</span><input id="aiPc" placeholder="숫자 4자리" inputmode="numeric" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="9" style="flex:1 1 0;width:0;min-width:0;margin:0;box-sizing:border-box;height:50px;border:2px solid #D9C9B0;border-radius:10px;padding:0 10px;font-size:18px;font-weight:900;letter-spacing:1px;font-family:ui-monospace,Menlo,Consolas,monospace;text-transform:uppercase">'+'<button type="button" onclick="aiRedeem('+n+')" style="margin:0;flex:none;height:50px;padding:0 16px;border:0;border-radius:10px;background:#0e8a5a;color:#fff;font-size:16px;font-weight:900;cursor:pointer">열기</button></div>'+'<p id="aiPcErr" style="display:none;color:#C81F2B;font-weight:800;font-size:13.5px;margin:0 0 6px"></p>'+'<details style="margin-top:2px"><summary style="cursor:pointer;font-size:13px;font-weight:800;color:#5A5750">코드를 아직 못 받으셨나요? 이름·휴대폰으로 확인</summary><div style="margin-top:6px">'+'<div style="display:flex;gap:6px"><input id="aiVfNm" placeholder="이름" autocomplete="name" style="flex:1.2 1 0;width:0;min-width:0;margin:0;box-sizing:border-box;height:46px;border:2px solid #D9C9B0;border-radius:10px;padding:0 10px;font-size:16px;font-weight:800">'
         +'<input id="aiVfP4" inputmode="numeric" maxlength="4" placeholder="폰 뒤 4자리" style="flex:1 1 0;width:0;min-width:0;margin:0;box-sizing:border-box;height:46px;border:2px solid #D9C9B0;border-radius:10px;padding:0 8px;font-size:15px;font-weight:800;text-align:center">'
         +'<button type="button" onclick="aiVerify('+n+')" style="margin:0;flex:none;height:46px;padding:0 14px;border:0;border-radius:10px;background:#0e8a5a;color:#fff;font-size:15px;font-weight:900;cursor:pointer;width:auto;max-width:none">확인</button></div>'
         +'<p id="aiVfErr" style="display:none;color:#C81F2B;font-weight:800;font-size:13.5px;margin:6px 0 0"></p></div></details>')
@@ -12204,8 +12207,8 @@ function sgaXGate(title,cb,err){
   +'<p class="lk-d">실전 모의고사는 시험대비반(토익·토스·오픽·JLPT·HSK) 수강생에게 열립니다.<br>교재·강의·영상은 1강은 누구나, 2강부터는 학원 수강생이면 전부 무료예요.</p>'
   +(login?'':'<p style="background:#FFF6E0;border:1.5px solid #F2C14E;border-radius:12px;padding:10px 12px;font-size:14.5px;font-weight:800;color:#5B1026;margin:6px auto 0;max-width:360px">먼저 맨 위 「회원가입」(휴대폰 번호로 30초)부터 해 주세요.<br>가입 후 다시 이 버튼을 누르면 됩니다.</p>')
   +'<div style="max-width:360px;margin:12px auto 0;text-align:left"><div style="font-size:15px;font-weight:900;color:#5B1026;margin:0 0 6px">① 홈페이지에서 결제하셨나요?</div>'
-  +'<div style="font-size:13.5px;color:#5A5750;margin:0 0 6px">결제할 때 화면에 나온 <b>개인코드</b>(SGA-로 시작)를 넣으세요.</div>'
-  +'<div style="display:flex;gap:6px"><input id="sgaXcIn" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="16" placeholder="SGA-XXXX-XXXX" onkeydown="if(event.key===\'Enter\')sgaXTry()" style="'+IN+';text-align:center;letter-spacing:1px;font-family:ui-monospace,Menlo,Consolas,monospace;text-transform:uppercase">'
+  +'<div style="font-size:13.5px;color:#5A5750;margin:0 0 6px">결제할 때 화면에 나온 <b>개인코드 숫자 4자리</b>만 넣으세요. (SGA-는 이미 적혀 있어요)</div>'
+  +'<div style="display:flex;gap:6px"><span style="flex:none;display:flex;align-items:center;height:50px;box-sizing:border-box;padding:0 10px;border:2px solid #D9C9B0;border-radius:10px;background:#F3EBDD;font-size:18px;font-weight:900;color:#5B1026;font-family:ui-monospace,Menlo,Consolas,monospace">SGA-</span><input id="sgaXcIn" autocomplete="off" inputmode="numeric" autocapitalize="characters" spellcheck="false" maxlength="9" placeholder="숫자 4자리" onkeydown="if(event.key===\'Enter\')sgaXTry()" style="'+IN+';text-align:center;letter-spacing:1px;font-family:ui-monospace,Menlo,Consolas,monospace;text-transform:uppercase">'
   +'<button type="button" onclick="sgaXTry()" style="'+BT+'">열기</button></div>'
   +'<div style="font-size:15px;font-weight:900;color:#5B1026;margin:16px 0 6px">② 학원 데스크에서 등록하셨나요?</div>'
   +'<div style="font-size:13.5px;color:#5A5750;margin:0 0 6px">코드 없이 <b>이름</b>과 <b>휴대폰 뒤 4자리</b>만 넣으세요.</div>'
@@ -12218,10 +12221,10 @@ function sgaXGate(title,cb,err){
 function sgaXTry(){
  var i=document.getElementById('sgaXcIn'), v=(i&&i.value||'').replace(/\s+/g,'').toUpperCase();
  if(!v){ _sgaXErr('결제 때 받은 개인코드를 넣어 주세요.'); return; }
- var c=v.replace(/[^A-Z0-9]/g,'');
- if(c.length===11&&c.indexOf('SGA')===0){
+ var pc=sgaPcNorm(v);
+ if(pc){
   _sgaXErr('확인하는 중입니다…');
-  sgaPcRedeem('SGA-'+c.slice(3,7)+'-'+c.slice(7),function(d){
+  sgaPcRedeem(pc,function(d){
    if(d.kicked){ try{ aiLsClose(); }catch(e){} return; }
    if(!d.ok){ _sgaXErr(d.err||'코드를 찾지 못했습니다. 다시 확인해 주세요.'); return; }
    if(sgaXOk()) _sgaXGo(); else _sgaXErr('확인되었습니다. 다만 이 코드는 시험대비반 과정이 아니라 모의고사가 열리지 않습니다.');
@@ -12230,7 +12233,7 @@ function sgaXTry(){
  }
  _sxSha(v).then(function(h){   /* 데스크 예비용 공용 입장코드 */
   if(h&&h===SGA_XC_H){ try{ localStorage.setItem('sga_xc',h); }catch(e){} _sgaXGo(); }
-  else _sgaXErr('코드가 맞지 않습니다. 개인코드는 SGA-XXXX-XXXX 모양입니다.');
+  else _sgaXErr('코드가 맞지 않습니다. 결제 화면에 나온 개인코드 숫자 4자리를 넣어 주세요.');
  });
 }
 function sgaXVerify(){
@@ -21742,10 +21745,10 @@ function _sgvOpen(c){ try{ if(sgaSubjOpen(c.g)) return true; }catch(e){} return 
 function _sgvSeen(){ try{ return JSON.parse(localStorage.getItem('sga_vw')||'{}')||{}; }catch(e){ return {}; } }
 function _sgvMark(k,n){ try{ var s=_sgvSeen(); s[k]=s[k]||{}; s[k][n]=1; s._last={k:k,n:n}; localStorage.setItem('sga_vw',JSON.stringify(s)); }catch(e){} }
 function _sgvErr(t){ var e=document.getElementById('sgvErr'); if(e){ e.textContent=t; e.style.display='block'; } }
-function sgvRedeem(k,i){ var c=((document.getElementById('sgvPc')||{}).value||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
- if(c.length!==11||c.indexOf('SGA')!==0){ _sgvErr('코드는 SGA-XXXX-XXXX 모양입니다.'); return; }
+function sgvRedeem(k,i){ var pc=sgaPcNorm((document.getElementById('sgvPc')||{}).value);
+ if(!pc){ _sgvErr('결제 때 받은 개인코드 숫자 4자리를 넣어 주세요.'); return; }
  _sgvErr('확인하는 중입니다…');
- sgaPcRedeem('SGA-'+c.slice(3,7)+'-'+c.slice(7),function(d){ if(d.kicked){ try{sgVidClose();}catch(e){} return; }
+ sgaPcRedeem(pc,function(d){ if(d.kicked){ try{sgVidClose();}catch(e){} return; }
   if(!d.ok){ _sgvErr(d.err||'코드를 찾지 못했습니다.'); return; }
   if(_sgvOpen(SGVID[k])){ try{ sgToast('<b>'+(d.course||'등록 과정')+' 열렸습니다</b>'); }catch(e){} sgVid(k,i); }
   else _sgvErr('코드 확인 완료('+(d.course||'')+'). 다만 이 영상은 그 과정에 들어 있지 않습니다.'); }); }
@@ -21792,7 +21795,7 @@ function sgVid(k,i){
    +'<span>'+(c.free>1?'0강·1강':'1강')+'은 누구나 보실 수 있습니다. 학원 수강생은 회원가입 후 <b style="font-size:inherit">수강생 확인</b>을 하시면 '+_sgsE(c.t)+' 전 강의가 열립니다.</span>'
    +(li?('<div class="sgv-vf" style="width:100%;max-width:380px;margin:4px auto 0;text-align:left">'
      +'<b style="display:block;font-size:14px;margin:0 0 6px">① 개인코드로 열기</b>'
-     +'<div style="display:flex;gap:6px;margin-bottom:8px"><input id="sgvPc" placeholder="SGA-XXXX-XXXX" autocomplete="off" maxlength="16" style="flex:1 1 0;width:0;min-width:0;margin:0;box-sizing:border-box;height:46px;border:2px solid #D9C9B0;border-radius:10px;padding:0 8px;font-size:15px;font-weight:800;background:#fff;color:#1A1A18;text-transform:uppercase"><button type="button" onclick="sgvRedeem(\''+k+'\','+i+')" style="margin:0;flex:none;height:46px;padding:0 14px;border:0;border-radius:10px;background:#0e8a5a;color:#fff;font-size:15px;font-weight:900;cursor:pointer;width:auto;max-width:none">열기</button></div>'
+     +'<div style="display:flex;gap:6px;margin-bottom:8px"><span style="flex:none;display:flex;align-items:center;height:46px;box-sizing:border-box;padding:0 10px;border:2px solid #D9C9B0;border-radius:10px;background:#F3EBDD;font-size:16px;font-weight:900;color:#5B1026;font-family:ui-monospace,Menlo,Consolas,monospace">SGA-</span><input id="sgvPc" placeholder="숫자 4자리" inputmode="numeric" autocomplete="off" maxlength="9" style="flex:1 1 0;width:0;min-width:0;margin:0;box-sizing:border-box;height:46px;border:2px solid #D9C9B0;border-radius:10px;padding:0 8px;font-size:15px;font-weight:800;background:#fff;color:#1A1A18;text-transform:uppercase"><button type="button" onclick="sgvRedeem(\''+k+'\','+i+')" style="margin:0;flex:none;height:46px;padding:0 14px;border:0;border-radius:10px;background:#0e8a5a;color:#fff;font-size:15px;font-weight:900;cursor:pointer;width:auto;max-width:none">열기</button></div>'
      +'<b style="display:block;font-size:14px;margin:0 0 6px">② 코드가 없으면 이름 + 휴대폰 뒤 4자리</b>'
      +'<div style="display:flex;gap:6px"><input id="sgvNm" placeholder="이름" autocomplete="name" style="flex:1 1 0;width:0;min-width:0;margin:0;box-sizing:border-box;height:46px;border:2px solid #D9C9B0;border-radius:10px;padding:0 8px;font-size:15px;font-weight:800;background:#fff;color:#1A1A18"><input id="sgvP4" inputmode="numeric" maxlength="4" placeholder="뒤 4자리" style="flex:1 1 0;width:0;min-width:0;margin:0;box-sizing:border-box;height:46px;border:2px solid #D9C9B0;border-radius:10px;padding:0 8px;font-size:15px;font-weight:800;background:#fff;color:#1A1A18;text-align:center"><button type="button" onclick="sgvVerify(\''+k+'\','+i+')" style="margin:0;flex:none;height:46px;padding:0 14px;border:0;border-radius:10px;background:#0e8a5a;color:#fff;font-size:15px;font-weight:900;cursor:pointer;width:auto;max-width:none">확인</button></div>'
      +'<p id="sgvErr" style="display:none;color:#C81F2B;font-weight:800;font-size:13.5px;margin:6px 0 0"></p></div>')
@@ -22986,6 +22989,40 @@ body:has(#sgVid.on) .sgs-x,body:has(#sgSpread.on) .sgs-x,body:has(.sp-modal.on) 
  function fix(){try{document.querySelectorAll(SEL).forEach(function(e){if(e.textContent!==''){e.textContent='';}});}catch(x){}}
  try{new MutationObserver(function(){fix();}).observe(document.body,{childList:true,subtree:true});}catch(x){}
  fix();})();
+</script>
+<!-- 2026-10-23 대표님 「겨울되서 눈오는날은 눈 좀 내리게 … 홈피가 정체되어있는듯하게 말고」 — 군포(산본) 실제 날씨가 눈일 때만 눈이 내립니다. 날씨: Open-Meteo(무료·키 없음), 30분 캐시. 미리보기 ?snow=1 / 끄기 ?snow=0 -->
+<canvas id="sgSnow" aria-hidden="true" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60;display:none"></canvas>
+<script>
+(function(){
+ try{
+ var q=location.search, force=/[?&]snow=1/.test(q), off=/[?&]snow=0/.test(q);
+ if(off) return;
+ if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches&&!force) return;
+ var m=new Date().getMonth()+1; if(!force&&!(m>=11||m<=3)) return;
+ var SNOW=[71,73,75,77,85,86];
+ function start(code){
+  var cv=document.getElementById('sgSnow'); if(!cv) return; var cx=cv.getContext('2d'); cv.style.display='block';
+  var heavy=(code===75||code===86), mob=innerWidth<760, N=Math.round((mob?40:85)*(heavy?1.7:1)), F=[], W, H, dpr=Math.min(devicePixelRatio||1,2), run=true;
+  function rs(){W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);} rs(); addEventListener('resize',rs);
+  function mk(top){return {x:Math.random()*W,y:top?-10:Math.random()*H,r:1.4+Math.random()*(mob?2.6:3.2),v:.45+Math.random()*1.1,s:Math.random()*6.28,a:.55+Math.random()*.45};}
+  for(var i=0;i<N;i++)F.push(mk(false));
+  document.addEventListener('visibilitychange',function(){run=!document.hidden;if(run)requestAnimationFrame(tick);});
+  function tick(){ if(!run) return; cx.clearRect(0,0,W,H);
+   for(var i=0;i<F.length;i++){var f=F[i]; f.y+=f.v; f.s+=.012; f.x+=Math.sin(f.s)*.5;
+    if(f.y>H+8||f.x<-10||f.x>W+10){F[i]=mk(true);continue;}
+    cx.beginPath(); cx.arc(f.x,f.y,f.r,0,6.283); cx.fillStyle='rgba(255,255,255,'+f.a+')'; cx.shadowColor='rgba(110,70,80,.45)'; cx.shadowBlur=3; cx.fill(); }
+   requestAnimationFrame(tick);} requestAnimationFrame(tick);
+  try{ if(!sessionStorage.getItem('sgSnowT')){sessionStorage.setItem('sgSnowT','1'); setTimeout(function(){ if(typeof sgToast==='function') sgToast('<b>❄ 지금 산본에 눈이 내려요</b><br>따뜻하게 입고 오세요 — 산본역 3번 출구 1분'); },1800);} }catch(e){}
+ }
+ if(force){start(73);return;}
+ var K='sgWx', c=null; try{c=JSON.parse(sessionStorage.getItem(K)||'null');}catch(e){}
+ if(c&&Date.now()-c.t<1800000){ if(SNOW.indexOf(c.w)>=0) start(c.w); return; }
+ fetch('https://api.open-meteo.com/v1/forecast?latitude=37.3617&longitude=126.9352&current=weather_code&timezone=Asia%2FSeoul',{credentials:'omit'}).then(function(r){return r.json();}).then(function(j){
+  var w=j&&j.current?j.current.weather_code:-1; try{sessionStorage.setItem(K,JSON.stringify({t:Date.now(),w:w}));}catch(e){}
+  if(SNOW.indexOf(w)>=0) start(w);
+ }).catch(function(){});
+ }catch(e){}
+})();
 </script>
 </body>
 </html>
