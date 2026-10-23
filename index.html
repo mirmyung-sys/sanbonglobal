@@ -17872,7 +17872,7 @@ body.has-tab #pgbody,body.has-tab #abox .abody,body.has-tab .sp-wrap{padding-bot
   <button type="button" data-k="_home" onclick="tabGo('_home')"><span class="ti">🏠</span><span class="tl">홈</span></button>
   <button type="button" data-k="수강신청" onclick="tabGo('수강신청')"><span class="dot"></span><span class="ti">📝</span><span class="tl">수강신청</span></button>
   <button type="button" data-k="AI 아키" onclick="sgShop();return false;"><span class="ti ti-aki"><img src="img/aki/aki_icon_96.png" alt="" aria-hidden="true"></span><span class="tl">아키 AI 강의실</span></button>
-  <button type="button" data-k="_call" onclick="tabGo('_call')"><span class="ti">💬</span><span class="tl">상담</span></button>
+  <button type="button" data-k="_call" onclick="tabGo('_call')"><span class="ti">📞</span><span class="tl">전화상담</span></button>
   <button type="button" data-k="_menu" onclick="sgMenuOpen()"><span class="ti">☰</span><span class="tl">전체메뉴</span></button>
  </div>
 </div>
@@ -17882,7 +17882,8 @@ body.has-tab #pgbody,body.has-tab #abox .abody,body.has-tab .sp-wrap{padding-bot
  window.tabGo=function(k){
   try{
    if(k==='_home'){ try{closePage();}catch(e){} window.scrollTo({top:0,behavior:'smooth'}); return; }
-   if(k==='_call'){ try{rsvOpen();}catch(e){ try{openPage('원장상담');}catch(e2){} } return; }
+   /* 2026-10-23 대표님 「홈피 수강상담전화 누르면 바로 전화로 가게」 — 아래 탭 상담 = 바로 전화 */
+   if(k==='_call'){ location.href='tel:0314666969'; return; }
    openPage(k);
   }catch(e){}
  };
@@ -22016,6 +22017,8 @@ body.has-tab #tkPop .tk-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
   m.innerHTML='<div class="tk-card"><div class="tk-rail" id="tkRail">'+L.map(function(u,i){return '<img src="'+u+'" alt="'+(i===0?'11월 토익 스파르타 · 정규반 모집 — 송윤정 · 엘리 킴 · 김현정':'')+'" loading="'+(i<2?'eager':'lazy')+'">';}).join('')+'</div>'
    +'<div class="tk-dots" id="tkDots">'+L.map(function(u,i){return '<i'+(i===0?' class="on"':'')+'></i>';}).join('')+'</div>'
    +'<a class="tk-go" href="#" onclick="tkPopClose(false);try{openPage(\'무료청강\');}catch(e){}return false;">토익 첫 수업 무료로 들어보기</a>'
+   /* 2026-10-23 대표님 「팝업창에 나오는 영상 맛보기」 — 첫 화면 팝업에 아키 영상 맛보기 버튼 */
+   +'<a class="tk-go" href="#" style="background:#F6D58A;color:#5B1026;margin-top:8px" onclick="tkPopClose(false);try{sgTasteMenu();}catch(e){}return false;">🎬 아키 영상 맛보기 (영어회화 · 토익)</a>'
    +'<div class="tk-ft"><a href="#" onclick="tkPopClose(false);try{noticeOpen(\'n22\');}catch(e){}return false;">자세히 보기</a><a href="#" onclick="tkPopClose(true);return false;">오늘 하루 안보기</a></div>'
    +'</div><button class="tk-x" type="button" aria-label="닫기" onclick="tkPopClose(false)">✕</button>';
   m.addEventListener('click',function(e){if(e.target===m)tkPopClose(false);});
