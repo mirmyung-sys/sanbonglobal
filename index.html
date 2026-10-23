@@ -5235,6 +5235,17 @@ sgLb.i=0;
         <a href="#" onclick="openPage('수강신청');return false;">취업·유학·외고 컨설팅</a>
       </div>
     </div>
+    <!-- 2026-10-23 대표님 「홈페이지에 우리 커리큘럼이 없어 … 커리큘럼 메뉴에 넣어 … 우리 만든 사진 자료들 구성해서」 -->
+    <div class="ni"><a href="#" onclick="openPage('커리큘럼');return false;" style="color:#7B1733;font-weight:900">📘 커리큘럼<b class="car">▾</b></a>
+      <div class="ddown">
+        <a href="#" onclick="curGo('en');return false;">영어회화</a>
+        <a href="#" onclick="curGo('toeic');return false;">토익</a>
+        <a href="#" onclick="curGo('tos');return false;">토익스피킹</a>
+        <a href="#" onclick="curGo('opic');return false;">오픽</a>
+        <a href="#" onclick="curGo('ja');return false;">일본어 · JLPT</a>
+        <a href="#" onclick="curGo('zh');return false;">중국어 · HSK</a>
+      </div>
+    </div>
     <div class="ni"><a href="#" onclick="openPage('강의안내');return false;">글로벌 시험반<b class="car">▾</b></a>
       <div class="ddown"> <a href="#" onclick="akGo('mock');return false;">🐋 아키 AI 토익모의고사</a>
         <a href="#" onclick="openCourse('토익');return false;">토익</a>
@@ -7057,6 +7068,34 @@ function eventHubPage(){
 
  +SGCTA('지금 결제하지 않으셔도 됩니다. 상담부터 받아보시고 결정하십시오.');
 }
+/* ═══ 커리큘럼 — 2026-10-23 대표님 「커리큘럼이 중요한데 우리 홈페이지에는 없어서 … 우리 만든 사진 자료들 구성해서 만들어」
+   10/06 과목별 커리큘럼 6장 + 10/11 교재·시험대비 로드맵 6장(대표님 PC 원본)을 과목별로 묶음. 사진을 누르면 크게 봅니다. */
+var CURR=[
+ {k:'en',t:'영어회화',c:'#0A5C3D',s:'기초부터 원어민 회화까지 — 한 단계는 책 두 권으로 4개월',im:[['cur_en','영어회화 단계별 커리큘럼'],['cur_en_book','영어회화 교재 로드맵']],rs:'영어회화'},
+ {k:'toeic',t:'토익',c:'#7B1733',s:'초급 → 중급 → 실전 · 정규반 6개월 / 스파르타 3개월',im:[['cur_toeic','토익 단계별 커리큘럼'],['cur_exam_en','영어 시험대비 로드맵 (토익·토스·오픽)']],rs:'토익'},
+ {k:'tos',t:'토익스피킹',c:'#9A5B13',s:'두 달, 한 과정으로 끝냅니다 — 11문제 전 파트',im:[['cur_tos','토익스피킹 2개월 완성 커리큘럼']],rs:'토스'},
+ {k:'opic',t:'오픽',c:'#C8452F',s:'두 달, 한 과정으로 끝냅니다 — 매주 토요일',im:[['cur_opic','오픽 2개월 완성 커리큘럼']],rs:'오픽'},
+ {k:'ja',t:'일본어 · JLPT',c:'#B8324F',s:'글자부터 원어민 수업까지 — 다이스키 1·2·3 + JLPT',im:[['cur_ja','일본어회화 단계별 커리큘럼'],['cur_ja_book','일본어 교재 로드맵'],['cur_jlpt','2027년 7월 JLPT 합격 로드맵']],rs:'일본어'},
+ {k:'zh',t:'중국어 · HSK',c:'#8C4A2F',s:'성조부터 비즈니스 회화까지 — 맛있는 중국어 + HSK',im:[['cur_zh','중국어회화 단계별 커리큘럼'],['cur_zh_book','중국어 교재 로드맵'],['cur_hsk','중국어 HSK 합격 로드맵']],rs:'중국어'}
+];
+function curPage(){
+ var tabs=CURR.map(function(g){ return '<a href="#" style="--cc:'+g.c+'" onclick="curJump(\''+g.k+'\');return false;">'+g.t+'</a>'; }).join('');
+ var secs=CURR.map(function(g){
+  var ims=g.im.map(function(m){ return '<figure class="cu-f"><a href="#" onclick="curZoom(\'img/'+m[0]+'.jpg?v=1023\',\''+m[1]+'\');return false;"><img src="img/'+m[0]+'.jpg?v=1023" alt="'+m[1]+'" loading="lazy"></a><figcaption>'+m[1]+' <span>🔍 누르면 크게</span></figcaption></figure>'; }).join('');
+  return '<section class="cu-s" id="cu_'+g.k+'"><div class="cu-hd" style="--cc:'+g.c+'"><h3>'+g.t+'</h3><p>'+g.s+'</p></div><div class="cu-g">'+ims+'</div>'
+   +'<div class="cu-cta"><a href="#" class="a" style="background:'+g.c+'" onclick="try{rsvOpen(\''+g.rs+'\');}catch(e){}return false;">'+g.t+' 상담 예약</a><a href="tel:0314666969" class="b">📞 031-466-6969</a></div></section>';
+ }).join('');
+ return '<div class="pghero big" style="background:linear-gradient(120deg,#4A0F22,#7B1733)"><div class="pgeyebrow">CURRICULUM · 커리큘럼</div><h2>과목별 커리큘럼</h2><p>어디서 시작해서, 몇 달 뒤 어디까지 가는지 — 한 장으로 보세요.</p></div>'
+  +'<div class="cu-tabs">'+tabs+'</div>'+secs+CTA();
+}
+function curJump(k){ var e=document.getElementById('cu_'+k); if(e) e.scrollIntoView({behavior:'smooth',block:'start'}); }
+function curGo(k){ openPage('커리큘럼'); setTimeout(function(){ curJump(k); },120); }
+function curZoom(src,t){
+ var el=document.getElementById('cuLb'); if(!el){ el=document.createElement('div'); el.id='cuLb'; document.body.appendChild(el); }
+ el.innerHTML='<div class="cl-in" onclick="if(event.target===this)curZoomX()"><img src="'+src+'" alt="'+t+'"></div><button type="button" class="cl-x" onclick="curZoomX()" aria-label="닫기">✕<br>닫기</button>';
+ el.classList.add('on');
+}
+function curZoomX(){ var el=document.getElementById('cuLb'); if(el) el.classList.remove('on'); }
 function guidePage(){
  var CATS=[
   {c:'영어회화',cap:'기초·한인·원어민 회화',color:'#0e8f6e',items:['기초입문회화','한인회화','원어민회화(SLE)'],img:'img/hall_09.jpg?v=1012',co:'영어회화'},
@@ -7618,6 +7657,7 @@ const PAGES={
  '어학뉴스':langNewsPage,
  '어학 뉴스':langNewsPage,
  '강의안내':guidePage(),
+ '커리큘럼':curPage,
  '이벤트혜택':eventHubPage,
  '강사소개':teacherPage(),
  '시험대비반':tGrid('linear-gradient(120deg,#8f1a20,#c81f2b)','시험대비반','토익 · JLPT · EJU · 토스 · 오픽 · HSK 한 번에',T_EXAM),
@@ -19487,6 +19527,7 @@ function _sxRoster(){ try{ if(typeof sgaIsMaster==='function'&&sgaIsMaster()) re
  try{ if(typeof sgaGrantHas==='function'&&(sgaGrantHas('toeicB')||sgaGrantHas('toeic'))) return true; }catch(e){}
  try{ return sgxHas('toeicM'); }catch(e){ return false; } }
 function sgxStart(kind,only){
+ if(kind==='taste'){ sgxTaste(only); return; }
  if((kind==='month'||kind==='full')&&!only&&!(sgxHas('toeicM')||sgaXOk())){ sgaXGate(kind==='full'?'토익 전체 실전 모의고사':'토익 월간 실전 모의고사',function(){ sgxStart(kind,only); }); return; }
  if(kind==='full'){ sgxFull(only); return; }
  var sc= kind==='month'?_sxMonth():_sxDaily();
@@ -19554,6 +19595,24 @@ function sgxFull(only){
  fetch('exam/full'+k+'.json?v=1013').then(function(r){return r.json();}).then(function(F){ _sxFullCache[k]=F; go(F); })
   .catch(function(){ b.innerHTML='<div class="tos-intro"><p class="tos-p">문제를 불러오지 못했습니다. 인터넷 연결을 확인하고 다시 눌러 주세요.</p><button class="tos-go" onclick="sgxFull()">다시 시도</button></div>'; });
 }
+/* 2026-10-23 대표님 「맛보기가 200문항 틀고 오른쪽에 사지선다 지금 시스템 그대로 보여줘 대신 5문제만」
+   전체 실전 모의고사(200문항) 화면·오른쪽 OMR 답안지 그대로 — 문제만 5개(Part 1 사진 3 + Part 5 2, 전부 A~D 사지선다). 클릭 화면 없이 1번 문제로 바로. */
+function sgxTaste(only){
+ var k=SGX_FULL.cur, go=function(F){
+  var sc=[];
+  F.p1.slice(0,3).forEach(function(x){ sc.push({ty:'p1',it:x}); });
+  F.p5.slice(0,2).forEach(function(x){ sc.push({ty:'p5',it:x}); });
+  if(only){ sc=sc.filter(function(s){ return _sxQs(s).some(function(q){ return only[q.id]; }); }); }
+  _sx={kind:'taste',ym:F.nm,sc:sc,i:0,ans:{},played:{},t0:Date.now(),lim:only?0:5*60,tm:null,only:only||null,ab:'audio/mock/f'+k+'/',ib:'img/mock/f'+k+'/'};
+  var n=0; sc.forEach(function(s){ n+=_sxQs(s).length; }); _sx.n=n;
+  _sxShell('아키 AI 토익모의고사',only?'맛보기 · 틀린 문제 다시 풀기':'실전 모의고사 맛보기 · 5문제');
+  _sxGo(0);
+ };
+ if(_sxFullCache[k]){ go(_sxFullCache[k]); return; }
+ var b=_sxShell('아키 AI 토익모의고사','실전 모의고사 맛보기'); b.innerHTML='<div class="tos-intro"><p class="tos-p">문제를 불러오는 중입니다…</p></div>';
+ fetch('exam/full'+k+'.json?v=1013').then(function(r){return r.json();}).then(function(F){ _sxFullCache[k]=F; go(F); })
+  .catch(function(){ b.innerHTML='<div class="tos-intro"><p class="tos-p">문제를 불러오지 못했습니다. 인터넷 연결을 확인하고 다시 눌러 주세요.</p><button class="tos-go" onclick="sgxTaste()">다시 시도</button></div>'; });
+}
 function _sxTick(){
  if(!_sx) return; var el=document.getElementById('sxClock'); if(!el) return;
  var s=Math.floor((Date.now()-_sx.t0)/1000);
@@ -19599,7 +19658,7 @@ function _sxGo(i){
  if(!_sx) return;
  try{ if(_sxAu){ _sxAu.pause(); _sxAu=null; } }catch(e){}
  _sx.i=Math.max(0,Math.min(_sx.sc.length-1,i));
- var s=_sx.sc[_sx.i], it=s.it, once=((_sx.kind==='month'||_sx.kind==='full')&&!_sx.only), h='';
+ var s=_sx.sc[_sx.i], it=s.it, once=((_sx.kind==='month'||_sx.kind==='full'||_sx.kind==='taste')&&!_sx.only), h='';
  var PN={p1:'Part 1 · 사진 묘사',p2:'Part 2 · 질문-응답',p3:'Part 3 · 대화',p4:'Part 4 · 담화',p5:'Part 5 · 단문 빈칸',p6:'Part 6 · 장문 빈칸',p7:'Part 7 · 독해',p7m:'Part 7 · 독해'};
  if(s.ty==='p1'){
   h+='<div class="tos-dir">사진을 보고 네 개의 설명을 들은 뒤, 사진을 가장 잘 묘사한 것을 고르세요. 설명은 화면에 나오지 않습니다.</div>'
@@ -19684,8 +19743,8 @@ function _sxResult(){
  }
  h+='<div class="tos-cta">'
   +(wrong.length?'<button class="tos-go" onclick="sgxStart(\''+_sx.kind+'\',_sxWrong)">틀린 문제만 다시 풀기</button>':'')
-  +(_sx.kind==='daily'
-   ?'<div class="tos-k" style="margin-top:14px">토익 등록하면</div><h3>토익 기초문법 40강 + <b>매달 실전 모의고사</b><br>수강 기간 동안 무료</h3>'
+  +((_sx.kind==='daily'||_sx.kind==='taste')
+   ?(_sx.kind==='taste'?'<p class="tos-sm" style="margin-top:12px">방금 푼 화면이 <b>전체 실전 모의고사(200문항 · 120분)</b>와 똑같은 화면입니다.</p>':'')+'<div class="tos-k" style="margin-top:14px">토익 등록하면</div><h3>토익 기초문법 40강 + <b>매달 실전 모의고사</b><br>수강 기간 동안 무료</h3>'
     +'<button class="tos-go" onclick="sgxClose();try{openPage(\'수강신청\');}catch(e){}">토익 반 보러 가기</button>'
     +'<button class="tos-again" onclick="sgxClose();try{rsvOpen(\'토익\');}catch(e){}">상담 예약</button>'
    :'<p class="tos-sm">결과는 이 휴대폰에 저장됩니다. 강사에게 이 화면을 보여 주시면 약점 위주로 짚어 드립니다.</p>')
@@ -21546,7 +21605,7 @@ AITXT['jpn_begin']=[{"t": "몇 식구예요? · 가족 소개", "vid": "media/ja
   var a=Math.min.apply(null,qs), b=Math.max.apply(null,qs);
   return (a===b?a:a+'–'+b)+'번 / '+_sx.n;
  };
- function bigEnough(){ return _sx && (_sx.n>=40); }
+ function bigEnough(){ return _sx && (_sx.n>=40 || _sx.kind==='taste'); }
  function build(){
   var host=document.getElementById('sgX'); if(!host||!_sx) return;
   var m=_sxOmrMap(), L=_sx.qlist, hasLC=L.some(function(id){return m[id].lc;}), hasRC=L.some(function(id){return !m[id].lc;});
@@ -23049,6 +23108,36 @@ body:has(#sgVid.on) .sgs-x,body:has(#sgSpread.on) .sgs-x,body:has(.sp-modal.on) 
 #sgTaste .tt-x{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%);width:60px;height:60px;border-radius:50%;border:0;background:#F6C744;color:#5A1226;font-size:15px;font-weight:900;box-shadow:0 6px 16px rgba(0,0,0,.25);cursor:pointer;z-index:9001}
 @media(min-width:900px){#sgTaste{align-items:center}#sgTaste .tt-in{border-radius:22px;padding-bottom:26px}#sgTaste .tt-x{bottom:auto;top:calc(50% + 175px)}}
 </style>
+<style id="sxFix1023">/* 2026-10-23 맛보기 검수 — ①PC에서 Part 1 사진이 커서 A~D 보기가 아래 버튼줄에 가려짐 → 사진 높이 제한 ②폰에서 답안지를 열면 답안지 닫기(✕)가 시험 닫기 버튼 밑에 깔려, 누르면 시험 전체가 닫힘 → 답안지가 열려 있는 동안 시험 닫기 버튼 숨김 */
+.tos-q.sx-scr .sx-p1{width:auto;max-width:min(560px,100%);max-height:44vh}
+#sgX:has(#sxOmr.open) .tos-x{visibility:hidden!important;pointer-events:none!important}
+</style>
+<style id="curCss">
+/* 2026-10-23 커리큘럼 메뉴 */
+.cu-tabs{position:sticky;top:0;z-index:5;display:flex;gap:8px;overflow-x:auto;padding:12px 4px;background:#FBF7EF;border-bottom:1px solid #EFE4D2;-webkit-overflow-scrolling:touch}
+.cu-tabs a{flex:none;padding:10px 16px;border-radius:999px;background:#fff;border:2px solid var(--cc);color:var(--cc)!important;font-weight:900;font-size:15px;text-decoration:none;white-space:nowrap}
+.cu-tabs a:hover{background:var(--cc);color:#fff!important}
+.cu-s{padding:22px 4px 8px;scroll-margin-top:64px}
+.cu-hd{border-left:6px solid var(--cc);padding:2px 0 2px 12px;margin:0 0 14px}
+.cu-hd h3{margin:0;font-size:24px;font-weight:900;color:var(--cc)}
+.cu-hd p{margin:4px 0 0;font-size:15px;font-weight:700;color:#4A4234;line-height:1.5;word-break:keep-all}
+.cu-g{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:760px){.cu-g{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1100px){.cu-g{grid-template-columns:repeat(3,1fr)}}
+.cu-f{margin:0;background:#fff;border:1.5px solid #E7DCCB;border-radius:14px;overflow:hidden;box-shadow:0 4px 14px rgba(60,40,20,.08)}
+.cu-f img{display:block;width:100%;height:auto}
+.cu-f figcaption{padding:10px 12px;font-size:14.5px;font-weight:900;color:#1F1B14;display:flex;justify-content:space-between;gap:8px;align-items:center;word-break:keep-all}
+.cu-f figcaption span{flex:none;font-size:12px;font-weight:800;color:#8A6A22}
+.cu-cta{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 6px}
+.cu-cta a{flex:1 1 160px;text-align:center;padding:13px 10px;border-radius:12px;font-weight:900;font-size:15.5px;text-decoration:none}
+.cu-cta .a{color:#fff!important}
+.cu-cta .b{background:#fff;border:2px solid #D9C9B0;color:#1F1B14!important}
+#cuLb{position:fixed;inset:0;z-index:2147483100;display:none;background:rgba(71,9,29,.92)}
+#cuLb.on{display:block}
+#cuLb .cl-in{position:absolute;inset:0;overflow:auto;padding:14px 10px 120px;text-align:center;-webkit-overflow-scrolling:touch}
+#cuLb .cl-in img{max-width:min(1240px,100%);width:100%;height:auto;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+#cuLb .cl-x{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:62px;height:62px;border-radius:50%;border:3px solid #fff;background:linear-gradient(135deg,#FFD75E,#E8A912);color:#3A2410;font-size:14px;font-weight:900;line-height:1.1;box-shadow:0 6px 20px rgba(0,0,0,.35);cursor:pointer;z-index:2}
+</style>
 <div id="sgTaste" onclick="if(event.target===this)sgTasteClose()"><div class="tt-in" id="sgTasteIn"></div><button class="tt-x" type="button" onclick="sgTasteClose()" aria-label="닫기">✕<br>닫기</button></div>
 <script>
 /* 2026-10-23 대표님 「토익 클릭하면 아키가 만든 모의고사 맛보기가 열립니다 … 바로 엘시랑 정답 누르는 장면」「영어회화 누르면 포코너스 1 하고 아키가 나와서 설명하는거랑 토익 모의고사 문제풀이 클릭시 시험 맛보기가 시작됩니다」 */
@@ -23056,7 +23145,7 @@ function sgTasteMenu(){
  var el=document.getElementById('sgTaste'), b=document.getElementById('sgTasteIn'); if(!el||!b) return;
  b.innerHTML='<div class="tt-hd"><img src="img/aki/aki_default_240.png" alt="아키"><div><b>아키 영상 맛보기</b><span>가입 없이 바로 · 무엇부터 볼까요?</span></div></div>'
   +'<button type="button" class="tt-b tt-en" onclick="sgTasteEn()"><i>🗣️</i><div><b>영어회화</b><small>포코너스 1 · Unit 1 — 아키가 직접 설명합니다</small></div></button>'
-  +'<button type="button" class="tt-b tt-tc" onclick="sgTasteToeic()"><i>📝</i><div><b>토익 모의고사 문제풀이</b><small>아키가 만든 모의고사 — 듣기 문제부터 바로</small></div></button>';
+  +'<button type="button" class="tt-b tt-tc" onclick="sgTasteToeic()"><i>📝</i><div><b>토익 모의고사 문제풀이</b><small>실전 200문항 시험 화면 그대로 · 5문제만</small></div></button>';
  el.classList.add('on'); document.body.style.overflow='hidden';
 }
 function sgTasteClose(){ var el=document.getElementById('sgTaste'); if(el) el.classList.remove('on'); document.body.style.overflow=''; }
@@ -23065,10 +23154,10 @@ function sgTasteToeic(){
  var el=document.getElementById('sgTaste'), b=document.getElementById('sgTasteIn');
  if(!el||!b){ sgTasteGo(); return; }
  if(!el.classList.contains('on')){ el.classList.add('on'); document.body.style.overflow='hidden'; }
- b.innerHTML='<div class="tt-go"><img src="img/aki/aki_default_240.png" alt="아키"><b>시험 맛보기가 시작됩니다</b><span>아키가 만든 토익 모의고사 · 듣기(LC)부터<br>소리를 켜 주세요 🔊</span></div>';
+ b.innerHTML='<div class="tt-go"><img src="img/aki/aki_default_240.png" alt="아키"><b>시험 맛보기가 시작됩니다</b><span>실전 모의고사 화면 그대로 · 5문제<br>사진 듣기(LC)부터 · 소리를 켜 주세요 🔊</span></div>';
  setTimeout(sgTasteGo,1100);
 }
-function sgTasteGo(){ sgTasteClose(); try{ closePage(); }catch(e){} try{ sgxStart('daily'); _sxGo(0); }catch(e){} }
+function sgTasteGo(){ sgTasteClose(); try{ closePage(); }catch(e){} try{ sgxTaste(); }catch(e){} }
 </script>
 
 <script>
