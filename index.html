@@ -6086,7 +6086,9 @@ const SLIDES=[
  { st:'11월 토익 스파르타', e:'11월 토익 스파르타 · 정규반 모집', bg:'img/notice/toeic_bg2.jpg?v=1017b', t:'토익 강사 3명,<br>먼저 들어보시고 선택하세요', s:'토익 만점 강사 송윤정 · 더 쎈토익 창시자 엘리 킴 · 「김현정 토익은 진짜다」', act:"openPage('수강신청');bkGo('토익')", pbg:'linear-gradient(135deg,#6B1F2E,#b8322a)', tc:'#ffd94d', tc2:'#ffe3e0', ac:'#ffe0dd', bbg:'#ffd94d', btc:'#6B1F2E', cls:'hsty-impact', faces:['eng_13','elly','eng_15'], fnames:['송윤정','엘리 킴','김현정']},
  { st:'기업체 출강', e:'기업체 출강 · 임원 1:1', bg:'img/biz_main.jpg', t:'전문강사진 25명이<br>회사로 찾아갑니다', s:'원어민 · 한인 회화강사 · 토익·토플·오픽·토스 전문강사 — 기업체 출강 · 임원 1:1', act:"location.href='biz.html#native'", pbg:'linear-gradient(135deg,#3E1F5C,#6B3A8E)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5A1226', cls:'hsty-impact', faces:['eng_11','jpn_8','eng_13','eng_15','chn_1'], fnames:['원어민','원어민','토익','토플·오픽','원어민']},
  { st:'평생교육 이용권', e:'정부 지원 · 평생교육이용권', bg:'img/ai/clock.jpg', t:'평생교육이용권,<br>1인당 연 최대 35만원', s:'산본글로벌어학원은 평생교육이용권 사용기관입니다 — 영어·일본어·중국어·토익 수강료를 이용권으로 결제하세요', act:"openPage('평생교육이용권')", pbg:'linear-gradient(135deg,#8A3410,#C8622A)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5B1026', cls:'hsty-impact'},
- { st:'아키 AI 강의실', e:'AKI · 아키 AI 강의실', aki:'img/aki/aki_hero.png?v=1019f', bg:'img/ai/talk.jpg', t:'안녕하세요,<br>저는 아키예요', s:'산본글로벌어학원 AI 선생님 — 영어·일본어·중국어·토익 1강은 누구나 무료, 학원 수강생은 전부 무료', act:"try{closePage()}catch(e){};sgShop()", pbg:'linear-gradient(135deg,#9C2A5A,#D4588A)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5B1026', cls:'hsty-impact'},
+/* 2026-10-23 대표님 「중간광고판에서 한개 빼고 아키영상 맛보기 클릭 하게 하고 누르면 영어회화 토익 두가지 화면 나오게」 — 「아키 AI 강의실」 칸을 「아키 영상 맛보기」로 교체(원본 아래 주석 보관). 누르면 sgTasteMenu() */
+ { st:'아키 영상 맛보기', bd:'무료', e:'AKI · 아키 영상 맛보기', aki:'img/aki/aki_hero.png?v=1019f', bg:'img/ai/talk.jpg', t:'영어회화 · 토익<br>눌러서 바로 보기', s:'영어회화 1강(포코너스 1 · Unit 1)과 토익 모의고사 문제풀이를 가입 없이 바로 맛보세요', act:"sgTasteMenu()", pbg:'linear-gradient(135deg,#9C2A5A,#D4588A)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5B1026', cls:'hsty-soft'},
+/* 보관(10/23 교체 전): { st:'아키 AI 강의실', e:'AKI · 아키 AI 강의실', aki:'img/aki/aki_hero.png?v=1019f', bg:'img/ai/talk.jpg', t:'안녕하세요,<br>저는 아키예요', s:'산본글로벌어학원 AI 선생님 — 영어·일본어·중국어·토익 1강은 누구나 무료, 학원 수강생은 전부 무료', act:"try{closePage()}catch(e){};sgShop()", pbg:'linear-gradient(135deg,#9C2A5A,#D4588A)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5B1026', cls:'hsty-impact'}, */
  { st:'SGA 문화센터', e:'SGA문화센터 · 오후 1~6시', nb:1, bg:'img/notice/n24_bg.jpg?v=1017b', t:'엄마(맘)들의 영어수다,<br>두 달 과정 모집', s:'SGA문화센터 단기반 · 엄마(맘)들의 영어수다 · 맘편한 일본어 · 엄마도 학원 간다 — 반마다 8명 모이면 개강', act:"noticeOpen('n24')", pbg:'linear-gradient(135deg,#0F6B5E,#1C8B76)', tc:'#FFF8EC', tc2:'#E8F5EF', ac:'#F6D58A', bbg:'#F6D58A', btc:'#0F4B42', cls:'hsty-impact', faces:['eng_15','../../t_tanai'], fnames:['김현정','타나이 치토세']},
  { st:'JLPT', e:'JLPT · 내년 7월 시험', nb:1, bg:'img/notice/jlpt_bg.jpg?v=1017b', t:'히라가나부터<br>N3까지', s:'JLPT 방학 특공대반 · 내년 7월 시험대비반 모집 — 올해는 퍼스널로 바로 시작', act:"rsvOpen('일본어 / JLPT')", pbg:'linear-gradient(135deg,#9E1F1A,#C8352B)', tc:'#FFF8EC', tc2:'#FFE7E1', ac:'#F6D58A', bbg:'#F6D58A', btc:'#7A1712', cls:'hsty-impact'},
  { st:'토익 · 유학 상담', e:'DIRECTOR · 원장 직접 상담', bg:'img/ai/consult.jpg', t:'토익·유학·시험대비,<br>원장이 직접 상담합니다', s:'Georgetown TESOL 출신 원장 · 상담은 무료입니다', act:"openPage('원장상담')", pbg:'linear-gradient(135deg,#5A1226,#8E1F35)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5A1226', cls:'hsty-soft'},
@@ -23023,6 +23025,48 @@ body:has(#sgVid.on) .sgs-x,body:has(#sgSpread.on) .sgs-x,body:has(.sp-modal.on) 
  }).catch(function(){});
  }catch(e){}
 })();
+</script>
+<style>/* 2026-10-23 아키 맛보기 시트 */
+#sgTaste{position:fixed;inset:0;z-index:9000;background:rgba(40,16,24,.55);display:none;align-items:flex-end;justify-content:center}
+#sgTaste.on{display:flex}
+#sgTaste .tt-in{width:100%;max-width:560px;background:#FBF6F0;border-radius:22px 22px 0 0;padding:22px 18px 170px;box-shadow:0 -10px 40px rgba(0,0,0,.25);position:relative;max-height:92vh;overflow:auto}
+#sgTaste .tt-hd{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+#sgTaste .tt-hd img{width:64px;height:64px;object-fit:contain}
+#sgTaste .tt-hd b{display:block;font-size:22px;font-weight:900;color:#5A1226;line-height:1.25}
+#sgTaste .tt-hd span{font-size:14px;color:#6E5A60;font-weight:600}
+#sgTaste .tt-b{opacity:1;display:flex;align-items:center;gap:14px;width:100%;border:0;cursor:pointer;text-align:left;border-radius:18px;padding:18px 16px;margin:0 0 12px;font-family:inherit;color:#fff;box-shadow:0 6px 18px rgba(91,18,38,.18)}
+#sgTaste .tt-b i{font-style:normal;font-size:34px;line-height:1}
+#sgTaste .tt-b b{display:block;font-size:21px;font-weight:900;line-height:1.25}
+#sgTaste .tt-b small{display:block;font-size:13.5px;font-weight:700;opacity:.95;margin-top:3px}
+#sgTaste .tt-b.tt-en{background:linear-gradient(135deg,#9C2A5A,#D4588A)}
+#sgTaste .tt-b.tt-tc{background:linear-gradient(135deg,#7B1733,#B8322A)}
+#sgTaste .tt-go{text-align:center;padding:18px 6px 6px}
+#sgTaste .tt-go img{width:120px;height:120px;object-fit:contain}
+#sgTaste .tt-go b{display:block;font-size:24px;font-weight:900;color:#5A1226;margin:8px 0 4px}
+#sgTaste .tt-go span{display:block;font-size:15px;color:#6E5A60;font-weight:600;word-break:keep-all;line-height:1.5}
+#sgTaste .tt-x{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%);width:60px;height:60px;border-radius:50%;border:0;background:#F6C744;color:#5A1226;font-size:15px;font-weight:900;box-shadow:0 6px 16px rgba(0,0,0,.25);cursor:pointer;z-index:9001}
+@media(min-width:900px){#sgTaste{align-items:center}#sgTaste .tt-in{border-radius:22px;padding-bottom:26px}#sgTaste .tt-x{bottom:auto;top:calc(50% + 175px)}}
+</style>
+<div id="sgTaste" onclick="if(event.target===this)sgTasteClose()"><div class="tt-in" id="sgTasteIn"></div><button class="tt-x" type="button" onclick="sgTasteClose()" aria-label="닫기">✕<br>닫기</button></div>
+<script>
+/* 2026-10-23 대표님 「토익 클릭하면 아키가 만든 모의고사 맛보기가 열립니다 … 바로 엘시랑 정답 누르는 장면」「영어회화 누르면 포코너스 1 하고 아키가 나와서 설명하는거랑 토익 모의고사 문제풀이 클릭시 시험 맛보기가 시작됩니다」 */
+function sgTasteMenu(){
+ var el=document.getElementById('sgTaste'), b=document.getElementById('sgTasteIn'); if(!el||!b) return;
+ b.innerHTML='<div class="tt-hd"><img src="img/aki/aki_default_240.png" alt="아키"><div><b>아키 영상 맛보기</b><span>가입 없이 바로 · 무엇부터 볼까요?</span></div></div>'
+  +'<button type="button" class="tt-b tt-en" onclick="sgTasteEn()"><i>🗣️</i><div><b>영어회화</b><small>포코너스 1 · Unit 1 — 아키가 직접 설명합니다</small></div></button>'
+  +'<button type="button" class="tt-b tt-tc" onclick="sgTasteToeic()"><i>📝</i><div><b>토익 모의고사 문제풀이</b><small>아키가 만든 모의고사 — 듣기 문제부터 바로</small></div></button>';
+ el.classList.add('on'); document.body.style.overflow='hidden';
+}
+function sgTasteClose(){ var el=document.getElementById('sgTaste'); if(el) el.classList.remove('on'); document.body.style.overflow=''; }
+function sgTasteEn(){ sgTasteClose(); try{ closePage(); }catch(e){} try{ sgVid('en_b',0); }catch(e){} }
+function sgTasteToeic(){
+ var el=document.getElementById('sgTaste'), b=document.getElementById('sgTasteIn');
+ if(!el||!b){ sgTasteGo(); return; }
+ if(!el.classList.contains('on')){ el.classList.add('on'); document.body.style.overflow='hidden'; }
+ b.innerHTML='<div class="tt-go"><img src="img/aki/aki_default_240.png" alt="아키"><b>시험 맛보기가 시작됩니다</b><span>아키가 만든 토익 모의고사 · 듣기(LC)부터<br>소리를 켜 주세요 🔊</span></div>';
+ setTimeout(sgTasteGo,1100);
+}
+function sgTasteGo(){ sgTasteClose(); try{ closePage(); }catch(e){} try{ sgxStart('daily'); _sxGo(0); }catch(e){} }
 </script>
 </body>
 </html>
