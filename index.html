@@ -23121,9 +23121,8 @@ body:has(#sgVid.on) .sgs-x,body:has(#sgSpread.on) .sgs-x,body:has(.sp-modal.on) 
 .cu-hd{border-left:6px solid var(--cc);padding:2px 0 2px 12px;margin:0 0 14px}
 .cu-hd h3{margin:0;font-size:24px;font-weight:900;color:var(--cc)}
 .cu-hd p{margin:4px 0 0;font-size:15px;font-weight:700;color:#4A4234;line-height:1.5;word-break:keep-all}
-.cu-g{display:grid;grid-template-columns:1fr;gap:16px}
-@media(min-width:760px){.cu-g{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1100px){.cu-g{grid-template-columns:repeat(3,1fr)}}
+/* 대표님 「그걸 그대로 보게 해주면 좋」 — 썸네일 3열 대신 한 장씩 크게(글씨가 그대로 읽히게) */
+.cu-g{display:grid;grid-template-columns:1fr;gap:18px;max-width:880px;margin:0 auto}
 .cu-f{margin:0;background:#fff;border:1.5px solid #E7DCCB;border-radius:14px;overflow:hidden;box-shadow:0 4px 14px rgba(60,40,20,.08)}
 .cu-f img{display:block;width:100%;height:auto}
 .cu-f figcaption{padding:10px 12px;font-size:14.5px;font-weight:900;color:#1F1B14;display:flex;justify-content:space-between;gap:8px;align-items:center;word-break:keep-all}
