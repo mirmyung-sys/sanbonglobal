@@ -9927,7 +9927,7 @@ function cartGo(){
    ③은 openPage() 가 창 맨 아래에 자동으로 붙입니다. 여기서 부르지 마세요. */
 /* ═══ 왕기초 1:1 패키지 허브 — 2026-10-23 대표님 「언어의 문턱을 넘겨드립니다 · 모든 언어 최초 1회만 · 일대일 메인판에 가장 먼저」
    금액 = 학원 게시 포스터 「왕기초 일대일 Package」(대표님 사진 10/23): A 회화 1,380,000→990,000 / B 토익 1,650,000→1,190,000 (각 약 28%) */
-var WKL=[['왕기초영어','🇺🇸','왕기초 영어회화','A 회화'],['왕기초토익','📝','왕기초 토익','B 시험'],['왕기초일본어','🇯🇵','왕기초 일본어','A 회화'],['왕기초중국어','🇨🇳','왕기초 중국어','A 회화'],['왕기초JLPT','🎌','왕기초 JLPT','B 시험'],['왕기초HSK','🀄','왕기초 HSK','B 시험']];
+var WKL=[['왕기초영어','💬','왕기초 영어회화','A 회화'],['왕기초토익','📝','왕기초 토익','B 시험'],['왕기초일본어','🌸','왕기초 일본어','A 회화'],['왕기초중국어','🏮','왕기초 중국어','A 회화'],['왕기초JLPT','🎌','왕기초 JLPT','B 시험'],['왕기초HSK','🀄','왕기초 HSK','B 시험']];
 function wkBanner(){
  return '<div class="wk-bn" onclick="openPage(\'왕기초\')"><div class="wk-k">왕기초 1:1 PACKAGE · 언어별 최초 1회</div>'
   +'<div class="wk-t">언어의 문턱을<br>넘겨드립니다</div>'
@@ -9941,7 +9941,7 @@ function wkHubPage(){
   +'<div class="wk-hero"><div class="wk-k">왕기초 일대일 PACKAGE</div><h2>언어의 문턱을<br>넘겨드립니다</h2>'
   +'<p>번번이 언어의 벽을 넘지 못하셨던 분 · 정규반 가장 낮은 레벨도 따라가기 어려운 분 — 1:1로 20시간 기초를 먼저 만들고, 정규반은 무료로 이어 듣습니다.</p></div>'
   +'<div class="wk-grid">'+cards+'</div>'
-  +'<div class="tblwrap"><table class="ctable wk-tb"><tr><th>구분</th><th>A코스 · 회화<br><small>영어 · 일본어 · 중국어</small></th><th>B코스 · 시험<br><small>토익 · JLPT · HSK</small></th></tr>'
+  +'<div class="tblwrap"><table class="ctable wrap wk-tb"><tr><th>구분</th><th>A코스 · 회화<br><small>영어 · 일본어 · 중국어</small></th><th>B코스 · 시험<br><small>토익 · JLPT · HSK</small></th></tr>'
   +'<tr><th>강의 시간</th><td><b>20시간</b><br>강의 + 학습관리</td><td><b>20시간</b><br>강의 + 학습관리</td></tr>'
   +'<tr class="hl"><th>무료 수강 혜택</th><td><b>정규반 2개월</b><br>(36만원 상당)</td><td><b>정규반 2개월</b> 또는 <b>스파르타 1개월</b><br>(42만원 상당)</td></tr>'
   +'<tr><th>교재 증정</th><td>1권 (입문 교재)</td><td>2권 (초급 교재)</td></tr>'
@@ -23188,7 +23188,10 @@ body:has(#sgVid.on) .sgs-x,body:has(#sgSpread.on) .sgs-x,body:has(.sp-modal.on) 
 .wk-c .ic{font-size:24px}.wk-c b{font-size:16.5px;font-weight:900;color:#1F1B14}
 .wk-c em{font-style:normal;font-size:19px;font-weight:900;color:#C81F2B}
 .wk-c small{font-size:12.5px;font-weight:800;color:#7A5A3A}
-.wk-tb td,.wk-tb th{text-align:center;vertical-align:middle;line-height:1.5}
+.wk-tb{width:100%!important;min-width:0!important;table-layout:fixed}
+.wk-tb>tbody{width:100%!important;min-width:0!important}
+.wk-tb td,.wk-tb th{text-align:center!important;vertical-align:middle;line-height:1.5;white-space:normal!important;word-break:keep-all;overflow-wrap:anywhere}
+.wk-tb tr>th:first-child{width:22%}
 .wk-tb tr.hl td,.wk-tb tr.hl th{background:#FFF6D6}
 .wk-tb s{color:#8a7f72}.wk-tb b.red{color:#C81F2B;font-size:19px}.wk-tb .pct{font-style:normal;display:inline-block;margin-top:3px;background:#C81F2B;color:#fff;border-radius:999px;padding:2px 9px;font-size:12.5px;font-weight:900}
 .wk-note{margin:12px 2px;font-size:13.5px;font-weight:700;color:#4A4234;line-height:1.7;border:1.5px solid #E7DCCB;border-radius:12px;padding:10px 12px;background:#FFFDF8}
