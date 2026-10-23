@@ -6086,9 +6086,8 @@ const SLIDES=[
  { st:'11월 토익 스파르타', e:'11월 토익 스파르타 · 정규반 모집', bg:'img/notice/toeic_bg2.jpg?v=1017b', t:'토익 강사 3명,<br>먼저 들어보시고 선택하세요', s:'토익 만점 강사 송윤정 · 더 쎈토익 창시자 엘리 킴 · 「김현정 토익은 진짜다」', act:"openPage('수강신청');bkGo('토익')", pbg:'linear-gradient(135deg,#6B1F2E,#b8322a)', tc:'#ffd94d', tc2:'#ffe3e0', ac:'#ffe0dd', bbg:'#ffd94d', btc:'#6B1F2E', cls:'hsty-impact', faces:['eng_13','elly','eng_15'], fnames:['송윤정','엘리 킴','김현정']},
  { st:'기업체 출강', e:'기업체 출강 · 임원 1:1', bg:'img/biz_main.jpg', t:'전문강사진 25명이<br>회사로 찾아갑니다', s:'원어민 · 한인 회화강사 · 토익·토플·오픽·토스 전문강사 — 기업체 출강 · 임원 1:1', act:"location.href='biz.html#native'", pbg:'linear-gradient(135deg,#3E1F5C,#6B3A8E)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5A1226', cls:'hsty-impact', faces:['eng_11','jpn_8','eng_13','eng_15','chn_1'], fnames:['원어민','원어민','토익','토플·오픽','원어민']},
  { st:'평생교육 이용권', e:'정부 지원 · 평생교육이용권', bg:'img/ai/clock.jpg', t:'평생교육이용권,<br>1인당 연 최대 35만원', s:'산본글로벌어학원은 평생교육이용권 사용기관입니다 — 영어·일본어·중국어·토익 수강료를 이용권으로 결제하세요', act:"openPage('평생교육이용권')", pbg:'linear-gradient(135deg,#8A3410,#C8622A)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5B1026', cls:'hsty-impact'},
-/* 2026-10-23 대표님 「중간광고판에서 한개 빼고 아키영상 맛보기 클릭 하게 하고 누르면 영어회화 토익 두가지 화면 나오게」 — 「아키 AI 강의실」 칸을 「아키 영상 맛보기」로 교체(원본 아래 주석 보관). 누르면 sgTasteMenu() */
- { st:'아키 영상 맛보기', bd:'무료', e:'AKI · 아키 영상 맛보기', aki:'img/aki/aki_hero.png?v=1019f', bg:'img/ai/talk.jpg', t:'영어회화 · 토익<br>눌러서 바로 보기', s:'영어회화 1강(포코너스 1 · Unit 1)과 토익 모의고사 문제풀이를 가입 없이 바로 맛보세요', act:"sgTasteMenu()", pbg:'linear-gradient(135deg,#9C2A5A,#D4588A)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5B1026', cls:'hsty-soft'},
-/* 보관(10/23 교체 전): { st:'아키 AI 강의실', e:'AKI · 아키 AI 강의실', aki:'img/aki/aki_hero.png?v=1019f', bg:'img/ai/talk.jpg', t:'안녕하세요,<br>저는 아키예요', s:'산본글로벌어학원 AI 선생님 — 영어·일본어·중국어·토익 1강은 누구나 무료, 학원 수강생은 전부 무료', act:"try{closePage()}catch(e){};sgShop()", pbg:'linear-gradient(135deg,#9C2A5A,#D4588A)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5B1026', cls:'hsty-impact'}, */
+/* 2026-10-23 대표님 「아키영상은 그대로 두고 팝업창으로 만들자는거였어 … 메인창에 아키관은 그대로」 — 6번 칸 「아키 AI 강의실」 원래대로 복원, 영상 맛보기는 팝업(sgTastePop)으로 */
+ { st:'아키 AI 강의실', e:'AKI · 아키 AI 강의실', aki:'img/aki/aki_hero.png?v=1019f', bg:'img/ai/talk.jpg', t:'안녕하세요,<br>저는 아키예요', s:'산본글로벌어학원 AI 선생님 — 영어·일본어·중국어·토익 1강은 누구나 무료, 학원 수강생은 전부 무료', act:"try{closePage()}catch(e){};sgShop()", pbg:'linear-gradient(135deg,#9C2A5A,#D4588A)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5B1026', cls:'hsty-impact'},
  { st:'SGA 문화센터', e:'SGA문화센터 · 오후 1~6시', nb:1, bg:'img/notice/n24_bg.jpg?v=1017b', t:'엄마(맘)들의 영어수다,<br>두 달 과정 모집', s:'SGA문화센터 단기반 · 엄마(맘)들의 영어수다 · 맘편한 일본어 · 엄마도 학원 간다 — 반마다 8명 모이면 개강', act:"noticeOpen('n24')", pbg:'linear-gradient(135deg,#0F6B5E,#1C8B76)', tc:'#FFF8EC', tc2:'#E8F5EF', ac:'#F6D58A', bbg:'#F6D58A', btc:'#0F4B42', cls:'hsty-impact', faces:['eng_15','../../t_tanai'], fnames:['김현정','타나이 치토세']},
  { st:'JLPT', e:'JLPT · 내년 7월 시험', nb:1, bg:'img/notice/jlpt_bg.jpg?v=1017b', t:'히라가나부터<br>N3까지', s:'JLPT 방학 특공대반 · 내년 7월 시험대비반 모집 — 올해는 퍼스널로 바로 시작', act:"rsvOpen('일본어 / JLPT')", pbg:'linear-gradient(135deg,#9E1F1A,#C8352B)', tc:'#FFF8EC', tc2:'#FFE7E1', ac:'#F6D58A', bbg:'#F6D58A', btc:'#7A1712', cls:'hsty-impact'},
  { st:'토익 · 유학 상담', e:'DIRECTOR · 원장 직접 상담', bg:'img/ai/consult.jpg', t:'토익·유학·시험대비,<br>원장이 직접 상담합니다', s:'Georgetown TESOL 출신 원장 · 상담은 무료입니다', act:"openPage('원장상담')", pbg:'linear-gradient(135deg,#5A1226,#8E1F35)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5A1226', cls:'hsty-soft'},
@@ -23070,6 +23069,22 @@ function sgTasteToeic(){
  setTimeout(sgTasteGo,1100);
 }
 function sgTasteGo(){ sgTasteClose(); try{ closePage(); }catch(e){} try{ sgxStart('daily'); _sxGo(0); }catch(e){} }
+</script>
+
+<script>
+/* 2026-10-23 대표님 「팝업창으로 만들자」 — 아키 영상 맛보기를 첫 화면 팝업으로. 토익 팝업이 닫힌 뒤(또는 토익 팝업이 없는 날) 하루 한 번. 검수 ?tastepop=1 */
+(function(){
+ function today(){var d=new Date(Date.now()+9*3600e3);return d.toISOString().slice(0,10);}
+ var force=/[?&]tastepop=1/.test(location.search);
+ function off(){try{return localStorage.getItem('sga_taste_off')===today();}catch(e){return false;}}
+ function vis(id){var e=document.getElementById(id);return e&&getComputedStyle(e).display!=='none'&&e.offsetHeight>0;}
+ function busy(){return !!document.getElementById('tkPop')||window._tkPend||vis('introSplash')||vis('sgGate')||vis('pgModal')||vis('sgShop')||vis('sgVid')||(document.getElementById('sgTaste')||{classList:{contains:function(){return false;}}}).classList.contains('on')||!!document.querySelector('.sp-modal.on');}
+ window.sgTasteOff=function(){try{localStorage.setItem('sga_taste_off',today());}catch(e){} sgTasteClose();};
+ function show(){ if(typeof sgTasteMenu!=='function') return; sgTasteMenu(); try{sessionStorage.setItem('sga_taste_seen','1');}catch(e){}
+  var b=document.getElementById('sgTasteIn'); if(b) b.insertAdjacentHTML('beforeend','<div style="text-align:right;margin-top:4px"><a href="#" onclick="sgTasteOff();return false;" style="font-size:14px;color:#5A5750;font-weight:700;text-decoration:underline">오늘 하루 안보기</a></div>'); }
+ if(!force){ if(off()) return; try{ if(sessionStorage.getItem('sga_taste_seen')) return; }catch(e){} }
+ var n=0,calm=0,t=setInterval(function(){ n++; if(n>240){clearInterval(t);return;} if(busy()){calm=0;return;} if(++calm>=3){clearInterval(t); show();} },500);
+})();
 </script>
 </body>
 </html>
