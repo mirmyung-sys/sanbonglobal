@@ -220,6 +220,7 @@ form textarea{min-height:90px;resize:vertical}
 <!-- Google tag (gtag.js) 2026-10-25 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2C35QLH016"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-2C35QLH016");</script>
+<script>/* 2026-10-25 기업출강 문의 클릭 집계 */document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(!a||!window.gtag)return;var h=a.getAttribute("href")||"";var t=h.indexOf("tel:")==0?"call_click":h.indexOf("kakao")>-1?"kakao_click":h.indexOf("mailto:")==0?"mail_click":h.indexOf(".pdf")>-1?"pdf_click":"";if(t)gtag("event",t,{page:location.pathname});},true);</script>
 </head>
 <body>
 
