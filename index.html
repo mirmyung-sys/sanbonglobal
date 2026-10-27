@@ -21488,6 +21488,8 @@ body.has-tab #tpPop .tp-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
    · 리뷰 팝업(#rvPop)이 떠 있으면 닫힌 뒤에 뜹니다. 「오늘 하루 보지 않기」 · 검수용 ?tppop=1
    · 닫기 = 노란 원형, 화면 아래 가운데 */
 (function(){
+ /* 2026-10-27 대표님 「이거 팝업창에서 없애」 — 원장 상담 팝업은 더 이상 띄우지 않습니다(공지사항 n17 글은 그대로). 검수용 ?tppop=1 만 남김 */
+ if(!/[?&]tppop=1/.test(location.search))return;
  var OPEN=Date.UTC(2026,9,17,15,0,0); /* = 2026-10-18 00:00 KST 홈페이지 오픈 (10-17 대표님 「낼 오픈하자 무조건」) */
  function today(){var d=new Date(Date.now()+9*3600e3);return d.toISOString().slice(0,10);}
  function force(){return /[?&]tppop=1/.test(location.search);}
