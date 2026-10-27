@@ -21462,7 +21462,7 @@ body.has-tab #tpPop .tp-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
  function hidden(){try{return localStorage.getItem('sga_tppop_off')===today();}catch(e){return false;}}
  function vis(id){var e=document.getElementById(id);return e&&getComputedStyle(e).display!=='none'&&e.offsetHeight>0;}
  function busy(){
-  if(vis('introSplash')||vis('sgGate')||vis('pgModal')||vis('sgShop'))return true;
+  if(vis('introSplash')||vis('sgPromo')||vis('sgGate')||vis('pgModal')||vis('sgShop'))return true;
   if(document.getElementById('rvPop')||document.getElementById('fdPop')||document.getElementById('novPop')||document.getElementById('admLogin')||document.getElementById('admPanel'))return true;
   if(window._lvPend||document.getElementById('lvPop'))return true;
   if(window._tkPend||document.getElementById('tkPop')||window._sgPopShown)return true;
@@ -22184,7 +22184,7 @@ body.has-tab #tkPop .tk-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-area
  function admin(){return /[?&]k=2513/.test(location.search);}
  function hidden(){try{return localStorage.getItem('sga_tkpop_off')===today();}catch(e){return false;}}
  function vis(id){var e=document.getElementById(id);return e&&getComputedStyle(e).display!=='none'&&e.offsetHeight>0;}
- function busy(){return vis('introSplash')||vis('sgGate')||vis('pgModal')||vis('sgShop')||!!document.getElementById('admLogin');}
+ function busy(){return vis('introSplash')||vis('sgPromo')||vis('sgGate')||vis('pgModal')||vis('sgShop')||!!document.getElementById('admLogin');}
  window.tkPopClose=function(off){
   if(off){try{localStorage.setItem('sga_tkpop_off',today());}catch(e){}}
   var p=document.getElementById('tkPop'); if(p){p.classList.remove('on');setTimeout(function(){p.remove();},250);}
@@ -23376,7 +23376,7 @@ function sgTasteGo(){ sgTasteClose(); try{ closePage(); }catch(e){} try{ sgxTast
  var force=/[?&]tastepop=1/.test(location.search);
  function off(){try{return localStorage.getItem('sga_taste_off')===today();}catch(e){return false;}}
  function vis(id){var e=document.getElementById(id);return e&&getComputedStyle(e).display!=='none'&&e.offsetHeight>0;}
- function busy(){return !!document.getElementById('tkPop')||window._tkPend||vis('introSplash')||vis('sgGate')||vis('pgModal')||vis('sgShop')||vis('sgVid')||(document.getElementById('sgTaste')||{classList:{contains:function(){return false;}}}).classList.contains('on')||!!document.querySelector('.sp-modal.on');}
+ function busy(){return !!document.getElementById('tkPop')||window._tkPend||vis('introSplash')||vis('sgPromo')||vis('sgGate')||vis('pgModal')||vis('sgShop')||vis('sgVid')||(document.getElementById('sgTaste')||{classList:{contains:function(){return false;}}}).classList.contains('on')||!!document.querySelector('.sp-modal.on');}
  window.sgTasteOff=function(){try{localStorage.setItem('sga_taste_off',today());}catch(e){} sgTasteClose();};
  function show(){ if(typeof sgTasteMenu!=='function') return; sgTasteMenu(); try{sessionStorage.setItem('sga_taste_seen','1');}catch(e){}
   var b=document.getElementById('sgTasteIn'); if(b) b.insertAdjacentHTML('beforeend','<div style="text-align:right;margin-top:4px"><a href="#" onclick="sgTasteOff();return false;" style="font-size:14px;color:#5A5750;font-weight:700;text-decoration:underline">오늘 하루 안보기</a></div>'); }
@@ -23384,5 +23384,56 @@ function sgTasteGo(){ sgTasteClose(); try{ closePage(); }catch(e){} try{ sgxTast
  var n=0,calm=0,t=setInterval(function(){ n++; if(n>240){clearInterval(t);return;} if(busy()){calm=0;return;} if(++calm>=3){clearInterval(t); show();} },500);
 })();
 </script>
+<!-- 2026-10-27 홍보영상 팝업 (대표님 「홈페이지 상에 저 화면이 팝업창으로 … 학원꺼랑 출강꺼 각각 … 소리는 기본 꺼놓고 키면 들리게」) -->
+<style>
+#sgPromo{position:fixed;inset:0;z-index:1500;display:none;align-items:center;justify-content:center;padding:14px 14px 96px;background:rgba(61,10,25,.62);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+#sgPromo.on{display:flex}
+#sgPromo .pm-box{width:min(420px,100%);background:#FBF6F1;border-radius:22px;padding:14px 14px 16px;box-shadow:0 24px 60px rgba(61,10,25,.45);transition:width .25s}
+#sgPromo.wide .pm-box{width:min(820px,100%)}
+#sgPromo .pm-tabs{display:flex;gap:8px;margin-bottom:10px}
+#sgPromo .pm-tabs button{flex:1;border:2px solid #E6D3C4;background:#fff;color:#7B1733;border-radius:999px;padding:10px 6px;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit}
+#sgPromo .pm-tabs button.on{background:#7B1733;border-color:#7B1733;color:#fff}
+#sgPromo .pm-v{position:relative;border-radius:16px;overflow:hidden;background:#F3E9E0}
+#sgPromo video{display:block;margin:0 auto;aspect-ratio:9/16;height:min(calc(100vh - 330px),600px);width:auto;max-width:100%;object-fit:contain;background:#F3E9E0}#sgPromo.wide video{aspect-ratio:16/9;width:100%;height:auto;max-height:calc(100vh - 330px)}
+#sgPromo .pm-snd{position:absolute;right:10px;bottom:10px;border:0;border-radius:999px;background:rgba(255,255,255,.94);color:#7B1733;font-weight:900;font-size:15px;padding:10px 14px;cursor:pointer;box-shadow:0 4px 14px rgba(61,10,25,.25);font-family:inherit}
+#sgPromo .pm-go{display:block;margin-top:10px;text-align:center;background:linear-gradient(90deg,#7B1733,#a3304f);color:#fff;font-weight:900;font-size:16px;border-radius:12px;padding:13px;text-decoration:none}
+#sgPromo .pm-x{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#F7CF5B,#E2A413);border:2px solid #fff;border-radius:999px;padding:13px 26px;font-size:20px;font-weight:900;color:#1A1A18;cursor:pointer;box-shadow:0 8px 26px rgba(61,10,25,.35);font-family:inherit}
+#sgPromo .pm-off{display:block;margin:8px auto 0;background:none;border:0;color:#7a5a66;font-size:13.5px;font-weight:700;text-decoration:underline;cursor:pointer;font-family:inherit}
+</style>
+<div id="sgPromo" role="dialog" aria-label="홍보영상">
+ <div class="pm-box">
+  <div class="pm-tabs"><button type="button" data-k="sga" class="on">산본글로벌어학원</button><button type="button" data-k="biz">Global 기업출강</button></div>
+  <div class="pm-v"><video id="sgPromoV" playsinline muted autoplay loop preload="metadata"></video><button type="button" class="pm-snd" id="sgPromoS">🔇 소리 켜기</button></div>
+  <a class="pm-go" id="sgPromoGo" href="#">무료 레벨테스트 상담 신청</a>
+  <button type="button" class="pm-off" id="sgPromoOff">오늘 하루 안 보기</button>
+ </div>
+ <button type="button" class="pm-x" id="sgPromoX" aria-label="닫기">✕ 닫기</button>
+</div>
+<script>
+(function(){
+ var V={sga:{src:'sga_promo_1027.mp4',wide:false,go:'#',txt:'무료 레벨테스트 상담 신청'},
+        biz:{src:'global_promo_1027.mp4',wide:true,go:'https://globalchulgang.com/',txt:'Global 기업출강 홈페이지 보기'}};
+ var el=document.getElementById('sgPromo'),v=document.getElementById('sgPromoV'),s=document.getElementById('sgPromoS'),go=document.getElementById('sgPromoGo');
+ function today(){var d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();}
+ function setSnd(){s.textContent=v.muted?'🔇 소리 켜기':'🔊 소리 끄기';}
+ function pick(k){var c=V[k];el.classList.toggle('wide',c.wide);
+  [].forEach.call(el.querySelectorAll('.pm-tabs button'),function(b){b.classList.toggle('on',b.getAttribute('data-k')===k);});
+  var m=v.muted; v.src=c.src; v.muted=m; try{v.play().catch(function(){});}catch(e){} setSnd();
+  go.textContent=c.txt; go.href=c.go; go.target=c.wide?'_blank':''; go.dataset.k=k;}
+ window.sgPromoOpen=function(k){el.classList.add('on'); v.muted=true; pick(k||'sga');};
+ window.sgPromoClose=function(){el.classList.remove('on'); try{v.pause(); v.muted=true;}catch(e){}};
+ [].forEach.call(el.querySelectorAll('.pm-tabs button'),function(b){b.onclick=function(){pick(b.getAttribute('data-k'));};});
+ s.onclick=function(){v.muted=!v.muted; if(!v.muted){try{v.play();}catch(e){}} setSnd();};
+ go.onclick=function(e){ if(go.dataset.k==='sga'){ e.preventDefault(); sgPromoClose(); try{rsvOpen('무료 레벨테스트');}catch(x){ try{openPage('상담');}catch(y){} } } };
+ document.getElementById('sgPromoX').onclick=sgPromoClose;
+ document.getElementById('sgPromoOff').onclick=function(){try{localStorage.setItem('sga_promo_off',today());}catch(e){} sgPromoClose();};
+ el.addEventListener('click',function(e){ if(e.target===el) sgPromoClose(); });
+ var off=false; try{off=localStorage.getItem('sga_promo_off')===today()||sessionStorage.getItem('sga_promo_seen')==='1';}catch(e){}
+ if(off) return;
+ function vis(id){var e=document.getElementById(id);return e&&getComputedStyle(e).display!=='none'&&e.offsetHeight>0;}
+ var n=0,t=setInterval(function(){ n++; if(n>60){clearInterval(t);return;} if(vis('introSplash')||vis('sgGate')||vis('pgModal')||document.getElementById('admLogin')) return; clearInterval(t); try{sessionStorage.setItem('sga_promo_seen','1');}catch(e){} sgPromoOpen('sga'); },500);
+})();
+</script>
+
 </body>
 </html>
