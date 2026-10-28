@@ -1,0 +1,11 @@
+{
+  "name": "산본글로벌어학원 출결버스",
+  "short_name": "SGA 출결",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#F3F8F5",
+  "theme_color": "#03C75A",
+  "icons": [{"src": "../img/sga_emblem.png", "sizes": "420x420", "type": "image/png", "purpose": "any"}]
+}
