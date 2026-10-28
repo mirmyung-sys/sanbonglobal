@@ -219,7 +219,7 @@ body.m-out .k:active,body.m-out .k.hit{background:var(--o3)}
 
 <script>
 /* ───────── 설정 ───────── */
-const API_DEFAULT = '';               // 배포 후 Apps Script 웹 앱 주소를 여기에 넣는다
+const API_DEFAULT = 'https://script.google.com/macros/s/AKfycbz2kC-p3VD7xlgZcqbU22NvfsmmBxEBsPMPfvgNcEcHrVlHVi6OBJh9SJ5Y8d1bZd56/exec'; // 산본글로벌어학원_출결버스 시트 연결 (theju0911)
 const DEMO = /[?&]demo=1/.test(location.search);
 const LS = {
   get(k, d){ try{ const v = localStorage.getItem('sgabus_'+k); return v===null? d : JSON.parse(v); }catch(e){ return d; } },
@@ -345,12 +345,12 @@ function render(r, req){
       return;
     case 'in': {
       show({kind:'', tag:'등교 완료', who:r.name, cls:r.cls, when:r.time, chips:rateChips(r),
-        acts:[{t:'잘못 눌렀어요 — 되돌리기', c:'undo', f:()=>undo(r.rid,'in',r.name)}], timer:7000});
+        acts:[{t:'잘못 눌렀어요 — 되돌리기', c:'undo', f:()=>undo(r.rid,'in',r.name)}], timer:10000});
       chime(true); say(r.name+' 등교'); return; }
     case 'out': {
       const m = r.minutes||0, dur = m>=60 ? Math.floor(m/60)+'시간 '+(m%60)+'분' : m+'분';
       show({kind:'out', tag:'하원 완료', who:r.name, cls:r.cls, when:r.time, msg:'등교 '+r.inTime+' · 머문 시간 '+dur, chips:rateChips(r),
-        acts:[{t:'잘못 눌렀어요 — 되돌리기', c:'undo', f:()=>undo(r.rid,'out',r.name)}], timer:7000});
+        acts:[{t:'잘못 눌렀어요 — 되돌리기', c:'undo', f:()=>undo(r.rid,'out',r.name)}], timer:10000});
       chime(true); say(r.name+' 하원'); return; }
     case 'already_in':
       show({kind:'warn', tag:'이미 등교했어요', who:r.name, cls:r.cls, msg:'오늘 '+r.inTime+'에 등교 기록이 있어요.\n지금 집에 가는 거라면 하원으로 기록할게요.',
