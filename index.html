@@ -5299,7 +5299,7 @@ sgLb.i=0;
         <a href="#" onclick="openPage('이벤트혜택');return false;">10월 오픈이벤트</a>
         <a href="#" onclick="sgShop();return false;">🐋 아키 AI 강의실</a>
         <a href="#" onclick="openPage('가을학기 할인');return false;">지금 받는 할인</a>
-        <a href="#" onclick="openPage('네이버 리뷰 이벤트');return false;">네이버 리뷰 이벤트</a>
+        <a href="#" onclick="rvWrite();return false;">☕ 후기 쓰면 커피쿠폰·립밤</a>
         <a href="#" onclick="openPage('동글이');return false;">동글이</a>
       </div>
     </div>
@@ -5616,8 +5616,8 @@ function sgdPaint(){
   <p class="row"><b>시간</b> 평일 오전 11시~오후 6시 · 토요일 오전 10시~오후 3시 30분 (예약제) · 일요일 휴무</p>
   <p class="row"><b>함께</b> 원하시면 홈페이지에서 「오늘의 한 줄」 영어·일본어·중국어 바꿔 보기, 원장 무료 영어 상담(아이 영어부터 성인 토익·토스·오픽까지), 매주 금요일 오후 3시~4시 학원이 만든 영어원서 읽기, 아키 AI 강의실 맛보기</p>
   <p class="row"><b>부탁 3가지</b> (무료 대신)</p>
-  <ol><li>모임 소개 영상·사진·게시글에 「산본글로벌어학원」 넣기 (인스타 @sanbonglobal_ 태그)</li><li>다녀가신 분 네이버 리뷰</li><li>모임 공지에 「장소: 산본글로벌어학원 라운지(산본역 3번 출구 1분)」</li></ol>
-  <p class="row"><b>회원 혜택</b> (원하는 분만) 10,000포인트 + 립밤 / 카톡 채널 친구 추가 시 무료 청강 1회</p>
+  <ol><li>모임 소개 영상·사진·게시글에 「산본글로벌어학원」 넣기 (인스타 @sanbonglobal_ 태그)</li><li>모임 공지에 「장소: 산본글로벌어학원 라운지(산본역 3번 출구 1분)」</li></ol>
+  <p class="row"><b>회원 혜택</b> (원하는 분만) 회원가입 5,000포인트 / 카톡 채널 친구 추가 시 무료 청강 1회</p>
   <p class="note">· 예약 칸: 평일 11~13시 / 13~15시 / 15~18시 · 토 10~12시 30분 / 13~15시 30분 (한 칸에 한 모임, 한 모임 월 2회까지)<br>· 금요일 15~16시는 원서 읽기 시간이라 예약에서 제외됩니다.</p>
   <div class="btns"><a class="b1" href="https://pf.kakao.com/_xbxkCFX" target="_blank" rel="noopener">카톡 채널 「라운지」로 신청</a><a class="b2" href="tel:031-466-6969">전화 031-466-6969</a></div>
 </div></div></section>
@@ -5653,7 +5653,7 @@ function sgdPaint(){
         결제수단 신용·체크카드 · <b>민생회복 소비쿠폰</b> · <b>온누리상품권</b> · <b>경기지역화폐 군포愛머니</b> · <b>제로페이</b> · <b>평생교육이용권(NH농협 채움카드)</b> 가맹점<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~15:30 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftvis" id="ftVis"></span><span class="ftver" id="ftVer">최종 수정 2026-10-26b · 1강 누구나 · 수강생 전부 무료 · 이용권 사용기관</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftvis" id="ftVis"></span><span class="ftver" id="ftVer">최종 수정 2026-10-30c · 1강 누구나 · 수강생 전부 무료 · 이용권 사용기관</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_xbxkCFX" target="_blank" rel="noopener noreferrer">T</a>
@@ -5876,11 +5876,14 @@ function _hitTxt(id){
 /* 글 목록 — 위에 있을수록 최신. 광고판에 뜨는 이벤트는 tag:'이벤트' 로 통일했습니다. */
 var NOTICES=[
 /* 2026-10-17 대표님 「11월 신규 오픈 강좌 1~8」 — 카드뉴스와 함께 */
+ {id:'n30', tag:'이벤트', t:'수강후기 쓰면 커피쿠폰 + 립밤 바로 증정', d:'2026.10.30', pin:1,
+  b:'<p>홈페이지에 수강후기를 올리시면 접수 화면에 <b>커피쿠폰 + 립밤</b> 쿠폰이 바로 나옵니다. 그 화면을 데스크에 보여 주시면 바로 드립니다.</p><ul><li>회원가입 후 작성 · 수강생 1인 1회</li><li>사진 1장 + 200자 이상이면 <b>교재 1권</b>도 무료</li></ul>',
+  act:"rvWrite()", actLabel:'후기 쓰고 쿠폰 받기'},
  {id:'n29', tag:'공지', t:'11월 개강 강좌 한눈에', d:'2026.10.17', pin:1,
   b:'<p><b>11월 개강</b> 화·목 11/3 · 월·수 11/4 · 토 11/7</p><ul><li><b>토익</b> 스파르타(월~금) · 정규반 — 송윤정 · 엘리 킴 · 김현정</li><li><b>JLPT</b> 방학 특공대반 · 내년 7월 시험반</li><li><b>일본어</b> 원어민 토요반 토 10:00~13:00 — 타나이 치토세</li><li><b>새벽반</b> 화·수·목 06:30 · 20% 할인</li><li><b>SGA문화센터</b> 오후 1~6시 · 두 달 과정 · 8명 모이면 개강</li><li><b>첫 수업 무료</b> (SGA문화센터 제외)</li></ul><p>상담 031-466-6969 · 산본역 3번 출구 롯데프라자 7층</p><p style="font-size:13px;color:#555">산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청)</p>',
   act:"openPage('무료청강')", actLabel:'무료 청강 신청'},
  {id:'n22', tag:'이벤트', t:'11월 토익 스파르타·정규반 모집', d:'2026.10.17', pin:1,
-  b:'<p><b>11월 토익 스파르타반과 정규반을 모집합니다.</b> 세 강사 수업 모두 첫 수업은 무료로 들어보실 수 있어요.</p><ul><li><b>송윤정</b> — 토익 만점 강사 · 스파르타반(월~금 매일)</li><li><b>엘리 킴</b> — 「더 쎈토익 창시자, 한번 들어보세요」 · 정규반</li><li><b>김현정</b> — 「김현정 토익은 진짜다」 · 토익 처음이어도 괜찮아요</li></ul><ul><li>스파르타 — 월~금 매일 2시간 · <b>한 달 18회</b> (36시간)</li><li>정규반 — 2시간 · <b>두 달 16회</b> (월·수 / 화·목)</li><li>최신 기출을 <b>AI 아키가 분석한 문제풀이 월 1회</b> 제공</li><li><b>토익 문법 40강 무료</b> 제공</li><li>토익 기초·중급·실전반 문제풀이 <b>홈페이지에서 항상</b> (토익 회원 전용 · 데스크에서 입장키를 드립니다)</li><li>다른 학원에서 오시면 환승 10% · 회원가입 + 네이버 리뷰 합계 10,000P·립밤·교재 1권</li></ul><p>상담 031-466-6969 · 산본역 3번 출구 롯데프라자 7층</p><p style="font-size:13px;color:#555">산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청)</p>',
+  b:'<p><b>11월 토익 스파르타반과 정규반을 모집합니다.</b> 세 강사 수업 모두 첫 수업은 무료로 들어보실 수 있어요.</p><ul><li><b>송윤정</b> — 토익 만점 강사 · 스파르타반(월~금 매일)</li><li><b>엘리 킴</b> — 「더 쎈토익 창시자, 한번 들어보세요」 · 정규반</li><li><b>김현정</b> — 「김현정 토익은 진짜다」 · 토익 처음이어도 괜찮아요</li></ul><ul><li>스파르타 — 월~금 매일 2시간 · <b>한 달 18회</b> (36시간)</li><li>정규반 — 2시간 · <b>두 달 16회</b> (월·수 / 화·목)</li><li>최신 기출을 <b>AI 아키가 분석한 문제풀이 월 1회</b> 제공</li><li><b>토익 문법 40강 무료</b> 제공</li><li>토익 기초·중급·실전반 문제풀이 <b>홈페이지에서 항상</b> (토익 회원 전용 · 데스크에서 입장키를 드립니다)</li><li>다른 학원에서 오시면 환승 10% · 회원가입 5,000P</li></ul><p>상담 031-466-6969 · 산본역 3번 출구 롯데프라자 7층</p><p style="font-size:13px;color:#555">산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청)</p>',
   act:"openPage('무료청강')", actLabel:'토익 무료 청강 신청', acts:[['토익 수강신청',"openPage('수강신청');bkGo('토익')"]]},
  {id:'n28', tag:'개강', t:'JLPT 특공대반 · 내년 7월 시험반', d:'2026.10.17', pin:1,
   b:'<p><b>히라가나부터 N3까지.</b> 내년 7월 JLPT 시험을 준비하는 반입니다.</p><ul><li><b>방학 특공대반</b> — 월~금 매일반 · 한 달 16회 · 겨울방학(1~2월) 개강</li><li><b>내년 7월 시험반</b> 모집 중 (히라가나 → N4 → N3)</li><li>올해는 <b>퍼스널(1:1)</b>로 바로 시작하실 수 있습니다</li><li>시간표는 모집 인원에 맞춰 확정해 안내드립니다 · 먼저 이름만 남겨 주세요</li></ul><p>상담 031-466-6969 · 산본역 3번 출구 롯데프라자 7층</p><p style="font-size:13px;color:#555">산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청)</p>',
@@ -5978,11 +5981,10 @@ var NOTICES=[
 
  {id:'n15', tag:'이벤트', t:'동글이벤트 · 함께 등록하면 교재 무한', d:'2026.10.03', pin:1, b:'<p>산본<b>동</b> + <b>글</b>로벌 = <b>동글이벤트</b>. 가족·친구가 <b>동시에 신규 등록</b>하시면 환승까지 받아 <b>최대 20%</b> + <b>교재 무한 제공</b>, 지금 다니시는 회원이 <b>친구·가족을 등록</b>시키시면 <b>교재 무한 제공</b>입니다. 교재는 <b>과정을 이수해 레벨업할 때</b> 새 교재를 드립니다 (과정 이수 기간 전에는 지급되지 않습니다). 함께 할인받던 가족·지인이 그만두시면 교재 제공도 끝납니다.</p>' +'<ul><li>가족·친구가 <b>함께 신규 등록</b>하실 때</li><li>지금 다니시는 회화반 수강생이 <b>다른 친구를 등록</b>시키실 때</li><li>대상 — <b>회화반만</b> (영어·일본어·중국어 · 시험대비반·1:1·퍼스널 제외)</li><li><b>할인 이벤트와 동시 적용</b> — <span class="ev-oct">오픈 10% + 환승 10% (오픈은 10월 31일까지)</span><span class="ev-nov">환승 10%</span></li></ul>', act:"openPage('가을학기 할인')", actLabel:'지금 받는 할인 보기'}, {id:'n14', tag:'이벤트', t:'10월 오픈이벤트 · 회화반 10%', d:'2026.09.01', pin:1,
   b:'<p>새 이름을 기념해 <b>10월 1일부터 10월 31일까지</b> 오픈이벤트를 진행합니다. 과정마다 받으시는 혜택이 다릅니다.</p>'
-    +'<ul><li><b>회화반</b>(영어·일본어·중국어) — 오픈 <b>10%</b> + 환승 <b>10%</b> = <b>최대 20%</b> + 네이버 리뷰 혜택</li>'
+    +'<ul><li><b>회화반</b>(영어·일본어·중국어) — 오픈 <b>10%</b> + 환승 <b>10%</b> = <b>최대 20%</b> + 수강후기 커피쿠폰·립밤</li>'
     +'<li><b>1:1 · 퍼스널</b> — 할인 없음</li>'
     +'<li><b>시험대비반</b>(토익·토스·오픽·JLPT·HSK) — 오픈이벤트 제외 · <b>환승 10%</b>만</li>'
-    +'<li><b>토익</b> — 문제풀이 <b>월 1회</b> + 기초문법 <b>40강 무료</b> + 회원가입 5,000P + 네이버 리뷰 5,000P(합계 10,000P)·립밤에 <b>교재 1권</b></li>'
-    +'<li><b>토스·오픽</b> — 네이버 리뷰 쓰시면 토익과 같은 혜택 (10,000P·립밤·교재 1권)</li>'
+    +'<li><b>토익</b> — 문제풀이 <b>월 1회</b> + 기초문법 <b>40강 무료</b> + 회원가입 5,000P + 수강후기 커피쿠폰·립밤</li>'
     +'<li>재등록은 <b>5%</b> (수강 끝난 뒤 이어서 등록 · 사무처 확인 후 데스크에서 진행)</li>'
     +'<li>11월부터는 환승 10%와 재등록 5%만 남습니다</li></ul>',
   act:"openPage('오픈이벤트')", actLabel:'오픈이벤트 자세히 보기'},
@@ -6034,9 +6036,6 @@ var NOTICES=[
     +'<li>교재 없음 · 숙제 없음 · 첨삭 없음 — <b>수업이 아닙니다</b></li></ul>',
   act:"openPage('동글이')", actLabel:'동글 자세히 보기'},
 
- {id:'n04', tag:'이벤트', t:'네이버 리뷰 이벤트', d:'2026.08.21',
-  b:'<p>네이버 플레이스에 영수증 리뷰를 남겨 주시면 <b>5,000포인트 + 립밤</b>을 드립니다. 회원가입 5,000포인트까지 합치면 <b>최대 10,000포인트</b>입니다.</p><p><b>토익·토스·오픽</b> 수강생은 포인트·립밤에 더해 <b>교재 1권</b>도 드립니다.</p>',
-  act:"openPage('네이버 리뷰 이벤트')", actLabel:'리뷰 이벤트 보기'},
 
  {id:'n03', tag:'휴무', t:'추석 연휴 휴무 안내 (9/24~9/26)', d:'2026.08.20',
   b:'<p>추석 연휴 기간 <b>9월 24일(목) ~ 9월 26일(토)</b> 휴원합니다.</p>'
@@ -7711,7 +7710,7 @@ const PAGES={
   +'<div class="pgnote">담당: 오금한·하홍금 외 원어민 강사 · 시간표는 강의관에서 확인</div>'+GO('중국어')+CTA(),
  '가을학기 할인':bigImg('img/hall_11.jpg?v=1012')+HV('DISCOUNT · 지금 받는 할인','지금 받는 할인','새벽반 상시 20% 별도','linear-gradient(120deg,#12203d,#caa23a)',ART_GIFT)
   +'<div class="evtimeline"><div class="evt on ev-oct"><div class="evt-d">NOW</div><div class="evt-b"><b>오픈이벤트 10%</b><p>10월 31일까지 · 회화반</p></div></div><div class="evt on ev-nov"><div class="evt-d">11월</div><div class="evt-b"><b>1+1 데이</b><p>1:1 20시간 등록 시 정규반 1개월 무료</p></div></div><div class="evt on"><div class="evt-d">상시</div><div class="evt-b"><b>환승 이벤트 10%</b><p>타 학원에서 옮기신 분 · 상시 · 퍼스널 제외</p></div></div><div class="evt"><div class="evt-d">재등록</div><div class="evt-b"><b>재등록 이벤트 5%</b><p>기존 수강생 · 상시 · 데스크 신청</p></div></div><div class="evt"><div class="evt-d">11월</div><div class="evt-b"><b>1대1 20시간 → 정규반 1개월 무료 수강권</b><p>11월 1일부터</p></div></div></div>'
-  +SEC('혜택 한눈에',CT(['이벤트','내용'],[['시험대비반','<b>환승 10%</b>만 · 토익: 문제풀이 월 1회 + 기초문법 40강 무료'],['동글이벤트','<b>회화반</b> · 가족·친구 함께 등록 시 <b>교재 무한 제공</b> (과정 이수 때 지급) · 할인과 중복'],['네이버 영수증 리뷰','<b>10,000P + 립밤</b> (가입 5,000P + 리뷰 5,000P) · 전 과정 · 토익·토스·오픽은 교재 1권 추가'],['포인트 사용','수강료에서 차감 · 1P = 1원'],['아키 패스','장기 수강 시 무료 개월 추가'],['다과목 수강','교재 지원 · 상담 후 안내'],['<b>상한</b>','새벽반 <b>20%</b> · 그 외 신규 <b>20%</b> · 기존 수강생 <b>15%</b> · 시험대비반 <b>환승 10%만</b> · 1:1·퍼스널 <b>할인 없음</b>']]).replace('class="ctable"','class="ctable wrap"'))
+  +SEC('혜택 한눈에',CT(['이벤트','내용'],[['시험대비반','<b>환승 10%</b>만 · 토익: 문제풀이 월 1회 + 기초문법 40강 무료'],['동글이벤트','<b>회화반</b> · 가족·친구 함께 등록 시 <b>교재 무한 제공</b> (과정 이수 때 지급) · 할인과 중복'],['회원가입','<b>5,000P</b> 가입 즉시 적립'],['수강후기','<b>커피쿠폰 + 립밤 바로 증정</b> · 홈페이지 후기 올리면 · 사진+200자는 교재 1권'],['포인트 사용','수강료에서 차감 · 1P = 1원'],['아키 패스','장기 수강 시 무료 개월 추가'],['다과목 수강','교재 지원 · 상담 후 안내'],['<b>상한</b>','새벽반 <b>20%</b> · 그 외 신규 <b>20%</b> · 기존 수강생 <b>15%</b> · 시험대비반 <b>환승 10%만</b> · 1:1·퍼스널 <b>할인 없음</b>']]).replace('class="ctable"','class="ctable wrap"'))
   +'<div class="pgnote">※ 정확한 금액은 031-466-6969</div><a class="pgcta" href="#" onclick="closePage();openTT();return false;">개강 일정 보기 ›</a>'+CTA(),
  '수강신청':enrollPage(),
  '수강후기':reviewPage, /* 2026-10-19 열 때마다 새 후기 불러오기 */
@@ -7734,11 +7733,6 @@ const PAGES={
  '통합회원안내':memberTabs()+H('MEMBERSHIP · 통합회원','아이디 하나로<br>온라인·모바일','가입 즉시 5,000P','🪪')+SGCTA('혜택은 결제 화면에서 자동으로 계산됩니다. 직접 고르실 필요 없어요.')+CTA(),
  '이용약관':H('TERMS · 이용약관','아키 서비스 이용약관','회원가입 시 동의하시는 이용약관 전문입니다.','📄')+'<div class="agdoc-b" style="max-width:900px;margin:0 auto;padding:0 4px">'+AGFULL.tos.h+'</div>'+CTA(),
  '개인정보처리방침':H('PRIVACY · 개인정보처리방침','개인정보 수집·이용 안내','휴대폰 번호를 포함해 어떤 정보를 왜 받고 얼마나 갖고 있는지 전부 적었습니다.','🔒')+'<div class="agdoc-b" style="max-width:900px;margin:0 auto;padding:0 4px">'+AGFULL.priv.h+'</div>'+'<div class="agdoc-b" style="max-width:900px;margin:22px auto 0;padding:0 4px"><h4>광고성 정보 수신 동의 (선택)</h4>'+AGFULL.mkt.h+'</div>'+CTA(),
- '네이버 리뷰 이벤트':HV('NAVER PLACE · 영수증 리뷰 이벤트','영수증 리뷰<br>5,000P + 립밤','가입 포함 최대 10,000P','linear-gradient(135deg,#03C75A,#029a45)','')
-  +'<div class="nv-coupon"><div class="nv-cp"><span>회원가입하면</span><b>5,000P</b><span>가입 즉시 적립</span></div><div class="nv-cp"><span>리뷰 남기면</span><b>+5,000P</b><span>수강료에 사용</span></div><div class="nv-cp gift"><span>리뷰 작성자 전원</span><b>립밤 증정 🎁</b><span>방문 시 현장 수령</span></div><div class="nv-cp gift"><span>토익·토스·오픽 수강생</span><b>교재 1권 📘</b><span>포인트·립밤에 추가</span></div></div>'
-  +SEC('참여 방법','<div class="evsteps"><div class="evstep"><div class="evn">STEP 1</div><div class="evb"><b>네이버에서 학원 찾기</b><p>데스크 QR 또는 네이버 앱에서 「산본글로벌어학원」 검색</p></div></div><div class="evstep"><div class="evn">STEP 2</div><div class="evb"><b>영수증 리뷰 작성</b><p>「리뷰 쓰기」 → 「영수증」 → 영수증 촬영 → 한 줄 남기고 「등록」</p></div></div><div class="evstep"><div class="evn">STEP 3</div><div class="evb"><b>혜택 수령</b><p>데스크에 리뷰 화면 보여주기 (카톡 채널 캡처도 적립)</p></div></div></div>')
-  +SEC('유의사항','<ul class="evnotice"><li>영수증(방문) 리뷰 · 1인 1회 · 별점 무관</li><li>회원가입 후 적립 · 1P = 1원 · 일부 특가 상품 제외</li><li>립밤 소진 시 동등 이상 사은품 · 허위 리뷰는 혜택 제한</li></ul>')
-  +'<div class="pgnote">문의·수령 031-466-6969 / 카카오톡 채널 @산본글로벌어학원</div>'+'<a href="review_A3.pdf" target="_blank" rel="noopener" style="display:block;margin:10px 0 0;padding:13px;border-radius:12px;background:#fff;border:1.5px solid #03C75A;color:#007A38;font-weight:800;text-align:center;text-decoration:none">🖨️ 매장 게시용 A3 포스터 받기 (인쇄용 PDF)</a>'+CTA(),
  '퍼스널':function(){return oneHubPage(1);},
  '맞춤수업':onePickPage,
  'AI 아키':aiPage,
@@ -8202,9 +8196,9 @@ function _persSubj(subj){return /퍼스널|일대일|1:1|1대1/.test(String(subj
 /* 2026-10-03 대표님·제이영 원장 협의 — 시험대비반은 오픈이벤트 없음(환승 10%만) */
 /* 시험대비반 과목별 혜택 문구 (2026-10-16 대표님 확정) */
 function _examBen(subj){var s=String(subj||'');
- if(/토익|TOEIC/i.test(s)&&!/스피킹|토스/.test(s))return {t:'토익은 환승 10% · 문제풀이 월 1회 · 기초문법 40강 무료',em:'오픈이벤트는 회화반만 · 회원가입 + 네이버 영수증 리뷰 합계 10,000P + 립밤 + 교재 1권',b:'환승 10% · 문제풀이 월 1회 · 기초문법 40강 무료'};
- if(/토스|오픽|OPI|스피킹/i.test(s))return {t:'토스·오픽은 환승 10%',em:'오픈이벤트는 회화반만 · 회원가입 + 네이버 영수증 리뷰 합계 10,000P + 립밤 + 교재 1권',b:'환승 10% · 리뷰 쓰면 교재 1권'};
- return {t:'시험대비반은 환승 10%',em:'오픈이벤트는 회화반만 · 회원가입 + 네이버 영수증 리뷰 합계 10,000P + 립밤',b:'시험대비반 환승 10%'};}
+ if(/토익|TOEIC/i.test(s)&&!/스피킹|토스/.test(s))return {t:'토익은 환승 10% · 문제풀이 월 1회 · 기초문법 40강 무료',em:'오픈이벤트는 회화반만 · 회원가입 5,000P',b:'환승 10% · 문제풀이 월 1회 · 기초문법 40강 무료'};
+ if(/토스|오픽|OPI|스피킹/i.test(s))return {t:'토스·오픽은 환승 10%',em:'오픈이벤트는 회화반만 · 회원가입 5,000P',b:'환승 10%'};
+ return {t:'시험대비반은 환승 10%',em:'오픈이벤트는 회화반만 · 회원가입 5,000P',b:'시험대비반 환승 10%'};}
 function _examSubj(subj){if(_persSubj(subj))return false;return /토익|토스|오픽|토플|지텔프|TOEIC|TOEFL|OPI|G-?TELP|JLPT|HSK|시험/i.test(String(subj||''));}
 function _curSubj(){try{if(document.getElementById('txTerm'))return _txK;if(document.getElementById('exTerm'))return _exSubj;if(document.getElementById('spTerm'))return _spSubj;}catch(e){}return '';}
 /* 새벽반을 고르셨으면 조조 30%가 자동으로 붙습니다 */
@@ -8722,14 +8716,14 @@ function sgaProfSubmit(){var nm=((document.getElementById('sgPfNm')||{}).value||
 (function(){var go=function(){try{if(!sgaUser())return;
   if(sgaJoinBonus()){setTimeout(function(){try{sgToast('<b>🎁 회원가입 적립금 5,000P</b><br>결제할 때 「보유 적립금」에서 바로 쓰실 수 있어요');}catch(e){}},1200);}
   try{
-   if(/[?&]giftrv=1/.test(location.search)&&sgaReviewBonus()){
+   if(false&&/[?&]giftrv=1/.test(location.search)&&sgaReviewBonus()){
     setTimeout(function(){try{sgToast('<b>🎁 네이버 리뷰 적립금 5,000P</b><br>결제할 때 「보유 적립금」에서 바로 쓰실 수 있어요');}catch(e){}},1200);
     try{var u=location.pathname+location.search.replace(/([?&])giftrv=1&?/,'$1').replace(/[?&]$/,'')+location.hash;history.replaceState(null,'',u);}catch(e){}
    }
   }catch(e){}
   var pend=false;try{pend=!!localStorage.getItem('sga_pay_pend');}catch(e){}
   var skip=false;try{skip=!!sessionStorage.getItem('sga_prof_skip');}catch(e){}
-  if(!sgaProf()&&!pend&&!skip&&!window._pcModal)setTimeout(function(){if(!document.querySelector('.sp-modal.on'))sgaProfShow(false);},2600);
+  /* 2026-10-30 대표님 「이거또뜬다 초기화면에 없애 무조건 회원가입임」 — 첫 화면 「처음 한 번만 적어 주세요」 자동 팝업 제거. 이름·휴대폰은 결제창에서만 받음 */
  }catch(e){}};if(document.readyState==='complete')go();else window.addEventListener('load',go);})();
 /* 결제창: 저장된 정보가 있으면 이름·번호 칸을 접고 한 줄로 */
 function _telFmt(t){return String(t||'').replace(/^(01\d)(\d{3,4})(\d{4})$/,'$1-$2-$3');}
@@ -8745,12 +8739,12 @@ function spProfEdit(){var bx=document.querySelector('#spModal .sp-buyer'),sm=doc
 function spPtRow(){var r=document.getElementById('spPtRow');if(!r)return;
  r.innerHTML='<span class="lb">💰 보유 적립금</span><span class="vl">'+_won(SGPT.pt||0)+'</span>'
   +((SGPT.pt||0)>0?'<div class="pt-use" style="width:100%"><input id="spPtUse" inputmode="numeric" placeholder="사용할 적립금" oninput="ptApply()"><button type="button" onclick="ptMax()">전액사용</button></div><div style="width:100%;font-size:12.5px;color:#7a6658;margin-top:4px">한 번 결제에 최대 10,000P까지 · 사용 내역은 결제 기록에 함께 남습니다</div>'
-   :'<div style="width:100%;font-size:13px;color:#8a90a0;line-height:1.7;margin-top:6px">적립금은 회원가입(5,000P)·네이버 리뷰(5,000P)로 쌓입니다. 다음 등록 때 현금처럼 쓰실 수 있습니다.</div>');}
+   :'<div style="width:100%;font-size:13px;color:#8a90a0;line-height:1.7;margin-top:6px">적립금은 회원가입(5,000P)으로 쌓입니다. 다음 등록 때 현금처럼 쓰실 수 있습니다.</div>');}
 /* 네이버 리뷰 이벤트 — 이벤트 할인 아래 체크칸 (결제 금액은 그대로, 리뷰 확인 후 지급) */
 window._revEv=false;
 function revRow(subj){var ex=false;try{ex=_examSubj(subj);}catch(e){}
  var gift=ex?'교재 1권 + 5,000P':'립밤 + 5,000P';
- return '<label class="rev-row" style="grid-column:1/-1"><input type="checkbox" id="revEv" '+(window._revEv?'checked':'')+' onchange="window._revEv=this.checked;"> <span><b>📝 네이버 리뷰 이벤트</b> — 등록 후 네이버 영수증 리뷰를 남기시면 <b>'+gift+'</b><br><small>결제 금액은 그대로이고, 리뷰 확인 후 데스크에서 드립니다 · 리뷰 화면 캡처를 카카오톡 채널로 보내 주세요</small></span></label>';}
+ return '';/* 2026-10-30 네이버 리뷰 이벤트 삭제 */ return '<label class="rev-row" style="grid-column:1/-1"><input type="checkbox" id="revEv" '+(window._revEv?'checked':'')+' onchange="window._revEv=this.checked;"> <span><b>📝 네이버 리뷰 이벤트</b> — 등록 후 네이버 영수증 리뷰를 남기시면 <b>'+gift+'</b><br><small>결제 금액은 그대로이고, 리뷰 확인 후 데스크에서 드립니다 · 리뷰 화면 캡처를 카카오톡 채널로 보내 주세요</small></span></label>';}
 /* 카카오톡·인스타 등 앱 안 브라우저 — 카드사 창(새 창)이 막혀 결제가 끝나지 않는 경우가 많습니다 (2026-10-19 결제 「대기」 5건) */
 function _inApp(){var u=navigator.userAgent||'';return /KAKAOTALK|Instagram|FBAN|FBAV|NAVER\(inapp|; wv\)|Line\/|DaumApps|everytimeApp/i.test(u);}
 function _openExt(){var url=location.origin+'/?from=inapp';var u=navigator.userAgent||'';
@@ -8812,16 +8806,22 @@ function rvSubmit(){
   +'&t='+encodeURIComponent(t)+'&b='+encodeURIComponent(b)+'&n='+encodeURIComponent(g('rvNm')||u.name||'')+'&u='+encodeURIComponent(who);
  var _req=window._rvV2ok?fetch(SGA_PAY_SERVER,{method:'POST',credentials:'omit',body:JSON.stringify({action:'review',crs:g('rvC'),tc:g('rvTc'),s:window._rvS||5,t:t,b:b,n:g('rvNm')||u.name||'',u:who,ph:window._rvPh||null})}):fetch(SGA_PAY_SERVER+q,{credentials:'omit'});
  _req.then(function(r){return r.json();}).then(function(j){
-  if(j&&j.ok&&j.rv){window._rvTxt=t+'\n'+b;var bx=document.querySelector('#rvW .rvw-b');if(bx)bx.innerHTML='<div class="rvw-ok"><div class="rvw-oki">💌</div><b>후기가 접수되었습니다</b><p>확인 후 홈페이지 수강후기에 올라갑니다.<br>소중한 후기 감사합니다!</p></div>'+'<div class="rvw-nv"><b>네이버에도 같은 후기를 남겨 주시면 큰 힘이 됩니다</b><span>① 아래 버튼을 누르면 방금 쓴 글이 복사돼요<br>② 네이버 지도 산본글로벌어학원 → 리뷰 쓰기 → 영수증·결제 인증 후 붙여넣기<br>③ 리뷰 화면을 카카오톡 채널로 보내 주시면 데스크에서 리뷰 이벤트 혜택을 드려요</span>'+'<button type="button" class="rvw-nvb" onclick="rvToNaver()">📋 복사하고 네이버 리뷰 쓰러 가기</button></div>'+'<button type="button" class="rvw-x" onclick="rvClose()">✕ 닫기</button>';}
+  if(j&&j.ok&&j.rv){window._rvTxt=t+'\n'+b;var bx=document.querySelector('#rvW .rvw-b');if(bx)bx.innerHTML='<div class="rvw-ok"><div class="rvw-oki">💌</div><b>후기가 접수되었습니다</b><p>확인 후 홈페이지 수강후기에 올라갑니다.<br>소중한 후기 감사합니다!</p></div>'+rvCoupon()+'<button type="button" class="rvw-x" onclick="rvClose()">✕ 닫기</button>';}
   else{btn.disabled=false;btn.textContent='후기 올리기';bad((j&&j.msg&&!j.svc)?j.msg:'후기 접수 준비 중입니다. 잠시 후 다시 시도해 주세요 · 031-466-6969');}
  }).catch(function(){btn.disabled=false;btn.textContent='후기 올리기';bad('연결이 잠깐 끊겼어요. 다시 눌러 주세요. 계속 안 되면 031-466-6969');});
 }
 /* 홈페이지 후기 → 네이버 플레이스 리뷰: 자동 연동은 안 되므로(네이버 계정·영수증 인증 필수) 글을 복사해 주고 리뷰 화면을 엽니다 */
 /* 2026-10-19 대표님 「수강후기 이벤트 넣어줘 … 사진넣고 몇자이상 써준 후기는 교재 무료」 */
 var RV_PHOTO_MIN=200;
+/* 2026-10-30 대표님 「네이버리뷰없애 모든창에서 커피쿠폰으로」 · 「수강후기 시 바로 증정」 — 후기 접수 화면에 바로 쿠폰 */
+function rvCoupon(){var d=new Date(Date.now()+9*3600e3).toISOString().slice(0,10).replace(/-/g,'.');var u=sgaUser()||{};var nm='';try{nm=_rvMaskC(((sgaProf()||{}).nm)||u.name||'');}catch(e){}
+ var no='SGA-C'+String(Date.now()).slice(-6);try{localStorage.setItem('sga_cf_cp',JSON.stringify({d:d,no:no}));}catch(e){}
+ return '<div class="cf-cp"><div class="cf-l">☕</div><div class="cf-r"><small>수강후기 감사 쿠폰</small><b>커피쿠폰 + 립밤</b><span>'+_rvEsc(nm)+' · '+d+' · '+no+'</span></div></div>'
+  +'<p class="cf-n">이 화면을 <b>데스크에 보여 주시면 바로 드립니다</b> · 화면을 캡처해 두셔도 됩니다 · 수강생 1인 1회</p>';}
 function rvEventBox(sm){return'<div class="rvw-ev'+(sm?' sm':'')+'"><div class="rvw-evt">🎁 수강후기 이벤트</div>'
+ +'<div class="rvw-evr cf"><b>☕ 후기만 올려도</b><span>커피쿠폰 + 립밤 바로 증정</span></div>'
  +'<div class="rvw-evr"><b>📸 사진 1장 + '+RV_PHOTO_MIN+'자 이상</b><span>교재 1권 무료</span></div>'
- +'<div class="rvw-evr"><b>✍️ 네이버 리뷰에도 남기면</b><span>적립금 5,000P</span></div>'
+ 
  +'<div class="rvw-evn">수강생 1인 1회 · 후기 확인 후 데스크에서 드립니다 · 이벤트로 쓴 후기에는 「후기 이벤트 참여」가 함께 표시됩니다</div></div>';}
 function rvV2(cb){if(window._rvV2ok!=null){cb(window._rvV2ok);return;}
  fetch(SGA_PAY_SERVER+'?action=reviews',{credentials:'omit'}).then(function(r){return r.json();}).then(function(j){window._rvV2ok=!!(j&&j.v>=2);cb(window._rvV2ok);}).catch(function(){window._rvV2ok=false;cb(false);});}
@@ -8904,7 +8904,6 @@ function spModalHTML(){return '<div class="sp-modal" id="spModal"><div class="sp
  +'<div class="sp-citem" id="spCitem"></div>'
  /* 2026-09-17 — 어학상품권을 없앴습니다. 결제창에 남는 것은 적립금뿐입니다. */
  +'<div class="pt-row" id="spPtRow" style="flex-wrap:wrap"></div>'
- +'<label class="rev-row pay"><input type="checkbox" id="revEvPay" onchange="window._revEv=this.checked"> <span><b>📝 네이버 리뷰 이벤트 참여</b> — 등록 후 네이버 영수증 리뷰를 남기시면 데스크에서 혜택(교재·립밤 + 5,000P)을 드립니다</span></label>'
  +'<div class="sp-sum"><div><span id="spSumLb">수강료</span><b id="spSumAmt">-</b></div><div class="mi"><span>적립금 사용</span><b id="spPtVal">-0원</b></div><div><span>최종 결제금액</span><b id="spPtTot">-</b></div></div>'
  +payAgreeHTML()
  +'<div class="sp-buyer"><label>수강생 이름<input id="spBuyerNm" autocomplete="name" placeholder="홍길동"></label><label>휴대폰 번호<input id="spBuyerTel" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000"></label><p>결제·입금 확인 후 이 번호로 첫 수업 일정을 안내드립니다.</p></div>'
@@ -9544,8 +9543,8 @@ function txExtra(t,term){
  if(ob){ob.innerHTML=D?('<div class="oct-b"><div class="oct-h">🍂 10월 등록 할인 · 기본 과정 2개월</div>'
   +'<div class="oct-p"><s>420,000원</s> <b>'+D.fin.toLocaleString()+'원</b> <em>최대 '+D.pct+'%</em></div>'
   +'<ul><li>다른 학원에서 오시면 <b>환승 10%</b> · −42,000원</li>'
-  +'<li>네이버 리뷰 쓰시면 <b>교재 증정</b>'+(D.book?' ('+D.bn+' · '+D.book.toLocaleString()+'원)':'')+'</li>'
-  +'<li>회원가입 + 네이버 리뷰 <b>10,000P</b></li></ul>'
+  +'<li>회원가입 적립금 <b>5,000P</b></li>'
+  +'<li>수강후기 쓰시면 <b>커피쿠폰 + 립밤</b> 바로 증정</li></ul>'
   +'<div class="oct-n">1개월(210,000원)만 들으셔도 됩니다 · 2개월이 기본 과정입니다</div></div>'):'';}
  var risky=(t&&t.g==='spa')||_txK==='토스'||_txK==='오픽'||_txK==='토플';
  if(rk){rk.innerHTML=risky?('<div class="tx-risk">'+((t&&t.g==='spa')?'<b>11월 스파르타 · 11/5(목) 개강 → 11/30(월) 종강 · 18회</b><br><b>12월 스파르타 · 12/3(목) 개강 → 12/30(수) 종강</b><br>':'')
@@ -21546,7 +21545,7 @@ body.has-tab #rvPop .nrp-x{bottom:calc(var(--sg-tabh,80px) + 14px + env(safe-are
   try{[].forEach.call(document.querySelectorAll('body *'),function(e){if(e.closest('#rvPop,[data-nrphid]'))return;var cs=getComputedStyle(e);if(cs.position==='fixed'&&cs.display!=='none'&&/뭐부터 보실까요|그냥 둘러볼게요/.test(e.innerText||'')){e.setAttribute('data-nrphid','1');e.style.visibility='hidden';}});}catch(e){}
   document.body.appendChild(m); requestAnimationFrame(function(){m.classList.add('on');});
  }
- function start(){
+ function start(){return; /* 2026-10-30 대표님 「네이버리뷰없애」 — 리뷰 팝업 중지 */
   if(!force()&&(Date.now()<OPEN||hidden()))return;
   var n=0,calm=0,t=setInterval(function(){
    n++; if(n>120){clearInterval(t);return;}          /* 60초 안에 기회가 없으면 이번 방문은 쉽니다 */
@@ -23003,6 +23002,10 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
 .rvw-ev{background:linear-gradient(135deg,#FFF6E3,#FFEFD6);border:1.5px solid #E8C97A;border-radius:16px;padding:14px 16px;margin:14px 0}
 .rvw-ev.sm{margin:4px 0 14px;padding:12px 14px}
 .rvw-evt{font-size:17px;font-weight:900;color:#7B1733;margin-bottom:8px}
+.rvw-evr.cf{background:#FFF4DC;border:1.5px solid #E8C97A}.rvw-evr.cf span{color:#7B1733;font-weight:900}
+.cf-cp{display:flex;align-items:center;gap:12px;margin:14px 0 6px;background:linear-gradient(135deg,#7B1733,#5B1026);color:#fff;border-radius:16px;padding:16px;border:2px dashed #E8C97A}
+.cf-cp .cf-l{font-size:40px;line-height:1}.cf-cp small{display:block;font-size:12.5px;color:#F3E0C4;font-weight:700}.cf-cp b{display:block;font-size:22px;font-weight:900;margin:2px 0}.cf-cp span{font-size:12.5px;color:#F3E0C4}
+.cf-n{font-size:14px;color:#4a3d35;line-height:1.6;text-align:center;margin:6px 0 4px}
 .rvw-evr{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#fff;border-radius:10px;padding:9px 12px;margin-bottom:6px;font-size:14px}
 .rvw-evr b{color:#2B2320}.rvw-evr span{flex:none;font-weight:900;color:#C81F2B}
 .rvw-evn{font-size:12px;color:#7a6658;line-height:1.55;margin-top:6px}
