@@ -5654,7 +5654,7 @@ function sgdPaint(){
         결제수단 신용·체크카드 · <b>민생회복 소비쿠폰</b> · <b>온누리상품권</b> · <b>경기지역화폐 군포愛머니</b> · <b>제로페이</b> · <b>평생교육이용권(NH농협 채움카드)</b> 가맹점<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~15:30 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftvis" id="ftVis"></span><span class="ftver" id="ftVer">최종 수정 2026-10-30d · 1강 누구나 · 수강생 전부 무료 · 이용권 사용기관</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftvis" id="ftVis"></span><span class="ftver" id="ftVer">최종 수정 2026-10-30e · 1강 누구나 · 수강생 전부 무료 · 이용권 사용기관</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_xbxkCFX" target="_blank" rel="noopener noreferrer">T</a>
@@ -23200,6 +23200,18 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
 #sgHpQ .hq-cp{display:block;width:100%;margin-top:4px;padding:11px;border-radius:12px;border:1.5px solid #D9C9B0;background:#fff;font-weight:800;font-size:14.5px;cursor:pointer}
 #sgHpQ .hq-done pre{white-space:pre-wrap;background:#fff;border:1px solid #E6D6C3;border-radius:10px;padding:12px;font-size:13.5px;font-family:inherit;line-height:1.6;margin:10px 0}
 #sgHpQ .hq-kk{display:block;text-align:center;margin-top:10px;padding:15px;border-radius:12px;background:#FEE500;color:#3A1D1D;font-weight:900;font-size:16px;text-decoration:none}
+/* 2026-10-30 대표님 「우리 홈페이지 옆에 홈페이지 견적란에 웹쇼룸 사이트 박아줘 그리고 누르면 웹쇼룸으로 갈 수 있게」 */
+#sgRail .rl-ws{display:block;position:relative;margin-top:10px;width:104px;height:150px;border-radius:14px;overflow:hidden;background:#2B1418;box-shadow:0 10px 24px -10px rgba(91,16,38,.6);text-decoration:none;border:2px solid #E8C97A}
+#sgRail .rl-ws iframe{position:absolute;left:0;top:0;width:390px;height:563px;border:0;transform:scale(.2615);transform-origin:0 0;pointer-events:none}
+#sgRail .rl-ws em{position:absolute;left:0;right:0;bottom:0;padding:5px 4px 6px;background:linear-gradient(transparent,rgba(43,20,24,.92) 35%);color:#FFF8EC;font-style:normal;font-size:11px;font-weight:900;text-align:center;line-height:1.3}
+#sgRail .rl-ws em b{display:block;color:#F6D58A;font-size:12px}
+#sgRail .rl-ws:hover{border-color:#F6D58A}
+#sgRail .rl-hp{margin-top:8px}
+#sgHpQ .hq-ws{display:block;position:relative;margin:0 0 14px;border-radius:14px;overflow:hidden;background:#2B1418;aspect-ratio:16/10;border:2px solid #E8C97A;text-decoration:none}
+#sgHpQ .hq-ws iframe{position:absolute;left:0;top:0;width:1280px;height:800px;border:0;transform-origin:0 0;pointer-events:none}
+#sgHpQ .hq-ws span{position:absolute;left:0;right:0;bottom:0;padding:22px 10px 10px;background:linear-gradient(transparent,rgba(43,20,24,.9) 45%);color:#FFF8EC;font-size:14px;font-weight:900;text-align:center}
+#sgHpQ .hq-ws span b{color:#F6D58A}
+#sgHpQ .hq-wsb{display:block;text-align:center;margin:-6px 0 16px;padding:12px;border-radius:12px;background:#fff;border:1.5px solid #7B1733;color:#7B1733;font-weight:900;font-size:15px;text-decoration:none}
 </style>
 <div id="sgRail" aria-label="바로가기">
  <button type="button" class="rl-tg" onclick="sgRailTg()" aria-label="바로가기 접기">▶</button>
@@ -23209,6 +23221,7 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
   <button type="button" class="rl-it" onclick="openPage('전체시간표')"><i>🗓️</i>전체<br>시간표</button>
   <button type="button" class="rl-it" onclick="openPage('무료청강')"><i>🎧</i>첫 수업<br>무료 청강</button>
  </div>
+ <a class="rl-ws" href="https://mirmyung-sys.github.io/webshowroom/" target="_blank" rel="noopener" aria-label="웹쇼룸 — 우리가 만든 홈페이지 구경하기"><iframe data-src="https://mirmyung-sys.github.io/webshowroom/" title="웹쇼룸 미리보기" tabindex="-1" aria-hidden="true"></iframe><em><b>웹쇼룸 ▶</b>업종별 홈페이지<br>구경하기</em></a>
  <button type="button" class="rl-hp" onclick="sgHpOpen()"><i>🖥️</i><b>홈페이지 제작</b><span>견적만<br>받아보세요</span></button>
  <button type="button" class="rl-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="맨 위로">▲</button>
 </div>
@@ -23218,6 +23231,8 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
   <button type="button" class="hq-x" onclick="sgHpClose()">닫기</button>
   <div class="hq-form">
    <h3>홈페이지, 견적만 받아보세요</h3>
+   <a class="hq-ws" href="https://mirmyung-sys.github.io/webshowroom/" target="_blank" rel="noopener"><iframe data-src="https://mirmyung-sys.github.io/webshowroom/" title="웹쇼룸 미리보기" tabindex="-1" aria-hidden="true"></iframe><span>카페·헤어·한식·학원… <b>업종별 홈페이지 구경하기 ▶</b></span></a>
+   <a class="hq-wsb" href="https://mirmyung-sys.github.io/webshowroom/" target="_blank" rel="noopener">🖥️ 웹쇼룸 바로 가기</a>
    <p class="hq-s">지금 보고 계신 이 홈페이지를 직접 만든 팀이 만듭니다.<br>수강신청·카드결제·예약까지 되는 홈페이지 — 견적은 무료입니다.</p>
    <label for="hqBiz">상호 · 업종</label><input type="text" id="hqBiz" placeholder="예) 산본 ○○카페 · 음식점">
    <label for="hqNm">성함</label><input type="text" id="hqNm" placeholder="홍길동">
@@ -23249,7 +23264,10 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
 <script>
 function sgRailTg(){var r=document.getElementById('sgRail');if(!r)return;var off=r.classList.toggle('off');r.querySelector('.rl-tg').textContent=off?'◀':'▶';try{sessionStorage.setItem('sgRailOff',off?'1':'');}catch(e){}}
 (function(){try{if(sessionStorage.getItem('sgRailOff')==='1'){var r=document.getElementById('sgRail');r.classList.add('off');r.querySelector('.rl-tg').textContent='◀';}}catch(e){}})();
-function sgHpOpen(){var q=document.getElementById('sgHpQ');q.querySelector('.hq-form').style.display='';q.querySelector('.hq-done').style.display='none';q.classList.add('on');}
+function sgWsLoad(f){if(f&&!f.src&&f.dataset.src)f.src=f.dataset.src;}
+function sgWsFit(){var w=document.querySelector('#sgHpQ .hq-ws');if(!w)return;var f=w.querySelector('iframe');f.style.transform='scale('+(w.clientWidth/1280)+')';}
+(function(){try{if(/[?&]embed=1/.test(location.search))return;if(window.innerWidth>=1200)setTimeout(function(){sgWsLoad(document.querySelector('#sgRail .rl-ws iframe'));},2500);window.addEventListener('resize',sgWsFit);}catch(e){}})();
+function sgHpOpen(){var q=document.getElementById('sgHpQ');q.querySelector('.hq-form').style.display='';q.querySelector('.hq-done').style.display='none';q.classList.add('on');try{sgWsLoad(q.querySelector('.hq-ws iframe'));sgWsFit();}catch(e){}}
 function sgHpCopy(btn){var t=(document.getElementById('hqTxt')||{}).textContent||'';try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){if(btn)btn.textContent='✓ 복사됐어요 · 상담창에 붙여넣기';},function(){if(btn)window.prompt('아래 내용을 길게 눌러 복사해 주세요',t);});}else if(btn){window.prompt('아래 내용을 길게 눌러 복사해 주세요',t);}}catch(e){}}
 function sgHpClose(){document.getElementById('sgHpQ').classList.remove('on');}
 function sgHpSend(){
