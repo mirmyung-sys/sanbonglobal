@@ -22,10 +22,12 @@ a:focus-visible{outline:3px solid #E7A3B6;outline-offset:3px}
 <body>
 <img src="/check/icon-512.png" alt="산본글로벌어학원 SGA 로고">
 <h1>출결버스</h1>
-<p>출결 화면을 여는 중이에요…</p>
-<a id="go" href="https://script.google.com/macros/s/AKfycbwiqf3xPKPy-UpXIZ4LEpMnG4LHLHud_gYJNzm-l02RQH9JqFua9GBQMG-8PdypgiJu/exec">바로 열기</a>
+<p id="msg">아래 버튼을 누르면 출결 화면이 열려요</p>
+<a id="go" href="https://script.google.com/macros/s/AKfycbwiqf3xPKPy-UpXIZ4LEpMnG4LHLHud_gYJNzm-l02RQH9JqFua9GBQMG-8PdypgiJu/exec">출결버스 열기</a>
+<p id="tip" style="font-size:14px;color:#7A6570;margin-top:10px">바탕화면에 로고로 두려면: 크롬 ⋮ → 「홈 화면에 추가」</p>
 <script>
-setTimeout(function(){location.replace(document.getElementById('go').href)},600);
+var app=/[?&]app=1/.test(location.search)||matchMedia('(display-mode: standalone)').matches;
+if(app){document.getElementById('msg').textContent='출결 화면을 여는 중이에요…';document.getElementById('tip').style.display='none';setTimeout(function(){location.replace(document.getElementById('go').href)},300);}
 </script>
 </body>
 </html>

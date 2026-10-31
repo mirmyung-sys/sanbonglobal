@@ -2,7 +2,7 @@
   "name": "산본글로벌어학원 출결버스",
   "short_name": "출결버스",
   "id": "/check/",
-  "start_url": "/check/",
+  "start_url": "/check/?app=1",
   "scope": "/check/",
   "display": "standalone",
   "orientation": "any",
