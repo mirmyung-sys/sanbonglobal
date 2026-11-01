@@ -5567,6 +5567,7 @@ function sgdPaint(){
 <section class="review" id="review"><div class="wrap">
   <!-- 2026-11-01g 대표님 「홈페이지 상 수강후기는 왜 저러지」 — 예전 고정 카드 3장(눌러도 안 바뀌는 탭, 원문에 없던 별 5개) 대신 수강후기 페이지와 같은 실제 후기를 불러와 보여줌 -->
   <div class="hv-hd"><div class="pgeyebrow">REAL REVIEWS · 수강후기</div><h2 id="hvTit">수강생이 직접 남긴 후기</h2><p id="hvSub">2019년부터 쌓인 실제 수강생 후기입니다</p></div>
+  <div id="hvNv"></div>
   <div class="hv-chips" id="hvChips"></div>
   <div class="hv-list" id="hvList"><p class="hv-ld">후기를 불러오는 중…</p></div>
   <div class="hv-btns"><button type="button" class="rvw-m2" id="hvAll" onclick="hvGo()">전체 후기 보기 ›</button><button type="button" class="rvw-m1" onclick="rvWrite()">✍️ 수강후기 쓰기</button></div>
@@ -5651,7 +5652,7 @@ function sgdPaint(){
         결제수단 신용·체크카드 · <b>민생회복 소비쿠폰</b> · <b>온누리상품권</b> · <b>경기지역화폐 군포愛머니</b> · <b>제로페이</b> · <b>평생교육이용권(NH농협 채움카드)</b> 가맹점<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~15:30 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftvis" id="ftVis"></span><span class="ftver" id="ftVer">최종 수정 2026-11-01g · 1강 누구나 · 수강생 전부 무료 · 이용권 사용기관</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftvis" id="ftVis"></span><span class="ftver" id="ftVer">최종 수정 2026-11-01h · 1강 누구나 · 수강생 전부 무료 · 이용권 사용기관</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_xbxkCFX" target="_blank" rel="noopener noreferrer">T</a>
@@ -8887,7 +8888,7 @@ function rvSumHtml(){
  var bars=RV_CATS.filter(function(k){return cnt[k];}).map(function(k){var p=pct(cnt[k],tot);return '<div class="rs2-b" onclick="rvSetF(\''+k+'\')"><span>'+k+'</span><i><b style="width:'+p+'%"></b></i><em>'+cnt[k]+'건</em><small>'+p+'%</small></div>';}).join('');
  var phr=A.filter(function(r){return r.ph;}).length,first=A.map(function(r){return r.d||'';}).filter(Boolean).sort()[0]||'';
  var left=(st.length?'<div class="rs2-av">'+av.toFixed(1)+'</div><div class="rs2-st">'+rvStarStr(Math.round(av))+'</div>':'<div class="rs2-av">'+tot+'<em>건</em></div>')
-  +'<p><b>'+tot+'</b>개의 실제 수강생 후기가 있습니다</p><div class="rs2-sub">'+(first?first.slice(0,4)+'년부터 쌓인 후기':'')+(LN.length?' · 한줄평 '+LN.length:'')+(phr?' · 사진 '+phr:'')+(st.length?' · 별점 '+st.length+'건 평균':'')+'</div>';
+  +'<p><b>'+tot+'</b>개의 실제 수강생 후기가 있습니다</p><div class="rs2-sub">'+(first?first.slice(0,4)+'년부터 쌓인 후기':'')+(LN.length?' · 한줄평 '+LN.length:'')+(phr?' · 사진 '+phr:'')+(st.length?' · 별점 '+st.length+'건 평균':'')+'</div>';left+=(typeof rvNvHtml==='function'?rvNvHtml():'');
  var sv=A.filter(function(r){return r.lv;}),svh='';
  if(sv.length){var grp=function(t,key,opts){var c={};sv.forEach(function(r){if(r[key])c[r[key]]=(c[r[key]]||0)+1;});var n=sv.filter(function(r){return r[key];}).length;return '<div class="rs2-sv"><h5>'+t+'</h5>'+opts.map(function(o){var p=pct(c[o]||0,n);return '<div class="rs2-sb"><span>'+o+'</span><i><b style="width:'+p+'%"></b></i><em>'+p+'%</em></div>';}).join('')+'</div>';};
   svh='<div class="rs2-svw">'+grp('난이도','lv',RV_LV)+grp('수업 방식','sv',RV_SV)+'</div><div class="rs2-svn">홈페이지 후기 '+sv.length+'건 기준</div>';}
@@ -8925,13 +8926,16 @@ function rvSetT(t){_RVS.t=(_RVS.t===t?'':t);_RVS.n=6;rvRender();var l=document.g
 function rvSetS(s){_RVS.sort=s;_RVS.n=6;rvRender();}
 
 /* 2026-11-01g 첫 화면 수강후기 — 수강후기 페이지와 같은 데이터(_RVS) */
+/* 2026-11-01h 대표님 「1번해」 — 네이버 플레이스 실제 리뷰 수를 합쳐 보여줌. 숫자는 대표님 캡처의 실제 값만 넣는다(지어내지 않음) */
+var RV_NAVER={v:0,b:0,url:'https://m.place.naver.com/place/1554688156/review/visitor'};
+function rvNvHtml(){var n=RV_NAVER;return '<a class="hv-nv" href="'+n.url+'" target="_blank" rel="noopener"><span class="hv-nvn">N</span><span>'+(n.v||n.b?'네이버 방문자 리뷰 <b>'+n.v+'</b>'+(n.b?' · 블로그 리뷰 <b>'+n.b+'</b>':''):'네이버 플레이스 리뷰도 보기')+'</span><em>›</em></a>';}
 var _HV={f:'전체'};
 function hvLoad(){if(!document.getElementById('hvList'))return;_RVS.mine=rvMine();var n=0,done=function(){if(++n>=2)hvRender();};
  if(_RVS.old)done();else fetch('reviews_old.json?v=1101c').then(function(r){return r.json();}).then(function(j){_RVS.old=j||[];done();}).catch(done);
  fetch(SGA_PAY_SERVER+'?action=reviews',{credentials:'omit'}).then(function(r){return r.json();}).then(function(j){_RVS.live=(j&&j.list)||[];done();}).catch(done);}
 function hvRender(){var L=document.getElementById('hvList');if(!L)return;var A=rvAll().filter(function(r){return !r.mine;}),cnt={'전체':A.length};
  A.forEach(function(r){cnt[r.c]=(cnt[r.c]||0)+1;});
- document.getElementById('hvTit').innerHTML='수강생이 직접 남긴 후기 <b>'+A.length+'</b>개';
+ var NV=RV_NAVER.v+RV_NAVER.b;document.getElementById('hvTit').innerHTML='수강생이 직접 남긴 후기 <b>'+(A.length+NV)+'</b>개';document.getElementById('hvSub').innerHTML=NV?'홈페이지 후기 '+A.length+' · 네이버 리뷰 '+NV:'2019년부터 쌓인 실제 수강생 후기입니다';var _nv=document.getElementById('hvNv');if(_nv)_nv.innerHTML=rvNvHtml();
  document.getElementById('hvAll').innerHTML='전체 후기 <b>'+(_HV.f==='전체'?A.length:(cnt[_HV.f]||0))+'</b>개 보기 ›';
  document.getElementById('hvChips').innerHTML=['전체'].concat(RV_CATS.filter(function(k){return cnt[k];})).map(function(k){return '<button type="button" class="'+(k===_HV.f?'on':'')+'" onclick="_HV.f=\''+k+'\';hvRender()">'+k+' <small>'+cnt[k]+'</small></button>';}).join('');try{var _o=document.querySelector('#hvChips .on'),_b=document.getElementById('hvChips');if(_o)_b.scrollLeft=Math.max(0,_o.offsetLeft-_b.offsetLeft-16);}catch(e){}
  var B=A.filter(function(r){return _HV.f==='전체'||r.c===_HV.f;}),pick=B.filter(function(r){return r.best;}).concat(B.filter(function(r){return !r.best;})).slice(0,3);
@@ -23184,6 +23188,8 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
 .hv-list{display:grid;grid-template-columns:1fr;gap:12px}.hv-c{cursor:pointer}.hv-c h4{margin:2px 0 0!important}.hv-ld{text-align:center;color:#9a8878;font-weight:700;padding:24px 0}
 .hv-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}.hv-btns b{color:inherit}
 @media(min-width:900px){.hv-list{grid-template-columns:repeat(3,1fr)}.hv-chips{justify-content:center}}
+.hv-nv{display:flex;align-items:center;gap:8px;max-width:420px;margin:0 auto 12px;background:#fff;border:1.5px solid #03C75A;border-radius:12px;padding:10px 14px;color:#1d1d1d;font-weight:800;font-size:14.5px;text-decoration:none}.hv-nv b{color:#03A24A}.hv-nv em{margin-left:auto;font-style:normal;color:#03A24A;font-size:18px}
+.hv-nvn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:5px;background:#03C75A;color:#fff;font-weight:900;font-size:13px}.rs2-l .hv-nv{margin:12px auto 0}
 /* 2026-11-01b 시원스쿨식 한눈 요약 */
 #rvSum.rv-sum{background:none;border:0;padding:0;box-shadow:none;margin:0}
 .rv-hd2{text-align:center;padding:26px 16px 6px}.rv-hd2 h2{font-size:26px;font-weight:900;color:#2B2320;margin:6px 0 0;letter-spacing:-.03em}
