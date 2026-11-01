@@ -5565,14 +5565,11 @@ function sgdPaint(){
 
 <!-- 수강후기 -->
 <section class="review" id="review"><div class="wrap">
-  <div class="tabs2"><button class="on">토익</button><button>토스/오픽</button><button>토플/지텔프</button><button>일본어</button><button>중국어</button></div>
-  <div class="rvtop">수강후기</div>
-  <div class="rv3">
-    <div class="rc"><div class="stars">★★★★★</div><h4>토익 초급반 엘리쌤 후기</h4><p>오랜만에 하는 영어공부라 걱정이 컸는데, 첫 수업부터 차근차근 짚어 주셔서 따라갈 수 있었습니다.</p><span class="rw">토익 초급 · 엘리 킴 선생님</span></div>
-    <div class="rc"><div class="stars">★★★★★</div><h4>일본어능력시험 N3 합격 후기</h4><p>대학생입니다. 12월 시험을 위해 3개월 대비반을 들었고, 우수한 성적으로 합격했습니다.</p><span class="rw">일본어 회화 + JLPT 대비반</span></div>
-    <div class="rc"><div class="stars">★★★★★</div><h4>원어민 선생님인데 수강료도 저렴했어요</h4><p>매 수업 small talk과 기사글 위주라 어휘력과 문법 실력을 키우는 데 도움이 많이 됐습니다.</p><span class="rw">영어회화 STEP4 · Jerollyn 선생님</span></div>
-  </div>
-  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px"><button type="button" class="rvw-m1" onclick="rvWrite()">✍️ 수강후기 쓰기</button><button type="button" class="rvw-m2" onclick="openPage('수강후기')">전체 후기 보기 ›</button></div>
+  <!-- 2026-11-01g 대표님 「홈페이지 상 수강후기는 왜 저러지」 — 예전 고정 카드 3장(눌러도 안 바뀌는 탭, 원문에 없던 별 5개) 대신 수강후기 페이지와 같은 실제 후기를 불러와 보여줌 -->
+  <div class="hv-hd"><div class="pgeyebrow">REAL REVIEWS · 수강후기</div><h2 id="hvTit">수강생이 직접 남긴 후기</h2><p id="hvSub">2019년부터 쌓인 실제 수강생 후기입니다</p></div>
+  <div class="hv-chips" id="hvChips"></div>
+  <div class="hv-list" id="hvList"><p class="hv-ld">후기를 불러오는 중…</p></div>
+  <div class="hv-btns"><button type="button" class="rvw-m2" id="hvAll" onclick="hvGo()">전체 후기 보기 ›</button><button type="button" class="rvw-m1" onclick="rvWrite()">✍️ 수강후기 쓰기</button></div>
 </div></section>
 
 <!-- 평생교육이용권 사용기관 (2026-10-15) -->
@@ -5654,7 +5651,7 @@ function sgdPaint(){
         결제수단 신용·체크카드 · <b>민생회복 소비쿠폰</b> · <b>온누리상품권</b> · <b>경기지역화폐 군포愛머니</b> · <b>제로페이</b> · <b>평생교육이용권(NH농협 채움카드)</b> 가맹점<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~15:30 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftvis" id="ftVis"></span><span class="ftver" id="ftVer">최종 수정 2026-11-01f · 1강 누구나 · 수강생 전부 무료 · 이용권 사용기관</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftvis" id="ftVis"></span><span class="ftver" id="ftVer">최종 수정 2026-11-01g · 1강 누구나 · 수강생 전부 무료 · 이용권 사용기관</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_xbxkCFX" target="_blank" rel="noopener noreferrer">T</a>
@@ -8926,6 +8923,21 @@ function rvRender(){
 function rvSetF(k){_RVS.f=k;_RVS.n=6;rvRender();var t=document.getElementById('rvStrip');if(t&&!t.innerHTML)t=document.getElementById('rvList');if(t&&t.scrollIntoView)try{t.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){}}
 function rvSetT(t){_RVS.t=(_RVS.t===t?'':t);_RVS.n=6;rvRender();var l=document.getElementById('rvList');if(l&&l.scrollIntoView)try{l.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){}}
 function rvSetS(s){_RVS.sort=s;_RVS.n=6;rvRender();}
+
+/* 2026-11-01g 첫 화면 수강후기 — 수강후기 페이지와 같은 데이터(_RVS) */
+var _HV={f:'전체'};
+function hvLoad(){if(!document.getElementById('hvList'))return;_RVS.mine=rvMine();var n=0,done=function(){if(++n>=2)hvRender();};
+ if(_RVS.old)done();else fetch('reviews_old.json?v=1101c').then(function(r){return r.json();}).then(function(j){_RVS.old=j||[];done();}).catch(done);
+ fetch(SGA_PAY_SERVER+'?action=reviews',{credentials:'omit'}).then(function(r){return r.json();}).then(function(j){_RVS.live=(j&&j.list)||[];done();}).catch(done);}
+function hvRender(){var L=document.getElementById('hvList');if(!L)return;var A=rvAll().filter(function(r){return !r.mine;}),cnt={'전체':A.length};
+ A.forEach(function(r){cnt[r.c]=(cnt[r.c]||0)+1;});
+ document.getElementById('hvTit').innerHTML='수강생이 직접 남긴 후기 <b>'+A.length+'</b>개';
+ document.getElementById('hvAll').innerHTML='전체 후기 <b>'+(_HV.f==='전체'?A.length:(cnt[_HV.f]||0))+'</b>개 보기 ›';
+ document.getElementById('hvChips').innerHTML=['전체'].concat(RV_CATS.filter(function(k){return cnt[k];})).map(function(k){return '<button type="button" class="'+(k===_HV.f?'on':'')+'" onclick="_HV.f=\''+k+'\';hvRender()">'+k+' <small>'+cnt[k]+'</small></button>';}).join('');try{var _o=document.querySelector('#hvChips .on'),_b=document.getElementById('hvChips');if(_o)_b.scrollLeft=Math.max(0,_o.offsetLeft-_b.offsetLeft-16);}catch(e){}
+ var B=A.filter(function(r){return _HV.f==='전체'||r.c===_HV.f;}),pick=B.filter(function(r){return r.best;}).concat(B.filter(function(r){return !r.best;})).slice(0,3);
+ L.innerHTML=pick.map(function(r){return '<article class="rc hv-c" onclick="hvGo()"><div class="rc-hd"><span class="rc-c">'+r.c+'</span>'+(r.best?'<span class="rc-best">BEST</span>':'')+(r.s?rvStarStr(r.s):'')+'</div><h4>'+_rvEsc(r.ti)+'</h4><p class="rc-p cl">'+_rvEsc(String(r.p||'').replace(/\s+/g,' '))+'</p><div class="rc-ft">'+_rvEsc(r.m||'산본 수강생')+(r.d?' · '+_rvEsc(r.d):'')+(r.t?' · '+_rvEsc(r.t)+' 선생님':'')+'</div></article>';}).join('')||'<p class="hv-ld">이 과정 후기는 아직 없어요</p>';}
+function hvGo(){_RVS.f=_HV.f;_RVS.n=6;openPage('수강후기');}
+(function(){var go=function(){setTimeout(hvLoad,400);};if(document.readyState==='complete')go();else window.addEventListener('load',go);})();
 function rvGoPh(t){_RVS.f='전체';_RVS.sort='photo';_RVS.n=99;rvRender();var a=document.querySelectorAll('#rvList .rc h4');for(var i=0;i<a.length;i++)if(a[i].textContent.replace(/[\'"\\<>]/g,'')===t){var c=a[i].closest('.rc');c.classList.add('hl');try{c.scrollIntoView({behavior:'smooth',block:'center'});}catch(e){}setTimeout(function(){c.classList.remove('hl');},1600);break;}}
 function _buyer(){var n=document.getElementById('spBuyerNm'),t=document.getElementById('spBuyerTel');
  var nm=(n&&n.value||'').trim(),tel=(t&&t.value||'').replace(/[^0-9]/g,'');
@@ -23164,6 +23176,14 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
 .rvw-bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,#E8C97A,#C81F2B);transition:width .2s}.rvw-bar i.ok{background:#0E8A5A}
 .rvw-bar span{position:relative;display:block;text-align:center;font-size:12px;font-weight:900;color:#3a302b;line-height:22px}
 @media(min-width:900px){.rv-list2{display:grid;grid-template-columns:1fr 1fr;align-items:start}.rv-list2 .rv-moreall,.rv-list2 .rv-fnone{grid-column:1/-1}.rv-lns{grid-template-columns:1fr 1fr}}
+/* 2026-11-01g 첫 화면 수강후기 */
+.hv-hd{text-align:center;margin-bottom:14px}.hv-hd h2{font-size:26px;font-weight:900;color:#2B2320;margin:6px 0 4px;letter-spacing:-.03em;word-break:keep-all}.hv-hd h2 b{color:#C81F2B}.hv-hd p{font-size:14px;color:#7a6658;font-weight:700;margin:0}
+.hv-chips{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;scrollbar-width:none;justify-content:flex-start}.hv-chips::-webkit-scrollbar{display:none}
+.hv-chips button{flex:0 0 auto;border:1.5px solid #E6DFD0;background:#fff;border-radius:99px;padding:9px 14px;font-weight:800;font-size:14px;color:#5a4a42;cursor:pointer;white-space:nowrap}.hv-chips button small{color:#9a8878;font-weight:800;margin-left:2px}
+.hv-chips button.on{background:#7B1733;border-color:#7B1733;color:#fff}.hv-chips button.on small{color:#F3D9DE}
+.hv-list{display:grid;grid-template-columns:1fr;gap:12px}.hv-c{cursor:pointer}.hv-c h4{margin:2px 0 0!important}.hv-ld{text-align:center;color:#9a8878;font-weight:700;padding:24px 0}
+.hv-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}.hv-btns b{color:inherit}
+@media(min-width:900px){.hv-list{grid-template-columns:repeat(3,1fr)}.hv-chips{justify-content:center}}
 /* 2026-11-01b 시원스쿨식 한눈 요약 */
 #rvSum.rv-sum{background:none;border:0;padding:0;box-shadow:none;margin:0}
 .rv-hd2{text-align:center;padding:26px 16px 6px}.rv-hd2 h2{font-size:26px;font-weight:900;color:#2B2320;margin:6px 0 0;letter-spacing:-.03em}
