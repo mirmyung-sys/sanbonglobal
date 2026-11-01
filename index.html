@@ -5654,7 +5654,7 @@ function sgdPaint(){
         결제수단 신용·체크카드 · <b>민생회복 소비쿠폰</b> · <b>온누리상품권</b> · <b>경기지역화폐 군포愛머니</b> · <b>제로페이</b> · <b>평생교육이용권(NH농협 채움카드)</b> 가맹점<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~15:30 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftvis" id="ftVis"></span><span class="ftver" id="ftVer">최종 수정 2026-11-01e · 1강 누구나 · 수강생 전부 무료 · 이용권 사용기관</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftvis" id="ftVis"></span><span class="ftver" id="ftVer">최종 수정 2026-11-01f · 1강 누구나 · 수강생 전부 무료 · 이용권 사용기관</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_xbxkCFX" target="_blank" rel="noopener noreferrer">T</a>
@@ -8871,9 +8871,11 @@ function rvSvOf(r){var m=String(r.p||'').match(/\n*#난이도 (\S+)(?: #수업 (
 function rvAll(){
  var L=_RVS.mine.map(function(r){return {mine:1,c:rvCatOf(r.c),crs:r.c,ti:r.t,b:r.c+(r.tc?' · '+r.tc:''),p:r.b,m:r.n,d:r.d,s:+r.s||5,ph:r.ph};})
   .concat(_RVS.live.map(function(r){if(!r.c&&r.tc){var _p=String(r.tc).split(' · ');r.c=_p[0];r.tc=_p.slice(1).join(' · ');}return {live:1,c:rvCatOf(r.c),crs:r.c,ti:r.t,b:r.c+(r.tc?' · '+r.tc:''),p:r.b,m:r.n,d:r.d,s:+r.s||5,ph:r.ph,ev:r.ev};}))
-  .concat(_RVS.old&&_RVS.old.length?_RVS.old.map(rvOldMap):RV_DATA.map(function(r){return {c:rvCatOf(r.b+' '+r.k),crs:r.k,ti:r.ti,b:r.b,p:r.p,m:r.m,d:r.d,img:r.img,best:r.best,t:(r.b.match(/· (.+?) 선생님/)||[])[1]||''};}));
+  .concat(_RVS.old&&_RVS.old.length?_RVS.old.map(rvOldMap).filter(function(r){return RV_HIDE_T.indexOf(r.t)<0;}):RV_DATA.map(function(r){return {c:rvCatOf(r.b+' '+r.k),crs:r.k,ti:r.ti,b:r.b,p:r.p,m:r.m,d:r.d,img:r.img,best:r.best,t:(r.b.match(/· (.+?) 선생님/)||[])[1]||''};}));
  L.sort(function(a,b){return (b.mine?1:0)-(a.mine?1:0)||String(b.d||'').localeCompare(String(a.d||''));});
  return L.map(rvSvOf);}
+/* 2026-11-01 대표님 「에이미 강사님은 지금 수업이 없으시니」 — 현재 수업 없는 강사 후기는 숨김 */
+var RV_HIDE_T=['Amy'];
 var RV_TK={'엘리':'엘리 킴','에이미':'Amy','다니엘':'Daniel','제롤린':'Jerollyn'};
 var RV_KN={'토익':'토익·토스·오픽','영어회화':'영어회화','일본어':'일본어','중국어':'중국어','기업':'기업·임원','기타':'1:1·기타'};
 var RV_TC={'엘리 킴':'토익','송윤정':'토익','Amy':'영어회화','권미화':'영어회화','Jerollyn':'영어회화','Kate':'영어회화','Daniel':'영어회화','김민정':'일본어','권은정':'일본어','오금한':'중국어','하홍금':'중국어'};
@@ -8915,8 +8917,7 @@ function rvRender(){
  if(_RVS.sort==='photo')A=A.filter(function(r){return r.img||r.ph;});
  else if(_RVS.sort==='best')A=A.slice().sort(function(a,b){return (b.best?1:0)-(a.best?1:0);});
  var LN=rvLinesAll().filter(function(r){return f==='전체'||r.c===f;});
- var tcn={},tim={};rvAll().forEach(function(r){if(r.t&&(f==='전체'||r.c===f)){tcn[r.t]=(tcn[r.t]||0)+1;if(r.img)tim[r.t]=r.img;}});var tl=Object.keys(tcn).sort(function(a,b){return tcn[b]-tcn[a];});
- document.getElementById('rvStrip').innerHTML=tl.length?'<div class="rs-h">선생님별 후기 <small>누르면 그 선생님 후기만</small></div><div class="rv-strip">'+tl.map(function(t){return '<button type="button" class="'+(t===tf?'on':'')+'" onclick="rvSetT(\''+t.replace(/[\'"\\<>]/g,'')+'\')">'+(tim[t]?'<img src="'+tim[t]+'" alt="" loading="lazy">':'<i class="rv-noim">'+t.slice(0,1)+'</i>')+'<span>'+t+'<b>'+tcn[t]+'건</b></span></button>';}).join('')+'</div>'+(tf?'<button type="button" class="rv-tclr" onclick="rvSetT(\'\')">✕ '+tf+' 선생님 선택 풀기</button>':''):'';
+ /* 2026-11-01 대표님 「선생님별 후기는 없애줘 비교되는것같이 되 있어서 별루다」 */ document.getElementById('rvStrip').innerHTML='';
  var sh=A.slice(0,_RVS.n);
  document.getElementById('rvList').innerHTML=(A.length?sh.map(rvCard).join(''):'<p class="rv-fnone" style="display:block">이 과정 후기는 아직 없어요 · 첫 후기를 남겨 주세요</p>')
   +(A.length>_RVS.n?'<button type="button" class="rv-moreall" onclick="_RVS.n+=10;rvRender()">후기 더보기 <b>'+(A.length-_RVS.n)+'건 남음</b></button>':'');
