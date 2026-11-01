@@ -5654,7 +5654,7 @@ function sgdPaint(){
         결제수단 신용·체크카드 · <b>민생회복 소비쿠폰</b> · <b>온누리상품권</b> · <b>경기지역화폐 군포愛머니</b> · <b>제로페이</b> · <b>평생교육이용권(NH농협 채움카드)</b> 가맹점<br>
         업태 교육서비스업·도소매 / 종목 어학원·교재 · 수업 평일 06:30~22:00 / 토 10:00~16:30 · 데스크(상담·등록) 평일 09:30~21:30 / 토 10:00~15:30 · 일·공휴일 휴무
       </div>
-      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftvis" id="ftVis"></span><span class="ftver" id="ftVer">최종 수정 2026-11-01b · 1강 누구나 · 수강생 전부 무료 · 이용권 사용기관</span></div>
+      <div class="ftcopy">COPYRIGHT © SANBON GLOBAL ACADEMY. ALL RIGHTS RESERVED.<span class="ftvis" id="ftVis"></span><span class="ftver" id="ftVer">최종 수정 2026-11-01c · 1강 누구나 · 수강생 전부 무료 · 이용권 사용기관</span></div>
     </div>
     <div class="ftsns">
       <a class="fsn fs-kk" href="https://pf.kakao.com/_xbxkCFX" target="_blank" rel="noopener noreferrer">T</a>
@@ -7264,7 +7264,7 @@ function reviewPage(){
  return '<div class="rv-hd2"><div class="pgeyebrow">REAL REVIEWS · 수강후기</div><h2>수강생이 직접 남긴 후기</h2></div>'
   +'<div class="rv-sum" id="rvSum"></div>'
   +'<div class="rvw-cta"><div><b>✍️ 수강후기 쓰고 선물 받기</b><span>사진 1장 + 200자 이상 → 📚 토익반 <b class="i">교재 1권 + 립밤</b> · ☕ 그 외 모든 과정 <b class="i">커피쿠폰 + 립밤</b></span></div><button type="button" onclick="rvWrite()">후기 쓰기</button></div>'
-  +'<div class="rv-tool"><div class="rv-filter" id="rvFilt"></div><div class="rv-sort" id="rvSort"><button type="button" data-s="new" onclick="rvSetS(\'new\')">최신순</button><button type="button" data-s="best" onclick="rvSetS(\'best\')">베스트</button><button type="button" data-s="photo" onclick="rvSetS(\'photo\')">📷 포토만</button></div></div>'
+  +'<div class="rv-tool"><div class="rv-filter" id="rvFilt"></div><div class="rv-sort" id="rvSort"><button type="button" data-s="new" onclick="rvSetS(\'new\')">최신순</button><button type="button" data-s="best" onclick="rvSetS(\'best\')">베스트</button><button type="button" data-s="old" onclick="rvSetS(\'old\')">오래된순</button></div></div>'
   +'<div id="rvStrip"></div><div class="rv-list2" id="rvList"></div><div id="rvLines"></div>'
   +(setTimeout(function(){rvRender();rvLoad();},60),'')
   +bigImg('img/hall_04.jpg?v=1012')+'<div class="pgnote">※ 학원 수강후기 게시판과 홈페이지에 올라온 실제 후기입니다. 개인정보 보호를 위해 이름은 일부만 표기합니다. 홈페이지 후기는 학원 확인 후 공개됩니다.</div>'
@@ -8833,6 +8833,8 @@ function rvMineAdd(r){try{var L=rvMine();L.unshift(r);localStorage.setItem('sga_
 function rvLoad(){
  if(!document.getElementById('rvSum'))return;
  _RVS.mine=rvMine();
+ /* 2026-11-01 대표님 「산본이지어학원때부터 썻던것 다 올려」 — 옛 학원 수강후기 게시판 143건(2019.10~) 원문을 reviews_old.json으로 옮김. 학원명은 현 상호로 표기 */
+ if(!_RVS.old)fetch('reviews_old.json?v=1101c').then(function(r){return r.json();}).then(function(j){_RVS.old=j||[];rvRender();}).catch(function(){});
  fetch(SGA_PAY_SERVER+'?action=reviews',{credentials:'omit'}).then(function(r){return r.json();}).then(function(j){
   var L=(j&&j.list)||[];_RVS.live=L;_RVS.mine=rvMine().filter(function(m){return !L.some(function(r){return r.t===m.t&&String(r.b||'').slice(0,20)===String(m.b||'').slice(0,20);});});rvRender();
  }).catch(function(){rvRender();});
@@ -8864,14 +8866,18 @@ var RV_LINES=[
 var RV_KW=[['열정 강의',/열정|에너지/],['암기법·꿀팁',/암기|외우는|꿀팁/],['말할 기회',/말할 기회|말하는/],['이디엄·표현',/이디엄|표현/],['JLPT 합격',/합격|JLPT/],['LC 상승',/LC/],['질문하기 편함',/질문|답장|답해/]];
 var RV_CATS=['토익·토스·오픽','영어회화','일본어','중국어','기업·임원','1:1·기타'];
 function rvCatOf(s){s=String(s||'');for(var i=0;i<RV_CATS.length;i++)if(RV_FK[RV_CATS[i]]&&RV_FK[RV_CATS[i]].test(s))return RV_CATS[i];return '1:1·기타';}
-var _RVS={f:'전체',sort:'new',n:6,live:[],mine:[]};
+var _RVS={f:'전체',t:'',sort:'new',n:6,live:[],mine:[]};
 function rvSvOf(r){var m=String(r.p||'').match(/\n*#난이도 (\S+)(?: #수업 (\S+))?\s*$/);if(m){r.p=String(r.p).slice(0,m.index);r.lv=m[1];r.sv=m[2]||'';}return r;}
 function rvAll(){
  var L=_RVS.mine.map(function(r){return {mine:1,c:rvCatOf(r.c),crs:r.c,ti:r.t,b:r.c+(r.tc?' · '+r.tc:''),p:r.b,m:r.n,d:r.d,s:+r.s||5,ph:r.ph};})
   .concat(_RVS.live.map(function(r){if(!r.c&&r.tc){var _p=String(r.tc).split(' · ');r.c=_p[0];r.tc=_p.slice(1).join(' · ');}return {live:1,c:rvCatOf(r.c),crs:r.c,ti:r.t,b:r.c+(r.tc?' · '+r.tc:''),p:r.b,m:r.n,d:r.d,s:+r.s||5,ph:r.ph,ev:r.ev};}))
-  .concat(RV_DATA.map(function(r){return {c:rvCatOf(r.b+' '+r.k),crs:r.k,ti:r.ti,b:r.b,p:r.p,m:r.m,d:r.d,img:r.img,best:r.best};}));
+  .concat(_RVS.old&&_RVS.old.length?_RVS.old.map(rvOldMap):RV_DATA.map(function(r){return {c:rvCatOf(r.b+' '+r.k),crs:r.k,ti:r.ti,b:r.b,p:r.p,m:r.m,d:r.d,img:r.img,best:r.best,t:(r.b.match(/· (.+?) 선생님/)||[])[1]||''};}));
+ L.sort(function(a,b){return (b.mine?1:0)-(a.mine?1:0)||String(b.d||'').localeCompare(String(a.d||''));});
  return L.map(rvSvOf);}
-function rvLinesAll(){return RV_LINES.map(function(r){return {c:rvCatOf(r.b+' '+r.k),ti:r.ti,b:r.b};});}
+var RV_TK={'엘리':'엘리 킴','에이미':'Amy','다니엘':'Daniel','제롤린':'Jerollyn'};
+var RV_KN={'토익':'토익·토스·오픽','영어회화':'영어회화','일본어':'일본어','중국어':'중국어','기업':'기업·임원','기타':'1:1·기타'};
+function rvOldMap(r){var t=RV_TK[r.t]||r.t||'',im=(typeof TIMG!=='undefined'&&(TIMG[t]||TIMG[r.t]))||'';return {o:1,c:RV_KN[r.k]||'1:1·기타',crs:r.k,ti:r.ti,b:(RV_KN[r.k]||r.k)+(t?' · '+t+' 선생님':''),t:t,p:r.p,m:r.m||'산본 수강생',d:r.d,img:im?'img/teachers/'+im+'.png':'',best:/^토익 초급반 엘리쌤 후기$|N3합격 후기|IH 달성!-송윤정|권미화 선생님 감사합니다/.test(r.ti)?1:0};}
+function rvLinesAll(){if(_RVS.old&&_RVS.old.length)return [];return RV_LINES.map(function(r){return {c:rvCatOf(r.b+' '+r.k),ti:r.ti,b:r.b};});}
 function rvSumHtml(){
  /* 2026-11-01 대표님 「좀 한눈에 수강후기 몇명인지 총 다른거 봐봐」 — 시원스쿨 후기 페이지(평균 4.9 ★ + 「38,974개의 실사용자 수강후기가 있습니다」 + 5~1점 막대 + 난이도·수업방식 막대) 구조를 따름 */
  var A=rvAll().filter(function(r){return !r.mine;}),LN=rvLinesAll(),tot=A.length+LN.length,cnt={};
@@ -8879,9 +8885,9 @@ function rvSumHtml(){
  var st=A.filter(function(r){return r.s;}),av=st.length?(st.reduce(function(a,r){return a+r.s;},0)/st.length):0;
  var pct=function(n,d){return d?Math.round(n/d*100):0;};
  var bars=RV_CATS.filter(function(k){return cnt[k];}).map(function(k){var p=pct(cnt[k],tot);return '<div class="rs2-b" onclick="rvSetF(\''+k+'\')"><span>'+k+'</span><i><b style="width:'+p+'%"></b></i><em>'+cnt[k]+'건</em><small>'+p+'%</small></div>';}).join('');
- var ph=A.filter(function(r){return r.img||r.ph;}).length;
+ var phr=A.filter(function(r){return r.ph;}).length,first=A.map(function(r){return r.d||'';}).filter(Boolean).sort()[0]||'';
  var left=(st.length?'<div class="rs2-av">'+av.toFixed(1)+'</div><div class="rs2-st">'+rvStarStr(Math.round(av))+'</div>':'<div class="rs2-av">'+tot+'<em>건</em></div>')
-  +'<p><b>'+tot+'</b>개의 실제 수강생 후기가 있습니다</p><div class="rs2-sub">후기 '+A.length+' · 한줄평 '+LN.length+' · 포토 '+ph+(st.length?' · 별점 '+st.length+'건 평균':'')+'</div>';
+  +'<p><b>'+tot+'</b>개의 실제 수강생 후기가 있습니다</p><div class="rs2-sub">'+(first?first.slice(0,4)+'년부터 쌓인 후기':'')+(LN.length?' · 한줄평 '+LN.length:'')+(phr?' · 사진 '+phr:'')+(st.length?' · 별점 '+st.length+'건 평균':'')+'</div>';
  var sv=A.filter(function(r){return r.lv;}),svh='';
  if(sv.length){var grp=function(t,key,opts){var c={};sv.forEach(function(r){if(r[key])c[r[key]]=(c[r[key]]||0)+1;});var n=sv.filter(function(r){return r[key];}).length;return '<div class="rs2-sv"><h5>'+t+'</h5>'+opts.map(function(o){var p=pct(c[o]||0,n);return '<div class="rs2-sb"><span>'+o+'</span><i><b style="width:'+p+'%"></b></i><em>'+p+'%</em></div>';}).join('')+'</div>';};
   svh='<div class="rs2-svw">'+grp('난이도','lv',RV_LV)+grp('수업 방식','sv',RV_SV)+'</div><div class="rs2-svn">홈페이지 후기 '+sv.length+'건 기준</div>';}
@@ -8892,9 +8898,9 @@ function rvChips(){var A=rvAll().filter(function(r){return !r.mine;}).concat(rvL
  return ['전체'].concat(RV_CATS).filter(function(k){return k==='전체'||cnt[k];}).map(function(k){return '<span role="button" tabindex="0" class="'+(k===_RVS.f?'on':'')+'" onclick="rvSetF(\''+k+'\')">'+k+' <b>'+(cnt[k]||0)+'</b></span>';}).join('');}
 function rvStarStr(s){return '<span class="rc-st">'+new Array(s+1).join('★')+'<i>'+new Array(6-s).join('★')+'</i></span>';}
 function rvCard(r,i){
- var p=(r.mine||r.live)?_rvEsc(r.p).replace(/\n/g,'<br>'):r.p, ti=(r.mine||r.live)?_rvEsc(r.ti):r.ti, b=(r.mine||r.live)?_rvEsc(r.b):r.b, m=(r.mine||r.live)?_rvEsc(r.m||''):r.m;
+ var _e=r.mine||r.live||r.o,p=_e?_rvEsc(r.p).replace(/\n+/g,'<br>'):r.p, ti=_e?_rvEsc(r.ti):r.ti, b=_e?_rvEsc(r.b):r.b, m=_e?_rvEsc(r.m||''):r.m;
  var im=r.ph?'<img class="rc-ph" src="'+_rvEsc(r.ph)+'" alt="수강생 사진" loading="lazy">':(r.img?'<img class="rc-th" src="'+r.img+'" alt="" loading="lazy">':'');
- var long=String(r.p||'').length>110;
+ var long=String(r.p||'').length>110||/\n.*\n/.test(String(r.p||''));
  return '<article class="rc'+(r.mine?' rv-mine':'')+'" id="rc'+i+'"><div class="rc-hd"><span class="rc-c">'+r.c+'</span>'+(r.best?'<span class="rc-best">BEST</span>':'')+(r.mine?'<span class="rc-pend">내 후기 · 검토 중</span>':'')+(r.s?rvStarStr(r.s):'')+'</div>'
   +'<div class="rc-bd'+(r.img&&!r.ph?' th':'')+'">'+(r.img&&!r.ph?im:'')+'<div class="rc-tx"><h4>'+ti+'</h4><div class="rc-who">'+b+'</div></div></div>'
   +(r.ph?im:'')+'<p class="rc-p'+(long?' cl':'')+'">'+p+'</p>'+(long?'<button type="button" class="rc-more" onclick="rvMore(this)">더보기 ▾</button>':'')
@@ -8903,19 +8909,21 @@ function rvMore(b){var p=b.previousElementSibling;var o=p.classList.toggle('cl')
 function rvRender(){
  var S=document.getElementById('rvSum');if(!S)return;S.innerHTML=rvSumHtml();
  document.getElementById('rvFilt').innerHTML=rvChips();try{var _fo=document.querySelector('#rvFilt .on'),_fb=document.getElementById('rvFilt');if(_fo)_fb.scrollLeft=Math.max(0,_fo.offsetLeft-_fb.offsetLeft-16);}catch(e){}
- var f=_RVS.f,A=rvAll().filter(function(r){return f==='전체'||r.c===f;});
+ var f=_RVS.f,tf=_RVS.t,A=rvAll().filter(function(r){return (f==='전체'||r.c===f)&&(!tf||r.t===tf);});
+ if(_RVS.sort==='old')A=A.slice().reverse();
  if(_RVS.sort==='photo')A=A.filter(function(r){return r.img||r.ph;});
  else if(_RVS.sort==='best')A=A.slice().sort(function(a,b){return (b.best?1:0)-(a.best?1:0);});
  var LN=rvLinesAll().filter(function(r){return f==='전체'||r.c===f;});
- var ps=rvAll().filter(function(r){return (r.img||r.ph)&&(f==='전체'||r.c===f);});
- document.getElementById('rvStrip').innerHTML=ps.length?'<div class="rs-h">포토 후기 <small>'+ps.length+'건 · 누르면 그 후기로</small></div><div class="rv-strip">'+ps.map(function(r){return '<button type="button" onclick="rvGoPh(\''+String(r.ti).replace(/[\'"\\<>]/g,'')+'\')"><img src="'+_rvEsc(r.ph||r.img)+'" alt="" loading="lazy"><span>'+r.c+'</span></button>';}).join('')+'</div>':'';
+ var tcn={},tim={};rvAll().forEach(function(r){if(r.t&&(f==='전체'||r.c===f)){tcn[r.t]=(tcn[r.t]||0)+1;if(r.img)tim[r.t]=r.img;}});var tl=Object.keys(tcn).sort(function(a,b){return tcn[b]-tcn[a];});
+ document.getElementById('rvStrip').innerHTML=tl.length?'<div class="rs-h">선생님별 후기 <small>누르면 그 선생님 후기만</small></div><div class="rv-strip">'+tl.map(function(t){return '<button type="button" class="'+(t===tf?'on':'')+'" onclick="rvSetT(\''+t.replace(/[\'"\\<>]/g,'')+'\')">'+(tim[t]?'<img src="'+tim[t]+'" alt="" loading="lazy">':'<i class="rv-noim">'+t.slice(0,1)+'</i>')+'<span>'+t+'<b>'+tcn[t]+'건</b></span></button>';}).join('')+'</div>'+(tf?'<button type="button" class="rv-tclr" onclick="rvSetT(\'\')">✕ '+tf+' 선생님 선택 풀기</button>':''):'';
  var sh=A.slice(0,_RVS.n);
  document.getElementById('rvList').innerHTML=(A.length?sh.map(rvCard).join(''):'<p class="rv-fnone" style="display:block">이 과정 후기는 아직 없어요 · 첫 후기를 남겨 주세요</p>')
-  +(A.length>_RVS.n?'<button type="button" class="rv-moreall" onclick="_RVS.n+=6;rvRender()">후기 더보기 <b>'+(A.length-_RVS.n)+'건 남음</b></button>':'');
+  +(A.length>_RVS.n?'<button type="button" class="rv-moreall" onclick="_RVS.n+=10;rvRender()">후기 더보기 <b>'+(A.length-_RVS.n)+'건 남음</b></button>':'');
  document.getElementById('rvLines').innerHTML=LN.length?'<div class="rs-h">한줄평 <small>'+LN.length+'건</small></div><div class="rv-lns">'+LN.map(function(r){return '<div class="rl"><span class="rc-c">'+r.c+'</span><b>“'+r.ti+'”</b><small>'+r.b+'</small></div>';}).join('')+'</div>':'';
  [].forEach.call(document.querySelectorAll('#rvSort button'),function(x){x.classList.toggle('on',x.getAttribute('data-s')===_RVS.sort);});}
 function rvSetF(k){_RVS.f=k;_RVS.n=6;rvRender();var t=document.getElementById('rvStrip');if(t&&!t.innerHTML)t=document.getElementById('rvList');if(t&&t.scrollIntoView)try{t.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){}}
-function rvSetS(s){_RVS.sort=s;_RVS.n=s==='new'?6:99;rvRender();}
+function rvSetT(t){_RVS.t=(_RVS.t===t?'':t);_RVS.n=6;rvRender();var l=document.getElementById('rvList');if(l&&l.scrollIntoView)try{l.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){}}
+function rvSetS(s){_RVS.sort=s;_RVS.n=6;rvRender();}
 function rvGoPh(t){_RVS.f='전체';_RVS.sort='photo';_RVS.n=99;rvRender();var a=document.querySelectorAll('#rvList .rc h4');for(var i=0;i<a.length;i++)if(a[i].textContent.replace(/[\'"\\<>]/g,'')===t){var c=a[i].closest('.rc');c.classList.add('hl');try{c.scrollIntoView({behavior:'smooth',block:'center'});}catch(e){}setTimeout(function(){c.classList.remove('hl');},1600);break;}}
 function _buyer(){var n=document.getElementById('spBuyerNm'),t=document.getElementById('spBuyerTel');
  var nm=(n&&n.value||'').trim(),tel=(t&&t.value||'').replace(/[^0-9]/g,'');
@@ -23174,6 +23182,11 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
 .rvw-sv{display:flex;gap:6px;margin-top:6px}.rvw-sv button{flex:1;border:1.5px solid #E6DFD0;background:#fff;border-radius:10px;padding:9px 4px;font-weight:800;font-size:14px;color:#5a4a42;cursor:pointer}.rvw-sv button.on{background:#7B1733;border-color:#7B1733;color:#fff}
 @media(min-width:900px){.rs2{grid-template-columns:300px 1fr;align-items:center;padding:28px 32px}.rs2-l{border-bottom:0;border-right:1px solid #EADFCB;padding:0 24px 0 0}}
 @media(max-width:380px){.rs2-svw{grid-template-columns:1fr}}
+/* 2026-11-01c 선생님별 후기 */
+.rv-strip button.on img{outline:3px solid #C81F2B;outline-offset:1px}
+.rv-strip span b{display:block;color:#C81F2B;font-weight:900;font-size:12px}
+.rv-noim{display:flex;align-items:center;justify-content:center;width:92px;height:92px;border-radius:14px;background:#F4EEE3;border:1px solid #EADFCB;font-style:normal;font-size:30px;font-weight:900;color:#7B1733}
+.rv-tclr{border:0;background:#FBEFF1;color:#7B1733;font-weight:900;font-size:13px;border-radius:99px;padding:7px 12px;margin:4px 0 8px;cursor:pointer}
 </style>
 <script id="bkStoreJs">
 /* 2026-10-17 대표님 — 수강신청 「책방」 · 어학뉴스 「책장」 */
