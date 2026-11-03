@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<script>if(/[?&]embed=1/.test(location.search))document.documentElement.className+=' embed'</script><style>html.embed #introSplash,html.embed #sgGate,html.embed #sgPromo,html.embed #sgShop,html.embed #sgVid,html.embed [id$="Pop"],html.embed [id$="Modal"]{display:none!important}.rvb{margin:22px 0 8px;background:#fff;border:1px solid #E8DCCF;border-radius:18px;padding:18px 18px 10px}.rvb-h{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;margin-bottom:6px}.rvb-h b{font-size:19px;font-weight:900;color:#1F1A17}.rvb-h span{font-size:15px;color:#7B1733;font-weight:800}.rvb-h small{font-size:12px;color:#6b6259;margin-left:auto}.rvb-i{display:block;padding:14px 0;border-bottom:1px solid #EFE6DC;text-decoration:none;color:#1F1A17}.rvb-i b{display:block;font-size:15.5px;font-weight:800;line-height:1.45}.rvb-i p{margin:6px 0 4px;font-size:13.5px;color:#4a423b;line-height:1.55}.rvb-i small{font-size:12px;color:#6b6259}.rvb-more{display:block;text-align:center;padding:12px 0 6px;font-weight:800;color:#7B1733;text-decoration:none}</style>
+<script>if(/[?&]embed=1/.test(location.search))document.documentElement.className+=' embed'</script><style>html.embed #introSplash,html.embed #sgGate,html.embed #sgPromo,html.embed #sgShop,html.embed #sgVid,html.embed [id$="Pop"],html.embed [id$="Modal"]{display:none!important}.rvb{margin:22px 0 8px;background:#fff;border:1px solid #E8DCCF;border-radius:18px;padding:18px 18px 10px}.rvb-h{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;margin-bottom:6px}.rvb-h b{font-size:19px;font-weight:900;color:#1F1A17}.rvb-h span{font-size:15px;color:#7B1733;font-weight:800}.rvb-h small{font-size:12px;color:#6b6259;margin-left:auto}.rvb-i{display:block;padding:14px 0;border-bottom:1px solid #EFE6DC;text-decoration:none;color:#1F1A17}.rvb-i b{display:block;font-size:15.5px;font-weight:800;line-height:1.45}.rvb-i p{margin:6px 0 4px;font-size:13.5px;color:#4a423b;line-height:1.55}.rvb-i small{font-size:12px;color:#6b6259}.rvb-more{display:block;text-align:center;padding:12px 0 6px;font-weight:800;color:#7B1733;text-decoration:none}.nw12-pr{display:block;margin:8px 0 2px;line-height:1.25}.nw12-pr b{display:block;font-size:20px;font-weight:900;color:#7B1733}.nw12-pr small{display:block;font-size:12px;color:#4a423b;font-weight:600}.nw12-band{margin:16px 0;padding:14px 16px;border-radius:14px;background:#FFF6EC;border:1.5px solid #E8C9AE;line-height:1.55}.nw12-band b{display:block;color:#7B1733;font-size:15px}.nw12-band span{display:block;font-size:13.5px;color:#3a332d;margin-top:4px}</style>
 <meta name="google-site-verification" content="ZXPluxibuqwvRR4MuNZthcOSM2XqxHzyabTScImu-Vo" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -5298,7 +5298,7 @@ sgLb.i=0;
     <div class="ni"><a href="#" onclick="openPage('공지사항');return false;" style="color:#1A1A18;font-weight:900">📢 공지사항</a></div>
     <div class="ni"><a href="#" onclick="openPage('이벤트혜택');return false;">이벤트/혜택<b class="car">▾</b></a>
       <div class="ddown">
-        <a href="#" onclick="openPage('이벤트혜택');return false;">이벤트 · 혜택</a>
+        <a href="#" onclick="openPage('이벤트혜택');return false;">이벤트 · 혜택</a><a href="#" onclick="openPage('12월신규강좌');return false;">❄️ 12월 겨울방학 특강</a>
         <a href="#" onclick="sgShop();return false;">🐋 아키 AI 강의실</a>
         <a href="#" onclick="openPage('가을학기 할인');return false;">지금 받는 할인</a>
         <a href="#" onclick="rvWrite();return false;">☕ 포토후기 쓰면 커피쿠폰·립밤 (토익은 교재+립밤)</a>
@@ -7661,7 +7661,7 @@ const PAGES={
  '어학 뉴스':langNewsPage,
  '강의안내':guidePage(),
  '커리큘럼':curPage,
- '11월신규강좌':nwPage,
+ '11월신규강좌':nwPage, '12월신규강좌':nw12Page, '겨울방학특강':nw12Page,
  '이벤트혜택':eventHubPage,
  '강사소개':teacherPage(),
  '시험대비반':tGrid('linear-gradient(120deg,#8f1a20,#c81f2b)','시험대비반','토익 · JLPT · EJU · 토스 · 오픽 · HSK 한 번에',T_EXAM),
@@ -10089,6 +10089,23 @@ function nwPage(){
      +'<em>'+c.k+'</em><b>'+c.t+'</b>'+(c.sub?'<small>'+c.sub+'</small>':'')+'<i>수강신청 ›</i></button>';}).join('')+'</div>'
   +'<div class="cu-cta"><a href="#" class="a" onclick="openPage(\'수강신청\');return false;">수강신청</a><a href="tel:0314666969" class="b">📞 031-466-6969</a></div>'
   +'<div class="pgnote">산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청) · 산본역 3번 출구 롯데프라자 7층</div></div>';}
+/* 2026-11-03 대표님 「매번 11월 신규강좌처럼 12월도 1월도 만들꺼야 · 12월 초에는 무조건 신규강좌 방학특강」 — 개강일은 2027 탁상달력 계산값(_CALT), 가격은 확정값만 */
+var NW12=[
+ {ph:['img/teachers/eng_13.png'],k:'토익 겨울 스파르타',t:'월~금 매일 2시간<br>4주 완성',sub:'12/3(목) 개강 → 12/30(수) 종강 · 18회',pr:'월 320,000원',pb:'스파르타 2개월(초급→중급) 640,000원 기준',go:"openPage('수강신청');try{bkGo('토익')}catch(e){}"},
+ {ph:['img/teachers/elly.png'],k:'엘리킴의 끝토익',t:'토익 끝내자.<br>초급 → 중급 → 중급 한 번 더',sub:'한정 특가 · 원했던 점수, 꼭 받아봐',pr:'880,000원',pb:'6개월권 · 토익 응시료 포함',go:"openPage('수강신청');try{bkGo('토익')}catch(e){}"},
+ {ph:['img/teachers/eng_6.png'],k:'토스 · 오픽 겨울 스피킹',t:'말하기 시험<br>방학에 끝내기',sub:'월·수 12/2 · 토요 12/5 개강',pr:'월 210,000원',pb:'시험대비 2개월 420,000원 기준',go:"openPage('수강신청')"},
+ {ph:['img/teachers/jpn_2.png'],k:'JLPT 겨울 특공대반',t:'히라가나부터<br>내년 7월 JLPT까지',sub:'1월 개강 · 지금은 자리 예약만 받습니다',pr:'상담 안내',pb:'시간·수강료는 데스크에서 안내',go:"deskPop('JLPT 겨울 특공대반')"},
+ {ph:['img/teachers/chn_5.png'],k:'HSK 3.0 겨울반',t:'12월 13일부터 바뀐<br>HSK 3.0 기준으로',sub:'바뀐 시험 처음부터 다시 정리',pr:'월 210,000원',pb:'시험대비 2개월 420,000원 기준',go:"deskPop('HSK 3.0 겨울반')"},
+ {ph:['img/teachers/eng_15.png'],k:'새해 영어회화 · 새벽반',t:'영어회화 새 책은 1월부터<br>12월에 자리 먼저',sub:'새벽 화·수·목 06:30 · 12/1(화) 개강 · 새벽반 20%',pr:'월 108,000원',pb:'A과정 6+4개월 1,080,000원 기준',go:"openPage('수강신청')"}];
+function nw12Page(){
+ return '<div class="sp-wrap nw-wrap"><div class="nw-hd"><span>NEW · 12월 · 겨울방학 특강</span><h2>12월 신규강좌<br>겨울방학 특강</h2><p>12월 1일부터 개강합니다 · 겨울 스파르타 신청은 11월 30일까지</p></div>'
+  +'<div class="nw-grid">'+NW12.map(function(c){
+    return '<button type="button" class="nw-c" onclick="'+c.go+'"><div class="nw-ph">'+c.ph.map(function(u){return '<img src="'+u+'" alt="" loading="lazy">';}).join('')+'</div>'
+     +'<em>'+c.k+'</em><b>'+c.t+'</b><small>'+c.sub+'</small>'
+     +'<span class="nw12-pr"><b>'+c.pr+'</b><small>'+c.pb+'</small></span><i>수강신청 ›</i></button>';}).join('')+'</div>'
+  +'<div class="nw12-band"><b>겨울방학(12~2월)에는 스파르타 정원이 차서 무한수강권을 판매하지 않습니다</b><span>다른 학원에서 오시면 환승 10% · 회원가입 5,000P · 수강후기 커피쿠폰 + 립밤 · 아키 토익 강의 누구나 무료</span></div>'
+  +'<div class="cu-cta"><a href="#" class="a" onclick="openPage(\'수강신청\');return false;">수강신청</a><a href="tel:0314666969" class="b">📞 031-466-6969</a></div>'
+  +'<div class="pgnote">산본글로벌어학원 · 학원등록번호 제2234호(경기도군포의왕교육지원청) · 교습비: 회화 월 180,000원 / 시험대비 월 210,000원 / 토익 스파르타 1개월 420,000원 · 그 밖에 추가 납부 경비 없음 · 산본역 3번 출구 롯데프라자 7층</div></div>';}
 /* 2026-10-23 대표님 「문화센터상담 누르면 데스크 안내로 가게해」 — 무료 청강이 없는 반이라 데스크 상담으로 */
 function deskPop(subj){
  var o=document.getElementById('deskPop'); if(o)o.remove();
