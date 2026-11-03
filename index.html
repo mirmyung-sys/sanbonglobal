@@ -11210,12 +11210,12 @@ function aiBookHTML(){
   return '<button class="ai-st'+(i===_aiS?' on':'')+'" onclick="aiStep('+i+')">'
    +'<em>'+x.no+'</em><b>'+x.s+'</b><small>'+x.en+'</small></button>';}).join('');
  var _wasT=_aiT,_wasG=_aiG,_wasS=_aiS;
- var FREE=aiIsFreeBook(B.img);
+ var FREE=aiIsFreeBook(B.img); var TCF=/^tc_/.test(B.img||'');
  var fN=AITXT[B.img]?aiFreeN():0;
  var toc=(B.toc&&B.toc.length)
   ? ('<details class="ai-toc-d"><summary class="ai-toc-h">목차 <span>'+B.toc.length+'과</span>'
      +(!AITXT[B.img]?'<em class="ai-toc-soon">본문 준비 중</em>'
-       :(FREE?'<em class="ai-toc-go free">수강생 · 전 과 열림</em>':'<em class="ai-toc-go">🔑 수강생 무료</em>'))+'</summary><ol>'
+       :(FREE?(TCF?'<em class="ai-toc-go free">누구나 · 전 과 무료</em>':'<em class="ai-toc-go free">수강생 · 전 과 열림</em>'):'<em class="ai-toc-go">🔑 수강생 무료</em>'))+'</summary><ol>'
      +B.toc.map(function(t,i){
         var on=!!(AITXT[B.img]&&AITXT[B.img][i]);
         var tag=!on?' <span class="toc-b soon">준비 중</span>'
@@ -11228,12 +11228,17 @@ function aiBookHTML(){
  /* 2026-09-03 대표님 지시: 샘플(무료 맛보기)이 제일 잘 보이게 위로, 전자책 신청은 맨 밑으로 */
  var sample=AITXT[B.img]
   ? (FREE
-     ? ('<button class="ai-sample-btn" onclick="aiLesson(1)">▶ 1과부터 바로 시작하기 <small>— 수강생 코드 확인 · 전 과 열림</small></button>'
-        +'<div class="ai-free-line free"><b>수강생 코드가 확인되어 전 과가 열려 있습니다.</b> 수업에서 배운 과를 여기서 다시 들으시면 됩니다.</div>')
+     ? (TCF?('<button class="ai-sample-btn" onclick="aiLesson(1)">▶ 1강부터 바로 시작하기 <small>— 누구나 무료 · 전 강 열림</small></button>'
+        +'<div class="ai-free-line free"><b>아키 토익 강의는 누구나 전부 무료</b>입니다. 🔑 <b>모의고사</b>만 수강생 코드로 열립니다.</div>'):('<button class="ai-sample-btn" onclick="aiLesson(1)">▶ 1과부터 바로 시작하기 <small>— 수강생 코드 확인 · 전 과 열림</small></button>'
+        +'<div class="ai-free-line free"><b>수강생 코드가 확인되어 전 과가 열려 있습니다.</b> 수업에서 배운 과를 여기서 다시 들으시면 됩니다.</div>'))
      : ('<button class="ai-sample-btn" onclick="aiLesson(1)">🎁 1과 무료 맛보기 <small>— 누구나 · 학원 수강생은 전 과 무료</small></button>'
         +'<div class="ai-free-line"><b>1과는 누구나 무료</b>입니다. <b>학원 수강생</b>은 회원가입 후 <b>수강생 확인</b>(개인코드 또는 이름+휴대폰 뒤 4자리)을 하시면 전 과가 무료로 열립니다.</div>'))
   : '';
- var price=(FREE
+ var price=(FREE&&TCF
+    ? ('<div class="ai-pr free"><div class="ai-pr-r hi"><span>누구나</span><b>0원 <em>전 강 무료</em></b></div><div class="ai-pr-r"><span>🔑 모의고사</span><b>수강생 코드</b></div></div>'
+       +'<button class="ai-buy free" onclick="aiLesson(1)">지금 1강 열기</button>'
+       +'<p class="ai-n">※ 가입 없이 바로 보실 수 있습니다.<br>※ 실전 <b>모의고사</b>는 토익 등록 시 데스크에서 드리는 <b>수강생 코드</b>로 열립니다.</p>')
+    : FREE
     ? ('<div class="ai-pr free"><div class="ai-pr-r hi"><span>수강생</span><b>0원 <em>수강 기간 전 과</em></b></div></div>'
        +'<button class="ai-buy free" onclick="aiLesson(1)">지금 1과 열기</button>'
        +'<p class="ai-n">※ <b>수강생 코드</b>로 열려 있습니다. 이 휴대폰에서 전 과를 보실 수 있습니다.<br>'
@@ -12405,6 +12410,8 @@ var SGA_ALLOPEN = (function(){ try{
 }catch(e){ return false; } })();
 function aiIsFreeBook(k){
  if(SGA_ALLOPEN) return true;
+ /* 2026-11-03 대표님 「아키토익 40강 금액도 없애 전부 공짜야 모의고사만 열쇠로 잠궈」 — 아키 토익 강의(tc_*) 누구나 전 과 무료. 모의고사(SGX_KEYS)는 그대로 잠금 */
+ if(/^tc_/.test(String(k||''))) return true;
  /* 2026-09-06 대표님 지시 — 무료는 「토익 문법 40강」과 회화반뿐이고,
     그마저도 회원(로그인)에게만 엽니다. 비회원은 1과 맛보기까지만. */
  /* 2026-09-30 대표님 지시 — 「토익 40강 무료 없애주고, 가입자는 1과만 무료(영어·일본어·중국어·토익 전부),
@@ -15675,14 +15682,7 @@ function aiPage(){
  
 +spModalHTML()+'</div>'+CTA()+dirCard();}
 /* 학습관 단독 결제 — 오픈이벤트가 3만원 (정가 12만원) */
-function aiSoloBuy(){
- _fullAmt=120000;window._payGoods='아키AI 토익 기초문법 40강';
- spBuyItem('30,000원',
-  '<b>아키 AI 강의실 · 토익 기초문법 40강</b><br>'
-  +'<span class="free">포함</span>Part 5·6 문법 <b>40강</b> · 하루 한 강씩 열림<br>'
-  +'<span class="free">포함</span>문항별 오답 해설 · 틀린 유형 재출제<br>'
-  +'<span style="color:#3f4757;font-weight:700">정가 120,000원 · 할인가 30,000원</span>'
-  +'<br><span style="color:#5c6472;font-size:13.5px">결제 후 회원 계정에 40강이 지급되며, 등록일 다음 날부터 하루 한 강씩 열립니다.</span>',true);}
+function aiSoloBuy(){ /* 2026-11-03 아키 토익 강의 전부 무료 — 결제 대신 1강 열기 */ try{tb40Open(1);}catch(e){} }
 
 
 /* ===== 오늘의 한 문제 =====
@@ -16000,7 +16000,7 @@ function tb40Page(){
   for(var n=g[1];n<=g[2];n++){
    var L=B[n-1]; if(!L) continue;
    /* 2026-09-30 대표님 「토익 40강 무료 없애줘」 — 1강만 무료, 2강부터 토익 수강생 */
-   var _op=master||sgaSubjOpen('tc_basic');
+   var _op=true; /* 2026-11-03 전 강 무료 */
    items+='<div class="tb-li" style="cursor:pointer" onclick="tb40Open('+n+')">'
      +'<u>'+n+'강</u><s>'+L.t+'</s><em>'+(_op?'열림':(n<=1?'무료':'🔑 로그인'))+'</em></div>';
   }
@@ -16012,7 +16012,7 @@ function tb40Page(){
   +'<h2>토익 기초문법 <span style="color:#F0C05A">40강</span></h2>'
   +'<p>빈칸 앞뒤 자리로 푸는 훈련</p>'
   +'<div class="tb-stat"><div><b>'+B.length+'강</b><span>RC 전 과정</span></div><div><b>10분</b><span>한 강 분량</span></div>'
-  +'<div><b>+20강</b><span>초급 LC 별도</span></div><div><b>1강</b><span>누구나 무료 맛보기</span></div></div></div>'
+  +'<div><b>+20강</b><span>초급 LC 별도</span></div><div><b>0원</b><span>누구나 전 강 무료</span></div></div></div>'
  +'<div class="tb-g">'
   +'<div class="tb-k"><b>Part 5·6</b><span>절반이 어형 문제</span></div>'
   +'<div class="tb-k"><b>하루 한 강, 10분</b><span>아키가 매일 한 강</span></div>'
@@ -16021,15 +16021,15 @@ function tb40Page(){
  +'</div>'
  +'<div class="tb-soon">🎬 <b>토익 기초문법 40강 영상 강의 — 곧 오픈됩니다</b><span>지금은 아키 AI 강의실에서 글·문제로 먼저 공부하실 수 있습니다</span></div>'
  +'<div class="op-h">40강 전체 목차</div>'
- +'<div class="op-hs">누르면 아키 AI 강의실에서 열림 · 1강 누구나 · 2강부터 <b>토익 수강생</b></div>'
+ +'<div class="op-hs">누르면 아키 AI 강의실에서 열림 · <b>누구나 40강 전부 무료</b> · 🔑 모의고사만 수강생 코드</div>'
  +lists
  +'<div class="op-h">이용 방법</div>'
  +CT(['방법','내용','금액'],[
-   ['현강 수강생','정규반·스파르타반 <b>전 강 무료</b>','0원'],
-   ['누구나','1강','0원']])
+   ['누구나','40강 + 초급 LC <b>전 강 무료</b>','0원'],
+   ['🔑 모의고사','토익 등록 시 데스크에서 수강생 코드','수강생']])
  +'<div class="pgnote">※ 지문·문항·해설 전부 산본글로벌어학원 자체 집필</div>'
- +'<div class="one-cta pop" style="cursor:pointer" onclick="tb40Open(1)"><span><b class="fb">🎁 무료</b>1강 맛보기 지금 바로 열기 ›<small>가입 없이 바로 · 2강부터 토익 수강생</small></span></div>'
- +SGCTA('1강은 누구나 무료입니다. 토익에 등록하시면 데스크에서 수강생 코드를 드리고, 40강이 전부 열립니다.');}
+ +'<div class="one-cta pop" style="cursor:pointer" onclick="tb40Open(1)"><span><b class="fb">🎁 무료</b>40강 지금 바로 열기 ›<small>가입 없이 바로 · 누구나 전부 무료</small></span></div>'
+ +SGCTA('토익 기초문법 40강은 누구나 무료입니다. 토익에 등록하시면 데스크에서 수강생 코드를 드리고, 실전 모의고사가 열립니다.');}
 
 
 /* ===== 유튜브 연동 (2026-09-05 대표님 지시) =====
