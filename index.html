@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<script>if(/[?&]embed=1/.test(location.search))document.documentElement.className+=' embed'</script><style>html.embed #introSplash,html.embed #sgGate,html.embed #sgPromo,html.embed #sgShop,html.embed #sgVid,html.embed [id$="Pop"],html.embed [id$="Modal"]{display:none!important}</style>
+<script>if(/[?&]embed=1/.test(location.search))document.documentElement.className+=' embed'</script><style>html.embed #introSplash,html.embed #sgGate,html.embed #sgPromo,html.embed #sgShop,html.embed #sgVid,html.embed [id$="Pop"],html.embed [id$="Modal"]{display:none!important}.rvb{margin:22px 0 8px;background:#fff;border:1px solid #E8DCCF;border-radius:18px;padding:18px 18px 10px}.rvb-h{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;margin-bottom:6px}.rvb-h b{font-size:19px;font-weight:900;color:#1F1A17}.rvb-h span{font-size:15px;color:#7B1733;font-weight:800}.rvb-h small{font-size:12px;color:#6b6259;margin-left:auto}.rvb-i{display:block;padding:14px 0;border-bottom:1px solid #EFE6DC;text-decoration:none;color:#1F1A17}.rvb-i b{display:block;font-size:15.5px;font-weight:800;line-height:1.45}.rvb-i p{margin:6px 0 4px;font-size:13.5px;color:#4a423b;line-height:1.55}.rvb-i small{font-size:12px;color:#6b6259}.rvb-more{display:block;text-align:center;padding:12px 0 6px;font-weight:800;color:#7B1733;text-decoration:none}</style>
 <meta name="google-site-verification" content="ZXPluxibuqwvRR4MuNZthcOSM2XqxHzyabTScImu-Vo" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7265,6 +7265,7 @@ function reviewPage(){
   +'<div class="rvw-cta"><div><b>✍️ 수강후기 쓰고 선물 받기</b><span>사진 1장 + 200자 이상 → ☕ 모든 과정 <b class="i">커피쿠폰 + 립밤</b></span></div><button type="button" onclick="rvWrite()">후기 쓰기</button></div>'
   +'<div class="rv-tool"><div class="rv-filter" id="rvFilt"></div><div class="rv-sort" id="rvSort"><button type="button" data-s="new" onclick="rvSetS(\'new\')">최신순</button><button type="button" data-s="best" onclick="rvSetS(\'best\')">베스트</button><button type="button" data-s="old" onclick="rvSetS(\'old\')">오래된순</button></div></div>'
   +'<div id="rvStrip"></div><div class="rv-list2" id="rvList"></div><div id="rvLines"></div>'
+  +(function(){ /* 2026-11-03 대표님 「블로그리뷰니깐 우리 홈피 리뷰에 넣어」 — 네이버 플레이스 블로그 리뷰 5건 */ var B=[['2026.10.17','단풍 영어로 | 단풍 절정·단풍놀이·가을 탄다 영어로 어떻게 말할까? 가을 표현 7개','군포 수리산도 이제 슬슬 붉어지는 때죠. 단풍 절정·단풍놀이·가을 탄다를 영어로 정리했습니다.','산본 성인 영어회화'],['2026.10.17','야구 영어로 | 가을야구 보면서 쓰는 영어 표현 7개 (홈런·역전승·끝내기)','10월은 가을야구의 계절. 원래 미국에서 시작된 스포츠라 영어 표현이 그대로 쓰입니다.','산본 성인 영어회화'],['2026.10.17','토익 Part 5 자주 틀리는 문법 5가지 | 시험 2주 전 빈칸 앞뒤 3초면 풀린다','Part 5는 한 문제 20초, 30문항을 10분 안에. 빈칸 앞뒤만 보고 푸는 법을 정리했습니다.','산본역 영어학원'],['2026.10.13','"예약제예요" 영어로? by appointment only · reservation · booking 차이','카페·미용실·모임 장소까지 요즘은 대부분 예약제. 외국인 손님에게 영어로 말하는 법.','산본 성인 영어회화'],['2026.10.13','산본 모임 장소 무료로 쓰는 법 | 산본역 1분 산본글로벌어학원 라운지','독서모임·스터디·엄마 모임, 산본역 3번 출구 1분 롯데프라자 7층 라운지를 무료로.','산본역 영어학원']];return '<section class="rvb"><div class="rvb-h"><b>블로그 리뷰</b><span>'+B.length+'</span><small>네이버 플레이스 · 산본글로벌어학원 블로그</small></div>'+B.map(function(x){return '<a class="rvb-i" href="https://blog.naver.com/sanbonglobal" target="_blank" rel="noopener"><b>'+x[1]+'</b><p>'+x[2]+'</p><small>산본글로벌어학원 | '+x[3]+' · '+x[0]+'</small></a>';}).join('')+'<a class="rvb-more" href="https://blog.naver.com/sanbonglobal" target="_blank" rel="noopener">블로그 전체 보기 ›</a></section>';})()
   +(setTimeout(function(){rvRender();rvLoad();},60),'')
   +bigImg('img/hall_04.jpg?v=1012')+'<div class="pgnote">※ 학원 수강후기 게시판과 홈페이지에 올라온 실제 후기입니다. 개인정보 보호를 위해 이름은 일부만 표기합니다.</div>'
   +'<a class="pgcta" href="#" onclick="closePage();openPage(\'수강신청\');return false;">나도 수강신청하기 ›</a>'+CTA();
@@ -7920,7 +7921,7 @@ function setCalGroups(sched,months){
 function _calSolo(day){var d=String(day||'');return /월~금|매일|평일/.test(d)?'#0e8a5a':null;}
 /* 반 하나면 색만, 무한수강권처럼 여러 반이면 색으로 구분 + 6개월 */
 function calApply(t,day){_calTx=true;
- _calStart=(t&&t.g==='spa')?new Date(2026,10,5):new Date(2026,10,1);
+ _calStart=(t&&t.g==='spa')?new Date(2026,10,3):new Date(2026,10,1); /* 2026-11-03 대표님 「스파르타 초급 11/3 화요일부터 시작해서 11/26 목요일로 마무리」 */
  if(t&&t.sched&&t.sched.length){setCalGroups(t.sched,t.mon||4);_calColor=null;return;}
  _calGrp=null;_calUntil=null;_calColor=_calSolo(day);}
 /* 2026-10-27 대표님 「11월5일 18회 시작해서 30일 종강 · 12월3일 개강 12월30일 종강」 「18회 그대로」 — spa 첫 두 줄·개강일 교체. */
