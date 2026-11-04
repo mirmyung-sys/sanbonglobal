@@ -5758,7 +5758,7 @@ const COURSES={
  '일본어':[
   {n:'김민정',img:'jpn_2',rows:[['입문','월·수','20:00~21:30']]},
   {n:'타나이 치토세 (원어민)',img:'../../t_tanai',rows:[['토요 입문 (11/7 개강)','토요일','10:00~13:00']]},
-  {n:'조미히로 (원어민)',img:'jpn_5',rows:[['중고급','월·목','18:20~19:50'],['원어민 2단계','월·목','20:00~21:30']]},
+  {n:'조미히로 (원어민)',img:'jpn_5',rows:[['중고급 (12/7 개강)','월·목','18:20~19:50'],['원어민 2단계 (12/7 개강)','월·목','20:00~21:30']]},
   {n:'서정아',img:'jpn_7',rows:[['초중급','화·목','18:20~19:50'],['초급','화·목','20:00~21:30']]},
   {n:'모모코 (원어민)',img:'jpn_4',rows:[['중급','화·목','20:00~21:30']]}
  ],
@@ -7776,8 +7776,8 @@ var WCONV={
   '입문':[['월·수','20:00~21:30','김민정','','다이스키1 (입문)'],['토요일','10:00~13:00','타나이 치토세 (원어민)','','토요 원어민 입문 · 11/7(토) 개강']],
   '초급':[['화·목','20:00~21:30','서정아','9강의실','다이스키2 (초급 1/2)']],
   '초중급':[['화·목','18:20~19:50','서정아','9강의실','다이스키3']],
-  '중급':[['화·목','20:00~21:30','모모코','5강의실','다이스키3 · 아리가또B (중급 2/4)'],['월·목','18:20~19:50','조미히로','5강의실','아리가또 프리토킹1 (중고급 3/4)']],
-  '원어민':[['월·목','18:20~19:50','조미히로','5강의실','프리토킹 중고급'],['월·목','20:00~21:30','조미히로','5강의실','스쿠스쿠4 (원어민 2단계)']],
+  '중급':[['화·목','20:00~21:30','모모코','5강의실','다이스키3 · 아리가또B (중급 2/4)'],['월·목','18:20~19:50','조미히로','5강의실','아리가또 프리토킹1 (중고급 3/4) · 12/7(월) 개강']],
+  '원어민':[['월·목','18:20~19:50','조미히로','5강의실','프리토킹 중고급 · 12/7(월) 개강'],['월·목','20:00~21:30','조미히로','5강의실','스쿠스쿠4 (원어민 2단계) · 12/7(월) 개강']],
   '새벽반':[['화·수·목','06:30~07:30','조미히로','','월 12회 · 상시 20% 할인 · 모집중']]},
  desc:'입문부터 원어민 프리토킹까지 레벨별로 배우는 일본어. JLPT 대비까지 자연스럽게 이어집니다. 피드백·복습·1:1 상담 포함.'},
 '중국어':{eye:'발음부터 HSK까지, 진짜 중국어',title:'중국어 — 입문부터 고급까지<br>레벨별 회화',badge:'중국어 회화',
@@ -8037,6 +8037,12 @@ function _calLegend(){
  var c=_calColor||'#F5C518';
  return '<div class="cal-lg"><span class="lg-c" style="color:'+c+'">●</span> 수업일 &nbsp; <span style="color:#8C4A2F">●</span> 개강·종강일 &nbsp; <span style="color:#c81f2b">○</span> 공휴일(휴강)</div>';}
 function spRenderCal(){var el=document.getElementById('spCal');if(!el)return;var dv=document.getElementById('spDay');if(dv){_calN=_calSess(dv.value)*_calMul;_calGrp=null;_calUntil=null;_calColor=_calSolo(dv.value);}else if(!_calGrp){_calN=_calSess(_wlabel(_calWd))*_calMul;}el.innerHTML=calHTML(_spCalD,dv?_wdays(dv.value):_calWd);}
+/* 2026-11-05 대표님 「그렇게 해」 — 반 메모에 「12/7(월) 개강」이 있으면 수업일 달력을 그 날부터 셉니다(조미히로 원어민반 12월 개강) */
+function _spOpenFix(){try{var W=WCONV[_spSubj];var lst=(W&&W.cls[_spLevel])||[];var te=document.getElementById('spTime');var x=te?lst[te.selectedIndex]:null;var m=x&&String(x[4]||'').match(/(\d{1,2})\/(\d{1,2})\([월화수목금토일]\) 개강/);
+ if(m){var d=new Date(2026,+m[1]-1,+m[2]);if(d>new Date(2026,10,1)){_calStart=d;var f=new Date(d.getFullYear(),d.getMonth(),1);if(_spCalD<f)_spCalD=f;window._spOv=1;return;}}
+ if(window._spOv){_calStart=new Date(2026,10,1);_spCalD=new Date(2026,10,1);window._spOv=0;}}catch(e){}}
+(function(){var r0=spRenderCal;spRenderCal=function(){_spOpenFix();return r0.apply(this,arguments);};
+ var s0=stepPage;stepPage=function(){var o=s0.apply(this,arguments);try{window._spOv=0;spRenderCal();}catch(e){}return o;};})();
 function spCalNav(delta){var n=new Date(_spCalD.getFullYear(),_spCalD.getMonth()+delta,1);
  if(_calGrp){var lo=new Date(_calStart.getFullYear(),_calStart.getMonth(),1);
   var hi=new Date(_calStart.getFullYear(),_calStart.getMonth()+(_calMon-1),1);
@@ -9314,8 +9320,8 @@ var EXAM={
  '오픽':{eye:'OPIc · 개설반',title:'오픽 — 개설 시간표',photo:'eng_15',rows:[
    {n:'오픽 토요반 (파고다 오픽의신)',tc:'김현정',day:'토요일',time:'10:00~13:00',price:'1개월 21만 / 2개월 42만',pay:'420,000원'}]},
  '일본어':{eye:'JAPANESE · 개설반',title:'일본어 — 개설 시간표',photo:'jpn_5',rows:[
-   {n:'원어민 프리토킹 중고급',tc:'조미히로',day:'월·목',time:'18:20~19:50',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
-   {n:'원어민 2단계',tc:'조미히로',day:'월·목',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'원어민 프리토킹 중고급 (12/7 개강)',tc:'조미히로',day:'월·목',time:'18:20~19:50',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
+   {n:'원어민 2단계 (12/7 개강)',tc:'조미히로',day:'월·목',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
    {n:'다이스키3 (초중급)',tc:'서정아',day:'화·목',time:'18:20~19:50',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
    {n:'중급 (다이스키·아리가또B)',tc:'모모코',day:'화·목',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
    {n:'초급 (다이스키2)',tc:'서정아',day:'화·목',time:'20:00~21:30',price:'1개월 18만 / 2개월 36만',pay:'360,000원'},
