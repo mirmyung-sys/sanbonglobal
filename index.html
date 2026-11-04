@@ -12128,7 +12128,7 @@ function lsStop(){ sgpStop(); }
      회원 목록은 그 열쇠가 있을 때만 서버가 내려 줍니다(소스에 회원 정보 없음).
    — 로그인하면 전 강의·전 영상·토익/토스/오픽 모의고사가 열립니다(마스터 열람).
    ═══════════════════════════════════════════════════════════════ */
-var SGADM_SH='2a9dbe5a5dabc0c2a18fa6b5c09b40777d9860da12d8a51753417620cc0bb253'; /* SHA-256 (평문 아님) */
+var SGADM_SH='627609f18250cb34cf521d263655a9a6ac5f9a3e23ce2fe4e6d9397c8b9a2a24'; /* SHA-256 (평문 아님) */
 function _admSha(s){ try{ return crypto.subtle.digest('SHA-256',new TextEncoder().encode(String(s))).then(function(b){ return Array.prototype.map.call(new Uint8Array(b),function(x){return ('0'+x.toString(16)).slice(-2);}).join(''); }); }catch(e){ return Promise.resolve(''); } }
 function _admTok(v){ try{ if(v===undefined) return localStorage.getItem('sga_adm_t')||''; if(v) localStorage.setItem('sga_adm_t',v); else localStorage.removeItem('sga_adm_t'); }catch(e){} return ''; }
 function sgaIsAdmin(){try{return localStorage.getItem('sga_admin')==='1';}catch(e){return false;}}
