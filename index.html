@@ -8637,6 +8637,18 @@ function sgaJoinBonus(){try{var k=_sgaJbKey();if(!k||localStorage.getItem(k))ret
 function _sgaRvKey(){var u=sgaUser();return u?'sga_rv_pt_v1':'';}
 function sgaReviewBonus(){try{var k=_sgaRvKey();if(!k||localStorage.getItem(k))return false;
   SGPT.pt=(SGPT.pt||0)+5000;SGPT.log=SGPT.log||[];SGPT.log.unshift({d:new Date().toISOString().slice(0,10),t:'네이버리뷰 적립',p:5000});ptSave();localStorage.setItem(k,'1');return true;}catch(e){return false;}}
+/* 2026-11-04 마리 — 휴대폰 번호로 같은 사람 확인 후 가입 적립금 (카카오·네이버·구글 어느 것으로 가입해도 번호당 1번) */
+var _sgaJsBusy=false;
+function sgaJoinSync(nm,tel){var u='',s='';try{u=localStorage.getItem('sga_token')||'';s=localStorage.getItem('sga_sid')||'';}catch(e){}
+ tel=String(tel||'').replace(/\D/g,'');if(!u||!s||!/^01[016789]\d{7,8}$/.test(tel)||_sgaJsBusy)return;
+ var dk='sga_js_'+u+'_'+tel;try{if(localStorage.getItem(dk))return;}catch(e){}
+ var had=0;try{had=localStorage.getItem('sga_jb_device_v2')?1:0;}catch(e){}
+ _sgaJsBusy=true;setTimeout(function(){_sgaJsBusy=false;},15000);
+ _sgaSrv('a=prof&uid='+encodeURIComponent(u)+'&sid='+encodeURIComponent(s)+'&nm='+encodeURIComponent(String(nm||'').slice(0,20))+'&tel='+tel+'&had='+had,function(d){
+  _sgaJsBusy=false;if(!d||!d.ok)return;try{localStorage.setItem(dk,'1');}catch(e){}
+  if(d.bonus&&sgaJoinBonus()){try{spPtRow();}catch(e){}setTimeout(function(){try{sgToast('<b>🎁 회원가입 적립금 5,000P 적립</b><br>결제할 때 「보유 적립금」에서 바로 쓰실 수 있어요');}catch(e){}},300);}
+  else if(!had&&d.dup){setTimeout(function(){try{sgToast('<b>이미 가입하신 번호입니다</b><br>가입 적립금은 한 분당 1번만 드려요');}catch(e){}},300);}
+ });}
 function sgaProfShow(force){
  if(document.getElementById('sgProf'))return;var p=sgaProf()||{};var u=sgaUser()||{};var dn=(u.name&&u.name!=='회원')?u.name:'';
  var m=document.createElement('div');m.className='sp-modal on';m.id='sgProf';
@@ -8654,12 +8666,16 @@ function sgaProfClose(){var m=document.getElementById('sgProf');if(m)m.parentNod
 function sgaProfSubmit(){var nm=((document.getElementById('sgPfNm')||{}).value||'').trim(),tel=((document.getElementById('sgPfTel')||{}).value||'').replace(/\D/g,'');
  var er=document.getElementById('sgPfErr');var bad=function(t){if(er){er.textContent=t;er.style.display='block';}};
  if(nm.length<2){bad('이름을 적어 주세요.');return;}if(!/^01[016789]\d{7,8}$/.test(tel)){bad('휴대폰 번호를 정확히 적어 주세요.');return;}
- sgaProfSave(nm,tel);var m=document.getElementById('sgProf');if(m)m.parentNode.removeChild(m);
+ sgaProfSave(nm,tel);var m=document.getElementById('sgProf');if(m)m.parentNode.removeChild(m);try{sgaJoinSync(nm,tel);}catch(e){}
  try{sgToast('<b>저장했습니다</b><br>다음부터 결제할 때 자동으로 들어갑니다');}catch(e){}
  try{spProfFill();}catch(e){}}
 /* 로그인 직후: 가입 적립금 → 정보 한 번 받기 (결제창을 다시 여는 중이면 결제창에서 받음) */
 (function(){var go=function(){try{if(!sgaUser())return;
-  if(sgaJoinBonus()){setTimeout(function(){try{sgToast('<b>🎁 회원가입 적립금 5,000P</b><br>결제할 때 「보유 적립금」에서 바로 쓰실 수 있어요');}catch(e){}},1200);}
+  /* 2026-11-04 대표님 「같은 번호인데 … 같은 사람인지 더블체크하고 … 계속 5000포인트가 지급될꺼잖아」 —
+     가입 적립금은 로그인만으로 주지 않고, 휴대폰 번호를 서버(로그인 서버 a=prof)에서 확인한 뒤 「번호당 1번」만 줍니다 */
+  var _P=sgaProf(); if(_P) sgaJoinSync(_P.nm,_P.tel);
+  else{var _jd=false;try{_jd=!!localStorage.getItem('sga_jb_device_v2')||!!sessionStorage.getItem('sga_jb_hint');sessionStorage.setItem('sga_jb_hint','1');}catch(e){}
+   if(!_jd)setTimeout(function(){try{sgToast('<b>🎁 회원가입 적립금 5,000P</b><br>결제창에서 휴대폰 번호를 적으면 바로 들어갑니다<br><small>한 분당 1번 (번호로 확인)</small>');}catch(e){}},1200);}
   try{
    if(false&&/[?&]giftrv=1/.test(location.search)&&sgaReviewBonus()){
     setTimeout(function(){try{sgToast('<b>🎁 네이버 리뷰 적립금 5,000P</b><br>결제할 때 「보유 적립금」에서 바로 쓰실 수 있어요');}catch(e){}},1200);
@@ -9239,7 +9255,7 @@ function spNextHint(scroll){var h=document.getElementById('spNext');if(!h)return
  if(scroll){try{h.scrollIntoView({block:'center',behavior:'smooth'});}catch(e){}}}
 /* 결제창이 떠 있을 때 노란 닫기는 결제창부터 닫습니다 (밑의 과정 화면은 그대로) */
 document.addEventListener('click',function(ev){var t=ev.target;if(!t||!t.closest||!t.closest('.aclose'))return;var m=document.querySelector('.sp-modal.on');if(!m)return;ev.preventDefault();ev.stopPropagation();if(m.id==='spModal')spClose();else m.classList.remove('on');},true);
-document.addEventListener('input',function(ev){var t=ev.target;if(t&&(t.id==='spBuyerNm'||t.id==='spBuyerTel'))spNextHint(t.id==='spBuyerTel'&&_buyer().ok);});
+document.addEventListener('input',function(ev){var t=ev.target;if(t&&(t.id==='spBuyerNm'||t.id==='spBuyerTel')){var _b=_buyer();spNextHint(t.id==='spBuyerTel'&&_b.ok);if(_b.ok){try{sgaJoinSync(_b.nm,_b.tel);}catch(e){}}}});
 document.addEventListener('change',function(ev){var t=ev.target;if(t&&t.closest&&t.closest('#agPay'))setTimeout(function(){spNextHint(false);},0);});
 function _spSavePend(){try{var de=_discSel();localStorage.setItem('sga_pay_pend',JSON.stringify({a:_won(_payBase),item:_payItemKeep||'',goods:window._payGoodsKeep||'',cls:window._payClsKeep||'',ng:!!_noGift,list:window._listKeep||0,discV:de?de.value:(window._pendDiscV||'0'),vf:(typeof _vfInfo!=='undefined'&&_vfInfo)?_vfInfo:'',rv:!!window._revEv,t:Date.now()}));}catch(e){}}
 function _spGate(){_spSavePend();var lg=document.getElementById('spLogin'),cg=document.getElementById('spCharge');if(lg)lg.style.display='block';if(cg)cg.style.display='none';var la=document.getElementById('spLgAmt');if(la)la.innerHTML=(window._payGoodsKeep?'<b>'+window._payGoodsKeep+'</b><br>':'')+'결제 예정 '+_won(_payBase);}
@@ -12283,18 +12299,32 @@ function _admMem(body){
    if(d&&d.err&&/만료|다릅니다/.test(d.err)) _admTok('');
    body.innerHTML='<div class="adm-note"><b>'+_sgsE((d&&d.err)||'서버에 연결하지 못했습니다')+'</b><br><button onclick="sgaAdminSet(false);sgaAdminLogin()">다시 로그인</button></div>'; return; }
   window._admData=d;
-  var M=(d.mem||[]).slice().sort(function(a,b){ return String(b.join).localeCompare(String(a.join)); });
-  var reg=M.filter(function(x){return x.co&&x.co.length;}).length;
-  var h='<div class="adm-sum"><div><b>'+M.length+'</b><span>가입 회원</span></div>'
+  var M0=(d.mem||[]).slice().sort(function(a,b){ return String(a.join).localeCompare(String(b.join)); });
+  /* 2026-11-04 대표님 「명충건으로 이미 네이버로 가입되었는데 구글로 가입되면 또 회원인되는거 아니잖아 같은 번호인데」 —
+     같은 휴대폰 번호(또는 서버가 묶은 대표ID)는 한 사람으로 합쳐 한 줄에 로그인 방법만 여러 개로 보여줍니다 */
+  var G={},order=[];
+  M0.forEach(function(x){ var tel=String(x.tel||'').replace(/\D/g,''); var k=tel?('t'+tel):(x.pid?('i'+x.pid):('i'+x.id));
+   if(!tel&&x.pid){ for(var q in G){ if(G[q].ids.indexOf(String(x.pid))>=0){ k=q; break; } } }
+   if(!G[k]){ G[k]={nm:x.nm,tel:tel,em:[],via:[],ids:[],join:x.join,last:x.last,co:[]}; order.push(k); }
+   var g=G[k]; g.ids.push(String(x.id)); if(x.via&&g.via.indexOf(x.via)<0) g.via.push(x.via); if(x.em&&g.em.indexOf(x.em)<0) g.em.push(x.em);
+   if(String(x.last)>String(g.last)) g.last=x.last; (x.co||[]).forEach(function(c){ g.co.push(c); }); if(tel&&!g.tel) g.tel=tel; });
+  var P=order.map(function(k){ return G[k]; });
+  var nmCnt={}; P.forEach(function(g){ var n=String(g.nm||'').replace(/\s/g,''); if(n) nmCnt[n]=(nmCnt[n]||0)+1; });
+  P.sort(function(a,b){ return String(b.join).localeCompare(String(a.join)); });
+  var reg=P.filter(function(x){return x.co.length;}).length, merged=M0.length-P.length;
+  var h='<div class="adm-sum"><div><b>'+P.length+'</b><span>가입 회원(사람)</span></div>'
    +'<div><b>'+reg+'</b><span>학원 등록 확인</span></div>'
    +'<div><b>'+(d.roster||0)+'</b><span>학원 명부</span></div></div>'
-   +'<input class="adm-q" placeholder="이름·이메일 찾기" oninput="_admFilter(this.value)">'
+   +(merged>0?'<p class="adm-small">같은 휴대폰 번호 '+merged+'건을 한 사람으로 합쳐 보여줍니다 (로그인 계정 '+M0.length+'개)</p>':'')
+   +'<input class="adm-q" placeholder="이름·이메일·번호 찾기" oninput="_admFilter(this.value)">'
    +'<div id="admMemList">';
-  M.forEach(function(x){
-   var co=(x.co||[]).map(function(c){ return '<i>'+_sgsE(c.co||'과정')+(c.end?' ~'+_sgsE(c.end):'')+'</i>'; }).join('');
-   h+='<div class="adm-m" data-s="'+_sgsE((x.nm+' '+x.em+' '+x.via).toLowerCase())+'">'
-    +'<div class="adm-m1"><b>'+_sgsE(x.nm||'(이름 없음)')+'</b><span class="via v-'+_sgsE(x.via)+'">'+_sgsE(x.via||'')+'</span>'+(co||'<em>등록 확인 전</em>')+'</div>'
-    +'<div class="adm-m2">'+(x.em?_sgsE(x.em)+' · ':'')+'가입 '+_sgsE(String(x.join).replace(/\s*(오전|오후).*/,''))+' · 최근 '+_sgsE(String(x.last).replace(/:\d\d$/,''))+'</div></div>';
+  P.forEach(function(x){
+   var co=x.co.map(function(c){ return '<i>'+_sgsE(c.co||'과정')+(c.end?' ~'+_sgsE(c.end):'')+'</i>'; }).join('');
+   var vias=x.via.map(function(v){ return '<span class="via v-'+_sgsE(v)+'">'+_sgsE(v)+'</span>'; }).join('');
+   var n=String(x.nm||'').replace(/\s/g,''), warn=(!x.tel&&n&&nmCnt[n]>1)?'<em style="color:#C81F2B">이름 같음 — 번호 받으면 자동 합침</em>':'';
+   h+='<div class="adm-m" data-s="'+_sgsE((x.nm+' '+x.em.join(' ')+' '+x.via.join(' ')+' '+x.tel).toLowerCase())+'">'
+    +'<div class="adm-m1"><b>'+_sgsE(x.nm||'(이름 없음)')+'</b>'+vias+(x.via.length>1?'<em>로그인 '+x.ids.length+'개 · 한 사람</em>':'')+(co||'<em>등록 확인 전</em>')+warn+'</div>'
+    +'<div class="adm-m2">'+(x.tel?_sgsE(_telFmt(x.tel))+' · ':'')+(x.em.length?_sgsE(x.em.join(', '))+' · ':'')+'가입 '+_sgsE(String(x.join).replace(/\s*(오전|오후).*/,''))+' · 최근 '+_sgsE(String(x.last).replace(/:\d\d$/,''))+'</div></div>';
   });
   h+='</div><p class="adm-small">'+_sgsE(d.at||'')+' 기준 · 원본은 구글 시트 「SGA 웹사이트 회원」</p>';
   if(d.perCourse){ var pc=Object.keys(d.perCourse); if(pc.length){ h+='<div class="adm-b"><div class="adm-h"><span class="adm-t">학원 명부 과정별 인원</span></div><div class="adm-u">'
