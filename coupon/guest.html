@@ -1,0 +1,69 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>카페라떼 1잔 · 산본글로벌어학원</title>
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','맑은 고딕',sans-serif;background:
+ radial-gradient(circle at 50% 0%,#7A1A33 0%,#5B1026 60%);
+ min-height:100vh;padding:14px;color:#fff;display:flex;flex-direction:column;align-items:center}
+.card{background:#fff;color:#2A1F1C;border-radius:22px;width:100%;max-width:360px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.4);margin-top:14px}
+
+/* 카드 상단 */
+.ct{background:linear-gradient(135deg,#5B1026 0%,#7A1A33 100%);color:#F6D58A;padding:20px 20px 22px;text-align:center;position:relative}
+.ct-med{width:48px;height:48px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#F7E3BB,#C48A44 60%,#8A5A24);display:inline-flex;align-items:center;justify-content:center;font:900 14px Pretendard;color:#5B1026;box-shadow:inset 0 1px 2px rgba(255,255,255,.4),0 2px 6px rgba(0,0,0,.2);margin-bottom:10px}
+.ct-ti{font:900 11px Pretendard;color:#F6D58A;letter-spacing:3.5px;margin-bottom:6px}
+.ct-nm{font:900 22px Pretendard;color:#fff;line-height:1.25;margin-bottom:4px}
+.ct-sub{font:700 13px Pretendard;color:#F6D58A;opacity:.95}
+
+/* 쿠폰 톱니 */
+.teeth{height:14px;background:
+ radial-gradient(circle at 7px 100%,transparent 7px,#fff 7.5px) repeat-x;
+ background-size:14px 14px;background-color:#5B1026}
+
+/* 쿠폰 본문 */
+.cb{padding:20px 22px 22px;text-align:center}
+.cb-ti{font:900 26px Pretendard;color:#2A1F1C;line-height:1.3;margin-bottom:4px}
+.cb-sub{font:700 13.5px Pretendard;color:#8A6F3A;margin-bottom:16px}
+.barcode-box{background:#fff;border:2px solid #EFE4CF;border-radius:14px;padding:16px 10px 10px;margin:0 auto 14px}
+.barcode-box svg{width:100%;height:76px;display:block}
+.barcode-no{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:900;font-size:19px;color:#5B1026;letter-spacing:3px;margin-top:6px}
+.use-at{background:#FFF9EC;border:1.5px solid #F6D58A;border-radius:12px;padding:10px 12px;margin-bottom:10px;font:800 13px Pretendard;color:#5B1026}
+.use-at b{color:#2A1F1C}
+.ok-btn{background:#FFC93C;color:#2A1F1C;border:0;border-radius:12px;padding:14px;width:100%;font:900 16px Pretendard;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08);margin-top:4px}
+.fine{font:700 11.5px Pretendard;color:#5A5750;line-height:1.6;margin-top:14px;text-align:left;background:#FAF6ED;border-radius:10px;padding:10px 12px}
+.fine b{color:#5B1026}
+
+/* 공지 */
+.notice{color:#F6D58A;font:700 12px Pretendard;text-align:center;margin-top:16px;opacity:.9;line-height:1.6}
+.sgX{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);width:48px;height:48px;border-radius:50%;background:#FFC93C;border:0;color:#5B1026;font:900 22px Pretendard;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+</style></head><body>
+<div class="card">
+  <div class="ct">
+    <div class="ct-med">SGA</div>
+    <div class="ct-ti">SANBON GLOBAL ACADEMY</div>
+    <div class="ct-nm">리뷰 감사합니다 💛</div>
+    <div class="ct-sub">네이버 영수증 리뷰 작성 쿠폰</div>
+  </div>
+  <div class="teeth"></div>
+  <div class="cb">
+    <div class="cb-ti">☕ 카페라떼 1잔</div>
+    <div class="cb-sub">MEGA MGC COFFEE</div>
+    <div class="barcode-box">
+      <svg id="bc"></svg>
+      <div class="barcode-no">A7K · 3920</div>
+    </div>
+    <div class="use-at">📍 <b>메가 산본점에서만</b> 사용<br><small style="font-weight:700;color:#8A6F3A">사장님께 이 화면을 보여 주세요</small></div>
+    <button class="ok-btn">사장님께 보여주기 →</button>
+    <div class="fine">
+      <b>· 1회 사용</b> — 사장님이 찍으면 자동 소진<br>
+      <b>· 유효기간</b> 2026‑12‑05까지<br>
+      <b>· 대가성 리뷰</b> 공정위 안내에 따라 리뷰 본문에 「쿠폰 받고 작성한 리뷰」 표시 필수
+    </div>
+  </div>
+</div>
+<div class="notice">발급 11/5 17:42 · 산본글로벌어학원<br>031‑466‑6969 · sanbonglobal.com</div>
+<button class="sgX" aria-label="닫기">✕</button>
+<script>
+JsBarcode("#bc","A7K3920",{format:"CODE128",width:2.2,height:72,displayValue:false,margin:0,background:"#fff"});
+</script>
+</body></html>

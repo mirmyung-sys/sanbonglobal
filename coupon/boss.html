@@ -1,0 +1,78 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>메가 산본점 · 쿠폰 스캔</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard','맑은 고딕',sans-serif;background:#1A1A18;color:#fff;min-height:100vh;display:flex;flex-direction:column}
+.bh{background:#5B1026;color:#F6D58A;padding:14px 18px;display:flex;align-items:center;gap:10px;flex:none}
+.bh-med{width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#F7E3BB,#C48A44 60%,#8A5A24);display:flex;align-items:center;justify-content:center;font:900 11px Pretendard;color:#5B1026}
+.bh-t{flex:1;min-width:0}
+.bh-t b{display:block;font:900 14px Pretendard;color:#fff;line-height:1.3}
+.bh-t small{display:block;font:700 10.5px Pretendard;color:#F6D58A;opacity:.95;letter-spacing:1px;margin-top:2px}
+
+/* 카메라 뷰 */
+.cam{flex:1;position:relative;background:#0F0F0E;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cam-bg{position:absolute;inset:0;background:
+ linear-gradient(120deg,#2A1A1F 0%,#1A1A18 50%,#0F0F0E 100%)}
+.cam-hint{position:absolute;top:18px;left:0;right:0;text-align:center;color:#F6D58A;font:900 13px Pretendard;letter-spacing:.3px;z-index:3}
+.cam-sub{position:absolute;top:44px;left:0;right:0;text-align:center;color:#C9B789;font:700 12px Pretendard;z-index:3}
+
+.frame{position:relative;width:260px;height:160px;z-index:2}
+.frame::before,.frame::after,.frame .c1,.frame .c2{content:'';position:absolute;width:30px;height:30px;border:3px solid #FFC93C}
+.frame::before{top:0;left:0;border-right:0;border-bottom:0}
+.frame::after{top:0;right:0;border-left:0;border-bottom:0}
+.frame .c1{bottom:0;left:0;border-right:0;border-top:0}
+.frame .c2{bottom:0;right:0;border-left:0;border-top:0}
+.scan-line{position:absolute;left:8%;right:8%;top:50%;height:2px;background:linear-gradient(90deg,transparent,#FFC93C 50%,transparent);box-shadow:0 0 12px #FFC93C;animation:sc 1.6s ease-in-out infinite}
+@keyframes sc{0%{top:12%}50%{top:88%}100%{top:12%}}
+
+/* 바코드 mock */
+.bc-mock{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:200px;height:70px;background:
+ repeating-linear-gradient(90deg,#fff 0,#fff 2px,transparent 2px,transparent 4px,#fff 4px,#fff 5px,transparent 5px,transparent 8px,#fff 8px,#fff 11px,transparent 11px,transparent 13px,#fff 13px,#fff 14px,transparent 14px,transparent 16px,#fff 16px,#fff 19px,transparent 19px,transparent 22px);
+ opacity:.85;z-index:1;border-radius:3px}
+
+.sht{background:#fff;color:#2A1F1C;padding:16px 18px 20px;flex:none;border-radius:20px 20px 0 0;box-shadow:0 -4px 20px rgba(0,0,0,.3)}
+.sht-row{display:flex;gap:10px;margin-bottom:12px}
+.sht-input{flex:1;background:#FAF6ED;border:1.5px solid #E8D9BC;border-radius:10px;padding:0 12px;height:46px;display:flex;align-items:center;font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:900;color:#5B1026;font-size:17px;letter-spacing:2px}
+.sht-input small{color:#A89880;font-weight:700;font-family:Pretendard;letter-spacing:0;font-size:12.5px}
+.sht-btn{background:#1B6B3A;color:#fff;border:0;border-radius:10px;padding:0 20px;font:900 14px Pretendard;cursor:pointer;flex:none}
+
+.sht-info{display:flex;gap:8px}
+.sht-chip{flex:1;background:#FFF9EC;border:1px solid #F6D58A;border-radius:10px;padding:8px 10px;text-align:center}
+.sht-chip b{display:block;font:900 15px Pretendard;color:#5B1026;line-height:1}
+.sht-chip small{display:block;font:700 10.5px Pretendard;color:#8A6F3A;margin-top:3px}
+
+/* 상단 토스트: 사용 완료 */
+.toast{position:absolute;top:80px;left:14px;right:14px;background:#1B6B3A;color:#fff;padding:14px 16px;border-radius:14px;display:flex;align-items:center;gap:10px;z-index:5;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.toast-ic{width:34px;height:34px;border-radius:50%;background:#fff;color:#1B6B3A;display:flex;align-items:center;justify-content:center;font:900 20px Pretendard;flex:none}
+.toast-t{flex:1;min-width:0}
+.toast-t b{display:block;font:900 15px Pretendard;line-height:1.2}
+.toast-t small{display:block;font:700 12px Pretendard;opacity:.9;margin-top:3px}
+</style></head><body>
+<div class="bh">
+  <div class="bh-med">SGA</div>
+  <div class="bh-t"><b>메가 산본점 · 쿠폰 스캔</b><small>MEGA SANBON · POS</small></div>
+</div>
+<div class="cam">
+  <div class="cam-bg"></div>
+  <div class="cam-hint">손님 폰 바코드를 가운데 맞춰 주세요</div>
+  <div class="cam-sub">자동 인식 · 중복 사용 차단</div>
+  <div class="bc-mock"></div>
+  <div class="frame"><span class="c1"></span><span class="c2"></span></div>
+  <div class="scan-line"></div>
+  <div class="toast">
+    <div class="toast-ic">✓</div>
+    <div class="toast-t"><b>A7K‑3919 사용 완료</b><small>카페라떼 1잔 · 잔액 100만 → 997,100원</small></div>
+  </div>
+</div>
+<div class="sht">
+  <div class="sht-row">
+    <div class="sht-input">A7K·3920 <span style="margin-left:auto"><small>또는 번호 직접 입력</small></span></div>
+    <button class="sht-btn">사용</button>
+  </div>
+  <div class="sht-info">
+    <div class="sht-chip"><b>297장</b><small>남음</small></div>
+    <div class="sht-chip"><b>47장</b><small>사용</small></div>
+    <div class="sht-chip"><b>997,100</b><small>잔액(원)</small></div>
+  </div>
+</div>
+</body></html>
