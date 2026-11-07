@@ -501,7 +501,7 @@
     if (!speak) {
       var R = grade(), L = scoreLine(R), tr = '';
       R.forEach(function (r) { tr += '<tr><td>' + esc(r.name) + '</td><td>' + r.ok + ' / ' + r.tot + '</td><td>' + Math.round(r.ok / Math.max(1, r.tot) * 100) + '%</td></tr>'; });
-      h += '<div class="sayb"><img src="img/sgi_talk.png" alt=""><div>수고하셨습니다!<br><span style="font-size:15px;font-weight:700">틀린 문제는 해설을 꼭 읽고, 궁금한 건 제이영 원장님께 물어보세요.</span></div></div>'
+      h += '<div class="sayb"><img src="img/sgi_talk.png" alt=""><div>수고하셨습니다!<br><span style="font-size:15px;font-weight:700">틀린 문제는 해설을 꼭 읽고, 모르는 건 다음 수업에 강사님께 물어보세요.</span></div></div>'
         + '<div style="text-align:center"><div class="big">' + L.big + '</div><div class="note">' + esc(L.sub) + '</div></div>'
         + '<table class="sum"><tr><th>영역</th><th>정답</th><th>정답률</th></tr>' + tr + '</table>';
       D.sections.forEach(function (sec, si) { S.si = si; h += '<h3 style="margin:22px 0 8px;color:#0A5C3D">' + esc(sec.name) + ' · 해설</h3>' + bookHTML(sec, true); });
