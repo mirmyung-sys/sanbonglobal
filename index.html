@@ -6184,8 +6184,8 @@ function noticePage(){
 }
 
 const SLIDES=[
-/* 2026-11-08 대표님 「영어로드맵 짠거 홈피에 올려 영어 일본어 중국어 jlpt」「중간광고판에 sga언어로드맵이라는 제목으로」 — 맨 앞 칸 */
- { st:'SGA 언어 로드맵', bd:'NEW', e:'SGA 언어 로드맵 · 이렇게 배워요', bg:'img/how/sga_cls_en1.jpg', t:'우리 강의실에서<br>이렇게 배웁니다', chips:['영어회화','일본어 · JLPT','중국어 · HSK','토익'], s:'우리 선생님과 실제 강의실에서 — 과목별로 무엇을, 어떤 순서로 배우는지 한눈에', act:"location.href='english-how.html'", pbg:'linear-gradient(135deg,#4A0F22,#7B1733)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5A1226', cls:'hsty-impact'},
+/* 2026-11-08 「과정 클릭하시면 과정이 보입니다」로 교체 · 원래: 「영어로드맵 짠거 홈피에 올려 영어 일본어 중국어 jlpt」「중간광고판에 sga언어로드맵이라는 제목으로」 — 맨 앞 칸 */
+ { st:'영어 · 일본어 과정', bd:'NEW', e:'영어 · 일본어 과정', bg:'img/how/sga_cls_en1.jpg', t:'과정을 클릭하시면<br>과정이 보입니다', chips:['영어회화','일본어 · JLPT','중국어 · HSK','토익'], go:['english-how.html','japanese-how.html','chinese-how.html','toeic-how.html'], s:'영어 · 일본어 · 중국어 · 토익 — 원하는 과정을 클릭하시면 과정이 보입니다', act:"location.href='english-how.html'", pbg:'linear-gradient(135deg,#4A0F22,#7B1733)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5A1226', cls:'hsty-impact'},
 /* 2026-10-23 대표님 「중간그리드 광고에서 과목별 커리큘럼을 맨위 첫번째로 올려 그리고 토익스파르타 그리곤 원래 순서데로」 */
  { st:'과목별 커리큘럼', e:'CURRICULUM · 커리큘럼', bg:'img/cur_toeic.jpg?v=1023', t:'어디서 시작해<br>몇 달 뒤 어디까지', chips:['영어회화','토익','일본어','JLPT','중국어','HSK','오픽','토스'], s:'과목별 단계·교재·기간을 한 장으로 — 우리 학원 커리큘럼을 그대로 보여 드립니다', act:"openPage('커리큘럼')", pbg:'linear-gradient(135deg,#4A0F22,#7B1733)', tc:'#FFF8EC', tc2:'#F3E2D6', ac:'#F6D58A', bbg:'#F6D58A', btc:'#5A1226'},
  { st:'11월 토익 스파르타', e:'11월 토익 스파르타 · 정규반 모집', bg:'img/notice/toeic_bg2.jpg?v=1017b', t:'토익 강사 3명,<br>먼저 들어보시고 선택하세요', s:'토익 만점 강사 송윤정 · 더 쎈토익 창시자 엘리 킴 · 「김현정 토익은 진짜다」', act:"openPage('수강신청');bkGo('토익')", pbg:'linear-gradient(135deg,#6B1F2E,#b8322a)', tc:'#ffd94d', tc2:'#ffe3e0', ac:'#ffe0dd', bbg:'#ffd94d', btc:'#6B1F2E', cls:'hsty-impact', faces:['eng_13','elly','eng_15'], fnames:['송윤정','엘리 킴','김현정']},
@@ -6221,7 +6221,7 @@ function heroShelfHTML(){
    +(s.bd||i<2?'<span class="hsh-bd">'+(s.bd||(i===0?'NEW':'HOT'))+'</span>':'')
    +'<span class="hsh-e">'+(s.st||eb[0].trim())+'</span>'
    +(s.aki?'<img class="hsh-aki" src="'+s.aki+'" alt="산본글로벌어학원 AI 강사 아키">':'')
-   +(s.chips?'<span class="hsh-ch">'+s.chips.map(function(c){return '<i>'+c+'</i>';}).join('')+'</span>':'<span class="hsh-t">'+t+'</span>')
+   +(s.chips?'<span class="hsh-ch">'+(s.go?'<em style="flex-basis:100%;font-style:normal;font-size:11.5px;font-weight:800;color:#F6D58A;margin-bottom:2px">👆 클릭하시면 과정이 보입니다</em>':'')+s.chips.map(function(c,i){return s.go&&s.go[i]?'<i onclick="event.stopPropagation();location.href=\''+s.go[i]+'\'" style="cursor:pointer">'+c+' ›</i>':'<i>'+c+'</i>';}).join('')+'</span>':'<span class="hsh-t">'+t+'</span>')
    +'<span class="hsh-s">'+(eb[1]?eb[1].trim():'')+'</span>'
    +'<span class="hsh-f">SANBON GLOBAL<em>보기 ›</em></span></button>';
  }).join('')+'</div></div>';
