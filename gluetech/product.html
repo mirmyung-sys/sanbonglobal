@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta name="robots" content="noindex,nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>제품소개 | GLUE TECH 글루테크</title><meta name="description" content="글루테크 핫멜트 탱크·히팅호스·노즐·모듈·오토건 사양">
+<link rel="stylesheet" href="css/site.css"></head>
+<body data-solid-at="200">
+<div id="hd-slot"></div>
+<section class="sb"><img src="img/app_line.jpg" alt=""><div class="w"><div class="crumb"><a href="index.html">HOME</a> › 제품소개 › <span id="crumbT"></span></div><h1><span id="sbT">제품소개</span></h1><p><span id="sbP"></span></p></div></section>
+<div class="w"><div class="page"><nav class="snb" id="snb" aria-label="제품 분류"></nav><div id="pBody"></div></div></div>
+<div id="ft-slot"></div>
+<script src="js/data.js"></script><script src="js/common.js"></script>
+<script>
+const qs=new URLSearchParams(location.search);let c=qs.get('c');if(!CATALOG[c])c='tank';
+const C=CATALOG[c];document.title=C.name+' | GLUE TECH 글루테크';
+document.getElementById('sbT').textContent=C.name;document.getElementById('sbP').textContent=C.lead;document.getElementById('crumbT').textContent=C.name;
+document.getElementById('snb').innerHTML=CAT_ORDER.map(k=>`<a href="product.html?c=${k}" class="${k===c?'on':''}">${CATALOG[k].name}</a>`).join('');
+const esc=s=>String(s).replace(/'/g,"\\'");
+let h=`<div class="ct-h"><span>${C.en}</span><h2>${C.name}</h2></div>`;
+if(c==='tank'){
+ h+=`<div class="pd rv"><div class="im"><img id="tImg" src="img/tank_r30_hq.png" alt="핫멜트 탱크 R-30"></div><div><div class="code">GLUE TECH · R SERIES</div><h3>핫멜트 탱크</h3><p style="color:var(--sub);margin-bottom:16px">${C.lead}</p><dl>${C.common.map(x=>`<div><dt>${x[0]}</dt><dd>${x[1]}</dd></div>`).join('')}<div><dt>전기 사양</dt><dd>호스 1~2용 / 3~4용 / 5~6용에 따라 달라집니다 (아래 표)</dd></div></dl></div></div>`;
+ h+=`<div class="tw rv"><table class="spec2"><thead><tr><th>모델명</th><th>크기 (가로×세로×높이 mm)</th><th>탱크 용량 (kg)</th><th>용융 능력 (kg/hr)</th><th>전기 사양 KW (호스 1~2 / 3~4 / 5~6)</th><th></th></tr></thead><tbody>`+
+  C.models.map(m=>`<tr><td class="m">${m.code}</td><td>${m.size}</td><td>${m.kg}</td><td>${m.mr}</td><td>${m.kw}</td><td><button class="btn" style="height:38px;padding:0 14px;font-size:13.5px" onclick="GT.add('${m.code}','핫멜트 탱크 ${m.code}')">견적함 담기</button></td></tr>`).join('')+`</tbody></table></div>
+  <p style="font-size:13px;color:var(--sub);margin-top:10px">※ 공통 사양: 사용 호스 1 ~ 6 개 · 사용 온도 1 ~ 230 ℃ · 사진은 R-30, R-12 모델입니다.</p>`;
+}else{
+ h+=C.models.map(m=>`<div class="pd rv"><div class="im"><img src="${m.img}" alt="${m.title}"></div><div><div class="code">${m.code}</div><h3>${m.title}</h3><dl>${m.spec.map(x=>`<div><dt>${x[0]}</dt><dd>${x[1]}</dd></div>`).join('')}</dl><div class="pa2"><button class="btn p" onclick="GT.add('${esc(m.code)}','${esc(m.title)}')">견적함 담기</button><a class="btn" href="quote.html">견적함 보기</a></div></div></div>`).join('');
+}
+const PV={tank:['img/gt_tank_r.mp4','https://d8j0ntlcm91z4.cloudfront.net/user_3GADcyKE4Ow4Cld3tfs2MW9GGPk/hf_20261108_084622_ec7d2064-6ebe-44e7-ba4d-5161ee10c4e2.mp4','img/tankv_poster.jpg','R 시리즈 탱크 R-12 · R-30','앞면 온도 조절판과 옆면 호스 연결구까지 한눈에 봅니다'],hose:['img/gt_hose.mp4','img/gt_hose.mp4','img/hosev_poster.jpg','히팅호스 2라인 연결','탱크 한 대에서 호스 두 줄로 오토건 2대를 동시에 씁니다']};
+if(PV[c]){const v=PV[c];h+=`<div class="mcard vcard rv" style="margin-top:34px;max-width:860px"><video poster="${v[2]}" controls muted playsinline preload="metadata"><source src="${v[0]}" type="video/mp4"><source src="${v[1]}" type="video/mp4"></video><div class="vt"><h3>${v[3]}</h3><p>${v[4]}</p></div></div>`}
+h+=`<div class="pa2" style="margin-top:30px"><a class="btn p" href="quote.html">견적함에서 한 번에 문의</a><a class="btn" href="info.html#applicator">어플리케이터 구성 보기</a></div>`;
+document.getElementById('pBody').innerHTML=h;
+document.querySelectorAll('#pBody .rv').forEach(e=>e.classList.add('in'));
+</script>
+</body></html>

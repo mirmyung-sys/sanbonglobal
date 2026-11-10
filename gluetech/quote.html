@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta name="robots" content="noindex,nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>견적함 | GLUE TECH 글루테크</title><meta name="description" content="글루테크 제품 견적 요청">
+<link rel="stylesheet" href="css/site.css"></head>
+<body data-solid-at="200">
+<div id="hd-slot"></div>
+<section class="sb"><img src="img/app_line.jpg" alt=""><div class="w"><div class="crumb"><a href="index.html">HOME</a> › 견적함</div><h1>견적 문의</h1><p>모델을 담아 한 번에 문의하세요. 담당자가 연락드립니다.</p></div></section>
+<div class="w"><div style="padding:70px 0 120px;max-width:880px">
+<div class="ct-h"><span>QUOTE</span><h2>견적함</h2></div><div id="qList"></div>
+<form class="qform" id="qf" novalidate><div><label for="co">회사명</label><input id="co" name="co" autocomplete="organization"></div><div><label for="nm">담당자</label><input id="nm" name="nm" autocomplete="name"></div>
+<div><label for="ph">연락처</label><input id="ph" name="ph" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000"></div><div><label for="em">이메일 (선택)</label><input id="em" name="em" type="email" autocomplete="email"></div>
+<div class="w2"><label for="msg">요청 내용 (라인 조건, 납기, 쓰고 계신 장비)</label><textarea id="msg" name="msg" rows="4"></textarea></div>
+<div class="w2"><button class="btn p" style="width:100%;height:56px">견적 요청 보내기</button><p id="qe" role="alert" style="color:#B3261E;margin-top:10px;min-height:20px"></p><p id="qok" role="status" style="color:var(--violet)"></p></div></form></div></div>
+<div id="ft-slot"></div>
+<script src="js/data.js"></script><script src="js/common.js"></script>
+<script>
+function draw(){const L=GT.list();const box=document.getElementById('qList');
+ box.innerHTML=L.length?L.map(([c,v])=>`<div class="qrow"><div><small>${c}</small><b>${v.n}</b></div><div class="qty"><button aria-label="줄이기" onclick="GT.set('${c}',${v.q-1});draw()">−</button><input aria-label="수량" value="${v.q}" onchange="GT.set('${c}',this.value);draw()"><button aria-label="늘리기" onclick="GT.set('${c}',${v.q+1});draw()">+</button></div><button class="x" onclick="GT.del('${c}');draw()">빼기</button></div>`).join(''):'<div class="empty2">견적함이 비어 있습니다. <a href="product.html" style="color:var(--violet);font-weight:700">제품소개</a>에서 모델을 담아 주세요. 담지 않고 아래 칸에 바로 적으셔도 됩니다.</div>';}
+draw();
+document.getElementById('qf').addEventListener('submit',e=>{e.preventDefault();const f=e.target;const req=[['co','회사명'],['nm','담당자'],['ph','연락처']];
+ for(const [k,n] of req){if(!f[k].value.trim()){document.getElementById('qe').textContent=n+' 칸을 입력해 주세요.';f[k].focus();return}}
+ if(!/^0\d{1,2}-?\d{3,4}-?\d{4}$/.test(f.ph.value.trim())){document.getElementById('qe').textContent='연락처를 확인해 주세요.';f.ph.focus();return}
+ if(!GT.list().length&&!f.msg.value.trim()){document.getElementById('qe').textContent='모델을 담거나 요청 내용을 적어 주세요.';f.msg.focus();return}
+ document.getElementById('qe').textContent='';
+ document.getElementById('qok').innerHTML='<b>견적 요청이 접수되었습니다.</b> 담당자가 연락드립니다. (시안: 실제 전송은 연결 전입니다)';f.reset();GT.clear();draw();});
+</script>
+</body></html>
