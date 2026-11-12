@@ -506,7 +506,7 @@
         + '<table class="sum"><tr><th>영역</th><th>정답</th><th>정답률</th></tr>' + tr + '</table>';
       D.sections.forEach(function (sec, si) { S.si = si; h += '<h3 style="margin:22px 0 8px;color:#0A5C3D">' + esc(sec.name) + ' · 해설</h3>' + bookHTML(sec, true); });
     } else {
-      h += '<div class="sayb"><img src="img/sgi_talk.png" alt=""><div>수고하셨습니다!<br><span style="font-size:15px;font-weight:700">내 녹음과 모범답안을 나란히 들어 보세요. 말하기는 원장님 첨삭으로 점수가 가장 빨리 오릅니다.</span></div></div>';
+      h += '<div class="sayb"><img src="img/sgi_talk.png" alt=""><div>수고하셨습니다!<br><span style="font-size:15px;font-weight:700">내 녹음과 모범답안을 나란히 들어 보세요. 말하기는 선생님 첨삭으로 점수가 가장 빨리 오릅니다.</span></div></div>';
       var sec = D.sections[0];
       sec._qs.forEach(function (q) {
         var it = q.it;
