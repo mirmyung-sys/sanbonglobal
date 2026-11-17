@@ -11243,47 +11243,7 @@ function aiCalHTML(){
  +'한 번에 다 열어드리면 사흘이면 다 푸시고 안 오세요. 그래서 <b>현강 나오는 날에 한 강씩</b>만 엽니다.<br>'
  +'못 하고 넘어간 날은 <b class="ms">결석</b>으로 남지만 사라지지는 않아요. <b>언제든 보충</b>하실 수 있습니다.</div></div></div>';}
 
-function dirCard(){
- /* 원장 약력 — 2026-08-30, 학원이 쓰는 공식 강사 소개를 그대로 옮겼습니다.
-    지어낸 항목은 없습니다. PAGES 가 이 함수를 정의 시점에 부르므로 배열은 함수 안에 둡니다. */
- var DIR_EDU=[
-  ['Georgetown University','TESOL — 영어교수법 과정'],
-  ['성균관대학교 번역·TESOL대학원','TESOL 석사 과정']
- ];
- var DIR_CAR=[
-  ['민병철어학원 금정지점','영어 강의'],
-  ['CNN Language Institute','토플 · 토익 강의'],
-  ['청화대학 · 베이징 중의약대학','토익 · 영어회화 강의 (중국 베이징)'],
-  ['숙명여자대학교','토익 강의'],
-  ['㈜토비스 · LS','기업체 출강 — 토익 · 비즈니스 회화'],
-  ['㈜대승 · 현대케피코 등','기업체 출강 — 토익 · 비즈니스 회화'],
-  ['남서울대학교','해외취업 특강 진행']
- ];
- return '';return '<div class="dirc">'
- +'<div class="dirc-l">'
-  +'<div class="dirc-p"><img src="img/teachers/director.png" alt=""></div>'
-  +'<div class="dirc-yr"><b>30년</b><span>강의 경력</span></div>'
- +'</div>'
- +'<div class="dirc-b">'
-  +'<div class="dirc-e">산본글로벌어학원</div>'
-  +'<h3 style="line-height:1.18"><span style="display:block;font-size:.44em;font-weight:800;color:#606878;letter-spacing:.04em;margin-top:4px;white-space:nowrap"></span></h3>'
-  +'<p class="dirc-r"><b>Georgetown TESOL</b> · 토익 · 토플 전문 강사 출신 · <b>민병철어학원</b> · 숙명여대 · 중국 대학 출강</p>'
-  /* 2026-09-18 — 학력·경력 카드가 폰에서 한 화면 반을 먹어 접었습니다. 내용은 그대로입니다. */
-  +'<details class="dirc-fold"><summary>학력 · 강의 경력 30년 전부 보기</summary><div>'
-  +'<div class="dirc-sec">학력</div>'
-  +'<div class="dirc-bio">'+DIR_EDU.map(function(x){
-     return '<div class="bi"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>';}).join('')+'</div>'
-  +'<div class="dirc-sec">강의 경력</div>'
-  +'<div class="dirc-bio">'+DIR_CAR.map(function(x){
-     return '<div class="bi"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>';}).join('')+'</div>'
-  +'</div></details>'
-  +'<p class="dirc-t">"저는 <b>어디서 막혔는지 찾아 드립니다.</b> '
-  +'점수가 왜 안 오르는지, 유학은 어떻게 준비하는지 — <b>토익 · 토플 · 유학 · 과외 · 기업 출강</b> 상담은 모두 제가 직접 받습니다."</p>'
-  +'<div class="dirc-g">'
-   +'<a class="dirc-a" href="tel:0314666969">📞 031-466-6969</a>'
-   +'<a class="dirc-a s" href="#" onclick="openPage(\'무료청강\');return false;">상담 예약</a>'
-  +'</div>'
- +'</div></div>';}
+function dirCard(){return '';} /* 2026-11-17 대표님 「제이영 전부 삭제」 — 전 원장 약력 카드·사진 삭제 */
 
 /* 혜택 모음 — 1대1상담 창과 상호변경 안내 창 공용 (2026-09-01 대표님: "가격은 내리고 혜택은 올리고") */
 function benAllHTML(){
