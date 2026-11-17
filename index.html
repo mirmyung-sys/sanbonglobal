@@ -24562,7 +24562,7 @@ try{ PAGES['AI예상문제']=aiqPage; PAGES['AI문제풀이예상문제']=aiqPag
   while(n=w.nextNode()){var p=n.parentElement;if(!p||p.closest(KEEP)||p.closest('script,style,noscript'))continue;if(RX.test(n.nodeValue))hit.push(p);}
   hit.forEach(function(p){var e=p;
    // 짧은 금액 줄은 그 줄(블록) 통째로, 긴 문단은 그 요소만
-   while(e.parentElement&&e.parentElement!==document.body&&(e.parentElement.innerText||'').length<60&&!e.parentElement.closest(KEEP))e=e.parentElement;
+   var own=(e.textContent||'').trim().length;while(e.parentElement&&e.parentElement!==document.body&&((e.parentElement.textContent||'').trim().length<=own+6)&&!e.parentElement.closest(KEEP))e=e.parentElement;
    e.classList.add('np-hide');});
  }
  function run(){try{scan(document.body);document.querySelectorAll('.sp-buy').forEach(function(b){if(b.textContent!=='데스크 상담 신청')b.textContent='데스크 상담 신청';});}catch(e){}}
