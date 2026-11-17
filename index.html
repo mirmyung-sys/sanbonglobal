@@ -6117,6 +6117,7 @@ function noticeOpen(id){
  if(!n) return;
  sgaHit(id);
  _sgSub(noticeView(n));
+ try{setTimeout(function(){SGA_HITS=null;sgaHitsLoad(function(){document.querySelectorAll('.nt-binfo .nt-hit').forEach(function(e){e.textContent=_hitTxt(e.getAttribute('data-id'));});});},900);}catch(e){}
 }
 /* 2026-10-17 대표님 「모든 공지사항은 제미나이로 이미지 만들어서 이미지로 글을 남겨 · 공지사항란 전부 카드뉴스 사진」
    카드 = 1080×1350 (그림: 제미나이 나노바나나 · 글·강사 사진: 직접 얹음). 글은 아래 「글로 읽기」에 그대로 둡니다(검색·낭독용). */
@@ -6128,7 +6129,7 @@ function noticeView(n){
  return H('NOTICE','공지사항','','📢')
   +'<div class="nt-view'+(cd?(NT_CARDS[n.id].length>1?' hc hm':' hc'):'')+'">'
   +'<div class="nt-vhead"><span class="nt-tag nt-'+n.tag+'">'+n.tag+'</span><h3>'+n.t+'</h3>'
-  +'<div class="nt-vmeta">'+n.d+' · 조회 '+_hitTxt(n.id)+'</div></div>'
+  +'</div><div class="nt-binfo"><span><b>작성자</b>산본글로벌어학원</span><span><b>등록일</b>'+n.d+'</span><span><b>조회수</b><em class="nt-hit" data-id="'+n.id+'">'+_hitTxt(n.id)+'</em></span></div>'
   +cd
   +'<div class="nt-body">'+n.b+'</div>'   /* 2026-10-17 대표님 「그냥 사진 나오고 밑에 전부 글도」 — 접기 없음 */
   +(n.act?('<a class="pgcta" href="#" onclick="'+n.act+';return false;">'+(n.actLabel||'자세히 보기')+' ›</a>'):'')
@@ -23093,7 +23094,7 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
  }
 
  /* 공지 카드 여러 장 → 한 장씩 넘기기 */
- function car(){document.querySelectorAll('.nt-view .nt-cards:not(.sl-car)').forEach(function(c){var imgs=c.querySelectorAll('img');if(imgs.length<2)return;c.classList.add('sl-car');
+ function car(){return; /* 2026-11-17 대표님 「스크롤하면서 정보전달 · 꽉 찬 화면」(금정이지 공지 캡처) — 옆 넘기기 폐지, 세로로 쌓기 */ document.querySelectorAll('.nt-view .nt-cards:not(.sl-car)').forEach(function(c){var imgs=c.querySelectorAll('img');if(imgs.length<2)return;c.classList.add('sl-car');
   var w=document.createElement('div');w.className='sl-carwrap';c.parentNode.insertBefore(w,c);w.appendChild(c);
   var nv=document.createElement('div');nv.className='sl-carnav';nv.innerHTML='<button type="button" aria-label="이전">‹</button><span>1 / '+imgs.length+'</span><button type="button" aria-label="다음">›</button>';w.appendChild(nv);
   var bs=nv.querySelectorAll('button'),sp=nv.querySelector('span');
@@ -24570,5 +24571,17 @@ try{ PAGES['AI예상문제']=aiqPage; PAGES['AI문제풀이예상문제']=aiqPag
  var t;new MutationObserver(function(){clearTimeout(t);t=setTimeout(run,120);}).observe(document.documentElement,{childList:true,subtree:true,characterData:true});
 })();
 </script>
+<style id="ntScrollCss">
+/* 2026-11-17 대표님 「직관적이고 스크롤하면서 정보전달 · 꽉 찬 화면으로」 — 금정이지 공지 형식: 정보줄(작성자·등록일·조회수) + 카드 전부 세로로 꽉 차게 */
+.nt-binfo{display:flex;flex-wrap:wrap;gap:6px 22px;border-top:2px solid #3a2a2e;border-bottom:1px solid #E6DCCF;padding:11px 4px;margin:10px 0 0;font-size:13.5px;color:#4a3f42}
+.nt-binfo span{display:inline-flex;gap:8px;align-items:center}
+.nt-binfo b{color:#8a7f82;font-weight:700}
+.nt-binfo em{font-style:normal;font-weight:900;color:#7B1733}
+.nt-view.hc,.nt-view.hm{display:block!important;max-width:880px;margin:0 auto}
+.nt-view .nt-cards{display:flex!important;flex-direction:column!important;gap:0!important;align-items:stretch!important;margin:18px 0 0!important;position:static!important}
+.nt-view .nt-cards img{width:100%!important;max-width:100%!important;border-radius:0!important;box-shadow:none!important;margin:0!important}
+.nt-view.hc>.nt-body,.nt-view.hm>.nt-body{max-width:880px!important;margin:22px auto 0!important;font-size:17px;line-height:1.85;padding-top:0!important}
+@media(max-width:600px){.nt-view .nt-cards{margin-left:-16px!important;margin-right:-16px!important}.nt-binfo{font-size:12.5px;gap:4px 14px}}
+</style>
 </body>
 </html>
