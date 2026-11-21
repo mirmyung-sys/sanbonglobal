@@ -12464,6 +12464,7 @@ var SGA_LVNM=['BASIC','STEP1','STEP2','STEP3'];
 function sgaGrants(){ var R={lang:{},ex:{}};
  try{ if(!localStorage.getItem('sga_sid')) return R;
   (localStorage.getItem('sga_g')||'').split(',').forEach(function(t){ t=String(t||'').trim(); if(!t) return;
+   if(t==='all'){ R.all=true; return; } /* 2026-11-21 대표님 「명부에 이름·폰번호 맞으면 모든 창 열리도록」 */
    var m=t.match(/^(eng|jpn|chn|kor)(\d?)$/);
    if(m){ var lv=m[2]===''?0:+m[2]; if(!(m[1] in R.lang)||R.lang[m[1]]<lv) R.lang[m[1]]=lv; return; }
    var e=t.split('@'); if(SGA_SUBJ[e[0]]) R.ex[e[0]]=e[1]||''; });
@@ -12473,11 +12474,12 @@ function sgaSubjOpen(sj){ /* 책 키(eng_mid)나 과정 id(eng·toeicB)를 받�
  /* (폐지) 2026-10-16 「회원분들에게는 전부 무료」 */
  /* 2026-10-19 대표님 「회원가입만 하면 무료가 아니라 회원 가입후 학원등록생들에게 전부 무료 · 일반 회원가입자는 1강 맛보기만」 → 로그인=전부 열림 폐지. 명부 확인(개인코드·이름+뒤4자리)된 과정만 */
  var G=sgaGrants(), k=sj||'';
+ if(G.all) return true;
  for(var L in SGA_LADDER){ var i=SGA_LADDER[L].indexOf(k); if(i>=0) return (L in G.lang)&&G.lang[L]>=i; if(k===L) return (L in G.lang); }
  for(var id in G.ex){ if(id===k) return true; if(SGA_SUBJ[id]&&SGA_SUBJ[id].b.indexOf(k)>=0) return true; }
  return false; }
 /* ── 2026-09-30 v3 · 명부 확인 과정 + 한 아이디 한 기기 ── */
-function sgaGrantHas(id){ var G=sgaGrants(); return (id in G.lang)||(id in G.ex); }
+function sgaGrantHas(id){ var G=sgaGrants(); return !!G.all||(id in G.lang)||(id in G.ex); }
 function _sgaSrv(qs,cb){ try{ fetch(SGA_AUTH+'?'+qs,{method:'GET',credentials:'omit'}).then(function(r){return r.json();}).then(cb).catch(function(){}); }catch(e){} }
 function sgaKick(){
  try{ ['sga_token','sga_name','sga_sid','sga_g'].forEach(function(k){localStorage.removeItem(k);}); }catch(e){}
@@ -12575,7 +12577,7 @@ function aiLockShow(n){
   +(function(){ var li=false; try{ li=!!(localStorage.getItem('sga_token')&&localStorage.getItem('sga_sid')); }catch(e){}
     return '<div style="max-width:420px;margin:4px auto 10px;padding:12px 12px 10px;border:1.5px solid #E7D8C8;border-radius:14px;background:#FFFBF5;text-align:left">'
      +'<b style="display:block;font-size:15px;font-weight:900;color:#1A1A18;margin-bottom:6px">학원 수강생이세요? 개인코드로 열기</b>'
-     +(li?('<div style="display:flex;gap:6px;margin-bottom:6px"><span style="flex:none;display:flex;align-items:center;height:50px;box-sizing:border-box;padding:0 10px;border:2px solid #D9C9B0;border-radius:10px;background:#F3EBDD;font-size:18px;font-weight:900;color:#5B1026;font-family:ui-monospace,Menlo,Consolas,monospace">SGA-</span><input id="aiPc" placeholder="숫자 4자리" inputmode="numeric" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="9" style="flex:1 1 0;width:0;min-width:0;margin:0;box-sizing:border-box;height:50px;border:2px solid #D9C9B0;border-radius:10px;padding:0 10px;font-size:18px;font-weight:900;letter-spacing:1px;font-family:ui-monospace,Menlo,Consolas,monospace;text-transform:uppercase">'+'<button type="button" onclick="aiRedeem('+n+')" style="margin:0;flex:none;height:50px;padding:0 16px;border:0;border-radius:10px;background:#0e8a5a;color:#fff;font-size:16px;font-weight:900;cursor:pointer">열기</button></div>'+'<p id="aiPcErr" style="display:none;color:#C81F2B;font-weight:800;font-size:13.5px;margin:0 0 6px"></p>'+'<details style="margin-top:2px"><summary style="cursor:pointer;font-size:13px;font-weight:800;color:#5A5750">코드를 아직 못 받으셨나요? 이름·휴대폰으로 확인</summary><div style="margin-top:6px">'+'<div style="display:flex;gap:6px"><input id="aiVfNm" placeholder="이름" autocomplete="name" style="flex:1.2 1 0;width:0;min-width:0;margin:0;box-sizing:border-box;height:46px;border:2px solid #D9C9B0;border-radius:10px;padding:0 10px;font-size:16px;font-weight:800">'
+     +(li?('<div style="display:flex;gap:6px;margin-bottom:6px"><span style="flex:none;display:flex;align-items:center;height:50px;box-sizing:border-box;padding:0 10px;border:2px solid #D9C9B0;border-radius:10px;background:#F3EBDD;font-size:18px;font-weight:900;color:#5B1026;font-family:ui-monospace,Menlo,Consolas,monospace">SGA-</span><input id="aiPc" placeholder="숫자 4자리" inputmode="numeric" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="9" style="flex:1 1 0;width:0;min-width:0;margin:0;box-sizing:border-box;height:50px;border:2px solid #D9C9B0;border-radius:10px;padding:0 10px;font-size:18px;font-weight:900;letter-spacing:1px;font-family:ui-monospace,Menlo,Consolas,monospace;text-transform:uppercase">'+'<button type="button" onclick="aiRedeem('+n+')" style="margin:0;flex:none;height:50px;padding:0 16px;border:0;border-radius:10px;background:#0e8a5a;color:#fff;font-size:16px;font-weight:900;cursor:pointer">열기</button></div>'+'<p id="aiPcErr" style="display:none;color:#C81F2B;font-weight:800;font-size:13.5px;margin:0 0 6px"></p>'+'<details open style="margin-top:2px"><summary style="cursor:pointer;font-size:13px;font-weight:800;color:#5A5750">코드 없이 이름·휴대폰 뒤 4자리로 바로 열기</summary><div style="margin-top:6px">'+'<div style="display:flex;gap:6px"><input id="aiVfNm" placeholder="이름" autocomplete="name" style="flex:1.2 1 0;width:0;min-width:0;margin:0;box-sizing:border-box;height:46px;border:2px solid #D9C9B0;border-radius:10px;padding:0 10px;font-size:16px;font-weight:800">'
         +'<input id="aiVfP4" inputmode="numeric" maxlength="4" placeholder="폰 뒤 4자리" style="flex:1 1 0;width:0;min-width:0;margin:0;box-sizing:border-box;height:46px;border:2px solid #D9C9B0;border-radius:10px;padding:0 8px;font-size:15px;font-weight:800;text-align:center">'
         +'<button type="button" onclick="aiVerify('+n+')" style="margin:0;flex:none;height:46px;padding:0 14px;border:0;border-radius:10px;background:#0e8a5a;color:#fff;font-size:15px;font-weight:900;cursor:pointer;width:auto;max-width:none">확인</button></div>'
         +'<p id="aiVfErr" style="display:none;color:#C81F2B;font-weight:800;font-size:13.5px;margin:6px 0 0"></p></div></details>')
