@@ -22,7 +22,7 @@ var CSS='.gx{display:flex;flex-direction:column;gap:10px;margin-top:14px}'+
 '.gx-ov h1{font-size:26px;color:var(--w,#701428);margin:6px 2px 0;line-height:1.3}.gx-ov .sub{color:var(--sub,#6B5A4E);font-size:14px;margin:0 2px}'+
 '.gx-ov .card{margin:0}'+'.gx-pick{grid-template-columns:1fr 1fr!important;gap:10px}.gx-pick button{padding:18px 6px;font-size:17px}.gx-pick button small{font-size:12px}'+
 '.gx-close{position:fixed;left:50%;transform:translateX(-50%);bottom:22px;z-index:2147483001;width:72px;height:72px;border-radius:50%;border:0;background:#F5C518;color:#4E0E21;font:900 15px/1 inherit;box-shadow:0 6px 18px rgba(78,14,33,.35);cursor:pointer;display:none}'+
-'.gx-ov.open~.gx-close{display:block}'+
+'.gx-ov.open~.gx-close{display:block}'+'html.gx-open [id$="Pop"],html.gx-open #sgPromo,html.gx-open #sgShop,html.gx-open #sgVid{display:none!important}'+
 '@media(min-width:900px){.gx-ov .in{max-width:900px}.gx-grid{grid-template-columns:repeat(5,1fr)}.gx-wide{grid-column:1/-1}}';
 function lv(a){return '<div class="gx">'+a.map(function(x){return '<div class="gx-row gx-lv"><div class="n">'+x[0]+'</div><div class="m">'+x[1]+'</div><div class="tag">'+(x[3]?'<i>'+x[3]+'</i>':'')+x[2]+'</div><ul>'+x[4].map(function(l){return '<li>'+l+'</li>'}).join('')+'</ul></div>'}).join('')+'</div>'}
 function tb(h,r){return '<table class="gx-tb"><tr><th>'+h[0]+'</th><th>'+h[1]+'</th></tr>'+r.map(function(x){return '<tr><td>'+x[0]+'</td><td>'+x[1]+'</td></tr>'}).join('')+'</table>'}
@@ -100,12 +100,12 @@ function init(){
  if(visit){var o=visit.querySelector('.others');var box=document.createElement('div');box.innerHTML='<p class="lead" style="margin-top:14px"><b>다른 과정도 이렇게 진행돼요</b> — 눌러서 보세요</p>'+gridHTML(page);if(o)o.replaceWith(box);else visit.querySelector('.pad').appendChild(box);}
  var ov=document.createElement('div');ov.className='gx-ov';ov.innerHTML='<div class="in"></div>';var cl=document.createElement('button');cl.className='gx-close';cl.type='button';cl.textContent='닫기';
  document.body.appendChild(ov);document.body.appendChild(cl);
- function open(k){ov.querySelector('.in').innerHTML='<h1>'+G[k].t+', 이렇게 진행돼요</h1><p class="sub">'+G[k].e+' · 산본글로벌어학원</p>'+cardsHTML(k)+gridHTML(k);ov.scrollTop=0;ov.classList.add('open');document.documentElement.style.overflow='hidden';try{history.pushState({gx:k},'')}catch(e){}}
- function close(){ov.classList.remove('open');document.documentElement.style.overflow=''}
+ function open(k){ov.querySelector('.in').innerHTML='<h1>'+G[k].t+', 이렇게 진행돼요</h1><p class="sub">'+G[k].e+' · 산본글로벌어학원</p>'+cardsHTML(k)+gridHTML(k);ov.scrollTop=0;ov.classList.add('open');document.documentElement.style.overflow='hidden';document.documentElement.classList.add('gx-open');try{history.pushState({gx:k},'')}catch(e){}}
+ function close(){ov.classList.remove('open');document.documentElement.style.overflow='';document.documentElement.classList.remove('gx-open')}
  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-g]');if(b){e.preventDefault();open(b.getAttribute('data-g'))}});
  cl.addEventListener('click',function(){close();try{if(history.state&&history.state.gx)history.back()}catch(e){}});
  window.addEventListener('popstate',function(){if(ov.classList.contains('open'))close()});
- function picker(){ov.querySelector('.in').innerHTML='<h1>어떤 과정이 궁금하세요?</h1><p class="sub">원하는 과목을 누르면 「이렇게 진행돼요」가 열려요</p><section class="card"><div class="pad">'+gridHTML(null).replace('gx-grid','gx-grid gx-pick')+'</div></section>';ov.scrollTop=0;ov.classList.add('open');document.documentElement.style.overflow='hidden';try{history.pushState({gx:'pick'},'')}catch(e){}}
+ function picker(){ov.querySelector('.in').innerHTML='<h1>어떤 과정이 궁금하세요?</h1><p class="sub">원하는 과목을 누르면 「이렇게 진행돼요」가 열려요</p><section class="card"><div class="pad">'+gridHTML(null).replace('gx-grid','gx-grid gx-pick')+'</div></section>';ov.scrollTop=0;ov.classList.add('open');document.documentElement.style.overflow='hidden';document.documentElement.classList.add('gx-open');try{history.pushState({gx:'pick'},'')}catch(e){}}
  window.SGA_GUIDE={open:open,close:close,picker:picker};
 }
 if(document.readyState=='loading')document.addEventListener('DOMContentLoaded',init);else init();
