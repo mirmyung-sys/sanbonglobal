@@ -6,6 +6,7 @@ function rp(m){return /^개월/.test(m)?'개월 '+MSG:MSG}
 var SKIP={SCRIPT:1,STYLE:1,TEXTAREA:1,INPUT:1,SELECT:1,OPTION:1,NOSCRIPT:1};
 function fix(node){
  if(node.nodeType===3){var v=node.nodeValue,o=v;if(!/[0-9]/.test(v))return;RE.forEach(function(r){v=v.replace(r,rp)});
+  var tail=/([0-9]{1,3}(,[0-9]{3})+|[0-9]+\s*만)\s*$/;if(tail.test(v)){var nx=node.nextSibling,pn=null;if(!nx&&node.parentNode&&node.parentNode!==document.body){pn=node.parentNode.nextSibling}var tg=nx||pn;if(tg&&/^\s*원/.test(tg.textContent||'')){v=v.replace(tail,MSG);if(tg.nodeType===3)tg.nodeValue=tg.nodeValue.replace(/^\s*원(대|꼴)?/,'');else if(tg.firstChild&&tg.firstChild.nodeType===3)tg.firstChild.nodeValue=tg.firstChild.nodeValue.replace(/^\s*원(대|꼴)?/,'');else tg.textContent=tg.textContent.replace(/^\s*원(대|꼴)?/,'')}}
   v=v.replace(new RegExp('('+MSG+')(\\s*(→|->|~|/|·)\\s*'+MSG+')+','g'),MSG);if(v!==o)node.nodeValue=v;return}
  if(node.nodeType!==1||SKIP[node.tagName])return;
  if((node.tagName==='S'||node.tagName==='DEL'||node.tagName==='STRIKE')&&/[0-9],[0-9]{3}|만/.test(node.textContent)){node.style.display='none';return}
