@@ -17,11 +17,11 @@ var CSS='.gx{display:flex;flex-direction:column;gap:10px;margin-top:14px}'+
 '.gx-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0 4px}'+
 '.gx-grid button{border:1px solid var(--line,#EBDCC0);background:#fff;border-radius:14px;padding:12px 4px;font:inherit;font-weight:900;font-size:14px;color:var(--w,#701428);cursor:pointer;line-height:1.3}.gx-grid button small{display:block;font-weight:700;font-size:11px;color:var(--sub,#6B5A4E)}'+
 '.gx-grid button.on{background:var(--w,#701428);color:#fff}.gx-grid button.on small{color:#f3dcc0}'+
-'.gx-ov{position:fixed;inset:0;z-index:100;background:var(--c,#F8F0DC);overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}'+
+'.gx-ov{position:fixed;inset:0;z-index:2147483000;background:var(--c,#F8F0DC);overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}'+
 '.gx-ov.open{display:block}.gx-ov .in{max-width:720px;margin:0 auto;padding:18px 14px 130px;display:flex;flex-direction:column;gap:14px}'+
 '.gx-ov h1{font-size:26px;color:var(--w,#701428);margin:6px 2px 0;line-height:1.3}.gx-ov .sub{color:var(--sub,#6B5A4E);font-size:14px;margin:0 2px}'+
-'.gx-ov .card{margin:0}'+
-'.gx-close{position:fixed;left:50%;transform:translateX(-50%);bottom:22px;z-index:101;width:72px;height:72px;border-radius:50%;border:0;background:#F5C518;color:#4E0E21;font:900 15px/1 inherit;box-shadow:0 6px 18px rgba(78,14,33,.35);cursor:pointer;display:none}'+
+'.gx-ov .card{margin:0}'+'.gx-pick{grid-template-columns:1fr 1fr!important;gap:10px}.gx-pick button{padding:18px 6px;font-size:17px}.gx-pick button small{font-size:12px}'+
+'.gx-close{position:fixed;left:50%;transform:translateX(-50%);bottom:22px;z-index:2147483001;width:72px;height:72px;border-radius:50%;border:0;background:#F5C518;color:#4E0E21;font:900 15px/1 inherit;box-shadow:0 6px 18px rgba(78,14,33,.35);cursor:pointer;display:none}'+
 '.gx-ov.open~.gx-close{display:block}'+
 '@media(min-width:900px){.gx-ov .in{max-width:900px}.gx-grid{grid-template-columns:repeat(5,1fr)}.gx-wide{grid-column:1/-1}}';
 function lv(a){return '<div class="gx">'+a.map(function(x){return '<div class="gx-row gx-lv"><div class="n">'+x[0]+'</div><div class="m">'+x[1]+'</div><div class="tag">'+(x[3]?'<i>'+x[3]+'</i>':'')+x[2]+'</div><ul>'+x[4].map(function(l){return '<li>'+l+'</li>'}).join('')+'</ul></div>'}).join('')+'</div>'}
@@ -105,7 +105,8 @@ function init(){
  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-g]');if(b){e.preventDefault();open(b.getAttribute('data-g'))}});
  cl.addEventListener('click',function(){close();try{if(history.state&&history.state.gx)history.back()}catch(e){}});
  window.addEventListener('popstate',function(){if(ov.classList.contains('open'))close()});
- window.SGA_GUIDE={open:open,close:close};
+ function picker(){ov.querySelector('.in').innerHTML='<h1>어떤 과정이 궁금하세요?</h1><p class="sub">원하는 과목을 누르면 「이렇게 진행돼요」가 열려요</p><section class="card"><div class="pad">'+gridHTML(null).replace('gx-grid','gx-grid gx-pick')+'</div></section>';ov.scrollTop=0;ov.classList.add('open');document.documentElement.style.overflow='hidden';try{history.pushState({gx:'pick'},'')}catch(e){}}
+ window.SGA_GUIDE={open:open,close:close,picker:picker};
 }
 if(document.readyState=='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
