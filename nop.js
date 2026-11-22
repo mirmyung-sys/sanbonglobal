@@ -7,18 +7,22 @@ function rp(m){return /^개월/.test(m)?'개월 '+MSG:MSG}
 var D='(월|화|수|목|금|토|일)(요일)?';
 var TM=new RegExp('('+D+'(\\s*[·~,/\\-]\\s*'+D+')*\\s*(매일\\s*)?)?((오전|오후|저녁|낮|밤)\\s*)?([01]?[0-9]|2[0-3]):[0-5][0-9](\\s*[~\\-–]\\s*([01]?[0-9]|2[0-3]):[0-5][0-9])?(\\s*\\(\\s*[0-9]+분\\s*\\))?','g');
 var DAYONLY=new RegExp('^\\s*'+D+'(\\s*[·~,/\\-]\\s*'+D+')*\\s*$');
-var HOURS=/수업\s*평일|데스크|운영\s*시간|휴무|첫 수업/;
+var HOURS=/수업\s*평일|수업\s*시간|데스크|운영\s*시간|휴무|첫 수업/;
 var TXT=[[/\s*·\s*시간표는 강의관에서 확인/g,''],[/강사·시간표/g,'강사'],[/과목별 담당 강사와 개강 시간표를/g,'과목별 담당 강사를'],[/\s*\(일부 시간표는 준비중입니다\)/g,''],[/\s*—\s*개설 시간표/g,' — 개설반'],[/개설 시간표 \(현재 개강반\)/g,'현재 개강반']];
 var TTLINK=/시간표\s*(보기|열기)|^\s*전체\s*시간표\s*$|^\s*강의시간표\s*$|^\s*전체\s*시간표\s*›?\s*$/;
+function tidy(v){var n=v.split(MSG).length-1;if(n<1)return v;v=v.replace(/\s*\(\s*상담 시 안내\s*\)/g,'');n=v.split(MSG).length-1;if(n<2)return v;
+ if(/[.。]/.test(v)){var ss=v.match(/[^.。]+[.。]?\s*/g)||[v],done=false,o2=[];ss.forEach(function(x){if(x.indexOf(MSG)>=0){if(!done){o2.push('수강료는 과정·기간에 따라 다르며 상담 시 안내해 드립니다. ');done=true}}else o2.push(x)});return o2.join('').replace(/\s+$/,'')}
+ return v.replace(new RegExp('\\s*'+MSG,'g'),'').replace(/\s*[,·]\s*$/,'')}
 var SKIP={SCRIPT:1,STYLE:1,TEXTAREA:1,INPUT:1,SELECT:1,OPTION:1,NOSCRIPT:1};
 function fix(node){
  if(node.nodeType===3){var v=node.nodeValue,o=v;TXT.forEach(function(t){v=v.replace(t[0],t[1])});var pe=node.parentNode;if(pe&&pe.closest&&pe.closest('[data-nop-keep]'))return;if(DAYONLY.test(v)&&pe&&pe.childNodes.length===1&&/^(TD|SPAN|B|DIV|LI|EM|I|SMALL|STRONG)$/.test(pe.tagName)){node.nodeValue='';return}if(!/[0-9]/.test(v)){if(v!==o)node.nodeValue=v;return}RE.forEach(function(r){v=v.replace(r,rp)});var hb=pe&&pe.parentNode?(pe.textContent+' '+(pe.parentNode.textContent||'').slice(0,400)):'';if(!HOURS.test(hb))v=v.replace(TM,MSG);
   var tail=/([0-9]{1,3}(,[0-9]{3})+|[0-9]+\s*만)\s*$/;if(tail.test(v)){var nx=node.nextSibling,pn=null;if(!nx&&node.parentNode&&node.parentNode!==document.body){pn=node.parentNode.nextSibling}var tg=nx||pn;if(tg&&/^\s*원/.test(tg.textContent||'')){v=v.replace(tail,MSG);if(tg.nodeType===3)tg.nodeValue=tg.nodeValue.replace(/^\s*원(대|꼴)?/,'');else if(tg.firstChild&&tg.firstChild.nodeType===3)tg.firstChild.nodeValue=tg.firstChild.nodeValue.replace(/^\s*원(대|꼴)?/,'');else tg.textContent=tg.textContent.replace(/^\s*원(대|꼴)?/,'')}}
-  v=v.replace(new RegExp('('+MSG+')(\\s*(→|->|~|/|·|,|\\||와|과)?\\s*'+MSG+')+','g'),MSG);if(v!==o)node.nodeValue=v;return}
+  v=v.replace(new RegExp('('+MSG+')(\\s*(→|->|~|/|·|,|\\||와|과)?\\s*'+MSG+')+','g'),MSG);v=tidy(v);if(v!==o)node.nodeValue=v;return}
  if(node.nodeType!==1||SKIP[node.tagName])return;
  if((node.tagName==='A'||node.tagName==='BUTTON')){var oc=node.getAttribute('onclick')||'';if(/openTT\(|전체시간표/.test(oc)||TTLINK.test(node.textContent)){node.style.display='none';return}}
  if((node.tagName==='S'||node.tagName==='DEL'||node.tagName==='STRIKE')&&/[0-9],[0-9]{3}|만/.test(node.textContent)){node.style.display='none';return}
- for(var c=node.firstChild;c;c=c.nextSibling)fix(c)}
+ for(var c=node.firstChild;c;c=c.nextSibling)fix(c);
+ if((node.tagName==='TD'||node.tagName==='LI')&&node.textContent.split(MSG).length>2&&node.textContent.length<90){node.textContent=MSG}}
 function consult(){try{if(typeof window.rsvOpen==='function'){window.rsvOpen();return}}catch(e){}location.href='tel:0314666969'}
 var BUY=['wkBuy','spPay','spOpenPay','spBuyItem','spBuyAmt','spBuy','persBuy','openBuy','oneBuy','dgPay','cartGo','cartAdd','btBuy','aiSoloBuy','aiBuy','sgaKorpay','sgaPayReady'];
 function lock(){if(typeof window.openTT==='function'&&!window.openTT.__nop){var t=function(){consult();return false};t.__nop=1;window.openTT=t}if(typeof window.openPage==='function'&&!window.openPage.__nop){var op=window.openPage;var w=function(k){if(/시간표/.test(String(k)))return consult();return op.apply(this,arguments)};w.__nop=1;window.openPage=w}BUY.forEach(function(n){if(typeof window[n]==='function'&&!window[n].__nop){var f=function(){consult();return false};f.__nop=1;window[n]=f}})}
