@@ -4981,6 +4981,19 @@ body:has(.amodal.open) #sgRail,body:has(#sgVid.on) #sgRail{display:none!importan
 <style>/* 2026-10-25 대표님 「11월 1+1 데이 … 환승만 남음」 — 11/1 0시(KST)부터 오픈이벤트 문구 자동 숨김, 1+1 데이 문구 자동 노출 */
 html.sg-nov .ev-oct{display:none!important}html:not(.sg-nov) .ev-nov{display:none!important}</style>
 <script>try{if(Date.now()>=Date.parse('2026-11-01T00:00:00+09:00'))document.documentElement.classList.add('sg-nov');}catch(e){}</script>
+<style id="bkIntroCss">
+.bk-intro{margin:10px 12px 4px;padding:16px 16px 14px;background:#FFF8EC;border:1px solid #EBDCC0;border-radius:16px;text-align:left}
+.bk-intro h3{margin:0;font-size:19px;line-height:1.35;font-weight:900;color:#701428;letter-spacing:-.4px;word-break:keep-all}
+.bk-intro .ld{margin:5px 0 10px;font-size:13.5px;font-weight:700;color:#8B5A3C;line-height:1.5;word-break:keep-all}
+.bk-intro .qa{padding:10px 0;border-top:1px dashed #E3D2B4}
+.bk-intro .qa b{display:block;font-size:15px;font-weight:900;color:#2B211C;margin-bottom:3px;word-break:keep-all}
+.bk-intro .qa b:before{content:'Q. ';color:#B3261E}
+.bk-intro .qa span{display:block;font-size:14.5px;line-height:1.65;color:#4A3A30;font-weight:500;word-break:keep-all}
+.bk-intro .go{display:flex;gap:8px;margin-top:12px}
+.bk-intro .go button{flex:1;border:0;border-radius:12px;padding:12px 6px;font-size:14.5px;font-weight:900;background:#701428;color:#fff;cursor:pointer;font-family:inherit}
+.bk-intro .go button.g2{flex:0 0 34%;background:#fff;color:#701428;border:1.5px solid #701428}
+@media(min-width:900px){.bk-intro{max-width:860px;margin:14px auto 6px;padding:22px 26px}.bk-intro h3{font-size:23px}.bk-intro .qa span{font-size:15.5px}}
+</style>
 </head>
 <body>
 <!-- ══ 상호 변경 안내 맨 위 띠 (2026-11-15 대표님 「맨 위에 크게」) ══ -->
@@ -23307,6 +23320,39 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
  function book(b){return '<button type="button" class="bk-book" style="--bc:'+b.c[0]+';--bg:'+b.c[1]+'" onclick="'+b.go+'">'
   +'<div class="bk-cv'+((b.ph||[]).filter(Boolean).length?' ph':'')+'">'+faces(b.ph)+'<span class="bk-sh"></span>'+(b.rib?'<span class="bk-rib">'+esc(b.rib)+'</span>':'')+'<span class="lb">'+esc(b.lb)+'</span><span class="tt">'+esc(b.main)+(b.sub?'<small>'+esc(b.sub)+'</small>':'')+'</span></div>'
   +'<div class="bk-in">'+(Array.isArray(b.tm)?('<div class="tm tl">'+b.tm.map(function(x){return '<i>'+esc(x||'\u00a0')+'</i>';}).join('')+'</div>'):('<div class="tm">'+esc(b.tm)+(b.teach?'<br>'+esc(b.teach):'')+'</div>'))+'<div class="pr'+(b.ask?' ask':'')+'">'+(b.pr||'수강료 상담 안내')+'</div></div></button>';}
+
+ /* 2026-11-23 대표님 「글자만 딱딱 써있더만 … 사람이 읽게끔, 읽으면서 정보를 얻어서 들을 만하게끔」 — 과목 탭 맨 위 읽는 안내글 */
+ var BKINTRO={
+  '토익':{h:'토익, 한 달이면 책 한 바퀴를 끝냅니다',l:'송윤정 엘리킴 김현정 쓰리스타 강사진으로 토익을 정복하다',q:[
+   ['처음인데 어디서부터 하나요','초급 → 중급 → 실전 순서로 올라갑니다. 초급은 기출 입문서로 LC·RC를 처음부터 한 번 끝내고, 중급은 기출 종합서로 유형을 잡고, 실전은 공식문제집과 1000제로 시험처럼 풉니다.'],
+   ['빨리 끝내고 싶어요','스파르타반입니다. 월요일부터 금요일까지 매일 2시간, 한 달 18번 수업으로 LC·RC 책을 한 달에 끝냅니다.'],
+   ['퇴근하고 다니고 싶어요','정규반입니다. 저녁 7시 30분, 일주일에 두 번. 같은 책을 두 달에 나눠 끝냅니다. 실전반은 토요일 오전 10시부터 오후 1시까지입니다.'],
+   ['달 중간에 시작해도 되나요','됩니다. 등록한 날이 1일차입니다. 놓친 수업은 다음에 열리는 같은 단계 반에서 그 횟수만큼 그대로 들으실 수 있어요.'],
+   ['시험 응시료도 지원되나요','5+1달 과정으로 등록하시면 지원해 드립니다. 시험을 보고 성적이 나온 뒤, 네이버 리뷰와 수강후기를 작성해 주신 것을 확인한 후 지급해 드려요.'],
+   ['토익 다음은요','토익 후 오픽 토스까지 이어집니다. 주중 스파르타 토익도 주말 오픽 토스는 개설된 반 한해서 진행됩니다.']]},
+  '영어회화':{h:'영어회화, 입문부터 원어민 선생님과 말합니다',l:'교재 한 권을 두 달에, 내 속도에 맞는 반에서',q:[
+   ['영어를 한마디도 못 해요','BASIC반부터 시작하시면 됩니다. BASIC → STEP1 → STEP2 → STEP3 → STEP4 순서로 올라가고, 원어민 선생님이 입문부터 고급까지 어느 단계든 직접 수업합니다.'],
+   ['수업은 어떻게 나가나요','교재 한 권을 두 달에 나눠 나갑니다. 첫 달에는 홀수 과, 다음 달에는 짝수 과를 배웁니다.'],
+   ['시간이 맞을까요','오전반은 10시와 11시 40분, 저녁반은 6시 20분과 8시에 시작합니다. 출근 전에 듣는 새벽반은 화·수·목 아침 6시 30분입니다.'],
+   ['달 중간에 시작해도 되나요','됩니다. 등록한 날이 1일차입니다. 놓친 수업은 다음에 열리는 같은 단계 반에서 그 횟수만큼 그대로 들으실 수 있어요.'],
+   ['내 반이 어디인지 모르겠어요','레벨테스트를 먼저 받아 보세요. 그리고 등록 전에 원하는 반 첫 수업을 무료로 들어 보실 수 있습니다.']]},
+  '일본어회화':{h:'일본어회화, 입문부터 원어민반까지 한 곳에서',l:'평일 저녁 · 토요일 오전 · 출근 전 새벽',q:[
+   ['일본어가 처음이에요','입문반부터 시작하시면 됩니다. 입문 → 초급 → 초중급 → 중급 → 원어민반 순서로 올라갑니다.'],
+   ['원어민 선생님께 배우고 싶어요','토요일 오전 입문반과 평일 저녁 원어민반, 화·수·목 아침 6시 30분 새벽반을 원어민 선생님이 맡습니다.'],
+   ['시간이 맞을까요','평일 저녁반은 6시 20분과 8시에 시작하고, 토요일반은 오전 10시부터 오후 1시까지입니다.'],
+   ['JLPT도 같이 준비하고 싶어요','JLPT 탭에서 주중반 · 주말반 · JLPT와 회화를 같이 듣는 반을 모집하고 있습니다. 데스크에 말씀해 주시면 맞는 반으로 안내해 드려요.'],
+   ['들어 보고 정해도 되나요','등록 전에 원하는 반 첫 수업을 무료로 들어 보실 수 있습니다.']]},
+  '중국어회화':{h:'중국어회화, 입문부터 고급까지 단계별로',l:'평일 저녁 · 토요일 오전 · 출근 전 새벽',q:[
+   ['중국어가 처음이에요','입문반부터 시작하시면 됩니다. 입문 → 초중급 → 중급 → 중고급 → 고급 순서로 올라갑니다.'],
+   ['원어민 선생님께 배우고 싶어요','토요일 고급반은 원어민 선생님이 맡습니다. 어느 반이 맞을지는 데스크에서 같이 정해 드려요.'],
+   ['시간이 맞을까요','평일 저녁반은 6시 20분부터 8시 30분 사이에 시작하고, 토요일반은 오전 10시부터 오후 1시까지입니다. 새벽반은 화·수·목 아침 6시 30분입니다.'],
+   ['HSK도 같이 준비하고 싶어요','HSK 탭에서 3·4급 · 5·6급 · 토요반 · HSK와 회화를 같이 듣는 반을 모집하고 있습니다.'],
+   ['들어 보고 정해도 되나요','등록 전에 원하는 반 첫 수업을 무료로 들어 보실 수 있습니다.']]}
+ };
+ function bkIntro(k){var I=BKINTRO[k];if(!I)return '';
+  return '<div class="bk-intro"><h3>'+esc(I.h)+'</h3><p class="ld">'+esc(I.l)+'</p>'
+   +I.q.map(function(x){return '<div class="qa"><b>'+esc(x[0])+'</b><span>'+esc(x[1])+'</span></div>';}).join('')
+   +'<div class="go"><button type="button" onclick="openPage(\'무료청강\')">첫 수업 무료로 들어 보기</button><button type="button" class="g2" onclick="openPage(\'레벨테스트\')">레벨테스트</button></div></div>';}
  window.bkStore=function(cat){
   if(cat)window._bkCat=cat;var cur=window._bkCat;var C=null;CAT.forEach(function(x){if(x.k===cur)C=x;});if(!C)C=CAT[0];
   var tabs=CAT.map(function(x){return '<button type="button" class="'+(x.k===C.k?'on':'')+'" onclick="bkGo(\''+x.k+'\')">'+x.k+'</button>';}).join('');
@@ -23317,7 +23363,7 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
   if(C.t==='pg')body='<div class="bk-grid">'+book({c:COL.etc,lb:'1:1 개인레슨',main:'일대일 (시간권)',sub:'10·20시간',tm:'요일·시간 자유',pr:'시간당 5~6.5만',ph:['../../t_cody','eng_13','eng_5'],teach:'',rib:'',go:"openPage('맞춤수업')"})+book({c:COL.etc,lb:'1:1 개인레슨',main:'퍼스널 (고정)',sub:'주 2회 50분 · 주 1회 80분',tm:'2개월',pr:'48만',ph:['eng_14'],teach:'',rib:'',go:"openPage('맞춤수업')"})+book({c:COL.etc,lb:'1:1 개인레슨',main:'시험일 맞춤 단기집중',sub:'',tm:'시험 날짜에 맞춰',pr:'',ask:1,ph:['eng_13'],teach:'',rib:'',go:"openPage('맞춤수업')"})+'</div>';
   if(C.t==='biz')body='<div class="bk-grid">'+book({c:['#4A3A30','linear-gradient(150deg,#5A4A3E,#3A2C24)'],lb:'회사로 강사가 갑니다',main:'기업체 출강',sub:'영어 · 일본어 · 중국어',tm:'인원·횟수에 맞춰 견적',pr:'',ask:1,ph:['eng_14','eng_5','eng_15'],teach:'',rib:'',go:"location.href='https://globalchulgang.com/'"})+book({c:['#4A3A30','linear-gradient(150deg,#5A4A3E,#3A2C24)'],lb:'임원 1:1',main:'임원 1:1 출강',sub:'사무실 방문 · 화상',tm:'요일·시간 맞춤',pr:'',ask:1,ph:['../../t_cody'],teach:'',rib:'',go:"openPage('임원강의')"})+'</div>';
   return '<div class="bk"><div class="bk-hd"><h2>수강신청</h2><p>과목 → 반 고르고, 데스크에서 바로 상담</p></div>'
-   +'<div class="bk-tabs" id="bkTabs">'+tabs+'</div>'
+   +'<div class="bk-tabs" id="bkTabs">'+tabs+'</div>'+bkIntro(C.k)
    +'<div class="bk-shelf"><div class="bk-sh-t"><b>'+esc(C.k)+' 책방</b><span>'+(L.length?L.length+'개 반':'')+'</span></div>'+body
    +'<div class="bk-note">반을 누르면 선생님 · 시간 · 달력이 한 화면에 나옵니다</div>'
    +'<div class="bk-call"><a class="c1" href="tel:0314666969">📞 031-466-6969</a><a class="c2" href="https://pf.kakao.com/_xbxkCFX/chat" target="_blank" rel="noopener">💬 카카오톡</a></div></div></div>';
