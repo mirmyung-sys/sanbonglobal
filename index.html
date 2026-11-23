@@ -4982,17 +4982,26 @@ body:has(.amodal.open) #sgRail,body:has(#sgVid.on) #sgRail{display:none!importan
 html.sg-nov .ev-oct{display:none!important}html:not(.sg-nov) .ev-nov{display:none!important}</style>
 <script>try{if(Date.now()>=Date.parse('2026-11-01T00:00:00+09:00'))document.documentElement.classList.add('sg-nov');}catch(e){}</script>
 <style id="bkIntroCss">
-.bk-intro{margin:10px 12px 4px;padding:16px 16px 14px;background:#FFF8EC;border:1px solid #EBDCC0;border-radius:16px;text-align:left}
-.bk-intro h3{margin:0;font-size:19px;line-height:1.35;font-weight:900;color:#701428;letter-spacing:-.4px;word-break:keep-all}
-.bk-intro .ld{margin:5px 0 10px;font-size:13.5px;font-weight:700;color:#8B5A3C;line-height:1.5;word-break:keep-all}
-.bk-intro .qa{padding:10px 0;border-top:1px dashed #E3D2B4}
-.bk-intro .qa b{display:block;font-size:15px;font-weight:900;color:#2B211C;margin-bottom:3px;word-break:keep-all}
-.bk-intro .qa b:before{content:'Q. ';color:#B3261E}
-.bk-intro .qa span{display:block;font-size:14.5px;line-height:1.65;color:#4A3A30;font-weight:500;word-break:keep-all}
+.bk-intro{margin:10px 12px 4px;padding:16px 14px 14px;background:#FFF8EC;border:1px solid #EBDCC0;border-radius:16px;text-align:left}
+.bk-intro h3{margin:0;font-size:20px;line-height:1.35;font-weight:900;color:#701428;letter-spacing:-.5px;word-break:keep-all}
+.bk-intro .ld{margin:5px 0 12px;font-size:14px;font-weight:800;color:#B3261E;line-height:1.5;word-break:keep-all}
+.bk-intro .hero{display:block;width:100%;border-radius:12px;margin:0 0 12px}
+.bk-intro .cv{background:#fff;border:1px solid #EBDCC0;border-radius:12px;padding:12px 14px;margin:0 0 12px}
+.bk-intro .cv b{display:block;font-size:15.5px;font-weight:900;color:#701428;margin-bottom:6px}
+.bk-intro .cv ul{margin:0;padding-left:18px}.bk-intro .cv li{font-size:13.5px!important;line-height:1.6!important;margin:0!important;color:#3A2E27;font-weight:600;word-break:keep-all}
+.bk-intro .tch{display:grid;grid-template-columns:1fr;gap:8px;margin:0 0 12px}
+.bk-intro .tc1{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #EBDCC0;border-radius:14px;padding:10px 12px}
+.bk-intro .tc1 img{width:76px;height:76px;flex:0 0 76px;border-radius:50%;object-fit:cover;object-position:50% 12%;background:#F3E6D2;border:2px solid #E3C9A0}
+.bk-intro .tc1 b{display:block;font-size:17px;font-weight:900;color:#2B211C}
+.bk-intro .tc1 em{display:block;font-style:normal;font-size:13.5px;font-weight:900;color:#B3261E;margin:1px 0 2px;word-break:keep-all}
+.bk-intro .tc1 span{display:block;font-size:13px;line-height:1.45;color:#5A4A3E;font-weight:600;word-break:keep-all}
+.bk-intro .fx div{display:flex;gap:10px;padding:9px 0;border-top:1px dashed #E3D2B4}
+.bk-intro .fx b{flex:0 0 86px;font-size:13.5px;font-weight:900;color:#701428;word-break:keep-all}
+.bk-intro .fx span{font-size:13.5px;line-height:1.55;color:#3A2E27;font-weight:600;word-break:keep-all}
 .bk-intro .go{display:flex;gap:8px;margin-top:12px}
 .bk-intro .go button{flex:1;border:0;border-radius:12px;padding:12px 6px;font-size:14.5px;font-weight:900;background:#701428;color:#fff;cursor:pointer;font-family:inherit}
-.bk-intro .go button.g2{flex:0 0 34%;background:#fff;color:#701428;border:1.5px solid #701428}
-@media(min-width:900px){.bk-intro{max-width:860px;margin:14px auto 6px;padding:22px 26px}.bk-intro h3{font-size:23px}.bk-intro .qa span{font-size:15.5px}}
+.bk-intro .go button.g2{flex:0 0 38%;background:#fff;color:#701428;border:1.5px solid #701428}
+@media(min-width:900px){.bk-intro{max-width:900px;margin:14px auto 6px;padding:22px 26px}.bk-intro h3{font-size:25px}.bk-intro .tch{grid-template-columns:repeat(3,1fr)}.bk-intro .hero{max-width:520px;margin:0 auto 14px}.bk-intro .fx span,.bk-intro .cv li{font-size:15px}}
 </style>
 </head>
 <body>
@@ -23321,38 +23330,30 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
   +'<div class="bk-cv'+((b.ph||[]).filter(Boolean).length?' ph':'')+'">'+faces(b.ph)+'<span class="bk-sh"></span>'+(b.rib?'<span class="bk-rib">'+esc(b.rib)+'</span>':'')+'<span class="lb">'+esc(b.lb)+'</span><span class="tt">'+esc(b.main)+(b.sub?'<small>'+esc(b.sub)+'</small>':'')+'</span></div>'
   +'<div class="bk-in">'+(Array.isArray(b.tm)?('<div class="tm tl">'+b.tm.map(function(x){return '<i>'+esc(x||'\u00a0')+'</i>';}).join('')+'</div>'):('<div class="tm">'+esc(b.tm)+(b.teach?'<br>'+esc(b.teach):'')+'</div>'))+'<div class="pr'+(b.ask?' ask':'')+'">'+(b.pr||'수강료 상담 안내')+'</div></div></button>';}
 
- /* 2026-11-23 대표님 「글자만 딱딱 써있더만 … 사람이 읽게끔, 읽으면서 정보를 얻어서 들을 만하게끔」 — 과목 탭 맨 위 읽는 안내글 */
+ /* 2026-11-23 대표님 「강사진 사진 넣어줘 · 송윤정 만점강사 산본이지어학원에 나온 자료들 그대로 · 퀘스천 나열하고 끝 → 안 됨」 — 과목 탭 맨 위: 강사 사진·이력 먼저, 그다음 수업 안내 */
  var BKINTRO={
-  '토익':{h:'토익, 한 달이면 책 한 바퀴를 끝냅니다',l:'송윤정 엘리킴 김현정 쓰리스타 강사진으로 토익을 정복하다',q:[
-   ['처음인데 어디서부터 하나요','초급 → 중급 → 실전 순서로 올라갑니다. 초급은 기출 입문서로 LC·RC를 처음부터 한 번 끝내고, 중급은 기출 종합서로 유형을 잡고, 실전은 공식문제집과 1000제로 시험처럼 풉니다.'],
-   ['빨리 끝내고 싶어요','스파르타반입니다. 월요일부터 금요일까지 매일 2시간, 한 달 18번 수업으로 LC·RC 책을 한 달에 끝냅니다.'],
-   ['퇴근하고 다니고 싶어요','정규반입니다. 저녁 7시 30분, 일주일에 두 번. 같은 책을 두 달에 나눠 끝냅니다. 실전반은 토요일 오전 10시부터 오후 1시까지입니다.'],
-   ['달 중간에 시작해도 되나요','됩니다. 등록한 날이 1일차입니다. 놓친 수업은 다음에 열리는 같은 단계 반에서 그 횟수만큼 그대로 들으실 수 있어요.'],
-   ['시험 응시료도 지원되나요','5+1달 과정으로 등록하시면 지원해 드립니다. 시험을 보고 성적이 나온 뒤, 네이버 리뷰와 수강후기를 작성해 주신 것을 확인한 후 지급해 드려요.'],
-   ['토익 다음은요','토익 후 오픽 토스까지 이어집니다. 주중 스파르타 토익도 주말 오픽 토스는 개설된 반 한해서 진행됩니다.']]},
-  '영어회화':{h:'영어회화, 입문부터 원어민 선생님과 말합니다',l:'교재 한 권을 두 달에, 내 속도에 맞는 반에서',q:[
-   ['영어를 한마디도 못 해요','BASIC반부터 시작하시면 됩니다. BASIC → STEP1 → STEP2 → STEP3 → STEP4 순서로 올라가고, 원어민 선생님이 입문부터 고급까지 어느 단계든 직접 수업합니다.'],
-   ['수업은 어떻게 나가나요','교재 한 권을 두 달에 나눠 나갑니다. 첫 달에는 홀수 과, 다음 달에는 짝수 과를 배웁니다.'],
-   ['시간이 맞을까요','오전반은 10시와 11시 40분, 저녁반은 6시 20분과 8시에 시작합니다. 출근 전에 듣는 새벽반은 화·수·목 아침 6시 30분입니다.'],
-   ['달 중간에 시작해도 되나요','됩니다. 등록한 날이 1일차입니다. 놓친 수업은 다음에 열리는 같은 단계 반에서 그 횟수만큼 그대로 들으실 수 있어요.'],
-   ['내 반이 어디인지 모르겠어요','레벨테스트를 먼저 받아 보세요. 그리고 등록 전에 원하는 반 첫 수업을 무료로 들어 보실 수 있습니다.']]},
-  '일본어회화':{h:'일본어회화, 입문부터 원어민반까지 한 곳에서',l:'평일 저녁 · 토요일 오전 · 출근 전 새벽',q:[
-   ['일본어가 처음이에요','입문반부터 시작하시면 됩니다. 입문 → 초급 → 초중급 → 중급 → 원어민반 순서로 올라갑니다.'],
-   ['원어민 선생님께 배우고 싶어요','토요일 오전 입문반과 평일 저녁 원어민반, 화·수·목 아침 6시 30분 새벽반을 원어민 선생님이 맡습니다.'],
-   ['시간이 맞을까요','평일 저녁반은 6시 20분과 8시에 시작하고, 토요일반은 오전 10시부터 오후 1시까지입니다.'],
-   ['JLPT도 같이 준비하고 싶어요','JLPT 탭에서 주중반 · 주말반 · JLPT와 회화를 같이 듣는 반을 모집하고 있습니다. 데스크에 말씀해 주시면 맞는 반으로 안내해 드려요.'],
-   ['들어 보고 정해도 되나요','등록 전에 원하는 반 첫 수업을 무료로 들어 보실 수 있습니다.']]},
-  '중국어회화':{h:'중국어회화, 입문부터 고급까지 단계별로',l:'평일 저녁 · 토요일 오전 · 출근 전 새벽',q:[
-   ['중국어가 처음이에요','입문반부터 시작하시면 됩니다. 입문 → 초중급 → 중급 → 중고급 → 고급 순서로 올라갑니다.'],
-   ['원어민 선생님께 배우고 싶어요','토요일 고급반은 원어민 선생님이 맡습니다. 어느 반이 맞을지는 데스크에서 같이 정해 드려요.'],
-   ['시간이 맞을까요','평일 저녁반은 6시 20분부터 8시 30분 사이에 시작하고, 토요일반은 오전 10시부터 오후 1시까지입니다. 새벽반은 화·수·목 아침 6시 30분입니다.'],
-   ['HSK도 같이 준비하고 싶어요','HSK 탭에서 3·4급 · 5·6급 · 토요반 · HSK와 회화를 같이 듣는 반을 모집하고 있습니다.'],
-   ['들어 보고 정해도 되나요','등록 전에 원하는 반 첫 수업을 무료로 들어 보실 수 있습니다.']]}
+  '토익':{h:'송윤정 엘리킴 김현정 쓰리스타 강사진으로 토익을 정복하다',l:'토익 990점 만점 강사가 직접 가르칩니다',
+   hero:['img/teachers/song_grandslam.jpg?v=1123','송윤정 강사 — 토익 990점(LC 495 · RC 495) · YBM 그랜드슬래머 마스터 인증'],
+   cv:['송윤정 강사 이력',['TOEIC 990점 만점 (LC 495 · RC 495) · TOEIC Speaking 200 · Writing 200','YBM Grand Slammer Master 최상위 레벨','국제영어대학원대학교 IGSE(영어지도학과) 석사 졸업','Hawaii University Manoa(U.S.) 티칭 과정 수료 · ITT Business 통번역사 1급','한양대학교 · 한국외국어대학교 · 단국대학교 · 아주대학교 · 경기과학기술대 강의','삼성크레듀 · 현대로템 · LS산전 · SK네트웍스 · 롯데백화점 · 포스코AST · 하나은행 · 고려대학교의료원 강의']],
+   t:[['송윤정','eng_13','토익 만점 강사','스파르타반(월~금 매일) · 토요 실전반'],['엘리 킴','elly','「더 쎈토익 창시자, 한번 들어보세요」','정규반 · 기출 중심으로 유형을 몸에 붙이는 수업'],['김현정','eng_15','「김현정 토익은 진짜다」','토익 처음이어도 괜찮아요']],
+   f:[['스파르타반','월~금 매일 2시간 · 한 달 18번 수업으로 LC·RC 책을 한 달에 끝냅니다'],['정규반','저녁 7시 30분 · 주 2번 · 같은 책을 두 달에 / 실전반은 토요일 오전 10시~오후 1시'],['달 중간 등록','등록한 날이 1일차 · 놓친 수업은 다음 같은 단계 반에서 그 횟수만큼 듣습니다'],['시험 응시료 지원','5+1달 과정 등록 시 · 성적이 나온 뒤 네이버 리뷰와 수강후기 확인 후 지급']]},
+  '영어회화':{h:'영어회화, 입문부터 원어민 선생님과 말합니다',l:'BASIC부터 STEP4까지 · 반마다 담당 선생님이 있습니다',
+   t:[['Kate','eng_9','BASIC · STEP 1','왕초보도 편하게 입을 떼는 수업'],['권미화 (May)','eng_1','STEP 1','기초부터 초급까지 차근차근'],['Jerollyn','eng_11','STEP 2~4 · 원어민','프리토킹까지 끌어올리는 원어민 수업'],['김현정 (Vivienne)','eng_15','새벽반','아침을 여는 새벽반 담당']],
+   f:[['단계','BASIC → STEP1 → STEP2 → STEP3 → STEP4 · 원어민 선생님이 입문부터 고급까지 어느 단계든 직접 수업'],['진도','교재 한 권을 두 달에 · 첫 달 홀수 과, 다음 달 짝수 과'],['시간','오전 10시 · 11시 40분 / 저녁 6시 20분 · 8시 / 새벽반 화·수·목 6시 30분'],['달 중간 등록','등록한 날이 1일차 · 놓친 수업은 다음 같은 단계 반에서 그 횟수만큼 듣습니다']]},
+  '일본어회화':{h:'일본어회화, 입문부터 원어민반까지 한 곳에서',l:'일본인 원어민 선생님 세 분이 함께합니다',
+   t:[['타나이 치토세','../../t_tanai','원어민 · 토요 입문반','처음부터 원어민 발음으로'],['김민정','jpn_2','입문','입문자를 위한 친절한 수업'],['서정아','jpn_7','초급 · 초중급 · JLPT','초급부터 JLPT까지 이어지는 커리큘럼'],['나카무라 모모코','jpn_8','원어민 · 중급','살아있는 표현으로 배우는 일본어'],['조미히로','jpn_10','원어민반 · 새벽반','자연스러운 회화 중심']],
+   f:[['단계','입문 → 초급 → 초중급 → 중급 → 원어민반'],['시간','평일 저녁 6시 20분 · 8시 / 토요일 오전 10시~오후 1시 / 새벽반 화·수·목 6시 30분'],['JLPT','JLPT 탭에서 주중반 · 주말반 · JLPT와 회화를 같이 듣는 반을 모집하고 있습니다']]},
+  '중국어회화':{h:'중국어회화, 입문부터 고급까지 단계별로',l:'발음 · 성조부터 고급 회화까지',
+   t:[['하홍금','chn_1','원어민 · 초중급 · 고급','발음·성조부터 고급 회화까지'],['오금한','chn_5','입문 · 중급','처음 배우는 분도 편하게'],['현지인','chn_7','중고급 · 새벽반','시험과 회화를 함께']],
+   f:[['단계','입문 → 초중급 → 중급 → 중고급 → 고급'],['시간','평일 저녁 6시 20분~8시 30분 사이 시작 / 토요일 오전 10시~오후 1시 / 새벽반 화·수·목 6시 30분'],['HSK','HSK 탭에서 3·4급 · 5·6급 · 토요반 · HSK와 회화를 같이 듣는 반을 모집하고 있습니다']]}
  };
  function bkIntro(k){var I=BKINTRO[k];if(!I)return '';
   return '<div class="bk-intro"><h3>'+esc(I.h)+'</h3><p class="ld">'+esc(I.l)+'</p>'
-   +I.q.map(function(x){return '<div class="qa"><b>'+esc(x[0])+'</b><span>'+esc(x[1])+'</span></div>';}).join('')
-   +'<div class="go"><button type="button" onclick="openPage(\'무료청강\')">첫 수업 무료로 들어 보기</button><button type="button" class="g2" onclick="openPage(\'레벨테스트\')">레벨테스트</button></div></div>';}
+   +(I.hero?'<img class="hero" src="'+I.hero[0]+'" alt="'+esc(I.hero[1])+'" loading="lazy">':'')
+   +(I.cv?'<div class="cv"><b>'+esc(I.cv[0])+'</b><ul>'+I.cv[1].map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul></div>':'')
+   +'<div class="tch">'+I.t.map(function(x){return '<div class="tc1"><img src="img/teachers/'+x[1]+'.png" alt="'+esc(x[0])+' 강사" loading="lazy" onerror="this.style.visibility=\'hidden\'"><div><b>'+esc(x[0])+'</b><em>'+esc(x[2])+'</em><span>'+esc(x[3])+'</span></div></div>';}).join('')+'</div>'
+   +'<div class="fx">'+I.f.map(function(x){return '<div><b>'+esc(x[0])+'</b><span>'+esc(x[1])+'</span></div>';}).join('')+'</div>'
+   +'<div class="go"><button type="button" onclick="openPage(\'무료청강\')">첫 수업 무료로 들어 보기</button><button type="button" class="g2" onclick="openPage(\'강사소개\')">강사 전체 보기</button></div></div>';}
  window.bkStore=function(cat){
   if(cat)window._bkCat=cat;var cur=window._bkCat;var C=null;CAT.forEach(function(x){if(x.k===cur)C=x;});if(!C)C=CAT[0];
   var tabs=CAT.map(function(x){return '<button type="button" class="'+(x.k===C.k?'on':'')+'" onclick="bkGo(\''+x.k+'\')">'+x.k+'</button>';}).join('');
