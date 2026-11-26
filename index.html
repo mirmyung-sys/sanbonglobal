@@ -9865,10 +9865,10 @@ function personalPage(){_exSubj='퍼스널';_exVerified=false;
    20시간권이 기준 단가(한인 5만 / 원어민·시험대비 6만 / 일·중 전부 5만)이고
    10시간권은 시간당 5천원 높습니다. 그래서 20시간으로 자연스럽게 모입니다. */
 var ONEPER=[
- ['영어 · 한인 강사',                       550000,1000000,'10시간권 시간당 5.5만 · 20시간권 시간당 5만'],
- ['영어 · 원어민 강사',                     650000,1200000,'10시간권 시간당 6.5만 · 20시간권 시간당 6만'],
- ['영어 · 시험대비 (토익·토스·오픽)',       650000,1200000,'10시간권 시간당 6.5만 · 20시간권 시간당 6만'],
- ['일본어·중국어 · 한인/원어민/시험대비',   550000,1000000,'10시간권 시간당 5.5만 · 20시간권 시간당 5만'] ];
+ ['영어 · 한인 강사',                       550000,1000000,'10시간권 · 20시간권'],
+ ['영어 · 원어민 강사',                     650000,1200000,'10시간권 · 20시간권'],
+ ['영어 · 시험대비 (토익·토스·오픽)',       650000,1200000,'10시간권 · 20시간권'],
+ ['일본어·중국어 · 한인/원어민/시험대비',   550000,1000000,'10시간권 · 20시간권'] ];
 var ONETABS=['일대일 (시간권)','퍼스널 (고정)','왕기초 회화 (영·일·중)','왕기초 시험 (토익·JLPT·HSK)','시험일 맞춤 단기집중'];
 /* 왕기초 과정 — 언어마다 글도 사진도 다릅니다 */
 /* 왕기초 일대일 Package — 2026-09-01 대표님 지시
@@ -9961,7 +9961,7 @@ function oneHubPage(tab){
  +'</div></div>'
  +'<div class="oh-hero">'
  +'<div class="oh-kpi"><div><b>1:1</b><span>선생님 한 명<br>학생 한 명</span></div>'
- +(ONE_FREE_ON?'<div><b>20h</b><span>20시간 등록 시<br>정규반 1개월 무료 수강권</span></div>':'<div><b>20h</b><span>20시간권<br>시간당 5~6만</span></div>')
+ +(ONE_FREE_ON?'<div><b>20h</b><span>20시간 등록 시<br>정규반 1개월 무료 수강권</span></div>':'<div><b>20h</b><span>20시간권<br>요일·시간 자유</span></div>')
  +'<div><b>0원</b><span>레벨 진단<br>상담·테스트 무료</span></div></div></div>'
  +'<div class="oh-pick">과정 선택</div><div class="sp-steps oh-tabs">'+btns+'</div>'
  +'<div id="oneBody">'+oneTabHTML(_oneT)+'</div>'+SGCTA('맞춤 수업은 상담 후 강사를 배정해 드립니다. 여기서 신청하시면 순서가 앞당겨집니다.')+spModalHTML()+'</div>';}
@@ -9975,7 +9975,7 @@ function oneTab(i){
 function oneTabHTML(i){
  if(i===0){
   BT={slots:{},memo:'',start:'',any:false};_oneSel=0;_oneHr=10;
-  var er=ONEPER.map(function(r,k){return '<tr><td class="b">'+r[0]+'</td><td class="pr" id="oneP'+k+'">10시간 '+_man(r[1])+' / 20시간 '+_man(r[2])+'</td><td class="hr">'+r[3].replace(' · ','<br>')+'</td></tr>';}).join('');
+  var er=ONEPER.map(function(r,k){return '<tr><td class="b">'+r[0]+'</td><td class="pr" id="oneP'+k+'">10시간 '+_man(r[1])+' / 20시간 '+_man(r[2])+'</td></tr>';}).join('');
   return '<div class="oh-body">'
   +'<div class="oh-card"><div class="oh-tag">시간 자유</div>'
   +'<p>10시간 · 20시간 <b>시간권 먼저 등록</b> → 수업 날짜는 그때그때 예약</p>'
@@ -9985,7 +9985,7 @@ function oneTabHTML(i){
     +'<div class="oh-ts"><span class="ic">🌎</span><b>원어민 강사</b><p>발화 · 프리토킹<br>발음 교정</p></div>'
     +'<div class="oh-ts"><span class="ic">📝</span><b>시험대비 강사</b><p>토익 · 토스 · 오픽<br>JLPT · HSK</p></div>'
     +'</div>')
-  +_oneSec('수강료','<div class="tblwrap"><table class="ex-tt"><tr><th>구분</th><th>수강료</th><th>시간당</th></tr>'+er+'</table></div>'
+  +_oneSec('수강료','<div class="tblwrap"><table class="ex-tt"><tr><th>구분</th><th>수강료</th></tr>'+er+'</table></div>'
     +'<div class="sp-form" style="margin:12px 0 4px"><label>이벤트 할인<select id="exDisc" onchange="oneDiscChange()">'+discOpts('퍼스널')+'</select></label>'+discHintBox('퍼스널')+'</div>'
     +'<div class="sp-disc-note" id="oneDiscNote"></div>')
   +_oneSec('신청하기','<div class="ov-lb">① 수업 선택</div>'
@@ -9993,8 +9993,8 @@ function oneTabHTML(i){
       return '<button type="button" class="ov-c'+(k===0?' on':'')+'" onclick="onePick('+k+')">'
        +'<b>'+r[0]+'</b><em>'+r[3]+'</em></button>';}).join('')+'</div>'
     +'<div class="ov-lb">② 시간권 선택</div>'
-    +'<div class="ov-hg"><button type="button" class="ov-h on" onclick="oneHour(10)">10시간<em class="mut">시간당 5.5~6.5만</em></button>'
-     +'<button type="button" class="ov-h" onclick="oneHour(20)">20시간<em>'+(ONE_FREE_ON?'정규반 1개월 무료 수강권 (11월 이벤트)':'시간당 5~6만')+'</em></button></div>'
+    +'<div class="ov-hg"><button type="button" class="ov-h on" onclick="oneHour(10)">10시간<em class="mut">요일·시간 자유</em></button>'
+     +'<button type="button" class="ov-h" onclick="oneHour(20)">20시간<em>'+(ONE_FREE_ON?'정규반 1개월 무료 수강권 (11월 이벤트)':'20시간권이 더 유리')+'</em></button></div>'
     +'<div class="ov-lb">③ 가능한 요일 · 시간</div>'
     +'<p class="ov-p">가능한 칸을 모두 눌러 주세요.</p>'
     +btGridHTML()
@@ -10007,14 +10007,14 @@ function oneTabHTML(i){
     +'<div class="ov-sum" id="oneSum"></div>'
     +'<button class="bt-go" id="oneGo" onclick="oneBuy()">일대일 시간권 신청</button>')
   +(evActive('open')?'<div class="sp-note" style="color:#c81f2b;font-weight:800">🎉 시간권 금액은 현재 오픈이벤트로 10% 할인 이벤트 중입니다 (10월 31일 등록분까지 · 결제창에서 자동 적용)</div>':'')
-  +'<div class="sp-note">※ 월 8시간 미만 또는 주 1회는 할인이 적용되지 않습니다 · 1:2 수업 시 시간당 +1~2만원(회화 +1만 · 시험 +2만).</div></div>';}
+  +'<div class="sp-note">※ 월 8시간 미만 또는 주 1회는 할인이 적용되지 않습니다. 1:2 수업은 상담 시 안내드립니다.</div></div>';}
 
  if(i===1){
   var cards=PERS.map(function(c,ci){return '<div class="pv-c"><div class="pv-h"><span>'+c.ic+'</span><b>'+c.n+'</b></div><div class="pv-d">'+c.d+'</div>'
    +c.rows.map(function(r,ri){return '<div class="pv-r"><span>'+r[0]+'</span><span class="pv-p" id="pv'+ci+'_'+ri+'"><b>'+r[1].toLocaleString()+'원</b></span><button class="pv-go" onclick="persBuy('+ci+','+ri+')">수강신청</button></div>';}).join('')
    +'</div>';}).join('');
   return '<div class="oh-body">'+'<div class="pers-noeng" style="margin:12px 0;padding:14px 16px;border-radius:12px;background:#fff1f1;border:2px solid #c81f2b;color:#c81f2b;font-weight:900;font-size:17px;line-height:1.5">\u26A0 퍼스널은 영어 제외입니다<br><span style="font-size:14px;font-weight:700;color:#3f4757">일본어 · 중국어만 가능 · 영어 1:1은 <b>일대일(시간권)</b>으로 신청해 주세요</span></div>'
-  +'<div class="oh-card"><div class="oh-tag">시간 고정 · 시간당 더 저렴</div>'
+  +'<div class="oh-card"><div class="oh-tag">시간 고정 · 더 저렴</div>'
   +'<p><b>매주 같은 요일 · 같은 시간</b> 고정 수업</p>'
   +''
   +'<p><b>추천</b> — 일정이 일정한 분 · 비용을 아끼며 1:1</p></div>'
@@ -10022,7 +10022,7 @@ function oneTabHTML(i){
     +'<tr><td class="b">언어</td><td>영어 · 일본어 · 중국어</td><td class="hi"><b style="color:#c81f2b">일본어 · 중국어만 (영어 제외)</b></td></tr>'
     +'<tr><td class="b">시간</td><td>매번 자유롭게 잡음</td><td class="hi">매주 같은 요일·시간 고정</td></tr>'
     +'<tr><td class="b">횟수</td><td>10시간 · 20시간 시간권</td><td class="hi">A과정 주 2회 · B과정 주 1회</td></tr>'
-    +'<tr><td class="b">수강료</td><td>10시간권 시간당 5.5~6.5만<br>20시간권 시간당 5~6만</td><td class="hi">2개월 48만원 <small>(A 총 16회 · B 총 8회)</small></td></tr>'
+    +'<tr><td class="b">수강료</td><td>10시간권 · 20시간권<br>요일·시간 자유</td><td class="hi">2개월 48만원 <small>(A 총 16회 · B 총 8회)</small></td></tr>'
     +'<tr><td class="b">수업 길이</td><td>회당 60~90분</td><td class="hi">A 50분 · B 80분</td></tr>'
     +(ONE_FREE_ON?'<tr><td class="b">11월 이벤트</td><td>20시간 → 정규반 1개월 무료 수강권</td><td class="hi">\u2014</td></tr>':'')
     +'<tr><td class="b">추천</td><td>일정이 불규칙한 분</td><td class="hi">일정이 일정한 분</td></tr></table></div>')
@@ -10083,10 +10083,10 @@ var ONEMENU=[
 ];
 /* 상품 — [키, 이름, 부제, 10시간, 20시간] */
 var CARTP=[
- ['eng-k','1대1 영어 · 한인 강사','기초·문법·독해 · 10시간권 시간당 5.5만 / 20시간권 5만',550000,1000000],
- ['eng-n','1대1 영어 · 원어민 강사','발화·프리토킹·비즈니스 첨삭 · 10시간권 시간당 6.5만 / 20시간권 6만',650000,1200000],
- ['eng-t','1대1 영어 · 시험대비','토익·토스·오픽 · 10시간권 시간당 6.5만 / 20시간권 6만',650000,1200000],
- ['jc','1대1 일본어 · 중국어','한인·원어민·시험대비 모두 · 10시간권 시간당 5.5만 / 20시간권 5만',550000,1000000]
+ ['eng-k','1대1 영어 · 한인 강사','기초·문법·독해 · 10시간권 / 20시간권',550000,1000000],
+ ['eng-n','1대1 영어 · 원어민 강사','발화·프리토킹·비즈니스 첨삭 · 10시간권 / 20시간권',650000,1200000],
+ ['eng-t','1대1 영어 · 시험대비','토익·토스·오픽 · 10시간권 / 20시간권',650000,1200000],
+ ['jc','1대1 일본어 · 중국어','한인·원어민·시험대비 모두 · 10시간권 / 20시간권',550000,1000000]
 ];
 var CART=[];
 function _cp(k){for(var i=0;i<CARTP.length;i++)if(CARTP[i][0]===k)return CARTP[i];return null;}
@@ -10394,7 +10394,7 @@ function oneProPage(){
  return wkBanner()+ppBanner()+bigImg('img/gen_pt.jpg')
  +H('1:1 PROFESSIONAL','완전 1:1<br>전문 강사 수업',
    '일대일 개인레슨으로 어학실력을 확 올리세요','🎯')
- +KPI([['1:1','나 한 명'],['20','시간권'],['5만','시간당']])
+ +KPI([['1:1','나 한 명'],['20','시간권'],['자유','요일·시간']])
  /* ① 송윤정 강사 */
  +'<div class="opt-t"><div class="opt-ph"><img src="img/teachers/eng_13.png" alt="송윤정 강사" loading="lazy"></div>'
   +'<div class="opt-b"><div class="opt-e">1:1 전문 · 토익 · 토스 · 오픽</div>'
@@ -16446,7 +16446,7 @@ function openPage(k){if(k==='기업출강'){location.href='https://globalchulgan
 
 /* ===== 카드 그리드 공통 호버 — 빨간 커튼 + 핵심 한 줄 (2026-09-03 대표님 지시: 전체 적용) ===== */
 var SGHOV=[
- ['일대일 (시간권)','20시간권이 시간당 5천원 저렴'],
+ ['일대일 (시간권)','20시간권이 더 저렴'],
  ['퍼스널','일본어·중국어만 (영어 제외) · 2개월 48만원'],
  ['시험일 맞춤','시험일까지 나올 것만'],
  ['한인 강사','기초 · 문법 — 우리말 설명'],
@@ -23543,7 +23543,7 @@ header .ddown a:hover{color:var(--pw)!important;background:var(--piv)!important}
   var GN={spa:['스파르타반','월~금 매일 2시간'],reg:['정규반','평일 저녁 주 2회 · 실전 토요일']};
   var gs=[];L.forEach(function(b){var g=b.g||'_';if(gs.indexOf(g)<0)gs.push(g);});
   var body=!L.length?'':(C.t==='ex'&&gs.length>1)?gs.map(function(g){var LL=L.filter(function(b){return (b.g||'_')===g;});var nm=GN[g]||[g,''];return '<div class="bk-grp"><b>'+esc(nm[0])+'</b><span>'+esc(nm[1])+' · '+LL.length+'개 반</span></div><div class="bk-grid">'+LL.map(book).join('')+'</div>';}).join(''):('<div class="bk-grid">'+L.map(book).join('')+'</div>');
-  if(C.t==='pg')body='<div class="bk-grid">'+book({c:COL.etc,lb:'1:1 개인레슨',main:'일대일 (시간권)',sub:'10·20시간',tm:'요일·시간 자유',pr:'시간당 5~6.5만',ph:['../../t_cody','eng_13','eng_5'],teach:'',rib:'',go:"openPage('맞춤수업')"})+book({c:COL.etc,lb:'1:1 개인레슨',main:'퍼스널 (고정)',sub:'주 2회 50분 · 주 1회 80분',tm:'2개월',pr:'48만',ph:['eng_14'],teach:'',rib:'',go:"openPage('맞춤수업')"})+book({c:COL.etc,lb:'1:1 개인레슨',main:'시험일 맞춤 단기집중',sub:'',tm:'시험 날짜에 맞춰',pr:'',ask:1,ph:['eng_13'],teach:'',rib:'',go:"openPage('맞춤수업')"})+'</div>';
+  if(C.t==='pg')body='<div class="bk-grid">'+book({c:COL.etc,lb:'1:1 개인레슨',main:'일대일 (시간권)',sub:'10·20시간',tm:'요일·시간 자유',pr:'10·20시간권',ph:['../../t_cody','eng_13','eng_5'],teach:'',rib:'',go:"openPage('맞춤수업')"})+book({c:COL.etc,lb:'1:1 개인레슨',main:'퍼스널 (고정)',sub:'주 2회 50분 · 주 1회 80분',tm:'2개월',pr:'48만',ph:['eng_14'],teach:'',rib:'',go:"openPage('맞춤수업')"})+book({c:COL.etc,lb:'1:1 개인레슨',main:'시험일 맞춤 단기집중',sub:'',tm:'시험 날짜에 맞춰',pr:'',ask:1,ph:['eng_13'],teach:'',rib:'',go:"openPage('맞춤수업')"})+'</div>';
   if(C.t==='biz')body='<div class="bk-grid">'+book({c:['#4A3A30','linear-gradient(150deg,#5A4A3E,#3A2C24)'],lb:'회사로 강사가 갑니다',main:'기업체 출강',sub:'영어 · 일본어 · 중국어',tm:'인원·횟수에 맞춰 견적',pr:'',ask:1,ph:['eng_14','eng_5','eng_15'],teach:'',rib:'',go:"location.href='https://globalchulgang.com/'"})+book({c:['#4A3A30','linear-gradient(150deg,#5A4A3E,#3A2C24)'],lb:'임원 1:1',main:'임원 1:1 출강',sub:'사무실 방문 · 화상',tm:'요일·시간 맞춤',pr:'',ask:1,ph:['../../t_cody'],teach:'',rib:'',go:"openPage('임원강의')"})+'</div>';
   return '<div class="bk"><div class="bk-hd"><h2>수강신청</h2><p>과목 → 반 고르고, 데스크에서 바로 상담</p></div>'
    +'<div class="bk-tabs" id="bkTabs">'+tabs+'</div>'+bkIntro(C.k)
